@@ -208,7 +208,7 @@ learner$train(task, row_ids = ids$train)
 #>  k prior fixed to 2.000000
 #>  degrees of freedom in sigma prior: 3.000000
 #>  quantile in sigma prior: 0.900000
-#>  scale in sigma prior: 0.003136
+#>  scale in sigma prior: 0.002797
 #>  power and base for tree prior: 2.000000 0.950000
 #>  use quantiles for rule cut points: false
 #>  proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
@@ -216,7 +216,7 @@ learner$train(task, row_ids = ids$train)
 #>  number of training observations: 21
 #>  number of test observations: 0
 #>  number of explanatory variables: 10
-#>  init sigma: 2.791639, curr sigma: 2.791639
+#>  init sigma: 2.815795, curr sigma: 2.815795
 #> 
 #> Cutoff rules c in x<=c vs x>c
 #> Number of cutoffs: (var: number of possible c):
@@ -234,24 +234,24 @@ learner$train(task, row_ids = ids$train)
 #> iteration: 800 (of 1000)
 #> iteration: 900 (of 1000)
 #> iteration: 1000 (of 1000)
-#> total seconds in loop: 0.270372
+#> total seconds in loop: 0.269660
 #> 
 #> Tree sizes, last iteration:
-#> [1] 2 2 3 2 2 2 2 2 3 2 2 2 4 3 2 3 2 2 
-#> 2 2 2 3 2 3 2 2 1 2 2 2 2 2 2 1 2 3 2 2 
-#> 2 1 3 2 3 2 2 3 2 3 2 2 4 2 2 3 3 3 2 3 
-#> 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 
-#> 2 3 3 2 2 2 2 1 2 2 2 1 2 2 2 5 5 2 2 2 
-#> 3 2 3 2 2 2 3 2 2 2 2 2 2 2 2 2 2 3 3 2 
-#> 2 3 2 3 2 2 3 3 2 3 2 3 2 2 2 3 2 5 2 1 
-#> 2 2 2 4 3 2 2 2 1 3 2 2 2 2 2 2 2 2 5 3 
-#> 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 2 2 3 
-#> 2 2 4 1 2 2 2 2 3 3 2 2 2 2 3 1 1 2 3 3 
+#> [1] 2 2 2 2 2 2 3 2 2 2 3 2 3 3 3 2 2 2 
+#> 1 3 4 4 2 3 2 3 3 2 2 4 2 1 3 2 2 2 2 2 
+#> 2 2 2 1 2 2 2 3 2 4 2 1 2 2 2 2 2 1 2 2 
+#> 3 2 2 2 2 5 2 2 2 2 2 3 2 1 2 2 2 5 2 2 
+#> 2 2 2 2 2 2 3 3 3 1 2 2 2 2 3 2 2 2 2 2 
+#> 2 1 3 2 2 2 2 2 2 1 2 3 2 2 1 5 3 3 2 2 
+#> 2 2 2 2 2 2 4 2 2 2 2 2 2 1 1 2 1 3 3 3 
+#> 2 2 2 2 2 2 2 2 2 1 2 2 4 2 3 2 2 2 2 2 
+#> 2 2 2 2 3 2 2 2 2 2 3 2 2 1 2 2 2 2 2 2 
+#> 2 2 2 2 3 2 1 3 2 2 2 2 2 2 2 3 2 2 2 2 
 #> 3 2 
 #> 
 #> Variable Usage, last iteration (var:count):
-#> (1: 22) (2: 30) (3: 29) (4: 27) (5: 23) 
-#> (6: 29) (7: 36) (8: 26) (9: 21) (10: 9) 
+#> (1: 23) (2: 27) (3: 15) (4: 19) (5: 23) 
+#> (6: 26) (7: 25) (8: 23) (9: 24) (10: 31) 
 #> 
 #> DONE BART
 #> 
@@ -269,5 +269,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.394313 
+#> 2.840218 
 ```

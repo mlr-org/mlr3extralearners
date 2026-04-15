@@ -35,7 +35,7 @@ instantiated via
 | lambda.discrete           | logical   | FALSE        | TRUE, FALSE                 | \-                    |
 | lambda.discrete.num       | integer   | 100          |                             | \\\[0, \infty)\\      |
 | cv                        | character | nomad        | nomad, exhaustive, none     | \-                    |
-| cv.threshold              | integer   | 10000        |                             | \\\[0, \infty)\\      |
+| cv.threshold              | integer   | 1000         |                             | \\\[0, \infty)\\      |
 | cv.func                   | character | cv.ls        | cv.ls, cv.gcv, cv.aic       | \-                    |
 | kernel                    | logical   | TRUE         | TRUE, FALSE                 | \-                    |
 | degree.max                | integer   | 10           |                             | \\\[0, \infty)\\      |
@@ -60,8 +60,10 @@ instantiated via
 | max.bb.eval               | untyped   | \-           |                             | \-                    |
 | min.mesh.size.real        | untyped   | \-           |                             | \-                    |
 | min.mesh.size.integer     | untyped   | \-           |                             | \-                    |
-| min.poll.size.real        | untyped   | \-           |                             | \-                    |
-| min.poll.size.integer     | untyped   | \-           |                             | \-                    |
+| min.frame.size.real       | untyped   | \-           |                             | \-                    |
+| min.frame.size.integer    | untyped   | \-           |                             | \-                    |
+| display.nomad.progress    | logical   | TRUE         | TRUE, FALSE                 | \-                    |
+| display.warnings          | logical   | TRUE         | TRUE, FALSE                 | \-                    |
 | opts                      | untyped   | \-           |                             | \-                    |
 
 ## See also
@@ -181,6 +183,7 @@ learner$train(task, row_ids = ids$train)
 #> Warning:  Predictor 3 B-spline basis is ill-conditioned beyond degree 2.
 #> Warning:  Predictor 6 B-spline basis is ill-conditioned beyond degree 2.
 #> Warning:  Predictor 9 B-spline basis is ill-conditioned beyond degree 1.
+#> Warning:  optimal degree equals search maximum (1): rerun with larger degree.max optimal degree equals search maximum (4): rerun with larger degree.max optimal degree equals search maximum (2): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (2): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (1): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max
 
 print(learner$model)
 #> Call:
@@ -190,9 +193,11 @@ print(learner$model)
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.940942 
+#> 60.85332 
 ```
