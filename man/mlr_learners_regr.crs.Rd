@@ -36,7 +36,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    lambda.discrete \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambda.discrete.num \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cv \tab character \tab nomad \tab nomad, exhaustive, none \tab - \cr
-   cv.threshold \tab integer \tab 10000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   cv.threshold \tab integer \tab 1000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cv.func \tab character \tab cv.ls \tab cv.ls, cv.gcv, cv.aic \tab - \cr
    kernel \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    degree.max \tab integer \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -61,8 +61,10 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    max.bb.eval \tab untyped \tab - \tab  \tab - \cr
    min.mesh.size.real \tab untyped \tab - \tab  \tab - \cr
    min.mesh.size.integer \tab untyped \tab - \tab  \tab - \cr
-   min.poll.size.real \tab untyped \tab - \tab  \tab - \cr
-   min.poll.size.integer \tab untyped \tab - \tab  \tab - \cr
+   min.frame.size.real \tab untyped \tab - \tab  \tab - \cr
+   min.frame.size.integer \tab untyped \tab - \tab  \tab - \cr
+   display.nomad.progress \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   display.warnings \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    opts \tab untyped \tab - \tab  \tab - \cr
 }
 }
