@@ -224,14 +224,14 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.catboost"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.catboost"</span>, iterations <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifCatboost&gt;</span><span style="font-weight: bold;"> (classif.catboost): Gradient Boosting</span> <span style="color: #00BBBB;">──────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: loss_function_twoclass=Logloss,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> loss_function_multiclass=MultiClass, thread_count=1, logging_level=Silent,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> allow_writing_files=FALSE, save_snapshot=FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> allow_writing_files=FALSE, save_snapshot=FALSE, iterations=10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Validate: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">catboost</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
@@ -251,28 +251,28 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CatBoost model (1000 trees)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CatBoost model (10 trees)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: Logloss</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 60 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V10        V36        V12         V9        V16        V31 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.2046711  6.2057713  4.6878014  4.2908898  4.1719635  3.7390697  3.6956263 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V52        V13        V45        V20        V21        V23        V30 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.6420919  2.3105303  2.2471539  2.2277502  2.1011920  2.0290455  2.0248776 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V59        V15        V49        V48        V51        V27        V46 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.8576570  1.8283691  1.8242899  1.7916321  1.6673944  1.6096546  1.5629017 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V17        V37        V42        V18        V58        V47         V5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.5324622  1.4745736  1.3500051  1.2830438  1.2093534  1.1992113  1.1623890 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V29        V32         V4        V28         V1        V35        V60 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.1582836  1.1420697  1.1319546  1.1068591  1.1008780  1.0725800  0.9896666 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V43        V55         V6        V54        V33        V22         V8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.9677411  0.9102621  0.9058605  0.8222438  0.8154788  0.8149473  0.7747147 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V44        V34         V3        V57        V40        V39        V53 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.7632148  0.7442235  0.7367318  0.7329403  0.7034488  0.6983686  0.6970176 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V24        V19        V14        V26         V2         V7        V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.6947342  0.6693415  0.6466570  0.6360080  0.6257335  0.6230147  0.5941337 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V25        V38        V56        V50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5413643  0.5236566  0.3862895  0.3382102 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V12        V31         V9        V27        V49        V51 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14.8279955  9.7817258  8.3598146  5.4893376  4.6871860  4.6708873  3.9986177 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V52        V10        V16        V57        V24         V7        V35 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.0481474  2.6357119  2.5345094  2.4086818  2.3865893  2.1452278  2.0006984 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V45         V4        V17        V37        V15        V58        V40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.9990866  1.9469789  1.9327717  1.8168172  1.7943184  1.7593997  1.7023098 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V36         V1         V5        V21        V46        V20        V44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.5208229  1.5175638  1.4809011  1.3370898  1.3351941  1.2815371  1.2545381 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V59        V19        V39        V26        V54        V56        V34 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.1546813  1.1256907  1.1129928  0.9918156  0.9686814  0.7380293  0.5531329 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V47        V32        V28        V30        V13        V14        V18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5527099  0.4222362  0.3687971  0.3567728  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V2        V22        V23        V25        V29         V3        V33 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V38        V41        V42        V43        V48        V50        V53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V55         V6        V60         V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -280,7 +280,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1449275 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1304348 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

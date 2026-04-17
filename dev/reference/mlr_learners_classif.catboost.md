@@ -280,14 +280,14 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("classif.catboost")
+learner = lrn("classif.catboost", iterations = 10)
 print(learner)
 #> 
 #> ── <LearnerClassifCatboost> (classif.catboost): Gradient Boosting ──────────────
 #> • Model: -
 #> • Parameters: loss_function_twoclass=Logloss,
 #> loss_function_multiclass=MultiClass, thread_count=1, logging_level=Silent,
-#> allow_writing_files=FALSE, save_snapshot=FALSE
+#> allow_writing_files=FALSE, save_snapshot=FALSE, iterations=10
 #> • Validate: NULL
 #> • Packages: mlr3, mlr3extralearners, and catboost
 #> • Predict Types: [response] and prob
@@ -307,28 +307,28 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> CatBoost model (1000 trees)
+#> CatBoost model (10 trees)
 #> Loss function: Logloss
 #> Fit to 60 feature(s)
 print(learner$importance())
-#>        V11        V10        V36        V12         V9        V16        V31 
-#> 11.2046711  6.2057713  4.6878014  4.2908898  4.1719635  3.7390697  3.6956263 
-#>        V52        V13        V45        V20        V21        V23        V30 
-#>  2.6420919  2.3105303  2.2471539  2.2277502  2.1011920  2.0290455  2.0248776 
-#>        V59        V15        V49        V48        V51        V27        V46 
-#>  1.8576570  1.8283691  1.8242899  1.7916321  1.6673944  1.6096546  1.5629017 
-#>        V17        V37        V42        V18        V58        V47         V5 
-#>  1.5324622  1.4745736  1.3500051  1.2830438  1.2093534  1.1992113  1.1623890 
-#>        V29        V32         V4        V28         V1        V35        V60 
-#>  1.1582836  1.1420697  1.1319546  1.1068591  1.1008780  1.0725800  0.9896666 
-#>        V43        V55         V6        V54        V33        V22         V8 
-#>  0.9677411  0.9102621  0.9058605  0.8222438  0.8154788  0.8149473  0.7747147 
-#>        V44        V34         V3        V57        V40        V39        V53 
-#>  0.7632148  0.7442235  0.7367318  0.7329403  0.7034488  0.6983686  0.6970176 
-#>        V24        V19        V14        V26         V2         V7        V41 
-#>  0.6947342  0.6693415  0.6466570  0.6360080  0.6257335  0.6230147  0.5941337 
-#>        V25        V38        V56        V50 
-#>  0.5413643  0.5236566  0.3862895  0.3382102 
+#>        V11        V12        V31         V9        V27        V49        V51 
+#> 14.8279955  9.7817258  8.3598146  5.4893376  4.6871860  4.6708873  3.9986177 
+#>        V52        V10        V16        V57        V24         V7        V35 
+#>  3.0481474  2.6357119  2.5345094  2.4086818  2.3865893  2.1452278  2.0006984 
+#>        V45         V4        V17        V37        V15        V58        V40 
+#>  1.9990866  1.9469789  1.9327717  1.8168172  1.7943184  1.7593997  1.7023098 
+#>        V36         V1         V5        V21        V46        V20        V44 
+#>  1.5208229  1.5175638  1.4809011  1.3370898  1.3351941  1.2815371  1.2545381 
+#>        V59        V19        V39        V26        V54        V56        V34 
+#>  1.1546813  1.1256907  1.1129928  0.9918156  0.9686814  0.7380293  0.5531329 
+#>        V47        V32        V28        V30        V13        V14        V18 
+#>  0.5527099  0.4222362  0.3687971  0.3567728  0.0000000  0.0000000  0.0000000 
+#>         V2        V22        V23        V25        V29         V3        V33 
+#>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V38        V41        V42        V43        V48        V50        V53 
+#>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V55         V6        V60         V8 
+#>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -336,5 +336,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1449275 
+#>  0.1304348 
 ```

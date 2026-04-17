@@ -157,12 +157,12 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("regr.crs")
+learner = lrn("regr.crs", cv = "none")
 print(learner)
 #> 
 #> ── <LearnerRegrCrs> (regr.crs): Regression Splines ─────────────────────────────
 #> • Model: -
-#> • Parameters: list()
+#> • Parameters: cv=none
 #> • Packages: mlr3 and crs
 #> • Predict Types: [response] and se
 #> • Feature Types: integer, numeric, factor, and ordered
@@ -178,26 +178,26 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
-#> Warning:  Predictor 1 B-spline basis is ill-conditioned beyond degree 1.
-#> Warning:  Predictor 2 B-spline basis is ill-conditioned beyond degree 4.
-#> Warning:  Predictor 3 B-spline basis is ill-conditioned beyond degree 2.
-#> Warning:  Predictor 6 B-spline basis is ill-conditioned beyond degree 2.
-#> Warning:  Predictor 9 B-spline basis is ill-conditioned beyond degree 1.
-#> Warning:  optimal degree equals search maximum (1): rerun with larger degree.max optimal degree equals search maximum (4): rerun with larger degree.max optimal degree equals search maximum (2): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (2): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max optimal degree equals search maximum (1): rerun with larger degree.max optimal degree equals search maximum (10): rerun with larger degree.max
+#> Warning:  cv="none" selected but no degree provided, using degree=rep(3,num.x): you might consider other degree settings
+#> Warning:  cv="none" selected but no segments provided, using segments=rep(1,num.x): you might consider other segment settings
+#> Warning:  cv="none" selected, basis="auto" changed to basis="additive": you might consider basis="tensor" etc.
+#> Warning: NaNs produced
 
 print(learner$model)
 #> Call:
-#> crs.formula(formula = formula, data = data, weights = private$.get_weights(task))
-
+#> crs.formula(formula = formula, cv = "none", data = data, weights = private$.get_weights(task))
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases
+#> Warning: NaNs produced
 
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 60.85332 
+#>  9646995 
 ```

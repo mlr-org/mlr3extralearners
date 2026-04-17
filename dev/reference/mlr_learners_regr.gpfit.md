@@ -149,12 +149,12 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("regr.gpfit")
+learner = lrn("regr.gpfit", maxit = 1)
 print(learner)
 #> 
 #> ── <LearnerRegrGPfit> (regr.gpfit): Gaussian Process (GPfit) ───────────────────
 #> • Model: -
-#> • Parameters: nug_thres=20, trace=FALSE, maxit=100, optim_start=<NULL>,
+#> • Parameters: nug_thres=20, trace=FALSE, maxit=1, optim_start=<NULL>,
 #> scale=TRUE
 #> • Packages: mlr3, mlr3extralearners, and GPfit
 #> • Predict Types: [response] and se
@@ -181,11 +181,11 @@ print(learner$model)
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
 #>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]  -8.366531 -0.1719033        -10  -5.642687 0.03117101  0.5690185
+#> [1]   -2.04563  -1.895328  0.8546977  0.2258124  -2.089543  -1.219337
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]  0.6851655   1.499084  -6.656027  -0.2682974
+#> [1]    -1.9044  0.8641298  -2.186574    1.192959
 #> 
-#> sigma^2_hat: [1] 39.27946
+#> sigma^2_hat: [1] 34.2551
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,7 +201,7 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   6.000   8.000 472.000   4.930   5.000 264.000  22.900   1.000   5.345 
+#>   1.000   8.000   8.000 440.000   4.930   5.000 335.000  22.900   1.000   5.345 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
@@ -209,12 +209,11 @@ print(learner$model)
 #> 
 #> 
 
-
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 17.41131 
+#> 17.96734 
 ```
