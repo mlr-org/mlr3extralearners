@@ -13,7 +13,7 @@
 #' `r format_bib("fryda2025h2o")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template example_h2o_deeplearning
 #' @export
 LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit = LearnerClassif,
   public = list(

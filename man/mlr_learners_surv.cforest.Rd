@@ -111,7 +111,7 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 \examples{
 \dontshow{if (learner_is_runnable("surv.cforest")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = lrn("surv.cforest")
+learner = lrn("surv.cforest", ntree = 50L)
 print(learner)
 
 # Define a Task
@@ -124,7 +124,6 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
