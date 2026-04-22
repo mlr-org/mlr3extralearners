@@ -15,7 +15,7 @@ Class h2o::h2o.deeplearning() from package h2o."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Class h2o::h2o.deeplearning() from package h2o."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression H2O Deep Learning Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_h2o_regr_deeplearning.R" class="external-link"><code>R/learner_h2o_regr_deeplearning.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_h2o_regr_deeplearning.R" class="external-link"><code>R/learner_h2o_regr_deeplearning.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.h2o.deeplearning.Rd</code></div>
     </div>
 
@@ -184,29 +184,29 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2ORegressionModel: deeplearning</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DeepLearning_model_R_1775329217305_109 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DeepLearning_model_R_1776855120187_109 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status of Neuron Layers: predicting mpg, regression, gaussian distribution, Quadratic loss, 42,601 weights/biases, 508.1 KB, 210 training samples, mini-batch size 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     1    10     Input  0.00 %       NA       NA        NA       NA       NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.007919 0.007292 0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.024874 0.060832 0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4     1    Linear      NA 0.000000 0.000000  0.000494 0.000753 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005849 0.005966 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.020282 0.064814 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4     1    Linear      NA 0.000000 0.000000  0.001587 0.017124 0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   mean_weight weight_rms mean_bias bias_rms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          NA         NA        NA       NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    0.000040   0.099261  0.499117 0.001452</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    0.000185   0.069217  0.999789 0.001556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    0.002406   0.095311 -0.000742 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    0.004587   0.097841  0.497563 0.003204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   -0.000396   0.069751  0.999578 0.002888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   -0.006230   0.101499  0.001365 0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2ORegressionMetrics: deeplearning</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Metrics reported on full training frame **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  9.275185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  3.045519</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MAE:  2.525368</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSLE:  0.1638323</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Residual Deviance :  9.275185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  3.602088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  1.897917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MAE:  1.627394</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSLE:  0.10705</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Residual Deviance :  3.602088</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -219,7 +219,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.036003 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21.56548 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

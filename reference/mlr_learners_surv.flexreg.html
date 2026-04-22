@@ -15,7 +15,7 @@ Calls flexsurv::flexsurvreg() from flexsurv."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls flexsurv::flexsurvreg() from flexsurv."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Survival Flexible Parametric Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_flexsurv_surv_flexsurvreg.R" class="external-link"><code>R/learner_flexsurv_surv_flexsurvreg.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_flexsurv_surv_flexsurvreg.R" class="external-link"><code>R/learner_flexsurv_surv_flexsurvreg.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.flexreg.Rd</code></div>
     </div>
 
@@ -79,7 +79,7 @@ Calls <code><a href="http://chjackson.github.io/flexsurv-dev/reference/flexsurvr
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>formula</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>anc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>bhazard</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>rtrunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>dist</td><td>character</td><td>-</td><td>gengamma, gengamma.orig, genf, genf.orig, weibull, weibullph, gamma, exp, exponential, llogis, <a href="https://rdrr.io/r/base/dots.html" class="external-link">...</a></td><td>-</td></tr><tr><td>inits</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>fixedpars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cl</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr><tr><td>hessian</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>hess.control</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>times</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>formula</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>anc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>bhazard</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>rtrunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>dist</td><td>character</td><td>-</td><td>gengamma, gengamma.orig, genf, genf.orig, weibull, weibullph, gamma, exp, exponential, llogis, [...]</td><td>-</td></tr><tr><td>inits</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>fixedpars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cl</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr><tr><td>hessian</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>hess.control</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>times</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
 

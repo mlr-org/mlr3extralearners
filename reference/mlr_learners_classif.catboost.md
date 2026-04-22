@@ -280,14 +280,14 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("classif.catboost")
+learner = lrn("classif.catboost", iterations = 10)
 print(learner)
 #> 
 #> ── <LearnerClassifCatboost> (classif.catboost): Gradient Boosting ──────────────
 #> • Model: -
 #> • Parameters: loss_function_twoclass=Logloss,
 #> loss_function_multiclass=MultiClass, thread_count=1, logging_level=Silent,
-#> allow_writing_files=FALSE, save_snapshot=FALSE
+#> allow_writing_files=FALSE, save_snapshot=FALSE, iterations=10
 #> • Validate: NULL
 #> • Packages: mlr3, mlr3extralearners, and catboost
 #> • Predict Types: [response] and prob
@@ -307,28 +307,30 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> CatBoost model (1000 trees)
+#> CatBoost model (10 trees)
 #> Loss function: Logloss
 #> Fit to 60 feature(s)
 print(learner$importance())
-#>        V11        V12        V10         V9        V21        V45        V31 
-#> 11.1601077  7.2213374  4.2891001  4.0490140  3.1747390  2.8123690  2.7487455 
-#>        V48        V36        V27        V54        V51        V37        V43 
-#>  2.7328942  2.6800757  2.4451003  2.3895374  2.3493467  2.3138505  2.2121098 
-#>        V57        V47        V15        V17        V16        V28        V46 
-#>  2.0988810  1.9045635  1.8742319  1.7947887  1.7938146  1.7730121  1.7223079 
-#>        V49        V58        V13        V52         V2         V4        V44 
-#>  1.6483193  1.4871593  1.4825872  1.3348143  1.3287427  1.3010468  1.2555309 
-#>         V3        V18        V26        V23        V55         V1        V20 
-#>  1.1399660  1.0961637  1.0910427  1.0909604  1.0899378  0.9542127  0.9041609 
-#>        V33         V8        V25        V42        V53        V14        V39 
-#>  0.8641346  0.8437688  0.8433411  0.8383694  0.8278693  0.7880044  0.7764865 
-#>        V60         V6        V32        V19        V22        V35        V50 
-#>  0.7688311  0.7570316  0.7565346  0.7518846  0.7426410  0.7033332  0.6914595 
-#>        V41         V5        V29        V40        V59        V24        V30 
-#>  0.6738748  0.6735466  0.6458772  0.6264117  0.6257943  0.6180021  0.5577663 
-#>        V38         V7        V34        V56 
-#>  0.5415696  0.5219298  0.4536688  0.3632977 
+#>         V11          V9         V12         V46         V31         V21 
+#> 10.48334315  9.07828138  8.95592312  6.30373510  6.14943803  5.71733739 
+#>         V48         V27         V15         V36         V37         V10 
+#>  5.60119885  4.49623036  4.47978677  4.06181678  3.96577040  2.64624307 
+#>         V49         V20         V44         V18         V54         V19 
+#>  2.43600865  2.21237606  2.11876717  1.97863864  1.93239103  1.51721238 
+#>         V17         V53         V35         V52         V45         V56 
+#>  1.43947882  1.43117840  1.34505880  1.32141353  1.31654159  1.27324745 
+#>          V7          V5         V50         V24         V32         V40 
+#>  1.05158629  1.03998108  0.90958490  0.78387741  0.68798906  0.64946820 
+#>         V30         V26         V47         V16         V25         V57 
+#>  0.57126794  0.52944123  0.43472242  0.35175681  0.31673026  0.23787386 
+#>         V13         V23          V1         V14          V2         V22 
+#>  0.14571909  0.02858455  0.00000000  0.00000000  0.00000000  0.00000000 
+#>         V28         V29          V3         V33         V34         V38 
+#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
+#>         V39          V4         V41         V42         V43         V51 
+#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
+#>         V55         V58         V59          V6         V60          V8 
+#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -336,5 +338,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#>  0.2753623 
 ```

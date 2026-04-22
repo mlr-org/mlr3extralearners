@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Gaussian Process Learner (GPfit)</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_GPfit_regr_gpfit.R" class="external-link"><code>R/learner_GPfit_regr_gpfit.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_GPfit_regr_gpfit.R" class="external-link"><code>R/learner_GPfit_regr_gpfit.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.gpfit.Rd</code></div>
     </div>
 
@@ -162,12 +162,12 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gpfit"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gpfit"</span>, maxit <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrGPfit&gt;</span><span style="font-weight: bold;"> (regr.gpfit): Gaussian Process (GPfit)</span> <span style="color: #00BBBB;">───────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: nug_thres=20, trace=FALSE, maxit=100, optim_start=&lt;NULL&gt;,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: nug_thres=20, trace=FALSE, maxit=1, optim_start=&lt;NULL&gt;,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale=TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">GPfit</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and se</span>
@@ -193,12 +193,12 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation: Exponential (power = 1.95)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation Parameters: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]        -10 -0.2449157  -9.969993  -7.436298  -7.961473  -6.098248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2  beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]    -1.1547   -1.42022 -0.03532556  -1.176513  -2.355838 -0.6091531</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   1.314687    1.54066  -5.182447         -10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -2.402465   1.032529  -1.719045     0.84892</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 24.26339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 59.58087</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> delta_lb(beta_hat): [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -214,14 +214,13 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$high</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   6.000   8.000 472.000   4.430   5.000 264.000  22.900   1.000   5.424 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  22.900   1.000   5.345 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$low</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 78.700  2.760  3.000 66.000 14.500  0.000  1.935 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.600  0.000  1.513 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -229,7 +228,7 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  22.2089 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.254166 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

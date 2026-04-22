@@ -149,12 +149,12 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("regr.gpfit")
+learner = lrn("regr.gpfit", maxit = 1)
 print(learner)
 #> 
 #> ── <LearnerRegrGPfit> (regr.gpfit): Gaussian Process (GPfit) ───────────────────
 #> • Model: -
-#> • Parameters: nug_thres=20, trace=FALSE, maxit=100, optim_start=<NULL>,
+#> • Parameters: nug_thres=20, trace=FALSE, maxit=1, optim_start=<NULL>,
 #> scale=TRUE
 #> • Packages: mlr3, mlr3extralearners, and GPfit
 #> • Predict Types: [response] and se
@@ -180,12 +180,12 @@ print(learner$model)
 #> 
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
-#>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]        -10 -0.2449157  -9.969993  -7.436298  -7.961473  -6.098248
+#>     beta_hat.1 beta_hat.2  beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
+#> [1]    -1.1547   -1.42022 -0.03532556  -1.176513  -2.355838 -0.6091531
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]   1.314687    1.54066  -5.182447         -10
+#> [1]  -2.402465   1.032529  -1.719045     0.84892
 #> 
-#> sigma^2_hat: [1] 24.26339
+#> sigma^2_hat: [1] 59.58087
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,14 +201,13 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   6.000   8.000 472.000   4.430   5.000 264.000  22.900   1.000   5.424 
+#>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  22.900   1.000   5.345 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
-#>  0.000  1.000  4.000 78.700  2.760  3.000 66.000 14.500  0.000  1.935 
+#>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.600  0.000  1.513 
 #> 
 #> 
-
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -216,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  22.2089 
+#> 7.254166 
 ```

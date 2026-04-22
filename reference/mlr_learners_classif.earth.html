@@ -21,7 +21,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification MARS (Multivariate Adaptive Regression Splines) Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_earth_classif_earth.R" class="external-link"><code>R/learner_earth_classif_earth.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_earth_classif_earth.R" class="external-link"><code>R/learner_earth_classif_earth.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.earth.Rd</code></div>
     </div>
 
@@ -92,7 +92,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>wp</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>offset</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>keepxy</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace</td><td>character</td><td>0</td><td>0, .3, .5, 1, 2, 3, 4, 5</td><td>-</td></tr><tr><td>degree</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>penalty</td><td>numeric</td><td>2</td><td></td><td>\([-1, \infty)\)</td></tr><tr><td>nk</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>thresh</td><td>numeric</td><td>0.001</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>minspan</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>endspan</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>newvar.penalty</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>fast.k</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>fast.beta</td><td>integer</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>linpreds</td><td>untyped</td><td>FALSE</td><td></td><td>-</td></tr><tr><td>allowed</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>pmethod</td><td>character</td><td>backward</td><td>backward, none, exhaustive, forward, seqrep, cv</td><td>-</td></tr><tr><td>nprune</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nfold</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>ncross</td><td>integer</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>stratify</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>varmod.method</td><td>character</td><td>none</td><td>none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, <a href="https://rdrr.io/r/base/dots.html" class="external-link">...</a></td><td>-</td></tr><tr><td>varmod.exponent</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>varmod.conv</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>varmod.clamp</td><td>numeric</td><td>0.1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>varmod.minspan</td><td>numeric</td><td>-3</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>Scale.y</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Adjust.endspan</td><td>numeric</td><td>2</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>Auto.linpreds</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Force.weights</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Use.beta.cache</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Force.xtx.prune</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Get.leverages</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Exhaustive.tol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>wp</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>offset</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>keepxy</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace</td><td>character</td><td>0</td><td>0, .3, .5, 1, 2, 3, 4, 5</td><td>-</td></tr><tr><td>degree</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>penalty</td><td>numeric</td><td>2</td><td></td><td>\([-1, \infty)\)</td></tr><tr><td>nk</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>thresh</td><td>numeric</td><td>0.001</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>minspan</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>endspan</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>newvar.penalty</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>fast.k</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>fast.beta</td><td>integer</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>linpreds</td><td>untyped</td><td>FALSE</td><td></td><td>-</td></tr><tr><td>allowed</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>pmethod</td><td>character</td><td>backward</td><td>backward, none, exhaustive, forward, seqrep, cv</td><td>-</td></tr><tr><td>nprune</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nfold</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>ncross</td><td>integer</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>stratify</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>varmod.method</td><td>character</td><td>none</td><td>none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, [...]</td><td>-</td></tr><tr><td>varmod.exponent</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>varmod.conv</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>varmod.clamp</td><td>numeric</td><td>0.1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>varmod.minspan</td><td>numeric</td><td>-3</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>Scale.y</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Adjust.endspan</td><td>numeric</td><td>2</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>Auto.linpreds</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Force.weights</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Use.beta.cache</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Force.xtx.prune</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Get.leverages</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Exhaustive.tol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Milborrow, Stephen, Hastie, T, Tibshirani, R (2014).
@@ -198,13 +198,13 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GLM (family binomial, link logit):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  nulldev  df       dev  df   devratio     AIC iters converged</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  192.515 138   47.6307 128      0.753   69.63     8         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  192.688 138   25.1128 123       0.87   57.11     9         1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 11 of 22 terms, and 9 of 60 predictors</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: RSq changed by less than 0.001 at 22 terms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V11, V23, V45, V36, V27, V28, V42, V54, V17-unused, V39, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 10 (additive model)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.1204077    RSS 12.06156    GRSq 0.5246591    RSq 0.652455</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 16 of 21 terms, and 9 of 60 predictors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: RSq changed by less than 0.001 at 21 terms</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V11, V45, V36, V23, V42, V28, V21, V39, V4, V1-unused, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 15 (additive model)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.1005805    RSS 8.440083    GRSq 0.6034253    RSq 0.7571073</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -213,7 +213,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.115942 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Bayes Network Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_RWeka_classif_bayes_net.R" class="external-link"><code>R/learner_RWeka_classif_bayes_net.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_RWeka_classif_bayes_net.R" class="external-link"><code>R/learner_RWeka_classif_bayes_net.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.bayes_net.Rd</code></div>
     </div>
 
@@ -108,7 +108,7 @@ and it's unclear how to use them.</p></li>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>subset</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>D</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>B</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>Q</td><td>character</td><td>-</td><td>global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, <a href="https://rdrr.io/r/base/dots.html" class="external-link">...</a></td><td>-</td></tr><tr><td>E</td><td>character</td><td>-</td><td>estimate.SimpleEstimator, estimate.BMAEstimator, estimate.MultiNomialBMAEstimator</td><td>-</td></tr><tr><td>output_debug_info</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>do_not_check_capabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>num_decimal_places</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>batch_size</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>options</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>subset</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>D</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>B</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>Q</td><td>character</td><td>-</td><td>global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, [...]</td><td>-</td></tr><tr><td>E</td><td>character</td><td>-</td><td>estimate.SimpleEstimator, estimate.BMAEstimator, estimate.MultiNomialBMAEstimator</td><td>-</td></tr><tr><td>output_debug_info</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>do_not_check_capabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>num_decimal_places</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>batch_size</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>options</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
@@ -265,15 +265,15 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V18(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V22(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V26(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V27(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V30(1): Class </span>
@@ -286,21 +286,21 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V37(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V41(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V43(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V44(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V45(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V46(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V47(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V48(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V50(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V53(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V54(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55(1): Class </span>
@@ -313,11 +313,11 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1515.1341218678906</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1547.774230251529</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1558.0767047237916</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1461.8544630277436</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1500.8544630277436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -847.3397686158636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -866.2366734695489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -874.7530697386944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -818.0066195076915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -841.0066195076915</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -327,7 +327,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

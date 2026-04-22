@@ -28,25 +28,25 @@ instantiated via
 
 ## Parameters
 
-|               |           |         |                                                                                                                                        |                       |
-|---------------|-----------|---------|----------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Id            | Type      | Default | Levels                                                                                                                                 | Range                 |
-| formula       | untyped   | \-      |                                                                                                                                        | \-                    |
-| anc           | untyped   | \-      |                                                                                                                                        | \-                    |
-| bhazard       | untyped   | \-      |                                                                                                                                        | \-                    |
-| rtrunc        | untyped   | \-      |                                                                                                                                        | \-                    |
-| dist          | character | \-      | gengamma, gengamma.orig, genf, genf.orig, weibull, weibullph, gamma, exp, exponential, llogis, [...](https://rdrr.io/r/base/dots.html) | \-                    |
-| inits         | untyped   | \-      |                                                                                                                                        | \-                    |
-| fixedpars     | untyped   | \-      |                                                                                                                                        | \-                    |
-| cl            | numeric   | 0.95    |                                                                                                                                        | \\\[0, 1\]\\          |
-| hessian       | logical   | TRUE    | TRUE, FALSE                                                                                                                            | \-                    |
-| hess.control  | untyped   | \-      |                                                                                                                                        | \-                    |
-| maxiter       | integer   | 30      |                                                                                                                                        | \\(-\infty, \infty)\\ |
-| rel.tolerance | numeric   | 1e-09   |                                                                                                                                        | \\(-\infty, \infty)\\ |
-| toler.chol    | numeric   | 1e-10   |                                                                                                                                        | \\(-\infty, \infty)\\ |
-| debug         | integer   | 0       |                                                                                                                                        | \\\[0, 1\]\\          |
-| outer.max     | integer   | 10      |                                                                                                                                        | \\(-\infty, \infty)\\ |
-| times         | untyped   | \-      |                                                                                                                                        | \-                    |
+|               |           |         |                                                                                                        |                       |
+|---------------|-----------|---------|--------------------------------------------------------------------------------------------------------|-----------------------|
+| Id            | Type      | Default | Levels                                                                                                 | Range                 |
+| formula       | untyped   | \-      |                                                                                                        | \-                    |
+| anc           | untyped   | \-      |                                                                                                        | \-                    |
+| bhazard       | untyped   | \-      |                                                                                                        | \-                    |
+| rtrunc        | untyped   | \-      |                                                                                                        | \-                    |
+| dist          | character | \-      | gengamma, gengamma.orig, genf, genf.orig, weibull, weibullph, gamma, exp, exponential, llogis, \[...\] | \-                    |
+| inits         | untyped   | \-      |                                                                                                        | \-                    |
+| fixedpars     | untyped   | \-      |                                                                                                        | \-                    |
+| cl            | numeric   | 0.95    |                                                                                                        | \\\[0, 1\]\\          |
+| hessian       | logical   | TRUE    | TRUE, FALSE                                                                                            | \-                    |
+| hess.control  | untyped   | \-      |                                                                                                        | \-                    |
+| maxiter       | integer   | 30      |                                                                                                        | \\(-\infty, \infty)\\ |
+| rel.tolerance | numeric   | 1e-09   |                                                                                                        | \\(-\infty, \infty)\\ |
+| toler.chol    | numeric   | 1e-10   |                                                                                                        | \\(-\infty, \infty)\\ |
+| debug         | integer   | 0       |                                                                                                        | \\\[0, 1\]\\          |
+| outer.max     | integer   | 10      |                                                                                                        | \\(-\infty, \infty)\\ |
+| times         | untyped   | \-      |                                                                                                        | \-                    |
 
 ## Prediction types
 

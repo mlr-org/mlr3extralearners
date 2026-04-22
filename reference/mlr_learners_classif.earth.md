@@ -33,42 +33,42 @@ instantiated via
 
 ## Parameters
 
-|                 |           |          |                                                                                                       |                       |
-|-----------------|-----------|----------|-------------------------------------------------------------------------------------------------------|-----------------------|
-| Id              | Type      | Default  | Levels                                                                                                | Range                 |
-| wp              | untyped   | NULL     |                                                                                                       | \-                    |
-| offset          | untyped   | NULL     |                                                                                                       | \-                    |
-| keepxy          | logical   | FALSE    | TRUE, FALSE                                                                                           | \-                    |
-| trace           | character | 0        | 0, .3, .5, 1, 2, 3, 4, 5                                                                              | \-                    |
-| degree          | integer   | 1        |                                                                                                       | \\\[1, \infty)\\      |
-| penalty         | numeric   | 2        |                                                                                                       | \\\[-1, \infty)\\     |
-| nk              | untyped   | NULL     |                                                                                                       | \-                    |
-| thresh          | numeric   | 0.001    |                                                                                                       | \\(-\infty, \infty)\\ |
-| minspan         | numeric   | 0        |                                                                                                       | \\\[0, \infty)\\      |
-| endspan         | numeric   | 0        |                                                                                                       | \\\[0, \infty)\\      |
-| newvar.penalty  | numeric   | 0        |                                                                                                       | \\\[0, \infty)\\      |
-| fast.k          | integer   | 20       |                                                                                                       | \\\[0, \infty)\\      |
-| fast.beta       | integer   | 1        |                                                                                                       | \\\[0, 1\]\\          |
-| linpreds        | untyped   | FALSE    |                                                                                                       | \-                    |
-| allowed         | untyped   | \-       |                                                                                                       | \-                    |
-| pmethod         | character | backward | backward, none, exhaustive, forward, seqrep, cv                                                       | \-                    |
-| nprune          | integer   | \-       |                                                                                                       | \\\[0, \infty)\\      |
-| nfold           | integer   | 0        |                                                                                                       | \\\[0, \infty)\\      |
-| ncross          | integer   | 1        |                                                                                                       | \\\[0, \infty)\\      |
-| stratify        | logical   | TRUE     | TRUE, FALSE                                                                                           | \-                    |
-| varmod.method   | character | none     | none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, [...](https://rdrr.io/r/base/dots.html) | \-                    |
-| varmod.exponent | numeric   | 1        |                                                                                                       | \\(-\infty, \infty)\\ |
-| varmod.conv     | numeric   | 1        |                                                                                                       | \\\[0, 1\]\\          |
-| varmod.clamp    | numeric   | 0.1      |                                                                                                       | \\(-\infty, \infty)\\ |
-| varmod.minspan  | numeric   | -3       |                                                                                                       | \\(-\infty, \infty)\\ |
-| Scale.y         | logical   | FALSE    | TRUE, FALSE                                                                                           | \-                    |
-| Adjust.endspan  | numeric   | 2        |                                                                                                       | \\(-\infty, \infty)\\ |
-| Auto.linpreds   | logical   | TRUE     | TRUE, FALSE                                                                                           | \-                    |
-| Force.weights   | logical   | FALSE    | TRUE, FALSE                                                                                           | \-                    |
-| Use.beta.cache  | logical   | TRUE     | TRUE, FALSE                                                                                           | \-                    |
-| Force.xtx.prune | logical   | FALSE    | TRUE, FALSE                                                                                           | \-                    |
-| Get.leverages   | logical   | TRUE     | TRUE, FALSE                                                                                           | \-                    |
-| Exhaustive.tol  | numeric   | 1e-10    |                                                                                                       | \\(-\infty, \infty)\\ |
+|                 |           |          |                                                                       |                       |
+|-----------------|-----------|----------|-----------------------------------------------------------------------|-----------------------|
+| Id              | Type      | Default  | Levels                                                                | Range                 |
+| wp              | untyped   | NULL     |                                                                       | \-                    |
+| offset          | untyped   | NULL     |                                                                       | \-                    |
+| keepxy          | logical   | FALSE    | TRUE, FALSE                                                           | \-                    |
+| trace           | character | 0        | 0, .3, .5, 1, 2, 3, 4, 5                                              | \-                    |
+| degree          | integer   | 1        |                                                                       | \\\[1, \infty)\\      |
+| penalty         | numeric   | 2        |                                                                       | \\\[-1, \infty)\\     |
+| nk              | untyped   | NULL     |                                                                       | \-                    |
+| thresh          | numeric   | 0.001    |                                                                       | \\(-\infty, \infty)\\ |
+| minspan         | numeric   | 0        |                                                                       | \\\[0, \infty)\\      |
+| endspan         | numeric   | 0        |                                                                       | \\\[0, \infty)\\      |
+| newvar.penalty  | numeric   | 0        |                                                                       | \\\[0, \infty)\\      |
+| fast.k          | integer   | 20       |                                                                       | \\\[0, \infty)\\      |
+| fast.beta       | integer   | 1        |                                                                       | \\\[0, 1\]\\          |
+| linpreds        | untyped   | FALSE    |                                                                       | \-                    |
+| allowed         | untyped   | \-       |                                                                       | \-                    |
+| pmethod         | character | backward | backward, none, exhaustive, forward, seqrep, cv                       | \-                    |
+| nprune          | integer   | \-       |                                                                       | \\\[0, \infty)\\      |
+| nfold           | integer   | 0        |                                                                       | \\\[0, \infty)\\      |
+| ncross          | integer   | 1        |                                                                       | \\\[0, \infty)\\      |
+| stratify        | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
+| varmod.method   | character | none     | none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, \[...\] | \-                    |
+| varmod.exponent | numeric   | 1        |                                                                       | \\(-\infty, \infty)\\ |
+| varmod.conv     | numeric   | 1        |                                                                       | \\\[0, 1\]\\          |
+| varmod.clamp    | numeric   | 0.1      |                                                                       | \\(-\infty, \infty)\\ |
+| varmod.minspan  | numeric   | -3       |                                                                       | \\(-\infty, \infty)\\ |
+| Scale.y         | logical   | FALSE    | TRUE, FALSE                                                           | \-                    |
+| Adjust.endspan  | numeric   | 2        |                                                                       | \\(-\infty, \infty)\\ |
+| Auto.linpreds   | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
+| Force.weights   | logical   | FALSE    | TRUE, FALSE                                                           | \-                    |
+| Use.beta.cache  | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
+| Force.xtx.prune | logical   | FALSE    | TRUE, FALSE                                                           | \-                    |
+| Get.leverages   | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
+| Exhaustive.tol  | numeric   | 1e-10    |                                                                       | \\(-\infty, \infty)\\ |
 
 ## References
 
@@ -195,13 +195,13 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> GLM (family binomial, link logit):
 #>  nulldev  df       dev  df   devratio     AIC iters converged
-#>  192.515 138   47.6307 128      0.753   69.63     8         1
+#>  192.688 138   25.1128 123       0.87   57.11     9         1
 #> 
-#> Earth selected 11 of 22 terms, and 9 of 60 predictors
-#> Termination condition: RSq changed by less than 0.001 at 22 terms
-#> Importance: V11, V23, V45, V36, V27, V28, V42, V54, V17-unused, V39, ...
-#> Number of terms at each degree of interaction: 1 10 (additive model)
-#> Earth GCV 0.1204077    RSS 12.06156    GRSq 0.5246591    RSq 0.652455
+#> Earth selected 16 of 21 terms, and 9 of 60 predictors
+#> Termination condition: RSq changed by less than 0.001 at 21 terms
+#> Importance: V11, V45, V36, V23, V42, V28, V21, V39, V4, V1-unused, ...
+#> Number of terms at each degree of interaction: 1 15 (additive model)
+#> Earth GCV 0.1005805    RSS 8.440083    GRSq 0.6034253    RSq 0.7571073
 
 
 # Make predictions for the test rows
@@ -210,5 +210,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.115942 
+#>  0.2608696 
 ```

@@ -17,7 +17,7 @@ For logistic regression please use mlr_learners_classif.log_reg."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@ For logistic regression please use mlr_learners_classif.log_reg."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Generalized Linear Regression</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.glm.Rd</code></div>
     </div>
 
@@ -228,13 +228,13 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    14.70560      0.91279     -0.39949      0.64078      0.01485      1.23274  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   24.614269     5.555761    -0.664415    -0.862775     0.002425     0.357039  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     0.80815     -0.04815      0.69090     -0.81449     -4.30905  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   -0.211104    -0.015352     0.233864     1.426352    -0.799435  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    497 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 56.65 	AIC: 104.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    810.2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 84.05 	AIC: 112.7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -243,7 +243,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13.50317 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11.11924 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
