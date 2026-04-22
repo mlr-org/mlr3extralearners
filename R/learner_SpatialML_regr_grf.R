@@ -69,12 +69,12 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
 
   private = list(
     .train = function(task) {
-      train_pars = self$param_set$get_values(tags = "train")
+      pars = self$param_set$get_values(tags = "train")
 
       target = task$target_names
       features = task$feature_names
 
-      data = as.data.frame(task$data(cols = c(features, target)))
+      dframe = as.data.frame(task$data(cols = c(features, target)))
 
       coords = as.matrix(task$coordinates())
       coords = unname(coords)
@@ -82,17 +82,15 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
 
       formula = stats::as.formula(paste(target, "~", paste(features, collapse = " + ")))
 
-      do.call(grf, list(
+      if (is.null(pars$kernel)) pars$kernel = "adaptive"
+      if (is.null(pars$ntree)) pars$ntree = 500L
+
+      invoke(SpatialML::grf,
         formula = formula,
-        dframe = data,
-        bw = train_pars$bw,
-        kernel = if (is.null(train_pars$kernel)) "adaptive" else train_pars$kernel,
+        dframe = dframe,
         coords = coords,
-        ntree = if (is.null(train_pars$ntree)) 500L else train_pars$ntree,
-        mtry = train_pars$mtry,
-        nodesize = train_pars$nodesize,
-        maxnodes = train_pars$maxnodes
-      ))
+        .args = pars
+      )
     },
 
     .predict = function(task) {
@@ -101,7 +99,7 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
       new_data = cbind(coords_new, newdata)
       coord_names = task$col_roles$coordinate
 
-      pred = predict.grf(
+      pred = SpatialML::predict.grf(
         self$model,
         new.data = new_data,
         x.var.name = coord_names[1],
@@ -114,4 +112,5 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
   )
 )
 
-.extralrns_dict$add("regr.grf", LearnerRegrGRF)
+#.extralrns_dict$add("regr.grf", LearnerRegrGRF)
+mlr3::mlr_learners$add("regr.grf", LearnerRegrGRF)

@@ -1,34 +1,45 @@
 library(testthat)
 library(mlr3)
 library(mlr3spatiotempcv)
-test_that("testing regr.grf", {
-  set.seed(1)
+library(mlr3learners.spatialML)
 
-  # California Housing dataset
-  task_data <- mlr3::tsk("california_housing")$data()
-  task_data <- task_data[complete.cases(task_data), ][1:100, ]
-  task_data$ocean_proximity <- NULL
+test_that("autotest", {
+  learner = lrn("regr.grf", bw = 20)
+  expect_learner(learner)
 
-  # reg task
-  task <- as_task_regr_st(task_data, target = "median_house_value", coordinate_names = c("longitude", "latitude"))
+  result = run_autotest(learner)
+  expect_true(result, info = result$error)
+})
 
-  # init rgf learner
-  learner <- lrn("regr.grf", bw = 20, ntree = 10)
-  learner$train(task)
-  pred <- learner$predict(task)
+test_that("regr.grf importance and prediction", {
+    set.seed(1)
+  
+    # California Housing dataset
+    task_data <- mlr3::tsk("california_housing")$data()
+    task_data <- task_data[complete.cases(task_data), ][1:100,]
+    task_data$ocean_proximity <- NULL
 
-  # validate predict output
-  expect_true(is.numeric(pred$response))
-  expect_equal(length(pred$response), nrow(task_data))
+    # reg task
+    task <- as_task_regr_st(task_data, target = "median_house_value", coordinate_names = c("longitude", "latitude"))
 
-  # test variable importance
-  imp <- learner$importance()
-  expect_true(is.numeric(imp))
-  expect_true(!any(is.na(imp)))
-  expect_named(imp)
+    # init rgf learner
+    learner <- lrn("regr.grf", bw = 20, ntree = 10)
 
-  # test error OOB retrieval
-  oob <- learner$oob_error()
-  expect_true(is.numeric(oob))
-  expect_length(oob, 1)
+    learner$train(task)
+    pred <- learner$predict(task)
+
+    # validate predict output
+    expect_is(pred$response, "numeric")
+    expect_equal(length(pred$response), nrow(task_data))
+
+    # test variable importance
+    imp <- learner$importance()
+    expect_is(imp, "numeric")
+    expect_true(!any(is.na(imp)))
+    expect_named(imp)
+
+    # test error OOB retrieval
+    oob <- learner$oob_error()
+    expect_is(oob, "numeric")
+    expect_length(oob, 1)
 })
