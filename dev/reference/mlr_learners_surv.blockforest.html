@@ -221,27 +221,27 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         age    stchange         los       sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.143786297 0.064385050 0.033450484 0.019411470 0.011772563 0.008501637 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los   stchange      sysbp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.11899011 0.04965069 0.03181205 0.02167169 0.01325752 0.01304041 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status    crank     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        5  180  FALSE 15.58103 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        6    5  FALSE 42.83238 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       10  180  FALSE 20.21543 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---      ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      997    2   TRUE 78.29893 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      998  180  FALSE 23.28042 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1000   15  FALSE 81.70934 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank     distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        6   5.0  FALSE 45.368040 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        7 180.0  FALSE  7.308475 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       18 180.0  FALSE 36.079883 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---       ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      994   7.0  FALSE 74.958026 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE 93.375375 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      998 180.0  FALSE 32.518902 &lt;list[1]&gt;</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8379846 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8414294 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
