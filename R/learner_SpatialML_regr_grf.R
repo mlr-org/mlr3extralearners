@@ -5,7 +5,9 @@
 #' @description
 #' Geographically Weighted Random Forest for regression.
 #' Calls `SpatialML::grf()` from the SpatialML package.
-#'
+#' Note that SpatialML is not on CRAN. To install it, use:
+#' `remotes::install_version("SpatialML", version = "0.1.6")`
+#' 
 #' @importFrom R6 R6Class
 #' @importFrom SpatialML grf predict.grf
 #' @importFrom stats predict
