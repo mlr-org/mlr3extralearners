@@ -112,5 +112,4 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
   )
 )
 
-#.extralrns_dict$add("regr.grf", LearnerRegrGRF)
-mlr3::mlr_learners$add("regr.grf", LearnerRegrGRF)
+extralrns_dict$add("regr.grf", LearnerRegrGRF)
