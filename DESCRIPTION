@@ -79,6 +79,7 @@ Suggests:
     fastai (>= 2.2.2),
     flexsurv (>= 2.3.2),
     FNN,
+    fuser,
     formattable,
     frbs (>= 3.2-0),
     future,
