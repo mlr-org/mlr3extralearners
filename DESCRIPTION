@@ -131,6 +131,7 @@ Suggests:
     rvest,
     RWeka,
     sandwich,
+    SpatialML,
     sda (>= 1.3.9),
     sparsediscrim,
     sparseLDA (>= 0.1-9),
