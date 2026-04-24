@@ -15,9 +15,18 @@
 #' The device parameter allows automatic GPU/CPU detection or manual selection.
 #'
 #' @section Installation:
-#' Install Python dependencies:
+#' Install Python dependencies using reticulate:
 #' \preformatted{
-#' pip install torch gpytorch
+#' # Install miniconda (one-time)
+#' reticulate::install_miniconda()
+#'
+#' # Create environment (one-time)
+#' reticulate::conda_create("gpytorch")
+#' reticulate::conda_install("gpytorch", c("pytorch", "gpytorch"))
+#'
+#' # Configure environment
+#' Sys.setenv(RETICULATE_PYTHON = "~/AppData/Local/r-miniconda/envs/gpytorch/python.exe")
+#' reticulate::use_condaenv("gpytorch", required = TRUE)
 #' }
 #'
 #' @references
@@ -107,3 +116,5 @@ LearnerRegrGPyTorch = R6Class("LearnerRegrGPyTorch",
 )
 
 .extralrns_dict$add("regr.gpytorch", LearnerRegrGPyTorch)
+
+
