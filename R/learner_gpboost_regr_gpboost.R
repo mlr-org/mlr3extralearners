@@ -41,8 +41,7 @@ LearnerRegrGPBoost = R6::R6Class(
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-      
-      X = data.matrix(task$data(cols = task$feature_names))
+      x_train = data.matrix(task$data(cols = task$feature_names))
       y = task$truth()
       group_cols = task$col_roles$group
 
@@ -57,7 +56,7 @@ LearnerRegrGPBoost = R6::R6Class(
         gp_model = NULL
       }
 
-      dataset = gpboost::gpb.Dataset(data = X, label = y)
+      dataset = gpboost::gpb.Dataset(data = x_train, label = y)
       gpboost::gpb.train(
         data = dataset,
         gp_model = gp_model,
@@ -66,7 +65,7 @@ LearnerRegrGPBoost = R6::R6Class(
       )
     },
     .predict = function(task) {
-      X_test = data.matrix(task$data(cols = task$feature_names))
+      x_test = data.matrix(task$data(cols = task$feature_names))
       group_col = task$col_roles$group
       gp_pred_data = if (length(group_col) > 0L) as.matrix(task$data(cols = group_col)) else NULL
       preds = predict(
