@@ -50,7 +50,7 @@ Calls adabag::boosting() from adabag."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Boosting Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_adabag_classif_adabag.R" class="external-link"><code>R/learner_adabag_classif_adabag.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_adabag_classif_adabag.R" class="external-link"><code>R/learner_adabag_classif_adabag.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.adabag.Rd</code></div>
     </div>
 
@@ -215,15 +215,17 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 63 M (0.54676259 0.45323741)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V12&gt;=0.22505 72 12 M (0.83333333 0.16666667)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V9&gt;=0.10645 65  6 M (0.90769231 0.09230769) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V9&lt; 0.10645 7  1 R (0.14285714 0.85714286) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V12&lt; 0.22505 67 16 R (0.23880597 0.76119403)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V26&lt; 0.514 12  3 M (0.75000000 0.25000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V26&gt;=0.514 55  7 R (0.12727273 0.87272727)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V53&gt;=0.01585 9  3 M (0.66666667 0.33333333) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V53&lt; 0.01585 46  1 R (0.02173913 0.97826087) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 67 M (0.51798561 0.48201439)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V49&gt;=0.04575 76 15 M (0.80263158 0.19736842)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V12&gt;=0.1941 56  2 M (0.96428571 0.03571429) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V12&lt; 0.1941 20  7 R (0.35000000 0.65000000)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V20&gt;=0.4866 7  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V20&lt; 0.4866 13  0 R (0.00000000 1.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V49&lt; 0.04575 63 11 R (0.17460317 0.82539683)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V31&lt; 0.4072 21 10 R (0.47619048 0.52380952)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V60&gt;=0.008 7  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V60&lt; 0.008 14  3 R (0.21428571 0.78571429) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V31&gt;=0.4072 42  1 R (0.02380952 0.97619048) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[2]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -231,13 +233,17 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1) root 139 60 R (0.43165468 0.56834532)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   2) V10&gt;=0.16625 67 18 M (0.73134328 0.26865672)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     4) V47&gt;=0.06475 54  7 M (0.87037037 0.12962963) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     5) V47&lt; 0.06475 13  2 R (0.15384615 0.84615385) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   3) V10&lt; 0.16625 72 11 R (0.15277778 0.84722222)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     6) V45&gt;=0.1728 14  5 M (0.64285714 0.35714286) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     7) V45&lt; 0.1728 58  2 R (0.03448276 0.96551724) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 56 M (0.59712230 0.40287770)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V11&gt;=0.18875 92 23 M (0.75000000 0.25000000)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V27&gt;=0.8191 45  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V27&lt; 0.8191 47 23 M (0.51063830 0.48936170)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V56&gt;=0.00625 29  6 M (0.79310345 0.20689655)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         20) V21&gt;=0.6543 22  1 M (0.95454545 0.04545455) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         21) V21&lt; 0.6543 7  2 R (0.28571429 0.71428571) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V56&lt; 0.00625 18  1 R (0.05555556 0.94444444) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V11&lt; 0.18875 47 14 R (0.29787234 0.70212766)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V16&gt;=0.3645 16  3 M (0.81250000 0.18750000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V16&lt; 0.3645 31  1 R (0.03225806 0.96774194) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[3]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -245,19 +251,15 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 58 R (0.41726619 0.58273381)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V44&gt;=0.24985 42 11 M (0.73809524 0.26190476)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V9&gt;=0.10435 25  1 M (0.96000000 0.04000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V9&lt; 0.10435 17  7 R (0.41176471 0.58823529) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V44&lt; 0.24985 97 27 R (0.27835052 0.72164948)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V35&lt; 0.1909 25  8 M (0.68000000 0.32000000)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V8&lt; 0.17625 18  2 M (0.88888889 0.11111111) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V8&gt;=0.17625 7  1 R (0.14285714 0.85714286) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V35&gt;=0.1909 72 10 R (0.13888889 0.86111111)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V45&lt; 0.0669 11  5 M (0.54545455 0.45454545) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V45&gt;=0.0669 61  4 R (0.06557377 0.93442623)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         30) V55&lt; 0.00375 7  3 M (0.57142857 0.42857143) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         31) V55&gt;=0.00375 54  0 R (0.00000000 1.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 59 M (0.57553957 0.42446043)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V11&gt;=0.19615 91 20 M (0.78021978 0.21978022)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V51&gt;=0.01285 59  2 M (0.96610169 0.03389831) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V51&lt; 0.01285 32 14 R (0.43750000 0.56250000)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V33&gt;=0.2395 18  4 M (0.77777778 0.22222222) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V33&lt; 0.2395 14  0 R (0.00000000 1.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V11&lt; 0.19615 48  9 R (0.18750000 0.81250000)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V59&gt;=0.01035 9  2 M (0.77777778 0.22222222) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V59&lt; 0.01035 39  2 R (0.05128205 0.94871795) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[4]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -265,19 +267,15 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 59 R (0.42446043 0.57553957)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V54&gt;=0.01595 30  4 M (0.86666667 0.13333333)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V43&gt;=0.2422 23  0 M (1.00000000 0.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V43&lt; 0.2422 7  3 R (0.42857143 0.57142857) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V54&lt; 0.01595 109 33 R (0.30275229 0.69724771)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V9&gt;=0.1608 48 20 M (0.58333333 0.41666667)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V15&lt; 0.5312 34  7 M (0.79411765 0.20588235)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         24) V14&gt;=0.1866 27  2 M (0.92592593 0.07407407) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         25) V14&lt; 0.1866 7  2 R (0.28571429 0.71428571) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V15&gt;=0.5312 14  1 R (0.07142857 0.92857143) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V9&lt; 0.1608 61  5 R (0.08196721 0.91803279)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V24&gt;=0.90655 7  3 M (0.57142857 0.42857143) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V24&lt; 0.90655 54  1 R (0.01851852 0.98148148) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 65 M (0.53237410 0.46762590)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V35&lt; 0.2208 46  4 M (0.91304348 0.08695652) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V35&gt;=0.2208 93 32 R (0.34408602 0.65591398)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V44&gt;=0.3511 11  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V44&lt; 0.3511 82 21 R (0.25609756 0.74390244)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V23&gt;=0.7803 29 10 M (0.65517241 0.34482759)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         28) V37&lt; 0.4651 21  2 M (0.90476190 0.09523810) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         29) V37&gt;=0.4651 8  0 R (0.00000000 1.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V23&lt; 0.7803 53  2 R (0.03773585 0.96226415) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[5]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -285,17 +283,17 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 69 R (0.49640288 0.50359712)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V31&lt; 0.467 65 15 M (0.76923077 0.23076923)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V22&gt;=0.72395 45  1 M (0.97777778 0.02222222) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V22&lt; 0.72395 20  6 R (0.30000000 0.70000000)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V24&lt; 0.54155 8  2 M (0.75000000 0.25000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V24&gt;=0.54155 12  0 R (0.00000000 1.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V31&gt;=0.467 74 19 R (0.25675676 0.74324324)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V28&gt;=0.9907 9  0 M (1.00000000 0.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V28&lt; 0.9907 65 10 R (0.15384615 0.84615385)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V49&gt;=0.09695 7  1 M (0.85714286 0.14285714) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V49&lt; 0.09695 58  4 R (0.06896552 0.93103448) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 67 R (0.48201439 0.51798561)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V52&gt;=0.01405 53 11 M (0.79245283 0.20754717)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V32&lt; 0.49425 39  1 M (0.97435897 0.02564103) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V32&gt;=0.49425 14  4 R (0.28571429 0.71428571) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V52&lt; 0.01405 86 25 R (0.29069767 0.70930233)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V21&gt;=0.65735 44 22 M (0.50000000 0.50000000)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V1&gt;=0.0128 28  6 M (0.78571429 0.21428571)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         24) V15&lt; 0.5467 21  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         25) V15&gt;=0.5467 7  1 R (0.14285714 0.85714286) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V1&lt; 0.0128 16  0 R (0.00000000 1.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V21&lt; 0.65735 42  3 R (0.07142857 0.92857143) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[6]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -303,17 +301,15 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 62 R (0.44604317 0.55395683)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V52&gt;=0.00885 73 24 M (0.67123288 0.32876712)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V11&gt;=0.1221 55  7 M (0.87272727 0.12727273)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        8) V36&lt; 0.52295 47  1 M (0.97872340 0.02127660) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        9) V36&gt;=0.52295 8  2 R (0.25000000 0.75000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V11&lt; 0.1221 18  1 R (0.05555556 0.94444444) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V52&lt; 0.00885 66 13 R (0.19696970 0.80303030)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V47&gt;=0.1255 11  3 M (0.72727273 0.27272727) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V47&lt; 0.1255 55  5 R (0.09090909 0.90909091)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V1&gt;=0.0411 9  4 M (0.55555556 0.44444444) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V1&lt; 0.0411 46  0 R (0.00000000 1.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 65 M (0.53237410 0.46762590)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V9&gt;=0.1645 73 15 M (0.79452055 0.20547945)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V52&gt;=0.0047 65  8 M (0.87692308 0.12307692) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V52&lt; 0.0047 8  1 R (0.12500000 0.87500000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V9&lt; 0.1645 66 16 R (0.24242424 0.75757576)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V32&lt; 0.3314 23  9 M (0.60869565 0.39130435)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V44&gt;=0.1862 12  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V44&lt; 0.1862 11  2 R (0.18181818 0.81818182) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V32&gt;=0.3314 43  2 R (0.04651163 0.95348837) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[7]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -321,15 +317,15 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 61 R (0.43884892 0.56115108)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V45&gt;=0.21745 36  3 M (0.91666667 0.08333333) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V45&lt; 0.21745 103 28 R (0.27184466 0.72815534)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V52&gt;=0.00885 51 24 R (0.47058824 0.52941176)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V12&gt;=0.1451 31  8 M (0.74193548 0.25806452)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         24) V36&lt; 0.47405 24  2 M (0.91666667 0.08333333) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         25) V36&gt;=0.47405 7  1 R (0.14285714 0.85714286) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V12&lt; 0.1451 20  1 R (0.05000000 0.95000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V52&lt; 0.00885 52  4 R (0.07692308 0.92307692) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 64 R (0.46043165 0.53956835)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V39&gt;=0.1744 101 40 M (0.60396040 0.39603960)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V50&gt;=0.01785 41  5 M (0.87804878 0.12195122)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8) V10&gt;=0.09335 34  1 M (0.97058824 0.02941176) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        9) V10&lt; 0.09335 7  3 R (0.42857143 0.57142857) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V50&lt; 0.01785 60 25 R (0.41666667 0.58333333)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V42&gt;=0.29755 19  2 M (0.89473684 0.10526316) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V42&lt; 0.29755 41  8 R (0.19512195 0.80487805) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V39&lt; 0.1744 38  3 R (0.07894737 0.92105263) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[8]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -337,17 +333,17 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 64 R (0.46043165 0.53956835)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V12&gt;=0.1466 103 42 M (0.59223301 0.40776699)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V23&gt;=0.74575 46  4 M (0.91304348 0.08695652)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        8) V21&gt;=0.6496 39  0 M (1.00000000 0.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        9) V21&lt; 0.6496 7  3 R (0.42857143 0.57142857) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V23&lt; 0.74575 57 19 R (0.33333333 0.66666667)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V43&gt;=0.37395 9  0 M (1.00000000 0.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V43&lt; 0.37395 48 10 R (0.20833333 0.79166667)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         22) V16&lt; 0.2129 8  2 M (0.75000000 0.25000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         23) V16&gt;=0.2129 40  4 R (0.10000000 0.90000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V12&lt; 0.1466 36  3 R (0.08333333 0.91666667) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 58 M (0.58273381 0.41726619)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V28&gt;=0.9202 40  1 M (0.97500000 0.02500000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V28&lt; 0.9202 99 42 R (0.42424242 0.57575758)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V1&gt;=0.02045 65 25 M (0.61538462 0.38461538)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V51&gt;=0.01305 37  4 M (0.89189189 0.10810811)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         24) V12&gt;=0.1231 30  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         25) V12&lt; 0.1231 7  3 R (0.42857143 0.57142857) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V51&lt; 0.01305 28  7 R (0.25000000 0.75000000)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         26) V36&lt; 0.44355 11  4 M (0.63636364 0.36363636) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         27) V36&gt;=0.44355 17  0 R (0.00000000 1.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V1&lt; 0.02045 34  2 R (0.05882353 0.94117647) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[9]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -355,17 +351,19 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 65 M (0.53237410 0.46762590)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V57&lt; 0.00575 53 10 M (0.81132075 0.18867925)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V14&gt;=0.14275 44  2 M (0.95454545 0.04545455) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V14&lt; 0.14275 9  1 R (0.11111111 0.88888889) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V57&gt;=0.00575 86 31 R (0.36046512 0.63953488)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V59&gt;=0.00715 35 12 M (0.65714286 0.34285714)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V20&gt;=0.68545 20  0 M (1.00000000 0.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V20&lt; 0.68545 15  3 R (0.20000000 0.80000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V59&lt; 0.00715 51  8 R (0.15686275 0.84313725)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V59&lt; 0.0023 7  2 M (0.71428571 0.28571429) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V59&gt;=0.0023 44  3 R (0.06818182 0.93181818) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 56 M (0.59712230 0.40287770)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V47&gt;=0.06225 111 32 M (0.71171171 0.28828829)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V37&lt; 0.48 80 11 M (0.86250000 0.13750000)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8) V15&lt; 0.57285 71  4 M (0.94366197 0.05633803)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         16) V9&gt;=0.109 64  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         17) V9&lt; 0.109 7  3 R (0.42857143 0.57142857) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        9) V15&gt;=0.57285 9  2 R (0.22222222 0.77777778) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V37&gt;=0.48 31 10 R (0.32258065 0.67741935)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V27&gt;=0.82755 8  0 M (1.00000000 0.00000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V27&lt; 0.82755 23  2 R (0.08695652 0.91304348) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V47&lt; 0.06225 28  4 R (0.14285714 0.85714286)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V53&lt; 0.0046 7  3 M (0.57142857 0.42857143) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V53&gt;=0.0046 21  0 R (0.00000000 1.00000000) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $trees[[10]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> n= 139 </span>
@@ -373,336 +371,332 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> node), split, n, loss, yval, (yprob)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       * denotes terminal node</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 61 R (0.43884892 0.56115108)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V27&gt;=0.89995 36  7 M (0.80555556 0.19444444)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V12&gt;=0.21345 29  0 M (1.00000000 0.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V12&lt; 0.21345 7  0 R (0.00000000 1.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V27&lt; 0.89995 103 32 R (0.31067961 0.68932039)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      6) V4&gt;=0.0606 33 12 M (0.63636364 0.36363636)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       12) V59&gt;=0.0065 22  1 M (0.95454545 0.04545455) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       13) V59&lt; 0.0065 11  0 R (0.00000000 1.00000000) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      7) V4&lt; 0.0606 70 11 R (0.15714286 0.84285714)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       14) V27&lt; 0.3949 11  4 M (0.63636364 0.36363636) *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15) V27&gt;=0.3949 59  4 R (0.06779661 0.93220339) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1) root 139 68 M (0.5107914 0.4892086)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    2) V48&gt;=0.0503 99 32 M (0.6767677 0.3232323)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      4) V51&gt;=0.01305 60  7 M (0.8833333 0.1166667) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      5) V51&lt; 0.01305 39 14 R (0.3589744 0.6410256)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10) V59&gt;=0.0104 10  0 M (1.0000000 0.0000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11) V59&lt; 0.0104 29  4 R (0.1379310 0.8620690)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         22) V14&lt; 0.25965 7  3 M (0.5714286 0.4285714) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         23) V14&gt;=0.25965 22  0 R (0.0000000 1.0000000) *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3) V48&lt; 0.0503 40  4 R (0.1000000 0.9000000) *</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.7113310 0.6971743 0.4819460 0.6153816 0.7399534 0.6810222 0.6477782</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.8599088 0.7694664 0.9618755</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.8090480 0.8476408 0.7270150 0.7069392 0.7366673 0.6694236 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.7974748 0.7966370 0.6146628</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $votes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             [,1]      [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1,] 1.8268985 5.3389389</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [2,] 2.1323066 5.0335308</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [3,] 2.1144190 5.0514184</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [4,] 1.4807975 5.6850399</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [5,] 2.0895275 5.0763099</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [6,] 2.7049091 4.4609283</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [7,] 2.2476404 4.9181970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [8,] 0.0000000 7.1658374</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [9,] 2.2207508 4.9450866</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [10,] 2.4131599 4.7526775</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [11,] 0.0000000 7.1658374</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12,] 0.7399534 6.4258840</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13,] 2.2885881 4.8772493</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [14,] 1.3449525 5.8208849</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [15,] 2.4426730 4.7231644</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [16,] 0.0000000 7.1658374</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17,] 2.0531858 5.1126516</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [18,] 1.3449525 5.8208849</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [19,] 2.3542287 4.8116087</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [20,] 1.3449525 5.8208849</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21,] 1.6293753 5.5364621</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22,] 1.9441819 5.2216555</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23,] 2.9179252 4.2479122</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [24,] 2.0666660 5.0991714</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25,] 0.7694664 6.3963709</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [26,] 0.6810222 6.4848152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [27,] 0.7694664 6.3963709</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [28,] 1.8217843 5.3440531</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29,] 1.8086585 5.3571789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [30,] 1.3288003 5.8370370</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [31,] 0.7113310 6.4545064</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [32,] 0.4819460 6.6838914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33,] 0.4819460 6.6838914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34,] 1.3449525 5.8208849</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [35,] 0.9618755 6.2039619</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [36,] 2.1144190 5.0514184</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37,] 2.9124181 4.2534193</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [38,] 2.0259747 5.1398627</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [39,] 0.0000000 7.1658374</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [40,] 0.8599088 6.3059286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41,] 1.2514124 5.9144250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [42,] 1.2514124 5.9144250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43,] 1.3418548 5.8239826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [44,] 2.1113212 5.0545162</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45,] 0.4819460 6.6838914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [46,] 0.4819460 6.6838914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [47,] 0.4819460 6.6838914</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [48,] 0.0000000 7.1658374</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49,] 2.5331153 4.6327221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [50,] 0.7113310 6.4545064</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [51,] 1.5094198 5.6564176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [52,] 1.2514124 5.9144250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53,] 0.7694664 6.3963709</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [54,] 1.1791203 5.9867171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55,] 1.2218993 5.9439380</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56,] 2.1248014 5.0410360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57,] 1.8667940 5.2990434</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [58,] 1.8372809 5.3285565</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [59,] 1.9913658 5.1744716</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [60,] 1.8667940 5.2990434</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61,] 2.7373057 4.4285317</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [62,] 2.0895275 5.0763099</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [63,] 2.5668519 4.5989855</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64,] 0.6971743 6.4686630</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65,] 2.1618196 5.0040178</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [66,] 1.8991906 5.2666468</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67,] 1.8742991 5.2915382</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [68,] 0.6477782 6.5180592</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69,] 2.1551525 5.0106849</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [70,] 1.1932770 5.9725604</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [71,] 4.8886840 2.2771534</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [72,] 5.0545162 2.1113212</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73,] 5.2086011 1.9572363</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [74,] 5.6905470 1.4752904</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [75,] 5.3389389 1.8268985</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76,] 5.9725604 1.1932770</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77,] 4.8448527 2.3209847</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78,] 4.2799539 2.8858835</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [79,] 6.0361133 1.1297241</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [80,] 5.3550911 1.8107463</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81,] 5.7220159 1.4438215</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [82,] 5.3571789 1.8086585</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [83,] 5.5885803 1.5772571</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [84,] 6.2039619 0.9618755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85,] 5.9439380 1.2218993</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [86,] 5.5067875 1.6590499</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [87,] 5.1398627 2.0259747</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [88,] 6.3963709 0.7694664</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89,] 6.5180592 0.6477782</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [90,] 6.0685099 1.0973275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [91,] 5.0427689 2.1230685</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [92,] 5.9867171 1.1791203</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93,] 4.9933727 2.1724647</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [94,] 4.7534732 2.4123642</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [95,] 5.0095248 2.1563126</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [96,] 5.7448618 1.4209756</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97,] 5.7220159 1.4438215</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [98,] 4.7965088 2.3693286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [99,] 5.7809894 1.3848480</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100,] 5.4640085 1.7018289</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101,] 6.3963709 0.7694664</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [102,] 6.3059286 0.8599088</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [103,] 5.8532815 1.3125559</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [104,] 5.4926309 1.6732065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105,] 4.8486269 2.3172105</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [106,] 4.6962749 2.4695625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [107,] 4.4951823 2.6706551</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [108,] 5.7448618 1.4209756</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109,] 4.1676047 2.9982327</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [110,] 4.7534732 2.4123642</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [111,] 6.6838914 0.4819460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [112,] 5.4640085 1.7018289</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113,] 4.9210806 2.2447568</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [114,] 5.8694336 1.2964038</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [115,] 4.6761567 2.4896807</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [116,] 5.4207317 1.7451057</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117,] 5.6087542 1.5570831</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [118,] 7.1658374 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [119,] 5.6991966 1.4666408</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [120,] 5.0970837 2.0687537</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121,] 4.8486269 2.3172105</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [122,] 3.8346332 3.3312042</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [123,] 6.2039619 0.9618755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [124,] 7.1658374 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125,] 7.1658374 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [126,] 6.3963709 0.7694664</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [127,] 6.2039619 0.9618755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [128,] 6.4258840 0.7399534</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129,] 5.4344954 1.7313420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [130,] 5.8532815 1.3125559</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [131,] 6.5180592 0.6477782</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [132,] 5.8105024 1.3553350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133,] 5.0970837 2.0687537</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [134,] 7.1658374 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [135,] 7.1658374 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [136,] 7.1658374 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137,] 7.1658374 0.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [138,] 4.5114267 2.6544107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [139,] 4.3932578 2.7725796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1,] 1.9015792 5.3839065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [2,] 2.1738375 5.1116482</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [3,] 2.3145392 4.9709466</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [4,] 2.2314289 5.0540569</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [5,] 2.1317273 5.1537585</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [6,] 2.4417526 4.8437332</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [7,] 2.3431901 4.9422957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [8,] 1.3216020 5.9638838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [9,] 0.6146628 6.6708230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [10,] 2.0582693 5.2272164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [11,] 2.1893186 5.0961672</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12,] 0.7270150 6.5584708</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13,] 2.1391526 5.1463332</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [14,] 2.8758199 4.4096659</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15,] 2.2242551 5.0612307</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16,] 2.9000148 4.3854710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17,] 1.3964386 5.8890472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [18,] 1.9216551 5.3638307</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19,] 1.4121376 5.8733482</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [20,] 1.1946401 6.0908457</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21,] 0.0000000 7.2854858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22,] 0.8476408 6.4378450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23,] 2.6731117 4.6123741</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [24,] 1.5843082 5.7011776</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25,] 1.5843082 5.7011776</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [26,] 1.4636823 5.8218035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [27,] 2.2151389 5.0703468</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [28,] 1.5035762 5.7819096</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29,] 0.7974748 6.4880110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [30,] 1.1946401 6.0908457</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31,] 1.3964386 5.8890472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [32,] 0.0000000 7.2854858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33,] 2.0486170 5.2368688</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34,] 1.3069922 5.9784936</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [35,] 1.3216020 5.9638838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [36,] 0.7069392 6.5785466</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37,] 2.1893186 5.0961672</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [38,] 0.0000000 7.2854858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [39,] 1.5035762 5.7819096</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [40,] 2.1190768 5.1664090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41,] 1.3216020 5.9638838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [42,] 0.0000000 7.2854858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43,] 0.0000000 7.2854858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [44,] 0.7366673 6.5488184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45,] 0.7974748 6.4880110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46,] 0.6146628 6.6708230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [47,] 1.3416778 5.9438080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [48,] 2.0036881 5.2817977</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49,] 1.5941118 5.6913740</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [50,] 1.3766143 5.9088715</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51,] 0.0000000 7.2854858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [52,] 1.5545800 5.7309058</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53,] 1.5545800 5.7309058</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [54,] 1.5545800 5.7309058</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55,] 1.9921149 5.2933709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56,] 2.9124257 4.3730601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57,] 2.3721306 4.9133552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [58,] 2.0111014 5.2743844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [59,] 2.1331059 5.1523799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [60,] 1.3416778 5.9438080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61,] 0.6694236 6.6160622</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [62,] 2.9011040 4.3843818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [63,] 1.5333044 5.7521814</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64,] 2.1479672 5.1375186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65,] 5.7309058 1.5545800</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [66,] 4.9709466 2.3145392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67,] 4.4652650 2.8202208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [68,] 4.9342688 2.3512170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69,] 5.1124860 2.1729998</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [70,] 4.4854122 2.8000736</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71,] 5.2019323 2.0835534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [72,] 4.2129024 3.0725834</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73,] 6.6708230 0.6146628</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [74,] 4.9643590 2.3211268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [75,] 5.9088715 1.3766143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76,] 5.8194252 1.4660606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77,] 5.2817977 2.0036881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78,] 5.1923514 2.0931344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79,] 5.6403702 1.6451156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [80,] 6.6160622 0.6694236</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81,] 6.6708230 0.6146628</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [82,] 4.5000220 2.7854638</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [83,] 5.1463332 2.1391526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [84,] 6.0360849 1.2494009</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85,] 5.2817977 2.0036881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [86,] 6.4764378 0.8090480</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [87,] 5.7521814 1.5333044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [88,] 5.6412079 1.6442779</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89,] 4.9844348 2.3010510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [90,] 5.7819096 1.5035762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91,] 6.4888488 0.7966370</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [92,] 4.9342688 2.3512170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93,] 4.9431334 2.3423524</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [94,] 6.4378450 0.8476408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [95,] 4.9717843 2.3137015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [96,] 5.8218035 1.4636823</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97,] 5.7011776 1.5843082</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [98,] 6.4378450 0.8476408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99,] 5.8890472 1.3964386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [100,] 4.5547827 2.7307030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101,] 7.2854858 0.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [102,] 5.8185874 1.4668984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [103,] 4.3719708 2.9135150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [104,] 6.5488184 0.7366673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105,] 5.7513437 1.5341421</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106,] 6.5488184 0.7366673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [107,] 6.5488184 0.7366673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [108,] 6.4378450 0.8476408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109,] 4.3941854 2.8913004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [110,] 5.8617750 1.4237108</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [111,] 5.7810718 1.5044139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [112,] 5.7694986 1.5159871</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113,] 5.8185874 1.4668984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [114,] 5.2817977 2.0036881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [115,] 5.2817977 2.0036881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [116,] 3.7773838 3.5081020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117,] 6.7055085 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [118,] 6.5488184 0.7366673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [119,] 6.5488184 0.7366673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [120,] 7.2854858 0.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121,] 6.5488184 0.7366673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [122,] 5.0865148 2.1989710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [123,] 5.9688412 1.3166446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [124,] 5.2994176 1.9860682</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125,] 5.9688412 1.3166446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [126,] 5.0703468 2.2151389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127,] 5.9688412 1.3166446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [128,] 5.9688412 1.3166446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129,] 6.7055085 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [130,] 6.7055085 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [131,] 6.7055085 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [132,] 6.7055085 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133,] 5.8964605 1.3890252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [134,] 6.7055085 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [135,] 6.7055085 0.5799773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136,] 6.5488184 0.7366673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137,] 5.9688412 1.3166446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [138,] 5.9688412 1.3166446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [139,] 5.2817977 2.0036881</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              [,1]       [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1,] 0.25494557 0.74505443</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [2,] 0.29756558 0.70243442</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [3,] 0.29506935 0.70493065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [4,] 0.20664681 0.79335319</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [5,] 0.29159572 0.70840428</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [6,] 0.37747286 0.62252714</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [7,] 0.31366053 0.68633947</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [8,] 0.00000000 1.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [9,] 0.30990807 0.69009193</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [10,] 0.33675896 0.66324104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [11,] 0.00000000 1.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12,] 0.10326126 0.89673874</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13,] 0.31937483 0.68062517</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [14,] 0.18768951 0.81231049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [15,] 0.34087753 0.65912247</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [16,] 0.00000000 1.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17,] 0.28652419 0.71347581</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [18,] 0.18768951 0.81231049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [19,] 0.32853505 0.67146495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [20,] 0.18768951 0.81231049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21,] 0.22738100 0.77261900</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22,] 0.27131259 0.72868741</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23,] 0.40719947 0.59280053</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [24,] 0.28840537 0.71159463</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25,] 0.10737984 0.89262016</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [26,] 0.09503735 0.90496265</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [27,] 0.10737984 0.89262016</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [28,] 0.25423188 0.74576812</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29,] 0.25240016 0.74759984</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [30,] 0.18543546 0.81456454</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [31,] 0.09926698 0.90073302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [32,] 0.06725606 0.93274394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33,] 0.06725606 0.93274394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34,] 0.18768951 0.81231049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [35,] 0.13423072 0.86576928</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [36,] 0.29506935 0.70493065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37,] 0.40643095 0.59356905</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [38,] 0.28272686 0.71727314</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [39,] 0.00000000 1.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [40,] 0.12000116 0.87999884</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41,] 0.17463589 0.82536411</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [42,] 0.17463589 0.82536411</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43,] 0.18725722 0.81274278</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [44,] 0.29463705 0.70536295</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45,] 0.06725606 0.93274394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [46,] 0.06725606 0.93274394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [47,] 0.06725606 0.93274394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [48,] 0.00000000 1.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49,] 0.35349886 0.64650114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [50,] 0.09926698 0.90073302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [51,] 0.21064109 0.78935891</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [52,] 0.17463589 0.82536411</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53,] 0.10737984 0.89262016</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [54,] 0.16454745 0.83545255</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55,] 0.17051731 0.82948269</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56,] 0.29651823 0.70348177</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57,] 0.26051302 0.73948698</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [58,] 0.25639445 0.74360555</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [59,] 0.27789715 0.72210285</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [60,] 0.26051302 0.73948698</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61,] 0.38199383 0.61800617</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [62,] 0.29159572 0.70840428</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [63,] 0.35820682 0.64179318</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64,] 0.09729140 0.90270860</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65,] 0.30168416 0.69831584</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [66,] 0.26503400 0.73496600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67,] 0.26156038 0.73843962</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [68,] 0.09039811 0.90960189</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69,] 0.30075375 0.69924625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [70,] 0.16652303 0.83347697</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [71,] 0.68222089 0.31777911</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [72,] 0.70536295 0.29463705</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73,] 0.72686565 0.27313435</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [74,] 0.79412171 0.20587829</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [75,] 0.74505443 0.25494557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76,] 0.83347697 0.16652303</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77,] 0.67610419 0.32389581</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78,] 0.59727198 0.40272802</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [79,] 0.84234583 0.15765417</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [80,] 0.74730849 0.25269151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81,] 0.79851322 0.20148678</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [82,] 0.74759984 0.25240016</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [83,] 0.77989214 0.22010786</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [84,] 0.86576928 0.13423072</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85,] 0.82948269 0.17051731</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [86,] 0.76847788 0.23152212</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [87,] 0.71727314 0.28272686</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [88,] 0.89262016 0.10737984</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89,] 0.90960189 0.09039811</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [90,] 0.84686681 0.15313319</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [91,] 0.70372360 0.29627640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [92,] 0.83545255 0.16454745</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93,] 0.69683031 0.30316969</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [94,] 0.66335209 0.33664791</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [95,] 0.69908436 0.30091564</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [96,] 0.80170139 0.19829861</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97,] 0.79851322 0.20148678</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [98,] 0.66935774 0.33064226</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [99,] 0.80674303 0.19325697</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100,] 0.76250802 0.23749198</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101,] 0.89262016 0.10737984</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [102,] 0.87999884 0.12000116</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [103,] 0.81683147 0.18316853</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [104,] 0.76650230 0.23349770</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105,] 0.67663089 0.32336911</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [106,] 0.65537001 0.34462999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [107,] 0.62730732 0.37269268</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [108,] 0.80170139 0.19829861</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109,] 0.58159354 0.41840646</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [110,] 0.66335209 0.33664791</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [111,] 0.93274394 0.06725606</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [112,] 0.76250802 0.23749198</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113,] 0.68674187 0.31325813</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [114,] 0.81908552 0.18091448</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [115,] 0.65256249 0.34743751</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [116,] 0.75646870 0.24353130</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117,] 0.78270744 0.21729256</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [118,] 1.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [119,] 0.79532876 0.20467124</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [120,] 0.71130328 0.28869672</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121,] 0.67663089 0.32336911</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [122,] 0.53512702 0.46487298</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [123,] 0.86576928 0.13423072</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [124,] 1.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125,] 1.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [126,] 0.89262016 0.10737984</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [127,] 0.86576928 0.13423072</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [128,] 0.89673874 0.10326126</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129,] 0.75838944 0.24161056</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [130,] 0.81683147 0.18316853</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [131,] 0.90960189 0.09039811</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [132,] 0.81086161 0.18913839</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133,] 0.71130328 0.28869672</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [134,] 1.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [135,] 1.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [136,] 1.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137,] 1.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [138,] 0.62957425 0.37042575</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [139,] 0.61308366 0.38691634</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1,] 0.26100926 0.73899074</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [2,] 0.29837922 0.70162078</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [3,] 0.31769182 0.68230818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [4,] 0.30628416 0.69371584</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [5,] 0.29259919 0.70740081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [6,] 0.33515303 0.66484697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [7,] 0.32162442 0.67837558</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [8,] 0.18140204 0.81859796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [9,] 0.08436813 0.91563187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [10,] 0.28251642 0.71748358</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [11,] 0.30050414 0.69949586</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [12,] 0.09978950 0.90021050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13,] 0.29361839 0.70638161</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [14,] 0.39473276 0.60526724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15,] 0.30529949 0.69470051</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [16,] 0.39805373 0.60194627</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17,] 0.19167405 0.80832595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [18,] 0.26376485 0.73623515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19,] 0.19382889 0.80617111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [20,] 0.16397535 0.83602465</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21,] 0.00000000 1.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22,] 0.11634651 0.88365349</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23,] 0.36690919 0.63309081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [24,] 0.21746088 0.78253912</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25,] 0.21746088 0.78253912</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [26,] 0.20090387 0.79909613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [27,] 0.30404821 0.69595179</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [28,] 0.20637968 0.79362032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29,] 0.10946076 0.89053924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [30,] 0.16397535 0.83602465</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31,] 0.19167405 0.80832595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [32,] 0.00000000 1.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33,] 0.28119154 0.71880846</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [34,] 0.17939672 0.82060328</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [35,] 0.18140204 0.81859796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [36,] 0.09703391 0.90296609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37,] 0.30050414 0.69949586</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [38,] 0.00000000 1.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [39,] 0.20637968 0.79362032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [40,] 0.29086280 0.70913720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41,] 0.18140204 0.81859796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [42,] 0.00000000 1.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43,] 0.00000000 1.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [44,] 0.10111438 0.89888562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45,] 0.10946076 0.89053924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [46,] 0.08436813 0.91563187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [47,] 0.18415763 0.81584237</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [48,] 0.27502463 0.72497537</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49,] 0.21880652 0.78119348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [50,] 0.18895298 0.81104702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51,] 0.00000000 1.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [52,] 0.21338042 0.78661958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53,] 0.21338042 0.78661958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [54,] 0.21338042 0.78661958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55,] 0.27343611 0.72656389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [56,] 0.39975724 0.60024276</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57,] 0.32559676 0.67440324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [58,] 0.27604218 0.72395782</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [59,] 0.29278843 0.70721157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [60,] 0.18415763 0.81584237</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61,] 0.09188455 0.90811545</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [62,] 0.39820324 0.60179676</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [63,] 0.21046014 0.78953986</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64,] 0.29482827 0.70517173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65,] 0.78661958 0.21338042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [66,] 0.68230818 0.31769182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67,] 0.61289873 0.38710127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [68,] 0.67727382 0.32272618</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69,] 0.70173577 0.29826423</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [70,] 0.61566412 0.38433588</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71,] 0.71401311 0.28598689</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [72,] 0.57825964 0.42174036</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73,] 0.91563187 0.08436813</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [74,] 0.68140398 0.31859602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [75,] 0.81104702 0.18895298</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76,] 0.79876968 0.20123032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77,] 0.72497537 0.27502463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78,] 0.71269803 0.28730197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79,] 0.77419274 0.22580726</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [80,] 0.90811545 0.09188455</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81,] 0.91563187 0.08436813</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [82,] 0.61766945 0.38233055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [83,] 0.70638161 0.29361839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [84,] 0.82850823 0.17149177</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85,] 0.72497537 0.27502463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [86,] 0.88895071 0.11104929</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [87,] 0.78953986 0.21046014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [88,] 0.77430773 0.22569227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89,] 0.68415957 0.31584043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [90,] 0.79362032 0.20637968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91,] 0.89065423 0.10934577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [92,] 0.67727382 0.32272618</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93,] 0.67849057 0.32150943</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [94,] 0.88365349 0.11634651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [95,] 0.68242317 0.31757683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [96,] 0.79909613 0.20090387</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97,] 0.78253912 0.21746088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [98,] 0.88365349 0.11634651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99,] 0.80832595 0.19167405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [100,] 0.62518587 0.37481413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101,] 1.00000000 0.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [102,] 0.79865469 0.20134531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [103,] 0.60009324 0.39990676</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [104,] 0.89888562 0.10111438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105,] 0.78942487 0.21057513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [106,] 0.89888562 0.10111438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [107,] 0.89888562 0.10111438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [108,] 0.88365349 0.11634651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109,] 0.60314240 0.39685760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [110,] 0.80458258 0.19541742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [111,] 0.79350534 0.20649466</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [112,] 0.79191681 0.20808319</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113,] 0.79865469 0.20134531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [114,] 0.72497537 0.27502463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [115,] 0.72497537 0.27502463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [116,] 0.51848070 0.48151930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117,] 0.92039278 0.07960722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [118,] 0.89888562 0.10111438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [119,] 0.89888562 0.10111438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [120,] 1.00000000 0.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121,] 0.89888562 0.10111438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [122,] 0.69817098 0.30182902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [123,] 0.81927841 0.18072159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [124,] 0.72739385 0.27260615</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125,] 0.81927841 0.18072159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [126,] 0.69595179 0.30404821</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127,] 0.81927841 0.18072159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [128,] 0.81927841 0.18072159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129,] 0.92039278 0.07960722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [130,] 0.92039278 0.07960722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [131,] 0.92039278 0.07960722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [132,] 0.92039278 0.07960722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133,] 0.80934350 0.19065650</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [134,] 0.92039278 0.07960722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [135,] 0.92039278 0.07960722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [136,] 0.89888562 0.10111438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137,] 0.81927841 0.18072159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [138,] 0.81927841 0.18072159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [139,] 0.72497537 0.27502463</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "M" "M"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "R" "R" "R" "R" "R" "R" "R" "R" "R" "R" "M" "M" "M" "M" "M" "M" "M" "M"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [109] "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [127] "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M" "M"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $importance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V1        V10        V11        V12        V13        V14        V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.8883986  4.5477120  3.4630139 13.3979951  0.0000000  3.0837739  1.7896461 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V17        V18        V19         V2        V20        V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.3600092  0.0000000  0.0000000  0.0000000  0.0000000  2.3701556  0.9356967 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V22        V23        V24        V25        V26        V27        V28 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.6427869  4.1306999  1.7764073  0.0000000  1.5257755  5.1472643  2.3516959 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V29         V3        V30        V31        V32        V33        V34 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  3.7760029  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V35        V36        V37        V38        V39         V4        V40 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.4703679  2.5685539  0.0000000  0.0000000  0.0000000  2.7817552  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V41        V42        V43        V44        V45        V46        V47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  2.8990245  1.6764556  6.2492647  0.0000000  3.5253178 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V48        V49         V5        V50        V51        V52        V53 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  1.6122000  0.0000000  0.0000000  0.0000000  4.4326472  1.2505044 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V54        V55        V56        V57        V58        V59         V6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.5849834  0.5475682  0.0000000  2.8799053  0.0000000  6.9425424  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V60         V7         V8         V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.7590974  4.6327784 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V1       V10       V11       V12       V13       V14       V15       V16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.3776257 0.5242910 7.1117895 3.1682893 0.0000000 0.5649714 3.2617455 2.8866699 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V17       V18       V19        V2       V20       V21       V22       V23 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 0.0000000 0.0000000 0.0000000 1.9513202 2.6085774 0.0000000 2.6777474 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V24       V25       V26       V27       V28       V29        V3       V30 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 0.0000000 0.0000000 4.5631442 3.6530966 0.0000000 0.0000000 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V31       V32       V33       V34       V35       V36       V37       V38 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.2287225 3.5883069 1.8358950 0.0000000 3.7334511 1.1432839 4.5274329 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V39        V4       V40       V41       V42       V43       V44       V45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.3398291 0.0000000 0.0000000 0.0000000 1.9537011 0.0000000 3.3746110 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V46       V47       V48       V49        V5       V50       V51       V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 3.0554280 3.0878914 5.8265979 0.0000000 1.5940027 7.1276470 4.6528495 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V53       V54       V55       V56       V57       V58       V59        V6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7239133 0.0000000 0.0000000 2.7146123 0.0000000 0.0000000 3.2878842 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V60        V7        V8        V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.2355298 0.0000000 0.0000000 4.6191427 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $terms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class ~ V1 + V10 + V11 + V12 + V13 + V14 + V15 + V16 + V17 + </span>
@@ -1014,28 +1008,26 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"vardep.summary")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  M  R </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69 70 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75 64 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "boosting"</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V12        V59        V45        V27         V9        V10        V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13.3979951  6.9425424  6.2492647  5.1472643  4.6327784  4.5477120  4.4326472 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V23        V31        V47        V11        V14        V43        V57 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.1306999  3.7760029  3.5253178  3.4630139  3.0837739  2.8990245  2.8799053 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V4        V22        V54        V36        V20        V28        V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.7817552  2.6427869  2.5849834  2.5685539  2.3701556  2.3516959  1.7896461 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V24        V44        V49        V26        V35        V16        V53 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.7764073  1.6764556  1.6122000  1.5257755  1.4703679  1.3600092  1.2505044 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V21         V1         V8        V55        V13        V17        V18 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.9356967  0.8883986  0.7590974  0.5475682  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V19         V2        V25        V29         V3        V30        V32 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V33        V34        V37        V38        V39        V40        V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V42        V46        V48         V5        V50        V51        V56 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V58         V6        V60         V7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V51       V11       V49        V1       V52        V9       V27       V37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.1276470 7.1117895 5.8265979 5.3776257 4.6528495 4.6191427 4.5631442 4.5274329 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V35       V28       V32       V44       V59       V15       V12       V48 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.7334511 3.6530966 3.5883069 3.3746110 3.2878842 3.2617455 3.1682893 3.0878914 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V47       V16       V56       V23       V21       V39       V42       V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.0554280 2.8866699 2.7146123 2.6777474 2.6085774 2.3398291 1.9537011 1.9513202 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V33       V50       V60       V31       V36       V53       V14       V10 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.8358950 1.5940027 1.2355298 1.2287225 1.1432839 0.7239133 0.5649714 0.5242910 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V13       V17       V18       V19        V2       V22       V24       V25 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V26       V29        V3       V30       V34       V38        V4       V40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V41       V43       V45       V46        V5       V54       V55       V57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V58        V6        V7        V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 0.0000000 0.0000000 0.0000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -1043,7 +1035,7 @@ Calls <code><a href="https://rdrr.io/pkg/adabag/man/boosting.html" class="extern
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1449275 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

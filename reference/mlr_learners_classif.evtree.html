@@ -50,7 +50,7 @@ Calls evtree::evtree() fromevtree."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Decision Tree Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.2/R/learner_evtree_classif_evtree.R" class="external-link"><code>R/learner_evtree_classif_evtree.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_evtree_classif_evtree.R" class="external-link"><code>R/learner_evtree_classif_evtree.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.evtree.Rd</code></div>
     </div>
 
@@ -173,17 +173,21 @@ are scaled internally to sum to 100.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V16 &lt; 0.3737</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V12 &lt; 0.2325: R (n = 33, err = 6.1%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V12 &gt;= 0.2325: M (n = 43, err = 9.3%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V16 &gt;= 0.3737</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V54 &lt; 0.0141</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] V56 &lt; 0.0095: R (n = 24, err = 16.7%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [8] V56 &gt;= 0.0095: M (n = 15, err = 13.3%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [9] V54 &gt;= 0.0141: M (n = 24, err = 8.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V15 &lt; 0.5419</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V9 &lt; 0.2365</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] V36 &lt; 0.5071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] V19 &lt; 0.8024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [6] V11 &lt; 0.168: R (n = 19, err = 5.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [7] V11 &gt;= 0.168: M (n = 28, err = 3.6%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [8] V19 &gt;= 0.8024: M (n = 9, err = 0.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] V36 &gt;= 0.5071: R (n = 34, err = 8.8%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [10] V9 &gt;= 0.2365: M (n = 28, err = 10.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [11] V15 &gt;= 0.5419</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [12] V27 &lt; 0.507: M (n = 7, err = 14.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [13] V27 &gt;= 0.507: R (n = 14, err = 7.1%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
