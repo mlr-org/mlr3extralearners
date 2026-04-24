@@ -70,7 +70,7 @@ LearnerRegrGPBoost = R6::R6Class(
       gp_pred_data = if (length(group_col) > 0L) as.matrix(task$data(cols = group_col)) else NULL
       preds = predict(
         object = self$model,
-        data = X_test,
+        data = x_test,
         gp_coords_pred  = if (!is.null(gp_pred_data) && ncol(gp_pred_data) == 2L) gp_pred_data else NULL,
         group_data_pred = if (!is.null(gp_pred_data) && ncol(gp_pred_data) == 1L) gp_pred_data else NULL,
         predict_var = FALSE,
