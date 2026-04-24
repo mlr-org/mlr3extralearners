@@ -89,6 +89,7 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
         formula = formula,
         dframe = dframe,
         coords = coords,
+        print.results = FALSE,
         .args = pars
       )
     },
