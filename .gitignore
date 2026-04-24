@@ -1,7 +1,21 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
+# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,macos,linux,r
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,macos,linux,r
 
-# Created by https://www.gitignore.io/api/visualstudiocode,macos,r,windows
-# Edit at https://www.gitignore.io/?templates=visualstudiocode,macos,r,windows
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
 
 ### macOS ###
 # General
@@ -11,6 +25,7 @@
 
 # Icon must end with two \r
 Icon
+
 
 # Thumbnails
 ._*
@@ -30,6 +45,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
 
 ### R ###
 # History files
@@ -70,6 +89,18 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
+# R Environment Variables
+.Renviron
+
+# pkgdown site
+docs/
+
+# translation temp files
+po/*~
+
+# RStudio Connect folder
+rsconnect/
+
 ### R.Bookdown Stack ###
 # R package: bookdown caching files
 /*_files/
@@ -80,10 +111,18 @@ vignettes/*.pdf
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+.ionide
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -111,20 +150,34 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/visualstudiocode,macos,r,windows
+# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,macos,linux,r
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+# R
+.Rprofile
+README.html
+src/*.o
+src/*.so
+src/*.dll
+.clangd
+
+# CRAN
+cran-comments.md
+CRAN-RELEASE
+CRAN-SUBMISSION
+
+# pkgdown
 docs/
 
-# Rcpp
-*.so
-*.o
+# renv
+renv/
+renv.lock
 
-*.html
+# revdep
+revdep/
 
-.ccache/
-.vscode/settings.json
+# catboost
 catboost_info/
 
 # nvim-R
@@ -132,3 +185,7 @@ catboost_info/
 
 # TODO
 TODO.md
+
+# AI
+.claude/settings.local.json
+CLAUDE.md

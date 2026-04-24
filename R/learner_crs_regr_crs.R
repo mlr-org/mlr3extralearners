@@ -10,7 +10,7 @@
 #' @template learner
 #'
 #' @template seealso_learner
-#' @template example
+#' @template example_crs
 #' @export
 LearnerRegrCrs = R6Class("LearnerRegrCrs",
   inherit = LearnerRegr,
