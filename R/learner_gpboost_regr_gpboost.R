@@ -3,7 +3,7 @@
 #'   gradient boosting with Gaussian process and mixed effects models.
 #'   Call `LearnerRegrGPBoost$new()` to create a new instance.
 #' @author Florian Delage
-#' @name LearnerRegrGPBoost
+#' @name mlr_learners_regr.gpboost
 #' @importFrom gpboost gpb.train gpb.Dataset GPModel
 #' @importFrom paradox ps p_int p_dbl
 #' @examples
