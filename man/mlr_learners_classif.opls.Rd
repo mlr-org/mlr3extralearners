@@ -87,7 +87,7 @@ predictions$score()
 }
 }
 \author{
-Mountaha_M_Ndoye
+Takha65
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifOPLS}

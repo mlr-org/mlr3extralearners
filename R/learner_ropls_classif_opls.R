@@ -1,5 +1,5 @@
 #' @title OPLS-DA Classification Learner
-#' @author Mountaha_M_Ndoye
+#' @author Takha65
 #' @name mlr_learners_classif.opls
 #'
 #' @description
@@ -61,6 +61,10 @@ LearnerClassifOPLS = R6Class("LearnerClassifOPLS",
       pars = self$param_set$get_values(tags = "train")
       x = as.matrix(task$data(cols = task$feature_names))
       y = task$truth()
+      n_features = ncol(x)
+      if (pars$predI + pars$orthoI > n_features) {
+        pars$orthoI = max(0L, n_features - pars$predI)
+      }
       invoke(
         ropls::opls,
         x = x,
