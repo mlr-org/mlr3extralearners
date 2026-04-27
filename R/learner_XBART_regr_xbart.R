@@ -4,7 +4,25 @@
 #'
 #' @description
 #' Accelerated Bayesian Additive Regression Trees (XBART) for regression.
-#' Calls `XBART::XBART()` from \CRANpkg{XBART}.
+#' Calls `XBART::XBART()` from the \href{https://github.com/JingyuHe/XBART}{XBART}
+#' package (not available on CRAN).
+#'
+#' @section Installation:
+#' The XBART package is not on CRAN and must be installed from GitHub.
+#' It requires the GSL (GNU Scientific Library).
+#'
+#' On **Windows**, install GSL via Rtools45 before installing the package:
+#' \enumerate{
+#'   \item Install \href{https://cran.r-project.org/bin/windows/Rtools/}{Rtools45}.
+#'   \item Open the Rtools Bash terminal and run:
+#'         `pacman -S mingw-w64-x86_64-gsl`
+#'   \item Then install the package from R:
+#'         `remotes::install_github("JingyuHe/XBART")`
+#' }
+#'
+#' On **Linux/macOS**, install GSL via your package manager (e.g.
+#' `sudo apt install libgsl-dev` or `brew install gsl`), then run:
+#' `remotes::install_github("JingyuHe/XBART")`
 #'
 #' @templateVar id regr.xbart
 #' @template learner
