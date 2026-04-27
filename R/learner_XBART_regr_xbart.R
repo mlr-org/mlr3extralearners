@@ -42,6 +42,7 @@ LearnerRegrXBART = R6Class("LearnerRegrXBART",
         alpha      = p_dbl(lower = 0, upper = 1, default = 0.95, tags = "train"),
         beta       = p_dbl(lower = 0, default = 1.25, tags = "train")
       )
+      param_set$values = list(num_sweeps = 40L, num_trees = 100L, alpha = 0.95, beta = 1.25)
 
       super$initialize(
         id = "regr.xbart",
