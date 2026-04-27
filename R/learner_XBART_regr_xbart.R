@@ -11,18 +11,17 @@
 #' The XBART package is not on CRAN and must be installed from GitHub.
 #' It requires the GSL (GNU Scientific Library).
 #'
-#' On **Windows**, install GSL via Rtools45 before installing the package:
-#' \enumerate{
-#'   \item Install \href{https://cran.r-project.org/bin/windows/Rtools/}{Rtools45}.
-#'   \item Open the Rtools Bash terminal and run:
-#'         `pacman -S mingw-w64-x86_64-gsl`
-#'   \item Then install the package from R:
-#'         `remotes::install_github("JingyuHe/XBART")`
-#' }
+#' On **Linux (Ubuntu/Debian)**, run in a terminal:
+#' ```
+#' sudo apt install libgsl-dev
+#' ```
+#' Then from R: `remotes::install_github("JingyuHe/XBART")`
 #'
-#' On **Linux/macOS**, install GSL via your package manager (e.g.
-#' `sudo apt install libgsl-dev` or `brew install gsl`), then run:
-#' `remotes::install_github("JingyuHe/XBART")`
+#' On **macOS**: `brew install gsl`, then `remotes::install_github("JingyuHe/XBART")`
+#'
+#' On **Windows**, install \href{https://cran.r-project.org/bin/windows/Rtools/}{Rtools45},
+#' open the Rtools Bash terminal, run `pacman -S mingw-w64-x86_64-gsl`,
+#' then from R: `remotes::install_github("JingyuHe/XBART")`
 #'
 #' @templateVar id regr.xbart
 #' @template learner
