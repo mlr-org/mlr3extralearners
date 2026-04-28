@@ -8,15 +8,19 @@
 Binary classification using Orthogonal Partial Least Squares
 Discriminant Analysis (OPLS-DA).
 Calls \code{ropls::opls()} from package \code{ropls} (Bioconductor).
+Install \code{ropls} with:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("ropls")
+}\if{html}{\out{</div>}}
 }
 \section{Initial parameter values}{
 
 \itemize{
 \item \code{predI} is set to \code{1} (one predictive component, standard for OPLS-DA).
 \item \code{orthoI} is set to \code{1} (one orthogonal component).
-\item \code{permI} is set to \code{0} (no permutation testing, for speed).
-\item \code{fig.pdfC} is set to \code{"none"} internally to suppress PDF output.
-\item \code{info.txtC} is set to \code{"none"} internally to suppress console output.
+\item \code{permI} is set to \code{0} (no permutation testing, for speed)
 }
 }
 

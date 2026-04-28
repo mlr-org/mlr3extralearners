@@ -6,13 +6,16 @@
 #' Binary classification using Orthogonal Partial Least Squares
 #' Discriminant Analysis (OPLS-DA).
 #' Calls `ropls::opls()` from package `ropls` (Bioconductor).
-#'
+#' Install `ropls` with:
+#' ```
+#' if (!require("BiocManager", quietly = TRUE))
+#'   install.packages("BiocManager")
+#' BiocManager::install("ropls")
+#' ```
 #' @section Initial parameter values:
 #' - `predI` is set to `1` (one predictive component, standard for OPLS-DA).
 #' - `orthoI` is set to `1` (one orthogonal component).
-#' - `permI` is set to `0` (no permutation testing, for speed).
-#' - `fig.pdfC` is set to `"none"` internally to suppress PDF output.
-#' - `info.txtC` is set to `"none"` internally to suppress console output.
+#' - `permI` is set to `0` (no permutation testing, for speed)
 #'
 #' @templateVar id classif.opls
 #' @template learner
