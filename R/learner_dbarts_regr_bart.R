@@ -37,7 +37,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
       ps = ps(
         ntree = p_int(default = 200L, lower = 1L, tags = "train"),
         sigest = p_uty(default = NULL, tags = "train"),
-        sigdf = p_int(default = 3L, lower = 1L, tags = "train"),
+        sigdf = p_dbl(default = 3.0, lower = 1.0, tags = "train"),
         sigquant = p_dbl(default = 0.90, lower = 0, upper = 1, tags = "train"),
         k = p_dbl(default = 2.0, lower = 0, tags = "train"),
         power = p_dbl(default = 2.0, lower = 0, tags = "train"),

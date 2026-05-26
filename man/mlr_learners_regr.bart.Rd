@@ -31,7 +31,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ntree \tab integer \tab 200 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    sigest \tab untyped \tab NULL \tab  \tab - \cr
-   sigdf \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   sigdf \tab numeric \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    sigquant \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    k \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    power \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
