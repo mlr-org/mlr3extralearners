@@ -35,7 +35,7 @@ test_that("distr prediction works", {
   p = learner$train(task, train_rows)$predict(task, test_rows)
 
   # check model
-  expect_class(learner$model$model, "coxnet")
+  expect_class(learner$native_model, "coxnet")
 
   # check predictions
   expect_class(p$lp, "numeric")
@@ -45,10 +45,11 @@ test_that("distr prediction works", {
   surv1 = p$distr[1]$survival(unique_times) # survival of 1st rat
 
   # change survival calculation, prediction distr changes
-  learner = lrn("surv.glmnet", lambda = 0.03, stype = 1)
-  p = learner$train(task, train_rows)$predict(task, test_rows)
-  surv2 = p$distr[1]$survival(unique_times)
+  learner$param_set$set_values(stype = 1) # = lrn("surv.glmnet", lambda = 0.03, stype = 1)
+  p2 = learner$predict(task, test_rows)
+  surv2 = p2$distr[1]$survival(unique_times)
   expect_false(all(surv1 == surv2))
+  expect_equal(p$lp, p2$lp) # lp should not change when changing stype
 })
 
 test_that("offset and weight parameters", {
@@ -60,7 +61,7 @@ test_that("offset and weight parameters", {
   # offset was used
   expect_equal(l$model$offset, task$offset$offset[train_rows])
   expect_true(l$model$model$offset)
-  # not using offset during prediction changes lp, distr
+  # not using offset during prediction changes lp and distr predictions
   l$param_set$set_values(use_pred_offset = FALSE)
   p2 = l$predict(task, test_rows)
   expect_false(all(p2$lp == p$lp))
