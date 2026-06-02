@@ -1,5 +1,5 @@
 glmnet_get_lambda = function(self, pv) {
-  model = self$model$model
+  model = self$native_model
 
   if (is.null(model)) {
     stopf("Learner '%s' has no model stored", self$id)
@@ -37,7 +37,7 @@ glmnet_feature_names = function(model) {
 }
 
 glmnet_selected_features = function(self, lambda = NULL) {
-  model = self$model$model
+  model = self$native_model
   if (is.null(model)) {
     stopf("No model stored")
   }
@@ -45,11 +45,11 @@ glmnet_selected_features = function(self, lambda = NULL) {
   assert_number(lambda, null.ok = TRUE, lower = 0)
   lambda = lambda %??% glmnet_get_lambda(self)
   nonzero = predict(model, type = "nonzero", s = lambda)
-  if (is.data.frame(nonzero)) {
-    nonzero = nonzero[[1L]]
+
+  nonzero = if (is.data.frame(nonzero)) {
+    nonzero[[1L]]
   } else {
-    nonzero = unlist(map(nonzero, 1L), use.names = FALSE)
-    nonzero = if (length(nonzero)) sort(unique(nonzero)) else integer()
+    sort(unique(unlist(nonzero, use.names = FALSE)))
   }
 
   glmnet_feature_names(model)[nonzero]
