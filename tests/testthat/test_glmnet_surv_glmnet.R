@@ -44,8 +44,8 @@ test_that("distr prediction works", {
 
   surv1 = p$distr[1]$survival(unique_times) # survival of 1st rat
 
-  # change survival calculation, prediction distr changes
-  learner$param_set$set_values(stype = 1) # = lrn("surv.glmnet", lambda = 0.03, stype = 1)
+  # change survival calculation via stype, prediction distr changes
+  learner$param_set$set_values(stype = 1)
   p2 = learner$predict(task, test_rows)
   surv2 = p2$distr[1]$survival(unique_times)
   expect_false(all(surv1 == surv2))
