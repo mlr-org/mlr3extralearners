@@ -55,12 +55,14 @@
 #' @export
 #' @template seealso_learner
 #' @template example
-LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
+LearnerSurvGlmnet = R6Class(
+  "LearnerSurvGlmnet",
   inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      # fmt: skip
       ps = ps(
         # glmnet::glmnet() parameters
         alpha            = p_dbl(0, 1, default = 1, tags = "train"),
@@ -74,6 +76,8 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         lower.limits     = p_uty(default = -Inf, tags = "train"),
         upper.limits     = p_uty(default = Inf, tags = "train"),
         relax            = p_lgl(default = FALSE, tags = "train"),
+        maxp             = p_int(1L, tags = "train"),
+        path             = p_lgl(default = FALSE, tags = "train"),
         trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         cox.ties         = p_fct(c("breslow", "efron"), default = "efron", tags = "train"),
         # glmnet.control() parameters
@@ -92,10 +96,12 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         maxit            = p_int(1L, default = 1e+05, tags = "train"),
         dfmax            = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
         pmax             = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
-        # glmnet::predict.coxnet() parameters
+        # glmnet::predict.glmnet() parameters
         exact            = p_lgl(default = FALSE, tags = "predict"),
         s                = p_dbl(0, default = 0.01, tags = "predict"),
-        # glmnet::survfit.coxnet() parameters => survfit.coxph() parameters for distr prediction
+        # glmnet::predict.relaxed() parameters
+        gamma            = p_dbl(0, 1, default = 1L, tags = "predict"),
+        # glmnet:::survfit.coxnet() parameters => survfit.coxph() parameters for distr prediction
         stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
         ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties
         # for using the offset during prediction
@@ -167,10 +173,17 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
       pv = glmnet_set_offset(task, "predict", pv)
 
       # get survival matrix
-      fit = invoke(survival::survfit, formula = self$native_model,
-                   x = self$model$x, y = self$model$y,
-                   weights = self$model$weights, offset = self$model$offset,
-                   newx = newdata, se.fit = FALSE, .args = pv)
+      fit = invoke(
+        survival::survfit,
+        formula = self$native_model,
+        x = self$model$x,
+        y = self$model$y,
+        weights = self$model$weights,
+        offset = self$model$offset,
+        newx = newdata,
+        se.fit = FALSE,
+        .args = pv
+      )
 
       # get linear predictor
       lp = as.numeric(
