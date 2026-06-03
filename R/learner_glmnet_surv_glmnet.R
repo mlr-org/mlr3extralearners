@@ -76,10 +76,11 @@ LearnerSurvGlmnet = R6Class(
         lower.limits     = p_uty(default = -Inf, tags = "train"),
         upper.limits     = p_uty(default = Inf, tags = "train"),
         relax            = p_lgl(default = FALSE, tags = "train"),
-        maxp             = p_int(1L, tags = "train"),
-        path             = p_lgl(default = FALSE, tags = "train"),
         trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         cox.ties         = p_fct(c("breslow", "efron"), default = "efron", tags = "train"),
+        # relax.glmnet() parameters
+        maxp             = p_int(1L, tags = "train"),
+        path             = p_lgl(default = FALSE, tags = "train"),
         # glmnet.control() parameters
         fdev             = p_dbl(0, 1, default = 1.0e-5, tags = "train"),
         devmax           = p_dbl(0, 1, default = 0.999, tags = "train"),
@@ -168,7 +169,6 @@ LearnerSurvGlmnet = R6Class(
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
-      pv = rename(pv, "predict.gamma", "gamma")
       pv$s = glmnet_get_lambda(self, pv)
       pv = glmnet_set_offset(task, "predict", pv)
 
