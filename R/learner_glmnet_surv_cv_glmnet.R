@@ -65,6 +65,9 @@ LearnerSurvCVGlmnet = R6Class(
         lower.limits     = p_uty(default = -Inf, tags = "train"),
         upper.limits     = p_uty(default = Inf, tags = "train"),
         cox.ties         = p_fct(c("breslow", "efron"), default = "efron", tags = "train"),
+        # relax.glmnet() parameters
+        maxp             = p_int(1L, tags = "train"),
+        path             = p_lgl(default = FALSE, tags = "train"),
         # glmnet.control() parameters
         fdev             = p_dbl(0, 1, default = 1.0e-5, tags = "train"),
         devmax           = p_dbl(0, 1, default = 0.999, tags = "train"),
@@ -81,9 +84,9 @@ LearnerSurvCVGlmnet = R6Class(
         maxit            = p_int(1L, default = 1e+05, tags = "train"),
         dfmax            = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
         pmax             = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
-        # glmnet::predict.cv.glmnet() parameters
+        # glmnet::predict.cv.glmnet() and glmnet::predict.cv.relaxed() parameters
         s                = p_dbl(0, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
-        predict.gamma    = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"),
+        predict.gamma    = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), # renamed from 'gamma' to avoid duplication
         # glmnet::predict.coxnet() parameters
         exact            = p_lgl(default = FALSE, tags = "predict"),
         # glmnet::survfit.coxnet() parameters => survfit.coxph() parameters for distr prediction
