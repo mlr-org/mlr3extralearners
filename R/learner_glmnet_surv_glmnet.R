@@ -78,10 +78,10 @@ LearnerSurvGlmnet = R6Class(
         relax            = p_lgl(default = FALSE, tags = "train"),
         trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         cox.ties         = p_fct(c("breslow", "efron"), default = "efron", tags = "train"),
-        # relax.glmnet() parameters
+        # glmnet::relax.glmnet() parameters
         maxp             = p_int(1L, tags = "train"),
         path             = p_lgl(default = FALSE, tags = "train"),
-        # glmnet.control() parameters
+        # glmnet::glmnet.control() parameters
         fdev             = p_dbl(0, 1, default = 1.0e-5, tags = "train"),
         devmax           = p_dbl(0, 1, default = 0.999, tags = "train"),
         eps              = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
