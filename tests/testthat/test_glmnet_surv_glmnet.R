@@ -5,7 +5,7 @@ withr::local_seed(42)
 task = tsk("rats")$select(c("litter", "rx"))
 part = partition(task, ratio = 0.9)
 train_rows = part$train
-test_rows  = part$test
+test_rows = part$test
 unique_times = task$unique_times(rows = train_rows)
 
 test_that("autotest", {
@@ -71,4 +71,27 @@ test_that("offset and weight parameters", {
   task$set_col_roles(cols = "new_col", roles = "weights_learner")
   expect_silent(l$train(task, train_rows)$predict(task, test_rows))
   expect_equal(l$model$weights, task$weights_learner$weight[train_rows])
+})
+
+test_that("relax = TRUE works", {
+  task = tsk("grace")$filter(1:300)
+  learner = lrn("surv.glmnet", relax = TRUE, s = 0.03)
+  learner$train(task, train_rows)
+  assert_class(learner$native_model, "relaxed")
+
+  # gamma = 1 gives the original lasso fit
+  # gamma = 0 gives the fully relaxed (unpenalized refit) model
+  # intermediate gamma values mix the two
+  p1 = learner$predict(task, test_rows)
+  learner$param_set$set_values(gamma = 1) # original lasso fit
+  p2 = learner$predict(task, test_rows)
+  expect_equal(p1$lp, p2$lp)
+
+  learner$param_set$set_values(gamma = 0.5)
+  p3 = learner$predict(task, test_rows)
+  expect_false(all(p2$lp == p3$lp))
+
+  learner$param_set$set_values(gamma = 0)
+  p4 = learner$predict(task, test_rows)
+  expect_false(all(p3$lp == p4$lp))
 })
