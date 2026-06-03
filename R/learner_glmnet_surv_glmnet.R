@@ -66,7 +66,7 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         alpha            = p_dbl(0, 1, default = 1, tags = "train"),
         nlambda          = p_int(1L, default = 100L, tags = "train"),
         lambda.min.ratio = p_dbl(0, 1, tags = "train"),
-        lambda           = p_uty(tags = "train"),
+        lambda           = p_uty(default = NULL, tags = "train"),
         standardize      = p_lgl(default = TRUE, tags = "train"),
         intercept        = p_lgl(default = TRUE, tags = "train"),
         exclude          = p_uty(tags = "train"),
@@ -74,6 +74,7 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         lower.limits     = p_uty(default = -Inf, tags = "train"),
         upper.limits     = p_uty(default = Inf, tags = "train"),
         relax            = p_lgl(default = FALSE, tags = "train"),
+        trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         cox.ties         = p_fct(c("breslow", "efron"), default = "efron", tags = "train"),
         # glmnet.control() parameters
         fdev             = p_dbl(0, 1, default = 1.0e-5, tags = "train"),
@@ -85,7 +86,6 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         exmx             = p_dbl(default = 250L, tags = "train"),
         prec             = p_dbl(default = 1e-10, tags = "train"),
         mxit             = p_int(1L, default = 100L, tags = "train"),
-        trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         epsnr            = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
         mxitnr           = p_int(1L, default = 25L, tags = "train"),
         thresh           = p_dbl(0, default = 1e-07, tags = "train"),
@@ -94,11 +94,12 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         pmax             = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
         # glmnet::predict.coxnet() parameters
         exact            = p_lgl(default = FALSE, tags = "predict"),
-        use_pred_offset  = p_lgl(default = TRUE, tags = "predict"),
         s                = p_dbl(0, default = 0.01, tags = "predict"),
         # glmnet::survfit.coxnet() parameters => survfit.coxph() parameters for distr prediction
         stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
-        ctype            = p_int(lower = 1L, upper = 2L, tags = "predict") # how to handle ties
+        ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties
+        # for using the offset during prediction
+        use_pred_offset  = p_lgl(default = TRUE, tags = "predict")
       )
 
       # TODO: Remove `cox.ties` initialization once glmnet >= 5.1 defaults to
