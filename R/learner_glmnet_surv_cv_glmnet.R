@@ -86,7 +86,7 @@ LearnerSurvCVGlmnet = R6Class(
         pmax             = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
         # glmnet::predict.cv.glmnet() and glmnet::predict.cv.relaxed() parameters
         s                = p_dbl(0, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
-        predict.gamma    = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), # renamed from 'gamma' to avoid duplication
+        predict.gamma    = p_dbl(0, 1, default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), # renamed from 'gamma' to avoid duplication
         # glmnet::predict.coxnet() parameters
         exact            = p_lgl(default = FALSE, tags = "predict"),
         # glmnet::survfit.coxnet() parameters => survfit.coxph() parameters for distr prediction
@@ -157,6 +157,10 @@ LearnerSurvCVGlmnet = R6Class(
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
       pv = rename(pv, "predict.gamma", "gamma")
+      # one predict method requires numeric gamma always
+      if (inherits(self$native_model, "cv.relaxed") && is.character(pv$gamma)) {
+        pv$gamma = self$native_model$relaxed[[pv$gamma]] # gamma.1se or gamma.min
+      }
       pv = glmnet_set_offset(task, "predict", pv)
 
       # get survival matrix
