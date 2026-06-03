@@ -12,7 +12,8 @@ glmnet_get_lambda = function(self, pv) {
     model[[s]]
   } else if (is.numeric(s)) {
     s
-  } else { # null / missing
+  } else {
+    # null / missing
     if (inherits(model, "cv.glmnet")) {
       model[["lambda.1se"]]
     } else if (length(model$lambda) == 1L) {
@@ -20,7 +21,8 @@ glmnet_get_lambda = function(self, pv) {
     } else {
       default = self$param_set$default$s
       warningf(
-        "Multiple lambdas have been fit. Lambda will be set to %s (see parameter 's').", default
+        "Multiple lambdas have been fit. Lambda will be set to %s (see parameter 's').",
+        default
       )
       default
     }
@@ -58,7 +60,9 @@ glmnet_selected_features = function(self, lambda = NULL) {
 glmnet_set_offset = function(task, phase = "train", pv) {
   assert_choice(phase, c("train", "predict"))
 
-  if ("offset" %nin% task$properties) return(pv)
+  if ("offset" %nin% task$properties) {
+    return(pv)
+  }
 
   use_pred_offset = isTRUE(pv$use_pred_offset)
   is_train = phase == "train"
@@ -85,6 +89,8 @@ glmnet_invoke = function(data, target, pv, cv = FALSE) {
 
   invoke(
     if (cv) glmnet::cv.glmnet else glmnet::glmnet,
-    x = data, y = target, .args = pv
+    x = data,
+    y = target,
+    .args = pv
   )
 }
