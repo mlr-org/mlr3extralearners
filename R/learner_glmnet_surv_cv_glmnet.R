@@ -33,12 +33,14 @@
 #' @export
 #' @template seealso_learner
 #' @template example
-LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
+LearnerSurvCVGlmnet = R6Class(
+  "LearnerSurvCVGlmnet",
   inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      # fmt: skip
       ps = ps(
         # glmnet::cv.glmnet() parameters
         lambda           = p_uty(default = NULL, tags = "train"),
@@ -49,7 +51,7 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
         grouped          = p_lgl(default = TRUE, tags = "train"),
         keep             = p_lgl(default = FALSE, tags = "train"),
         parallel         = p_lgl(default = FALSE, tags = "train"),
-        gamma            = p_uty(tags = "train"),
+        gamma            = p_uty(default = c(0, 0.25, 0.5, 0.75, 1), tags = "train"),
         relax            = p_lgl(default = FALSE, tags = "train"),
         trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         # glmnet::glmnet() parameters
@@ -155,19 +157,21 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
       pv = glmnet_set_offset(task, "predict", pv)
 
       # get survival matrix
-      fit = invoke(survival::survfit,
-                   formula = self$model$model,
-                   x = self$model$x,
-                   y = self$model$y,
-                   weights = self$model$weights,
-                   offset = self$model$offset,
-                   newx = newdata,
-                   se.fit = FALSE,
-                   .args = pv)
+      fit = invoke(
+        survival::survfit,
+        formula = self$native_model,
+        x = self$model$x,
+        y = self$model$y,
+        weights = self$model$weights,
+        offset = self$model$offset,
+        newx = newdata,
+        se.fit = FALSE,
+        .args = pv
+      )
 
       # get linear predictor
       lp = as.numeric(
-        invoke(predict, self$model$model, newx = newdata, type = "link", .args = pv)
+        invoke(predict, self$native_model, newx = newdata, type = "link", .args = pv)
       )
 
       mlr3proba::surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
