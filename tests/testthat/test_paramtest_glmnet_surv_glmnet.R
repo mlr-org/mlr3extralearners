@@ -26,7 +26,7 @@ test_that("surv.glmnet", {
 
 test_that("predict surv.glmnet", {
   learner = lrn("surv.glmnet")
-  fun = list(glmnet::predict.glmnet, survival::survfit)
+  fun = list(glmnet::predict.glmnet, glmnet:::predict.coxnet, survival::survfit)
   exclude = c(
     "object", # handled via mlr3
     "newx", # handled via mlr3
