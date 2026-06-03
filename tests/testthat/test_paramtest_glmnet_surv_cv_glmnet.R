@@ -3,13 +3,15 @@ skip_if_not_installed("glmnet")
 
 test_that("surv.cv_glmnet", {
   learner = lrn("surv.cv_glmnet")
-  fun = list(glmnet::cv.glmnet, glmnet::glmnet, glmnet::glmnet.control)
+  fun = list(glmnet::cv.glmnet, glmnet::glmnet, glmnet::relax.glmnet, glmnet::glmnet.control)
   exclude = c(
     "x", # handled by mlr3
     "y", # handled by mlr3
     "family", # only "cox" is applicable for this learner
     "weights", # handled by mlr3
     "offset", # handled by mlr3
+    "fit", # fit object is passed on to relax.glmnet()
+    "check.args", # default TRUE is good for mlr3, no need to expose
     "type.gaussian", # not applicable for cox family
     "type.logistic", # not applicable for cox family
     "standardize.response", # not applicable for cox family
@@ -25,7 +27,13 @@ test_that("surv.cv_glmnet", {
 
 test_that("predict surv.cv_glmnet", {
   learner = lrn("surv.cv_glmnet")
-  fun = list(glmnet:::predict.cv.glmnet, glmnet:::predict.coxnet, survival::survfit)
+  fun = list(
+    glmnet:::predict.cv.glmnet,
+    glmnet:::predict.cv.relaxed,
+    glmnet::predict.glmnet,
+    glmnet::predict.relaxed,
+    survival::survfit
+  )
   exclude = c(
     "object", # handled via mlr3
     "newx", # handled via mlr3
@@ -33,6 +41,7 @@ test_that("predict surv.cv_glmnet", {
     "newoffset", # handled by mlr3
     "formula", # handled via mlr3
     "predict.gamma", # renamed from gamma
+    "gamma", # renamed to predict.gamma in mlr3 to avoid confusion with train gamma parameter
     "stype", # for distr prediction
     "ctype", # for distr prediction
     "use_pred_offset" # for using the offset during prediction

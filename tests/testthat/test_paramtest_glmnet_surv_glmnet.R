@@ -4,13 +4,15 @@ skip_if_not_installed("glmnet")
 
 test_that("surv.glmnet", {
   learner = lrn("surv.glmnet")
-  fun = list(glmnet::glmnet, glmnet::glmnet.control)
+  fun = list(glmnet::glmnet, glmnet::relax.glmnet, glmnet::glmnet.control)
   exclude = c(
     "x", # handled by mlr3
     "y", # handled by mlr3
     "family", # only "cox" is applicable for this learner
     "weights", # handled by mlr3
     "offset", # handled by mlr3
+    "fit", # fit object is passed on to relax.glmnet()
+    "check.args", # default TRUE is good for mlr3, no need to expose
     "type.gaussian", # not applicable for cox family
     "type.logistic", # not applicable for cox family
     "standardize.response", # not applicable for cox family
