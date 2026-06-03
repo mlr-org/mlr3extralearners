@@ -61,7 +61,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    grouped \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   gamma \tab untyped \tab - \tab  \tab - \cr
+   gamma \tab untyped \tab c(0, 0.25, 0.5, 0.75, 1) \tab  \tab - \cr
    relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr

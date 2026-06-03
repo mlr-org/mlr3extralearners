@@ -90,6 +90,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
    relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   maxp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   path \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    cox.ties \tab character \tab efron \tab breslow, efron \tab - \cr
    fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -109,6 +111,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    pmax \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    exact \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    s \tab numeric \tab 0.01 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   gamma \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    stype \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    ctype \tab integer \tab - \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    use_pred_offset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
