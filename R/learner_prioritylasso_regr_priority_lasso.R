@@ -10,7 +10,7 @@
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"gaussian"` and cannot be changed
-#' - `type.measure` set to `"mse"` (cross-validation measure)
+#' - `type.measure` set to `"mse"` (cross-validation measure) and cannot be changed
 #'
 #' @inheritSection mlr_learners_classif.priority_lasso Scope and supported arguments
 #'
