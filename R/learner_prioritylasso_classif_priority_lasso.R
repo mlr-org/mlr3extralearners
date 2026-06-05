@@ -3,15 +3,17 @@
 #' @name mlr_learners_classif.priority_lasso
 #'
 #' @description
-#' Patient outcome prediction based on multi-omics data, taking practitioners' preferences into account.
+#' Patient outcome prediction based on multi-omics data, taking practitioners'
+#' preferences into account.
 #' Calls `prioritylasso::prioritylasso()` from \CRANpkg{prioritylasso}.
+#' Only binary classification is supported.
 #'
-#' @details
+#' @section Scope and supported arguments:
 #' This learner intentionally exposes a focused subset of training and prediction arguments.
 #' It is designed to work well out of the box, without requiring extensive parameter tuning.
 #' Some arguments from `cv.glmnet()`, `glmnet()`, and `predict.prioritylasso()` are not included,
 #' because they are not consistently supported or forwarded through the full train/predict path
-#' (e.g. handling missing test data or performing relaxed lasso fits).
+#' (e.g. handling missing test data, or performing relaxed lasso fits).
 #'
 #' Please open an issue if there is a need for supporting more learner parameters.
 #'
@@ -83,15 +85,16 @@ LearnerClassifPriorityLasso = R6Class(
       names(coefs)
     }
   ),
+
   private = list(
     .train = function(task) {
-      pars = self$param_set$get_values(tags = "train")
-      pars$family = "binomial"
-      pars$weights = private$.get_weights(task)
+      pv = self$param_set$get_values(tags = "train")
+      pv$family = "binomial"
+      pv$weights = private$.get_weights(task)
 
       data = as_numeric_matrix(task$data(cols = task$feature_names))
       target = task$truth()
-      invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pars)
+      invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pv)
     },
 
     .predict = function(task) {
