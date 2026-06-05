@@ -1,5 +1,11 @@
 # mlr3extralearners (development version)
 
+## Other
+
+* `glmnet` v5.0 updates (affects survival `{cv.}glmnet` + `priority_lasso` learners)
+* Improved parameter annotation/instantiation for `glmnet` & `priority_lasso` learners
+* Added `.threads` parameter to `survdnn`
+
 # mlr3extralearners 1.5.2
 
 ## Other
