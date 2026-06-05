@@ -5,17 +5,22 @@
 \alias{LearnerClassifPriorityLasso}
 \title{Classification Priority Lasso Learner}
 \description{
-Patient outcome prediction based on multi-omics data, taking practitioners' preferences into account.
+Patient outcome prediction based on multi-omics data, taking practitioners'
+preferences into account.
 Calls \code{prioritylasso::prioritylasso()} from \CRANpkg{prioritylasso}.
+Only binary classification is supported.
 }
-\details{
+\section{Scope and supported arguments}{
+
 This learner intentionally exposes a focused subset of training and prediction arguments.
 It is designed to work well out of the box, without requiring extensive parameter tuning.
 Some arguments from \code{cv.glmnet()}, \code{glmnet()}, and \code{predict.prioritylasso()} are not included,
-because they are not consistently supported or forwarded through the full train/predict path.
+because they are not consistently supported or forwarded through the full train/predict path
+(e.g. handling missing test data, or performing relaxed lasso fits).
 
 Please open an issue if there is a need for supporting more learner parameters.
 }
+
 \section{Initial parameter values}{
 
 \itemize{
@@ -66,19 +71,29 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \examples{
 \dontshow{if (learner_is_runnable("classif.priority_lasso")) withAutoprint(\{ # examplesIf}
-# Define the Learner and set parameter values
-learner = lrn("classif.priority_lasso", type.measure = "auc",
-  blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
-print(learner)
-
 # Define a Task
 task = mlr3::as_task_classif(prioritylasso::pl_data, target = "pl_out")
 
-# Train the learner
-learner$train(task)
+# Create train and test set
+ids = partition(task)
 
-# print the model
-print(learner$model)
+# Define the Learner and set parameter values
+learner = lrn("classif.priority_lasso", type.measure = "auc", standardize = FALSE,
+  blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028),
+  max.coef = c(Inf, Inf, 10, 10))
+print(learner)
+
+# Train the learner
+learner$train(task, row_ids = ids$train)
+
+# Selected features
+learner$selected_features()
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
@@ -100,6 +115,8 @@ Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 }
 \author{
 HarutyunyanLiana
+
+bblodfon
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifPriorityLasso}

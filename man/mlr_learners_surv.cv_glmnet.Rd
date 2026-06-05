@@ -154,6 +154,8 @@ Friedman J, Hastie T, Tibshirani R (2010).
 }
 \author{
 be-marc
+
+bblodfon
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvCVGlmnet}
