@@ -42,6 +42,7 @@ LearnerRegrPriorityLasso = R6Class(
         foldid                = p_uty(default = NULL, tags = "train"),
         cvoffset              = p_lgl(default = FALSE, tags = "train"),
         cvoffsetnfolds        = p_int(1L, default = 10L, tags = "train"),
+        scale.y               = p_lgl(default = FALSE, tags = "train"),
         return.x              = p_lgl(default = TRUE, tags = "train"),
         # glmnet::cv.glmnet() parameters
         lambda                = p_uty(default = NULL, tags = "train"),
