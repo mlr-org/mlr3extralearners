@@ -93,13 +93,13 @@ LearnerClassifPriorityLasso = R6Class(
       pv$family = "binomial"
       pv$weights = private$.get_weights(task)
 
-      data = as_numeric_matrix(task$data(cols = task$feature_names))
+      data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
       invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pv)
     },
 
     .predict = function(task) {
-      newdata = as_numeric_matrix(ordered_features(task, self))
+      newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
 
       p = invoke(predict, self$model, newdata = newdata, type = "response", .args = pv)

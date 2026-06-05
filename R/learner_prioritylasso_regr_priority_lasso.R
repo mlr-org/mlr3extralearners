@@ -87,7 +87,7 @@ LearnerRegrPriorityLasso = R6Class(
       pv$type.measure = "mse"
       pv$weights = private$.get_weights(task)
 
-      data = as_numeric_matrix(task$data(cols = task$feature_names))
+      data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
       invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pv)
     },
