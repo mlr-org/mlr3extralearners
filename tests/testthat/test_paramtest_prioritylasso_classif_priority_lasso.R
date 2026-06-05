@@ -3,7 +3,6 @@ skip_if_not_installed("prioritylasso")
 test_that("classif.priority_lasso train", {
   learner = lrn("classif.priority_lasso")
   fun = list(prioritylasso::prioritylasso, glmnet::cv.glmnet, glmnet::glmnet)
-
   exclude = c(
     "X", # handled internally
     "Y", # handled internally
@@ -32,7 +31,7 @@ test_that("classif.priority_lasso train", {
     "lower.limits", # not supported
     "upper.limits", # not supported
     "maxit", # not supported
-    "type.gaussian", # not supported
+    "type.gaussian", # not applicable to classification
     "standardize.response", # not supported
     "type.multinomial", # not supported
     "cox.ties" # not supported
@@ -44,7 +43,7 @@ test_that("classif.priority_lasso train", {
 
 test_that("classif.priority_lasso predict", {
   learner = lrn("classif.priority_lasso")
-  fun = list(prioritylasso:::predict.prioritylasso)
+  fun = prioritylasso:::predict.prioritylasso
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
