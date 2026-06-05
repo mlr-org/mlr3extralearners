@@ -1,6 +1,7 @@
 #' @title Cross-Validated GLM with Elastic Net Regularization Survival Learner
 #' @name mlr_learners_surv.cv_glmnet
 #' @author be-marc
+#' @author bblodfon
 #'
 #' @description
 #' Generalized linear models with elastic net regularization.

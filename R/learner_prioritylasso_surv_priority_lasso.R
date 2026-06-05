@@ -1,5 +1,6 @@
 #' @title Survival Priority Lasso Learner
 #' @author HarutyunyanLiana
+#' @author bblodfon
 #' @name mlr_learners_surv.priority_lasso
 #'
 #' @description

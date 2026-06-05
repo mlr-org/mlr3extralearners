@@ -1,5 +1,6 @@
 #' @title Regression Priority Lasso Learner
 #' @author HarutyunyanLiana
+#' @author bblodfon
 #' @name mlr_learners_regr.priority_lasso
 #'
 #' @description

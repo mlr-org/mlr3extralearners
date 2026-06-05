@@ -1,5 +1,6 @@
 #' @title Classification Priority Lasso Learner
 #' @author HarutyunyanLiana
+#' @author bblodfon
 #' @name mlr_learners_classif.priority_lasso
 #'
 #' @description
