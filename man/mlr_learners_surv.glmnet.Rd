@@ -90,10 +90,10 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
    relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   maxp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   path \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    cox.ties \tab character \tab efron \tab breslow, efron \tab - \cr
+   maxp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   path \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    devmax \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    eps \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
