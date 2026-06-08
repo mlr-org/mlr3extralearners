@@ -61,7 +61,7 @@ LearnerSurvCVGlmnet = R6Class(
         lambda.min.ratio = p_dbl(0, 1, tags = "train"),
         standardize      = p_lgl(default = TRUE, tags = "train"),
         intercept        = p_lgl(default = TRUE, tags = "train"),
-        exclude          = p_uty(tags = "train"),
+        exclude          = p_uty(default = NULL, tags = "train"),
         penalty.factor   = p_uty(tags = "train"),
         lower.limits     = p_uty(default = -Inf, tags = "train"),
         upper.limits     = p_uty(default = Inf, tags = "train"),
@@ -81,12 +81,12 @@ LearnerSurvCVGlmnet = R6Class(
         mxit             = p_int(1L, default = 100L, tags = "train"),
         epsnr            = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
         mxitnr           = p_int(1L, default = 25L, tags = "train"),
-        thresh           = p_dbl(0, default = 1e-07, tags = "train"),
+        thresh           = p_dbl(0L, default = 1e-07, tags = "train"),
         maxit            = p_int(1L, default = 1e+05, tags = "train"),
-        dfmax            = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
-        pmax             = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
+        dfmax            = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
+        pmax             = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
         # glmnet::predict.cv.glmnet() and glmnet::predict.cv.relaxed() parameters
-        s                = p_dbl(0, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
+        s                = p_dbl(0L, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
         predict.gamma    = p_dbl(0, 1, default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), # renamed from 'gamma' to avoid duplication
         # glmnet::predict.coxnet() parameters
         exact            = p_lgl(default = FALSE, tags = "predict"),
@@ -94,13 +94,13 @@ LearnerSurvCVGlmnet = R6Class(
         stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
         ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties
         # for using the offset during prediction
-        use_pred_offset  = p_lgl(default = TRUE, tags = "predict")
+        use_pred_offset  = p_lgl(init = TRUE, tags = "predict")
       )
 
       # TODO: Remove `cox.ties` initialization once glmnet >= 5.1 defaults to
       # cox.ties = "efron" without warnings.
       # Setting now explicitly to avoid warnings.
-      ps$set_values(use_pred_offset = TRUE, cox.ties = "breslow")
+      ps$set_values(cox.ties = "breslow")
 
       super$initialize(
         id = "surv.cv_glmnet",
