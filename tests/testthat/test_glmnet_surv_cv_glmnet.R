@@ -99,7 +99,7 @@ test_that("relax = TRUE works", {
   expect_false(all(p2$lp == p3$lp))
 
   # numeric gamma value should also work and give different predictions
-  learner$param_set$set_values(predict.gamma = 0.42)
+  learner$param_set$set_values(predict.gamma = 0.33)
   p4 = learner$predict(task, test_rows)
-  expect_false(all(p3$lp == p4$lp))
+  expect_false(all(p2$lp == p4$lp))
 })

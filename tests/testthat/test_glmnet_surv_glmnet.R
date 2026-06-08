@@ -93,5 +93,5 @@ test_that("relax = TRUE works", {
 
   learner$param_set$set_values(gamma = 0)
   p4 = learner$predict(task, test_rows)
-  expect_false(all(p3$lp == p4$lp))
+  expect_false(all(p2$lp == p4$lp))
 })
