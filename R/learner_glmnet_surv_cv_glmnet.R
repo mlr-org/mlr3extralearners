@@ -52,7 +52,7 @@ LearnerSurvCVGlmnet = R6Class(
         grouped          = p_lgl(default = TRUE, tags = "train"),
         keep             = p_lgl(default = FALSE, tags = "train"),
         parallel         = p_lgl(default = FALSE, tags = "train"),
-        gamma            = p_uty(default = c(0, 0.25, 0.5, 0.75, 1), tags = "train"),
+        gamma            = p_uty(default = c(0, 0.25, 0.5, 0.75, 1), tags = "train", depends = quote(relax == TRUE)),
         relax            = p_lgl(default = FALSE, tags = "train"),
         trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         # glmnet::glmnet() parameters
