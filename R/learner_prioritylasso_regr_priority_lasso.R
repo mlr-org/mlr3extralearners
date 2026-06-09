@@ -49,7 +49,7 @@ LearnerRegrPriorityLasso = R6Class(
         grouped               = p_lgl(default = TRUE, tags = "train"),
         trace.it              = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
         # glmnet::glmnet() parameters
-        type.gaussian = p_fct(c("covariance", "naive"), tags = "train"),
+        type.gaussian         = p_fct(c("covariance", "naive"), tags = "train"),
         # prioritylasso:::predict.prioritylasso() parameters
         include.allintercepts = p_lgl(default = FALSE, tags = "predict"),
         use.blocks            = p_uty(default = "all", tags = "predict")

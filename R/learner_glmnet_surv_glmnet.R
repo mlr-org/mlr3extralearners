@@ -89,20 +89,20 @@ LearnerSurvGlmnet = R6Class(
         big              = p_dbl(default = 9.9e+35, tags = "train"),
         mnlam            = p_int(default = 5L, tags = "train"),
         pmin             = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
-        exmx             = p_dbl(default = 250L, tags = "train"),
+        exmx             = p_dbl(default = 250, tags = "train"),
         prec             = p_dbl(default = 1e-10, tags = "train"),
         mxit             = p_int(1L, default = 100L, tags = "train"),
         epsnr            = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
         mxitnr           = p_int(1L, default = 25L, tags = "train"),
-        thresh           = p_dbl(0L, default = 1e-07, tags = "train"),
-        maxit            = p_int(1L, default = 1e+05, tags = "train"),
+        thresh           = p_dbl(0, default = 1e-07, tags = "train"),
+        maxit            = p_int(1L, default = 100000L, tags = "train"),
         dfmax            = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
         pmax             = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
         # glmnet::predict.glmnet() parameters
         exact            = p_lgl(default = FALSE, tags = "predict"),
-        s                = p_dbl(0L, default = 0.01, tags = "predict"),
+        s                = p_dbl(0, default = 0.01, tags = "predict"),
         # glmnet::predict.relaxed() parameters
-        gamma            = p_dbl(0, 1, default = 1L, tags = "predict"),
+        gamma            = p_dbl(0, 1, default = 1, tags = "predict"),
         # glmnet:::survfit.coxnet() parameters => survfit.coxph() parameters for distr prediction
         stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
         ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties

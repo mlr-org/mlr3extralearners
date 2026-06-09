@@ -76,17 +76,17 @@ LearnerSurvCVGlmnet = R6Class(
         big              = p_dbl(default = 9.9e+35, tags = "train"),
         mnlam            = p_int(default = 5L, tags = "train"),
         pmin             = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
-        exmx             = p_dbl(default = 250L, tags = "train"),
+        exmx             = p_dbl(default = 250, tags = "train"),
         prec             = p_dbl(default = 1e-10, tags = "train"),
         mxit             = p_int(1L, default = 100L, tags = "train"),
         epsnr            = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
         mxitnr           = p_int(1L, default = 25L, tags = "train"),
-        thresh           = p_dbl(0L, default = 1e-07, tags = "train"),
-        maxit            = p_int(1L, default = 1e+05, tags = "train"),
+        thresh           = p_dbl(0, default = 1e-07, tags = "train"),
+        maxit            = p_int(1L, default = 100000L, tags = "train"),
         dfmax            = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
         pmax             = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
         # glmnet::predict.cv.glmnet() and glmnet::predict.cv.relaxed() parameters
-        s                = p_dbl(0L, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
+        s                = p_dbl(0, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
         predict.gamma    = p_dbl(0, 1, default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), # renamed from 'gamma' to avoid duplication
         # glmnet::predict.coxnet() parameters
         exact            = p_lgl(default = FALSE, tags = "predict"),
