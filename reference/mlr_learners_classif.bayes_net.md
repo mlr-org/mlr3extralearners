@@ -268,58 +268,58 @@ print(learner$model)
 #> V19(1): Class 
 #> V2(1): Class 
 #> V20(1): Class 
-#> V21(1): Class 
+#> V21(2): Class 
 #> V22(1): Class 
 #> V23(1): Class 
 #> V24(1): Class 
 #> V25(1): Class 
 #> V26(1): Class 
 #> V27(1): Class 
-#> V28(2): Class 
+#> V28(1): Class 
 #> V29(1): Class 
-#> V3(2): Class 
+#> V3(1): Class 
 #> V30(1): Class 
 #> V31(1): Class 
 #> V32(1): Class 
 #> V33(1): Class 
 #> V34(1): Class 
 #> V35(1): Class 
-#> V36(1): Class 
-#> V37(1): Class 
+#> V36(2): Class 
+#> V37(2): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(2): Class 
-#> V40(1): Class 
+#> V4(1): Class 
+#> V40(2): Class 
 #> V41(1): Class 
 #> V42(1): Class 
 #> V43(1): Class 
 #> V44(1): Class 
-#> V45(2): Class 
-#> V46(2): Class 
-#> V47(2): Class 
+#> V45(1): Class 
+#> V46(1): Class 
+#> V47(1): Class 
 #> V48(2): Class 
-#> V49(2): Class 
-#> V5(2): Class 
+#> V49(1): Class 
+#> V5(1): Class 
 #> V50(1): Class 
-#> V51(2): Class 
-#> V52(2): Class 
+#> V51(1): Class 
+#> V52(1): Class 
 #> V53(1): Class 
-#> V54(1): Class 
+#> V54(2): Class 
 #> V55(1): Class 
 #> V56(1): Class 
 #> V57(1): Class 
-#> V58(2): Class 
+#> V58(1): Class 
 #> V59(1): Class 
 #> V6(1): Class 
 #> V60(1): Class 
 #> V7(1): Class 
 #> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1338.5474432820702
-#> LogScore BDeu: -1367.7517507832201
-#> LogScore MDL: -1376.2030570930003
-#> LogScore ENTROPY: -1289.8497632632136
-#> LogScore AIC: -1324.8497632632136
+#> LogScore Bayes: -895.0048430896016
+#> LogScore BDeu: -913.9017479432871
+#> LogScore MDL: -920.9477544158707
+#> LogScore ENTROPY: -864.2013041848678
+#> LogScore AIC: -887.2013041848678
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.2608696 
 ```

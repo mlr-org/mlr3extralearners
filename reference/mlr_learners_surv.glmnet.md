@@ -1,8 +1,8 @@
 # GLM with Elastic Net Regularization Survival Learner
 
 Generalized linear models with elastic net regularization. Calls
-[`glmnet::glmnet()`](https://rdrr.io/pkg/glmnet/man/glmnet.html) from
-package [glmnet](https://CRAN.R-project.org/package=glmnet).
+[`glmnet::glmnet()`](https://glmnet.stanford.edu/reference/glmnet.html)
+from package [glmnet](https://CRAN.R-project.org/package=glmnet).
 
 ## Initial parameter values
 
@@ -15,13 +15,13 @@ This learner returns three prediction types:
 1.  `lp`: a vector containing the linear predictors (relative risk
     scores), where each score corresponds to a specific test
     observation. Calculated using
-    [`glmnet::predict.coxnet()`](https://rdrr.io/pkg/glmnet/man/predict.glmnet.html).
+    [`glmnet::predict.coxnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html).
 
 2.  `crank`: same as `lp`.
 
 3.  `distr`: a survival matrix in two dimensions, where observations are
     represented in rows and time points in columns. Calculated using
-    [`glmnet::survfit.coxnet()`](https://rdrr.io/pkg/glmnet/man/survfit.coxnet.html).
+    [`glmnet::survfit.coxnet()`](https://glmnet.stanford.edu/reference/survfit.coxnet.html).
     Parameters `stype` and `ctype` relate to how `lp` predictions are
     transformed into survival predictions and are described in
     [`survival::survfit.coxph()`](https://rdrr.io/pkg/survival/man/survfit.coxph.html).
@@ -29,14 +29,14 @@ This learner returns three prediction types:
     hazard.
 
 **Caution**: This learner is different to learners calling
-[`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
 in that it does not use the internal optimization of parameter `lambda`.
 Instead, `lambda` needs to be tuned by the user (e.g., via
 [mlr3tuning](https://CRAN.R-project.org/package=mlr3tuning)). When
 `lambda` is tuned, the `glmnet` will be trained for each tuning
 iteration. While fitting the whole path of `lambda`s would be more
 efficient, as is done by default in
-[`glmnet::glmnet()`](https://rdrr.io/pkg/glmnet/man/glmnet.html),
+[`glmnet::glmnet()`](https://glmnet.stanford.edu/reference/glmnet.html),
 tuning/selecting the parameter at prediction time (using parameter `s`)
 is currently not supported in
 [mlr3](https://CRAN.R-project.org/package=mlr3) (at least not in
@@ -54,11 +54,11 @@ requires custom resampling strategies (blocked design, stratification).
 
 If a `Task` contains a column with the `offset` role, it is
 automatically incorporated during training via the `offset` argument in
-[`glmnet::glmnet()`](https://rdrr.io/pkg/glmnet/man/glmnet.html). During
-prediction, the offset column from the test set is used only if
+[`glmnet::glmnet()`](https://glmnet.stanford.edu/reference/glmnet.html).
+During prediction, the offset column from the test set is used only if
 `use_pred_offset = TRUE` (default), passed via the `newoffset` argument
 in
-[`glmnet::predict.coxnet()`](https://rdrr.io/pkg/glmnet/man/predict.glmnet.html).
+[`glmnet::predict.coxnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html).
 Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is
 applied, effectively disabling the offset adjustment during prediction.
 
@@ -212,7 +212,7 @@ Creates a new instance of this
 ### Method `selected_features()`
 
 Returns the set of selected features as reported by
-[`glmnet::predict.glmnet()`](https://rdrr.io/pkg/glmnet/man/predict.glmnet.html)
+[`glmnet::predict.glmnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html)
 with `type` set to `"nonzero"`.
 
 #### Usage

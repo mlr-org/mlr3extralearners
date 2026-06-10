@@ -1,5 +1,12 @@
 # Changelog
 
+## mlr3extralearners (development version)
+
+### Other
+
+- `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and
+  `jaxlib` Python dependencies so they are installed automatically.
+
 ## mlr3extralearners 1.5.2
 
 ### Other

@@ -221,29 +221,29 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: deeplearning
-#> Model ID:  DeepLearning_model_R_1781095337255_109 
+#> Model ID:  DeepLearning_model_R_1781098996955_110 
 #> Status of Neuron Layers: predicting mpg, regression, gaussian distribution, Quadratic loss, 42,601 weights/biases, 508.1 KB, 210 training samples, mini-batch size 1
 #>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum
 #> 1     1    10     Input  0.00 %       NA       NA        NA       NA       NA
-#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.006971 0.006997 0.000000
-#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.013170 0.042785 0.000000
-#> 4     4     1    Linear      NA 0.000000 0.000000  0.000489 0.001535 0.000000
+#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.006000 0.004188 0.000000
+#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.017595 0.038471 0.000000
+#> 4     4     1    Linear      NA 0.000000 0.000000  0.000521 0.001083 0.000000
 #>   mean_weight weight_rms mean_bias bias_rms
 #> 1          NA         NA        NA       NA
-#> 2   -0.001302   0.099796  0.498776 0.001815
-#> 3   -0.000131   0.069362  0.999583 0.001119
-#> 4    0.001281   0.099577 -0.000275 0.000000
+#> 2   -0.002029   0.099217  0.490914 0.008178
+#> 3   -0.001729   0.069828  0.997265 0.003432
+#> 4   -0.002660   0.096901  0.002005 0.000000
 #> 
 #> 
 #> H2ORegressionMetrics: deeplearning
 #> ** Reported on training data. **
 #> ** Metrics reported on full training frame **
 #> 
-#> MSE:  21.78497
-#> RMSE:  4.667437
-#> MAE:  3.841855
-#> RMSLE:  0.2525881
-#> Mean Residual Deviance :  21.78497
+#> MSE:  5.551458
+#> RMSE:  2.356153
+#> MAE:  2.036496
+#> RMSLE:  0.1090719
+#> Mean Residual Deviance :  5.551458
 #> 
 #> 
 #> 
@@ -256,5 +256,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 26.31705 
+#> 7.673137 
 ```
