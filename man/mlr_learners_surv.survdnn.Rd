@@ -60,6 +60,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    callbacks \tab untyped \tab NULL \tab  \tab - \cr
    .seed \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    .device \tab character \tab auto \tab auto, cpu, cuda \tab - \cr
+   .threads \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    na_action \tab character \tab omit \tab omit, fail \tab - \cr
 }
 }

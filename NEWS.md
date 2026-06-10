@@ -1,7 +1,18 @@
 # mlr3extralearners (development version)
 
+## Breaking Changes
+
+* `classif.priority_lasso`, `regr.priority_lasso`, and `surv.priority_lasso`: the parameter sets were reduced to a focused subset of `prioritylasso::prioritylasso()` arguments.
+The `glmnet::cv.glmnet()` pass-through hyperparameters were removed because they were not consistently forwarded (#594).
+* `surv.cv_glmnet`: removed the parameters `standardize.response`, `type.gaussian`, `type.logistic`, and `type.multinomial`, which are not applicable to the Cox family (#594).
+* `surv.glmnet`: removed the parameters `alignment`, `parallel`, `type.logistic`, and `type.multinomial`, which are CV-only or not applicable to the Cox family, and renamed the predict parameter `predict.gamma` to `gamma` (#594).
+
 ## Other
 
+* Updated minimum versions of suggested packages, most notably `glmnet` (>= 5.0) (#594).
+* `surv.cv_glmnet` and `surv.glmnet`: updated for `glmnet` v5.0, added the train parameters `cox.ties` (initialized to `"breslow"` to keep the previous tie-handling behavior), `maxp`, and `path`, added the predict parameter `exact` (`surv.cv_glmnet` only), fixed predictions for relaxed fits (`relax = TRUE`), and added a read-only `native_model` field that returns the fitted `glmnet` model (#594).
+* `surv.priority_lasso`: added the train parameter `cox.ties`, initialized to `"breslow"` (#594).
+* `surv.survdnn`: added the `.threads` train parameter (#594).
 * `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and `jaxlib` Python dependencies so they are installed automatically.
 
 # mlr3extralearners 1.5.2

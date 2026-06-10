@@ -12,6 +12,8 @@ Calls \code{glmnet::cv.glmnet()} from package \CRANpkg{glmnet}.
 
 \itemize{
 \item \code{family} is set to \code{"cox"} and cannot be changed.
+\item \code{cox.ties} is initialized to \code{"breslow"} to keep the tie-handling behavior of earlier glmnet versions,
+and to silence the glmnet v5.0 warning about the upcoming default change to \code{"efron"}.
 }
 }
 
@@ -25,7 +27,7 @@ Calculated using \code{glmnet::predict.cv.glmnet()}.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{glmnet::survfit.cv.glmnet()}.
+Calculated using \code{glmnet:::survfit.cv.glmnet()}.
 Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
 into survival predictions and are described in \code{survival::survfit.coxph()}.
 By default the Breslow estimator is used for computing the baseline hazard.
@@ -53,50 +55,50 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
-   alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   devmax \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   dfmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   eps \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   epsnr \tab numeric \tab 1e-08 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   exclude \tab untyped \tab - \tab  \tab - \cr
-   exmx \tab numeric \tab 250 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   foldid \tab untyped \tab NULL \tab  \tab - \cr
-   gamma \tab untyped \tab - \tab  \tab - \cr
-   grouped \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   lambda \tab untyped \tab - \tab  \tab - \cr
-   lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
-   maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mnlam \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nfolds \tab integer \tab 10 \tab  \tab \eqn{[3, \infty)}{[3, Inf)} \cr
-   nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   use_pred_offset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   penalty.factor \tab untyped \tab - \tab  \tab - \cr
-   pmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   pmin \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   prec \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   standardize.response \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   type.gaussian \tab character \tab - \tab covariance, naive \tab - \cr
-   type.logistic \tab character \tab Newton \tab Newton, modified.Newton \tab - \cr
+   lambda \tab untyped \tab NULL \tab  \tab - \cr
    type.measure \tab character \tab deviance \tab deviance, C \tab - \cr
-   type.multinomial \tab character \tab ungrouped \tab ungrouped, grouped \tab - \cr
+   nfolds \tab integer \tab 10 \tab  \tab \eqn{[3, \infty)}{[3, Inf)} \cr
+   foldid \tab untyped \tab NULL \tab  \tab - \cr
+   alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
+   grouped \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   gamma \tab untyped \tab c(0, 0.25, 0.5, 0.75, 1) \tab  \tab - \cr
+   relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   exclude \tab untyped \tab NULL \tab  \tab - \cr
+   penalty.factor \tab untyped \tab - \tab  \tab - \cr
+   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
+   cox.ties \tab character \tab breslow \tab breslow, efron \tab - \cr
+   maxp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   path \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   devmax \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   eps \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mnlam \tab integer \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pmin \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   exmx \tab numeric \tab 250 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   prec \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   epsnr \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   dfmax \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   pmax \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   exact \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    stype \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    ctype \tab integer \tab - \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
+   use_pred_offset \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -105,7 +107,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
 incorporated during training via the \code{offset} argument in \code{glmnet::glmnet()}.
 During prediction, the offset column from the test set is used only if
-\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{glmnet::predict.coxnet()}.
+\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{glmnet::predict.glmnet()}.
 Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.
 }
@@ -154,9 +156,19 @@ Friedman J, Hastie T, Tibshirani R (2010).
 }
 \author{
 be-marc
+
+bblodfon
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvCVGlmnet}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{native_model}}{(\code{cv.glmnet})\cr
+The fitted model.}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{

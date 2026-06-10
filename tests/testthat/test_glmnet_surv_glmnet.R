@@ -5,7 +5,7 @@ withr::local_seed(42)
 task = tsk("rats")$select(c("litter", "rx"))
 part = partition(task, ratio = 0.9)
 train_rows = part$train
-test_rows  = part$test
+test_rows = part$test
 unique_times = task$unique_times(rows = train_rows)
 
 test_that("autotest", {
@@ -35,7 +35,7 @@ test_that("distr prediction works", {
   p = learner$train(task, train_rows)$predict(task, test_rows)
 
   # check model
-  expect_class(learner$model$model, "coxnet")
+  expect_class(learner$native_model, "coxnet")
 
   # check predictions
   expect_class(p$lp, "numeric")
@@ -44,11 +44,12 @@ test_that("distr prediction works", {
 
   surv1 = p$distr[1]$survival(unique_times) # survival of 1st rat
 
-  # change survival calculation, prediction distr changes
-  learner = lrn("surv.glmnet", lambda = 0.03, stype = 1)
-  p = learner$train(task, train_rows)$predict(task, test_rows)
-  surv2 = p$distr[1]$survival(unique_times)
+  # change survival calculation via stype, prediction distr changes
+  learner$param_set$set_values(stype = 1)
+  p2 = learner$predict(task, test_rows)
+  surv2 = p2$distr[1]$survival(unique_times)
   expect_false(all(surv1 == surv2))
+  expect_equal(p$lp, p2$lp) # lp should not change when changing stype
 })
 
 test_that("offset and weight parameters", {
@@ -60,7 +61,7 @@ test_that("offset and weight parameters", {
   # offset was used
   expect_equal(l$model$offset, task$offset$offset[train_rows])
   expect_true(l$model$model$offset)
-  # not using offset during prediction changes lp, distr
+  # not using offset during prediction changes lp and distr predictions
   l$param_set$set_values(use_pred_offset = FALSE)
   p2 = l$predict(task, test_rows)
   expect_false(all(p2$lp == p$lp))
@@ -70,4 +71,27 @@ test_that("offset and weight parameters", {
   task$set_col_roles(cols = "new_col", roles = "weights_learner")
   expect_silent(l$train(task, train_rows)$predict(task, test_rows))
   expect_equal(l$model$weights, task$weights_learner$weight[train_rows])
+})
+
+test_that("relax = TRUE works", {
+  task = tsk("grace")$filter(1:300)
+  learner = lrn("surv.glmnet", relax = TRUE, s = 0.03)
+  learner$train(task, train_rows)
+  assert_class(learner$native_model, "relaxed")
+
+  # gamma = 1 gives the original lasso fit
+  # gamma = 0 gives the fully relaxed (unpenalized refit) model
+  # intermediate gamma values mix the two
+  p1 = learner$predict(task, test_rows)
+  learner$param_set$set_values(gamma = 1) # original lasso fit
+  p2 = learner$predict(task, test_rows)
+  expect_equal(p1$lp, p2$lp)
+
+  learner$param_set$set_values(gamma = 0.5)
+  p3 = learner$predict(task, test_rows)
+  expect_false(all(p2$lp == p3$lp))
+
+  learner$param_set$set_values(gamma = 0)
+  p4 = learner$predict(task, test_rows)
+  expect_false(all(p2$lp == p4$lp))
 })

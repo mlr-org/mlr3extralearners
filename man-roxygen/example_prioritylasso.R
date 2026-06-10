@@ -17,65 +17,86 @@ if (is_surv) {
 #' # Create train and test set
 #' ids = partition(task)
 #'
-#' # check task's features
+#' # Check task's features
 #' task$feature_names
 #'
-#' # partition features to 2 blocks
+#' # Partition features to 2 blocks
 #' blocks = list(bl1 = 1:3, bl2 = 4:6)
 #'
-#' # define learner
+#' # Define learner
 #' learner = lrn("<%= id %>", blocks = blocks, block1.penalization = FALSE,
 #'               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
 #'
-#' # selected features
+#' # Selected features
 #' learner$selected_features()
 #'
-#' # Make predictions for the test observations
-#' pred = learner$predict(task, row_ids = ids$test)
-#' pred
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#' predictions
 #'
 #' # Score the predictions
-#' pred$score()
+#' predictions$score()
 <%
 } else if (is_classif) {
 %>
-#' # Define the Learner and set parameter values
-#' learner = lrn("<%= id %>", type.measure = "auc",
-#'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
-#' print(learner)
-#'
 #' # Define a Task
 #' task = mlr3::as_task_classif(prioritylasso::pl_data, target = "pl_out")
-#'
-#' # Train the learner
-#' learner$train(task)
-#'
-#' # print the model
-#' print(learner$model)
-<%
-} else {
-%>
-#' # Define the Learner and set parameter values
-#' learner = lrn("<%= id %>",
-#'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
-#' print(learner)
-#'
-#' # Define a Task
-#' task = mlr3::as_task_regr(prioritylasso::pl_data, target = "pl_out")
 #'
 #' # Create train and test set
 #' ids = partition(task)
 #'
+#' # Define the Learner and set parameter values
+#' learner = lrn("<%= id %>", type.measure = "auc", standardize = FALSE,
+#'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028),
+#'   max.coef = c(Inf, Inf, 10, 10))
+#' print(learner)
+#'
+#' # Train the learner
+#' learner$train(task, row_ids = ids$train)
+#'
+#' # Selected features
+#' learner$selected_features()
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
+<%
+} else {
+%>
+#' # Simulate regression data
+#' set.seed(1L)
+#' x = matrix(rnorm(50L * 500L), nrow = 50L, ncol = 500L)
+#' data = as.data.frame(x)
+#' data$y = rnorm(50L)
+#'
+#' # Define a Task
+#' task = mlr3::as_task_regr(data, target = "y")
+#'
+#' # Create train and test set
+#' ids = partition(task)
+#'
+#' # Define the Learner and set parameter values
+#' learner = lrn("<%= id %>",
+#'   blocks = list(bp1 = 1:75, bp2 = 76:200, bp3 = 201:500),
+#'   max.coef = c(Inf, 8, 5),
+#'   block1.penalization = TRUE,
+#'   lambda.type = "lambda.min",
+#'   standardize = TRUE,
+#'   nfolds = 5,
+#'   cvoffset = FALSE)
+#'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
 #'
-#' # print the model
-#' print(learner$model)
+#' # Selected features
+#' learner$selected_features()
 #'
-#'  # Make predictions for the test rows
+#' # Make predictions for the test rows
 #' predictions = learner$predict(task, row_ids = ids$test)
 #'
 #' # Score the predictions
