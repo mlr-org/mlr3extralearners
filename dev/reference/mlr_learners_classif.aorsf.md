@@ -36,40 +36,40 @@ instantiated via
 
 ## Parameters
 
-|                         |           |         |                              |                       |
-|-------------------------|-----------|---------|------------------------------|-----------------------|
-| Id                      | Type      | Default | Levels                       | Range                 |
-| attach_data             | logical   | TRUE    | TRUE, FALSE                  | \-                    |
-| epsilon                 | numeric   | 1e-09   |                              | \\\[0, \infty)\\      |
-| importance              | character | anova   | none, anova, negate, permute | \-                    |
-| importance_max_pvalue   | numeric   | 0.01    |                              | \\\[1e-04, 0.9999\]\\ |
-| leaf_min_events         | integer   | 1       |                              | \\\[1, \infty)\\      |
-| leaf_min_obs            | integer   | 5       |                              | \\\[1, \infty)\\      |
-| max_iter                | integer   | 20      |                              | \\\[1, \infty)\\      |
-| method                  | character | glm     | glm, net, pca, random        | \-                    |
-| mtry                    | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| mtry_ratio              | numeric   | \-      |                              | \\\[0, 1\]\\          |
-| n_retry                 | integer   | 3       |                              | \\\[0, \infty)\\      |
-| n_split                 | integer   | 5       |                              | \\\[1, \infty)\\      |
-| n_thread                | integer   | \-      |                              | \\\[0, \infty)\\      |
-| n_tree                  | integer   | 500     |                              | \\\[1, \infty)\\      |
-| na_action               | character | fail    | fail, impute_meanmode        | \-                    |
-| net_mix                 | numeric   | 0.5     |                              | \\(-\infty, \infty)\\ |
-| oobag                   | logical   | FALSE   | TRUE, FALSE                  | \-                    |
-| oobag_eval_every        | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| oobag_fun               | untyped   | NULL    |                              | \-                    |
-| oobag_pred_type         | character | prob    | none, leaf, prob, class      | \-                    |
-| pred_aggregate          | logical   | TRUE    | TRUE, FALSE                  | \-                    |
-| sample_fraction         | numeric   | 0.632   |                              | \\\[0, 1\]\\          |
-| sample_with_replacement | logical   | TRUE    | TRUE, FALSE                  | \-                    |
-| scale_x                 | logical   | FALSE   | TRUE, FALSE                  | \-                    |
-| split_min_events        | integer   | 5       |                              | \\\[1, \infty)\\      |
-| split_min_obs           | integer   | 10      |                              | \\\[1, \infty)\\      |
-| split_min_stat          | numeric   | NULL    |                              | \\\[0, \infty)\\      |
-| split_rule              | character | gini    | gini, cstat                  | \-                    |
-| target_df               | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| tree_seeds              | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| verbose_progress        | logical   | FALSE   | TRUE, FALSE                  | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| attach_data | logical | TRUE | TRUE, FALSE | \- |
+| epsilon | numeric | 1e-09 |  | \\\[0, \infty)\\ |
+| importance | character | anova | none, anova, negate, permute | \- |
+| importance_max_pvalue | numeric | 0.01 |  | \\\[1e-04, 0.9999\]\\ |
+| leaf_min_events | integer | 1 |  | \\\[1, \infty)\\ |
+| leaf_min_obs | integer | 5 |  | \\\[1, \infty)\\ |
+| max_iter | integer | 20 |  | \\\[1, \infty)\\ |
+| method | character | glm | glm, net, pca, random | \- |
+| mtry | integer | NULL |  | \\\[1, \infty)\\ |
+| mtry_ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| n_retry | integer | 3 |  | \\\[0, \infty)\\ |
+| n_split | integer | 5 |  | \\\[1, \infty)\\ |
+| n_thread | integer | \- |  | \\\[0, \infty)\\ |
+| n_tree | integer | 500 |  | \\\[1, \infty)\\ |
+| na_action | character | fail | fail, impute_meanmode | \- |
+| net_mix | numeric | 0.5 |  | \\(-\infty, \infty)\\ |
+| oobag | logical | FALSE | TRUE, FALSE | \- |
+| oobag_eval_every | integer | NULL |  | \\\[1, \infty)\\ |
+| oobag_fun | untyped | NULL |  | \- |
+| oobag_pred_type | character | prob | none, leaf, prob, class | \- |
+| pred_aggregate | logical | TRUE | TRUE, FALSE | \- |
+| sample_fraction | numeric | 0.632 |  | \\\[0, 1\]\\ |
+| sample_with_replacement | logical | TRUE | TRUE, FALSE | \- |
+| scale_x | logical | FALSE | TRUE, FALSE | \- |
+| split_min_events | integer | 5 |  | \\\[1, \infty)\\ |
+| split_min_obs | integer | 10 |  | \\\[1, \infty)\\ |
+| split_min_stat | numeric | NULL |  | \\\[0, \infty)\\ |
+| split_rule | character | gini | gini, cstat | \- |
+| target_df | integer | NULL |  | \\\[1, \infty)\\ |
+| tree_seeds | integer | NULL |  | \\\[1, \infty)\\ |
+| verbose_progress | logical | FALSE | TRUE, FALSE | \- |
 
 ## See also
 
@@ -227,32 +227,34 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 60
 #>    N predictors per node: 8
-#>  Average leaves per tree: 5.234
+#>  Average leaves per tree: 4.926
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.88
+#>           OOB stat value: 0.90
 #>            OOB stat type: AUC-ROC
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>        V11        V12        V20        V48        V52         V4        V21 
-#> 0.35714286 0.33189655 0.29743590 0.29257642 0.28638498 0.28395062 0.28389831 
-#>        V36        V13        V45        V47        V16        V22        V37 
-#> 0.28019324 0.25531915 0.24519231 0.21818182 0.21428571 0.20095694 0.19742489 
-#>        V46        V17        V44        V49        V51        V35         V9 
-#> 0.19642857 0.19555556 0.19491525 0.19158879 0.19148936 0.16299559 0.15853659 
-#>        V43        V10        V19        V23        V40         V1        V15 
-#> 0.14893617 0.14096916 0.13824885 0.13793103 0.12844037 0.12448133 0.11814346 
-#>        V18        V28        V27        V38        V24        V34        V31 
-#> 0.11428571 0.11224490 0.09956710 0.09782609 0.09777778 0.09523810 0.09302326 
-#>        V29        V53        V41        V50         V7        V32         V2 
-#> 0.09055118 0.08641975 0.08181818 0.08080808 0.07109005 0.06944444 0.06926407 
-#>        V59        V26         V3        V33         V5        V58        V14 
-#> 0.06584362 0.06302521 0.06222222 0.05936073 0.05855856 0.05777778 0.05676856 
-#>        V39        V30        V42         V8        V55        V54        V56 
-#> 0.05627706 0.05084746 0.04694836 0.04265403 0.03809524 0.03791469 0.03524229 
-#>        V25        V60        V57         V6 
-#> 0.02777778 0.02232143 0.02212389 0.02127660 
+#>         V11         V12         V36         V45         V10         V37 
+#> 0.436363636 0.363184080 0.314655172 0.314606742 0.313559322 0.272340426 
+#>         V49         V52         V46          V9          V5         V20 
+#> 0.262008734 0.247663551 0.239130435 0.220338983 0.215686275 0.207547170 
+#>         V47         V48         V21         V44         V43          V4 
+#> 0.205607477 0.191964286 0.179824561 0.179104478 0.169565217 0.155660377 
+#>         V31         V13         V19         V51         V16         V17 
+#> 0.154185022 0.146341463 0.144186047 0.121212121 0.112676056 0.111607143 
+#>         V42         V35         V38         V58         V59         V22 
+#> 0.095238095 0.095238095 0.092307692 0.090517241 0.085308057 0.083743842 
+#>         V18         V57         V39          V1         V15         V29 
+#> 0.082125604 0.071428571 0.069651741 0.069306931 0.068376068 0.066666667 
+#>         V23         V28         V32         V30         V53         V33 
+#> 0.066350711 0.064039409 0.063829787 0.061674009 0.061135371 0.054621849 
+#>         V60         V34          V8         V14         V50         V40 
+#> 0.052419355 0.048780488 0.046808511 0.040404040 0.039800995 0.039473684 
+#>          V6          V2         V25         V27         V55          V7 
+#> 0.038461538 0.036363636 0.035714286 0.034146341 0.031818182 0.031746032 
+#>         V24          V3         V26         V41         V56         V54 
+#> 0.028169014 0.024896266 0.023584906 0.022421525 0.010256410 0.009433962 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -260,5 +262,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1594203 
+#>  0.1884058 
 ```

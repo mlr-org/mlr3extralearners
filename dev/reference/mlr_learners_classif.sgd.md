@@ -57,24 +57,24 @@ instantiated via
 
 ## Parameters
 
-|                           |           |         |             |                       |
-|---------------------------|-----------|---------|-------------|-----------------------|
-| Id                        | Type      | Default | Levels      | Range                 |
-| subset                    | untyped   | \-      |             | \-                    |
-| na.action                 | untyped   | \-      |             | \-                    |
-| F                         | character | 0       | 0, 1        | \-                    |
-| L                         | numeric   | 0.01    |             | \\(-\infty, \infty)\\ |
-| R                         | numeric   | 1e-04   |             | \\(-\infty, \infty)\\ |
-| E                         | integer   | 500     |             | \\(-\infty, \infty)\\ |
-| C                         | numeric   | 0.001   |             | \\(-\infty, \infty)\\ |
-| N                         | logical   | \-      | TRUE, FALSE | \-                    |
-| M                         | logical   | \-      | TRUE, FALSE | \-                    |
-| S                         | integer   | 1       |             | \\(-\infty, \infty)\\ |
-| output_debug_info         | logical   | FALSE   | TRUE, FALSE | \-                    |
-| do_not_check_capabilities | logical   | FALSE   | TRUE, FALSE | \-                    |
-| num_decimal_places        | integer   | 2       |             | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100     |             | \\\[1, \infty)\\      |
-| options                   | untyped   | NULL    |             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| F | character | 0 | 0, 1 | \- |
+| L | numeric | 0.01 |  | \\(-\infty, \infty)\\ |
+| R | numeric | 1e-04 |  | \\(-\infty, \infty)\\ |
+| E | integer | 500 |  | \\(-\infty, \infty)\\ |
+| C | numeric | 0.001 |  | \\(-\infty, \infty)\\ |
+| N | logical | \- | TRUE, FALSE | \- |
+| M | logical | \- | TRUE, FALSE | \- |
+| S | integer | 1 |  | \\(-\infty, \infty)\\ |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## See also
 
@@ -241,67 +241,67 @@ print(learner$model)
 #> 
 #> Class = 
 #> 
-#>         -1.7946 (normalized) V1
-#>  +      -0.6819 (normalized) V10
-#>  +      -2.3809 (normalized) V11
-#>  +      -2.2463 (normalized) V12
-#>  +      -0.586  (normalized) V13
-#>  +       0.5054 (normalized) V14
-#>  +       0.4017 (normalized) V15
-#>  +       1.8251 (normalized) V16
-#>  +       1.491  (normalized) V17
-#>  +      -1.2855 (normalized) V18
-#>  +      -0.9116 (normalized) V19
-#>  +      -0.7394 (normalized) V2
-#>  +      -1.2533 (normalized) V20
-#>  +      -0.0981 (normalized) V21
-#>  +       0.2465 (normalized) V22
-#>  +      -1.2818 (normalized) V23
-#>  +      -0.6834 (normalized) V24
-#>  +       0.7324 (normalized) V25
-#>  +       0.2157 (normalized) V26
-#>  +       0.7876 (normalized) V27
-#>  +      -0.4447 (normalized) V28
-#>  +      -0.8952 (normalized) V29
-#>  +       0.7028 (normalized) V3
-#>  +      -1.663  (normalized) V30
-#>  +       3.6264 (normalized) V31
-#>  +      -1.6019 (normalized) V32
-#>  +       0.3855 (normalized) V33
-#>  +       0.1323 (normalized) V34
-#>  +      -0.9208 (normalized) V35
-#>  +       0.96   (normalized) V36
-#>  +       2.5645 (normalized) V37
-#>  +      -0.3928 (normalized) V38
-#>  +       0.5571 (normalized) V39
-#>  +      -1.7161 (normalized) V4
-#>  +       1.9858 (normalized) V40
-#>  +       0.5687 (normalized) V41
-#>  +       0.7272 (normalized) V42
-#>  +      -0.4454 (normalized) V43
-#>  +      -1.4148 (normalized) V44
-#>  +      -2.8339 (normalized) V45
-#>  +      -0.7936 (normalized) V46
-#>  +      -1.0944 (normalized) V47
-#>  +      -1.8007 (normalized) V48
-#>  +      -3.4289 (normalized) V49
-#>  +       0.8483 (normalized) V5
-#>  +       2.7283 (normalized) V50
-#>  +      -1.8657 (normalized) V51
-#>  +      -3.5899 (normalized) V52
-#>  +       0.3908 (normalized) V53
-#>  +      -1.264  (normalized) V54
-#>  +       1.9407 (normalized) V55
-#>  +       1.9379 (normalized) V56
-#>  +       0.4449 (normalized) V57
-#>  +      -1.4716 (normalized) V58
-#>  +      -0.1131 (normalized) V59
-#>  +       1.2604 (normalized) V6
-#>  +       0.207  (normalized) V60
-#>  +       1.7944 (normalized) V7
-#>  +       1.3189 (normalized) V8
-#>  +      -0.4877 (normalized) V9
-#>  +       2.83  
+#>         -0.9587 (normalized) V1
+#>  +      -0.2689 (normalized) V10
+#>  +      -2.0684 (normalized) V11
+#>  +      -3.167  (normalized) V12
+#>  +      -2.0522 (normalized) V13
+#>  +       1.3801 (normalized) V14
+#>  +       1.7049 (normalized) V15
+#>  +       1.171  (normalized) V16
+#>  +       1.1211 (normalized) V17
+#>  +      -0.1475 (normalized) V18
+#>  +       0.0165 (normalized) V19
+#>  +      -1.2153 (normalized) V2
+#>  +      -0.4159 (normalized) V20
+#>  +      -0.7011 (normalized) V21
+#>  +      -0.4897 (normalized) V22
+#>  +      -1.4009 (normalized) V23
+#>  +      -2.0448 (normalized) V24
+#>  +       1.7297 (normalized) V25
+#>  +       0.8283 (normalized) V26
+#>  +       0.1253 (normalized) V27
+#>  +      -0.9579 (normalized) V28
+#>  +      -0.6509 (normalized) V29
+#>  +       1.5773 (normalized) V3
+#>  +      -1.1845 (normalized) V30
+#>  +       3.7312 (normalized) V31
+#>  +      -1.4922 (normalized) V32
+#>  +      -1.7201 (normalized) V33
+#>  +       1.9034 (normalized) V34
+#>  +      -0.558  (normalized) V35
+#>  +       0.7864 (normalized) V36
+#>  +       3.1416 (normalized) V37
+#>  +      -1.7098 (normalized) V38
+#>  +      -0.8514 (normalized) V39
+#>  +      -3.4525 (normalized) V4
+#>  +       1.9185 (normalized) V40
+#>  +      -0.4065 (normalized) V41
+#>  +       2.2086 (normalized) V42
+#>  +      -1.036  (normalized) V43
+#>  +      -0.2577 (normalized) V44
+#>  +      -0.7886 (normalized) V45
+#>  +      -2.0722 (normalized) V46
+#>  +       0.0278 (normalized) V47
+#>  +      -0.8285 (normalized) V48
+#>  +      -4.3416 (normalized) V49
+#>  +      -1.8296 (normalized) V5
+#>  +       0.5986 (normalized) V50
+#>  +      -1.6001 (normalized) V51
+#>  +      -2.5583 (normalized) V52
+#>  +      -2.052  (normalized) V53
+#>  +      -0.9284 (normalized) V54
+#>  +       1.3206 (normalized) V55
+#>  +       1.4384 (normalized) V56
+#>  +       1.8371 (normalized) V57
+#>  +      -0.2726 (normalized) V58
+#>  +      -2.4859 (normalized) V59
+#>  +      -0.5586 (normalized) V6
+#>  +      -0.1163 (normalized) V60
+#>  +       0.0972 (normalized) V7
+#>  +       1.5551 (normalized) V8
+#>  +      -0.0632 (normalized) V9
+#>  +       4.67  
 
 
 # Make predictions for the test rows
@@ -310,5 +310,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.2318841 
 ```

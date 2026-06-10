@@ -71,32 +71,32 @@ instantiated via
 
 ## Parameters
 
-|                           |           |                                       |                                                                |                       |
-|---------------------------|-----------|---------------------------------------|----------------------------------------------------------------|-----------------------|
-| Id                        | Type      | Default                               | Levels                                                         | Range                 |
-| subset                    | untyped   | \-                                    |                                                                | \-                    |
-| na.action                 | untyped   | \-                                    |                                                                | \-                    |
-| no_checks                 | logical   | FALSE                                 | TRUE, FALSE                                                    | \-                    |
-| C                         | numeric   | 1                                     |                                                                | \\(-\infty, \infty)\\ |
-| N                         | character | 0                                     | 0, 1, 2                                                        | \-                    |
-| L                         | numeric   | 0.001                                 |                                                                | \\(-\infty, \infty)\\ |
-| P                         | numeric   | 1e-12                                 |                                                                | \\(-\infty, \infty)\\ |
-| M                         | logical   | FALSE                                 | TRUE, FALSE                                                    | \-                    |
-| V                         | integer   | -1                                    |                                                                | \\(-\infty, \infty)\\ |
-| W                         | integer   | 1                                     |                                                                | \\(-\infty, \infty)\\ |
-| K                         | character | PolyKernel                            | NormalizedPolyKernel, PolyKernel, Puk, RBFKernel, StringKernel | \-                    |
-| calibrator                | untyped   | "weka.classifiers.functions.Logistic" |                                                                | \-                    |
-| E_poly                    | numeric   | 1                                     |                                                                | \\(-\infty, \infty)\\ |
-| L_poly                    | logical   | FALSE                                 | TRUE, FALSE                                                    | \-                    |
-| C_poly                    | integer   | 25007                                 |                                                                | \\(-\infty, \infty)\\ |
-| C_logistic                | logical   | FALSE                                 | TRUE, FALSE                                                    | \-                    |
-| R_logistic                | numeric   | \-                                    |                                                                | \\(-\infty, \infty)\\ |
-| M_logistic                | integer   | -1                                    |                                                                | \\(-\infty, \infty)\\ |
-| output_debug_info         | logical   | FALSE                                 | TRUE, FALSE                                                    | \-                    |
-| do_not_check_capabilities | logical   | FALSE                                 | TRUE, FALSE                                                    | \-                    |
-| num_decimal_places        | integer   | 2                                     |                                                                | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100                                   |                                                                | \\\[1, \infty)\\      |
-| options                   | untyped   | NULL                                  |                                                                | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| no_checks | logical | FALSE | TRUE, FALSE | \- |
+| C | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| N | character | 0 | 0, 1, 2 | \- |
+| L | numeric | 0.001 |  | \\(-\infty, \infty)\\ |
+| P | numeric | 1e-12 |  | \\(-\infty, \infty)\\ |
+| M | logical | FALSE | TRUE, FALSE | \- |
+| V | integer | -1 |  | \\(-\infty, \infty)\\ |
+| W | integer | 1 |  | \\(-\infty, \infty)\\ |
+| K | character | PolyKernel | NormalizedPolyKernel, PolyKernel, Puk, RBFKernel, StringKernel | \- |
+| calibrator | untyped | "weka.classifiers.functions.Logistic" |  | \- |
+| E_poly | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| L_poly | logical | FALSE | TRUE, FALSE | \- |
+| C_poly | integer | 25007 |  | \\(-\infty, \infty)\\ |
+| C_logistic | logical | FALSE | TRUE, FALSE | \- |
+| R_logistic | numeric | \- |  | \\(-\infty, \infty)\\ |
+| M_logistic | integer | -1 |  | \\(-\infty, \infty)\\ |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## References
 
@@ -286,69 +286,69 @@ print(learner$model)
 #> 
 #> Machine linear: showing attribute weights, not support vectors.
 #> 
-#>         -0.5244 * (normalized) V1
-#>  +      -0.7929 * (normalized) V10
-#>  +      -1.348  * (normalized) V11
-#>  +      -1.4422 * (normalized) V12
-#>  +      -0.599  * (normalized) V13
-#>  +       0.0419 * (normalized) V14
-#>  +       0.5362 * (normalized) V15
-#>  +       0.3904 * (normalized) V16
-#>  +       0.3405 * (normalized) V17
-#>  +       0.2769 * (normalized) V18
-#>  +       0.4473 * (normalized) V19
-#>  +       0.4905 * (normalized) V2
-#>  +      -0.4171 * (normalized) V20
-#>  +      -0.7436 * (normalized) V21
-#>  +      -0.1657 * (normalized) V22
-#>  +      -0.6163 * (normalized) V23
-#>  +      -0.6387 * (normalized) V24
-#>  +       0.0258 * (normalized) V25
-#>  +       0.0838 * (normalized) V26
-#>  +      -0.0352 * (normalized) V27
-#>  +      -1.1092 * (normalized) V28
-#>  +      -0.522  * (normalized) V29
-#>  +       0.5554 * (normalized) V3
-#>  +       0.0687 * (normalized) V30
-#>  +       1.0381 * (normalized) V31
-#>  +      -0.3992 * (normalized) V32
-#>  +       0.3504 * (normalized) V33
-#>  +       0.3892 * (normalized) V34
-#>  +       0.1707 * (normalized) V35
-#>  +       0.6894 * (normalized) V36
-#>  +       1.1097 * (normalized) V37
-#>  +      -0.2861 * (normalized) V38
-#>  +      -0.6491 * (normalized) V39
-#>  +      -0.8537 * (normalized) V4
-#>  +       0.7425 * (normalized) V40
-#>  +      -0.2499 * (normalized) V41
-#>  +       0.1924 * (normalized) V42
-#>  +      -0.3778 * (normalized) V43
-#>  +      -0.8918 * (normalized) V44
-#>  +      -1.1852 * (normalized) V45
-#>  +      -0.6127 * (normalized) V46
-#>  +      -0.2402 * (normalized) V47
-#>  +      -0.4894 * (normalized) V48
-#>  +      -1.0393 * (normalized) V49
-#>  +      -0.6286 * (normalized) V5
-#>  +       0.5458 * (normalized) V50
-#>  +      -0.7342 * (normalized) V51
-#>  +      -1.2691 * (normalized) V52
-#>  +      -0.3482 * (normalized) V53
-#>  +      -0.6196 * (normalized) V54
-#>  +       0.8404 * (normalized) V55
-#>  +       0.6037 * (normalized) V56
-#>  +      -0.0655 * (normalized) V57
-#>  +      -1.2441 * (normalized) V58
-#>  +      -0.6455 * (normalized) V59
-#>  +       0.5066 * (normalized) V6
-#>  +       0.2215 * (normalized) V60
-#>  +       0.5891 * (normalized) V7
-#>  +       0.3321 * (normalized) V8
-#>  +      -0.752  * (normalized) V9
-#>  +       3.4134
+#>         -0.8685 * (normalized) V1
+#>  +      -0.5092 * (normalized) V10
+#>  +      -1.1281 * (normalized) V11
+#>  +      -0.8401 * (normalized) V12
+#>  +      -0.1161 * (normalized) V13
+#>  +       0.1064 * (normalized) V14
+#>  +       0.5372 * (normalized) V15
+#>  +       0.7824 * (normalized) V16
+#>  +       0.7577 * (normalized) V17
+#>  +       0.5512 * (normalized) V18
+#>  +      -0.3198 * (normalized) V19
+#>  +      -0.6295 * (normalized) V2
+#>  +      -0.4969 * (normalized) V20
+#>  +      -0.3373 * (normalized) V21
+#>  +      -0.5556 * (normalized) V22
+#>  +      -0.2011 * (normalized) V23
+#>  +      -0.5844 * (normalized) V24
+#>  +       0.5795 * (normalized) V25
+#>  +       0.4337 * (normalized) V26
+#>  +      -0.5478 * (normalized) V27
+#>  +      -0.6297 * (normalized) V28
+#>  +      -0.2078 * (normalized) V29
+#>  +      -0.1295 * (normalized) V3
+#>  +      -0.4023 * (normalized) V30
+#>  +       1.5399 * (normalized) V31
+#>  +       0.1855 * (normalized) V32
+#>  +       0.6114 * (normalized) V33
+#>  +       0.7278 * (normalized) V34
+#>  +       0.0942 * (normalized) V35
+#>  +       0.7534 * (normalized) V36
+#>  +       0.8954 * (normalized) V37
+#>  +      -0.6551 * (normalized) V38
+#>  +      -0.1196 * (normalized) V39
+#>  +      -0.288  * (normalized) V4
+#>  +       1.0988 * (normalized) V40
+#>  +      -0.0298 * (normalized) V41
+#>  +      -0.2093 * (normalized) V42
+#>  +      -0.0836 * (normalized) V43
+#>  +      -1.1059 * (normalized) V44
+#>  +      -1.3354 * (normalized) V45
+#>  +      -0.4788 * (normalized) V46
+#>  +      -0.5012 * (normalized) V47
+#>  +      -0.6302 * (normalized) V48
+#>  +      -0.7119 * (normalized) V49
+#>  +      -0.4478 * (normalized) V5
+#>  +       1.443  * (normalized) V50
+#>  +      -0.5324 * (normalized) V51
+#>  +      -1.1011 * (normalized) V52
+#>  +      -0.4359 * (normalized) V53
+#>  +      -0.5266 * (normalized) V54
+#>  +       0.8363 * (normalized) V55
+#>  +      -0.2311 * (normalized) V56
+#>  +       0.7764 * (normalized) V57
+#>  +      -0.3406 * (normalized) V58
+#>  +      -1.1956 * (normalized) V59
+#>  +       0.4034 * (normalized) V6
+#>  +      -0.6643 * (normalized) V60
+#>  +       0.357  * (normalized) V7
+#>  +       0.1453 * (normalized) V8
+#>  +      -0.5426 * (normalized) V9
+#>  +       1.6917
 #> 
-#> Number of kernel evaluations: 6607 (85.551% cached)
+#> Number of kernel evaluations: 6055 (91.123% cached)
 #> 
 #> 
 
@@ -359,5 +359,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.2463768 
 ```

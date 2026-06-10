@@ -36,40 +36,40 @@ instantiated via
 
 ## Parameters
 
-|                         |           |          |                              |                       |
-|-------------------------|-----------|----------|------------------------------|-----------------------|
-| Id                      | Type      | Default  | Levels                       | Range                 |
-| attach_data             | logical   | TRUE     | TRUE, FALSE                  | \-                    |
-| epsilon                 | numeric   | 1e-09    |                              | \\\[0, \infty)\\      |
-| importance              | character | anova    | none, anova, negate, permute | \-                    |
-| importance_max_pvalue   | numeric   | 0.01     |                              | \\\[1e-04, 0.9999\]\\ |
-| leaf_min_events         | integer   | 1        |                              | \\\[1, \infty)\\      |
-| leaf_min_obs            | integer   | 5        |                              | \\\[1, \infty)\\      |
-| max_iter                | integer   | 20       |                              | \\\[1, \infty)\\      |
-| method                  | character | glm      | glm, net, pca, random        | \-                    |
-| mtry                    | integer   | NULL     |                              | \\\[1, \infty)\\      |
-| mtry_ratio              | numeric   | \-       |                              | \\\[0, 1\]\\          |
-| n_retry                 | integer   | 3        |                              | \\\[0, \infty)\\      |
-| n_split                 | integer   | 5        |                              | \\\[1, \infty)\\      |
-| n_thread                | integer   | \-       |                              | \\\[0, \infty)\\      |
-| n_tree                  | integer   | 500      |                              | \\\[1, \infty)\\      |
-| na_action               | character | fail     | fail, impute_meanmode        | \-                    |
-| net_mix                 | numeric   | 0.5      |                              | \\(-\infty, \infty)\\ |
-| oobag                   | logical   | FALSE    | TRUE, FALSE                  | \-                    |
-| oobag_eval_every        | integer   | NULL     |                              | \\\[1, \infty)\\      |
-| oobag_fun               | untyped   | NULL     |                              | \-                    |
-| oobag_pred_type         | character | mean     | none, leaf, mean             | \-                    |
-| pred_aggregate          | logical   | TRUE     | TRUE, FALSE                  | \-                    |
-| sample_fraction         | numeric   | 0.632    |                              | \\\[0, 1\]\\          |
-| sample_with_replacement | logical   | TRUE     | TRUE, FALSE                  | \-                    |
-| scale_x                 | logical   | FALSE    | TRUE, FALSE                  | \-                    |
-| split_min_events        | integer   | 5        |                              | \\\[1, \infty)\\      |
-| split_min_obs           | integer   | 10       |                              | \\\[1, \infty)\\      |
-| split_min_stat          | numeric   | NULL     |                              | \\\[0, \infty)\\      |
-| split_rule              | character | variance | variance                     | \-                    |
-| target_df               | integer   | NULL     |                              | \\\[1, \infty)\\      |
-| tree_seeds              | integer   | NULL     |                              | \\\[1, \infty)\\      |
-| verbose_progress        | logical   | FALSE    | TRUE, FALSE                  | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| attach_data | logical | TRUE | TRUE, FALSE | \- |
+| epsilon | numeric | 1e-09 |  | \\\[0, \infty)\\ |
+| importance | character | anova | none, anova, negate, permute | \- |
+| importance_max_pvalue | numeric | 0.01 |  | \\\[1e-04, 0.9999\]\\ |
+| leaf_min_events | integer | 1 |  | \\\[1, \infty)\\ |
+| leaf_min_obs | integer | 5 |  | \\\[1, \infty)\\ |
+| max_iter | integer | 20 |  | \\\[1, \infty)\\ |
+| method | character | glm | glm, net, pca, random | \- |
+| mtry | integer | NULL |  | \\\[1, \infty)\\ |
+| mtry_ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| n_retry | integer | 3 |  | \\\[0, \infty)\\ |
+| n_split | integer | 5 |  | \\\[1, \infty)\\ |
+| n_thread | integer | \- |  | \\\[0, \infty)\\ |
+| n_tree | integer | 500 |  | \\\[1, \infty)\\ |
+| na_action | character | fail | fail, impute_meanmode | \- |
+| net_mix | numeric | 0.5 |  | \\(-\infty, \infty)\\ |
+| oobag | logical | FALSE | TRUE, FALSE | \- |
+| oobag_eval_every | integer | NULL |  | \\\[1, \infty)\\ |
+| oobag_fun | untyped | NULL |  | \- |
+| oobag_pred_type | character | mean | none, leaf, mean | \- |
+| pred_aggregate | logical | TRUE | TRUE, FALSE | \- |
+| sample_fraction | numeric | 0.632 |  | \\\[0, 1\]\\ |
+| sample_with_replacement | logical | TRUE | TRUE, FALSE | \- |
+| scale_x | logical | FALSE | TRUE, FALSE | \- |
+| split_min_events | integer | 5 |  | \\\[1, \infty)\\ |
+| split_min_obs | integer | 10 |  | \\\[1, \infty)\\ |
+| split_min_stat | numeric | NULL |  | \\\[0, \infty)\\ |
+| split_rule | character | variance | variance | \- |
+| target_df | integer | NULL |  | \\\[1, \infty)\\ |
+| tree_seeds | integer | NULL |  | \\\[1, \infty)\\ |
+| verbose_progress | logical | FALSE | TRUE, FALSE | \- |
 
 ## See also
 
@@ -225,18 +225,18 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.232
+#>  Average leaves per tree: 3.252
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.68
+#>           OOB stat value: 0.70
 #>            OOB stat type: RSQ
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>         hp        cyl         wt       carb       gear         vs       drat 
-#> 0.09295775 0.07204611 0.05056180 0.04558405 0.02848101 0.02657807 0.01988636 
-#>         am       disp       qsec 
-#> 0.01846154 0.01662050 0.01373626 
+#>       drat       carb         am         wt         hp        cyl       disp 
+#> 0.07871720 0.07650273 0.07594937 0.05135135 0.04494382 0.04402516 0.03591160 
+#>       gear       qsec         vs 
+#> 0.03115265 0.02631579 0.01351351 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -244,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.86806 
+#> 14.62494 
 ```

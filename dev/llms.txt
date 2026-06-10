@@ -16,6 +16,7 @@ the `mlr3verse` can be found [here](https://mlr-org.com/learners.html).
 You can install the package as follows:
 
 ``` r
+
 # latest GitHub release
 pak::pak("mlr-org/mlr3extralearners@*release")
 
@@ -28,6 +29,7 @@ you to install `mlr3extralearners` via
 [`install.packages()`](https://rdrr.io/r/utils/install.packages.html).
 
 ``` r
+
 # .Rprofile
 options(repos = c(
   mlrorg = "https://mlr-org.r-universe.dev",
@@ -43,6 +45,7 @@ function `install_learner` which can install all required learner
 dependencies.
 
 ``` r
+
 library(mlr3extralearners)
 lrn("regr.gbm")
 #> Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'
@@ -70,6 +73,7 @@ learner
 You can now use the learner to fit a model and make predictions.
 
 ``` r
+
 task = tsk("california_housing")
 task
 #> 

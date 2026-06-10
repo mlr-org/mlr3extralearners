@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Regression M5P Learner — mlr_learners_regr.m5p"><meta name="description" content="Implements base routines for generating M5 Model trees and rules.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Regression M5P Learner — mlr_learners_regr.m5p"><meta name="description" content="Implements base routines for generating M5 Model trees and rules.
 Calls RWeka::M5P() from RWeka."><meta property="og:description" content="Implements base routines for generating M5 Model trees and rules.
 Calls RWeka::M5P() from RWeka."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -15,7 +15,7 @@ Calls RWeka::M5P() from RWeka."><meta name="robots" content="noindex"></head><bo
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -246,24 +246,48 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt;= 96 : LM1 (5/32.537%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;  96 : LM2 (16/23.255%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt;= 116.5 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt;= 93.35 : LM1 (2/12.961%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;  93.35 : LM2 (7/6.328%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;  116.5 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt;= 192.5 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &lt;= 339 : LM3 (6/5.747%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &gt;  339 : LM4 (2/4.32%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;  192.5 : LM5 (4/15.713%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.3258 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0329 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.1872 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 40.6162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.8804 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0206 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0663 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 35.0879</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.8554 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0145 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.4111 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 32.3927</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.8804 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0206 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0593 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.8457</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.0131 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0255 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 27.7302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.0608 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0255 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 27.9377</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.1194 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0304 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 29.3903</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -272,7 +296,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.532886 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.379322 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

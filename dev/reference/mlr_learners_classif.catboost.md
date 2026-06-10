@@ -26,81 +26,81 @@ instantiated via
 
 ## Parameters
 
-|                                |           |                 |                                                                           |                       |
-|--------------------------------|-----------|-----------------|---------------------------------------------------------------------------|-----------------------|
-| Id                             | Type      | Default         | Levels                                                                    | Range                 |
-| loss_function_twoclass         | character | Logloss         | Logloss, CrossEntropy                                                     | \-                    |
-| loss_function_multiclass       | character | MultiClass      | MultiClass, MultiClassOneVsAll                                            | \-                    |
-| learning_rate                  | numeric   | 0.03            |                                                                           | \\\[0.001, 1\]\\      |
-| random_seed                    | integer   | 0               |                                                                           | \\\[0, \infty)\\      |
-| l2_leaf_reg                    | numeric   | 3               |                                                                           | \\\[0, \infty)\\      |
-| bootstrap_type                 | character | \-              | Bayesian, Bernoulli, MVS, Poisson, No                                     | \-                    |
-| bagging_temperature            | numeric   | 1               |                                                                           | \\\[0, \infty)\\      |
-| subsample                      | numeric   | \-              |                                                                           | \\\[0, 1\]\\          |
-| sampling_frequency             | character | PerTreeLevel    | PerTree, PerTreeLevel                                                     | \-                    |
-| sampling_unit                  | character | Object          | Object, Group                                                             | \-                    |
-| mvs_reg                        | numeric   | \-              |                                                                           | \\\[0, \infty)\\      |
-| random_strength                | numeric   | 1               |                                                                           | \\\[0, \infty)\\      |
-| depth                          | integer   | 6               |                                                                           | \\\[1, 16\]\\         |
-| grow_policy                    | character | SymmetricTree   | SymmetricTree, Depthwise, Lossguide                                       | \-                    |
-| min_data_in_leaf               | integer   | 1               |                                                                           | \\\[1, \infty)\\      |
-| max_leaves                     | integer   | 31              |                                                                           | \\\[1, \infty)\\      |
-| ignored_features               | untyped   | NULL            |                                                                           | \-                    |
-| one_hot_max_size               | untyped   | FALSE           |                                                                           | \-                    |
-| has_time                       | logical   | FALSE           | TRUE, FALSE                                                               | \-                    |
-| rsm                            | numeric   | 1               |                                                                           | \\\[0.001, 1\]\\      |
-| nan_mode                       | character | Min             | Min, Max                                                                  | \-                    |
-| fold_permutation_block         | integer   | \-              |                                                                           | \\\[1, 256\]\\        |
-| leaf_estimation_method         | character | \-              | Newton, Gradient, Exact                                                   | \-                    |
-| leaf_estimation_iterations     | integer   | \-              |                                                                           | \\\[1, \infty)\\      |
-| leaf_estimation_backtracking   | character | AnyImprovement  | No, AnyImprovement, Armijo                                                | \-                    |
-| fold_len_multiplier            | numeric   | 2               |                                                                           | \\\[1.001, \infty)\\  |
-| approx_on_full_history         | logical   | TRUE            | TRUE, FALSE                                                               | \-                    |
-| class_weights                  | untyped   | \-              |                                                                           | \-                    |
-| auto_class_weights             | character | None            | None, Balanced, SqrtBalanced                                              | \-                    |
-| boosting_type                  | character | \-              | Ordered, Plain                                                            | \-                    |
-| boost_from_average             | logical   | \-              | TRUE, FALSE                                                               | \-                    |
-| langevin                       | logical   | FALSE           | TRUE, FALSE                                                               | \-                    |
-| diffusion_temperature          | numeric   | 10000           |                                                                           | \\\[0, \infty)\\      |
-| score_function                 | character | Cosine          | Cosine, L2, NewtonCosine, NewtonL2                                        | \-                    |
-| monotone_constraints           | untyped   | \-              |                                                                           | \-                    |
-| feature_weights                | untyped   | \-              |                                                                           | \-                    |
-| first_feature_use_penalties    | untyped   | \-              |                                                                           | \-                    |
-| penalties_coefficient          | numeric   | 1               |                                                                           | \\\[0, \infty)\\      |
-| per_object_feature_penalties   | untyped   | \-              |                                                                           | \-                    |
-| model_shrink_rate              | numeric   | \-              |                                                                           | \\(-\infty, \infty)\\ |
-| model_shrink_mode              | character | \-              | Constant, Decreasing                                                      | \-                    |
-| target_border                  | numeric   | \-              |                                                                           | \\(-\infty, \infty)\\ |
-| border_count                   | integer   | \-              |                                                                           | \\\[1, 65535\]\\      |
-| feature_border_type            | character | GreedyLogSum    | Median, Uniform, UniformAndQuantiles, MaxLogSum, MinEntropy, GreedyLogSum | \-                    |
-| per_float_feature_quantization | untyped   | \-              |                                                                           | \-                    |
-| classes_count                  | integer   | \-              |                                                                           | \\\[1, \infty)\\      |
-| thread_count                   | integer   | 1               |                                                                           | \\\[-1, \infty)\\     |
-| task_type                      | character | CPU             | CPU, GPU                                                                  | \-                    |
-| devices                        | untyped   | \-              |                                                                           | \-                    |
-| logging_level                  | character | Silent          | Silent, Verbose, Info, Debug                                              | \-                    |
-| metric_period                  | integer   | 1               |                                                                           | \\\[1, \infty)\\      |
-| train_dir                      | untyped   | "catboost_info" |                                                                           | \-                    |
-| model_size_reg                 | numeric   | 0.5             |                                                                           | \\\[0, 1\]\\          |
-| allow_writing_files            | logical   | FALSE           | TRUE, FALSE                                                               | \-                    |
-| save_snapshot                  | logical   | FALSE           | TRUE, FALSE                                                               | \-                    |
-| snapshot_file                  | untyped   | \-              |                                                                           | \-                    |
-| snapshot_interval              | integer   | 600             |                                                                           | \\\[1, \infty)\\      |
-| simple_ctr                     | untyped   | \-              |                                                                           | \-                    |
-| combinations_ctr               | untyped   | \-              |                                                                           | \-                    |
-| ctr_target_border_count        | integer   | \-              |                                                                           | \\\[1, 255\]\\        |
-| counter_calc_method            | character | Full            | SkipTest, Full                                                            | \-                    |
-| max_ctr_complexity             | integer   | \-              |                                                                           | \\\[1, \infty)\\      |
-| ctr_leaf_count_limit           | integer   | \-              |                                                                           | \\\[1, \infty)\\      |
-| store_all_simple_ctr           | logical   | FALSE           | TRUE, FALSE                                                               | \-                    |
-| final_ctr_computation_mode     | character | Default         | Default, Skip                                                             | \-                    |
-| verbose                        | logical   | FALSE           | TRUE, FALSE                                                               | \-                    |
-| ntree_start                    | integer   | 0               |                                                                           | \\\[0, \infty)\\      |
-| ntree_end                      | integer   | 0               |                                                                           | \\\[0, \infty)\\      |
-| early_stopping_rounds          | integer   | \-              |                                                                           | \\\[1, \infty)\\      |
-| eval_metric                    | untyped   | \-              |                                                                           | \-                    |
-| use_best_model                 | logical   | \-              | TRUE, FALSE                                                               | \-                    |
-| iterations                     | integer   | 1000            |                                                                           | \\\[1, \infty)\\      |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| loss_function_twoclass | character | Logloss | Logloss, CrossEntropy | \- |
+| loss_function_multiclass | character | MultiClass | MultiClass, MultiClassOneVsAll | \- |
+| learning_rate | numeric | 0.03 |  | \\\[0.001, 1\]\\ |
+| random_seed | integer | 0 |  | \\\[0, \infty)\\ |
+| l2_leaf_reg | numeric | 3 |  | \\\[0, \infty)\\ |
+| bootstrap_type | character | \- | Bayesian, Bernoulli, MVS, Poisson, No | \- |
+| bagging_temperature | numeric | 1 |  | \\\[0, \infty)\\ |
+| subsample | numeric | \- |  | \\\[0, 1\]\\ |
+| sampling_frequency | character | PerTreeLevel | PerTree, PerTreeLevel | \- |
+| sampling_unit | character | Object | Object, Group | \- |
+| mvs_reg | numeric | \- |  | \\\[0, \infty)\\ |
+| random_strength | numeric | 1 |  | \\\[0, \infty)\\ |
+| depth | integer | 6 |  | \\\[1, 16\]\\ |
+| grow_policy | character | SymmetricTree | SymmetricTree, Depthwise, Lossguide | \- |
+| min_data_in_leaf | integer | 1 |  | \\\[1, \infty)\\ |
+| max_leaves | integer | 31 |  | \\\[1, \infty)\\ |
+| ignored_features | untyped | NULL |  | \- |
+| one_hot_max_size | untyped | FALSE |  | \- |
+| has_time | logical | FALSE | TRUE, FALSE | \- |
+| rsm | numeric | 1 |  | \\\[0.001, 1\]\\ |
+| nan_mode | character | Min | Min, Max | \- |
+| fold_permutation_block | integer | \- |  | \\\[1, 256\]\\ |
+| leaf_estimation_method | character | \- | Newton, Gradient, Exact | \- |
+| leaf_estimation_iterations | integer | \- |  | \\\[1, \infty)\\ |
+| leaf_estimation_backtracking | character | AnyImprovement | No, AnyImprovement, Armijo | \- |
+| fold_len_multiplier | numeric | 2 |  | \\\[1.001, \infty)\\ |
+| approx_on_full_history | logical | TRUE | TRUE, FALSE | \- |
+| class_weights | untyped | \- |  | \- |
+| auto_class_weights | character | None | None, Balanced, SqrtBalanced | \- |
+| boosting_type | character | \- | Ordered, Plain | \- |
+| boost_from_average | logical | \- | TRUE, FALSE | \- |
+| langevin | logical | FALSE | TRUE, FALSE | \- |
+| diffusion_temperature | numeric | 10000 |  | \\\[0, \infty)\\ |
+| score_function | character | Cosine | Cosine, L2, NewtonCosine, NewtonL2 | \- |
+| monotone_constraints | untyped | \- |  | \- |
+| feature_weights | untyped | \- |  | \- |
+| first_feature_use_penalties | untyped | \- |  | \- |
+| penalties_coefficient | numeric | 1 |  | \\\[0, \infty)\\ |
+| per_object_feature_penalties | untyped | \- |  | \- |
+| model_shrink_rate | numeric | \- |  | \\(-\infty, \infty)\\ |
+| model_shrink_mode | character | \- | Constant, Decreasing | \- |
+| target_border | numeric | \- |  | \\(-\infty, \infty)\\ |
+| border_count | integer | \- |  | \\\[1, 65535\]\\ |
+| feature_border_type | character | GreedyLogSum | Median, Uniform, UniformAndQuantiles, MaxLogSum, MinEntropy, GreedyLogSum | \- |
+| per_float_feature_quantization | untyped | \- |  | \- |
+| classes_count | integer | \- |  | \\\[1, \infty)\\ |
+| thread_count | integer | 1 |  | \\\[-1, \infty)\\ |
+| task_type | character | CPU | CPU, GPU | \- |
+| devices | untyped | \- |  | \- |
+| logging_level | character | Silent | Silent, Verbose, Info, Debug | \- |
+| metric_period | integer | 1 |  | \\\[1, \infty)\\ |
+| train_dir | untyped | "catboost_info" |  | \- |
+| model_size_reg | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| allow_writing_files | logical | FALSE | TRUE, FALSE | \- |
+| save_snapshot | logical | FALSE | TRUE, FALSE | \- |
+| snapshot_file | untyped | \- |  | \- |
+| snapshot_interval | integer | 600 |  | \\\[1, \infty)\\ |
+| simple_ctr | untyped | \- |  | \- |
+| combinations_ctr | untyped | \- |  | \- |
+| ctr_target_border_count | integer | \- |  | \\\[1, 255\]\\ |
+| counter_calc_method | character | Full | SkipTest, Full | \- |
+| max_ctr_complexity | integer | \- |  | \\\[1, \infty)\\ |
+| ctr_leaf_count_limit | integer | \- |  | \\\[1, \infty)\\ |
+| store_all_simple_ctr | logical | FALSE | TRUE, FALSE | \- |
+| final_ctr_computation_mode | character | Default | Default, Skip | \- |
+| verbose | logical | FALSE | TRUE, FALSE | \- |
+| ntree_start | integer | 0 |  | \\\[0, \infty)\\ |
+| ntree_end | integer | 0 |  | \\\[0, \infty)\\ |
+| early_stopping_rounds | integer | \- |  | \\\[1, \infty)\\ |
+| eval_metric | untyped | \- |  | \- |
+| use_best_model | logical | \- | TRUE, FALSE | \- |
+| iterations | integer | 1000 |  | \\\[1, \infty)\\ |
 
 ## Installation
 
@@ -311,23 +311,23 @@ print(learner$model)
 #> Loss function: Logloss
 #> Fit to 60 feature(s)
 print(learner$importance())
-#>        V11        V49        V27        V16        V23         V9        V36 
-#> 13.7944741 12.9478852  7.1139727  6.5994485  4.8748874  4.8067311  4.7101101 
-#>        V52         V7        V31        V37        V55        V21        V40 
-#>  3.9963622  3.7586513  3.4653712  2.8008367  2.2383638  2.1899708  1.8257778 
-#>        V39        V17         V6        V56        V46        V20        V60 
-#>  1.7752171  1.6806157  1.5012684  1.4547260  1.3573798  1.3549206  1.3199188 
-#>        V44        V10         V5         V4         V1        V54        V19 
-#>  1.3157911  1.2067068  1.2029317  1.1611720  1.0667527  1.0638957  1.0323407 
-#>        V24        V51        V45        V50        V32        V26        V53 
-#>  0.9809648  0.9767345  0.7718650  0.7405110  0.5095295  0.5032695  0.4723267 
-#>        V28        V15        V14        V30        V57        V12        V13 
-#>  0.3482145  0.3360281  0.2891126  0.2596800  0.1952840  0.0000000  0.0000000 
-#>        V18         V2        V22        V25        V29         V3        V33 
+#>        V12        V48         V9        V10        V21        V27        V17 
+#> 13.5938703  8.9052590  6.6952012  5.9287493  5.1998541  4.9160888  4.8551518 
+#>         V5        V20        V31        V57        V33        V40        V45 
+#>  4.6546748  4.4985126  4.4977202  3.7580139  3.6327616  3.0827853  2.8937507 
+#>        V52        V30        V24        V51        V26         V7        V28 
+#>  2.6625499  2.2245958  1.6511007  1.5024024  1.3849451  1.2645132  1.1967815 
+#>        V39        V11        V56        V50        V49         V4        V16 
+#>  1.1707301  1.1142013  1.0788604  1.0057286  0.9209427  0.7728054  0.7242834 
+#>        V25        V47        V13         V8        V38        V19        V36 
+#>  0.6643453  0.6626251  0.5438679  0.5089282  0.4749198  0.4661763  0.4569107 
+#>        V55         V1        V14        V15        V18         V2        V22 
+#>  0.4353927  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V23        V29         V3        V32        V34        V35        V37 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V34        V35        V38        V41        V42        V43        V47 
+#>        V41        V42        V43        V44        V46        V53        V54 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V48        V58        V59         V8 
+#>        V58        V59         V6        V60 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
@@ -336,5 +336,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.2753623 
 ```

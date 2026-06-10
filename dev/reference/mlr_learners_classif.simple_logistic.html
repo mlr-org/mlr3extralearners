@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification SimpleLogistic Learner — mlr_learners_classif.simple_logistic"><meta name="description" content="LogitBoost with simple regression functions as base learners.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification SimpleLogistic Learner — mlr_learners_classif.simple_logistic"><meta name="description" content="LogitBoost with simple regression functions as base learners.
 Calls RWeka::make_Weka_classifier() from RWeka."><meta property="og:description" content="LogitBoost with simple regression functions as base learners.
 Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="no
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -246,64 +246,36 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> SimpleLogistic:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class M :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -3.15 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * 5.36 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 5.23 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * 1.91 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V14] * -0.83 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * -0.86 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 1.43 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * 0.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * 1.14 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * -7.77 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * -1.62 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V33] * 0.59 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -2.66 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * 0.53 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * 10.09 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V42] * 1.03 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * 2.8  +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * 0.76 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V48] * 2    +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * 9.53 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * -27.29 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 15.96 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 12.4 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * 18.5 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V58] * 17.91 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V6] * -2.35 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V60] * -26.73 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * -1.57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.75 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * 7.03 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 3.66 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * 1.08 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * -0.72 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V17] * -0.71 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V20] * 0.76 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * 0.82 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * -1.09 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -1.91 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * 2.63 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * 2.65 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V5] * 3.36 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class R :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3.15 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * -5.36 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -5.23 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * -1.91 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V14] * 0.83 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * 0.86 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -1.43 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * -0.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * -1.14 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * 7.77 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * 1.62 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V33] * -0.59 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 2.66 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * -0.53 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * -10.09 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V42] * -1.03 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * -2.8 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * -0.76 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V48] * -2 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * -9.53 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * 27.29 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -15.96 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -12.4 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * -18.5 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V58] * -17.91 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V6] * 2.35 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V60] * 26.73 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * 1.57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.75 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * -7.03 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -3.66 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * -1.08 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * 0.72 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V17] * 0.71 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V20] * -0.76 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * -0.82 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * 1.09 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 1.91 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * -2.63 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * -2.65 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V5] * -3.36 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -20</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -313,7 +285,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -29,42 +29,42 @@ instantiated via
 
 ## Parameters
 
-|             |           |          |                            |                       |
-|-------------|-----------|----------|----------------------------|-----------------------|
-| Id          | Type      | Default  | Levels                     | Range                 |
-| rhs         | untyped   | \-       |                            | \-                    |
-| fit         | untyped   | \-       |                            | \-                    |
-| offset      | untyped   | \-       |                            | \-                    |
-| cluster     | untyped   | \-       |                            | \-                    |
-| alpha       | numeric   | 0.05     |                            | \\\[0, 1\]\\          |
-| bonferroni  | logical   | TRUE     | TRUE, FALSE                | \-                    |
-| minsize     | integer   | \-       |                            | \\\[1, \infty)\\      |
-| minsplit    | integer   | \-       |                            | \\\[1, \infty)\\      |
-| minbucket   | integer   | \-       |                            | \\\[1, \infty)\\      |
-| maxdepth    | integer   | Inf      |                            | \\\[0, \infty)\\      |
-| mtry        | integer   | Inf      |                            | \\\[0, \infty)\\      |
-| trim        | numeric   | 0.1      |                            | \\\[0, \infty)\\      |
-| breakties   | logical   | FALSE    | TRUE, FALSE                | \-                    |
-| parm        | untyped   | \-       |                            | \-                    |
-| dfsplit     | integer   | \-       |                            | \\\[0, \infty)\\      |
-| prune       | untyped   | \-       |                            | \-                    |
-| restart     | logical   | TRUE     | TRUE, FALSE                | \-                    |
-| verbose     | logical   | FALSE    | TRUE, FALSE                | \-                    |
-| caseweights | logical   | TRUE     | TRUE, FALSE                | \-                    |
-| ytype       | character | vector   | vector, matrix, data.frame | \-                    |
-| xtype       | character | matrix   | vector, matrix, data.frame | \-                    |
-| terminal    | untyped   | "object" |                            | \-                    |
-| inner       | untyped   | "object" |                            | \-                    |
-| model       | logical   | TRUE     | TRUE, FALSE                | \-                    |
-| numsplit    | character | left     | left, center               | \-                    |
-| catsplit    | character | binary   | binary, multiway           | \-                    |
-| vcov        | character | opg      | opg, info, sandwich        | \-                    |
-| ordinal     | character | chisq    | chisq, max, L2             | \-                    |
-| nrep        | integer   | 10000    |                            | \\\[0, \infty)\\      |
-| applyfun    | untyped   | \-       |                            | \-                    |
-| cores       | integer   | NULL     |                            | \\(-\infty, \infty)\\ |
-| additional  | untyped   | \-       |                            | \-                    |
-| predict_fun | untyped   | \-       |                            | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| rhs | untyped | \- |  | \- |
+| fit | untyped | \- |  | \- |
+| offset | untyped | \- |  | \- |
+| cluster | untyped | \- |  | \- |
+| alpha | numeric | 0.05 |  | \\\[0, 1\]\\ |
+| bonferroni | logical | TRUE | TRUE, FALSE | \- |
+| minsize | integer | \- |  | \\\[1, \infty)\\ |
+| minsplit | integer | \- |  | \\\[1, \infty)\\ |
+| minbucket | integer | \- |  | \\\[1, \infty)\\ |
+| maxdepth | integer | Inf |  | \\\[0, \infty)\\ |
+| mtry | integer | Inf |  | \\\[0, \infty)\\ |
+| trim | numeric | 0.1 |  | \\\[0, \infty)\\ |
+| breakties | logical | FALSE | TRUE, FALSE | \- |
+| parm | untyped | \- |  | \- |
+| dfsplit | integer | \- |  | \\\[0, \infty)\\ |
+| prune | untyped | \- |  | \- |
+| restart | logical | TRUE | TRUE, FALSE | \- |
+| verbose | logical | FALSE | TRUE, FALSE | \- |
+| caseweights | logical | TRUE | TRUE, FALSE | \- |
+| ytype | character | vector | vector, matrix, data.frame | \- |
+| xtype | character | matrix | vector, matrix, data.frame | \- |
+| terminal | untyped | "object" |  | \- |
+| inner | untyped | "object" |  | \- |
+| model | logical | TRUE | TRUE, FALSE | \- |
+| numsplit | character | left | left, center | \- |
+| catsplit | character | binary | binary, multiway | \- |
+| vcov | character | opg | opg, info, sandwich | \- |
+| ordinal | character | chisq | chisq, max, L2 | \- |
+| nrep | integer | 10000 |  | \\\[0, \infty)\\ |
+| applyfun | untyped | \- |  | \- |
+| cores | integer | NULL |  | \\(-\infty, \infty)\\ |
+| additional | untyped | \- |  | \- |
+| predict_fun | untyped | \- |  | \- |
 
 ## References
 
@@ -200,11 +200,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
 #>  row_ids     truth  response
-#>        5    benign malignant
-#>        7    benign malignant
-#>       11    benign malignant
+#>        1    benign    benign
+#>        2    benign malignant
+#>        5    benign    benign
 #>      ---       ---       ---
-#>      676 malignant malignant
-#>      681 malignant malignant
+#>      679    benign    benign
 #>      682 malignant malignant
+#>      683 malignant malignant
 ```

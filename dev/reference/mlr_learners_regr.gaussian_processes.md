@@ -65,23 +65,23 @@ instantiated via
 
 ## Parameters
 
-|                           |           |                          |                                                                                                                                      |                       |
-|---------------------------|-----------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Id                        | Type      | Default                  | Levels                                                                                                                               | Range                 |
-| subset                    | untyped   | \-                       |                                                                                                                                      | \-                    |
-| na.action                 | untyped   | \-                       |                                                                                                                                      | \-                    |
-| L                         | numeric   | 1                        |                                                                                                                                      | \\(-\infty, \infty)\\ |
-| N                         | character | 0                        | 0, 1, 2                                                                                                                              | \-                    |
-| K                         | character | supportVector.PolyKernel | supportVector.NormalizedPolyKernel, supportVector.PolyKernel, supportVector.Puk, supportVector.RBFKernel, supportVector.StringKernel | \-                    |
-| S                         | integer   | 1                        |                                                                                                                                      | \\(-\infty, \infty)\\ |
-| E_poly                    | numeric   | 1                        |                                                                                                                                      | \\(-\infty, \infty)\\ |
-| L_poly                    | logical   | FALSE                    | TRUE, FALSE                                                                                                                          | \-                    |
-| C_poly                    | integer   | 250007                   |                                                                                                                                      | \\(-\infty, \infty)\\ |
-| output_debug_info         | logical   | FALSE                    | TRUE, FALSE                                                                                                                          | \-                    |
-| do_not_check_capabilities | logical   | FALSE                    | TRUE, FALSE                                                                                                                          | \-                    |
-| num_decimal_places        | integer   | 2                        |                                                                                                                                      | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100                      |                                                                                                                                      | \\\[1, \infty)\\      |
-| options                   | untyped   | NULL                     |                                                                                                                                      | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| L | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| N | character | 0 | 0, 1, 2 | \- |
+| K | character | supportVector.PolyKernel | supportVector.NormalizedPolyKernel, supportVector.PolyKernel, supportVector.Puk, supportVector.RBFKernel, supportVector.StringKernel | \- |
+| S | integer | 1 |  | \\(-\infty, \infty)\\ |
+| E_poly | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| L_poly | logical | FALSE | TRUE, FALSE | \- |
+| C_poly | integer | 250007 |  | \\(-\infty, \infty)\\ |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## References
 
@@ -255,13 +255,13 @@ print(learner$model)
 #> 
 #> All values shown based on: Normalize training data
 #> 
-#> Average Target Value : 0.3075801749271137
+#> Average Target Value : 0.4407142857142857
 #> Inverted Covariance Matrix:
-#>     Lowest Value = -0.23514646225128882
-#>     Highest Value = 0.8704625485929485
+#>     Lowest Value = -0.23170314867353659
+#>     Highest Value = 0.8810732139328801
 #> Inverted Covariance Matrix * Target-value Vector:
-#>     Lowest Value = -0.1806529321431246
-#>     Highest Value = 0.31987044727895225
+#>     Lowest Value = -0.13390728095170024
+#>     Highest Value = 0.21870476896168226
 #>  
 #> 
 
@@ -272,5 +272,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.342487 
+#> 15.92454 
 ```

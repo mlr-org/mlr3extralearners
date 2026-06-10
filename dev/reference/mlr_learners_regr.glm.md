@@ -28,25 +28,25 @@ instantiated via
 
 ## Parameters
 
-|                 |           |          |                                                                       |                       |
-|-----------------|-----------|----------|-----------------------------------------------------------------------|-----------------------|
-| Id              | Type      | Default  | Levels                                                                | Range                 |
-| singular.ok     | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
-| x               | logical   | FALSE    | TRUE, FALSE                                                           | \-                    |
-| y               | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
-| model           | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
-| etastart        | untyped   | \-       |                                                                       | \-                    |
-| mustart         | untyped   | \-       |                                                                       | \-                    |
-| start           | untyped   | NULL     |                                                                       | \-                    |
-| family          | character | gaussian | gaussian, poisson, quasipoisson, Gamma, inverse.gaussian              | \-                    |
-| na.action       | character | \-       | na.omit, na.pass, na.fail, na.exclude                                 | \-                    |
-| link            | character | \-       | logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse | \-                    |
-| epsilon         | numeric   | 1e-08    |                                                                       | \\(-\infty, \infty)\\ |
-| maxit           | numeric   | 25       |                                                                       | \\(-\infty, \infty)\\ |
-| trace           | logical   | FALSE    | TRUE, FALSE                                                           | \-                    |
-| dispersion      | untyped   | NULL     |                                                                       | \-                    |
-| type            | character | link     | response, link, terms                                                 | \-                    |
-| use_pred_offset | logical   | TRUE     | TRUE, FALSE                                                           | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| singular.ok | logical | TRUE | TRUE, FALSE | \- |
+| x | logical | FALSE | TRUE, FALSE | \- |
+| y | logical | TRUE | TRUE, FALSE | \- |
+| model | logical | TRUE | TRUE, FALSE | \- |
+| etastart | untyped | \- |  | \- |
+| mustart | untyped | \- |  | \- |
+| start | untyped | NULL |  | \- |
+| family | character | gaussian | gaussian, poisson, quasipoisson, Gamma, inverse.gaussian | \- |
+| na.action | character | \- | na.omit, na.pass, na.fail, na.exclude | \- |
+| link | character | \- | logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse | \- |
+| epsilon | numeric | 1e-08 |  | \\(-\infty, \infty)\\ |
+| maxit | numeric | 25 |  | \\(-\infty, \infty)\\ |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| dispersion | untyped | NULL |  | \- |
+| type | character | link | response, link, terms | \- |
+| use_pred_offset | logical | TRUE | TRUE, FALSE | \- |
 
 ## Initial parameter values
 
@@ -213,13 +213,13 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> (Intercept)           am         carb          cyl         disp         drat  
-#>  -22.411027     1.219711    -0.443759    -0.551306     0.032234     2.068690  
+#>   -67.02850      2.77457     -1.18566      2.43488      0.01366      4.05418  
 #>        gear           hp         qsec           vs           wt  
-#>    2.402625     0.008951     2.361989    -1.991718    -5.984205  
+#>     5.10459      0.03000      2.76835      0.67192     -4.81205  
 #> 
 #> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual
-#> Null Deviance:       756.4 
-#> Residual Deviance: 65.21     AIC: 107.4
+#> Null Deviance:       806 
+#> Residual Deviance: 72.79     AIC: 109.7
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 15.31074 
+#> 34.93483 
 ```

@@ -27,13 +27,13 @@ instantiated via
 
 ## Parameters
 
-|            |           |           |                                              |                  |
-|------------|-----------|-----------|----------------------------------------------|------------------|
-| Id         | Type      | Default   | Levels                                       | Range            |
-| ncomp      | integer   | 2         |                                              | \\\[1, \infty)\\ |
-| prior      | untyped   | "softmax" |                                              | \-               |
-| probMethod | character | softmax   | softmax, Bayes                               | \-               |
-| method     | character | kernelpls | kernelpls, widekernelpls, simpls, oscorespls | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| ncomp | integer | 2 |  | \\\[1, \infty)\\ |
+| prior | untyped | "softmax" |  | \- |
+| probMethod | character | softmax | softmax, Bayes | \- |
+| method | character | kernelpls | kernelpls, widekernelpls, simpls, oscorespls | \- |
 
 ## References
 
@@ -170,5 +170,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.2028986 
 ```

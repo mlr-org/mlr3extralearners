@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Changelog"><meta name="robots" content="noindex"></head><body>
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Changelog"><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,11 +54,34 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
 <div class="section level3">
+<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<ul><li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.cv_glmnet</code>: removed the parameters <code>standardize.response</code>, <code>type.gaussian</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are not applicable to the Cox family (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.glmnet</code>: removed the parameters <code>alignment</code>, <code>parallel</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are CV-only or not applicable to the Cox family, and renamed the predict parameter <code>predict.gamma</code> to <code>gamma</code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+</ul></div>
+<div class="section level3">
 <h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
-<ul><li>Use CRAN version of <code>survdistr</code>
-</li>
-<li>Use <code>mlr3cmprsk</code> version <code>0.0.5</code>
-</li>
+<ul><li>Updated minimum versions of suggested packages, most notably <code>glmnet</code> (&gt;= 5.0) (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.cv_glmnet</code> and <code>surv.glmnet</code>: updated for <code>glmnet</code> v5.0, added the train parameters <code>cox.ties</code> (initialized to <code>"breslow"</code> to keep the previous tie-handling behavior), <code>maxp</code>, and <code>path</code>, added the predict parameter <code>exact</code> (<code>surv.cv_glmnet</code> only), fixed predictions for relaxed fits (<code>relax = TRUE</code>), and added a read-only <code>native_model</code> field that returns the fitted <code>glmnet</code> model (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.priority_lasso</code>: added the train parameter <code>cox.ties</code>, initialized to <code>"breslow"</code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.survdnn</code>: added the <code>.threads</code> train parameter (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>regr.botorch_fullybayesian</code> now declares its <code>numpyro</code>, <code>jax</code>, and <code>jaxlib</code> Python dependencies so they are installed automatically.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.2" id="mlr3extralearners-152">mlr3extralearners 1.5.2<a class="anchor" aria-label="anchor" href="#mlr3extralearners-152"></a></h2>
+<div class="section level3">
+<h3 id="other-1-5-2">Other<a class="anchor" aria-label="anchor" href="#other-1-5-2"></a></h3>
+<ul><li>Use CRAN version of <code>survdistr</code>.</li>
+<li>Use <code>mlr3cmprsk</code> version <code>0.0.5</code>.</li>
+<li>Update <code>crs</code> parameters.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -324,7 +347,7 @@
 <ol class="example" style="list-style-type: decimal"><li>
 </li></ol></li>
 <li>Feat: Added learners <code>LearnerClassifPriorityLasso</code>, <code>LearnerRegrPriorityLasso</code>, <code>LearnerSurvPriorityLasso</code> (thanks to
-<ol start="2" class="example" style="list-style-type: decimal"><li>
+<ol class="example" style="list-style-type: decimal"><li>
 </li></ol></li>
 </ul></div>
     <div class="section level2">

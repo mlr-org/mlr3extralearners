@@ -58,45 +58,45 @@ instantiated via
 
 ## Parameters
 
-|                         |           |         |                              |                       |
-|-------------------------|-----------|---------|------------------------------|-----------------------|
-| Id                      | Type      | Default | Levels                       | Range                 |
-| n_tree                  | integer   | 500     |                              | \\\[1, \infty)\\      |
-| n_split                 | integer   | 5       |                              | \\\[1, \infty)\\      |
-| n_retry                 | integer   | 3       |                              | \\\[0, \infty)\\      |
-| n_thread                | integer   | \-      |                              | \\\[0, \infty)\\      |
-| pred_aggregate          | logical   | TRUE    | TRUE, FALSE                  | \-                    |
-| pred_simplify           | logical   | FALSE   | TRUE, FALSE                  | \-                    |
-| oobag                   | logical   | FALSE   | TRUE, FALSE                  | \-                    |
-| mtry                    | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| mtry_ratio              | numeric   | \-      |                              | \\\[0, 1\]\\          |
-| sample_with_replacement | logical   | TRUE    | TRUE, FALSE                  | \-                    |
-| sample_fraction         | numeric   | 0.632   |                              | \\\[0, 1\]\\          |
-| control_type            | character | fast    | fast, cph, net, custom       | \-                    |
-| control_custom_fun      | untyped   | \-      |                              | \-                    |
-| split_rule              | character | logrank | logrank, cstat               | \-                    |
-| control_fast_do_scale   | logical   | FALSE   | TRUE, FALSE                  | \-                    |
-| control_fast_ties       | character | efron   | efron, breslow               | \-                    |
-| control_cph_ties        | character | efron   | efron, breslow               | \-                    |
-| control_cph_eps         | numeric   | 1e-09   |                              | \\\[0, \infty)\\      |
-| control_cph_iter_max    | integer   | 20      |                              | \\\[1, \infty)\\      |
-| control_net_alpha       | numeric   | 0.5     |                              | \\(-\infty, \infty)\\ |
-| control_net_df_target   | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| leaf_min_events         | integer   | 1       |                              | \\\[1, \infty)\\      |
-| leaf_min_obs            | integer   | 5       |                              | \\\[1, \infty)\\      |
-| split_min_events        | integer   | 5       |                              | \\\[1, \infty)\\      |
-| split_min_obs           | integer   | 10      |                              | \\\[1, \infty)\\      |
-| split_min_stat          | numeric   | NULL    |                              | \\\[0, \infty)\\      |
-| oobag_pred_type         | character | risk    | none, surv, risk, chf, mort  | \-                    |
-| importance              | character | anova   | none, anova, negate, permute | \-                    |
-| importance_max_pvalue   | numeric   | 0.01    |                              | \\\[1e-04, 0.9999\]\\ |
-| tree_seeds              | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| oobag_pred_horizon      | numeric   | NULL    |                              | \\\[0, \infty)\\      |
-| oobag_eval_every        | integer   | NULL    |                              | \\\[1, \infty)\\      |
-| oobag_fun               | untyped   | NULL    |                              | \-                    |
-| attach_data             | logical   | TRUE    | TRUE, FALSE                  | \-                    |
-| verbose_progress        | logical   | FALSE   | TRUE, FALSE                  | \-                    |
-| na_action               | character | fail    | fail, impute_meanmode        | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| n_tree | integer | 500 |  | \\\[1, \infty)\\ |
+| n_split | integer | 5 |  | \\\[1, \infty)\\ |
+| n_retry | integer | 3 |  | \\\[0, \infty)\\ |
+| n_thread | integer | \- |  | \\\[0, \infty)\\ |
+| pred_aggregate | logical | TRUE | TRUE, FALSE | \- |
+| pred_simplify | logical | FALSE | TRUE, FALSE | \- |
+| oobag | logical | FALSE | TRUE, FALSE | \- |
+| mtry | integer | NULL |  | \\\[1, \infty)\\ |
+| mtry_ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| sample_with_replacement | logical | TRUE | TRUE, FALSE | \- |
+| sample_fraction | numeric | 0.632 |  | \\\[0, 1\]\\ |
+| control_type | character | fast | fast, cph, net, custom | \- |
+| control_custom_fun | untyped | \- |  | \- |
+| split_rule | character | logrank | logrank, cstat | \- |
+| control_fast_do_scale | logical | FALSE | TRUE, FALSE | \- |
+| control_fast_ties | character | efron | efron, breslow | \- |
+| control_cph_ties | character | efron | efron, breslow | \- |
+| control_cph_eps | numeric | 1e-09 |  | \\\[0, \infty)\\ |
+| control_cph_iter_max | integer | 20 |  | \\\[1, \infty)\\ |
+| control_net_alpha | numeric | 0.5 |  | \\(-\infty, \infty)\\ |
+| control_net_df_target | integer | NULL |  | \\\[1, \infty)\\ |
+| leaf_min_events | integer | 1 |  | \\\[1, \infty)\\ |
+| leaf_min_obs | integer | 5 |  | \\\[1, \infty)\\ |
+| split_min_events | integer | 5 |  | \\\[1, \infty)\\ |
+| split_min_obs | integer | 10 |  | \\\[1, \infty)\\ |
+| split_min_stat | numeric | NULL |  | \\\[0, \infty)\\ |
+| oobag_pred_type | character | risk | none, surv, risk, chf, mort | \- |
+| importance | character | anova | none, anova, negate, permute | \- |
+| importance_max_pvalue | numeric | 0.01 |  | \\\[1e-04, 0.9999\]\\ |
+| tree_seeds | integer | NULL |  | \\\[1, \infty)\\ |
+| oobag_pred_horizon | numeric | NULL |  | \\\[0, \infty)\\ |
+| oobag_eval_every | integer | NULL |  | \\\[1, \infty)\\ |
+| oobag_fun | untyped | NULL |  | \- |
+| attach_data | logical | TRUE | TRUE, FALSE | \- |
+| verbose_progress | logical | FALSE | TRUE, FALSE | \- |
+| na_action | character | fail | fail, impute_meanmode | \- |
 
 ## References
 
@@ -261,21 +261,21 @@ print(learner$model)
 #> 
 #>      Linear combinations: Accelerated Cox regression
 #>           N observations: 670
-#>                 N events: 201
+#>                 N events: 224
 #>                  N trees: 500
 #>       N predictors total: 6
 #>    N predictors per node: 3
-#>  Average leaves per tree: 38.238
+#>  Average leaves per tree: 41.138
 #> Min observations in leaf: 5
 #>       Min events in leaf: 1
-#>           OOB stat value: 0.85
+#>           OOB stat value: 0.84
 #>            OOB stat type: Harrell's C-index
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#> revascdays     revasc        los        age      sysbp   stchange 
-#> 0.58133946 0.53151066 0.24985627 0.20963497 0.12580306 0.09114464 
+#> revascdays     revasc        los        age   stchange      sysbp 
+#>  0.5786782  0.5121305  0.2170486  0.2064692  0.1311216  0.1100545 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -283,5 +283,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8380691 
+#>   0.8458306 
 ```

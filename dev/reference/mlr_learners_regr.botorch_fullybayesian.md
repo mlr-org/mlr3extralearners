@@ -32,18 +32,18 @@ instantiated via
 
 ## Parameters
 
-|                   |           |         |                                           |                  |
-|-------------------|-----------|---------|-------------------------------------------|------------------|
-| Id                | Type      | Default | Levels                                    | Range            |
-| device            | character | cpu     | cpu, cuda                                 | \-               |
-| input_transform   | character | \-      | normalize, standardize, log10, warp, none | \-               |
-| outcome_transform | character | \-      | standardize, none                         | \-               |
-| warmup_steps      | integer   | \-      |                                           | \\\[1, \infty)\\ |
-| num_samples       | integer   | \-      |                                           | \\\[1, \infty)\\ |
-| thinning          | integer   | \-      |                                           | \\\[1, \infty)\\ |
-| max_tree_depth    | integer   | \-      |                                           | \\\[1, \infty)\\ |
-| disable_progbar   | logical   | \-      | TRUE, FALSE                               | \-               |
-| jit_compile       | logical   | \-      | TRUE, FALSE                               | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| device | character | cpu | cpu, cuda | \- |
+| input_transform | character | \- | normalize, standardize, log10, warp, none | \- |
+| outcome_transform | character | \- | standardize, none | \- |
+| warmup_steps | integer | \- |  | \\\[1, \infty)\\ |
+| num_samples | integer | \- |  | \\\[1, \infty)\\ |
+| thinning | integer | \- |  | \\\[1, \infty)\\ |
+| max_tree_depth | integer | \- |  | \\\[1, \infty)\\ |
+| disable_progbar | logical | \- | TRUE, FALSE | \- |
+| jit_compile | logical | \- | TRUE, FALSE | \- |
 
 ## Author
 

@@ -27,22 +27,22 @@ instantiated via
 
 ## Parameters
 
-|               |           |                |                               |                       |
-|---------------|-----------|----------------|-------------------------------|-----------------------|
-| Id            | Type      | Default        | Levels                        | Range                 |
-| family        | character | Binomial       | Binomial, AdaExp, AUC, custom | \-                    |
-| custom.family | untyped   | \-             |                               | \-                    |
-| link          | character | logit          | logit, probit                 | \-                    |
-| type          | character | adaboost       | glm, adaboost                 | \-                    |
-| center        | logical   | TRUE           | TRUE, FALSE                   | \-                    |
-| mstop         | integer   | 100            |                               | \\(-\infty, \infty)\\ |
-| nu            | numeric   | 0.1            |                               | \\(-\infty, \infty)\\ |
-| risk          | character | inbag          | inbag, oobag, none            | \-                    |
-| oobweights    | untyped   | NULL           |                               | \-                    |
-| trace         | logical   | FALSE          | TRUE, FALSE                   | \-                    |
-| stopintern    | untyped   | FALSE          |                               | \-                    |
-| na.action     | untyped   | stats::na.omit |                               | \-                    |
-| contrasts.arg | untyped   | \-             |                               | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| family | character | Binomial | Binomial, AdaExp, AUC, custom | \- |
+| custom.family | untyped | \- |  | \- |
+| link | character | logit | logit, probit | \- |
+| type | character | adaboost | glm, adaboost | \- |
+| center | logical | TRUE | TRUE, FALSE | \- |
+| mstop | integer | 100 |  | \\(-\infty, \infty)\\ |
+| nu | numeric | 0.1 |  | \\(-\infty, \infty)\\ |
+| risk | character | inbag | inbag, oobag, none | \- |
+| oobweights | untyped | NULL |  | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| stopintern | untyped | FALSE |  | \- |
+| na.action | untyped | stats::na.omit |  | \- |
+| contrasts.arg | untyped | \- |  | \- |
 
 ## Offset
 
@@ -189,23 +189,23 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.007194369 
+#> Offset:  -0.1083355 
 #> 
 #> Coefficients: 
 #> 
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#>  (Intercept)           V1          V11          V12          V16          V21 
-#>   1.17222059  -5.01298623  -0.92104754  -1.86016317   0.81485990  -0.58874763 
-#>          V24          V31          V36           V4          V40          V45 
-#>  -0.15057368   0.24094159   0.81715746  -0.80169761   0.06111411  -1.36206810 
-#>          V46          V48          V49          V51          V54          V59 
-#>  -0.44625207  -0.92209029  -1.43646147 -12.00748725  -7.92728062  -3.34014786 
-#>           V7 
-#>   1.15061420 
+#>  (Intercept)           V1          V11          V12          V16          V20 
+#>   1.23023160  -1.69818296  -2.13733928  -0.09622204   0.08574861  -0.22749326 
+#>          V23          V28          V29          V31          V36          V37 
+#>  -0.12102168  -0.04349433  -0.04038706   0.49386813   1.05180333   0.46261003 
+#>          V39          V43          V44          V45          V49           V5 
+#>  -0.15748307  -0.19086841  -0.57582648  -1.28175567  -5.78259591  -0.87945941 
+#>          V51          V52          V59 
+#> -13.94573529  -5.60490006 -10.13138939 
 #> attr(,"offset")
-#> [1] -0.007194369
+#> [1] -0.1083355
 #> 
 
 
@@ -215,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.2753623 
 ```

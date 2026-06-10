@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Logistic Regression Learner — mlr_learners_classif.stepPlr"><meta name="description" content="Logistic regression with a quadratic penalization on the coefficient.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Logistic Regression Learner — mlr_learners_classif.stepPlr"><meta name="description" content="Logistic regression with a quadratic penalization on the coefficient.
 Calls stepPlr::plr() from stepPlr."><meta property="og:description" content="Logistic regression with a quadratic penalization on the coefficient.
 Calls stepPlr::plr() from stepPlr."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -15,7 +15,7 @@ Calls stepPlr::plr() from stepPlr."><meta name="robots" content="noindex"></head
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -188,25 +188,25 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intercept        V1       V10       V11       V12       V13       V14       V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  25.79568 -39.47300  13.61152 -14.93734 -21.71626  34.99793 -39.40064  24.20333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  34.60484  -7.27672 -22.78624 -28.62203 -66.17243  35.05229   0.30408  -5.59200 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V16       V17       V18       V19        V2       V20       V21       V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -7.57436  20.30948 -10.12348 -12.53550 -31.65902   6.23221   9.63750 -26.90005 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -2.49617  15.00968  19.45371 -16.72549 -30.33158 -16.13149  13.10465 -32.04914 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V23       V24       V25       V26       V27       V28       V29        V3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  11.77947 -10.30387 -11.16221  25.99713 -10.48677   1.96620   1.67119  50.87251 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  24.60874 -29.66890 -12.16778  46.85182  -5.39428 -21.85302  11.80337  22.01962 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V30       V31       V32       V33       V34       V35       V36       V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -29.76147  39.71731 -27.32958  14.24514  -8.19726 -15.32349  40.64620 -31.81419 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -27.77262  25.64897   0.47325 -26.54916  17.71489  -3.56384   8.19051  34.91190 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V38       V39        V4       V40       V41       V42       V43       V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  20.61093 -37.56760 -57.32719  46.70984  -9.31629  -2.95566 -25.74449  42.45411 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -26.08340  -3.72600 -61.32852  14.58996 -10.96294  11.94129 -24.17945  -3.09509 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V45       V46       V47       V48       V49        V5       V50       V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -34.80434   5.98694  -6.05737 -65.20234  -7.23119  -4.33211  52.02833 -36.66587 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -18.77006  -2.90001   9.59225   6.49660 -49.47139 -34.61492  40.62539   0.99669 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V52       V53       V54       V55       V56       V57       V58       V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -84.76803 -47.31759  -9.76264 -26.20719   0.88875  -6.18351 -18.82569 -16.69885 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -16.28500   0.92396  -4.76328  -3.61551   4.78525  -1.70662   0.94045 -10.88798 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        V6       V60        V7        V8        V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -41.43344  -0.56390  61.63136   1.38726 -37.08786 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -14.21107  -4.11889  12.04313  38.71920 -18.64705 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 188.87 on 138 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 14.09 on 93.72 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 237.5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 191.07 on 138 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 5.77 on 101.58 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 190.43 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +215,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

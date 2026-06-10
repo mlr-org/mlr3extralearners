@@ -47,19 +47,19 @@ instantiated via
 
 ## Parameters
 
-|                           |           |         |             |                       |
-|---------------------------|-----------|---------|-------------|-----------------------|
-| Id                        | Type      | Default | Levels      | Range                 |
-| subset                    | untyped   | \-      |             | \-                    |
-| na.action                 | untyped   | \-      |             | \-                    |
-| B                         | integer   | 20      |             | \\(-\infty, \infty)\\ |
-| E                         | logical   | \-      | TRUE, FALSE | \-                    |
-| M                         | character | a       | a, d, m, n  | \-                    |
-| output_debug_info         | logical   | FALSE   | TRUE, FALSE | \-                    |
-| do_not_check_capabilities | logical   | FALSE   | TRUE, FALSE | \-                    |
-| num_decimal_places        | integer   | 2       |             | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100     |             | \\\[1, \infty)\\      |
-| options                   | untyped   | NULL    |             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| B | integer | 20 |  | \\(-\infty, \infty)\\ |
+| E | logical | \- | TRUE, FALSE | \- |
+| M | character | a | a, d, m, n | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## References
 
@@ -241,5 +241,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#> 0.07246377 
 ```

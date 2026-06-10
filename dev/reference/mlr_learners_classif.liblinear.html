@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="LiblineaR Classification Learner — mlr_learners_classif.liblinear"><meta name="description" content="L2 regularized support vector classification.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="LiblineaR Classification Learner — mlr_learners_classif.liblinear"><meta name="description" content="L2 regularized support vector classification.
 Calls LiblineaR::LiblineaR() from LiblineaR."><meta property="og:description" content="L2 regularized support vector classification.
 Calls LiblineaR::LiblineaR() from LiblineaR."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -15,7 +15,7 @@ Calls LiblineaR::LiblineaR() from LiblineaR."><meta name="robots" content="noind
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -202,26 +202,24 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V1       V10       V11       V12        V13         V14       V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.1865177 -1.178144 -1.297413 -1.199372 -0.4845569 -0.03448234 0.2740349</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V1        V10       V11        V12        V13        V14       V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.1975098 -0.9132368 -1.124487 -0.6140851 -0.1181036 0.03095052 0.1387488</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            V16       V17       V18        V19         V2        V20        V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.5089625 0.7285008 0.4931258 -0.3865456 -0.2653988 -0.3888154 -0.3101213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V22        V23        V24       V25       V26         V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2107331 -0.2569995 -0.2083012 0.0962085 0.6099736 -0.06370418</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V28        V29         V3       V30      V31        V32       V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.6327678 0.06988869 -0.2878596 0.1359179 1.082961 -0.1690307 0.3593125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V34       V35       V36       V37        V38        V39         V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.6246095 0.4891559 0.9047331 0.3209985 -0.3255145 0.04005581 -0.4373372</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V40        V41        V42        V43       V44       V45       V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.5420419 -0.1331596 -0.4575198 -0.5923375 -1.002072 -1.270751 -1.075687</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V47        V48        V49         V5         V50         V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.7005101 -0.6106478 -0.3867151 -0.2999899 -0.02960002 -0.09409386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V52        V53         V54      V55         V56          V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.1315874 -0.0533032 -0.02284978 0.022013 -0.03176103 -0.005586155</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V58         V59          V6         V60        V7        V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.03813622 -0.02797021 -0.04986592 -0.02577392 0.0937564 0.0810891</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V9      Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -1.006578 0.8525918</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.4712883 0.4771775 0.5157866 -0.1368856 -0.2205656 -0.5930666 -0.7676689</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V22        V23        V24       V25       V26        V27        V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.4302172 -0.2126454 -0.1673625 0.5120066 0.1828757 -0.1379485 -0.1605783</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V29         V3        V30       V31       V32       V33       V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2257988 -0.1474747 -0.1884005 0.6669355 0.1301018 0.5965313 0.8733378</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V35       V36       V37        V38        V39         V4       V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.7659968 0.9984822 0.4983972 -0.3447086 -0.5546667 -0.2533864 0.3292431</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V41        V42        V43      V44       V45       V46        V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.1960229 -0.6773754 -0.8632604 -1.17499 -1.632908 -1.099975 -0.7010309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V48        V49         V5         V50         V51         V52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.7064514 -0.4453045 -0.1581439 -0.03408365 -0.07752587 -0.06749589</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V53         V54          V55        V56          V57         V58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.02607097 -0.05548352 -0.009050628 -0.0189644 0.0005029877 -0.03292005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V59        V6          V60        V7         V8         V9      Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.042821 0.1687701 -0.005125446 0.3280546 0.03214033 -0.7262333 0.7390366</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
@@ -243,7 +241,7 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -39,21 +39,21 @@ instantiated via
 
 ## Parameters
 
-|                     |           |             |                                                              |                       |
-|---------------------|-----------|-------------|--------------------------------------------------------------|-----------------------|
-| Id                  | Type      | Default     | Levels                                                       | Range                 |
-| blocks              | untyped   | \-          |                                                              | \-                    |
-| block.method        | character | BlockForest | BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights | \-                    |
-| num.trees           | integer   | 2000        |                                                              | \\\[1, \infty)\\      |
-| mtry                | untyped   | NULL        |                                                              | \-                    |
-| nsets               | integer   | 300         |                                                              | \\\[1, \infty)\\      |
-| num.trees.pre       | integer   | 1500        |                                                              | \\\[1, \infty)\\      |
-| splitrule           | character | extratrees  | extratrees, gini                                             | \-                    |
-| always.select.block | integer   | 0           |                                                              | \\\[0, 1\]\\          |
-| importance          | character | \-          | none, impurity, impurity_corrected, permutation              | \-                    |
-| num.threads         | integer   | \-          |                                                              | \\\[1, \infty)\\      |
-| seed                | integer   | NULL        |                                                              | \\(-\infty, \infty)\\ |
-| verbose             | logical   | TRUE        | TRUE, FALSE                                                  | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| blocks | untyped | \- |  | \- |
+| block.method | character | BlockForest | BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights | \- |
+| num.trees | integer | 2000 |  | \\\[1, \infty)\\ |
+| mtry | untyped | NULL |  | \- |
+| nsets | integer | 300 |  | \\\[1, \infty)\\ |
+| num.trees.pre | integer | 1500 |  | \\\[1, \infty)\\ |
+| splitrule | character | extratrees | extratrees, gini | \- |
+| always.select.block | integer | 0 |  | \\\[0, 1\]\\ |
+| importance | character | \- | none, impurity, impurity_corrected, permutation | \- |
+| num.threads | integer | \- |  | \\\[1, \infty)\\ |
+| seed | integer | NULL |  | \\(-\infty, \infty)\\ |
+| verbose | logical | TRUE | TRUE, FALSE | \- |
 
 ## References
 
@@ -197,47 +197,47 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>           V10           V11           V48           V37            V9 
-#>  0.0201235233  0.0171443524  0.0165728282  0.0150995356  0.0132233459 
-#>           V49           V13           V21           V12           V36 
-#>  0.0128807004  0.0122192337  0.0116425814  0.0114140101  0.0109169360 
-#>           V16           V50           V45            V5           V15 
-#>  0.0061212834  0.0056765600  0.0054896632  0.0048872481  0.0044994226 
-#>           V43           V20           V26           V46           V17 
-#>  0.0043137905  0.0040520271  0.0037389428  0.0033279207  0.0029979357 
-#>           V28           V33           V34           V22           V44 
-#>  0.0029698122  0.0028423699  0.0028395931  0.0027935761  0.0027252553 
-#>           V41            V6           V59           V14           V47 
-#>  0.0024762725  0.0023662723  0.0023449497  0.0021101190  0.0020371452 
-#>           V18           V27           V58           V52           V54 
-#>  0.0016199850  0.0014981942  0.0014700937  0.0014539933  0.0014014885 
-#>           V40           V38           V35           V39           V57 
-#>  0.0011754877  0.0011649440  0.0009910916  0.0009705966  0.0006698479 
-#>           V42           V25            V4           V56            V7 
-#>  0.0004982824  0.0002279726  0.0001986704  0.0001968406  0.0001354238 
-#>           V30            V1           V24           V31           V32 
-#>  0.0000000000 -0.0001890310 -0.0003147160 -0.0003835610 -0.0005463704 
-#>           V51           V19            V2           V53           V29 
-#> -0.0005650207 -0.0006497036 -0.0007695154 -0.0007815835 -0.0008728799 
-#>            V3           V23            V8           V60           V55 
-#> -0.0010091146 -0.0012800000 -0.0021433169 -0.0022658868 -0.0023194802 
+#>           V11           V12           V49           V10           V23 
+#>  2.518486e-02  1.836189e-02  1.255891e-02  1.215333e-02  8.593173e-03 
+#>            V4            V9           V48           V37           V52 
+#>  8.091093e-03  8.071717e-03  7.428911e-03  6.520137e-03  6.017052e-03 
+#>           V28           V16           V43           V35           V36 
+#>  5.279799e-03  4.893949e-03  4.704207e-03  4.512209e-03  4.379729e-03 
+#>           V13            V2           V27           V51           V18 
+#>  4.228193e-03  3.888750e-03  3.874989e-03  3.374025e-03  3.095184e-03 
+#>           V21           V47           V20           V26           V22 
+#>  3.079271e-03  3.063573e-03  3.015526e-03  3.001243e-03  2.970408e-03 
+#>            V5           V46           V17           V25           V44 
+#>  2.652028e-03  1.847357e-03  1.796716e-03  1.666667e-03  1.630680e-03 
+#>            V1           V45           V29           V33           V55 
+#>  1.524361e-03  1.326511e-03  1.299991e-03  1.224830e-03  1.096926e-03 
+#>           V14           V19           V24           V34           V50 
+#>  1.020372e-03  8.446094e-04  8.386184e-04  7.016431e-04  6.871724e-04 
+#>            V7           V38           V39           V30           V41 
+#>  6.596010e-04  5.262105e-04  2.285914e-04  1.842377e-04  7.027328e-05 
+#>           V56           V31            V6           V32           V53 
+#>  4.855610e-05 -1.685686e-05 -6.916202e-05 -4.081633e-04 -4.098980e-04 
+#>           V57            V3           V40           V54           V42 
+#> -8.297361e-04 -8.633288e-04 -9.142900e-04 -9.873399e-04 -1.553301e-03 
+#>            V8           V58           V15           V59           V60 
+#> -1.566136e-03 -1.739487e-03 -2.068885e-03 -2.317532e-03 -2.748677e-03 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionClassif> for 69 observations: ────────────────────────────────────
-#>  row_ids truth response    prob.M    prob.R
-#>        1     R        M 0.5554286 0.4445714
-#>        2     R        M 0.6223810 0.3776190
-#>        4     R        R 0.4702143 0.5297857
-#>      ---   ---      ---       ---       ---
-#>      203     M        M 0.8205159 0.1794841
-#>      206     M        M 0.7052222 0.2947778
-#>      208     M        M 0.5022778 0.4977222
+#>  row_ids truth response    prob.M     prob.R
+#>        2     R        M 0.5055397 0.49446032
+#>        4     R        R 0.3713333 0.62866667
+#>       11     R        R 0.1173333 0.88266667
+#>      ---   ---      ---       ---        ---
+#>      202     M        M 0.9182857 0.08171429
+#>      206     M        M 0.8051111 0.19488889
+#>      208     M        M 0.6073333 0.39266667
 
 # Score the predictions
 pred$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.1884058 
 ```

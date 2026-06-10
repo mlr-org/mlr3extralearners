@@ -30,28 +30,28 @@ instantiated via
 
 ## Parameters
 
-|            |           |             |                                                                                             |                       |
-|------------|-----------|-------------|---------------------------------------------------------------------------------------------|-----------------------|
-| Id         | Type      | Default     | Levels                                                                                      | Range                 |
-| scaled     | untyped   | TRUE        |                                                                                             | \-                    |
-| kernel     | character | rbfdot      | rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot, stringdot | \-                    |
-| sigma      | numeric   | \-          |                                                                                             | \\(-\infty, \infty)\\ |
-| degree     | numeric   | \-          |                                                                                             | \\(-\infty, \infty)\\ |
-| scale      | numeric   | \-          |                                                                                             | \\(-\infty, \infty)\\ |
-| offset     | numeric   | \-          |                                                                                             | \\(-\infty, \infty)\\ |
-| order      | numeric   | \-          |                                                                                             | \\(-\infty, \infty)\\ |
-| length     | integer   | \-          |                                                                                             | \\\[0, \infty)\\      |
-| lambda     | numeric   | \-          |                                                                                             | \\(-\infty, \infty)\\ |
-| normalized | logical   | \-          | TRUE, FALSE                                                                                 | \-                    |
-| kpar       | untyped   | "automatic" |                                                                                             | \-                    |
-| tau        | numeric   | 0.01        |                                                                                             | \\(-\infty, \infty)\\ |
-| reduced    | logical   | TRUE        | TRUE, FALSE                                                                                 | \-                    |
-| rank       | integer   | \-          |                                                                                             | \\(-\infty, \infty)\\ |
-| delta      | integer   | 40          |                                                                                             | \\(-\infty, \infty)\\ |
-| tol        | numeric   | 1e-04       |                                                                                             | \\(-\infty, \infty)\\ |
-| fit        | logical   | TRUE        | TRUE, FALSE                                                                                 | \-                    |
-| na.action  | untyped   | na.omit     |                                                                                             | \-                    |
-| coupler    | character | minpair     | minpair, pkpd                                                                               | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| scaled | untyped | TRUE |  | \- |
+| kernel | character | rbfdot | rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot, stringdot | \- |
+| sigma | numeric | \- |  | \\(-\infty, \infty)\\ |
+| degree | numeric | \- |  | \\(-\infty, \infty)\\ |
+| scale | numeric | \- |  | \\(-\infty, \infty)\\ |
+| offset | numeric | \- |  | \\(-\infty, \infty)\\ |
+| order | numeric | \- |  | \\(-\infty, \infty)\\ |
+| length | integer | \- |  | \\\[0, \infty)\\ |
+| lambda | numeric | \- |  | \\(-\infty, \infty)\\ |
+| normalized | logical | \- | TRUE, FALSE | \- |
+| kpar | untyped | "automatic" |  | \- |
+| tau | numeric | 0.01 |  | \\(-\infty, \infty)\\ |
+| reduced | logical | TRUE | TRUE, FALSE | \- |
+| rank | integer | \- |  | \\(-\infty, \infty)\\ |
+| delta | integer | 40 |  | \\(-\infty, \infty)\\ |
+| tol | numeric | 1e-04 |  | \\(-\infty, \infty)\\ |
+| fit | logical | TRUE | TRUE, FALSE | \- |
+| na.action | untyped | na.omit |  | \- |
+| coupler | character | minpair | minpair, pkpd | \- |
 
 ## References
 
@@ -180,10 +180,10 @@ print(learner$model)
 #>  parameter : tau = 0.01 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0126768632749578 
+#>  Hyperparameter : sigma =  0.0119137194871035 
 #> 
 #> Number of data points used for training : 46 
-#> Training error : 0.043165 
+#> Training error : 0.035971 
 
 
 # Make predictions for the test rows
@@ -192,5 +192,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1449275 
+#>  0.1884058 
 ```

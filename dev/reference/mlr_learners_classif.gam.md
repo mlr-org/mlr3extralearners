@@ -29,45 +29,45 @@ instantiated via
 
 ## Parameters
 
-|                    |           |                      |                                         |                       |
-|--------------------|-----------|----------------------|-----------------------------------------|-----------------------|
-| Id                 | Type      | Default              | Levels                                  | Range                 |
-| formula            | untyped   | \-                   |                                         | \-                    |
-| method             | character | GCV.Cp               | GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML | \-                    |
-| optimizer          | untyped   | c("outer", "newton") |                                         | \-                    |
-| scale              | numeric   | 0                    |                                         | \\(-\infty, \infty)\\ |
-| select             | logical   | FALSE                | TRUE, FALSE                             | \-                    |
-| knots              | untyped   | NULL                 |                                         | \-                    |
-| sp                 | untyped   | NULL                 |                                         | \-                    |
-| min.sp             | untyped   | NULL                 |                                         | \-                    |
-| H                  | untyped   | NULL                 |                                         | \-                    |
-| gamma              | numeric   | 1                    |                                         | \\\[1, \infty)\\      |
-| paraPen            | untyped   | NULL                 |                                         | \-                    |
-| G                  | untyped   | NULL                 |                                         | \-                    |
-| in.out             | untyped   | NULL                 |                                         | \-                    |
-| drop.unused.levels | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
-| drop.intercept     | logical   | FALSE                | TRUE, FALSE                             | \-                    |
-| nei                | untyped   | \-                   |                                         | \-                    |
-| nthreads           | integer   | 1                    |                                         | \\\[1, \infty)\\      |
-| irls.reg           | numeric   | 0                    |                                         | \\\[0, \infty)\\      |
-| epsilon            | numeric   | 1e-07                |                                         | \\\[0, \infty)\\      |
-| maxit              | integer   | 200                  |                                         | \\(-\infty, \infty)\\ |
-| trace              | logical   | FALSE                | TRUE, FALSE                             | \-                    |
-| mgcv.tol           | numeric   | 1e-07                |                                         | \\\[0, \infty)\\      |
-| mgcv.half          | integer   | 15                   |                                         | \\\[0, \infty)\\      |
-| rank.tol           | numeric   | 1.490116e-08         |                                         | \\\[0, \infty)\\      |
-| nlm                | untyped   | list()               |                                         | \-                    |
-| optim              | untyped   | list()               |                                         | \-                    |
-| newton             | untyped   | list()               |                                         | \-                    |
-| idLinksBases       | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
-| scalePenalty       | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
-| efs.lspmax         | integer   | 15                   |                                         | \\\[0, \infty)\\      |
-| efs.tol            | numeric   | 0.1                  |                                         | \\\[0, \infty)\\      |
-| scale.est          | character | fletcher             | fletcher, pearson, deviance             | \-                    |
-| edge.correct       | logical   | FALSE                | TRUE, FALSE                             | \-                    |
-| ncv.threads        | integer   | 1                    |                                         | \\\[1, \infty)\\      |
-| block.size         | integer   | 1000                 |                                         | \\(-\infty, \infty)\\ |
-| unconditional      | logical   | FALSE                | TRUE, FALSE                             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| formula | untyped | \- |  | \- |
+| method | character | GCV.Cp | GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML | \- |
+| optimizer | untyped | c("outer", "newton") |  | \- |
+| scale | numeric | 0 |  | \\(-\infty, \infty)\\ |
+| select | logical | FALSE | TRUE, FALSE | \- |
+| knots | untyped | NULL |  | \- |
+| sp | untyped | NULL |  | \- |
+| min.sp | untyped | NULL |  | \- |
+| H | untyped | NULL |  | \- |
+| gamma | numeric | 1 |  | \\\[1, \infty)\\ |
+| paraPen | untyped | NULL |  | \- |
+| G | untyped | NULL |  | \- |
+| in.out | untyped | NULL |  | \- |
+| drop.unused.levels | logical | TRUE | TRUE, FALSE | \- |
+| drop.intercept | logical | FALSE | TRUE, FALSE | \- |
+| nei | untyped | \- |  | \- |
+| nthreads | integer | 1 |  | \\\[1, \infty)\\ |
+| irls.reg | numeric | 0 |  | \\\[0, \infty)\\ |
+| epsilon | numeric | 1e-07 |  | \\\[0, \infty)\\ |
+| maxit | integer | 200 |  | \\(-\infty, \infty)\\ |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| mgcv.tol | numeric | 1e-07 |  | \\\[0, \infty)\\ |
+| mgcv.half | integer | 15 |  | \\\[0, \infty)\\ |
+| rank.tol | numeric | 1.490116e-08 |  | \\\[0, \infty)\\ |
+| nlm | untyped | list() |  | \- |
+| optim | untyped | list() |  | \- |
+| newton | untyped | list() |  | \- |
+| idLinksBases | logical | TRUE | TRUE, FALSE | \- |
+| scalePenalty | logical | TRUE | TRUE, FALSE | \- |
+| efs.lspmax | integer | 15 |  | \\\[0, \infty)\\ |
+| efs.tol | numeric | 0.1 |  | \\\[0, \infty)\\ |
+| scale.est | character | fletcher | fletcher, pearson, deviance | \- |
+| edge.correct | logical | FALSE | TRUE, FALSE | \- |
+| ncv.threads | integer | 1 |  | \\\[1, \infty)\\ |
+| block.size | integer | 1000 |  | \\(-\infty, \infty)\\ |
+| unconditional | logical | FALSE | TRUE, FALSE | \- |
 
 ## Formula
 

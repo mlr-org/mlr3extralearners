@@ -28,23 +28,23 @@ instantiated via
 
 ## Parameters
 
-|               |           |                |                                                          |                  |
-|---------------|-----------|----------------|----------------------------------------------------------|------------------|
-| Id            | Type      | Default        | Levels                                                   | Range            |
-| family        | character | coxph          | coxph, weibull, loglog, lognormal, gehan, cindex, custom | \-               |
-| custom.family | untyped   | \-             |                                                          | \-               |
-| nuirange      | untyped   | c(0, 100)      |                                                          | \-               |
-| center        | logical   | TRUE           | TRUE, FALSE                                              | \-               |
-| mstop         | integer   | 100            |                                                          | \\\[0, \infty)\\ |
-| nu            | numeric   | 0.1            |                                                          | \\\[0, 1\]\\     |
-| risk          | character | inbag          | inbag, oobag, none                                       | \-               |
-| oobweights    | untyped   | NULL           |                                                          | \-               |
-| stopintern    | logical   | FALSE          | TRUE, FALSE                                              | \-               |
-| trace         | logical   | FALSE          | TRUE, FALSE                                              | \-               |
-| sigma         | numeric   | 0.1            |                                                          | \\\[0, 1\]\\     |
-| ipcw          | untyped   | 1              |                                                          | \-               |
-| na.action     | untyped   | stats::na.omit |                                                          | \-               |
-| contrasts.arg | untyped   | \-             |                                                          | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| family | character | coxph | coxph, weibull, loglog, lognormal, gehan, cindex, custom | \- |
+| custom.family | untyped | \- |  | \- |
+| nuirange | untyped | c(0, 100) |  | \- |
+| center | logical | TRUE | TRUE, FALSE | \- |
+| mstop | integer | 100 |  | \\\[0, \infty)\\ |
+| nu | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| risk | character | inbag | inbag, oobag, none | \- |
+| oobweights | untyped | NULL |  | \- |
+| stopintern | logical | FALSE | TRUE, FALSE | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| sigma | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| ipcw | untyped | 1 |  | \- |
+| na.action | untyped | stats::na.omit |  | \- |
+| contrasts.arg | untyped | \- |  | \- |
 
 ## Prediction types
 

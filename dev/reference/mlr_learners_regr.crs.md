@@ -25,46 +25,46 @@ instantiated via
 
 ## Parameters
 
-|                           |           |              |                             |                       |
-|---------------------------|-----------|--------------|-----------------------------|-----------------------|
-| Id                        | Type      | Default      | Levels                      | Range                 |
-| degree                    | integer   | 3            |                             | \\\[0, \infty)\\      |
-| segments                  | integer   | 1            |                             | \\\[1, \infty)\\      |
-| include                   | integer   | \-           |                             | \\(-\infty, \infty)\\ |
-| lambda                    | untyped   | \-           |                             | \-                    |
-| lambda.discrete           | logical   | FALSE        | TRUE, FALSE                 | \-                    |
-| lambda.discrete.num       | integer   | 100          |                             | \\\[0, \infty)\\      |
-| cv                        | character | nomad        | nomad, exhaustive, none     | \-                    |
-| cv.threshold              | integer   | 1000         |                             | \\\[0, \infty)\\      |
-| cv.func                   | character | cv.ls        | cv.ls, cv.gcv, cv.aic       | \-                    |
-| kernel                    | logical   | TRUE         | TRUE, FALSE                 | \-                    |
-| degree.max                | integer   | 10           |                             | \\\[0, \infty)\\      |
-| segments.max              | integer   | 10           |                             | \\\[1, \infty)\\      |
-| degree.min                | integer   | 0            |                             | \\\[0, \infty)\\      |
-| segments.min              | integer   | 1            |                             | \\\[1, \infty)\\      |
-| cv.df.min                 | integer   | 1            |                             | \\(-\infty, \infty)\\ |
-| complexity                | character | degree-knots | degree-knots, degree, knots | \-                    |
-| knots                     | character | quantiles    | quantiles, uniform, auto    | \-                    |
-| basis                     | character | auto         | auto, additive, tensor, glp | \-                    |
-| prune                     | logical   | FALSE        | TRUE, FALSE                 | \-                    |
-| restarts                  | integer   | 0            |                             | \\\[0, \infty)\\      |
-| nmulti                    | integer   | 5            |                             | \\\[0, \infty)\\      |
-| singular.ok               | logical   | FALSE        | TRUE, FALSE                 | \-                    |
-| deriv                     | integer   | 0            |                             | \\\[0, \infty)\\      |
-| data.return               | logical   | FALSE        | TRUE, FALSE                 | \-                    |
-| model.return              | logical   | FALSE        | TRUE, FALSE                 | \-                    |
-| random.seed               | integer   | \-           |                             | \\(-\infty, \infty)\\ |
-| tau                       | numeric   | \-           |                             | \\\[0, 1\]\\          |
-| initial.mesh.size.real    | untyped   | \-           |                             | \-                    |
-| initial.mesh.size.integer | untyped   | \-           |                             | \-                    |
-| max.bb.eval               | untyped   | \-           |                             | \-                    |
-| min.mesh.size.real        | untyped   | \-           |                             | \-                    |
-| min.mesh.size.integer     | untyped   | \-           |                             | \-                    |
-| min.frame.size.real       | untyped   | \-           |                             | \-                    |
-| min.frame.size.integer    | untyped   | \-           |                             | \-                    |
-| display.nomad.progress    | logical   | TRUE         | TRUE, FALSE                 | \-                    |
-| display.warnings          | logical   | TRUE         | TRUE, FALSE                 | \-                    |
-| opts                      | untyped   | \-           |                             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| degree | integer | 3 |  | \\\[0, \infty)\\ |
+| segments | integer | 1 |  | \\\[1, \infty)\\ |
+| include | integer | \- |  | \\(-\infty, \infty)\\ |
+| lambda | untyped | \- |  | \- |
+| lambda.discrete | logical | FALSE | TRUE, FALSE | \- |
+| lambda.discrete.num | integer | 100 |  | \\\[0, \infty)\\ |
+| cv | character | nomad | nomad, exhaustive, none | \- |
+| cv.threshold | integer | 1000 |  | \\\[0, \infty)\\ |
+| cv.func | character | cv.ls | cv.ls, cv.gcv, cv.aic | \- |
+| kernel | logical | TRUE | TRUE, FALSE | \- |
+| degree.max | integer | 10 |  | \\\[0, \infty)\\ |
+| segments.max | integer | 10 |  | \\\[1, \infty)\\ |
+| degree.min | integer | 0 |  | \\\[0, \infty)\\ |
+| segments.min | integer | 1 |  | \\\[1, \infty)\\ |
+| cv.df.min | integer | 1 |  | \\(-\infty, \infty)\\ |
+| complexity | character | degree-knots | degree-knots, degree, knots | \- |
+| knots | character | quantiles | quantiles, uniform, auto | \- |
+| basis | character | auto | auto, additive, tensor, glp | \- |
+| prune | logical | FALSE | TRUE, FALSE | \- |
+| restarts | integer | 0 |  | \\\[0, \infty)\\ |
+| nmulti | integer | 5 |  | \\\[0, \infty)\\ |
+| singular.ok | logical | FALSE | TRUE, FALSE | \- |
+| deriv | integer | 0 |  | \\\[0, \infty)\\ |
+| data.return | logical | FALSE | TRUE, FALSE | \- |
+| model.return | logical | FALSE | TRUE, FALSE | \- |
+| random.seed | integer | \- |  | \\(-\infty, \infty)\\ |
+| tau | numeric | \- |  | \\\[0, 1\]\\ |
+| initial.mesh.size.real | untyped | \- |  | \- |
+| initial.mesh.size.integer | untyped | \- |  | \- |
+| max.bb.eval | untyped | \- |  | \- |
+| min.mesh.size.real | untyped | \- |  | \- |
+| min.mesh.size.integer | untyped | \- |  | \- |
+| min.frame.size.real | untyped | \- |  | \- |
+| min.frame.size.integer | untyped | \- |  | \- |
+| display.nomad.progress | logical | TRUE | TRUE, FALSE | \- |
+| display.warnings | logical | TRUE | TRUE, FALSE | \- |
+| opts | untyped | \- |  | \- |
 
 ## See also
 
@@ -190,11 +190,14 @@ print(learner$model)
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases
 #> Warning: NaNs produced
 
 # Score the predictions
 predictions$score()
-#> regr.mse 
-#> 108.2417 
+#>     regr.mse 
+#> 2.486288e+13 
 ```

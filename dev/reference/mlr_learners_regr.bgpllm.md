@@ -33,26 +33,26 @@ instantiated via
 
 ## Parameters
 
-|        |           |                     |                                      |                       |
-|--------|-----------|---------------------|--------------------------------------|-----------------------|
-| Id     | Type      | Default             | Levels                               | Range                 |
-| meanfn | character | linear              | constant, linear                     | \-                    |
-| bprior | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-                    |
-| corr   | character | expsep              | exp, expsep, matern, sim             | \-                    |
-| gamma  | untyped   | c(10, 0.2, 0.7)     |                                      | \-                    |
-| BTE    | untyped   | c(2000L, 4000L, 2L) |                                      | \-                    |
-| R      | integer   | 1                   |                                      | \\\[1, \infty)\\      |
-| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| itemps | untyped   | NULL                |                                      | \-                    |
-| pred.n | logical   | \-                  | TRUE, FALSE                          | \-                    |
-| krige  | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| Ds2x   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| improv | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| nu     | numeric   | 1.5                 |                                      | \\(-\infty, \infty)\\ |
-| trace  | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| verb   | integer   | \-                  |                                      | \\\[0, 4\]\\          |
-| MAP    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| meanfn | character | linear | constant, linear | \- |
+| bprior | character | bflat | b0, b0not, bflat, bmle, bmznot, bmzt | \- |
+| corr | character | expsep | exp, expsep, matern, sim | \- |
+| gamma | untyped | c(10, 0.2, 0.7) |  | \- |
+| BTE | untyped | c(2000L, 4000L, 2L) |  | \- |
+| R | integer | 1 |  | \\\[1, \infty)\\ |
+| m0r1 | logical | TRUE | TRUE, FALSE | \- |
+| itemps | untyped | NULL |  | \- |
+| pred.n | logical | \- | TRUE, FALSE | \- |
+| krige | logical | TRUE | TRUE, FALSE | \- |
+| zcov | logical | FALSE | TRUE, FALSE | \- |
+| Ds2x | logical | FALSE | TRUE, FALSE | \- |
+| improv | logical | FALSE | TRUE, FALSE | \- |
+| nu | numeric | 1.5 |  | \\(-\infty, \infty)\\ |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| verb | integer | \- |  | \\\[0, 4\]\\ |
+| MAP | logical | TRUE | TRUE, FALSE | \- |
 
 ## References
 
@@ -203,5 +203,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 40.21435 
+#> 42.07466 
 ```

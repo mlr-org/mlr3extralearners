@@ -55,23 +55,24 @@ instantiated via
 
 ## Parameters
 
-|            |           |             |                                                      |                       |
-|------------|-----------|-------------|------------------------------------------------------|-----------------------|
-| Id         | Type      | Default     | Levels                                               | Range                 |
-| hidden     | untyped   | c(32L, 16L) |                                                      | \-                    |
-| activation | character | relu        | relu, leaky_relu, tanh, sigmoid, gelu, elu, softplus | \-                    |
-| lr         | numeric   | 1e-04       |                                                      | \\\[1e-06, 1\]\\      |
-| epochs     | integer   | 300         |                                                      | \\\[1, \infty)\\      |
-| loss       | character | cox         | cox, cox_l2, aft, coxtime                            | \-                    |
-| optimizer  | character | adam        | adam, adamw, sgd, rmsprop, adagrad                   | \-                    |
-| optim_args | untyped   | list()      |                                                      | \-                    |
-| verbose    | logical   | FALSE       | TRUE, FALSE                                          | \-                    |
-| dropout    | numeric   | 0.3         |                                                      | \\\[0, 1\]\\          |
-| batch_norm | logical   | TRUE        | TRUE, FALSE                                          | \-                    |
-| callbacks  | untyped   | NULL        |                                                      | \-                    |
-| .seed      | integer   | NULL        |                                                      | \\(-\infty, \infty)\\ |
-| .device    | character | auto        | auto, cpu, cuda                                      | \-                    |
-| na_action  | character | omit        | omit, fail                                           | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| hidden | untyped | c(32L, 16L) |  | \- |
+| activation | character | relu | relu, leaky_relu, tanh, sigmoid, gelu, elu, softplus | \- |
+| lr | numeric | 1e-04 |  | \\\[1e-06, 1\]\\ |
+| epochs | integer | 300 |  | \\\[1, \infty)\\ |
+| loss | character | cox | cox, cox_l2, aft, coxtime | \- |
+| optimizer | character | adam | adam, adamw, sgd, rmsprop, adagrad | \- |
+| optim_args | untyped | list() |  | \- |
+| verbose | logical | FALSE | TRUE, FALSE | \- |
+| dropout | numeric | 0.3 |  | \\\[0, 1\]\\ |
+| batch_norm | logical | TRUE | TRUE, FALSE | \- |
+| callbacks | untyped | NULL |  | \- |
+| .seed | integer | NULL |  | \\(-\infty, \infty)\\ |
+| .device | character | auto | auto, cpu, cuda | \- |
+| .threads | integer | NULL |  | \\\[1, \infty)\\ |
+| na_action | character | omit | omit, fail | \- |
 
 ## See also
 

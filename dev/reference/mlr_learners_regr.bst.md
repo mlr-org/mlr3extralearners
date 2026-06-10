@@ -35,40 +35,40 @@ instantiated via
 
 ## Parameters
 
-|                |           |          |                                                                  |                  |
-|----------------|-----------|----------|------------------------------------------------------------------|------------------|
-| Id             | Type      | Default  | Levels                                                           | Range            |
-| center         | logical   | FALSE    | TRUE, FALSE                                                      | \-               |
-| coefir         | untyped   | NULL     |                                                                  | \-               |
-| cost           | numeric   | 0.5      |                                                                  | \\\[0, 1\]\\     |
-| cp             | numeric   | 0.01     |                                                                  | \\\[0, 1\]\\     |
-| df             | integer   | 4        |                                                                  | \\\[1, \infty)\\ |
-| family         | character | gaussian | gaussian, laplace, huber, rhuberDC, thingeDC, tbinomDC, binomdDC | \-               |
-| f.init         | untyped   | NULL     |                                                                  | \-               |
-| fk             | untyped   | NULL     |                                                                  | \-               |
-| intercept      | logical   | TRUE     | TRUE, FALSE                                                      | \-               |
-| iter           | integer   | 1        |                                                                  | \\\[1, \infty)\\ |
-| Learner        | character | ls       | ls, sm, tree                                                     | \-               |
-| maxdepth       | integer   | 1        |                                                                  | \\\[1, 30\]\\    |
-| maxsurrogate   | integer   | 5        |                                                                  | \\\[0, \infty)\\ |
-| minbucket      | integer   | \-       |                                                                  | \\\[1, \infty)\\ |
-| minsplit       | integer   | 20       |                                                                  | \\\[1, \infty)\\ |
-| mstop          | integer   | 50       |                                                                  | \\\[1, \infty)\\ |
-| numsample      | integer   | 50       |                                                                  | \\\[1, \infty)\\ |
-| nu             | numeric   | 0.1      |                                                                  | \\\[0, 1\]\\     |
-| q              | numeric   | \-       |                                                                  | \\\[0, 1\]\\     |
-| qh             | numeric   | \-       |                                                                  | \\\[0, 1\]\\     |
-| s              | numeric   | \-       |                                                                  | \\\[0, \infty)\\ |
-| sh             | numeric   | \-       |                                                                  | \\\[0, \infty)\\ |
-| start          | logical   | FALSE    | TRUE, FALSE                                                      | \-               |
-| surrogatestyle | integer   | 0        |                                                                  | \\\[0, 1\]\\     |
-| threshold      | character | adaptive | adaptive, fixed                                                  | \-               |
-| trace          | logical   | FALSE    | TRUE, FALSE                                                      | \-               |
-| trun           | logical   | FALSE    | TRUE, FALSE                                                      | \-               |
-| twinboost      | logical   | FALSE    | TRUE, FALSE                                                      | \-               |
-| twintype       | integer   | 1        |                                                                  | \\\[1, 2\]\\     |
-| xselect.init   | untyped   | NULL     |                                                                  | \-               |
-| xval           | integer   | 10       |                                                                  | \\\[0, \infty)\\ |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| center | logical | FALSE | TRUE, FALSE | \- |
+| coefir | untyped | NULL |  | \- |
+| cost | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| cp | numeric | 0.01 |  | \\\[0, 1\]\\ |
+| df | integer | 4 |  | \\\[1, \infty)\\ |
+| family | character | gaussian | gaussian, laplace, huber, rhuberDC, thingeDC, tbinomDC, binomdDC | \- |
+| f.init | untyped | NULL |  | \- |
+| fk | untyped | NULL |  | \- |
+| intercept | logical | TRUE | TRUE, FALSE | \- |
+| iter | integer | 1 |  | \\\[1, \infty)\\ |
+| Learner | character | ls | ls, sm, tree | \- |
+| maxdepth | integer | 1 |  | \\\[1, 30\]\\ |
+| maxsurrogate | integer | 5 |  | \\\[0, \infty)\\ |
+| minbucket | integer | \- |  | \\\[1, \infty)\\ |
+| minsplit | integer | 20 |  | \\\[1, \infty)\\ |
+| mstop | integer | 50 |  | \\\[1, \infty)\\ |
+| numsample | integer | 50 |  | \\\[1, \infty)\\ |
+| nu | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| q | numeric | \- |  | \\\[0, 1\]\\ |
+| qh | numeric | \- |  | \\\[0, 1\]\\ |
+| s | numeric | \- |  | \\\[0, \infty)\\ |
+| sh | numeric | \- |  | \\\[0, \infty)\\ |
+| start | logical | FALSE | TRUE, FALSE | \- |
+| surrogatestyle | integer | 0 |  | \\\[0, 1\]\\ |
+| threshold | character | adaptive | adaptive, fixed | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| trun | logical | FALSE | TRUE, FALSE | \- |
+| twinboost | logical | FALSE | TRUE, FALSE | \- |
+| twintype | integer | 1 |  | \\\[1, 2\]\\ |
+| xselect.init | untyped | NULL |  | \- |
+| xval | integer | 10 |  | \\\[0, \infty)\\ |
 
 ## See also
 
@@ -195,15 +195,15 @@ print(learner$model)
 #> Base learner:  ls 
 #> Number of boosting iterations: mstop = 50 
 #> Step size:  0.1 
-#> Offset:  20.62857 
+#> Offset:  19.47143 
 #> 
 #> Coefficients: 
-#>           am         carb          cyl         disp         drat         gear 
-#>  2.470838446  0.000000000  0.000000000 -0.010096257  0.000000000  0.000000000 
-#>           hp         qsec           vs           wt 
-#> -0.006202175  0.000000000  4.138442204  0.000000000 
+#>          am        carb         cyl        disp        drat        gear 
+#>  3.41163378 -0.25891753  0.00000000 -0.00875639  0.00000000  0.00000000 
+#>          hp        qsec          vs          wt 
+#>  0.00000000  0.00000000  3.16022267  0.00000000 
 #> attr(,"offset")
-#> [1] 20.62857
+#> [1] 19.47143
 #> 
 
 
@@ -213,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.942284 
+#> 11.42361 
 ```

@@ -66,31 +66,31 @@ instantiated via
 
 ## Parameters
 
-|                                         |         |         |             |                       |
-|-----------------------------------------|---------|---------|-------------|-----------------------|
-| Id                                      | Type    | Default | Levels      | Range                 |
-| subset                                  | untyped | \-      |             | \-                    |
-| na.action                               | untyped | \-      |             | \-                    |
-| P                                       | numeric | 100     |             | \\\[0, 100\]\\        |
-| O                                       | logical | FALSE   | TRUE, FALSE | \-                    |
-| store_out_of_bag_predictions            | logical | FALSE   | TRUE, FALSE | \-                    |
-| output_out_of_bag_complexity_statistics | logical | FALSE   | TRUE, FALSE | \-                    |
-| print                                   | logical | FALSE   | TRUE, FALSE | \-                    |
-| I                                       | integer | 100     |             | \\\[1, \infty)\\      |
-| num_slots                               | integer | 1       |             | \\(-\infty, \infty)\\ |
-| K                                       | integer | 0       |             | \\(-\infty, \infty)\\ |
-| M                                       | integer | 1       |             | \\\[1, \infty)\\      |
-| V                                       | numeric | 0.001   |             | \\(-\infty, \infty)\\ |
-| S                                       | integer | 1       |             | \\(-\infty, \infty)\\ |
-| depth                                   | integer | 0       |             | \\\[0, \infty)\\      |
-| N                                       | integer | 0       |             | \\(-\infty, \infty)\\ |
-| U                                       | logical | FALSE   | TRUE, FALSE | \-                    |
-| B                                       | logical | FALSE   | TRUE, FALSE | \-                    |
-| output_debug_info                       | logical | FALSE   | TRUE, FALSE | \-                    |
-| do_not_check_capabilities               | logical | FALSE   | TRUE, FALSE | \-                    |
-| num_decimal_places                      | integer | 2       |             | \\\[1, \infty)\\      |
-| batch_size                              | integer | 100     |             | \\\[1, \infty)\\      |
-| options                                 | untyped | NULL    |             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| P | numeric | 100 |  | \\\[0, 100\]\\ |
+| O | logical | FALSE | TRUE, FALSE | \- |
+| store_out_of_bag_predictions | logical | FALSE | TRUE, FALSE | \- |
+| output_out_of_bag_complexity_statistics | logical | FALSE | TRUE, FALSE | \- |
+| print | logical | FALSE | TRUE, FALSE | \- |
+| I | integer | 100 |  | \\\[1, \infty)\\ |
+| num_slots | integer | 1 |  | \\(-\infty, \infty)\\ |
+| K | integer | 0 |  | \\(-\infty, \infty)\\ |
+| M | integer | 1 |  | \\\[1, \infty)\\ |
+| V | numeric | 0.001 |  | \\(-\infty, \infty)\\ |
+| S | integer | 1 |  | \\(-\infty, \infty)\\ |
+| depth | integer | 0 |  | \\\[0, \infty)\\ |
+| N | integer | 0 |  | \\(-\infty, \infty)\\ |
+| U | logical | FALSE | TRUE, FALSE | \- |
+| B | logical | FALSE | TRUE, FALSE | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## References
 
@@ -273,5 +273,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 2.327346 
+#> 4.195442 
 ```

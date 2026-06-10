@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Bayes Network Learner — mlr_learners_classif.bayes_net"><meta name="description" content="Bayes Network learning using various search algorithms.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Bayes Network Learner — mlr_learners_classif.bayes_net"><meta name="description" content="Bayes Network learning using various search algorithms.
 Calls RWeka::make_Weka_classifier() from RWeka."><meta property="og:description" content="Bayes Network learning using various search algorithms.
 Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="no
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -253,19 +253,19 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> #attributes=61 #classindex=0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Network structure (nodes followed by parents)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class(2): </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V1(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V10(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V12(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V13(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V14(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V15(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V18(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V21(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V22(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23(1): Class </span>
@@ -273,7 +273,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V26(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V27(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V30(1): Class </span>
@@ -282,11 +282,11 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V33(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V35(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V41(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
@@ -294,7 +294,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V44(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V45(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V46(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V47(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V48(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V5(2): Class </span>
@@ -308,16 +308,16 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V57(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V58(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V59(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V6(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V60(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V8(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1599.885512984482</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1634.2435218093651</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1644.6044320185147</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1543.4477163893357</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1584.4477163893357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1736.872899340763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1772.9488086068893</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1782.606763485118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1676.5155739228087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1719.5155739228087</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -327,7 +327,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3333333 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

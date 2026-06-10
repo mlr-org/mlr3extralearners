@@ -4,12 +4,6 @@ Patient outcome prediction based on multi-omics data taking
 practitioners’ preferences into account. Calls
 [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
 from [prioritylasso](https://CRAN.R-project.org/package=prioritylasso).
-Many parameters for this survival learner are the same as
-[mlr_learners_surv.cv_glmnet](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_glmnet.md)
-as `prioritylasso()` calls
-[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
-during training phase. Note that `prioritylasso()` has ways to deal with
-block-wise missing data, but this feature is not supported currently.
 
 ## Prediction types
 
@@ -33,7 +27,12 @@ This learner returns three prediction types:
 - `family` is set to `"cox"` for the Cox survival objective and cannot
   be changed
 
-- `type.measure` set to `"deviance"` (cross-validation measure)
+- `type.measure` is set to `"deviance"` (cross-validation measure) and
+  cannot be changed
+
+- `cox.ties` is initialized to `"breslow"` to keep the tie-handling
+  behavior of earlier glmnet versions, and to silence the glmnet v5.0
+  warning about the upcoming default change to `"efron"`
 
 ## Dictionary
 
@@ -57,57 +56,38 @@ instantiated via
 
 ## Parameters
 
-|                       |           |            |                         |                       |
-|-----------------------|-----------|------------|-------------------------|-----------------------|
-| Id                    | Type      | Default    | Levels                  | Range                 |
-| blocks                | untyped   | \-         |                         | \-                    |
-| max.coef              | untyped   | NULL       |                         | \-                    |
-| block1.penalization   | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| lambda.type           | character | lambda.min | lambda.min, lambda.1se  | \-                    |
-| standardize           | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| nfolds                | integer   | 5          |                         | \\\[1, \infty)\\      |
-| foldid                | untyped   | NULL       |                         | \-                    |
-| cvoffset              | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| cvoffsetnfolds        | integer   | 10         |                         | \\\[1, \infty)\\      |
-| return.x              | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| include.allintercepts | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| use.blocks            | untyped   | "all"      |                         | \-                    |
-| alignment             | character | lambda     | lambda, fraction        | \-                    |
-| alpha                 | numeric   | 1          |                         | \\\[0, 1\]\\          |
-| big                   | numeric   | 9.9e+35    |                         | \\(-\infty, \infty)\\ |
-| devmax                | numeric   | 0.999      |                         | \\\[0, 1\]\\          |
-| dfmax                 | integer   | \-         |                         | \\\[0, \infty)\\      |
-| eps                   | numeric   | 1e-06      |                         | \\\[0, 1\]\\          |
-| epsnr                 | numeric   | 1e-08      |                         | \\\[0, 1\]\\          |
-| exclude               | untyped   | \-         |                         | \-                    |
-| exmx                  | numeric   | 250        |                         | \\(-\infty, \infty)\\ |
-| fdev                  | numeric   | 1e-05      |                         | \\\[0, 1\]\\          |
-| gamma                 | untyped   | \-         |                         | \-                    |
-| grouped               | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| intercept             | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| keep                  | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| lambda                | untyped   | \-         |                         | \-                    |
-| lambda.min.ratio      | numeric   | \-         |                         | \\\[0, 1\]\\          |
-| lower.limits          | untyped   | -Inf       |                         | \-                    |
-| maxit                 | integer   | 100000     |                         | \\\[1, \infty)\\      |
-| mnlam                 | integer   | 5          |                         | \\\[1, \infty)\\      |
-| mxit                  | integer   | 100        |                         | \\\[1, \infty)\\      |
-| mxitnr                | integer   | 25         |                         | \\\[1, \infty)\\      |
-| nlambda               | integer   | 100        |                         | \\\[1, \infty)\\      |
-| offset                | untyped   | NULL       |                         | \-                    |
-| parallel              | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| penalty.factor        | untyped   | \-         |                         | \-                    |
-| pmax                  | integer   | \-         |                         | \\\[0, \infty)\\      |
-| pmin                  | numeric   | 1e-09      |                         | \\\[0, 1\]\\          |
-| prec                  | numeric   | 1e-10      |                         | \\(-\infty, \infty)\\ |
-| standardize.response  | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| thresh                | numeric   | 1e-07      |                         | \\\[0, \infty)\\      |
-| trace.it              | integer   | 0          |                         | \\\[0, 1\]\\          |
-| type.gaussian         | character | \-         | covariance, naive       | \-                    |
-| type.logistic         | character | Newton     | Newton, modified.Newton | \-                    |
-| type.multinomial      | character | ungrouped  | ungrouped, grouped      | \-                    |
-| upper.limits          | untyped   | Inf        |                         | \-                    |
-| relax                 | logical   | FALSE      | TRUE, FALSE             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| blocks | untyped | \- |  | \- |
+| max.coef | untyped | NULL |  | \- |
+| block1.penalization | logical | TRUE | TRUE, FALSE | \- |
+| lambda.type | character | lambda.min | lambda.min, lambda.1se | \- |
+| standardize | logical | TRUE | TRUE, FALSE | \- |
+| nfolds | integer | 10 |  | \\\[3, \infty)\\ |
+| foldid | untyped | NULL |  | \- |
+| cvoffset | logical | FALSE | TRUE, FALSE | \- |
+| cvoffsetnfolds | integer | 10 |  | \\\[1, \infty)\\ |
+| return.x | logical | TRUE | TRUE, FALSE | \- |
+| lambda | untyped | NULL |  | \- |
+| grouped | logical | TRUE | TRUE, FALSE | \- |
+| trace.it | integer | 0 |  | \\\[0, 1\]\\ |
+| cox.ties | character | breslow | breslow, efron | \- |
+| include.allintercepts | logical | FALSE | TRUE, FALSE | \- |
+| use.blocks | untyped | "all" |  | \- |
+
+## Scope and supported arguments
+
+This learner intentionally exposes a focused subset of training and
+prediction arguments. It is designed to work well out of the box,
+without requiring extensive parameter tuning. Some arguments from
+`cv.glmnet()`, `glmnet()`, and `predict.prioritylasso()` are not
+included, because they are not consistently supported or forwarded
+through the full train/predict path (e.g. handling missing test data, or
+performing relaxed lasso fits).
+
+Please open an issue if there is a need for supporting more learner
+parameters.
 
 ## References
 
@@ -147,6 +127,8 @@ clinical outcome using multi-omics data.” *BMC Bioinformatics*, **19**.
 ## Author
 
 HarutyunyanLiana
+
+bblodfon
 
 ## Super classes
 
@@ -227,41 +209,41 @@ task = tsk("grace")
 # Create train and test set
 ids = partition(task)
 
-# check task's features
+# Check task's features
 task$feature_names
 #> [1] "age"        "los"        "revasc"     "revascdays" "stchange"  
 #> [6] "sysbp"     
 
-# partition features to 2 blocks
+# Partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:6)
 
-# define learner
+# Define learner
 learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALSE,
               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
 
-# selected features
+# Selected features
 learner$selected_features()
 #> [1] "age"        "los"        "revasc"     "revascdays"
 
-# Make predictions for the test observations
-pred = learner$predict(task, row_ids = ids$test)
-pred
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+predictions
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
 #>  row_ids  time status     crank        lp     distr
-#>        1 180.0  FALSE 0.4866469 0.4866469 <list[1]>
-#>        6   5.0  FALSE 1.4541591 1.4541591 <list[1]>
-#>        8   2.0  FALSE 1.1603427 1.1603427 <list[1]>
+#>        1 180.0  FALSE 0.4873027 0.4873027 <list[1]>
+#>        6   5.0  FALSE 1.4541773 1.4541773 <list[1]>
+#>        8   2.0  FALSE 1.1603463 1.1603463 <list[1]>
 #>      ---   ---    ---       ---       ---       ---
 #>      995   0.5   TRUE 3.9088136 3.9088136 <list[1]>
-#>      996  69.0   TRUE 3.9355365 3.9355365 <list[1]>
+#>      996  69.0   TRUE 3.9357878 3.9357878 <list[1]>
 #>     1000  15.0  FALSE 3.7133697 3.7133697 <list[1]>
 
 # Score the predictions
-pred$score()
+predictions$score()
 #> surv.cindex 
 #>   0.7351317 
 ```

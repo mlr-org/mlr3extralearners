@@ -56,22 +56,22 @@ instantiated via
 
 ## Parameters
 
-|                 |           |         |                                |                       |
-|-----------------|-----------|---------|--------------------------------|-----------------------|
-| Id              | Type      | Default | Levels                         | Range                 |
-| unpen.index     | untyped   | \-      |                                | \-                    |
-| standardize     | logical   | TRUE    | TRUE, FALSE                    | \-                    |
-| stepno          | integer   | 100     |                                | \\\[0, \infty)\\      |
-| penalty         | numeric   | \-      |                                | \\(-\infty, \infty)\\ |
-| criterion       | character | pscore  | pscore, score, hpscore, hscore | \-                    |
-| stepsize.factor | numeric   | 1       |                                | \\(-\infty, \infty)\\ |
-| sf.scheme       | character | sigmoid | sigmoid, linear                | \-                    |
-| pendistmat      | untyped   | \-      |                                | \-                    |
-| connected.index | untyped   | \-      |                                | \-                    |
-| x.is.01         | logical   | FALSE   | TRUE, FALSE                    | \-                    |
-| return.score    | logical   | TRUE    | TRUE, FALSE                    | \-                    |
-| trace           | logical   | FALSE   | TRUE, FALSE                    | \-                    |
-| at.step         | untyped   | \-      |                                | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| unpen.index | untyped | \- |  | \- |
+| standardize | logical | TRUE | TRUE, FALSE | \- |
+| stepno | integer | 100 |  | \\\[0, \infty)\\ |
+| penalty | numeric | \- |  | \\(-\infty, \infty)\\ |
+| criterion | character | pscore | pscore, score, hpscore, hscore | \- |
+| stepsize.factor | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| sf.scheme | character | sigmoid | sigmoid, linear | \- |
+| pendistmat | untyped | \- |  | \- |
+| connected.index | untyped | \- |  | \- |
+| x.is.01 | logical | FALSE | TRUE, FALSE | \- |
+| return.score | logical | TRUE | TRUE, FALSE | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| at.step | untyped | \- |  | \- |
 
 ## References
 
@@ -219,7 +219,7 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #> 100 boosting steps resulting in 4 non-zero coefficients  
-#> partial log-likelihood: -1172.782 
+#> partial log-likelihood: -1133.891 
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8360339 
+#>   0.8352961 
 ```

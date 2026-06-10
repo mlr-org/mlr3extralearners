@@ -35,35 +35,35 @@ instantiated via
 
 ## Parameters
 
-|                                  |           |         |                                                                                                      |                       |
-|----------------------------------|-----------|---------|------------------------------------------------------------------------------------------------------|-----------------------|
-| Id                               | Type      | Default | Levels                                                                                               | Range                 |
-| build_tree_one_node              | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
-| categorical_encoding             | character | AUTO    | AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited | \-                    |
-| check_constant_response          | logical   | TRUE    | TRUE, FALSE                                                                                          | \-                    |
-| checkpoint                       | untyped   | NULL    |                                                                                                      | \-                    |
-| col_sample_rate_change_per_level | numeric   | 1       |                                                                                                      | \\\[0, 2\]\\          |
-| col_sample_rate_per_tree         | numeric   | 1       |                                                                                                      | \\\[0, 1\]\\          |
-| export_checkpoints_dir           | untyped   | NULL    |                                                                                                      | \-                    |
-| histogram_type                   | character | AUTO    | AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust                            | \-                    |
-| ignore_const_cols                | logical   | TRUE    | TRUE, FALSE                                                                                          | \-                    |
-| max_depth                        | integer   | 20      |                                                                                                      | \\\[0, \infty)\\      |
-| max_runtime_secs                 | numeric   | 0       |                                                                                                      | \\\[0, \infty)\\      |
-| min_rows                         | numeric   | 1       |                                                                                                      | \\\[1, \infty)\\      |
-| min_split_improvement            | numeric   | 1e-05   |                                                                                                      | \\\[0, \infty)\\      |
-| mtries                           | integer   | -1      |                                                                                                      | \\\[1, \infty)\\      |
-| nbins                            | integer   | 20      |                                                                                                      | \\\[1, \infty)\\      |
-| nbins_cats                       | integer   | 1024    |                                                                                                      | \\\[1, \infty)\\      |
-| nbins_top_level                  | integer   | 1024    |                                                                                                      | \\\[1, \infty)\\      |
-| ntrees                           | integer   | 50      |                                                                                                      | \\\[1, \infty)\\      |
-| sample_rate                      | numeric   | 0.632   |                                                                                                      | \\\[0, 1\]\\          |
-| score_each_iteration             | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
-| score_tree_interval              | integer   | 0       |                                                                                                      | \\\[0, \infty)\\      |
-| seed                             | integer   | -1      |                                                                                                      | \\(-\infty, \infty)\\ |
-| stopping_metric                  | character | AUTO    | AUTO, deviance, MSE, RMSE, MAE, RMSLE                                                                | \-                    |
-| stopping_rounds                  | integer   | 0       |                                                                                                      | \\\[0, \infty)\\      |
-| stopping_tolerance               | numeric   | 0.001   |                                                                                                      | \\\[0, \infty)\\      |
-| verbose                          | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| build_tree_one_node | logical | FALSE | TRUE, FALSE | \- |
+| categorical_encoding | character | AUTO | AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited | \- |
+| check_constant_response | logical | TRUE | TRUE, FALSE | \- |
+| checkpoint | untyped | NULL |  | \- |
+| col_sample_rate_change_per_level | numeric | 1 |  | \\\[0, 2\]\\ |
+| col_sample_rate_per_tree | numeric | 1 |  | \\\[0, 1\]\\ |
+| export_checkpoints_dir | untyped | NULL |  | \- |
+| histogram_type | character | AUTO | AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust | \- |
+| ignore_const_cols | logical | TRUE | TRUE, FALSE | \- |
+| max_depth | integer | 20 |  | \\\[0, \infty)\\ |
+| max_runtime_secs | numeric | 0 |  | \\\[0, \infty)\\ |
+| min_rows | numeric | 1 |  | \\\[1, \infty)\\ |
+| min_split_improvement | numeric | 1e-05 |  | \\\[0, \infty)\\ |
+| mtries | integer | -1 |  | \\\[1, \infty)\\ |
+| nbins | integer | 20 |  | \\\[1, \infty)\\ |
+| nbins_cats | integer | 1024 |  | \\\[1, \infty)\\ |
+| nbins_top_level | integer | 1024 |  | \\\[1, \infty)\\ |
+| ntrees | integer | 50 |  | \\\[1, \infty)\\ |
+| sample_rate | numeric | 0.632 |  | \\\[0, 1\]\\ |
+| score_each_iteration | logical | FALSE | TRUE, FALSE | \- |
+| score_tree_interval | integer | 0 |  | \\\[0, \infty)\\ |
+| seed | integer | -1 |  | \\(-\infty, \infty)\\ |
+| stopping_metric | character | AUTO | AUTO, deviance, MSE, RMSE, MAE, RMSLE | \- |
+| stopping_rounds | integer | 0 |  | \\\[0, \infty)\\ |
+| stopping_tolerance | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| verbose | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 
@@ -190,23 +190,23 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: drf
-#> Model ID:  DRF_model_R_1776854555489_112 
+#> Model ID:  DRF_model_R_1781101935297_112 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50               10397         4
+#> 1              50                       50               10427         4
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1        10    5.86000          6         16    11.92000
+#> 1         8    5.32000          7         18    11.98000
 #> 
 #> 
 #> H2ORegressionMetrics: drf
 #> ** Reported on training data. **
 #> ** Metrics reported on Out-Of-Bag training samples **
 #> 
-#> MSE:  4.581825
-#> RMSE:  2.14052
-#> MAE:  1.89348
-#> RMSLE:  0.107327
-#> Mean Residual Deviance :  4.581825
+#> MSE:  4.524242
+#> RMSE:  2.127027
+#> MAE:  1.652027
+#> RMSLE:  0.1181648
+#> Mean Residual Deviance :  4.524242
 #> 
 #> 
 #> 
@@ -219,5 +219,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.630516 
+#> 12.54568 
 ```

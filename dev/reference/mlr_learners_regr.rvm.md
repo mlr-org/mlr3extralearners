@@ -31,28 +31,28 @@ instantiated via
 
 ## Parameters
 
-|            |           |              |                                                                                             |                       |
-|------------|-----------|--------------|---------------------------------------------------------------------------------------------|-----------------------|
-| Id         | Type      | Default      | Levels                                                                                      | Range                 |
-| kernel     | character | rbfdot       | rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot, stringdot | \-                    |
-| sigma      | numeric   | \-           |                                                                                             | \\(-\infty, \infty)\\ |
-| degree     | numeric   | \-           |                                                                                             | \\(-\infty, \infty)\\ |
-| scale      | numeric   | \-           |                                                                                             | \\(-\infty, \infty)\\ |
-| offset     | numeric   | \-           |                                                                                             | \\(-\infty, \infty)\\ |
-| order      | numeric   | \-           |                                                                                             | \\(-\infty, \infty)\\ |
-| length     | integer   | \-           |                                                                                             | \\\[0, \infty)\\      |
-| lambda     | numeric   | \-           |                                                                                             | \\(-\infty, \infty)\\ |
-| normalized | logical   | \-           | TRUE, FALSE                                                                                 | \-                    |
-| kpar       | untyped   | "automatic"  |                                                                                             | \-                    |
-| alpha      | untyped   | 5            |                                                                                             | \-                    |
-| var        | numeric   | 0.1          |                                                                                             | \\\[0.001, \infty)\\  |
-| var.fix    | logical   | FALSE        | TRUE, FALSE                                                                                 | \-                    |
-| iterations | integer   | 100          |                                                                                             | \\\[0, \infty)\\      |
-| tol        | numeric   | 2.220446e-16 |                                                                                             | \\\[0, \infty)\\      |
-| minmaxdiff | numeric   | 0.001        |                                                                                             | \\\[0, \infty)\\      |
-| verbosity  | logical   | FALSE        | TRUE, FALSE                                                                                 | \-                    |
-| fit        | logical   | TRUE         | TRUE, FALSE                                                                                 | \-                    |
-| na.action  | untyped   | na.omit      |                                                                                             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| kernel | character | rbfdot | rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot, stringdot | \- |
+| sigma | numeric | \- |  | \\(-\infty, \infty)\\ |
+| degree | numeric | \- |  | \\(-\infty, \infty)\\ |
+| scale | numeric | \- |  | \\(-\infty, \infty)\\ |
+| offset | numeric | \- |  | \\(-\infty, \infty)\\ |
+| order | numeric | \- |  | \\(-\infty, \infty)\\ |
+| length | integer | \- |  | \\\[0, \infty)\\ |
+| lambda | numeric | \- |  | \\(-\infty, \infty)\\ |
+| normalized | logical | \- | TRUE, FALSE | \- |
+| kpar | untyped | "automatic" |  | \- |
+| alpha | untyped | 5 |  | \- |
+| var | numeric | 0.1 |  | \\\[0.001, \infty)\\ |
+| var.fix | logical | FALSE | TRUE, FALSE | \- |
+| iterations | integer | 100 |  | \\\[0, \infty)\\ |
+| tol | numeric | 2.220446e-16 |  | \\\[0, \infty)\\ |
+| minmaxdiff | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| verbosity | logical | FALSE | TRUE, FALSE | \- |
+| fit | logical | TRUE | TRUE, FALSE | \- |
+| na.action | untyped | na.omit |  | \- |
 
 ## References
 
@@ -179,11 +179,11 @@ print(learner$model)
 #> Problem type: regression 
 #>  
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.000545335816307617 
+#>  Hyperparameter : sigma =  0.000130837323698551 
 #> 
-#> Number of Relevance Vectors : 13 
-#> Variance :  2.549224
-#> Training error : 1.096365609 
+#> Number of Relevance Vectors : 6 
+#> Variance :  5.40859
+#> Training error : 3.892009342 
 
 
 # Make predictions for the test rows
@@ -192,5 +192,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 91.76692 
+#> 9.660946 
 ```

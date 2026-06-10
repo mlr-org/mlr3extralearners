@@ -38,28 +38,28 @@ instantiated via
 
 ## Parameters
 
-|         |           |                     |                                      |                       |
-|---------|-----------|---------------------|--------------------------------------|-----------------------|
-| Id      | Type      | Default             | Levels                               | Range                 |
-| bprior  | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-                    |
-| corr    | character | expsep              | exp, expsep, matern, sim             | \-                    |
-| Ds2x    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| improv  | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| itemps  | untyped   | NULL                |                                      | \-                    |
-| krige   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| linburn | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| m0r1    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| MAP     | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| meanfn  | character | linear              | constant, linear                     | \-                    |
-| nu      | numeric   | 1.5                 |                                      | \\(-\infty, \infty)\\ |
-| pred.n  | logical   | \-                  | TRUE, FALSE                          | \-                    |
-| R       | integer   | 1                   |                                      | \\\[1, \infty)\\      |
-| trace   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| verb    | integer   | \-                  |                                      | \\\[0, 4\]\\          |
-| zcov    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| tree    | untyped   | c(0.5, 2)           |                                      | \-                    |
-| gamma   | untyped   | c(10, 0.2, 0.7)     |                                      | \-                    |
-| BTE     | untyped   | c(2000L, 7000L, 2L) |                                      | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| bprior | character | bflat | b0, b0not, bflat, bmle, bmznot, bmzt | \- |
+| corr | character | expsep | exp, expsep, matern, sim | \- |
+| Ds2x | logical | FALSE | TRUE, FALSE | \- |
+| improv | logical | FALSE | TRUE, FALSE | \- |
+| itemps | untyped | NULL |  | \- |
+| krige | logical | TRUE | TRUE, FALSE | \- |
+| linburn | logical | FALSE | TRUE, FALSE | \- |
+| m0r1 | logical | TRUE | TRUE, FALSE | \- |
+| MAP | logical | TRUE | TRUE, FALSE | \- |
+| meanfn | character | linear | constant, linear | \- |
+| nu | numeric | 1.5 |  | \\(-\infty, \infty)\\ |
+| pred.n | logical | \- | TRUE, FALSE | \- |
+| R | integer | 1 |  | \\\[1, \infty)\\ |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| verb | integer | \- |  | \\\[0, 4\]\\ |
+| zcov | logical | FALSE | TRUE, FALSE | \- |
+| tree | untyped | c(0.5, 2) |  | \- |
+| gamma | untyped | c(10, 0.2, 0.7) |  | \- |
+| BTE | untyped | c(2000L, 7000L, 2L) |  | \- |
 
 ## References
 
@@ -212,5 +212,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.687769 
+#> 14.40075 
 ```

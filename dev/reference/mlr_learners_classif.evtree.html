@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Decision Tree Learner — mlr_learners_classif.evtree"><meta name="description" content="Evolutionary learning of globally optimal classification trees.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Decision Tree Learner — mlr_learners_classif.evtree"><meta name="description" content="Evolutionary learning of globally optimal classification trees.
 Calls evtree::evtree() fromevtree."><meta property="og:description" content="Evolutionary learning of globally optimal classification trees.
 Calls evtree::evtree() fromevtree."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -15,7 +15,7 @@ Calls evtree::evtree() fromevtree."><meta name="robots" content="noindex"></head
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -173,17 +173,15 @@ are scaled internally to sum to 100.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V20 &lt; 0.7918</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V9 &lt; 0.1037: R (n = 30, err = 6.7%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V9 &gt;= 0.1037</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] V12 &lt; 0.2251: R (n = 26, err = 19.2%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [6] V12 &gt;= 0.2251: M (n = 47, err = 8.5%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] V20 &gt;= 0.7918</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] V44 &lt; 0.1464: R (n = 14, err = 21.4%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [9] V44 &gt;= 0.1464: M (n = 22, err = 9.1%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V4 &lt; 0.0521</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V11 &lt; 0.1748: R (n = 35, err = 2.9%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V11 &gt;= 0.1748</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] V15 &lt; 0.5607: M (n = 37, err = 10.8%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [6] V15 &gt;= 0.5607: R (n = 10, err = 10.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] V4 &gt;= 0.0521: M (n = 57, err = 21.1%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -192,7 +190,7 @@ are scaled internally to sum to 100.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
