@@ -16,6 +16,7 @@ example, we will implement a slightly stripped-down version of
 `regr.rpart`.
 
 ``` r
+
 library(mlr3)
 library(paradox)
 library(R6)
@@ -262,6 +263,7 @@ that can be used inside the `.train()` method.
 First, we write something down that works completely without `mlr3`:
 
 ``` r
+
 data = mtcars
 model = rpart::rpart(mpg ~ ., data = mtcars, xval = 0)
 ```
@@ -284,6 +286,7 @@ the `mlr3` ecosystem. The return value of this method will be available
 as the `$model` slot of the trained learner.
 
 ``` r
+
 .train = function(task) {
   pv = self$param_set$get_values(tags = "train")
   pv$weights = private$.get_weights(task)
@@ -318,6 +321,7 @@ with a version without any `mlr3` objects and continue to replace
 objects until we have reached the desired interface:
 
 ``` r
+
 # inputs:
 task = tsk("mtcars")
 self = list(model = rpart::rpart(task$formula(), data = task$data()))
@@ -341,6 +345,7 @@ there are no parameters with the `"predict"` tag but we keep it here to
 be consistent:
 
 ``` r
+
 .predict = function(task) {
   pv = self$param_set$get_values(tags = "predict")
   # ensure same column order in train and predict
@@ -371,6 +376,7 @@ must return the importance scores as a sorted numeric vector, the names
 being the features.
 
 ``` r
+
 importance = function() {
   if (is.null(self$model)) {
     stopf("No model stored")
@@ -399,6 +405,7 @@ functions can be accessed via
 For a bare-bone check you can just try to run a simple `$train()` call.
 
 ``` r
+
 task = tsk("mtcars")
 learner = LearnerRegrRpartSimple$new()
 learner$train(task)
@@ -411,6 +418,7 @@ p$score(msr("regr.mse"))
     ## 9.127693
 
 ``` r
+
 learner$importance()
 ```
 
@@ -434,6 +442,7 @@ installed `mlr3` package Note that when implementing survival learners,
 you must also source these help files from the `mlr3proba` package.
 
 ``` r
+
 lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 # mlr3proba
 lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
@@ -445,6 +454,7 @@ verifies that the correct manual page exists, which is only relevant
 when adding the learner to `mlr3extralearners`.
 
 ``` r
+
 library(testthat)
 test_that("autotest", {
   learner = LearnerRegrRpartSimple$new()
@@ -466,6 +476,7 @@ Always add an explicit skip at the top of test files for all learners,
 for example:
 
 ``` r
+
 skip_if_not_installed("RpkgName")
 ```
 
@@ -475,6 +486,7 @@ specific workflow that doesn’t install packages listed in `Suggests`.
 For `Python`-based learners, use the corresponding `reticulate` helper:
 
 ``` r
+
 skip_if_not_installed_py("PythonpkgName")
 ```
 
@@ -499,6 +511,7 @@ session using `callr`.
 A minimal pattern looks like this:
 
 ``` r
+
 skip_if_not_installed_py("torch", "tabpfn")
 test_that("autotest: classif.tabpfn", {
   expect_true(callr::r(function() {
@@ -560,6 +573,7 @@ exclusion.
 In our example, the final paramtest script looks like:
 
 ``` r
+
 library(testthat)
 test_that("paramtest", {
   learner = LearnerRegrRpartSimple$new()
@@ -664,6 +678,7 @@ In your learner’s R file, add the template reference in the roxygen
 documentation:
 
 ``` r
+
 #' @templateVar id regr.mylearner
 #' @template learner
 #'

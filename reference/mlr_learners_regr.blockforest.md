@@ -41,22 +41,22 @@ instantiated via
 
 ## Parameters
 
-|                     |           |             |                                                              |                       |
-|---------------------|-----------|-------------|--------------------------------------------------------------|-----------------------|
-| Id                  | Type      | Default     | Levels                                                       | Range                 |
-| blocks              | untyped   | \-          |                                                              | \-                    |
-| block.method        | character | BlockForest | BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights | \-                    |
-| num.trees           | integer   | 2000        |                                                              | \\\[1, \infty)\\      |
-| mtry                | untyped   | NULL        |                                                              | \-                    |
-| nsets               | integer   | 300         |                                                              | \\\[1, \infty)\\      |
-| num.trees.pre       | integer   | 1500        |                                                              | \\\[1, \infty)\\      |
-| splitrule           | character | extratrees  | extratrees, variance, maxstat                                | \-                    |
-| always.select.block | integer   | 0           |                                                              | \\\[0, 1\]\\          |
-| importance          | character | \-          | none, impurity, impurity_corrected, permutation              | \-                    |
-| num.threads         | integer   | \-          |                                                              | \\\[1, \infty)\\      |
-| seed                | integer   | NULL        |                                                              | \\(-\infty, \infty)\\ |
-| verbose             | logical   | TRUE        | TRUE, FALSE                                                  | \-                    |
-| se.method           | character | infjack     | jack, infjack                                                | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| blocks | untyped | \- |  | \- |
+| block.method | character | BlockForest | BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights | \- |
+| num.trees | integer | 2000 |  | \\\[1, \infty)\\ |
+| mtry | untyped | NULL |  | \- |
+| nsets | integer | 300 |  | \\\[1, \infty)\\ |
+| num.trees.pre | integer | 1500 |  | \\\[1, \infty)\\ |
+| splitrule | character | extratrees | extratrees, variance, maxstat | \- |
+| always.select.block | integer | 0 |  | \\\[0, 1\]\\ |
+| importance | character | \- | none, impurity, impurity_corrected, permutation | \- |
+| num.threads | integer | \- |  | \\\[1, \infty)\\ |
+| seed | integer | NULL |  | \\(-\infty, \infty)\\ |
+| verbose | logical | TRUE | TRUE, FALSE | \- |
+| se.method | character | infjack | jack, infjack | \- |
 
 ## References
 
@@ -196,10 +196,10 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>        cyl       carb       disp         wt         hp         am       drat 
-#> 10.4470189  8.1808850  5.6746732  4.5234939  3.6162283  3.0163874  1.1102374 
-#>         vs       gear       qsec 
-#>  0.9188345 -0.1321223 -0.1930326 
+#>        cyl         hp       carb       disp         wt       drat       qsec 
+#> 10.1091821  4.0842866  3.8696902  3.4706661  3.1966953  2.2358660  1.0728851 
+#>         vs         am       gear 
+#>  1.0685091  0.7822913  0.7821707 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -207,16 +207,16 @@ pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        2  21.0 20.23572
-#>        3  22.8 27.35668
-#>        9  22.8 22.69543
+#>        3  22.8 25.56755
+#>        4  21.4 20.08334
+#>        5  18.7 16.82987
 #>      ---   ---      ---
-#>       27  26.0 25.90458
-#>       28  30.4 26.13195
-#>       31  15.0 17.31512
+#>       24  13.3 15.26242
+#>       28  30.4 24.30162
+#>       30  19.7 20.01122
 
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 5.832994 
+#> 12.22299 
 ```

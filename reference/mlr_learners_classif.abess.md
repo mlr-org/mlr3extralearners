@@ -25,35 +25,35 @@ instantiated via
 
 ## Parameters
 
-|                   |           |          |                                |                       |
-|-------------------|-----------|----------|--------------------------------|-----------------------|
-| Id                | Type      | Default  | Levels                         | Range                 |
-| family            | character | \-       | binomial, multinomial, ordinal | \-                    |
-| tune.path         | character | sequence | sequence, gsection             | \-                    |
-| tune.type         | character | gic      | gic, aic, bic, ebic, cv        | \-                    |
-| normalize         | integer   | NULL     |                                | \\(-\infty, \infty)\\ |
-| support.size      | untyped   | NULL     |                                | \-                    |
-| c.max             | integer   | 2        |                                | \\\[1, \infty)\\      |
-| gs.range          | untyped   | NULL     |                                | \-                    |
-| lambda            | numeric   | 0        |                                | \\\[0, \infty)\\      |
-| always.include    | untyped   | NULL     |                                | \-                    |
-| group.index       | untyped   | NULL     |                                | \-                    |
-| init.active.set   | untyped   | NULL     |                                | \-                    |
-| splicing.type     | integer   | 2        |                                | \\\[1, 2\]\\          |
-| max.splicing.iter | integer   | 20       |                                | \\\[1, \infty)\\      |
-| screening.num     | integer   | NULL     |                                | \\\[0, \infty)\\      |
-| important.search  | integer   | NULL     |                                | \\\[0, \infty)\\      |
-| warm.start        | logical   | TRUE     | TRUE, FALSE                    | \-                    |
-| nfolds            | integer   | 5        |                                | \\(-\infty, \infty)\\ |
-| foldid            | untyped   | NULL     |                                | \-                    |
-| cov.update        | logical   | FALSE    | TRUE, FALSE                    | \-                    |
-| newton            | character | exact    | exact, approx                  | \-                    |
-| newton.thresh     | numeric   | 1e-06    |                                | \\\[0, \infty)\\      |
-| max.newton.iter   | integer   | NULL     |                                | \\\[1, \infty)\\      |
-| early.stop        | logical   | FALSE    | TRUE, FALSE                    | \-                    |
-| ic.scale          | numeric   | 1        |                                | \\\[0, \infty)\\      |
-| num.threads       | integer   | 0        |                                | \\\[0, \infty)\\      |
-| seed              | integer   | 0        |                                | \\(-\infty, \infty)\\ |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| family | character | \- | binomial, multinomial, ordinal | \- |
+| tune.path | character | sequence | sequence, gsection | \- |
+| tune.type | character | gic | gic, aic, bic, ebic, cv | \- |
+| normalize | integer | NULL |  | \\(-\infty, \infty)\\ |
+| support.size | untyped | NULL |  | \- |
+| c.max | integer | 2 |  | \\\[1, \infty)\\ |
+| gs.range | untyped | NULL |  | \- |
+| lambda | numeric | 0 |  | \\\[0, \infty)\\ |
+| always.include | untyped | NULL |  | \- |
+| group.index | untyped | NULL |  | \- |
+| init.active.set | untyped | NULL |  | \- |
+| splicing.type | integer | 2 |  | \\\[1, 2\]\\ |
+| max.splicing.iter | integer | 20 |  | \\\[1, \infty)\\ |
+| screening.num | integer | NULL |  | \\\[0, \infty)\\ |
+| important.search | integer | NULL |  | \\\[0, \infty)\\ |
+| warm.start | logical | TRUE | TRUE, FALSE | \- |
+| nfolds | integer | 5 |  | \\(-\infty, \infty)\\ |
+| foldid | untyped | NULL |  | \- |
+| cov.update | logical | FALSE | TRUE, FALSE | \- |
+| newton | character | exact | exact, approx | \- |
+| newton.thresh | numeric | 1e-06 |  | \\\[0, \infty)\\ |
+| max.newton.iter | integer | NULL |  | \\\[1, \infty)\\ |
+| early.stop | logical | FALSE | TRUE, FALSE | \- |
+| ic.scale | numeric | 1 |  | \\\[0, \infty)\\ |
+| num.threads | integer | 0 |  | \\\[0, \infty)\\ |
+| seed | integer | 0 |  | \\(-\infty, \infty)\\ |
 
 ## Initial parameter values
 

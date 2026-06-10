@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Random Forest SRC Learner — mlr_learners_classif.rfsrc"><meta name="description" content="Random forest for classification.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Random Forest SRC Learner — mlr_learners_classif.rfsrc"><meta name="description" content="Random forest for classification.
 Calls randomForestSRC::rfsrc() from randomForestSRC."><meta property="og:description" content="Random forest for classification.
 Calls randomForestSRC::rfsrc() from randomForestSRC."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -238,10 +238,10 @@ for feature selection purposes and not when prediction is required.</p><div clas
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          Sample size: 139</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Frequency of class labels: M=73, R=66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            Frequency of class labels: M=70, R=69</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Forest terminal node size: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 17.47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 17.274</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Total no. of variables: 60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Resampling used to grow trees: swor</span>
@@ -250,47 +250,47 @@ for feature selection purposes and not when prediction is required.</p><div clas
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Family: class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       Splitting rule: gini *random*</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Number of random split points: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     Imbalanced ratio: 1.1061</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    (OOB) Brier score: 0.15062459</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         (OOB) Normalized Brier score: 0.60249836</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                            (OOB) AUC: 0.89393939</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       (OOB) Log-loss: 0.4647906</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) PR-AUC: 0.87986143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) G-mean: 0.75851333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.23021583, 0.1369863, 0.33333333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     Imbalanced ratio: 1.0145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    (OOB) Brier score: 0.13398654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         (OOB) Normalized Brier score: 0.53594616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                            (OOB) AUC: 0.92795031</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       (OOB) Log-loss: 0.4313074</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) PR-AUC: 0.92953207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) G-mean: 0.83653629</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.15827338, 0.07142857, 0.24637681</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion matrix:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           predicted</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   observed  M  R class.error</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          M 64  9      0.1233</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          R 22 44      0.3333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          M 65  5      0.0714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          R 17 52      0.2464</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       (OOB) Misclassification rate: 0.2230216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       (OOB) Misclassification rate: 0.1582734</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Random-classifier baselines (uniform):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Brier: 0.25   Normalized Brier: 1   Log-loss: 0.69314718</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V48          V12          V49          V10           V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0560187535 0.0480117287 0.0450135892 0.0407747738 0.0290012191 0.0270811756 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V52          V36          V28          V47          V27          V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0269985266 0.0251813382 0.0198598329 0.0157275375 0.0151702989 0.0142442559 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V34          V21          V13          V45          V22          V18 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0141364530 0.0133918097 0.0127051648 0.0125491015 0.0123790893 0.0123762736 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V39          V35           V4          V51          V17          V43 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0122425797 0.0121871358 0.0113658854 0.0113529901 0.0110948304 0.0101424764 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V32          V33          V20          V54          V46           V1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0100758738 0.0091471379 0.0091189315 0.0087236650 0.0085616111 0.0081673724 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V38          V15          V16          V55          V29           V5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0079765020 0.0074373192 0.0074173892 0.0073246160 0.0071382562 0.0069835413 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V42          V24          V23           V6          V53           V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0069547899 0.0068723468 0.0064336297 0.0062502368 0.0062373090 0.0057990633 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V57          V19           V8          V40          V44          V31 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0052260839 0.0051121811 0.0051039932 0.0050920780 0.0043543414 0.0043407126 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V25          V59           V7          V56          V41           V3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0043364348 0.0042275572 0.0037989662 0.0037906903 0.0037867677 0.0037864430 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V58          V14          V30          V26          V50          V60 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0030776749 0.0020675682 0.0018789053 0.0012937973 0.0002899471 0.0001193812 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V11         V12         V36          V9         V10         V37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.079165891 0.054194575 0.039770069 0.035546213 0.034847188 0.034165164 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V49          V5         V28         V13         V17         V31 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.026212264 0.021931060 0.021059411 0.021056933 0.020798559 0.020155118 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V20         V45         V39         V16         V22          V7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.019394577 0.019320854 0.018907487 0.017921554 0.016443314 0.016392030 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V35         V52         V21         V15          V1         V18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.015556028 0.015309801 0.014647358 0.014453417 0.014423611 0.013945472 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V46         V48          V4         V27         V47          V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.013688401 0.013209069 0.012136010 0.011633015 0.010901270 0.010587652 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V33         V43         V14         V29          V6         V30 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.010356211 0.010240835 0.009907313 0.009269500 0.008426545 0.008425518 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V32         V59         V44         V19         V51         V42 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.008306777 0.007988246 0.007665921 0.006836219 0.006702202 0.006689268 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V50          V3         V58         V26         V57         V23 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.006120220 0.005966390 0.005855738 0.005559488 0.005375212 0.005358999 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V54         V40         V60         V38         V34         V24 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.005225601 0.005074823 0.004652582 0.004548549 0.003778882 0.003642725 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V56         V41          V2         V25         V55         V53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.002794107 0.002613097 0.002323177 0.002022639 0.001715791 0.001439988 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -298,7 +298,7 @@ for feature selection purposes and not when prediction is required.</p><div clas
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1304348 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -340,7 +340,7 @@ Bugfixes:
   1.  
 - Feat: Added learners `LearnerClassifPriorityLasso`,
   `LearnerRegrPriorityLasso`, `LearnerSurvPriorityLasso` (thanks to
-  2.  
+  1.  
 
 ## mlr3extralearners 0.6.0
 

@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Gradient Boosted Decision Trees Classification Learner — mlr_learners_classif.catboost"><meta name="description" content="Gradient boosting algorithm that also supports categorical data.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Gradient Boosted Decision Trees Classification Learner — mlr_learners_classif.catboost"><meta name="description" content="Gradient boosting algorithm that also supports categorical data.
 Calls catboost::catboost.train() from package 'catboost'."><meta property="og:description" content="Gradient boosting algorithm that also supports categorical data.
 Calls catboost::catboost.train() from package 'catboost'."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -255,23 +255,23 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: Logloss</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 60 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V12        V44        V49        V46        V16        V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13.2572558 11.7617831  5.4727116  4.9652755  4.4650061  4.2294813  4.2054071 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V27        V43        V10        V57        V31        V37        V17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.2008199  3.9799972  3.5455023  3.1896964  3.1275983  2.9945145  2.0864256 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V28         V4        V45        V59         V5         V9        V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.0566056  2.0016207  1.9786115  1.9252256  1.8750642  1.8196569  1.6827273 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V21        V50         V8        V19        V15        V39        V23 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.6304972  1.3300748  1.2929810  1.2731387  1.2338024  1.0683267  0.9885415 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V26         V6        V24        V56        V40        V53        V54 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.9866642  0.9771631  0.7739844  0.6706015  0.5627617  0.4927577  0.4784141 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V14         V7         V1        V33        V13        V18         V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4732799  0.4475022  0.3025856  0.1959365  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V20        V22        V25        V29         V3        V30        V32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V49        V27        V21        V31         V9        V43 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.3359949 15.9582158  6.5346007  5.5537397  4.3574958  4.0253726  4.0056962 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V55        V40        V45        V34        V17        V16         V1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.3560199  3.1409192  3.1074832  2.7177295  2.5515489  2.2226152  2.1907186 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V51        V26        V56        V24        V12        V52        V47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.1566893  2.0668256  1.7572084  1.4916170  1.4832125  1.4367117  1.3686998 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V25        V53        V28         V7        V19        V50        V48 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.3212017  1.2731195  1.0527390  0.8969751  0.8900218  0.8862924  0.7205258 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V6        V54         V4        V59        V33        V10        V15 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.7142339  0.7037965  0.5972098  0.5774480  0.4429511  0.4232947  0.3316237 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V32        V14        V13        V18         V2        V20        V22 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2231249  0.1263275  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V23        V29         V3        V30        V35        V36        V37 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V34        V35        V38        V41        V42        V47        V48 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V38        V39        V41        V42        V44        V46         V5 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V51        V55        V58        V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V57        V58        V60         V8 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -280,7 +280,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

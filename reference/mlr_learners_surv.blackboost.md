@@ -53,49 +53,49 @@ instantiated via
 
 ## Parameters
 
-|                 |           |                |                                                          |                       |
-|-----------------|-----------|----------------|----------------------------------------------------------|-----------------------|
-| Id              | Type      | Default        | Levels                                                   | Range                 |
-| family          | character | coxph          | coxph, weibull, loglog, lognormal, gehan, cindex, custom | \-                    |
-| custom.family   | untyped   | \-             |                                                          | \-                    |
-| nuirange        | untyped   | c(0, 100)      |                                                          | \-                    |
-| center          | logical   | TRUE           | TRUE, FALSE                                              | \-                    |
-| mstop           | integer   | 100            |                                                          | \\\[0, \infty)\\      |
-| nu              | numeric   | 0.1            |                                                          | \\\[0, 1\]\\          |
-| risk            | character | \-             | inbag, oobag, none                                       | \-                    |
-| stopintern      | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| trace           | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| oobweights      | untyped   | \-             |                                                          | \-                    |
-| teststat        | character | quadratic      | quadratic, maximum                                       | \-                    |
-| splitstat       | character | quadratic      | quadratic, maximum                                       | \-                    |
-| splittest       | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| testtype        | character | Bonferroni     | Bonferroni, MonteCarlo, Univariate, Teststatistic        | \-                    |
-| maxpts          | integer   | 25000          |                                                          | \\\[1, \infty)\\      |
-| abseps          | numeric   | 0.001          |                                                          | \\(-\infty, \infty)\\ |
-| releps          | numeric   | 0              |                                                          | \\(-\infty, \infty)\\ |
-| nmax            | untyped   | \-             |                                                          | \-                    |
-| alpha           | numeric   | 0.05           |                                                          | \\\[0, 1\]\\          |
-| mincriterion    | numeric   | 0.95           |                                                          | \\\[0, 1\]\\          |
-| logmincriterion | numeric   | -0.05129329    |                                                          | \\(-\infty, 0\]\\     |
-| minsplit        | integer   | 20             |                                                          | \\\[0, \infty)\\      |
-| minbucket       | integer   | 7              |                                                          | \\\[0, \infty)\\      |
-| minprob         | numeric   | 0.01           |                                                          | \\\[0, 1\]\\          |
-| stump           | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| lookahead       | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| MIA             | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| nresample       | integer   | 9999           |                                                          | \\\[1, \infty)\\      |
-| tol             | numeric   | 1.490116e-08   |                                                          | \\\[0, \infty)\\      |
-| maxsurrogate    | integer   | 0              |                                                          | \\\[0, \infty)\\      |
-| mtry            | integer   | \-             |                                                          | \\\[0, \infty)\\      |
-| maxdepth        | integer   | \-             |                                                          | \\\[0, \infty)\\      |
-| multiway        | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| splittry        | integer   | 2              |                                                          | \\\[1, \infty)\\      |
-| intersplit      | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| majority        | logical   | FALSE          | TRUE, FALSE                                              | \-                    |
-| caseweights     | logical   | TRUE           | TRUE, FALSE                                              | \-                    |
-| sigma           | numeric   | 0.1            |                                                          | \\\[0, 1\]\\          |
-| ipcw            | untyped   | 1              |                                                          | \-                    |
-| na.action       | untyped   | stats::na.omit |                                                          | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| family | character | coxph | coxph, weibull, loglog, lognormal, gehan, cindex, custom | \- |
+| custom.family | untyped | \- |  | \- |
+| nuirange | untyped | c(0, 100) |  | \- |
+| center | logical | TRUE | TRUE, FALSE | \- |
+| mstop | integer | 100 |  | \\\[0, \infty)\\ |
+| nu | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| risk | character | \- | inbag, oobag, none | \- |
+| stopintern | logical | FALSE | TRUE, FALSE | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| oobweights | untyped | \- |  | \- |
+| teststat | character | quadratic | quadratic, maximum | \- |
+| splitstat | character | quadratic | quadratic, maximum | \- |
+| splittest | logical | FALSE | TRUE, FALSE | \- |
+| testtype | character | Bonferroni | Bonferroni, MonteCarlo, Univariate, Teststatistic | \- |
+| maxpts | integer | 25000 |  | \\\[1, \infty)\\ |
+| abseps | numeric | 0.001 |  | \\(-\infty, \infty)\\ |
+| releps | numeric | 0 |  | \\(-\infty, \infty)\\ |
+| nmax | untyped | \- |  | \- |
+| alpha | numeric | 0.05 |  | \\\[0, 1\]\\ |
+| mincriterion | numeric | 0.95 |  | \\\[0, 1\]\\ |
+| logmincriterion | numeric | -0.05129329 |  | \\(-\infty, 0\]\\ |
+| minsplit | integer | 20 |  | \\\[0, \infty)\\ |
+| minbucket | integer | 7 |  | \\\[0, \infty)\\ |
+| minprob | numeric | 0.01 |  | \\\[0, 1\]\\ |
+| stump | logical | FALSE | TRUE, FALSE | \- |
+| lookahead | logical | FALSE | TRUE, FALSE | \- |
+| MIA | logical | FALSE | TRUE, FALSE | \- |
+| nresample | integer | 9999 |  | \\\[1, \infty)\\ |
+| tol | numeric | 1.490116e-08 |  | \\\[0, \infty)\\ |
+| maxsurrogate | integer | 0 |  | \\\[0, \infty)\\ |
+| mtry | integer | \- |  | \\\[0, \infty)\\ |
+| maxdepth | integer | \- |  | \\\[0, \infty)\\ |
+| multiway | logical | FALSE | TRUE, FALSE | \- |
+| splittry | integer | 2 |  | \\\[1, \infty)\\ |
+| intersplit | logical | FALSE | TRUE, FALSE | \- |
+| majority | logical | FALSE | TRUE, FALSE | \- |
+| caseweights | logical | TRUE | TRUE, FALSE | \- |
+| sigma | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| ipcw | untyped | 1 |  | \- |
+| na.action | untyped | stats::na.omit |  | \- |
 
 ## Offset
 
@@ -247,5 +247,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8514434 
+#>   0.8342381 
 ```

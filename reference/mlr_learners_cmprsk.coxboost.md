@@ -33,34 +33,34 @@ instantiated via
 
 ## Parameters
 
-|                 |           |         |                                |                       |
-|-----------------|-----------|---------|--------------------------------|-----------------------|
-| Id              | Type      | Default | Levels                         | Range                 |
-| cv              | logical   | \-      | TRUE, FALSE                    | \-                    |
-| maxstepno       | integer   | 100     |                                | \\\[0, \infty)\\      |
-| K               | integer   | 10      |                                | \\\[2, \infty)\\      |
-| type            | character | verweij | verweij, naive                 | \-                    |
-| folds           | untyped   | NULL    |                                | \-                    |
-| minstepno       | integer   | 50      |                                | \\\[0, \infty)\\      |
-| start.penalty   | numeric   | \-      |                                | \\(-\infty, \infty)\\ |
-| iter.max        | integer   | 10      |                                | \\\[1, \infty)\\      |
-| upper.margin    | numeric   | 0.05    |                                | \\\[0, 1\]\\          |
-| unpen.index     | untyped   | \-      |                                | \-                    |
-| standardize     | logical   | TRUE    | TRUE, FALSE                    | \-                    |
-| stepno          | integer   | 100     |                                | \\\[0, \infty)\\      |
-| penalty         | numeric   | \-      |                                | \\(-\infty, \infty)\\ |
-| criterion       | character | pscore  | pscore, score, hpscore, hscore | \-                    |
-| stepsize.factor | numeric   | 1       |                                | \\(-\infty, \infty)\\ |
-| sf.scheme       | character | sigmoid | sigmoid, linear                | \-                    |
-| pendistmat      | untyped   | \-      |                                | \-                    |
-| connected.index | untyped   | \-      |                                | \-                    |
-| x.is.01         | logical   | FALSE   | TRUE, FALSE                    | \-                    |
-| return.score    | logical   | TRUE    | TRUE, FALSE                    | \-                    |
-| trace           | logical   | FALSE   | TRUE, FALSE                    | \-                    |
-| cmprsk          | character | \-      | csh, ccsh                      | \-                    |
-| coupled.strata  | logical   | TRUE    | TRUE, FALSE                    | \-                    |
-| at.step         | untyped   | \-      |                                | \-                    |
-| times           | untyped   | \-      |                                | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| cv | logical | \- | TRUE, FALSE | \- |
+| maxstepno | integer | 100 |  | \\\[0, \infty)\\ |
+| K | integer | 10 |  | \\\[2, \infty)\\ |
+| type | character | verweij | verweij, naive | \- |
+| folds | untyped | NULL |  | \- |
+| minstepno | integer | 50 |  | \\\[0, \infty)\\ |
+| start.penalty | numeric | \- |  | \\(-\infty, \infty)\\ |
+| iter.max | integer | 10 |  | \\\[1, \infty)\\ |
+| upper.margin | numeric | 0.05 |  | \\\[0, 1\]\\ |
+| unpen.index | untyped | \- |  | \- |
+| standardize | logical | TRUE | TRUE, FALSE | \- |
+| stepno | integer | 100 |  | \\\[0, \infty)\\ |
+| penalty | numeric | \- |  | \\(-\infty, \infty)\\ |
+| criterion | character | pscore | pscore, score, hpscore, hscore | \- |
+| stepsize.factor | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| sf.scheme | character | sigmoid | sigmoid, linear | \- |
+| pendistmat | untyped | \- |  | \- |
+| connected.index | untyped | \- |  | \- |
+| x.is.01 | logical | FALSE | TRUE, FALSE | \- |
+| return.score | logical | TRUE | TRUE, FALSE | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| cmprsk | character | \- | csh, ccsh | \- |
+| coupled.strata | logical | TRUE | TRUE, FALSE | \- |
+| at.step | untyped | \- |  | \- |
+| times | untyped | \- |  | \- |
 
 ## Custom mlr3 parameters
 
@@ -241,11 +241,11 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> cause '1':
 #> 10 boosting steps resulting in 2 non-zero coefficients  
-#> partial log-likelihood: -50.73794 
+#> partial log-likelihood: -51.37158 
 #> 
 #> cause '2':
 #> 10 boosting steps resulting in 5 non-zero coefficients  
-#> partial log-likelihood: -283.3203 
+#> partial log-likelihood: -287.3332 
 print(learner$selected_features(cause = 1)) # for cause = 1
 #> [1] "age"    "copper"
 print(learner$selected_features(cause = 2)) # for cause = 2
@@ -257,5 +257,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.7936997 
+#>  0.8295931 
 ```

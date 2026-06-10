@@ -27,22 +27,22 @@ instantiated via
 
 ## Parameters
 
-|               |           |                |                                                                        |                       |
-|---------------|-----------|----------------|------------------------------------------------------------------------|-----------------------|
-| Id            | Type      | Default        | Levels                                                                 | Range                 |
-| baselearner   | character | bbs            | bbs, bols, btree                                                       | \-                    |
-| dfbase        | integer   | 4              |                                                                        | \\(-\infty, \infty)\\ |
-| family        | character | Gaussian       | Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom | \-                    |
-| custom.family | untyped   | \-             |                                                                        | \-                    |
-| nuirange      | untyped   | c(0, 100)      |                                                                        | \-                    |
-| d             | numeric   | NULL           |                                                                        | \\(-\infty, \infty)\\ |
-| mstop         | integer   | 100            |                                                                        | \\(-\infty, \infty)\\ |
-| nu            | numeric   | 0.1            |                                                                        | \\(-\infty, \infty)\\ |
-| risk          | character | inbag          | inbag, oobag, none                                                     | \-                    |
-| oobweights    | untyped   | NULL           |                                                                        | \-                    |
-| trace         | logical   | FALSE          | TRUE, FALSE                                                            | \-                    |
-| stopintern    | untyped   | FALSE          |                                                                        | \-                    |
-| na.action     | untyped   | stats::na.omit |                                                                        | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| baselearner | character | bbs | bbs, bols, btree | \- |
+| dfbase | integer | 4 |  | \\(-\infty, \infty)\\ |
+| family | character | Gaussian | Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom | \- |
+| custom.family | untyped | \- |  | \- |
+| nuirange | untyped | c(0, 100) |  | \- |
+| d | numeric | NULL |  | \\(-\infty, \infty)\\ |
+| mstop | integer | 100 |  | \\(-\infty, \infty)\\ |
+| nu | numeric | 0.1 |  | \\(-\infty, \infty)\\ |
+| risk | character | inbag | inbag, oobag, none | \- |
+| oobweights | untyped | NULL |  | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| stopintern | untyped | FALSE |  | \- |
+| na.action | untyped | stats::na.omit |  | \- |
 
 ## Offset
 

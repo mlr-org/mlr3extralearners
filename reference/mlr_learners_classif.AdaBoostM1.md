@@ -26,21 +26,21 @@ instantiated via
 
 ## Parameters
 
-|                           |         |                 |             |                  |
-|---------------------------|---------|-----------------|-------------|------------------|
-| Id                        | Type    | Default         | Levels      | Range            |
-| subset                    | untyped | \-              |             | \-               |
-| na.action                 | untyped | \-              |             | \-               |
-| P                         | integer | 100             |             | \\\[90, 100\]\\  |
-| Q                         | logical | FALSE           | TRUE, FALSE | \-               |
-| S                         | integer | 1               |             | \\\[1, \infty)\\ |
-| I                         | integer | 10              |             | \\\[1, \infty)\\ |
-| W                         | untyped | "DecisionStump" |             | \-               |
-| output_debug_info         | logical | FALSE           | TRUE, FALSE | \-               |
-| do_not_check_capabilities | logical | FALSE           | TRUE, FALSE | \-               |
-| num_decimal_places        | integer | 2               |             | \\\[1, \infty)\\ |
-| batch_size                | integer | 100             |             | \\\[1, \infty)\\ |
-| options                   | untyped | NULL            |             | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| P | integer | 100 |  | \\\[90, 100\]\\ |
+| Q | logical | FALSE | TRUE, FALSE | \- |
+| S | integer | 1 |  | \\\[1, \infty)\\ |
+| I | integer | 10 |  | \\\[1, \infty)\\ |
+| W | untyped | "DecisionStump" |  | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## Parameter changes
 

@@ -27,22 +27,22 @@ instantiated via
 
 ## Parameters
 
-|               |           |                |                               |                       |
-|---------------|-----------|----------------|-------------------------------|-----------------------|
-| Id            | Type      | Default        | Levels                        | Range                 |
-| baselearner   | character | bbs            | bbs, bols, btree              | \-                    |
-| dfbase        | integer   | 4              |                               | \\(-\infty, \infty)\\ |
-| family        | character | Binomial       | Binomial, AdaExp, AUC, custom | \-                    |
-| custom.family | untyped   | \-             |                               | \-                    |
-| link          | character | logit          | logit, probit                 | \-                    |
-| type          | character | adaboost       | glm, adaboost                 | \-                    |
-| mstop         | integer   | 100            |                               | \\(-\infty, \infty)\\ |
-| nu            | numeric   | 0.1            |                               | \\(-\infty, \infty)\\ |
-| risk          | character | inbag          | inbag, oobag, none            | \-                    |
-| oobweights    | untyped   | NULL           |                               | \-                    |
-| trace         | logical   | FALSE          | TRUE, FALSE                   | \-                    |
-| stopintern    | untyped   | FALSE          |                               | \-                    |
-| na.action     | untyped   | stats::na.omit |                               | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| baselearner | character | bbs | bbs, bols, btree | \- |
+| dfbase | integer | 4 |  | \\(-\infty, \infty)\\ |
+| family | character | Binomial | Binomial, AdaExp, AUC, custom | \- |
+| custom.family | untyped | \- |  | \- |
+| link | character | logit | logit, probit | \- |
+| type | character | adaboost | glm, adaboost | \- |
+| mstop | integer | 100 |  | \\(-\infty, \infty)\\ |
+| nu | numeric | 0.1 |  | \\(-\infty, \infty)\\ |
+| risk | character | inbag | inbag, oobag, none | \- |
+| oobweights | untyped | NULL |  | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| stopintern | untyped | FALSE |  | \- |
+| na.action | untyped | stats::na.omit |  | \- |
 
 ## Offset
 
@@ -189,7 +189,7 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.07930252 
+#> Offset:  -0.06483891 
 #> Number of baselearners:  60 
 #> 
 
@@ -206,9 +206,10 @@ predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
+#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.2173913 
 ```

@@ -57,57 +57,57 @@ instantiated via
 
 ## Parameters
 
-|                       |           |            |                         |                       |
-|-----------------------|-----------|------------|-------------------------|-----------------------|
-| Id                    | Type      | Default    | Levels                  | Range                 |
-| blocks                | untyped   | \-         |                         | \-                    |
-| max.coef              | untyped   | NULL       |                         | \-                    |
-| block1.penalization   | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| lambda.type           | character | lambda.min | lambda.min, lambda.1se  | \-                    |
-| standardize           | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| nfolds                | integer   | 5          |                         | \\\[1, \infty)\\      |
-| foldid                | untyped   | NULL       |                         | \-                    |
-| cvoffset              | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| cvoffsetnfolds        | integer   | 10         |                         | \\\[1, \infty)\\      |
-| return.x              | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| include.allintercepts | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| use.blocks            | untyped   | "all"      |                         | \-                    |
-| alignment             | character | lambda     | lambda, fraction        | \-                    |
-| alpha                 | numeric   | 1          |                         | \\\[0, 1\]\\          |
-| big                   | numeric   | 9.9e+35    |                         | \\(-\infty, \infty)\\ |
-| devmax                | numeric   | 0.999      |                         | \\\[0, 1\]\\          |
-| dfmax                 | integer   | \-         |                         | \\\[0, \infty)\\      |
-| eps                   | numeric   | 1e-06      |                         | \\\[0, 1\]\\          |
-| epsnr                 | numeric   | 1e-08      |                         | \\\[0, 1\]\\          |
-| exclude               | untyped   | \-         |                         | \-                    |
-| exmx                  | numeric   | 250        |                         | \\(-\infty, \infty)\\ |
-| fdev                  | numeric   | 1e-05      |                         | \\\[0, 1\]\\          |
-| gamma                 | untyped   | \-         |                         | \-                    |
-| grouped               | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| intercept             | logical   | TRUE       | TRUE, FALSE             | \-                    |
-| keep                  | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| lambda                | untyped   | \-         |                         | \-                    |
-| lambda.min.ratio      | numeric   | \-         |                         | \\\[0, 1\]\\          |
-| lower.limits          | untyped   | -Inf       |                         | \-                    |
-| maxit                 | integer   | 100000     |                         | \\\[1, \infty)\\      |
-| mnlam                 | integer   | 5          |                         | \\\[1, \infty)\\      |
-| mxit                  | integer   | 100        |                         | \\\[1, \infty)\\      |
-| mxitnr                | integer   | 25         |                         | \\\[1, \infty)\\      |
-| nlambda               | integer   | 100        |                         | \\\[1, \infty)\\      |
-| offset                | untyped   | NULL       |                         | \-                    |
-| parallel              | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| penalty.factor        | untyped   | \-         |                         | \-                    |
-| pmax                  | integer   | \-         |                         | \\\[0, \infty)\\      |
-| pmin                  | numeric   | 1e-09      |                         | \\\[0, 1\]\\          |
-| prec                  | numeric   | 1e-10      |                         | \\(-\infty, \infty)\\ |
-| standardize.response  | logical   | FALSE      | TRUE, FALSE             | \-                    |
-| thresh                | numeric   | 1e-07      |                         | \\\[0, \infty)\\      |
-| trace.it              | integer   | 0          |                         | \\\[0, 1\]\\          |
-| type.gaussian         | character | \-         | covariance, naive       | \-                    |
-| type.logistic         | character | Newton     | Newton, modified.Newton | \-                    |
-| type.multinomial      | character | ungrouped  | ungrouped, grouped      | \-                    |
-| upper.limits          | untyped   | Inf        |                         | \-                    |
-| relax                 | logical   | FALSE      | TRUE, FALSE             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| blocks | untyped | \- |  | \- |
+| max.coef | untyped | NULL |  | \- |
+| block1.penalization | logical | TRUE | TRUE, FALSE | \- |
+| lambda.type | character | lambda.min | lambda.min, lambda.1se | \- |
+| standardize | logical | TRUE | TRUE, FALSE | \- |
+| nfolds | integer | 5 |  | \\\[1, \infty)\\ |
+| foldid | untyped | NULL |  | \- |
+| cvoffset | logical | FALSE | TRUE, FALSE | \- |
+| cvoffsetnfolds | integer | 10 |  | \\\[1, \infty)\\ |
+| return.x | logical | TRUE | TRUE, FALSE | \- |
+| include.allintercepts | logical | FALSE | TRUE, FALSE | \- |
+| use.blocks | untyped | "all" |  | \- |
+| alignment | character | lambda | lambda, fraction | \- |
+| alpha | numeric | 1 |  | \\\[0, 1\]\\ |
+| big | numeric | 9.9e+35 |  | \\(-\infty, \infty)\\ |
+| devmax | numeric | 0.999 |  | \\\[0, 1\]\\ |
+| dfmax | integer | \- |  | \\\[0, \infty)\\ |
+| eps | numeric | 1e-06 |  | \\\[0, 1\]\\ |
+| epsnr | numeric | 1e-08 |  | \\\[0, 1\]\\ |
+| exclude | untyped | \- |  | \- |
+| exmx | numeric | 250 |  | \\(-\infty, \infty)\\ |
+| fdev | numeric | 1e-05 |  | \\\[0, 1\]\\ |
+| gamma | untyped | \- |  | \- |
+| grouped | logical | TRUE | TRUE, FALSE | \- |
+| intercept | logical | TRUE | TRUE, FALSE | \- |
+| keep | logical | FALSE | TRUE, FALSE | \- |
+| lambda | untyped | \- |  | \- |
+| lambda.min.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| lower.limits | untyped | -Inf |  | \- |
+| maxit | integer | 100000 |  | \\\[1, \infty)\\ |
+| mnlam | integer | 5 |  | \\\[1, \infty)\\ |
+| mxit | integer | 100 |  | \\\[1, \infty)\\ |
+| mxitnr | integer | 25 |  | \\\[1, \infty)\\ |
+| nlambda | integer | 100 |  | \\\[1, \infty)\\ |
+| offset | untyped | NULL |  | \- |
+| parallel | logical | FALSE | TRUE, FALSE | \- |
+| penalty.factor | untyped | \- |  | \- |
+| pmax | integer | \- |  | \\\[0, \infty)\\ |
+| pmin | numeric | 1e-09 |  | \\\[0, 1\]\\ |
+| prec | numeric | 1e-10 |  | \\(-\infty, \infty)\\ |
+| standardize.response | logical | FALSE | TRUE, FALSE | \- |
+| thresh | numeric | 1e-07 |  | \\\[0, \infty)\\ |
+| trace.it | integer | 0 |  | \\\[0, 1\]\\ |
+| type.gaussian | character | \- | covariance, naive | \- |
+| type.logistic | character | Newton | Newton, modified.Newton | \- |
+| type.multinomial | character | ungrouped | ungrouped, grouped | \- |
+| upper.limits | untyped | Inf |  | \- |
+| relax | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 
@@ -241,6 +241,12 @@ learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALS
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
+#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
+#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
+#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
+#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
+#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
 
 # selected features
 learner$selected_features()
@@ -252,12 +258,12 @@ pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
 #>  row_ids  time status     crank        lp     distr
-#>        1 180.0  FALSE 0.4866469 0.4866469 <list[1]>
-#>        6   5.0  FALSE 1.4541591 1.4541591 <list[1]>
-#>        8   2.0  FALSE 1.1603427 1.1603427 <list[1]>
+#>        1 180.0  FALSE 0.4873027 0.4873027 <list[1]>
+#>        6   5.0  FALSE 1.4541773 1.4541773 <list[1]>
+#>        8   2.0  FALSE 1.1603463 1.1603463 <list[1]>
 #>      ---   ---    ---       ---       ---       ---
 #>      995   0.5   TRUE 3.9088136 3.9088136 <list[1]>
-#>      996  69.0   TRUE 3.9355365 3.9355365 <list[1]>
+#>      996  69.0   TRUE 3.9357878 3.9357878 <list[1]>
 #>     1000  15.0  FALSE 3.7133697 3.7133697 <list[1]>
 
 # Score the predictions

@@ -237,16 +237,16 @@ print(learner$model)
 #> SimpleLogistic:
 #> 
 #> Class M :
-#> -0.67 + 
-#> [V11] * 2.85 +
-#> [V37] * -1.48 +
-#> [V49] * 11.86
+#> -0.78 + 
+#> [V11] * 3.33 +
+#> [V36] * -1.17 +
+#> [V47] * 5.55
 #> 
 #> Class R :
-#> 0.67 + 
-#> [V11] * -2.85 +
-#> [V37] * 1.48 +
-#> [V49] * -11.86
+#> 0.78 + 
+#> [V11] * -3.33 +
+#> [V36] * 1.17 +
+#> [V47] * -5.55
 #> 
 
 
@@ -256,5 +256,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3333333 
+#>  0.3623188 
 ```

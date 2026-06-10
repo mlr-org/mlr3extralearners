@@ -25,35 +25,35 @@ instantiated via
 
 ## Parameters
 
-|                   |           |          |                                     |                       |
-|-------------------|-----------|----------|-------------------------------------|-----------------------|
-| Id                | Type      | Default  | Levels                              | Range                 |
-| family            | character | gaussian | gaussian, mgaussian, poisson, gamma | \-                    |
-| tune.path         | character | sequence | sequence, gsection                  | \-                    |
-| tune.type         | character | gic      | gic, aic, bic, ebic, cv             | \-                    |
-| normalize         | integer   | NULL     |                                     | \\(-\infty, \infty)\\ |
-| support.size      | untyped   | NULL     |                                     | \-                    |
-| c.max             | integer   | 2        |                                     | \\\[1, \infty)\\      |
-| gs.range          | untyped   | NULL     |                                     | \-                    |
-| lambda            | numeric   | 0        |                                     | \\\[0, \infty)\\      |
-| always.include    | untyped   | NULL     |                                     | \-                    |
-| group.index       | untyped   | NULL     |                                     | \-                    |
-| init.active.set   | untyped   | NULL     |                                     | \-                    |
-| splicing.type     | integer   | 2        |                                     | \\\[1, 2\]\\          |
-| max.splicing.iter | integer   | 20       |                                     | \\\[1, \infty)\\      |
-| screening.num     | integer   | NULL     |                                     | \\\[0, \infty)\\      |
-| important.search  | integer   | NULL     |                                     | \\\[0, \infty)\\      |
-| warm.start        | logical   | TRUE     | TRUE, FALSE                         | \-                    |
-| nfolds            | integer   | 5        |                                     | \\(-\infty, \infty)\\ |
-| foldid            | untyped   | NULL     |                                     | \-                    |
-| cov.update        | logical   | FALSE    | TRUE, FALSE                         | \-                    |
-| newton            | character | exact    | exact, approx                       | \-                    |
-| newton.thresh     | numeric   | 1e-06    |                                     | \\\[0, \infty)\\      |
-| max.newton.iter   | integer   | NULL     |                                     | \\\[1, \infty)\\      |
-| early.stop        | logical   | FALSE    | TRUE, FALSE                         | \-                    |
-| ic.scale          | numeric   | 1        |                                     | \\\[0, \infty)\\      |
-| num.threads       | integer   | 0        |                                     | \\\[0, \infty)\\      |
-| seed              | integer   | 1        |                                     | \\(-\infty, \infty)\\ |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| family | character | gaussian | gaussian, mgaussian, poisson, gamma | \- |
+| tune.path | character | sequence | sequence, gsection | \- |
+| tune.type | character | gic | gic, aic, bic, ebic, cv | \- |
+| normalize | integer | NULL |  | \\(-\infty, \infty)\\ |
+| support.size | untyped | NULL |  | \- |
+| c.max | integer | 2 |  | \\\[1, \infty)\\ |
+| gs.range | untyped | NULL |  | \- |
+| lambda | numeric | 0 |  | \\\[0, \infty)\\ |
+| always.include | untyped | NULL |  | \- |
+| group.index | untyped | NULL |  | \- |
+| init.active.set | untyped | NULL |  | \- |
+| splicing.type | integer | 2 |  | \\\[1, 2\]\\ |
+| max.splicing.iter | integer | 20 |  | \\\[1, \infty)\\ |
+| screening.num | integer | NULL |  | \\\[0, \infty)\\ |
+| important.search | integer | NULL |  | \\\[0, \infty)\\ |
+| warm.start | logical | TRUE | TRUE, FALSE | \- |
+| nfolds | integer | 5 |  | \\(-\infty, \infty)\\ |
+| foldid | untyped | NULL |  | \- |
+| cov.update | logical | FALSE | TRUE, FALSE | \- |
+| newton | character | exact | exact, approx | \- |
+| newton.thresh | numeric | 1e-06 |  | \\\[0, \infty)\\ |
+| max.newton.iter | integer | NULL |  | \\\[1, \infty)\\ |
+| early.stop | logical | FALSE | TRUE, FALSE | \- |
+| ic.scale | numeric | 1 |  | \\\[0, \infty)\\ |
+| num.threads | integer | 0 |  | \\\[0, \infty)\\ |
+| seed | integer | 1 |  | \\(-\infty, \infty)\\ |
 
 ## Initial parameter values
 
@@ -199,15 +199,15 @@ print(learner$model)
 #>     num.threads = 1L)
 #> 
 #>   support.size       dev      GIC
-#> 1            0 13.888095 55.25167
-#> 2            1  3.257016 27.36061
-#> 3            2  2.466346 24.08463
-#> 4            3  2.316262 25.32976
-#> 5            4  2.036686 25.19208
-#> 6            5  1.978101 27.14273
-#> 7            6  1.928082 29.16846
-#> 8            7  1.898228 31.40432
-#> 9            8  1.860253 33.54351
+#> 1            0 15.071655 56.96913
+#> 2            1  4.003351 31.69334
+#> 3            2  3.081900 28.76361
+#> 4            3  2.500910 26.94046
+#> 5            4  2.235828 27.15112
+#> 6            5  1.970541 27.06232
+#> 7            6  1.867671 28.49995
+#> 8            7  1.798927 30.27598
+#> 9            8  1.606696 30.46633
 
 
 # Make predictions for the test rows
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 22.36979 
+#> 8.962733 
 ```

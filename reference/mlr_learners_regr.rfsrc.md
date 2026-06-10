@@ -27,44 +27,44 @@ instantiated via
 
 ## Parameters
 
-|                |           |         |                                          |                    |
-|----------------|-----------|---------|------------------------------------------|--------------------|
-| Id             | Type      | Default | Levels                                   | Range              |
-| ntree          | integer   | 500     |                                          | \\\[1, \infty)\\   |
-| mtry           | integer   | \-      |                                          | \\\[1, \infty)\\   |
-| mtry.ratio     | numeric   | \-      |                                          | \\\[0, 1\]\\       |
-| nodesize       | integer   | 15      |                                          | \\\[1, \infty)\\   |
-| nodedepth      | integer   | \-      |                                          | \\\[1, \infty)\\   |
-| splitrule      | character | mse     | mse, quantile.regr, la.quantile.regr     | \-                 |
-| nsplit         | integer   | 10      |                                          | \\\[0, \infty)\\   |
-| importance     | character | FALSE   | FALSE, TRUE, none, permute, random, anti | \-                 |
-| block.size     | integer   | 10      |                                          | \\\[1, \infty)\\   |
-| bootstrap      | character | by.root | by.root, by.node, none, by.user          | \-                 |
-| samptype       | character | swor    | swor, swr                                | \-                 |
-| samp           | untyped   | \-      |                                          | \-                 |
-| membership     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| sampsize       | untyped   | \-      |                                          | \-                 |
-| sampsize.ratio | numeric   | \-      |                                          | \\\[0, 1\]\\       |
-| na.action      | character | na.omit | na.omit, na.impute                       | \-                 |
-| nimpute        | integer   | 1       |                                          | \\\[1, \infty)\\   |
-| proximity      | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| distance       | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| forest.wt      | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| xvar.wt        | untyped   | \-      |                                          | \-                 |
-| split.wt       | untyped   | \-      |                                          | \-                 |
-| forest         | logical   | TRUE    | TRUE, FALSE                              | \-                 |
-| var.used       | character | FALSE   | FALSE, all.trees                         | \-                 |
-| split.depth    | character | FALSE   | FALSE, all.trees, by.tree                | \-                 |
-| seed           | integer   | \-      |                                          | \\(-\infty, -1\]\\ |
-| do.trace       | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| get.tree       | untyped   | \-      |                                          | \-                 |
-| outcome        | character | train   | train, test                              | \-                 |
-| ptn.count      | integer   | 0       |                                          | \\\[0, \infty)\\   |
-| cores          | integer   | 1       |                                          | \\\[1, \infty)\\   |
-| save.memory    | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| perf.type      | character | \-      | none                                     | \-                 |
-| case.depth     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| marginal.xvar  | untyped   | NULL    |                                          | \-                 |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| ntree | integer | 500 |  | \\\[1, \infty)\\ |
+| mtry | integer | \- |  | \\\[1, \infty)\\ |
+| mtry.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| nodesize | integer | 15 |  | \\\[1, \infty)\\ |
+| nodedepth | integer | \- |  | \\\[1, \infty)\\ |
+| splitrule | character | mse | mse, quantile.regr, la.quantile.regr | \- |
+| nsplit | integer | 10 |  | \\\[0, \infty)\\ |
+| importance | character | FALSE | FALSE, TRUE, none, permute, random, anti | \- |
+| block.size | integer | 10 |  | \\\[1, \infty)\\ |
+| bootstrap | character | by.root | by.root, by.node, none, by.user | \- |
+| samptype | character | swor | swor, swr | \- |
+| samp | untyped | \- |  | \- |
+| membership | logical | FALSE | TRUE, FALSE | \- |
+| sampsize | untyped | \- |  | \- |
+| sampsize.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| na.action | character | na.omit | na.omit, na.impute | \- |
+| nimpute | integer | 1 |  | \\\[1, \infty)\\ |
+| proximity | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| distance | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| forest.wt | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| xvar.wt | untyped | \- |  | \- |
+| split.wt | untyped | \- |  | \- |
+| forest | logical | TRUE | TRUE, FALSE | \- |
+| var.used | character | FALSE | FALSE, all.trees | \- |
+| split.depth | character | FALSE | FALSE, all.trees, by.tree | \- |
+| seed | integer | \- |  | \\(-\infty, -1\]\\ |
+| do.trace | logical | FALSE | TRUE, FALSE | \- |
+| get.tree | untyped | \- |  | \- |
+| outcome | character | train | train, test | \- |
+| ptn.count | integer | 0 |  | \\\[0, \infty)\\ |
+| cores | integer | 1 |  | \\\[1, \infty)\\ |
+| save.memory | logical | FALSE | TRUE, FALSE | \- |
+| perf.type | character | \- | none | \- |
+| case.depth | logical | FALSE | TRUE, FALSE | \- |
+| marginal.xvar | untyped | NULL |  | \- |
 
 ## Custom mlr3 parameters
 
@@ -256,7 +256,7 @@ print(learner$model)
 #>                          Sample size: 21
 #>                      Number of trees: 500
 #>            Forest terminal node size: 5
-#>        Average no. of terminal nodes: 2.676
+#>        Average no. of terminal nodes: 2.362
 #> No. of variables tried at each split: 4
 #>               Total no. of variables: 10
 #>        Resampling used to grow trees: swor
@@ -265,14 +265,14 @@ print(learner$model)
 #>                               Family: regr
 #>                       Splitting rule: mse *random*
 #>        Number of random split points: 10
-#>                      (OOB) R squared: 0.74037259
-#>    (OOB) Requested performance error: 9.4399536
+#>                      (OOB) R squared: 0.67835883
+#>    (OOB) Requested performance error: 13.16102066
 #> 
 print(learner$importance())
-#>       disp         wt        cyl         hp       drat         vs         am 
-#> 29.9926972 25.7451253 17.8817733  8.2339720  1.5051156  0.6841342  0.5017666 
-#>       gear       qsec       carb 
-#>  0.2972476  0.2554853  0.1794722 
+#>         wt       disp        cyl         hp       drat         am       carb 
+#> 30.1831280 16.6775435 12.2064960  9.6265388  3.5511446  0.9144142  0.5681642 
+#>       gear         vs       qsec 
+#>  0.3745055  0.2864283  0.1146930 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -280,5 +280,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  8.27597 
+#> 8.297616 
 ```

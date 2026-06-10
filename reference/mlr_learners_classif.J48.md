@@ -26,29 +26,29 @@ instantiated via
 
 ## Parameters
 
-|                                |         |         |             |                                 |
-|--------------------------------|---------|---------|-------------|---------------------------------|
-| Id                             | Type    | Default | Levels      | Range                           |
-| subset                         | untyped | \-      |             | \-                              |
-| na.action                      | untyped | \-      |             | \-                              |
-| U                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| O                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| C                              | numeric | 0.25    |             | \\\[2.22044604925031e-16, 1\]\\ |
-| M                              | integer | 2       |             | \\\[1, \infty)\\                |
-| R                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| N                              | integer | 3       |             | \\\[2, \infty)\\                |
-| B                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| S                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| L                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| A                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| J                              | logical | FALSE   | TRUE, FALSE | \-                              |
-| Q                              | integer | 1       |             | \\\[1, \infty)\\                |
-| doNotMakeSplitPointActualValue | logical | FALSE   | TRUE, FALSE | \-                              |
-| output_debug_info              | logical | FALSE   | TRUE, FALSE | \-                              |
-| do_not_check_capabilities      | logical | FALSE   | TRUE, FALSE | \-                              |
-| num_decimal_places             | integer | 2       |             | \\\[1, \infty)\\                |
-| batch_size                     | integer | 100     |             | \\\[1, \infty)\\                |
-| options                        | untyped | NULL    |             | \-                              |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| U | logical | FALSE | TRUE, FALSE | \- |
+| O | logical | FALSE | TRUE, FALSE | \- |
+| C | numeric | 0.25 |  | \\\[2.22044604925031e-16, 1\]\\ |
+| M | integer | 2 |  | \\\[1, \infty)\\ |
+| R | logical | FALSE | TRUE, FALSE | \- |
+| N | integer | 3 |  | \\\[2, \infty)\\ |
+| B | logical | FALSE | TRUE, FALSE | \- |
+| S | logical | FALSE | TRUE, FALSE | \- |
+| L | logical | FALSE | TRUE, FALSE | \- |
+| A | logical | FALSE | TRUE, FALSE | \- |
+| J | logical | FALSE | TRUE, FALSE | \- |
+| Q | integer | 1 |  | \\\[1, \infty)\\ |
+| doNotMakeSplitPointActualValue | logical | FALSE | TRUE, FALSE | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## Custom mlr3 parameters
 

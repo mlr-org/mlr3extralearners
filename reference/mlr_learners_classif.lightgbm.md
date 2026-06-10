@@ -30,117 +30,117 @@ instantiated via
 
 ## Parameters
 
-|                              |           |         |                                   |                       |
-|------------------------------|-----------|---------|-----------------------------------|-----------------------|
-| Id                           | Type      | Default | Levels                            | Range                 |
-| objective                    | character | \-      | binary, multiclass, multiclassova | \-                    |
-| eval                         | untyped   | \-      |                                   | \-                    |
-| verbose                      | integer   | 1       |                                   | \\(-\infty, \infty)\\ |
-| record                       | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| eval_freq                    | integer   | 1       |                                   | \\\[1, \infty)\\      |
-| callbacks                    | untyped   | \-      |                                   | \-                    |
-| reset_data                   | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| boosting                     | character | gbdt    | gbdt, rf, dart, goss              | \-                    |
-| linear_tree                  | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| learning_rate                | numeric   | 0.1     |                                   | \\\[0, \infty)\\      |
-| num_leaves                   | integer   | 31      |                                   | \\\[1, 131072\]\\     |
-| tree_learner                 | character | serial  | serial, feature, data, voting     | \-                    |
-| num_threads                  | integer   | 0       |                                   | \\\[0, \infty)\\      |
-| device_type                  | character | cpu     | cpu, gpu                          | \-                    |
-| seed                         | integer   | \-      |                                   | \\(-\infty, \infty)\\ |
-| deterministic                | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| data_sample_strategy         | character | bagging | bagging, goss                     | \-                    |
-| force_col_wise               | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| force_row_wise               | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| histogram_pool_size          | numeric   | -1      |                                   | \\(-\infty, \infty)\\ |
-| max_depth                    | integer   | -1      |                                   | \\(-\infty, \infty)\\ |
-| min_data_in_leaf             | integer   | 20      |                                   | \\\[0, \infty)\\      |
-| min_sum_hessian_in_leaf      | numeric   | 0.001   |                                   | \\\[0, \infty)\\      |
-| bagging_fraction             | numeric   | 1       |                                   | \\\[0, 1\]\\          |
-| pos_bagging_fraction         | numeric   | 1       |                                   | \\\[0, 1\]\\          |
-| neg_bagging_fraction         | numeric   | 1       |                                   | \\\[0, 1\]\\          |
-| bagging_freq                 | integer   | 0       |                                   | \\\[0, \infty)\\      |
-| bagging_seed                 | integer   | 3       |                                   | \\(-\infty, \infty)\\ |
-| bagging_by_query             | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| feature_fraction             | numeric   | 1       |                                   | \\\[0, 1\]\\          |
-| feature_fraction_bynode      | numeric   | 1       |                                   | \\\[0, 1\]\\          |
-| feature_fraction_seed        | integer   | 2       |                                   | \\(-\infty, \infty)\\ |
-| extra_trees                  | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| extra_seed                   | integer   | 6       |                                   | \\(-\infty, \infty)\\ |
-| max_delta_step               | numeric   | 0       |                                   | \\(-\infty, \infty)\\ |
-| lambda_l1                    | numeric   | 0       |                                   | \\\[0, \infty)\\      |
-| lambda_l2                    | numeric   | 0       |                                   | \\\[0, \infty)\\      |
-| linear_lambda                | numeric   | 0       |                                   | \\\[0, \infty)\\      |
-| min_gain_to_split            | numeric   | 0       |                                   | \\\[0, \infty)\\      |
-| drop_rate                    | numeric   | 0.1     |                                   | \\\[0, 1\]\\          |
-| max_drop                     | integer   | 50      |                                   | \\(-\infty, \infty)\\ |
-| skip_drop                    | numeric   | 0.5     |                                   | \\\[0, 1\]\\          |
-| xgboost_dart_mode            | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| uniform_drop                 | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| drop_seed                    | integer   | 4       |                                   | \\(-\infty, \infty)\\ |
-| top_rate                     | numeric   | 0.2     |                                   | \\\[0, 1\]\\          |
-| other_rate                   | numeric   | 0.1     |                                   | \\\[0, 1\]\\          |
-| min_data_per_group           | integer   | 100     |                                   | \\\[1, \infty)\\      |
-| max_cat_threshold            | integer   | 32      |                                   | \\\[1, \infty)\\      |
-| cat_l2                       | numeric   | 10      |                                   | \\\[0, \infty)\\      |
-| cat_smooth                   | numeric   | 10      |                                   | \\\[0, \infty)\\      |
-| max_cat_to_onehot            | integer   | 4       |                                   | \\\[1, \infty)\\      |
-| top_k                        | integer   | 20      |                                   | \\\[1, \infty)\\      |
-| monotone_constraints         | untyped   | NULL    |                                   | \-                    |
-| monotone_constraints_method  | character | basic   | basic, intermediate, advanced     | \-                    |
-| monotone_penalty             | numeric   | 0       |                                   | \\\[0, \infty)\\      |
-| feature_contri               | untyped   | NULL    |                                   | \-                    |
-| forcedsplits_filename        | untyped   | ""      |                                   | \-                    |
-| refit_decay_rate             | numeric   | 0.9     |                                   | \\\[0, 1\]\\          |
-| cegb_tradeoff                | numeric   | 1       |                                   | \\\[0, \infty)\\      |
-| cegb_penalty_split           | numeric   | 0       |                                   | \\\[0, \infty)\\      |
-| cegb_penalty_feature_lazy    | untyped   | \-      |                                   | \-                    |
-| cegb_penalty_feature_coupled | untyped   | \-      |                                   | \-                    |
-| path_smooth                  | numeric   | 0       |                                   | \\\[0, \infty)\\      |
-| interaction_constraints      | untyped   | \-      |                                   | \-                    |
-| use_quantized_grad           | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| num_grad_quant_bins          | integer   | 4       |                                   | \\(-\infty, \infty)\\ |
-| quant_train_renew_leaf       | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| stochastic_rounding          | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| serializable                 | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| max_bin                      | integer   | 255     |                                   | \\\[2, \infty)\\      |
-| max_bin_by_feature           | untyped   | NULL    |                                   | \-                    |
-| min_data_in_bin              | integer   | 3       |                                   | \\\[1, \infty)\\      |
-| bin_construct_sample_cnt     | integer   | 200000  |                                   | \\\[1, \infty)\\      |
-| data_random_seed             | integer   | 1       |                                   | \\(-\infty, \infty)\\ |
-| is_enable_sparse             | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| enable_bundle                | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| use_missing                  | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| zero_as_missing              | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| feature_pre_filter           | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| pre_partition                | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| two_round                    | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| forcedbins_filename          | untyped   | ""      |                                   | \-                    |
-| is_unbalance                 | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| scale_pos_weight             | numeric   | 1       |                                   | \\\[0, \infty)\\      |
-| sigmoid                      | numeric   | 1       |                                   | \\\[0, \infty)\\      |
-| boost_from_average           | logical   | TRUE    | TRUE, FALSE                       | \-                    |
-| eval_at                      | untyped   | 1:5     |                                   | \-                    |
-| multi_error_top_k            | integer   | 1       |                                   | \\\[1, \infty)\\      |
-| auc_mu_weights               | untyped   | NULL    |                                   | \-                    |
-| num_machines                 | integer   | 1       |                                   | \\\[1, \infty)\\      |
-| local_listen_port            | integer   | 12400   |                                   | \\\[1, \infty)\\      |
-| time_out                     | integer   | 120     |                                   | \\\[1, \infty)\\      |
-| machines                     | untyped   | ""      |                                   | \-                    |
-| gpu_platform_id              | integer   | -1      |                                   | \\(-\infty, \infty)\\ |
-| gpu_device_id                | integer   | -1      |                                   | \\(-\infty, \infty)\\ |
-| gpu_device_id_list           | untyped   | NULL    |                                   | \-                    |
-| gpu_use_dp                   | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| num_gpu                      | integer   | 1       |                                   | \\\[1, \infty)\\      |
-| start_iteration_predict      | integer   | 0       |                                   | \\(-\infty, \infty)\\ |
-| num_iteration_predict        | integer   | -1      |                                   | \\(-\infty, \infty)\\ |
-| pred_early_stop              | logical   | FALSE   | TRUE, FALSE                       | \-                    |
-| pred_early_stop_freq         | integer   | 10      |                                   | \\(-\infty, \infty)\\ |
-| pred_early_stop_margin       | numeric   | 10      |                                   | \\(-\infty, \infty)\\ |
-| num_iterations               | integer   | 100     |                                   | \\\[1, \infty)\\      |
-| early_stopping_rounds        | integer   | \-      |                                   | \\\[1, \infty)\\      |
-| early_stopping_min_delta     | numeric   | \-      |                                   | \\\[0, \infty)\\      |
-| first_metric_only            | logical   | FALSE   | TRUE, FALSE                       | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| objective | character | \- | binary, multiclass, multiclassova | \- |
+| eval | untyped | \- |  | \- |
+| verbose | integer | 1 |  | \\(-\infty, \infty)\\ |
+| record | logical | TRUE | TRUE, FALSE | \- |
+| eval_freq | integer | 1 |  | \\\[1, \infty)\\ |
+| callbacks | untyped | \- |  | \- |
+| reset_data | logical | FALSE | TRUE, FALSE | \- |
+| boosting | character | gbdt | gbdt, rf, dart, goss | \- |
+| linear_tree | logical | FALSE | TRUE, FALSE | \- |
+| learning_rate | numeric | 0.1 |  | \\\[0, \infty)\\ |
+| num_leaves | integer | 31 |  | \\\[1, 131072\]\\ |
+| tree_learner | character | serial | serial, feature, data, voting | \- |
+| num_threads | integer | 0 |  | \\\[0, \infty)\\ |
+| device_type | character | cpu | cpu, gpu | \- |
+| seed | integer | \- |  | \\(-\infty, \infty)\\ |
+| deterministic | logical | FALSE | TRUE, FALSE | \- |
+| data_sample_strategy | character | bagging | bagging, goss | \- |
+| force_col_wise | logical | FALSE | TRUE, FALSE | \- |
+| force_row_wise | logical | FALSE | TRUE, FALSE | \- |
+| histogram_pool_size | numeric | -1 |  | \\(-\infty, \infty)\\ |
+| max_depth | integer | -1 |  | \\(-\infty, \infty)\\ |
+| min_data_in_leaf | integer | 20 |  | \\\[0, \infty)\\ |
+| min_sum_hessian_in_leaf | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| bagging_fraction | numeric | 1 |  | \\\[0, 1\]\\ |
+| pos_bagging_fraction | numeric | 1 |  | \\\[0, 1\]\\ |
+| neg_bagging_fraction | numeric | 1 |  | \\\[0, 1\]\\ |
+| bagging_freq | integer | 0 |  | \\\[0, \infty)\\ |
+| bagging_seed | integer | 3 |  | \\(-\infty, \infty)\\ |
+| bagging_by_query | logical | FALSE | TRUE, FALSE | \- |
+| feature_fraction | numeric | 1 |  | \\\[0, 1\]\\ |
+| feature_fraction_bynode | numeric | 1 |  | \\\[0, 1\]\\ |
+| feature_fraction_seed | integer | 2 |  | \\(-\infty, \infty)\\ |
+| extra_trees | logical | FALSE | TRUE, FALSE | \- |
+| extra_seed | integer | 6 |  | \\(-\infty, \infty)\\ |
+| max_delta_step | numeric | 0 |  | \\(-\infty, \infty)\\ |
+| lambda_l1 | numeric | 0 |  | \\\[0, \infty)\\ |
+| lambda_l2 | numeric | 0 |  | \\\[0, \infty)\\ |
+| linear_lambda | numeric | 0 |  | \\\[0, \infty)\\ |
+| min_gain_to_split | numeric | 0 |  | \\\[0, \infty)\\ |
+| drop_rate | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| max_drop | integer | 50 |  | \\(-\infty, \infty)\\ |
+| skip_drop | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| xgboost_dart_mode | logical | FALSE | TRUE, FALSE | \- |
+| uniform_drop | logical | FALSE | TRUE, FALSE | \- |
+| drop_seed | integer | 4 |  | \\(-\infty, \infty)\\ |
+| top_rate | numeric | 0.2 |  | \\\[0, 1\]\\ |
+| other_rate | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| min_data_per_group | integer | 100 |  | \\\[1, \infty)\\ |
+| max_cat_threshold | integer | 32 |  | \\\[1, \infty)\\ |
+| cat_l2 | numeric | 10 |  | \\\[0, \infty)\\ |
+| cat_smooth | numeric | 10 |  | \\\[0, \infty)\\ |
+| max_cat_to_onehot | integer | 4 |  | \\\[1, \infty)\\ |
+| top_k | integer | 20 |  | \\\[1, \infty)\\ |
+| monotone_constraints | untyped | NULL |  | \- |
+| monotone_constraints_method | character | basic | basic, intermediate, advanced | \- |
+| monotone_penalty | numeric | 0 |  | \\\[0, \infty)\\ |
+| feature_contri | untyped | NULL |  | \- |
+| forcedsplits_filename | untyped | "" |  | \- |
+| refit_decay_rate | numeric | 0.9 |  | \\\[0, 1\]\\ |
+| cegb_tradeoff | numeric | 1 |  | \\\[0, \infty)\\ |
+| cegb_penalty_split | numeric | 0 |  | \\\[0, \infty)\\ |
+| cegb_penalty_feature_lazy | untyped | \- |  | \- |
+| cegb_penalty_feature_coupled | untyped | \- |  | \- |
+| path_smooth | numeric | 0 |  | \\\[0, \infty)\\ |
+| interaction_constraints | untyped | \- |  | \- |
+| use_quantized_grad | logical | TRUE | TRUE, FALSE | \- |
+| num_grad_quant_bins | integer | 4 |  | \\(-\infty, \infty)\\ |
+| quant_train_renew_leaf | logical | FALSE | TRUE, FALSE | \- |
+| stochastic_rounding | logical | TRUE | TRUE, FALSE | \- |
+| serializable | logical | TRUE | TRUE, FALSE | \- |
+| max_bin | integer | 255 |  | \\\[2, \infty)\\ |
+| max_bin_by_feature | untyped | NULL |  | \- |
+| min_data_in_bin | integer | 3 |  | \\\[1, \infty)\\ |
+| bin_construct_sample_cnt | integer | 200000 |  | \\\[1, \infty)\\ |
+| data_random_seed | integer | 1 |  | \\(-\infty, \infty)\\ |
+| is_enable_sparse | logical | TRUE | TRUE, FALSE | \- |
+| enable_bundle | logical | TRUE | TRUE, FALSE | \- |
+| use_missing | logical | TRUE | TRUE, FALSE | \- |
+| zero_as_missing | logical | FALSE | TRUE, FALSE | \- |
+| feature_pre_filter | logical | TRUE | TRUE, FALSE | \- |
+| pre_partition | logical | FALSE | TRUE, FALSE | \- |
+| two_round | logical | FALSE | TRUE, FALSE | \- |
+| forcedbins_filename | untyped | "" |  | \- |
+| is_unbalance | logical | FALSE | TRUE, FALSE | \- |
+| scale_pos_weight | numeric | 1 |  | \\\[0, \infty)\\ |
+| sigmoid | numeric | 1 |  | \\\[0, \infty)\\ |
+| boost_from_average | logical | TRUE | TRUE, FALSE | \- |
+| eval_at | untyped | 1:5 |  | \- |
+| multi_error_top_k | integer | 1 |  | \\\[1, \infty)\\ |
+| auc_mu_weights | untyped | NULL |  | \- |
+| num_machines | integer | 1 |  | \\\[1, \infty)\\ |
+| local_listen_port | integer | 12400 |  | \\\[1, \infty)\\ |
+| time_out | integer | 120 |  | \\\[1, \infty)\\ |
+| machines | untyped | "" |  | \- |
+| gpu_platform_id | integer | -1 |  | \\(-\infty, \infty)\\ |
+| gpu_device_id | integer | -1 |  | \\(-\infty, \infty)\\ |
+| gpu_device_id_list | untyped | NULL |  | \- |
+| gpu_use_dp | logical | FALSE | TRUE, FALSE | \- |
+| num_gpu | integer | 1 |  | \\\[1, \infty)\\ |
+| start_iteration_predict | integer | 0 |  | \\(-\infty, \infty)\\ |
+| num_iteration_predict | integer | -1 |  | \\(-\infty, \infty)\\ |
+| pred_early_stop | logical | FALSE | TRUE, FALSE | \- |
+| pred_early_stop_freq | integer | 10 |  | \\(-\infty, \infty)\\ |
+| pred_early_stop_margin | numeric | 10 |  | \\(-\infty, \infty)\\ |
+| num_iterations | integer | 100 |  | \\\[1, \infty)\\ |
+| early_stopping_rounds | integer | \- |  | \\\[1, \infty)\\ |
+| early_stopping_min_delta | numeric | \- |  | \\\[0, \infty)\\ |
+| first_metric_only | logical | FALSE | TRUE, FALSE | \- |
 
 ## Initial parameter values
 
@@ -347,24 +347,24 @@ print(learner$model)
 #> Objective: binary
 #> Fitted to dataset with 60 columns
 print(learner$importance())
-#>          V12          V27          V11          V52          V45          V51 
-#> 0.1589783321 0.0725375859 0.0717100104 0.0702037790 0.0701701994 0.0676615976 
-#>          V31          V17          V36          V20          V33          V10 
-#> 0.0467777435 0.0448901302 0.0359243812 0.0330940297 0.0283056008 0.0261042406 
-#>          V21          V23          V37          V48          V59          V18 
-#> 0.0244355221 0.0227903432 0.0211611770 0.0183989550 0.0148102461 0.0135589378 
-#>          V58          V57          V34          V54          V16          V46 
-#> 0.0134753792 0.0126831165 0.0119115704 0.0096199928 0.0080128501 0.0077601911 
-#>          V14          V55          V13          V49          V28           V4 
-#> 0.0077331838 0.0076923556 0.0067287366 0.0058016812 0.0057014921 0.0056714780 
-#>          V47          V43           V5           V9          V42          V60 
-#> 0.0054527755 0.0051670659 0.0049706612 0.0042951000 0.0042633206 0.0042155737 
-#>          V26           V1          V39          V25          V30          V24 
-#> 0.0037019354 0.0035919170 0.0028113985 0.0026857332 0.0026345083 0.0023891302 
-#>          V50          V35           V6          V19          V29           V8 
-#> 0.0014653603 0.0014112612 0.0012622113 0.0012145202 0.0011858228 0.0010201126 
-#>          V40           V3          V15          V44 
-#> 0.0008019944 0.0007290942 0.0002470327 0.0001786320 
+#>          V48          V11          V37          V20          V13          V27 
+#> 8.034901e-02 6.470595e-02 6.199470e-02 5.114969e-02 4.918857e-02 4.868813e-02 
+#>          V31          V12          V51          V54          V16          V23 
+#> 4.351515e-02 3.711596e-02 3.655564e-02 3.526853e-02 3.203993e-02 3.166999e-02 
+#>          V45          V43          V52          V47           V9          V17 
+#> 2.994826e-02 2.767255e-02 2.731443e-02 2.664679e-02 2.652249e-02 2.549418e-02 
+#>          V36          V42          V49          V15          V41          V33 
+#> 2.478575e-02 2.467182e-02 2.282313e-02 2.031334e-02 1.817486e-02 1.548987e-02 
+#>          V28          V21          V44          V10          V19           V1 
+#> 1.318399e-02 1.232170e-02 1.209936e-02 9.927684e-03 9.387469e-03 9.274115e-03 
+#>          V57          V29          V46          V60          V58          V39 
+#> 8.733453e-03 8.451577e-03 8.340632e-03 8.151053e-03 6.998926e-03 6.255431e-03 
+#>          V55          V30          V18          V40          V56          V38 
+#> 4.483782e-03 3.296722e-03 3.271284e-03 2.597038e-03 2.450880e-03 2.071465e-03 
+#>          V59          V24           V8          V22          V35          V32 
+#> 1.577261e-03 1.053472e-03 9.917273e-04 7.134114e-04 6.934089e-04 5.137002e-04 
+#>          V50           V7           V6          V34           V2 
+#> 3.324861e-04 2.796410e-04 2.168472e-04 1.591513e-04 7.361506e-05 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -372,5 +372,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1304348 
+#>  0.2028986 
 ```

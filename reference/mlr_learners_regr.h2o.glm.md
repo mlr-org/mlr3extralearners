@@ -35,53 +35,53 @@ instantiated via
 
 ## Parameters
 
-|                                     |           |                |                                                                                                                |                       |
-|-------------------------------------|-----------|----------------|----------------------------------------------------------------------------------------------------------------|-----------------------|
-| Id                                  | Type      | Default        | Levels                                                                                                         | Range                 |
-| alpha                               | numeric   | 0.5            |                                                                                                                | \\\[0, 1\]\\          |
-| beta_constraints                    | untyped   | NULL           |                                                                                                                | \-                    |
-| beta_epsilon                        | numeric   | 1e-04          |                                                                                                                | \\\[0, \infty)\\      |
-| build_null_model                    | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| calc_like                           | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| checkpoint                          | untyped   | NULL           |                                                                                                                | \-                    |
-| cold_start                          | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| compute_p_values                    | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| early_stopping                      | logical   | TRUE           | TRUE, FALSE                                                                                                    | \-                    |
-| export_checkpoints_dir              | untyped   | NULL           |                                                                                                                | \-                    |
-| generate_scoring_history            | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| generate_variable_inflation_factors | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| gradient_epsilon                    | numeric   | -1             |                                                                                                                | \\\[0, \infty)\\      |
-| HGLM                                | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| ignore_const_cols                   | logical   | TRUE           | TRUE, FALSE                                                                                                    | \-                    |
-| interactions                        | untyped   | NULL           |                                                                                                                | \-                    |
-| interaction_pairs                   | untyped   | NULL           |                                                                                                                | \-                    |
-| intercept                           | logical   | TRUE           | TRUE, FALSE                                                                                                    | \-                    |
-| lambda                              | numeric   | 1e-05          |                                                                                                                | \\\[0, \infty)\\      |
-| lambda_min_ratio                    | numeric   | -1             |                                                                                                                | \\\[0, 1\]\\          |
-| lambda_search                       | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| link                                | character | family_default | family_default, identity, log, inverse                                                                         | \-                    |
-| max_active_predictors               | integer   | -1             |                                                                                                                | \\\[1, \infty)\\      |
-| max_iterations                      | integer   | -1             |                                                                                                                | \\\[0, \infty)\\      |
-| max_runtime_secs                    | numeric   | 0              |                                                                                                                | \\\[0, \infty)\\      |
-| missing_values_handling             | character | MeanImputation | MeanImputation, Skip, PlugValues                                                                               | \-                    |
-| nlambdas                            | integer   | -1             |                                                                                                                | \\\[1, \infty)\\      |
-| non_negative                        | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| objective_epsilon                   | numeric   | -1             |                                                                                                                | \\\[0, \infty)\\      |
-| obj_reg                             | numeric   | -1             |                                                                                                                | \\\[0, \infty)\\      |
-| plug_values                         | untyped   | NULL           |                                                                                                                | \-                    |
-| random_columns                      | untyped   | NULL           |                                                                                                                | \-                    |
-| rand_family                         | untyped   | NULL           |                                                                                                                | \-                    |
-| rand_link                           | untyped   | NULL           |                                                                                                                | \-                    |
-| remove_collinear_columns            | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| score_each_iteration                | logical   | FALSE          | TRUE, FALSE                                                                                                    | \-                    |
-| score_iteration_interval            | integer   | -1             |                                                                                                                | \\(-\infty, \infty)\\ |
-| seed                                | integer   | -1             |                                                                                                                | \\(-\infty, \infty)\\ |
-| solver                              | character | AUTO           | AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT_NAIVE, COORDINATE_DESCENT, GRADIENT_DESCENT_LH, GRADIENT_DESCENT_SQERR | \-                    |
-| standardize                         | logical   | TRUE           | TRUE, FALSE                                                                                                    | \-                    |
-| startval                            | untyped   | NULL           |                                                                                                                | \-                    |
-| stopping_metric                     | character | AUTO           | AUTO, deviance, MSE, RMSE, MAE, RMSLE                                                                          | \-                    |
-| stopping_rounds                     | integer   | 0              |                                                                                                                | \\\[0, \infty)\\      |
-| stopping_tolerance                  | numeric   | 0.001          |                                                                                                                | \\\[0, \infty)\\      |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| alpha | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| beta_constraints | untyped | NULL |  | \- |
+| beta_epsilon | numeric | 1e-04 |  | \\\[0, \infty)\\ |
+| build_null_model | logical | FALSE | TRUE, FALSE | \- |
+| calc_like | logical | FALSE | TRUE, FALSE | \- |
+| checkpoint | untyped | NULL |  | \- |
+| cold_start | logical | FALSE | TRUE, FALSE | \- |
+| compute_p_values | logical | FALSE | TRUE, FALSE | \- |
+| early_stopping | logical | TRUE | TRUE, FALSE | \- |
+| export_checkpoints_dir | untyped | NULL |  | \- |
+| generate_scoring_history | logical | FALSE | TRUE, FALSE | \- |
+| generate_variable_inflation_factors | logical | FALSE | TRUE, FALSE | \- |
+| gradient_epsilon | numeric | -1 |  | \\\[0, \infty)\\ |
+| HGLM | logical | FALSE | TRUE, FALSE | \- |
+| ignore_const_cols | logical | TRUE | TRUE, FALSE | \- |
+| interactions | untyped | NULL |  | \- |
+| interaction_pairs | untyped | NULL |  | \- |
+| intercept | logical | TRUE | TRUE, FALSE | \- |
+| lambda | numeric | 1e-05 |  | \\\[0, \infty)\\ |
+| lambda_min_ratio | numeric | -1 |  | \\\[0, 1\]\\ |
+| lambda_search | logical | FALSE | TRUE, FALSE | \- |
+| link | character | family_default | family_default, identity, log, inverse | \- |
+| max_active_predictors | integer | -1 |  | \\\[1, \infty)\\ |
+| max_iterations | integer | -1 |  | \\\[0, \infty)\\ |
+| max_runtime_secs | numeric | 0 |  | \\\[0, \infty)\\ |
+| missing_values_handling | character | MeanImputation | MeanImputation, Skip, PlugValues | \- |
+| nlambdas | integer | -1 |  | \\\[1, \infty)\\ |
+| non_negative | logical | FALSE | TRUE, FALSE | \- |
+| objective_epsilon | numeric | -1 |  | \\\[0, \infty)\\ |
+| obj_reg | numeric | -1 |  | \\\[0, \infty)\\ |
+| plug_values | untyped | NULL |  | \- |
+| random_columns | untyped | NULL |  | \- |
+| rand_family | untyped | NULL |  | \- |
+| rand_link | untyped | NULL |  | \- |
+| remove_collinear_columns | logical | FALSE | TRUE, FALSE | \- |
+| score_each_iteration | logical | FALSE | TRUE, FALSE | \- |
+| score_iteration_interval | integer | -1 |  | \\(-\infty, \infty)\\ |
+| seed | integer | -1 |  | \\(-\infty, \infty)\\ |
+| solver | character | AUTO | AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT_NAIVE, COORDINATE_DESCENT, GRADIENT_DESCENT_LH, GRADIENT_DESCENT_SQERR | \- |
+| standardize | logical | TRUE | TRUE, FALSE | \- |
+| startval | untyped | NULL |  | \- |
+| stopping_metric | character | AUTO | AUTO, deviance, MSE, RMSE, MAE, RMSLE | \- |
+| stopping_rounds | integer | 0 |  | \\\[0, \infty)\\ |
+| stopping_tolerance | numeric | 0.001 |  | \\\[0, \infty)\\ |
 
 ## Model family
 
@@ -214,43 +214,43 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: glm
-#> Model ID:  GLM_model_R_1777020145368_111 
+#> Model ID:  GLM_model_R_1781095337255_111 
 #> GLM Model: summary
 #>     family     link                              regularization
-#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.0294 )
+#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 0.9646 )
 #>   number_of_predictors_total number_of_active_predictors number_of_iterations
-#> 1                         10                           9                    1
+#> 1                         10                          10                    1
 #>     training_frame
-#> 1 data_sid_9e14_31
+#> 1 data_sid_8b70_31
 #> 
 #> Coefficients: glm coefficients
 #>        names coefficients standardized_coefficients
-#> 1  Intercept    23.522125                 20.080952
-#> 2         am     0.980002                  0.501532
-#> 3       carb    -0.389301                 -0.701566
-#> 4        cyl    -0.374861                 -0.639936
-#> 5       disp    -0.005075                 -0.631004
-#> 6       drat     1.018692                  0.500824
-#> 7       gear     0.000000                  0.000000
-#> 8         hp    -0.008939                 -0.570400
-#> 9       qsec     0.172100                  0.226429
-#> 10        vs     0.279501                  0.139083
-#> 11        wt    -1.469267                 -1.410383
+#> 1  Intercept    19.293290                 20.909524
+#> 2         am     1.428991                  0.724631
+#> 3       carb    -0.480714                 -0.595258
+#> 4        cyl    -0.311925                 -0.574355
+#> 5       disp    -0.003518                 -0.430882
+#> 6       drat     1.245932                  0.718014
+#> 7       gear     0.029442                  0.019906
+#> 8         hp    -0.014970                 -0.983488
+#> 9       qsec     0.283614                  0.443451
+#> 10        vs     0.089285                  0.045693
+#> 11        wt    -0.941950                 -0.840196
 #> 
 #> H2ORegressionMetrics: glm
 #> ** Reported on training data. **
 #> 
-#> MSE:  6.845585
-#> RMSE:  2.616407
-#> MAE:  1.917113
-#> RMSLE:  0.1158851
-#> Mean Residual Deviance :  6.845585
-#> R^2 :  0.8039938
-#> Null Deviance :733.4325
+#> MSE:  7.06878
+#> RMSE:  2.658718
+#> MAE:  2.103745
+#> RMSLE:  0.1085318
+#> Mean Residual Deviance :  7.06878
+#> R^2 :  0.7952825
+#> Null Deviance :725.1181
 #> Null D.o.F. :20
-#> Residual Deviance :143.7573
-#> Residual D.o.F. :11
-#> AIC :121.9911
+#> Residual Deviance :148.4444
+#> Residual D.o.F. :10
+#> AIC :124.6649
 #> 
 #> 
 #> 
@@ -263,5 +263,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.909029 
+#> 6.524734 
 ```

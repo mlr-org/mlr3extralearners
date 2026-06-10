@@ -72,25 +72,25 @@ instantiated via
 
 ## Parameters
 
-|                           |           |           |                           |                       |
-|---------------------------|-----------|-----------|---------------------------|-----------------------|
-| Id                        | Type      | Default   | Levels                    | Range                 |
-| subset                    | untyped   | \-        |                           | \-                    |
-| na.action                 | untyped   | \-        |                           | \-                    |
-| S                         | character | BestFirst | BestFirst, GreedyStepwise | \-                    |
-| X                         | integer   | 1         |                           | \\(-\infty, \infty)\\ |
-| E                         | character | acc       | acc, auc                  | \-                    |
-| I                         | logical   | \-        | TRUE, FALSE               | \-                    |
-| R                         | logical   | \-        | TRUE, FALSE               | \-                    |
-| output_debug_info         | logical   | FALSE     | TRUE, FALSE               | \-                    |
-| do_not_check_capabilities | logical   | FALSE     | TRUE, FALSE               | \-                    |
-| num_decimal_places        | integer   | 2         |                           | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100       |                           | \\\[1, \infty)\\      |
-| P_best                    | untyped   | \-        |                           | \-                    |
-| D_best                    | character | 1         | 0, 1, 2                   | \-                    |
-| N_best                    | integer   | \-        |                           | \\(-\infty, \infty)\\ |
-| S_best                    | integer   | 1         |                           | \\(-\infty, \infty)\\ |
-| options                   | untyped   | NULL      |                           | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| S | character | BestFirst | BestFirst, GreedyStepwise | \- |
+| X | integer | 1 |  | \\(-\infty, \infty)\\ |
+| E | character | acc | acc, auc | \- |
+| I | logical | \- | TRUE, FALSE | \- |
+| R | logical | \- | TRUE, FALSE | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| P_best | untyped | \- |  | \- |
+| D_best | character | 1 | 0, 1, 2 | \- |
+| N_best | integer | \- |  | \\(-\infty, \infty)\\ |
+| S_best | integer | 1 |  | \\(-\infty, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## References
 
@@ -261,16 +261,16 @@ print(learner$model)
 #> Decision Table:
 #> 
 #> Number of training instances: 139
-#> Number of Rules : 11
+#> Number of Rules : 14
 #> Non matches covered by Majority class.
 #>  Best first.
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 510
-#>  Merit of best subset found:   82.734
+#>  Total number of subsets evaluated: 511
+#>  Merit of best subset found:   84.173
 #> Evaluation (for feature selection): CV (leave one out) 
-#> Feature set: 5,48,49,51,1
+#> Feature set: 4,35,49,61,1
 
 
 # Make predictions for the test rows

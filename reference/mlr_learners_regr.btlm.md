@@ -38,24 +38,24 @@ instantiated via
 
 ## Parameters
 
-|        |           |                     |                                      |                  |
-|--------|-----------|---------------------|--------------------------------------|------------------|
-| Id     | Type      | Default             | Levels                               | Range            |
-| meanfn | character | linear              | constant, linear                     | \-               |
-| bprior | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-               |
-| tree   | untyped   | c(0.5, 2)           |                                      | \-               |
-| BTE    | untyped   | c(2000L, 7000L, 2L) |                                      | \-               |
-| R      | integer   | 1                   |                                      | \\\[1, \infty)\\ |
-| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-               |
-| itemps | untyped   | NULL                |                                      | \-               |
-| pred.n | logical   | \-                  | TRUE, FALSE                          | \-               |
-| krige  | logical   | TRUE                | TRUE, FALSE                          | \-               |
-| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-               |
-| Ds2x   | logical   | FALSE               | TRUE, FALSE                          | \-               |
-| improv | logical   | FALSE               | TRUE, FALSE                          | \-               |
-| trace  | logical   | FALSE               | TRUE, FALSE                          | \-               |
-| verb   | integer   | \-                  |                                      | \\\[0, 4\]\\     |
-| MAP    | logical   | TRUE                | TRUE, FALSE                          | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| meanfn | character | linear | constant, linear | \- |
+| bprior | character | bflat | b0, b0not, bflat, bmle, bmznot, bmzt | \- |
+| tree | untyped | c(0.5, 2) |  | \- |
+| BTE | untyped | c(2000L, 7000L, 2L) |  | \- |
+| R | integer | 1 |  | \\\[1, \infty)\\ |
+| m0r1 | logical | TRUE | TRUE, FALSE | \- |
+| itemps | untyped | NULL |  | \- |
+| pred.n | logical | \- | TRUE, FALSE | \- |
+| krige | logical | TRUE | TRUE, FALSE | \- |
+| zcov | logical | FALSE | TRUE, FALSE | \- |
+| Ds2x | logical | FALSE | TRUE, FALSE | \- |
+| improv | logical | FALSE | TRUE, FALSE | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| verb | integer | \- |  | \\\[0, 4\]\\ |
+| MAP | logical | TRUE | TRUE, FALSE | \- |
 
 ## References
 
@@ -214,5 +214,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 35.33416 
+#> 7.948346 
 ```

@@ -26,21 +26,21 @@ instantiated via
 
 ## Parameters
 
-|                   |           |           |                                             |                       |
-|-------------------|-----------|-----------|---------------------------------------------|-----------------------|
-| Id                | Type      | Default   | Levels                                      | Range                 |
-| distribution      | character | bernoulli | bernoulli, adaboost, huberized, multinomial | \-                    |
-| n.trees           | integer   | 100       |                                             | \\\[1, \infty)\\      |
-| interaction.depth | integer   | 1         |                                             | \\\[1, \infty)\\      |
-| n.minobsinnode    | integer   | 10        |                                             | \\\[1, \infty)\\      |
-| shrinkage         | numeric   | 0.001     |                                             | \\\[0, \infty)\\      |
-| bag.fraction      | numeric   | 0.5       |                                             | \\\[0, 1\]\\          |
-| train.fraction    | numeric   | 1         |                                             | \\\[0, 1\]\\          |
-| cv.folds          | integer   | 0         |                                             | \\(-\infty, \infty)\\ |
-| keep.data         | logical   | FALSE     | TRUE, FALSE                                 | \-                    |
-| verbose           | logical   | FALSE     | TRUE, FALSE                                 | \-                    |
-| n.cores           | integer   | 1         |                                             | \\(-\infty, \infty)\\ |
-| var.monotone      | untyped   | \-        |                                             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| distribution | character | bernoulli | bernoulli, adaboost, huberized, multinomial | \- |
+| n.trees | integer | 100 |  | \\\[1, \infty)\\ |
+| interaction.depth | integer | 1 |  | \\\[1, \infty)\\ |
+| n.minobsinnode | integer | 10 |  | \\\[1, \infty)\\ |
+| shrinkage | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| bag.fraction | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| train.fraction | numeric | 1 |  | \\\[0, 1\]\\ |
+| cv.folds | integer | 0 |  | \\(-\infty, \infty)\\ |
+| keep.data | logical | FALSE | TRUE, FALSE | \- |
+| verbose | logical | FALSE | TRUE, FALSE | \- |
+| n.cores | integer | 1 |  | \\(-\infty, \infty)\\ |
+| var.monotone | untyped | \- |  | \- |
 
 ## Initial parameter values
 
@@ -190,25 +190,25 @@ print(learner$model)
 #> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)
 #> A gradient boosted model with bernoulli loss function.
 #> 100 iterations were performed.
-#> There were 60 predictors of which 41 had non-zero influence.
+#> There were 60 predictors of which 32 had non-zero influence.
 print(learner$importance())
-#>        V11        V49        V12        V20        V36        V31        V46 
-#> 25.0498720  9.1219003  8.8032173  8.1780769  7.1999935  6.0182124  4.5415178 
-#>        V16        V52        V37        V43         V1        V21        V48 
-#>  4.3478059  4.2447482  4.2078108  4.1852659  4.0648498  3.3982332  3.3857594 
-#>         V4        V51         V5        V23        V27        V39        V45 
-#>  3.2377190  3.1982252  2.7971446  2.7364945  2.5381757  2.5143476  2.3872139 
-#>        V15        V55        V44        V33         V9        V40        V17 
-#>  2.3381482  1.8765245  1.6982567  1.6498270  1.3553202  1.2929201  1.2259237 
-#>        V29        V34        V25        V28        V19        V60        V58 
-#>  1.1763345  1.1472393  0.9980402  0.9828297  0.8299663  0.8095852  0.7609485 
-#>        V57        V59         V8         V6        V10        V26        V13 
-#>  0.6675573  0.6397231  0.6039494  0.3491731  0.3308183  0.3032014  0.0000000 
-#>        V14        V18         V2        V22        V24         V3        V30 
+#>        V11        V49        V36        V23        V12        V51         V4 
+#> 12.6322023 12.3296027 11.8841115  8.5669039  8.5451735  8.1868147  7.5314357 
+#>        V10        V39        V45        V52         V9        V47        V16 
+#>  6.3610063  5.9109061  5.1634530  4.3520759  4.2515541  3.6587466  3.4310627 
+#>        V46        V37        V29        V31         V1        V55         V5 
+#>  3.4014897  3.2942073  3.2923651  3.1957446  2.8950922  2.4213061  2.1379555 
+#>        V21        V28        V59        V44        V40        V15        V27 
+#>  2.0153015  1.9666639  1.7692361  1.4486130  1.3668199  1.2516699  1.0925727 
+#>        V19        V30         V7        V13        V14        V17        V18 
+#>  1.0375866  0.6344765  0.5903561  0.4105916  0.0000000  0.0000000  0.0000000 
+#>         V2        V20        V22        V24        V25        V26         V3 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V32        V35        V38        V41        V42        V47        V50 
+#>        V32        V33        V34        V35        V38        V41        V42 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V53        V54        V56         V7 
+#>        V43        V48        V50        V53        V54        V56        V57 
+#>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V58         V6        V60         V8 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1304348 
+#>   0.173913 
 ```

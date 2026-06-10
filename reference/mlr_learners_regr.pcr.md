@@ -41,15 +41,15 @@ instantiated via
 
 ## Parameters
 
-|        |           |         |                                                            |                  |
-|--------|-----------|---------|------------------------------------------------------------|------------------|
-| Id     | Type      | Default | Levels                                                     | Range            |
-| ncomp  | integer   | \-      |                                                            | \\\[1, \infty)\\ |
-| method | character | cppls   | kernelpls, widekernelpls, simpls, oscorespls, cppls, svdpc | \-               |
-| scale  | logical   | FALSE   | TRUE, FALSE                                                | \-               |
-| model  | logical   | \-      | TRUE, FALSE                                                | \-               |
-| x      | logical   | FALSE   | TRUE, FALSE                                                | \-               |
-| y      | logical   | FALSE   | TRUE, FALSE                                                | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| ncomp | integer | \- |  | \\\[1, \infty)\\ |
+| method | character | cppls | kernelpls, widekernelpls, simpls, oscorespls, cppls, svdpc | \- |
+| scale | logical | FALSE | TRUE, FALSE | \- |
+| model | logical | \- | TRUE, FALSE | \- |
+| x | logical | FALSE | TRUE, FALSE | \- |
+| y | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 
@@ -182,5 +182,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.381285 
+#> 12.70618 
 ```

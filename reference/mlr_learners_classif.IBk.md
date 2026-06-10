@@ -26,22 +26,22 @@ instantiated via
 
 ## Parameters
 
-|                           |           |                |                                                                      |                  |
-|---------------------------|-----------|----------------|----------------------------------------------------------------------|------------------|
-| Id                        | Type      | Default        | Levels                                                               | Range            |
-| subset                    | untyped   | \-             |                                                                      | \-               |
-| na.action                 | untyped   | \-             |                                                                      | \-               |
-| weight                    | character | \-             | I, F                                                                 | \-               |
-| K                         | integer   | 1              |                                                                      | \\\[1, \infty)\\ |
-| E                         | logical   | FALSE          | TRUE, FALSE                                                          | \-               |
-| W                         | integer   | 0              |                                                                      | \\\[0, \infty)\\ |
-| X                         | logical   | FALSE          | TRUE, FALSE                                                          | \-               |
-| A                         | character | LinearNNSearch | BallTree, CoverTree, FilteredNeighbourSearch, KDTree, LinearNNSearch | \-               |
-| output_debug_info         | logical   | FALSE          | TRUE, FALSE                                                          | \-               |
-| do_not_check_capabilities | logical   | FALSE          | TRUE, FALSE                                                          | \-               |
-| num_decimal_places        | integer   | 2              |                                                                      | \\\[1, \infty)\\ |
-| batch_size                | integer   | 100            |                                                                      | \\\[1, \infty)\\ |
-| options                   | untyped   | NULL           |                                                                      | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| weight | character | \- | I, F | \- |
+| K | integer | 1 |  | \\\[1, \infty)\\ |
+| E | logical | FALSE | TRUE, FALSE | \- |
+| W | integer | 0 |  | \\\[0, \infty)\\ |
+| X | logical | FALSE | TRUE, FALSE | \- |
+| A | character | LinearNNSearch | BallTree, CoverTree, FilteredNeighbourSearch, KDTree, LinearNNSearch | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## Custom mlr3 parameters
 

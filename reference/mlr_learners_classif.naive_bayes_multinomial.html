@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Multinomial Naive Bayes Learner From Weka — mlr_learners_classif.naive_bayes_multinomial"><meta name="description" content="Multinomial Naive Bayes classifier.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Multinomial Naive Bayes Learner From Weka — mlr_learners_classif.naive_bayes_multinomial"><meta name="description" content="Multinomial Naive Bayes classifier.
 Calls RWeka::make_Weka_classifier() from RWeka."><meta property="og:description" content="Multinomial Naive Bayes classifier.
 Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -240,8 +240,8 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The independent probability of a class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.45</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The probability of a word given the class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
@@ -254,13 +254,13 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V14	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V15	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16	0.02	0.02	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17	0.02	0.02	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V18	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2	0	0	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V20	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V21	0.04	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V22	0.04	0.03	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25	0.04	0.04	</span>
@@ -269,9 +269,9 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V28	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3	0	0	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V30	0.03	0.03	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30	0.03	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V31	0.03	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V32	0.02	0.03	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V33	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V35	0.02	0.03	</span>
@@ -315,7 +315,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3913043 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3768116 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

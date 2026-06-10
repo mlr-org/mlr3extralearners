@@ -78,28 +78,28 @@ instantiated via
 
 ## Parameters
 
-|                           |           |                |                                                                |                       |
-|---------------------------|-----------|----------------|----------------------------------------------------------------|-----------------------|
-| Id                        | Type      | Default        | Levels                                                         | Range                 |
-| subset                    | untyped   | \-             |                                                                | \-                    |
-| na.action                 | untyped   | \-             |                                                                | \-                    |
-| C                         | numeric   | 1              |                                                                | \\(-\infty, \infty)\\ |
-| N                         | character | 0              | 0, 1, 2                                                        | \-                    |
-| I                         | character | RegSMOImproved | RegSMO, RegSMOImproved                                         | \-                    |
-| K                         | character | PolyKernel     | NormalizedPolyKernel, PolyKernel, Puk, RBFKernel, StringKernel | \-                    |
-| T_improved                | numeric   | 0.001          |                                                                | \\(-\infty, \infty)\\ |
-| V_improved                | logical   | TRUE           | TRUE, FALSE                                                    | \-                    |
-| P_improved                | numeric   | 1e-12          |                                                                | \\(-\infty, \infty)\\ |
-| L_improved                | numeric   | 0.001          |                                                                | \\(-\infty, \infty)\\ |
-| W_improved                | integer   | 1              |                                                                | \\(-\infty, \infty)\\ |
-| C_poly                    | integer   | 250007         |                                                                | \\(-\infty, \infty)\\ |
-| E_poly                    | numeric   | 1              |                                                                | \\(-\infty, \infty)\\ |
-| L_poly                    | logical   | FALSE          | TRUE, FALSE                                                    | \-                    |
-| output_debug_info         | logical   | FALSE          | TRUE, FALSE                                                    | \-                    |
-| do_not_check_capabilities | logical   | FALSE          | TRUE, FALSE                                                    | \-                    |
-| num_decimal_places        | integer   | 2              |                                                                | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100            |                                                                | \\\[1, \infty)\\      |
-| options                   | untyped   | NULL           |                                                                | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| C | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| N | character | 0 | 0, 1, 2 | \- |
+| I | character | RegSMOImproved | RegSMO, RegSMOImproved | \- |
+| K | character | PolyKernel | NormalizedPolyKernel, PolyKernel, Puk, RBFKernel, StringKernel | \- |
+| T_improved | numeric | 0.001 |  | \\(-\infty, \infty)\\ |
+| V_improved | logical | TRUE | TRUE, FALSE | \- |
+| P_improved | numeric | 1e-12 |  | \\(-\infty, \infty)\\ |
+| L_improved | numeric | 0.001 |  | \\(-\infty, \infty)\\ |
+| W_improved | integer | 1 |  | \\(-\infty, \infty)\\ |
+| C_poly | integer | 250007 |  | \\(-\infty, \infty)\\ |
+| E_poly | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| L_poly | logical | FALSE | TRUE, FALSE | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## References
 
@@ -271,21 +271,21 @@ print(learner$model)
 #> SMOreg
 #> 
 #> weights (not support vectors):
-#>  -       0.0393 * (normalized) am
-#>  -       0.0198 * (normalized) carb
-#>  -       0.1412 * (normalized) cyl
-#>  -       0.176  * (normalized) disp
-#>  +       0.0301 * (normalized) drat
-#>  +       0.1599 * (normalized) gear
-#>  -       0.1829 * (normalized) hp
-#>  +       0.0898 * (normalized) qsec
-#>  -       0.0848 * (normalized) vs
-#>  -       0.3201 * (normalized) wt
-#>  +       0.7125
+#>  -       0.0141 * (normalized) am
+#>  -       0.4214 * (normalized) carb
+#>  -       0.0929 * (normalized) cyl
+#>  -       0.0029 * (normalized) disp
+#>  +       0.054  * (normalized) drat
+#>  +       0.2969 * (normalized) gear
+#>  -       0.0967 * (normalized) hp
+#>  -       0.0715 * (normalized) qsec
+#>  -       0.0326 * (normalized) vs
+#>  -       0.3384 * (normalized) wt
+#>  +       0.687 
 #> 
 #> 
 #> 
-#> Number of kernel evaluations: 231 (95.868% cached)
+#> Number of kernel evaluations: 231 (94.861% cached)
 
 
 # Make predictions for the test rows
@@ -294,5 +294,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 19.86464 
+#> 12.85232 
 ```

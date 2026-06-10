@@ -29,23 +29,23 @@ instantiated via
 
 ## Parameters
 
-|              |           |                   |                                 |                       |
-|--------------|-----------|-------------------|---------------------------------|-----------------------|
-| Id           | Type      | Default           | Levels                          | Range                 |
-| criterion    | character | misclassification | misclassification, deviance     | \-                    |
-| dimension    | integer   | \-                |                                 | \\\[1, \infty)\\      |
-| eps          | numeric   | 2.220446e-16      |                                 | \\\[0, \infty)\\      |
-| iter         | integer   | 5                 |                                 | \\\[1, \infty)\\      |
-| keep.fitted  | logical   | TRUE              | TRUE, FALSE                     | \-                    |
-| method       | character | polyreg           | polyreg, mars, bruto, gen.ridge | \-                    |
-| prior        | numeric   | \-                |                                 | \\\[0, 1\]\\          |
-| start.method | character | kmeans            | kmeans, lvq                     | \-                    |
-| sub.df       | integer   | \-                |                                 | \\\[1, \infty)\\      |
-| subclasses   | integer   | 2                 |                                 | \\(-\infty, \infty)\\ |
-| tot.df       | integer   | \-                |                                 | \\\[1, \infty)\\      |
-| trace        | logical   | FALSE             | TRUE, FALSE                     | \-                    |
-| tries        | integer   | 5                 |                                 | \\\[1, \infty)\\      |
-| weights      | untyped   | \-                |                                 | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| criterion | character | misclassification | misclassification, deviance | \- |
+| dimension | integer | \- |  | \\\[1, \infty)\\ |
+| eps | numeric | 2.220446e-16 |  | \\\[0, \infty)\\ |
+| iter | integer | 5 |  | \\\[1, \infty)\\ |
+| keep.fitted | logical | TRUE | TRUE, FALSE | \- |
+| method | character | polyreg | polyreg, mars, bruto, gen.ridge | \- |
+| prior | numeric | \- |  | \\\[0, 1\]\\ |
+| start.method | character | kmeans | kmeans, lvq | \- |
+| sub.df | integer | \- |  | \\\[1, \infty)\\ |
+| subclasses | integer | 2 |  | \\(-\infty, \infty)\\ |
+| tot.df | integer | \- |  | \\\[1, \infty)\\ |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| tries | integer | 5 |  | \\\[1, \infty)\\ |
+| weights | untyped | \- |  | \- |
 
 ## See also
 
@@ -168,13 +168,13 @@ print(learner$model)
 #> 
 #> Percent Between-Group Variance Explained:
 #>     v1     v2     v3     v4     v5 
-#>  55.58  78.49  90.71  96.47 100.00 
+#>  52.32  76.42  87.96  95.04 100.00 
 #> 
 #> Degrees of Freedom (per dimension): 61 
 #> 
-#> Training Misclassification Error: 0.02158 ( N = 139 )
+#> Training Misclassification Error: 0.01439 ( N = 139 )
 #> 
-#> Deviance: 21.321 
+#> Deviance: 10.581 
 
 
 # Make predictions for the test rows
@@ -183,5 +183,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.2898551 
 ```

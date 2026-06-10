@@ -28,21 +28,21 @@ instantiated via
 
 ## Parameters
 
-|                   |           |          |                                   |                       |
-|-------------------|-----------|----------|-----------------------------------|-----------------------|
-| Id                | Type      | Default  | Levels                            | Range                 |
-| distribution      | character | gaussian | gaussian, laplace, poisson, tdist | \-                    |
-| n.trees           | integer   | 100      |                                   | \\\[1, \infty)\\      |
-| interaction.depth | integer   | 1        |                                   | \\\[1, \infty)\\      |
-| n.minobsinnode    | integer   | 10       |                                   | \\\[1, \infty)\\      |
-| shrinkage         | numeric   | 0.001    |                                   | \\\[0, \infty)\\      |
-| bag.fraction      | numeric   | 0.5      |                                   | \\\[0, 1\]\\          |
-| train.fraction    | numeric   | 1        |                                   | \\\[0, 1\]\\          |
-| cv.folds          | integer   | 0        |                                   | \\(-\infty, \infty)\\ |
-| keep.data         | logical   | FALSE    | TRUE, FALSE                       | \-                    |
-| verbose           | logical   | FALSE    | TRUE, FALSE                       | \-                    |
-| n.cores           | integer   | 1        |                                   | \\(-\infty, \infty)\\ |
-| var.monotone      | untyped   | \-       |                                   | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| distribution | character | gaussian | gaussian, laplace, poisson, tdist | \- |
+| n.trees | integer | 100 |  | \\\[1, \infty)\\ |
+| interaction.depth | integer | 1 |  | \\\[1, \infty)\\ |
+| n.minobsinnode | integer | 10 |  | \\\[1, \infty)\\ |
+| shrinkage | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| bag.fraction | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| train.fraction | numeric | 1 |  | \\\[0, 1\]\\ |
+| cv.folds | integer | 0 |  | \\(-\infty, \infty)\\ |
+| keep.data | logical | FALSE | TRUE, FALSE | \- |
+| verbose | logical | FALSE | TRUE, FALSE | \- |
+| n.cores | integer | 1 |  | \\(-\infty, \infty)\\ |
+| var.monotone | untyped | \- |  | \- |
 
 ## Parameter changes
 

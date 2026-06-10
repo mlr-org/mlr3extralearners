@@ -40,40 +40,40 @@ instantiated via
 
 ## Parameters
 
-|                |           |          |                                                                                     |                  |
-|----------------|-----------|----------|-------------------------------------------------------------------------------------|------------------|
-| Id             | Type      | Default  | Levels                                                                              | Range            |
-| center         | logical   | FALSE    | TRUE, FALSE                                                                         | \-               |
-| coefir         | untyped   | NULL     |                                                                                     | \-               |
-| cost           | numeric   | 0.5      |                                                                                     | \\\[0, 1\]\\     |
-| cp             | numeric   | 0.01     |                                                                                     | \\\[0, 1\]\\     |
-| df             | integer   | 4        |                                                                                     | \\\[1, \infty)\\ |
-| family         | character | hinge    | hinge, hinge2, binom, thingeDC, tbinomDC, binomdDC, loss, clossR, clossRMM, clossMM | \-               |
-| f.init         | untyped   | NULL     |                                                                                     | \-               |
-| fk             | untyped   | NULL     |                                                                                     | \-               |
-| intercept      | logical   | TRUE     | TRUE, FALSE                                                                         | \-               |
-| iter           | integer   | 1        |                                                                                     | \\\[1, \infty)\\ |
-| Learner        | character | ls       | ls, sm, tree                                                                        | \-               |
-| maxdepth       | integer   | 1        |                                                                                     | \\\[1, 30\]\\    |
-| maxsurrogate   | integer   | 5        |                                                                                     | \\\[0, \infty)\\ |
-| minbucket      | integer   | \-       |                                                                                     | \\\[1, \infty)\\ |
-| minsplit       | integer   | 20       |                                                                                     | \\\[1, \infty)\\ |
-| mstop          | integer   | 50       |                                                                                     | \\\[1, \infty)\\ |
-| numsample      | integer   | 50       |                                                                                     | \\\[1, \infty)\\ |
-| nu             | numeric   | 0.1      |                                                                                     | \\\[0, 1\]\\     |
-| q              | numeric   | \-       |                                                                                     | \\\[0, 1\]\\     |
-| qh             | numeric   | \-       |                                                                                     | \\\[0, 1\]\\     |
-| s              | numeric   | \-       |                                                                                     | \\\[0, \infty)\\ |
-| sh             | numeric   | \-       |                                                                                     | \\\[0, \infty)\\ |
-| start          | logical   | FALSE    | TRUE, FALSE                                                                         | \-               |
-| surrogatestyle | integer   | 0        |                                                                                     | \\\[0, 1\]\\     |
-| threshold      | character | adaptive | adaptive, fixed                                                                     | \-               |
-| trace          | logical   | FALSE    | TRUE, FALSE                                                                         | \-               |
-| trun           | logical   | FALSE    | TRUE, FALSE                                                                         | \-               |
-| twinboost      | logical   | FALSE    | TRUE, FALSE                                                                         | \-               |
-| twintype       | integer   | 1        |                                                                                     | \\\[1, 2\]\\     |
-| xselect.init   | untyped   | NULL     |                                                                                     | \-               |
-| xval           | integer   | 10       |                                                                                     | \\\[0, \infty)\\ |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| center | logical | FALSE | TRUE, FALSE | \- |
+| coefir | untyped | NULL |  | \- |
+| cost | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| cp | numeric | 0.01 |  | \\\[0, 1\]\\ |
+| df | integer | 4 |  | \\\[1, \infty)\\ |
+| family | character | hinge | hinge, hinge2, binom, thingeDC, tbinomDC, binomdDC, loss, clossR, clossRMM, clossMM | \- |
+| f.init | untyped | NULL |  | \- |
+| fk | untyped | NULL |  | \- |
+| intercept | logical | TRUE | TRUE, FALSE | \- |
+| iter | integer | 1 |  | \\\[1, \infty)\\ |
+| Learner | character | ls | ls, sm, tree | \- |
+| maxdepth | integer | 1 |  | \\\[1, 30\]\\ |
+| maxsurrogate | integer | 5 |  | \\\[0, \infty)\\ |
+| minbucket | integer | \- |  | \\\[1, \infty)\\ |
+| minsplit | integer | 20 |  | \\\[1, \infty)\\ |
+| mstop | integer | 50 |  | \\\[1, \infty)\\ |
+| numsample | integer | 50 |  | \\\[1, \infty)\\ |
+| nu | numeric | 0.1 |  | \\\[0, 1\]\\ |
+| q | numeric | \- |  | \\\[0, 1\]\\ |
+| qh | numeric | \- |  | \\\[0, 1\]\\ |
+| s | numeric | \- |  | \\\[0, \infty)\\ |
+| sh | numeric | \- |  | \\\[0, \infty)\\ |
+| start | logical | FALSE | TRUE, FALSE | \- |
+| surrogatestyle | integer | 0 |  | \\\[0, 1\]\\ |
+| threshold | character | adaptive | adaptive, fixed | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| trun | logical | FALSE | TRUE, FALSE | \- |
+| twinboost | logical | FALSE | TRUE, FALSE | \- |
+| twintype | integer | 1 |  | \\\[1, 2\]\\ |
+| xselect.init | untyped | NULL |  | \- |
+| xval | integer | 10 |  | \\\[0, \infty)\\ |
 
 ## See also
 
@@ -200,31 +200,31 @@ print(learner$model)
 #> Base learner:  ls 
 #> Number of boosting iterations: mstop = 50 
 #> Step size:  0.1 
-#> Offset:  0.1223022 
+#> Offset:  0.007194245 
 #> 
 #> Coefficients: 
 #>          V1         V10         V11         V12         V13         V14 
-#>  0.00000000  0.00000000  0.82062468  0.00000000  0.00000000  0.00000000 
+#>  0.59058338  0.00000000  0.59340861  0.00000000  0.00000000  0.00000000 
 #>         V15         V16         V17         V18         V19          V2 
-#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
+#>  0.00000000 -0.02266434  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V20         V21         V22         V23         V24         V25 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V26         V27         V28         V29          V3         V30 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V31         V32         V33         V34         V35         V36 
-#> -0.04181419  0.00000000  0.00000000  0.00000000  0.00000000 -0.71293154 
+#>  0.00000000  0.00000000  0.00000000 -0.02183781  0.00000000 -0.58295669 
 #>         V37         V38         V39          V4         V40         V41 
-#>  0.00000000  0.00000000  0.00000000  0.59608786  0.00000000  0.00000000 
+#>  0.00000000  0.00000000  0.00000000  0.13353820  0.00000000  0.00000000 
 #>         V42         V43         V44         V45         V46         V47 
-#>  0.00000000  0.00000000  0.00000000  0.51053392  0.00000000  0.00000000 
+#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V48         V49          V5         V50         V51         V52 
-#>  0.00000000  0.17857835  0.00000000  0.00000000  0.00000000  0.00000000 
+#>  0.00000000  2.74048237  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V53         V54         V55         V56         V57         V58 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V59          V6         V60          V7          V8          V9 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #> attr(,"offset")
-#> [1] 0.1223022
+#> [1] 0.007194245
 #> 
 
 
@@ -234,5 +234,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3188406 
+#>  0.2173913 
 ```

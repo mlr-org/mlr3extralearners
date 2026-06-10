@@ -27,44 +27,44 @@ instantiated via
 
 ## Parameters
 
-|                |           |         |                                          |                    |
-|----------------|-----------|---------|------------------------------------------|--------------------|
-| Id             | Type      | Default | Levels                                   | Range              |
-| ntree          | integer   | 500     |                                          | \\\[1, \infty)\\   |
-| mtry           | integer   | \-      |                                          | \\\[1, \infty)\\   |
-| mtry.ratio     | numeric   | \-      |                                          | \\\[0, 1\]\\       |
-| nodesize       | integer   | 15      |                                          | \\\[1, \infty)\\   |
-| nodedepth      | integer   | \-      |                                          | \\\[1, \infty)\\   |
-| splitrule      | character | gini    | gini, auc, entropy                       | \-                 |
-| nsplit         | integer   | 10      |                                          | \\\[0, \infty)\\   |
-| importance     | character | FALSE   | FALSE, TRUE, none, permute, random, anti | \-                 |
-| block.size     | integer   | 10      |                                          | \\\[1, \infty)\\   |
-| bootstrap      | character | by.root | by.root, by.node, none, by.user          | \-                 |
-| samptype       | character | swor    | swor, swr                                | \-                 |
-| samp           | untyped   | \-      |                                          | \-                 |
-| membership     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| sampsize       | untyped   | \-      |                                          | \-                 |
-| sampsize.ratio | numeric   | \-      |                                          | \\\[0, 1\]\\       |
-| na.action      | character | na.omit | na.omit, na.impute                       | \-                 |
-| nimpute        | integer   | 1       |                                          | \\\[1, \infty)\\   |
-| proximity      | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| distance       | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| forest.wt      | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| xvar.wt        | untyped   | \-      |                                          | \-                 |
-| split.wt       | untyped   | \-      |                                          | \-                 |
-| forest         | logical   | TRUE    | TRUE, FALSE                              | \-                 |
-| var.used       | character | FALSE   | FALSE, all.trees                         | \-                 |
-| split.depth    | character | FALSE   | FALSE, all.trees, by.tree                | \-                 |
-| seed           | integer   | \-      |                                          | \\(-\infty, -1\]\\ |
-| do.trace       | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| get.tree       | untyped   | \-      |                                          | \-                 |
-| outcome        | character | train   | train, test                              | \-                 |
-| ptn.count      | integer   | 0       |                                          | \\\[0, \infty)\\   |
-| cores          | integer   | 1       |                                          | \\\[1, \infty)\\   |
-| save.memory    | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| perf.type      | character | \-      | gmean, misclass, brier, none             | \-                 |
-| case.depth     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| marginal.xvar  | untyped   | NULL    |                                          | \-                 |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| ntree | integer | 500 |  | \\\[1, \infty)\\ |
+| mtry | integer | \- |  | \\\[1, \infty)\\ |
+| mtry.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| nodesize | integer | 15 |  | \\\[1, \infty)\\ |
+| nodedepth | integer | \- |  | \\\[1, \infty)\\ |
+| splitrule | character | gini | gini, auc, entropy | \- |
+| nsplit | integer | 10 |  | \\\[0, \infty)\\ |
+| importance | character | FALSE | FALSE, TRUE, none, permute, random, anti | \- |
+| block.size | integer | 10 |  | \\\[1, \infty)\\ |
+| bootstrap | character | by.root | by.root, by.node, none, by.user | \- |
+| samptype | character | swor | swor, swr | \- |
+| samp | untyped | \- |  | \- |
+| membership | logical | FALSE | TRUE, FALSE | \- |
+| sampsize | untyped | \- |  | \- |
+| sampsize.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| na.action | character | na.omit | na.omit, na.impute | \- |
+| nimpute | integer | 1 |  | \\\[1, \infty)\\ |
+| proximity | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| distance | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| forest.wt | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| xvar.wt | untyped | \- |  | \- |
+| split.wt | untyped | \- |  | \- |
+| forest | logical | TRUE | TRUE, FALSE | \- |
+| var.used | character | FALSE | FALSE, all.trees | \- |
+| split.depth | character | FALSE | FALSE, all.trees, by.tree | \- |
+| seed | integer | \- |  | \\(-\infty, -1\]\\ |
+| do.trace | logical | FALSE | TRUE, FALSE | \- |
+| get.tree | untyped | \- |  | \- |
+| outcome | character | train | train, test | \- |
+| ptn.count | integer | 0 |  | \\\[0, \infty)\\ |
+| cores | integer | 1 |  | \\\[1, \infty)\\ |
+| save.memory | logical | FALSE | TRUE, FALSE | \- |
+| perf.type | character | \- | gmean, misclass, brier, none | \- |
+| case.depth | logical | FALSE | TRUE, FALSE | \- |
+| marginal.xvar | untyped | NULL |  | \- |
 
 ## Custom mlr3 parameters
 
@@ -256,10 +256,10 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #>                          Sample size: 139
-#>            Frequency of class labels: M=73, R=66
+#>            Frequency of class labels: M=70, R=69
 #>                      Number of trees: 500
 #>            Forest terminal node size: 1
-#>        Average no. of terminal nodes: 17.47
+#>        Average no. of terminal nodes: 17.274
 #> No. of variables tried at each split: 8
 #>               Total no. of variables: 60
 #>        Resampling used to grow trees: swor
@@ -268,47 +268,47 @@ print(learner$model)
 #>                               Family: class
 #>                       Splitting rule: gini *random*
 #>        Number of random split points: 10
-#>                     Imbalanced ratio: 1.1061
-#>                    (OOB) Brier score: 0.15062459
-#>         (OOB) Normalized Brier score: 0.60249836
-#>                            (OOB) AUC: 0.89393939
-#>                       (OOB) Log-loss: 0.4647906
-#>                         (OOB) PR-AUC: 0.87986143
-#>                         (OOB) G-mean: 0.75851333
-#>    (OOB) Requested performance error: 0.23021583, 0.1369863, 0.33333333
+#>                     Imbalanced ratio: 1.0145
+#>                    (OOB) Brier score: 0.13398654
+#>         (OOB) Normalized Brier score: 0.53594616
+#>                            (OOB) AUC: 0.92795031
+#>                       (OOB) Log-loss: 0.4313074
+#>                         (OOB) PR-AUC: 0.92953207
+#>                         (OOB) G-mean: 0.83653629
+#>    (OOB) Requested performance error: 0.15827338, 0.07142857, 0.24637681
 #> 
 #> Confusion matrix:
 #> 
 #>           predicted
 #>   observed  M  R class.error
-#>          M 64  9      0.1233
-#>          R 22 44      0.3333
+#>          M 65  5      0.0714
+#>          R 17 52      0.2464
 #> 
-#>       (OOB) Misclassification rate: 0.2230216
+#>       (OOB) Misclassification rate: 0.1582734
 #> 
 #> Random-classifier baselines (uniform):
 #>    Brier: 0.25   Normalized Brier: 1   Log-loss: 0.69314718
 print(learner$importance())
-#>          V11          V48          V12          V49          V10           V9 
-#> 0.0560187535 0.0480117287 0.0450135892 0.0407747738 0.0290012191 0.0270811756 
-#>          V52          V36          V28          V47          V27          V37 
-#> 0.0269985266 0.0251813382 0.0198598329 0.0157275375 0.0151702989 0.0142442559 
-#>          V34          V21          V13          V45          V22          V18 
-#> 0.0141364530 0.0133918097 0.0127051648 0.0125491015 0.0123790893 0.0123762736 
-#>          V39          V35           V4          V51          V17          V43 
-#> 0.0122425797 0.0121871358 0.0113658854 0.0113529901 0.0110948304 0.0101424764 
-#>          V32          V33          V20          V54          V46           V1 
-#> 0.0100758738 0.0091471379 0.0091189315 0.0087236650 0.0085616111 0.0081673724 
-#>          V38          V15          V16          V55          V29           V5 
-#> 0.0079765020 0.0074373192 0.0074173892 0.0073246160 0.0071382562 0.0069835413 
-#>          V42          V24          V23           V6          V53           V2 
-#> 0.0069547899 0.0068723468 0.0064336297 0.0062502368 0.0062373090 0.0057990633 
-#>          V57          V19           V8          V40          V44          V31 
-#> 0.0052260839 0.0051121811 0.0051039932 0.0050920780 0.0043543414 0.0043407126 
-#>          V25          V59           V7          V56          V41           V3 
-#> 0.0043364348 0.0042275572 0.0037989662 0.0037906903 0.0037867677 0.0037864430 
-#>          V58          V14          V30          V26          V50          V60 
-#> 0.0030776749 0.0020675682 0.0018789053 0.0012937973 0.0002899471 0.0001193812 
+#>         V11         V12         V36          V9         V10         V37 
+#> 0.079165891 0.054194575 0.039770069 0.035546213 0.034847188 0.034165164 
+#>         V49          V5         V28         V13         V17         V31 
+#> 0.026212264 0.021931060 0.021059411 0.021056933 0.020798559 0.020155118 
+#>         V20         V45         V39         V16         V22          V7 
+#> 0.019394577 0.019320854 0.018907487 0.017921554 0.016443314 0.016392030 
+#>         V35         V52         V21         V15          V1         V18 
+#> 0.015556028 0.015309801 0.014647358 0.014453417 0.014423611 0.013945472 
+#>         V46         V48          V4         V27         V47          V8 
+#> 0.013688401 0.013209069 0.012136010 0.011633015 0.010901270 0.010587652 
+#>         V33         V43         V14         V29          V6         V30 
+#> 0.010356211 0.010240835 0.009907313 0.009269500 0.008426545 0.008425518 
+#>         V32         V59         V44         V19         V51         V42 
+#> 0.008306777 0.007988246 0.007665921 0.006836219 0.006702202 0.006689268 
+#>         V50          V3         V58         V26         V57         V23 
+#> 0.006120220 0.005966390 0.005855738 0.005559488 0.005375212 0.005358999 
+#>         V54         V40         V60         V38         V34         V24 
+#> 0.005225601 0.005074823 0.004652582 0.004548549 0.003778882 0.003642725 
+#>         V56         V41          V2         V25         V55         V53 
+#> 0.002794107 0.002613097 0.002323177 0.002022639 0.001715791 0.001439988 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -316,5 +316,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1304348 
+#>  0.1594203 
 ```

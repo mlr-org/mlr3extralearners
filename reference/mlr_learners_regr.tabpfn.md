@@ -92,22 +92,22 @@ instantiated via
 
 ## Parameters
 
-|                              |           |                   |                                                                                                                    |                       |
-|------------------------------|-----------|-------------------|--------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Id                           | Type      | Default           | Levels                                                                                                             | Range                 |
-| output_type                  | character | mean              | mean, median, mode                                                                                                 | \-                    |
-| n_estimators                 | integer   | 4                 |                                                                                                                    | \\\[1, \infty)\\      |
-| categorical_features_indices | untyped   | \-                |                                                                                                                    | \-                    |
-| softmax_temperature          | numeric   | 0.9               |                                                                                                                    | \\\[0, \infty)\\      |
-| average_before_softmax       | logical   | FALSE             | TRUE, FALSE                                                                                                        | \-                    |
-| model_path                   | untyped   | "auto"            |                                                                                                                    | \-                    |
-| device                       | untyped   | "auto"            |                                                                                                                    | \-                    |
-| ignore_pretraining_limits    | logical   | FALSE             | TRUE, FALSE                                                                                                        | \-                    |
-| inference_precision          | character | auto              | auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 | \-                    |
-| fit_mode                     | character | fit_preprocessors | low_memory, fit_preprocessors, fit_with_cache                                                                      | \-                    |
-| memory_saving_mode           | untyped   | "auto"            |                                                                                                                    | \-                    |
-| random_state                 | integer   | 0                 |                                                                                                                    | \\(-\infty, \infty)\\ |
-| n_jobs                       | integer   | \-                |                                                                                                                    | \\\[1, \infty)\\      |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| output_type | character | mean | mean, median, mode | \- |
+| n_estimators | integer | 4 |  | \\\[1, \infty)\\ |
+| categorical_features_indices | untyped | \- |  | \- |
+| softmax_temperature | numeric | 0.9 |  | \\\[0, \infty)\\ |
+| average_before_softmax | logical | FALSE | TRUE, FALSE | \- |
+| model_path | untyped | "auto" |  | \- |
+| device | untyped | "auto" |  | \- |
+| ignore_pretraining_limits | logical | FALSE | TRUE, FALSE | \- |
+| inference_precision | character | auto | auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 | \- |
+| fit_mode | character | fit_preprocessors | low_memory, fit_preprocessors, fit_with_cache | \- |
+| memory_saving_mode | untyped | "auto" |  | \- |
+| random_state | integer | 0 |  | \\(-\infty, \infty)\\ |
+| n_jobs | integer | \- |  | \\\[1, \infty)\\ |
 
 ## References
 

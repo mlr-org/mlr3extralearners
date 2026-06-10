@@ -40,45 +40,45 @@ instantiated via
 
 ## Parameters
 
-|                          |           |                                                                              |                                                                             |                  |
-|--------------------------|-----------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------|------------------|
-| Id                       | Type      | Default                                                                      | Levels                                                                      | Range            |
-| formula                  | untyped   | \-                                                                           |                                                                             | \-               |
-| start                    | untyped   | NULL                                                                         |                                                                             | \-               |
-| verbose                  | integer   | 0                                                                            |                                                                             | \\\[0, \infty)\\ |
-| contrasts                | untyped   | NULL                                                                         |                                                                             | \-               |
-| optimizer                | character | \-                                                                           | Nelder_Mead, bobyqa, nlminbwrap, nloptwrap                                  | \-               |
-| restart_edge             | logical   | FALSE                                                                        | TRUE, FALSE                                                                 | \-               |
-| boundary.tol             | numeric   | 1e-05                                                                        |                                                                             | \\\[0, \infty)\\ |
-| calc.derivs              | logical   | TRUE                                                                         | TRUE, FALSE                                                                 | \-               |
-| autoscale                | untyped   | NULL                                                                         |                                                                             | \-               |
-| check.nobs.vs.rankZ      | character | ignore                                                                       | ignore, warning, message, stop                                              | \-               |
-| check.nobs.vs.nlev       | character | stop                                                                         | ignore, warning, message, stop                                              | \-               |
-| check.nlev.gtreq.5       | character | ignore                                                                       | ignore, warning, message, stop                                              | \-               |
-| check.nlev.gtr.1         | character | stop                                                                         | ignore, warning, message, stop                                              | \-               |
-| check.nobs.vs.nRE        | character | stop                                                                         | ignore, warning, message, stop                                              | \-               |
-| check.rankX              | character | message+drop.cols                                                            | message+drop.cols, silent.drop.cols, warn+drop.cols, stop.deficient, ignore | \-               |
-| check.scaleX             | character | warning                                                                      | warning, stop, silent.rescale, message+rescale, warn+rescale, ignore        | \-               |
-| check.formula.LHS        | character | stop                                                                         | ignore, warning, message, stop                                              | \-               |
-| family                   | untyped   | "stats::binomial(link = \\logit\\)"                                          |                                                                             | \-               |
-| nAGQ                     | integer   | 1                                                                            |                                                                             | \\\[0, \infty)\\ |
-| mustart                  | untyped   | \-                                                                           |                                                                             | \-               |
-| etastart                 | untyped   | \-                                                                           |                                                                             | \-               |
-| check.conv.nobsmax       | numeric   | 10000                                                                        |                                                                             | \\\[1, \infty)\\ |
-| check.conv.nparmax       | numeric   | 20                                                                           |                                                                             | \\\[1, \infty)\\ |
-| check.conv.grad          | untyped   | "lme4::.makeCC(\\warning\\, tol = 2e-3, relTol = NULL)"                      |                                                                             | \-               |
-| check.conv.singular      | untyped   | "lme4::.makeCC( action = \\message\\, tol = formals(lme4::isSingular)\$tol)" |                                                                             | \-               |
-| check.conv.hess          | untyped   | "lme4::.makeCC(action = \\warning\\, tol = 1e-6)"                            |                                                                             | \-               |
-| optCtrl                  | untyped   | list()                                                                       |                                                                             | \-               |
-| tolPwrss                 | untyped   | \-                                                                           |                                                                             | \-               |
-| compDev                  | logical   | TRUE                                                                         | TRUE, FALSE                                                                 | \-               |
-| nAGQ0initStep            | logical   | TRUE                                                                         | TRUE, FALSE                                                                 | \-               |
-| check.response.not.const | untyped   | "stop"                                                                       |                                                                             | \-               |
-| newparams                | untyped   | NULL                                                                         |                                                                             | \-               |
-| re.form                  | untyped   | NULL                                                                         |                                                                             | \-               |
-| random.only              | logical   | FALSE                                                                        | TRUE, FALSE                                                                 | \-               |
-| allow.new.levels         | logical   | FALSE                                                                        | TRUE, FALSE                                                                 | \-               |
-| na.action                | untyped   | "stats::na.pass"                                                             |                                                                             | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| formula | untyped | \- |  | \- |
+| start | untyped | NULL |  | \- |
+| verbose | integer | 0 |  | \\\[0, \infty)\\ |
+| contrasts | untyped | NULL |  | \- |
+| optimizer | character | \- | Nelder_Mead, bobyqa, nlminbwrap, nloptwrap | \- |
+| restart_edge | logical | FALSE | TRUE, FALSE | \- |
+| boundary.tol | numeric | 1e-05 |  | \\\[0, \infty)\\ |
+| calc.derivs | logical | TRUE | TRUE, FALSE | \- |
+| autoscale | untyped | NULL |  | \- |
+| check.nobs.vs.rankZ | character | ignore | ignore, warning, message, stop | \- |
+| check.nobs.vs.nlev | character | stop | ignore, warning, message, stop | \- |
+| check.nlev.gtreq.5 | character | ignore | ignore, warning, message, stop | \- |
+| check.nlev.gtr.1 | character | stop | ignore, warning, message, stop | \- |
+| check.nobs.vs.nRE | character | stop | ignore, warning, message, stop | \- |
+| check.rankX | character | message+drop.cols | message+drop.cols, silent.drop.cols, warn+drop.cols, stop.deficient, ignore | \- |
+| check.scaleX | character | warning | warning, stop, silent.rescale, message+rescale, warn+rescale, ignore | \- |
+| check.formula.LHS | character | stop | ignore, warning, message, stop | \- |
+| family | untyped | "stats::binomial(link = \\logit\\)" |  | \- |
+| nAGQ | integer | 1 |  | \\\[0, \infty)\\ |
+| mustart | untyped | \- |  | \- |
+| etastart | untyped | \- |  | \- |
+| check.conv.nobsmax | numeric | 10000 |  | \\\[1, \infty)\\ |
+| check.conv.nparmax | numeric | 20 |  | \\\[1, \infty)\\ |
+| check.conv.grad | untyped | "lme4::.makeCC(\\warning\\, tol = 2e-3, relTol = NULL)" |  | \- |
+| check.conv.singular | untyped | "lme4::.makeCC( action = \\message\\, tol = formals(lme4::isSingular)\$tol)" |  | \- |
+| check.conv.hess | untyped | "lme4::.makeCC(action = \\warning\\, tol = 1e-6)" |  | \- |
+| optCtrl | untyped | list() |  | \- |
+| tolPwrss | untyped | \- |  | \- |
+| compDev | logical | TRUE | TRUE, FALSE | \- |
+| nAGQ0initStep | logical | TRUE | TRUE, FALSE | \- |
+| check.response.not.const | untyped | "stop" |  | \- |
+| newparams | untyped | NULL |  | \- |
+| re.form | untyped | NULL |  | \- |
+| random.only | logical | FALSE | TRUE, FALSE | \- |
+| allow.new.levels | logical | FALSE | TRUE, FALSE | \- |
+| na.action | untyped | "stats::na.pass" |  | \- |
 
 ## Offset
 

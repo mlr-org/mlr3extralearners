@@ -27,23 +27,23 @@ instantiated via
 
 ## Parameters
 
-|           |           |         |                                                              |                       |
-|-----------|-----------|---------|--------------------------------------------------------------|-----------------------|
-| Id        | Type      | Default | Levels                                                       | Range                 |
-| scaled    | logical   | TRUE    | TRUE, FALSE                                                  | \-                    |
-| type      | character | C-svc   | C-svc, nu-svc, C-bsvc, spoc-svc, kbb-svc                     | \-                    |
-| kernel    | character | rbfdot  | rbfdot, polydot, vanilladot, laplacedot, besseldot, anovadot | \-                    |
-| C         | numeric   | 1       |                                                              | \\(-\infty, \infty)\\ |
-| nu        | numeric   | 0.2     |                                                              | \\\[0, \infty)\\      |
-| cache     | integer   | 40      |                                                              | \\\[1, \infty)\\      |
-| tol       | numeric   | 0.001   |                                                              | \\\[0, \infty)\\      |
-| shrinking | logical   | TRUE    | TRUE, FALSE                                                  | \-                    |
-| sigma     | numeric   | \-      |                                                              | \\\[0, \infty)\\      |
-| degree    | integer   | \-      |                                                              | \\\[1, \infty)\\      |
-| scale     | numeric   | \-      |                                                              | \\\[0, \infty)\\      |
-| order     | integer   | \-      |                                                              | \\(-\infty, \infty)\\ |
-| offset    | numeric   | \-      |                                                              | \\(-\infty, \infty)\\ |
-| coupler   | character | minpair | minpair, pkpd                                                | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| scaled | logical | TRUE | TRUE, FALSE | \- |
+| type | character | C-svc | C-svc, nu-svc, C-bsvc, spoc-svc, kbb-svc | \- |
+| kernel | character | rbfdot | rbfdot, polydot, vanilladot, laplacedot, besseldot, anovadot | \- |
+| C | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| nu | numeric | 0.2 |  | \\\[0, \infty)\\ |
+| cache | integer | 40 |  | \\\[1, \infty)\\ |
+| tol | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| shrinking | logical | TRUE | TRUE, FALSE | \- |
+| sigma | numeric | \- |  | \\\[0, \infty)\\ |
+| degree | integer | \- |  | \\\[1, \infty)\\ |
+| scale | numeric | \- |  | \\\[0, \infty)\\ |
+| order | integer | \- |  | \\(-\infty, \infty)\\ |
+| offset | numeric | \- |  | \\(-\infty, \infty)\\ |
+| coupler | character | minpair | minpair, pkpd | \- |
 
 ## References
 
@@ -171,12 +171,12 @@ print(learner$model)
 #>  parameter : cost C = 1 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0124282486009453 
+#>  Hyperparameter : sigma =  0.0156930754807266 
 #> 
-#> Number of Support Vectors : 111 
+#> Number of Support Vectors : 113 
 #> 
-#> Objective Function Value : -60.3459 
-#> Training error : 0.043165 
+#> Objective Function Value : -54.9064 
+#> Training error : 0.021583 
 
 
 # Make predictions for the test rows
@@ -185,5 +185,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1449275 
+#>  0.1594203 
 ```

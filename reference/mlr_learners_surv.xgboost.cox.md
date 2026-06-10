@@ -59,63 +59,63 @@ instantiated via
 
 ## Parameters
 
-|                             |           |           |                                          |                       |
-|-----------------------------|-----------|-----------|------------------------------------------|-----------------------|
-| Id                          | Type      | Default   | Levels                                   | Range                 |
-| alpha                       | numeric   | 0         |                                          | \\\[0, \infty)\\      |
-| base_score                  | numeric   | 0.5       |                                          | \\(-\infty, \infty)\\ |
-| booster                     | character | gbtree    | gbtree, gblinear, dart                   | \-                    |
-| callbacks                   | untyped   | list()    |                                          | \-                    |
-| seed                        | integer   | \-        |                                          | \\(-\infty, \infty)\\ |
-| colsample_bylevel           | numeric   | 1         |                                          | \\\[0, 1\]\\          |
-| colsample_bynode            | numeric   | 1         |                                          | \\\[0, 1\]\\          |
-| colsample_bytree            | numeric   | 1         |                                          | \\\[0, 1\]\\          |
-| disable_default_eval_metric | logical   | FALSE     | TRUE, FALSE                              | \-                    |
-| early_stopping_rounds       | integer   | NULL      |                                          | \\\[1, \infty)\\      |
-| evals                       | untyped   | NULL      |                                          | \-                    |
-| learning_rate               | numeric   | 0.3       |                                          | \\\[0, 1\]\\          |
-| feature_selector            | character | cyclic    | cyclic, shuffle, random, greedy, thrifty | \-                    |
-| gamma                       | numeric   | 0         |                                          | \\\[0, \infty)\\      |
-| grow_policy                 | character | depthwise | depthwise, lossguide                     | \-                    |
-| interaction_constraints     | untyped   | \-        |                                          | \-                    |
-| iterationrange              | untyped   | \-        |                                          | \-                    |
-| lambda                      | numeric   | 1         |                                          | \\\[0, \infty)\\      |
-| max_bin                     | integer   | 256       |                                          | \\\[2, \infty)\\      |
-| max_delta_step              | numeric   | 0         |                                          | \\\[0, \infty)\\      |
-| max_depth                   | integer   | 6         |                                          | \\\[0, \infty)\\      |
-| max_leaves                  | integer   | 0         |                                          | \\\[0, \infty)\\      |
-| maximize                    | logical   | NULL      | TRUE, FALSE                              | \-                    |
-| min_child_weight            | numeric   | 1         |                                          | \\\[0, \infty)\\      |
-| monotone_constraints        | integer   | 0         |                                          | \\\[-1, 1\]\\         |
-| normalize_type              | character | tree      | tree, forest                             | \-                    |
-| nrounds                     | integer   | \-        |                                          | \\\[1, \infty)\\      |
-| nthread                     | integer   | \-        |                                          | \\\[1, \infty)\\      |
-| num_parallel_tree           | integer   | 1         |                                          | \\\[1, \infty)\\      |
-| one_drop                    | logical   | FALSE     | TRUE, FALSE                              | \-                    |
-| print_every_n               | integer   | 1         |                                          | \\\[1, \infty)\\      |
-| rate_drop                   | numeric   | 0         |                                          | \\\[0, 1\]\\          |
-| refresh_leaf                | logical   | TRUE      | TRUE, FALSE                              | \-                    |
-| sampling_method             | character | uniform   | uniform, gradient_based                  | \-                    |
-| sample_type                 | character | uniform   | uniform, weighted                        | \-                    |
-| save_name                   | untyped   | \-        |                                          | \-                    |
-| save_period                 | integer   | \-        |                                          | \\\[0, \infty)\\      |
-| scale_pos_weight            | numeric   | 1         |                                          | \\(-\infty, \infty)\\ |
-| seed_per_iteration          | logical   | FALSE     | TRUE, FALSE                              | \-                    |
-| skip_drop                   | numeric   | 0         |                                          | \\\[0, 1\]\\          |
-| use_rmm                     | logical   | FALSE     | TRUE, FALSE                              | \-                    |
-| max_cached_hist_node        | integer   | NULL      |                                          | \\(-\infty, \infty)\\ |
-| max_cat_to_onehot           | integer   | 4         |                                          | \\(-\infty, \infty)\\ |
-| max_cat_threshold           | integer   | 64        |                                          | \\(-\infty, \infty)\\ |
-| subsample                   | numeric   | 1         |                                          | \\\[0, 1\]\\          |
-| top_k                       | integer   | 0         |                                          | \\\[0, \infty)\\      |
-| tree_method                 | character | auto      | auto, exact, approx, hist, gpu_hist      | \-                    |
-| updater                     | untyped   | \-        |                                          | \-                    |
-| verbose                     | integer   | \-        |                                          | \\\[0, 2\]\\          |
-| verbosity                   | integer   | \-        |                                          | \\\[0, 2\]\\          |
-| xgb_model                   | untyped   | \-        |                                          | \-                    |
-| device                      | untyped   | \-        |                                          | \-                    |
-| missing                     | numeric   | NA        |                                          | \\(-\infty, \infty)\\ |
-| validate_features           | logical   | TRUE      | TRUE, FALSE                              | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| alpha | numeric | 0 |  | \\\[0, \infty)\\ |
+| base_score | numeric | 0.5 |  | \\(-\infty, \infty)\\ |
+| booster | character | gbtree | gbtree, gblinear, dart | \- |
+| callbacks | untyped | list() |  | \- |
+| seed | integer | \- |  | \\(-\infty, \infty)\\ |
+| colsample_bylevel | numeric | 1 |  | \\\[0, 1\]\\ |
+| colsample_bynode | numeric | 1 |  | \\\[0, 1\]\\ |
+| colsample_bytree | numeric | 1 |  | \\\[0, 1\]\\ |
+| disable_default_eval_metric | logical | FALSE | TRUE, FALSE | \- |
+| early_stopping_rounds | integer | NULL |  | \\\[1, \infty)\\ |
+| evals | untyped | NULL |  | \- |
+| learning_rate | numeric | 0.3 |  | \\\[0, 1\]\\ |
+| feature_selector | character | cyclic | cyclic, shuffle, random, greedy, thrifty | \- |
+| gamma | numeric | 0 |  | \\\[0, \infty)\\ |
+| grow_policy | character | depthwise | depthwise, lossguide | \- |
+| interaction_constraints | untyped | \- |  | \- |
+| iterationrange | untyped | \- |  | \- |
+| lambda | numeric | 1 |  | \\\[0, \infty)\\ |
+| max_bin | integer | 256 |  | \\\[2, \infty)\\ |
+| max_delta_step | numeric | 0 |  | \\\[0, \infty)\\ |
+| max_depth | integer | 6 |  | \\\[0, \infty)\\ |
+| max_leaves | integer | 0 |  | \\\[0, \infty)\\ |
+| maximize | logical | NULL | TRUE, FALSE | \- |
+| min_child_weight | numeric | 1 |  | \\\[0, \infty)\\ |
+| monotone_constraints | integer | 0 |  | \\\[-1, 1\]\\ |
+| normalize_type | character | tree | tree, forest | \- |
+| nrounds | integer | \- |  | \\\[1, \infty)\\ |
+| nthread | integer | \- |  | \\\[1, \infty)\\ |
+| num_parallel_tree | integer | 1 |  | \\\[1, \infty)\\ |
+| one_drop | logical | FALSE | TRUE, FALSE | \- |
+| print_every_n | integer | 1 |  | \\\[1, \infty)\\ |
+| rate_drop | numeric | 0 |  | \\\[0, 1\]\\ |
+| refresh_leaf | logical | TRUE | TRUE, FALSE | \- |
+| sampling_method | character | uniform | uniform, gradient_based | \- |
+| sample_type | character | uniform | uniform, weighted | \- |
+| save_name | untyped | \- |  | \- |
+| save_period | integer | \- |  | \\\[0, \infty)\\ |
+| scale_pos_weight | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| seed_per_iteration | logical | FALSE | TRUE, FALSE | \- |
+| skip_drop | numeric | 0 |  | \\\[0, 1\]\\ |
+| use_rmm | logical | FALSE | TRUE, FALSE | \- |
+| max_cached_hist_node | integer | NULL |  | \\(-\infty, \infty)\\ |
+| max_cat_to_onehot | integer | 4 |  | \\(-\infty, \infty)\\ |
+| max_cat_threshold | integer | 64 |  | \\(-\infty, \infty)\\ |
+| subsample | numeric | 1 |  | \\\[0, 1\]\\ |
+| top_k | integer | 0 |  | \\\[0, \infty)\\ |
+| tree_method | character | auto | auto, exact, approx, hist, gpu_hist | \- |
+| updater | untyped | \- |  | \- |
+| verbose | integer | \- |  | \\\[0, 2\]\\ |
+| verbosity | integer | \- |  | \\\[0, 2\]\\ |
+| xgb_model | untyped | \- |  | \- |
+| device | untyped | \- |  | \- |
+| missing | numeric | NA |  | \\(-\infty, \infty)\\ |
+| validate_features | logical | TRUE | TRUE, FALSE | \- |
 
 ## Early stopping
 

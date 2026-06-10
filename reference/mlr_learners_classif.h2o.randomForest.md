@@ -35,42 +35,42 @@ instantiated via
 
 ## Parameters
 
-|                                  |           |         |                                                                                                      |                       |
-|----------------------------------|-----------|---------|------------------------------------------------------------------------------------------------------|-----------------------|
-| Id                               | Type      | Default | Levels                                                                                               | Range                 |
-| auc_type                         | character | AUTO    | AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO                                         | \-                    |
-| balance_classes                  | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
-| binomial_double_trees            | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
-| build_tree_one_node              | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
-| categorical_encoding             | character | AUTO    | AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited | \-                    |
-| check_constant_response          | logical   | TRUE    | TRUE, FALSE                                                                                          | \-                    |
-| checkpoint                       | untyped   | NULL    |                                                                                                      | \-                    |
-| class_sampling_factors           | untyped   | NULL    |                                                                                                      | \-                    |
-| col_sample_rate_change_per_level | numeric   | 1       |                                                                                                      | \\\[0, 2\]\\          |
-| col_sample_rate_per_tree         | numeric   | 1       |                                                                                                      | \\\[0, 1\]\\          |
-| export_checkpoints_dir           | untyped   | NULL    |                                                                                                      | \-                    |
-| gainslift_bins                   | integer   | -1      |                                                                                                      | \\\[-1, \infty)\\     |
-| histogram_type                   | character | AUTO    | AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust                            | \-                    |
-| ignore_const_cols                | logical   | TRUE    | TRUE, FALSE                                                                                          | \-                    |
-| max_after_balance_size           | numeric   | 5       |                                                                                                      | \\\[0, \infty)\\      |
-| max_depth                        | integer   | 20      |                                                                                                      | \\\[0, \infty)\\      |
-| max_runtime_secs                 | numeric   | 0       |                                                                                                      | \\\[0, \infty)\\      |
-| min_rows                         | numeric   | 1       |                                                                                                      | \\\[1, \infty)\\      |
-| min_split_improvement            | numeric   | 1e-05   |                                                                                                      | \\\[0, \infty)\\      |
-| mtries                           | integer   | -1      |                                                                                                      | \\\[1, \infty)\\      |
-| nbins                            | integer   | 20      |                                                                                                      | \\\[1, \infty)\\      |
-| nbins_cats                       | integer   | 1024    |                                                                                                      | \\\[1, \infty)\\      |
-| nbins_top_level                  | integer   | 1024    |                                                                                                      | \\\[1, \infty)\\      |
-| ntrees                           | integer   | 50      |                                                                                                      | \\\[1, \infty)\\      |
-| sample_rate                      | numeric   | 0.632   |                                                                                                      | \\\[0, 1\]\\          |
-| sample_rate_per_class            | untyped   | NULL    |                                                                                                      | \-                    |
-| score_each_iteration             | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
-| score_tree_interval              | integer   | 0       |                                                                                                      | \\\[0, \infty)\\      |
-| seed                             | integer   | -1      |                                                                                                      | \\(-\infty, \infty)\\ |
-| stopping_metric                  | character | AUTO    | AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error                   | \-                    |
-| stopping_rounds                  | integer   | 0       |                                                                                                      | \\\[0, \infty)\\      |
-| stopping_tolerance               | numeric   | 0.001   |                                                                                                      | \\\[0, \infty)\\      |
-| verbose                          | logical   | FALSE   | TRUE, FALSE                                                                                          | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| auc_type | character | AUTO | AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO | \- |
+| balance_classes | logical | FALSE | TRUE, FALSE | \- |
+| binomial_double_trees | logical | FALSE | TRUE, FALSE | \- |
+| build_tree_one_node | logical | FALSE | TRUE, FALSE | \- |
+| categorical_encoding | character | AUTO | AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited | \- |
+| check_constant_response | logical | TRUE | TRUE, FALSE | \- |
+| checkpoint | untyped | NULL |  | \- |
+| class_sampling_factors | untyped | NULL |  | \- |
+| col_sample_rate_change_per_level | numeric | 1 |  | \\\[0, 2\]\\ |
+| col_sample_rate_per_tree | numeric | 1 |  | \\\[0, 1\]\\ |
+| export_checkpoints_dir | untyped | NULL |  | \- |
+| gainslift_bins | integer | -1 |  | \\\[-1, \infty)\\ |
+| histogram_type | character | AUTO | AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust | \- |
+| ignore_const_cols | logical | TRUE | TRUE, FALSE | \- |
+| max_after_balance_size | numeric | 5 |  | \\\[0, \infty)\\ |
+| max_depth | integer | 20 |  | \\\[0, \infty)\\ |
+| max_runtime_secs | numeric | 0 |  | \\\[0, \infty)\\ |
+| min_rows | numeric | 1 |  | \\\[1, \infty)\\ |
+| min_split_improvement | numeric | 1e-05 |  | \\\[0, \infty)\\ |
+| mtries | integer | -1 |  | \\\[1, \infty)\\ |
+| nbins | integer | 20 |  | \\\[1, \infty)\\ |
+| nbins_cats | integer | 1024 |  | \\\[1, \infty)\\ |
+| nbins_top_level | integer | 1024 |  | \\\[1, \infty)\\ |
+| ntrees | integer | 50 |  | \\\[1, \infty)\\ |
+| sample_rate | numeric | 0.632 |  | \\\[0, 1\]\\ |
+| sample_rate_per_class | untyped | NULL |  | \- |
+| score_each_iteration | logical | FALSE | TRUE, FALSE | \- |
+| score_tree_interval | integer | 0 |  | \\\[0, \infty)\\ |
+| seed | integer | -1 |  | \\(-\infty, \infty)\\ |
+| stopping_metric | character | AUTO | AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error | \- |
+| stopping_rounds | integer | 0 |  | \\\[0, \infty)\\ |
+| stopping_tolerance | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| verbose | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 
@@ -197,53 +197,53 @@ print(learner$model)
 #> ==============
 #> 
 #> H2OBinomialModel: drf
-#> Model ID:  DRF_model_R_1777020145368_58 
+#> Model ID:  DRF_model_R_1781095337255_58 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50               13209         5
+#> 1              50                       50               13482         5
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1        11    6.96000         13         22    16.44000
+#> 1        10    6.58000         12         23    16.88000
 #> 
 #> 
 #> H2OBinomialMetrics: drf
 #> ** Reported on training data. **
 #> ** Metrics reported on Out-Of-Bag training samples **
 #> 
-#> MSE:  0.134743
-#> RMSE:  0.3670735
-#> LogLoss:  0.414664
-#> Mean Per-Class Error:  0.1952532
-#> AUC:  0.8970464
-#> AUCPR:  0.8802279
-#> Gini:  0.7940928
-#> R^2:  0.4507661
+#> MSE:  0.1442124
+#> RMSE:  0.3797531
+#> LogLoss:  0.4450733
+#> Mean Per-Class Error:  0.1873706
+#> AUC:  0.8871636
+#> AUCPR:  0.8908193
+#> Gini:  0.7743271
+#> R^2:  0.4231206
 #> 
 #> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
 #>         M  R    Error     Rate
-#> M      60 19 0.240506   =19/79
-#> R       9 51 0.150000    =9/60
-#> Totals 69 70 0.201439  =28/139
+#> M      53 16 0.231884   =16/69
+#> R      10 60 0.142857   =10/70
+#> Totals 63 76 0.187050  =26/139
 #> 
 #> Maximum Metrics: Maximum metrics at their respective thresholds
 #>                         metric threshold     value idx
-#> 1                       max f1  0.384615  0.784615  47
-#> 2                       max f2  0.266667  0.885886  62
-#> 3                 max f0point5  0.625000  0.825472  26
-#> 4                 max accuracy  0.625000  0.798561  26
+#> 1                       max f1  0.466667  0.821918  44
+#> 2                       max f2  0.285714  0.893782  59
+#> 3                 max f0point5  0.647059  0.840336  29
+#> 4                 max accuracy  0.466667  0.812950  44
 #> 5                max precision  1.000000  1.000000   0
-#> 6                   max recall  0.250000  1.000000  65
+#> 6                   max recall  0.250000  1.000000  62
 #> 7              max specificity  1.000000  1.000000   0
-#> 8             max absolute_mcc  0.625000  0.606065  26
-#> 9   max min_per_class_accuracy  0.409091  0.783333  44
-#> 10 max mean_per_class_accuracy  0.384615  0.804747  47
-#> 11                     max tns  1.000000 79.000000   0
-#> 12                     max fns  1.000000 55.000000   0
-#> 13                     max fps  0.000000 79.000000  90
-#> 14                     max tps  0.250000 60.000000  65
+#> 8             max absolute_mcc  0.466667  0.627995  44
+#> 9   max min_per_class_accuracy  0.500000  0.768116  40
+#> 10 max mean_per_class_accuracy  0.466667  0.812629  44
+#> 11                     max tns  1.000000 69.000000   0
+#> 12                     max fns  1.000000 67.000000   0
+#> 13                     max fps  0.000000 69.000000  80
+#> 14                     max tps  0.250000 70.000000  62
 #> 15                     max tnr  1.000000  1.000000   0
-#> 16                     max fnr  1.000000  0.916667   0
-#> 17                     max fpr  0.000000  1.000000  90
-#> 18                     max tpr  0.250000  1.000000  65
+#> 16                     max fnr  1.000000  0.957143   0
+#> 17                     max fpr  0.000000  1.000000  80
+#> 18                     max tpr  0.250000  1.000000  62
 #> 
 #> Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 #> 
@@ -256,5 +256,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.115942 
+#>  0.1594203 
 ```

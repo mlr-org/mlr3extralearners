@@ -47,29 +47,29 @@ instantiated via
 
 ## Parameters
 
-|                 |           |         |                                |                       |
-|-----------------|-----------|---------|--------------------------------|-----------------------|
-| Id              | Type      | Default | Levels                         | Range                 |
-| maxstepno       | integer   | 100     |                                | \\\[0, \infty)\\      |
-| K               | integer   | 10      |                                | \\\[2, \infty)\\      |
-| type            | character | verweij | verweij, naive                 | \-                    |
-| folds           | untyped   | NULL    |                                | \-                    |
-| minstepno       | integer   | 50      |                                | \\\[0, \infty)\\      |
-| start.penalty   | numeric   | \-      |                                | \\(-\infty, \infty)\\ |
-| iter.max        | integer   | 10      |                                | \\\[1, \infty)\\      |
-| upper.margin    | numeric   | 0.05    |                                | \\\[0, 1\]\\          |
-| unpen.index     | untyped   | \-      |                                | \-                    |
-| standardize     | logical   | TRUE    | TRUE, FALSE                    | \-                    |
-| penalty         | numeric   | \-      |                                | \\(-\infty, \infty)\\ |
-| criterion       | character | pscore  | pscore, score, hpscore, hscore | \-                    |
-| stepsize.factor | numeric   | 1       |                                | \\(-\infty, \infty)\\ |
-| sf.scheme       | character | sigmoid | sigmoid, linear                | \-                    |
-| pendistmat      | untyped   | \-      |                                | \-                    |
-| connected.index | untyped   | \-      |                                | \-                    |
-| x.is.01         | logical   | FALSE   | TRUE, FALSE                    | \-                    |
-| return.score    | logical   | TRUE    | TRUE, FALSE                    | \-                    |
-| trace           | logical   | FALSE   | TRUE, FALSE                    | \-                    |
-| at.step         | untyped   | \-      |                                | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| maxstepno | integer | 100 |  | \\\[0, \infty)\\ |
+| K | integer | 10 |  | \\\[2, \infty)\\ |
+| type | character | verweij | verweij, naive | \- |
+| folds | untyped | NULL |  | \- |
+| minstepno | integer | 50 |  | \\\[0, \infty)\\ |
+| start.penalty | numeric | \- |  | \\(-\infty, \infty)\\ |
+| iter.max | integer | 10 |  | \\\[1, \infty)\\ |
+| upper.margin | numeric | 0.05 |  | \\\[0, 1\]\\ |
+| unpen.index | untyped | \- |  | \- |
+| standardize | logical | TRUE | TRUE, FALSE | \- |
+| penalty | numeric | \- |  | \\(-\infty, \infty)\\ |
+| criterion | character | pscore | pscore, score, hpscore, hscore | \- |
+| stepsize.factor | numeric | 1 |  | \\(-\infty, \infty)\\ |
+| sf.scheme | character | sigmoid | sigmoid, linear | \- |
+| pendistmat | untyped | \- |  | \- |
+| connected.index | untyped | \- |  | \- |
+| x.is.01 | logical | FALSE | TRUE, FALSE | \- |
+| return.score | logical | TRUE | TRUE, FALSE | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| at.step | untyped | \- |  | \- |
 
 ## Prediction types
 

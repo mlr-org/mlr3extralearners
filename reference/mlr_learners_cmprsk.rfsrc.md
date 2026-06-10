@@ -28,47 +28,47 @@ instantiated via
 
 ## Parameters
 
-|                |           |           |                                          |                    |
-|----------------|-----------|-----------|------------------------------------------|--------------------|
-| Id             | Type      | Default   | Levels                                   | Range              |
-| ntree          | integer   | 500       |                                          | \\\[1, \infty)\\   |
-| mtry           | integer   | \-        |                                          | \\\[1, \infty)\\   |
-| mtry.ratio     | numeric   | \-        |                                          | \\\[0, 1\]\\       |
-| nodesize       | integer   | 15        |                                          | \\\[1, \infty)\\   |
-| nodedepth      | integer   | \-        |                                          | \\\[1, \infty)\\   |
-| splitrule      | character | logrankCR | logrankCR, logrank                       | \-                 |
-| nsplit         | integer   | 10        |                                          | \\\[0, \infty)\\   |
-| importance     | character | FALSE     | FALSE, TRUE, none, anti, permute, random | \-                 |
-| block.size     | integer   | 10        |                                          | \\\[1, \infty)\\   |
-| bootstrap      | character | by.root   | by.root, by.node, none, by.user          | \-                 |
-| samptype       | character | swor      | swor, swr                                | \-                 |
-| samp           | untyped   | \-        |                                          | \-                 |
-| membership     | logical   | FALSE     | TRUE, FALSE                              | \-                 |
-| sampsize       | untyped   | \-        |                                          | \-                 |
-| sampsize.ratio | numeric   | \-        |                                          | \\\[0, 1\]\\       |
-| na.action      | character | na.omit   | na.omit, na.impute                       | \-                 |
-| nimpute        | integer   | 1         |                                          | \\\[1, \infty)\\   |
-| ntime          | integer   | 150       |                                          | \\\[0, \infty)\\   |
-| cause          | untyped   | \-        |                                          | \-                 |
-| proximity      | character | FALSE     | FALSE, TRUE, inbag, oob, all             | \-                 |
-| distance       | character | FALSE     | FALSE, TRUE, inbag, oob, all             | \-                 |
-| forest.wt      | character | FALSE     | FALSE, TRUE, inbag, oob, all             | \-                 |
-| xvar.wt        | untyped   | \-        |                                          | \-                 |
-| split.wt       | untyped   | \-        |                                          | \-                 |
-| forest         | logical   | TRUE      | TRUE, FALSE                              | \-                 |
-| var.used       | character | FALSE     | FALSE, all.trees                         | \-                 |
-| split.depth    | character | FALSE     | FALSE, all.trees, by.tree                | \-                 |
-| seed           | integer   | \-        |                                          | \\(-\infty, -1\]\\ |
-| do.trace       | logical   | FALSE     | TRUE, FALSE                              | \-                 |
-| get.tree       | untyped   | \-        |                                          | \-                 |
-| outcome        | character | train     | train, test                              | \-                 |
-| ptn.count      | integer   | 0         |                                          | \\\[0, \infty)\\   |
-| cores          | integer   | 1         |                                          | \\\[1, \infty)\\   |
-| save.memory    | logical   | FALSE     | TRUE, FALSE                              | \-                 |
-| use.uno        | logical   | TRUE      | TRUE, FALSE                              | \-                 |
-| perf.type      | character | \-        | none                                     | \-                 |
-| case.depth     | logical   | FALSE     | TRUE, FALSE                              | \-                 |
-| marginal.xvar  | untyped   | NULL      |                                          | \-                 |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| ntree | integer | 500 |  | \\\[1, \infty)\\ |
+| mtry | integer | \- |  | \\\[1, \infty)\\ |
+| mtry.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| nodesize | integer | 15 |  | \\\[1, \infty)\\ |
+| nodedepth | integer | \- |  | \\\[1, \infty)\\ |
+| splitrule | character | logrankCR | logrankCR, logrank | \- |
+| nsplit | integer | 10 |  | \\\[0, \infty)\\ |
+| importance | character | FALSE | FALSE, TRUE, none, anti, permute, random | \- |
+| block.size | integer | 10 |  | \\\[1, \infty)\\ |
+| bootstrap | character | by.root | by.root, by.node, none, by.user | \- |
+| samptype | character | swor | swor, swr | \- |
+| samp | untyped | \- |  | \- |
+| membership | logical | FALSE | TRUE, FALSE | \- |
+| sampsize | untyped | \- |  | \- |
+| sampsize.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| na.action | character | na.omit | na.omit, na.impute | \- |
+| nimpute | integer | 1 |  | \\\[1, \infty)\\ |
+| ntime | integer | 150 |  | \\\[0, \infty)\\ |
+| cause | untyped | \- |  | \- |
+| proximity | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| distance | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| forest.wt | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| xvar.wt | untyped | \- |  | \- |
+| split.wt | untyped | \- |  | \- |
+| forest | logical | TRUE | TRUE, FALSE | \- |
+| var.used | character | FALSE | FALSE, all.trees | \- |
+| split.depth | character | FALSE | FALSE, all.trees, by.tree | \- |
+| seed | integer | \- |  | \\(-\infty, -1\]\\ |
+| do.trace | logical | FALSE | TRUE, FALSE | \- |
+| get.tree | untyped | \- |  | \- |
+| outcome | character | train | train, test | \- |
+| ptn.count | integer | 0 |  | \\\[0, \infty)\\ |
+| cores | integer | 1 |  | \\\[1, \infty)\\ |
+| save.memory | logical | FALSE | TRUE, FALSE | \- |
+| use.uno | logical | TRUE | TRUE, FALSE | \- |
+| perf.type | character | \- | none | \- |
+| case.depth | logical | FALSE | TRUE, FALSE | \- |
+| marginal.xvar | untyped | NULL |  | \- |
 
 ## Initial parameter values
 
@@ -293,7 +293,7 @@ print(learner$model)
 #>                     Number of events: 1=12, 2=74
 #>                      Number of trees: 500
 #>            Forest terminal node size: 15
-#>        Average no. of terminal nodes: 9.556
+#>        Average no. of terminal nodes: 8.926
 #> No. of variables tried at each split: 5
 #>               Total no. of variables: 17
 #>        Resampling used to grow trees: swor
@@ -302,26 +302,26 @@ print(learner$model)
 #>                               Family: surv-CR
 #>                       Splitting rule: logrankCR *random*
 #>        Number of random split points: 10
-#>    (OOB) Requested performance error: 0.22492449, 0.29757985
+#>    (OOB) Requested performance error: 0.34182485, 0.18900803
 #> 
 print(learner$importance(cause = 1)) # VIMP for cause = 1
-#>         bili      protime      ascites       copper         chol          age 
-#> 0.2705116222 0.0626366078 0.0575983908 0.0513589074 0.0410221552 0.0401655326 
-#>        edema      albumin         trig          ast        stage     platelet 
-#> 0.0349278426 0.0316993074 0.0239988806 0.0206966464 0.0194938414 0.0125324715 
-#>       hepato          sex     alk.phos      spiders          trt 
-#> 0.0116910428 0.0098931636 0.0094210884 0.0046956589 0.0007615919 
+#>         bili          age      protime        edema      ascites         chol 
+#>  0.128787541  0.088785530  0.047773462  0.036602114  0.033659488  0.032646211 
+#>        stage       copper         trig     platelet       hepato     alk.phos 
+#>  0.013434675  0.012951633  0.006199904  0.003998375  0.002647125  0.002626725 
+#>          sex      spiders          trt      albumin          ast 
+#>  0.002585110  0.001466653 -0.001405445 -0.004759231 -0.015048870 
 print(learner$importance(cause = 2)) # VIMP for cause = 2
-#>          bili       ascites         edema           age       protime 
-#>  0.1067518769  0.1002722098  0.0830863771  0.0499575406  0.0311549224 
-#>       albumin      alk.phos        copper          chol          trig 
-#>  0.0236055347  0.0212436554  0.0182176317  0.0175492481  0.0154852178 
-#>       spiders      platelet        hepato         stage           ast 
-#>  0.0108757429  0.0090690587  0.0055538028  0.0039947114  0.0024432569 
-#>           trt           sex 
-#> -0.0002489318 -0.0013672644 
+#>          bili         edema       ascites           age       albumin 
+#>  0.2128621668  0.1007728476  0.0835157321  0.0828110727  0.0501411274 
+#>          chol        copper       protime          trig           ast 
+#>  0.0425529143  0.0410461916  0.0253445035  0.0225729571  0.0176245726 
+#>      alk.phos        hepato           sex       spiders         stage 
+#>  0.0165363142  0.0053597380  0.0043332339  0.0018066008  0.0013471941 
+#>      platelet           trt 
+#>  0.0013182587 -0.0008454038 
 print(learner$oob_error()) # weighted-mean across causes
-#> [1] 0.2874419
+#> [1] 0.2103313
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>   0.855225 
+#>  0.9196209 
 ```

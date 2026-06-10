@@ -27,22 +27,22 @@ instantiated via
 
 ## Parameters
 
-|               |           |                |                                                                        |                       |
-|---------------|-----------|----------------|------------------------------------------------------------------------|-----------------------|
-| Id            | Type      | Default        | Levels                                                                 | Range                 |
-| family        | character | Gaussian       | Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom | \-                    |
-| custom.family | untyped   | \-             |                                                                        | \-                    |
-| nuirange      | untyped   | c(0, 100)      |                                                                        | \-                    |
-| d             | numeric   | NULL           |                                                                        | \\(-\infty, \infty)\\ |
-| center        | logical   | TRUE           | TRUE, FALSE                                                            | \-                    |
-| mstop         | integer   | 100            |                                                                        | \\(-\infty, \infty)\\ |
-| nu            | numeric   | 0.1            |                                                                        | \\(-\infty, \infty)\\ |
-| risk          | character | inbag          | inbag, oobag, none                                                     | \-                    |
-| oobweights    | untyped   | NULL           |                                                                        | \-                    |
-| trace         | logical   | FALSE          | TRUE, FALSE                                                            | \-                    |
-| stopintern    | untyped   | FALSE          |                                                                        | \-                    |
-| na.action     | untyped   | stats::na.omit |                                                                        | \-                    |
-| contrasts.arg | untyped   | \-             |                                                                        | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| family | character | Gaussian | Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom | \- |
+| custom.family | untyped | \- |  | \- |
+| nuirange | untyped | c(0, 100) |  | \- |
+| d | numeric | NULL |  | \\(-\infty, \infty)\\ |
+| center | logical | TRUE | TRUE, FALSE | \- |
+| mstop | integer | 100 |  | \\(-\infty, \infty)\\ |
+| nu | numeric | 0.1 |  | \\(-\infty, \infty)\\ |
+| risk | character | inbag | inbag, oobag, none | \- |
+| oobweights | untyped | NULL |  | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| stopintern | untyped | FALSE |  | \- |
+| na.action | untyped | stats::na.omit |  | \- |
+| contrasts.arg | untyped | \- |  | \- |
 
 ## Offset
 
@@ -184,15 +184,15 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  19.59048 
+#> Offset:  20.30476 
 #> 
 #> Coefficients: 
-#>  (Intercept)           am         carb          cyl         disp         drat 
-#>  8.803869916  0.039127222 -0.216847713 -0.865459968  0.001436469  0.558082208 
-#>         gear           hp           wt 
-#>  0.977815500 -0.011737467 -2.226526599 
+#>  (Intercept)           am         carb         disp         drat         gear 
+#> 10.613537701  0.929025472 -0.280302700  0.001338586  0.787782862  0.024101813 
+#>           hp         qsec           wt 
+#> -0.040211807  0.030294278 -2.733362020 
 #> attr(,"offset")
-#> [1] 19.59048
+#> [1] 20.30476
 #> 
 
 
@@ -202,5 +202,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.43702 
+#> 9.931982 
 ```

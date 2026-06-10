@@ -44,46 +44,46 @@ instantiated via
 
 ## Parameters
 
-|                 |           |            |                                                   |                       |
-|-----------------|-----------|------------|---------------------------------------------------|-----------------------|
-| Id              | Type      | Default    | Levels                                            | Range                 |
-| teststat        | character | quadratic  | quadratic, maximum                                | \-                    |
-| splitstat       | character | quadratic  | quadratic, maximum                                | \-                    |
-| splittest       | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| testtype        | character | Bonferroni | Bonferroni, MonteCarlo, Univariate, Teststatistic | \-                    |
-| nmax            | untyped   | \-         |                                                   | \-                    |
-| alpha           | numeric   | 0.05       |                                                   | \\\[0, 1\]\\          |
-| mincriterion    | numeric   | 0.95       |                                                   | \\\[0, 1\]\\          |
-| logmincriterion | numeric   | \-         |                                                   | \\(-\infty, \infty)\\ |
-| minsplit        | integer   | 20         |                                                   | \\\[1, \infty)\\      |
-| minbucket       | integer   | 7          |                                                   | \\\[1, \infty)\\      |
-| minprob         | numeric   | 0.01       |                                                   | \\\[0, \infty)\\      |
-| stump           | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| lookahead       | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| MIA             | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| nresample       | integer   | 9999       |                                                   | \\\[1, \infty)\\      |
-| tol             | numeric   | \-         |                                                   | \\\[0, \infty)\\      |
-| maxsurrogate    | integer   | 0          |                                                   | \\\[0, \infty)\\      |
-| numsurrogate    | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| mtry            | integer   | Inf        |                                                   | \\\[0, \infty)\\      |
-| maxdepth        | integer   | Inf        |                                                   | \\\[0, \infty)\\      |
-| maxvar          | integer   | \-         |                                                   | \\\[1, \infty)\\      |
-| multiway        | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| splittry        | integer   | 2          |                                                   | \\\[0, \infty)\\      |
-| intersplit      | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| majority        | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| caseweights     | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| applyfun        | untyped   | \-         |                                                   | \-                    |
-| cores           | integer   | NULL       |                                                   | \\(-\infty, \infty)\\ |
-| saveinfo        | logical   | TRUE       | TRUE, FALSE                                       | \-                    |
-| update          | logical   | FALSE      | TRUE, FALSE                                       | \-                    |
-| splitflavour    | character | ctree      | ctree, exhaustive                                 | \-                    |
-| cluster         | untyped   | \-         |                                                   | \-                    |
-| scores          | untyped   | \-         |                                                   | \-                    |
-| doFit           | logical   | TRUE       | TRUE, FALSE                                       | \-                    |
-| maxpts          | integer   | 25000      |                                                   | \\(-\infty, \infty)\\ |
-| abseps          | numeric   | 0.001      |                                                   | \\\[0, \infty)\\      |
-| releps          | numeric   | 0          |                                                   | \\\[0, \infty)\\      |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| teststat | character | quadratic | quadratic, maximum | \- |
+| splitstat | character | quadratic | quadratic, maximum | \- |
+| splittest | logical | FALSE | TRUE, FALSE | \- |
+| testtype | character | Bonferroni | Bonferroni, MonteCarlo, Univariate, Teststatistic | \- |
+| nmax | untyped | \- |  | \- |
+| alpha | numeric | 0.05 |  | \\\[0, 1\]\\ |
+| mincriterion | numeric | 0.95 |  | \\\[0, 1\]\\ |
+| logmincriterion | numeric | \- |  | \\(-\infty, \infty)\\ |
+| minsplit | integer | 20 |  | \\\[1, \infty)\\ |
+| minbucket | integer | 7 |  | \\\[1, \infty)\\ |
+| minprob | numeric | 0.01 |  | \\\[0, \infty)\\ |
+| stump | logical | FALSE | TRUE, FALSE | \- |
+| lookahead | logical | FALSE | TRUE, FALSE | \- |
+| MIA | logical | FALSE | TRUE, FALSE | \- |
+| nresample | integer | 9999 |  | \\\[1, \infty)\\ |
+| tol | numeric | \- |  | \\\[0, \infty)\\ |
+| maxsurrogate | integer | 0 |  | \\\[0, \infty)\\ |
+| numsurrogate | logical | FALSE | TRUE, FALSE | \- |
+| mtry | integer | Inf |  | \\\[0, \infty)\\ |
+| maxdepth | integer | Inf |  | \\\[0, \infty)\\ |
+| maxvar | integer | \- |  | \\\[1, \infty)\\ |
+| multiway | logical | FALSE | TRUE, FALSE | \- |
+| splittry | integer | 2 |  | \\\[0, \infty)\\ |
+| intersplit | logical | FALSE | TRUE, FALSE | \- |
+| majority | logical | FALSE | TRUE, FALSE | \- |
+| caseweights | logical | FALSE | TRUE, FALSE | \- |
+| applyfun | untyped | \- |  | \- |
+| cores | integer | NULL |  | \\(-\infty, \infty)\\ |
+| saveinfo | logical | TRUE | TRUE, FALSE | \- |
+| update | logical | FALSE | TRUE, FALSE | \- |
+| splitflavour | character | ctree | ctree, exhaustive | \- |
+| cluster | untyped | \- |  | \- |
+| scores | untyped | \- |  | \- |
+| doFit | logical | TRUE | TRUE, FALSE | \- |
+| maxpts | integer | 25000 |  | \\(-\infty, \infty)\\ |
+| abseps | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| releps | numeric | 0 |  | \\\[0, \infty)\\ |
 
 ## References
 
@@ -219,27 +219,31 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] age <= 62
-#> |   |   [3] revascdays <= 170
-#> |   |   |   [4] revasc <= 0: 77.000 (n = 40)
-#> |   |   |   [5] revasc > 0: Inf (n = 133)
-#> |   |   [6] revascdays > 170: Inf (n = 59)
-#> |   [7] age > 62
-#> |   |   [8] revascdays <= 171
-#> |   |   |   [9] revasc <= 0
-#> |   |   |   |   [10] stchange <= 0
-#> |   |   |   |   |   [11] sysbp <= 120: 9.000 (n = 17)
-#> |   |   |   |   |   [12] sysbp > 120: 88.000 (n = 35)
-#> |   |   |   |   [13] stchange > 0: 16.000 (n = 88)
-#> |   |   |   [14] revasc > 0
-#> |   |   |   |   [15] age <= 76: Inf (n = 146)
-#> |   |   |   |   [16] age > 76: 172.000 (n = 71)
-#> |   |   [17] revascdays > 171
-#> |   |   |   [18] revascdays <= 178: Inf (n = 7)
-#> |   |   |   [19] revascdays > 178: Inf (n = 74)
+#> |   [2] age <= 74
+#> |   |   [3] revascdays <= 171
+#> |   |   |   [4] revasc <= 0
+#> |   |   |   |   [5] los <= 2: 2.000 (n = 25)
+#> |   |   |   |   [6] los > 2
+#> |   |   |   |   |   [7] age <= 62
+#> |   |   |   |   |   |   [8] revascdays <= 16
+#> |   |   |   |   |   |   |   [9] revascdays <= 7: Inf (n = 14)
+#> |   |   |   |   |   |   |   [10] revascdays > 7: Inf (n = 7)
+#> |   |   |   |   |   |   [11] revascdays > 16: 77.000 (n = 8)
+#> |   |   |   |   |   [12] age > 62: 45.000 (n = 36)
+#> |   |   |   [13] revasc > 0
+#> |   |   |   |   [14] age <= 54: Inf (n = 77)
+#> |   |   |   |   [15] age > 54: Inf (n = 184)
+#> |   |   [16] revascdays > 171: Inf (n = 91)
+#> |   [17] age > 74
+#> |   |   [18] revascdays <= 173
+#> |   |   |   [19] revasc <= 0
+#> |   |   |   |   [20] stchange <= 0: 50.000 (n = 33)
+#> |   |   |   |   [21] stchange > 0: 16.000 (n = 71)
+#> |   |   |   [22] revasc > 0: Inf (n = 81)
+#> |   |   [23] revascdays > 173: Inf (n = 43)
 #> 
-#> Number of inner nodes:     9
-#> Number of terminal nodes: 10
+#> Number of inner nodes:    11
+#> Number of terminal nodes: 12
 
 
 # Make predictions for the test rows
@@ -248,5 +252,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>    0.824257 
+#>   0.7776579 
 ```

@@ -29,18 +29,18 @@ instantiated via
 
 ## Parameters
 
-|            |           |           |                                              |                  |
-|------------|-----------|-----------|----------------------------------------------|------------------|
-| Id         | Type      | Default   | Levels                                       | Range            |
-| ncomp      | integer   | \-        |                                              | \\\[1, \infty)\\ |
-| method     | character | kernelpls | kernelpls, widekernelpls, simpls, oscorespls | \-               |
-| scale      | logical   | TRUE      | TRUE, FALSE                                  | \-               |
-| center     | logical   | TRUE      | TRUE, FALSE                                  | \-               |
-| validation | character | none      | none, CV, LOO                                | \-               |
-| model      | logical   | TRUE      | TRUE, FALSE                                  | \-               |
-| x          | logical   | FALSE     | TRUE, FALSE                                  | \-               |
-| y          | logical   | FALSE     | TRUE, FALSE                                  | \-               |
-| orthScores | logical   | FALSE     | TRUE, FALSE                                  | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| ncomp | integer | \- |  | \\\[1, \infty)\\ |
+| method | character | kernelpls | kernelpls, widekernelpls, simpls, oscorespls | \- |
+| scale | logical | TRUE | TRUE, FALSE | \- |
+| center | logical | TRUE | TRUE, FALSE | \- |
+| validation | character | none | none, CV, LOO | \- |
+| model | logical | TRUE | TRUE, FALSE | \- |
+| x | logical | FALSE | TRUE, FALSE | \- |
+| y | logical | FALSE | TRUE, FALSE | \- |
+| orthScores | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 
@@ -174,5 +174,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 21.38009 
+#> 6.528388 
 ```

@@ -31,21 +31,21 @@ instantiated via
 
 ## Parameters
 
-|           |           |             |                                                                                  |                       |
-|-----------|-----------|-------------|----------------------------------------------------------------------------------|-----------------------|
-| Id        | Type      | Default     | Levels                                                                           | Range                 |
-| scaled    | untyped   | TRUE        |                                                                                  | \-                    |
-| kernel    | character | rbfdot      | rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot | \-                    |
-| sigma     | numeric   | \-          |                                                                                  | \\(-\infty, \infty)\\ |
-| degree    | numeric   | \-          |                                                                                  | \\(-\infty, \infty)\\ |
-| scale     | numeric   | \-          |                                                                                  | \\(-\infty, \infty)\\ |
-| offset    | numeric   | \-          |                                                                                  | \\(-\infty, \infty)\\ |
-| order     | numeric   | \-          |                                                                                  | \\(-\infty, \infty)\\ |
-| kpar      | untyped   | "automatic" |                                                                                  | \-                    |
-| tol       | numeric   | 0.001       |                                                                                  | \\\[0, \infty)\\      |
-| fit       | logical   | TRUE        | TRUE, FALSE                                                                      | \-                    |
-| na.action | untyped   | na.omit     |                                                                                  | \-                    |
-| coupler   | character | minpair     | minpair, pkpd                                                                    | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| scaled | untyped | TRUE |  | \- |
+| kernel | character | rbfdot | rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot | \- |
+| sigma | numeric | \- |  | \\(-\infty, \infty)\\ |
+| degree | numeric | \- |  | \\(-\infty, \infty)\\ |
+| scale | numeric | \- |  | \\(-\infty, \infty)\\ |
+| offset | numeric | \- |  | \\(-\infty, \infty)\\ |
+| order | numeric | \- |  | \\(-\infty, \infty)\\ |
+| kpar | untyped | "automatic" |  | \- |
+| tol | numeric | 0.001 |  | \\\[0, \infty)\\ |
+| fit | logical | TRUE | TRUE, FALSE | \- |
+| na.action | untyped | na.omit |  | \- |
+| coupler | character | minpair | minpair, pkpd | \- |
 
 ## References
 
@@ -172,10 +172,10 @@ print(learner$model)
 #> Problem type: classification 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0121217427578654 
+#>  Hyperparameter : sigma =  0.0111179083784217 
 #> 
 #> Number of training instances learned : 139 
-#> Train error : 0.071942446 
+#> Train error : 0.057553957 
 
 
 # Make predictions for the test rows
@@ -184,5 +184,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.2173913 
 ```

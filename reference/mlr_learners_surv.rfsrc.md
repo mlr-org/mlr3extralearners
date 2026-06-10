@@ -41,47 +41,47 @@ instantiated via
 
 ## Parameters
 
-|                |           |         |                                          |                    |
-|----------------|-----------|---------|------------------------------------------|--------------------|
-| Id             | Type      | Default | Levels                                   | Range              |
-| ntree          | integer   | 500     |                                          | \\\[1, \infty)\\   |
-| mtry           | integer   | \-      |                                          | \\\[1, \infty)\\   |
-| mtry.ratio     | numeric   | \-      |                                          | \\\[0, 1\]\\       |
-| nodesize       | integer   | 15      |                                          | \\\[1, \infty)\\   |
-| nodedepth      | integer   | \-      |                                          | \\\[1, \infty)\\   |
-| splitrule      | character | logrank | logrank, bs.gradient                     | \-                 |
-| nsplit         | integer   | 10      |                                          | \\\[0, \infty)\\   |
-| importance     | character | FALSE   | FALSE, TRUE, none, anti, permute, random | \-                 |
-| block.size     | integer   | 10      |                                          | \\\[1, \infty)\\   |
-| bootstrap      | character | by.root | by.root, by.node, none, by.user          | \-                 |
-| samptype       | character | swor    | swor, swr                                | \-                 |
-| samp           | untyped   | \-      |                                          | \-                 |
-| membership     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| sampsize       | untyped   | \-      |                                          | \-                 |
-| sampsize.ratio | numeric   | \-      |                                          | \\\[0, 1\]\\       |
-| na.action      | character | na.omit | na.omit, na.impute                       | \-                 |
-| nimpute        | integer   | 1       |                                          | \\\[1, \infty)\\   |
-| ntime          | integer   | 150     |                                          | \\\[0, \infty)\\   |
-| proximity      | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| distance       | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| forest.wt      | character | FALSE   | FALSE, TRUE, inbag, oob, all             | \-                 |
-| xvar.wt        | untyped   | \-      |                                          | \-                 |
-| split.wt       | untyped   | \-      |                                          | \-                 |
-| forest         | logical   | TRUE    | TRUE, FALSE                              | \-                 |
-| var.used       | character | FALSE   | FALSE, all.trees                         | \-                 |
-| split.depth    | character | FALSE   | FALSE, all.trees, by.tree                | \-                 |
-| seed           | integer   | \-      |                                          | \\(-\infty, -1\]\\ |
-| do.trace       | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| get.tree       | untyped   | \-      |                                          | \-                 |
-| outcome        | character | train   | train, test                              | \-                 |
-| ptn.count      | integer   | 0       |                                          | \\\[0, \infty)\\   |
-| estimator      | character | nelson  | nelson, kaplan                           | \-                 |
-| cores          | integer   | 1       |                                          | \\\[1, \infty)\\   |
-| use.uno        | logical   | TRUE    | TRUE, FALSE                              | \-                 |
-| save.memory    | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| perf.type      | character | \-      | none                                     | \-                 |
-| case.depth     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
-| marginal.xvar  | untyped   | NULL    |                                          | \-                 |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| ntree | integer | 500 |  | \\\[1, \infty)\\ |
+| mtry | integer | \- |  | \\\[1, \infty)\\ |
+| mtry.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| nodesize | integer | 15 |  | \\\[1, \infty)\\ |
+| nodedepth | integer | \- |  | \\\[1, \infty)\\ |
+| splitrule | character | logrank | logrank, bs.gradient | \- |
+| nsplit | integer | 10 |  | \\\[0, \infty)\\ |
+| importance | character | FALSE | FALSE, TRUE, none, anti, permute, random | \- |
+| block.size | integer | 10 |  | \\\[1, \infty)\\ |
+| bootstrap | character | by.root | by.root, by.node, none, by.user | \- |
+| samptype | character | swor | swor, swr | \- |
+| samp | untyped | \- |  | \- |
+| membership | logical | FALSE | TRUE, FALSE | \- |
+| sampsize | untyped | \- |  | \- |
+| sampsize.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| na.action | character | na.omit | na.omit, na.impute | \- |
+| nimpute | integer | 1 |  | \\\[1, \infty)\\ |
+| ntime | integer | 150 |  | \\\[0, \infty)\\ |
+| proximity | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| distance | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| forest.wt | character | FALSE | FALSE, TRUE, inbag, oob, all | \- |
+| xvar.wt | untyped | \- |  | \- |
+| split.wt | untyped | \- |  | \- |
+| forest | logical | TRUE | TRUE, FALSE | \- |
+| var.used | character | FALSE | FALSE, all.trees | \- |
+| split.depth | character | FALSE | FALSE, all.trees, by.tree | \- |
+| seed | integer | \- |  | \\(-\infty, -1\]\\ |
+| do.trace | logical | FALSE | TRUE, FALSE | \- |
+| get.tree | untyped | \- |  | \- |
+| outcome | character | train | train, test | \- |
+| ptn.count | integer | 0 |  | \\\[0, \infty)\\ |
+| estimator | character | nelson | nelson, kaplan | \- |
+| cores | integer | 1 |  | \\\[1, \infty)\\ |
+| use.uno | logical | TRUE | TRUE, FALSE | \- |
+| save.memory | logical | FALSE | TRUE, FALSE | \- |
+| perf.type | character | \- | none | \- |
+| case.depth | logical | FALSE | TRUE, FALSE | \- |
+| marginal.xvar | untyped | NULL |  | \- |
 
 ## Custom mlr3 parameters
 

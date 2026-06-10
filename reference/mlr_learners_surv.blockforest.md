@@ -53,21 +53,21 @@ instantiated via
 
 ## Parameters
 
-|                     |           |             |                                                              |                       |
-|---------------------|-----------|-------------|--------------------------------------------------------------|-----------------------|
-| Id                  | Type      | Default     | Levels                                                       | Range                 |
-| blocks              | untyped   | \-          |                                                              | \-                    |
-| block.method        | character | BlockForest | BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights | \-                    |
-| num.trees           | integer   | 2000        |                                                              | \\\[1, \infty)\\      |
-| mtry                | untyped   | NULL        |                                                              | \-                    |
-| nsets               | integer   | 300         |                                                              | \\\[1, \infty)\\      |
-| num.trees.pre       | integer   | 1500        |                                                              | \\\[1, \infty)\\      |
-| splitrule           | character | extratrees  | logrank, extratrees, C, maxstat                              | \-                    |
-| always.select.block | integer   | 0           |                                                              | \\\[0, 1\]\\          |
-| importance          | character | \-          | none, impurity, impurity_corrected, permutation              | \-                    |
-| num.threads         | integer   | \-          |                                                              | \\\[1, \infty)\\      |
-| seed                | integer   | NULL        |                                                              | \\(-\infty, \infty)\\ |
-| verbose             | logical   | TRUE        | TRUE, FALSE                                                  | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| blocks | untyped | \- |  | \- |
+| block.method | character | BlockForest | BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights | \- |
+| num.trees | integer | 2000 |  | \\\[1, \infty)\\ |
+| mtry | untyped | NULL |  | \- |
+| nsets | integer | 300 |  | \\\[1, \infty)\\ |
+| num.trees.pre | integer | 1500 |  | \\\[1, \infty)\\ |
+| splitrule | character | extratrees | logrank, extratrees, C, maxstat | \- |
+| always.select.block | integer | 0 |  | \\\[0, 1\]\\ |
+| importance | character | \- | none, impurity, impurity_corrected, permutation | \- |
+| num.threads | integer | \- |  | \\\[1, \infty)\\ |
+| seed | integer | NULL |  | \\(-\infty, \infty)\\ |
+| verbose | logical | TRUE | TRUE, FALSE | \- |
 
 ## References
 
@@ -207,25 +207,25 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#> revascdays     revasc        los        age   stchange      sysbp 
-#> 0.12981750 0.07518198 0.02230586 0.01922806 0.01281226 0.01036941 
+#>  revascdays      revasc         age         los       sysbp    stchange 
+#> 0.136455036 0.076215615 0.039331384 0.017562080 0.010096357 0.007255485 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids time status     crank     distr
-#>        1  180  FALSE 18.611638 <list[1]>
-#>        4    5  FALSE  7.742079 <list[1]>
-#>       12  180  FALSE 12.846139 <list[1]>
-#>      ---  ---    ---       ---       ---
-#>      996   69   TRUE 67.680088 <list[1]>
-#>      997    2   TRUE 74.555652 <list[1]>
-#>      999    3   TRUE 67.370025 <list[1]>
+#>  row_ids  time status      crank     distr
+#>        4   5.0  FALSE   6.614554 <list[1]>
+#>        6   5.0  FALSE  62.130106 <list[1]>
+#>        9 180.0  FALSE   5.365541 <list[1]>
+#>      ---   ---    ---        ---       ---
+#>      995   0.5   TRUE  76.472373 <list[1]>
+#>      997   2.0   TRUE 106.728950 <list[1]>
+#>     1000  15.0  FALSE  63.435343 <list[1]>
 
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8268795 
+#>    0.855804 
 ```

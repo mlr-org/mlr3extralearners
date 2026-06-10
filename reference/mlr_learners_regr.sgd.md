@@ -57,24 +57,24 @@ instantiated via
 
 ## Parameters
 
-|                           |           |         |             |                       |
-|---------------------------|-----------|---------|-------------|-----------------------|
-| Id                        | Type      | Default | Levels      | Range                 |
-| subset                    | untyped   | \-      |             | \-                    |
-| na.action                 | untyped   | \-      |             | \-                    |
-| F                         | character | 2       | 2, 3, 4     | \-                    |
-| L                         | numeric   | 0.01    |             | \\(-\infty, \infty)\\ |
-| R                         | numeric   | 1e-04   |             | \\(-\infty, \infty)\\ |
-| E                         | integer   | 500     |             | \\(-\infty, \infty)\\ |
-| C                         | numeric   | 0.001   |             | \\(-\infty, \infty)\\ |
-| N                         | logical   | \-      | TRUE, FALSE | \-                    |
-| M                         | logical   | \-      | TRUE, FALSE | \-                    |
-| S                         | integer   | 1       |             | \\(-\infty, \infty)\\ |
-| output_debug_info         | logical   | FALSE   | TRUE, FALSE | \-                    |
-| do_not_check_capabilities | logical   | FALSE   | TRUE, FALSE | \-                    |
-| num_decimal_places        | integer   | 2       |             | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100     |             | \\\[1, \infty)\\      |
-| options                   | untyped   | NULL    |             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| F | character | 2 | 2, 3, 4 | \- |
+| L | numeric | 0.01 |  | \\(-\infty, \infty)\\ |
+| R | numeric | 1e-04 |  | \\(-\infty, \infty)\\ |
+| E | integer | 500 |  | \\(-\infty, \infty)\\ |
+| C | numeric | 0.001 |  | \\(-\infty, \infty)\\ |
+| N | logical | \- | TRUE, FALSE | \- |
+| M | logical | \- | TRUE, FALSE | \- |
+| S | integer | 1 |  | \\(-\infty, \infty)\\ |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## See also
 
@@ -241,17 +241,17 @@ print(learner$model)
 #> 
 #> mpg = 
 #> 
-#>          0.2711 (normalized) am
-#>  +      -6.5042 (normalized) carb
-#>  +       6.5008 (normalized) cyl
-#>  +       0.502  (normalized) disp
-#>  +       6.6421 (normalized) drat
-#>  +       8.3598 (normalized) gear
-#>  +      -3.1191 (normalized) hp
-#>  +       1.0783 (normalized) qsec
-#>  +       3.8239 (normalized) vs
-#>  +      -6.5806 (normalized) wt
-#>  +      15.6819
+#>          2.5248 (normalized) am
+#>  +      -7.7974 (normalized) carb
+#>  +       4.6178 (normalized) cyl
+#>  +       2.2031 (normalized) disp
+#>  +       5.0864 (normalized) drat
+#>  +       7.3964 (normalized) gear
+#>  +      -1.5786 (normalized) hp
+#>  +       3.3474 (normalized) qsec
+#>  +       1.8161 (normalized) vs
+#>  +      -6.4623 (normalized) wt
+#>  +      15.7063
 
 
 # Make predictions for the test rows
@@ -260,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 19.59833 
+#> 16.30178 
 ```

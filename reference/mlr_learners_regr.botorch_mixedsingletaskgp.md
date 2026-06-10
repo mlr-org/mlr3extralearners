@@ -29,12 +29,12 @@ instantiated via
 
 ## Parameters
 
-|                   |           |         |                                           |
-|-------------------|-----------|---------|-------------------------------------------|
-| Id                | Type      | Default | Levels                                    |
-| device            | character | cpu     | cpu, cuda                                 |
-| input_transform   | character | \-      | normalize, standardize, log10, warp, none |
-| outcome_transform | character | \-      | standardize, log, none                    |
+|  |  |  |  |
+|----|----|----|----|
+| Id | Type | Default | Levels |
+| device | character | cpu | cpu, cuda |
+| input_transform | character | \- | normalize, standardize, log10, warp, none |
+| outcome_transform | character | \- | standardize, log, none |
 
 ## Author
 

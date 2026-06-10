@@ -54,38 +54,38 @@ instantiated via
 
 ## Parameters
 
-|                              |           |         |                                                 |                       |
-|------------------------------|-----------|---------|-------------------------------------------------|-----------------------|
-| Id                           | Type      | Default | Levels                                          | Range                 |
-| alpha                        | numeric   | 0.5     |                                                 | \\(-\infty, \infty)\\ |
-| always.split.variables       | untyped   | \-      |                                                 | \-                    |
-| holdout                      | logical   | FALSE   | TRUE, FALSE                                     | \-                    |
-| importance                   | character | \-      | none, impurity, impurity_corrected, permutation | \-                    |
-| keep.inbag                   | logical   | FALSE   | TRUE, FALSE                                     | \-                    |
-| max.depth                    | integer   | NULL    |                                                 | \\\[0, \infty)\\      |
-| min.node.size                | integer   | 5       |                                                 | \\\[1, \infty)\\      |
-| minprop                      | numeric   | 0.1     |                                                 | \\(-\infty, \infty)\\ |
-| mtry                         | integer   | \-      |                                                 | \\\[1, \infty)\\      |
-| mtry.ratio                   | numeric   | \-      |                                                 | \\\[0, 1\]\\          |
-| num.random.splits            | integer   | 1       |                                                 | \\\[1, \infty)\\      |
-| num.threads                  | integer   | 1       |                                                 | \\\[1, \infty)\\      |
-| num.trees                    | integer   | 500     |                                                 | \\\[1, \infty)\\      |
-| oob.error                    | logical   | TRUE    | TRUE, FALSE                                     | \-                    |
-| regularization.factor        | untyped   | 1       |                                                 | \-                    |
-| regularization.usedepth      | logical   | FALSE   | TRUE, FALSE                                     | \-                    |
-| replace                      | logical   | TRUE    | TRUE, FALSE                                     | \-                    |
-| respect.unordered.factors    | character | ignore  | ignore, order, partition                        | \-                    |
-| sample.fraction              | numeric   | \-      |                                                 | \\\[0, 1\]\\          |
-| save.memory                  | logical   | FALSE   | TRUE, FALSE                                     | \-                    |
-| scale.permutation.importance | logical   | FALSE   | TRUE, FALSE                                     | \-                    |
-| seed                         | integer   | NULL    |                                                 | \\(-\infty, \infty)\\ |
-| split.select.weights         | numeric   | \-      |                                                 | \\\[0, 1\]\\          |
-| splitrule                    | character | logrank | logrank, extratrees, C, maxstat                 | \-                    |
-| verbose                      | logical   | TRUE    | TRUE, FALSE                                     | \-                    |
-| write.forest                 | logical   | TRUE    | TRUE, FALSE                                     | \-                    |
-| min.bucket                   | integer   | 3       |                                                 | \\(-\infty, \infty)\\ |
-| time.interest                | integer   | NULL    |                                                 | \\\[1, \infty)\\      |
-| node.stats                   | logical   | FALSE   | TRUE, FALSE                                     | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| alpha | numeric | 0.5 |  | \\(-\infty, \infty)\\ |
+| always.split.variables | untyped | \- |  | \- |
+| holdout | logical | FALSE | TRUE, FALSE | \- |
+| importance | character | \- | none, impurity, impurity_corrected, permutation | \- |
+| keep.inbag | logical | FALSE | TRUE, FALSE | \- |
+| max.depth | integer | NULL |  | \\\[0, \infty)\\ |
+| min.node.size | integer | 5 |  | \\\[1, \infty)\\ |
+| minprop | numeric | 0.1 |  | \\(-\infty, \infty)\\ |
+| mtry | integer | \- |  | \\\[1, \infty)\\ |
+| mtry.ratio | numeric | \- |  | \\\[0, 1\]\\ |
+| num.random.splits | integer | 1 |  | \\\[1, \infty)\\ |
+| num.threads | integer | 1 |  | \\\[1, \infty)\\ |
+| num.trees | integer | 500 |  | \\\[1, \infty)\\ |
+| oob.error | logical | TRUE | TRUE, FALSE | \- |
+| regularization.factor | untyped | 1 |  | \- |
+| regularization.usedepth | logical | FALSE | TRUE, FALSE | \- |
+| replace | logical | TRUE | TRUE, FALSE | \- |
+| respect.unordered.factors | character | ignore | ignore, order, partition | \- |
+| sample.fraction | numeric | \- |  | \\\[0, 1\]\\ |
+| save.memory | logical | FALSE | TRUE, FALSE | \- |
+| scale.permutation.importance | logical | FALSE | TRUE, FALSE | \- |
+| seed | integer | NULL |  | \\(-\infty, \infty)\\ |
+| split.select.weights | numeric | \- |  | \\\[0, 1\]\\ |
+| splitrule | character | logrank | logrank, extratrees, C, maxstat | \- |
+| verbose | logical | TRUE | TRUE, FALSE | \- |
+| write.forest | logical | TRUE | TRUE, FALSE | \- |
+| min.bucket | integer | 3 |  | \\(-\infty, \infty)\\ |
+| time.interest | integer | NULL |  | \\\[1, \infty)\\ |
+| node.stats | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 

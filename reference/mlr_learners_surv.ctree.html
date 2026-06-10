@@ -5,7 +5,7 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Survival Conditional Inference Tree Learner — mlr_learners_surv.ctree"><meta name="description" content="Survival Partition Tree where a significance test is used to determine the univariate splits.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Survival Conditional Inference Tree Learner — mlr_learners_surv.ctree"><meta name="description" content="Survival Partition Tree where a significance test is used to determine the univariate splits.
 Calls partykit::ctree() from partykit."><meta property="og:description" content="Survival Partition Tree where a significance test is used to determine the univariate splits.
 Calls partykit::ctree() from partykit."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -202,27 +202,31 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 170</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0: 77.000 (n = 40)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] revasc &gt; 0: Inf (n = 133)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] revascdays &gt; 170: Inf (n = 59)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] age &gt; 62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &lt;= 171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [10] stchange &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [11] sysbp &lt;= 120: 9.000 (n = 17)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [12] sysbp &gt; 120: 88.000 (n = 35)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [13] stchange &gt; 0: 16.000 (n = 88)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [14] revasc &gt; 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [15] age &lt;= 76: Inf (n = 146)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [16] age &gt; 76: 172.000 (n = 71)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [17] revascdays &gt; 171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [18] revascdays &lt;= 178: Inf (n = 7)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [19] revascdays &gt; 178: Inf (n = 74)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 171</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 2: 2.000 (n = 25)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [7] age &lt;= 62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   [8] revascdays &lt;= 16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   [9] revascdays &lt;= 7: Inf (n = 14)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   [10] revascdays &gt; 7: Inf (n = 7)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   [11] revascdays &gt; 16: 77.000 (n = 8)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [12] age &gt; 62: 45.000 (n = 36)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [13] revasc &gt; 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [14] age &lt;= 54: Inf (n = 77)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [15] age &gt; 54: Inf (n = 184)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [16] revascdays &gt; 171: Inf (n = 91)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [17] age &gt; 74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [18] revascdays &lt;= 173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [19] revasc &lt;= 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [20] stchange &lt;= 0: 50.000 (n = 33)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [21] stchange &gt; 0: 16.000 (n = 71)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [22] revasc &gt; 0: Inf (n = 81)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [23] revascdays &gt; 173: Inf (n = 43)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:     9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 12</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -231,7 +235,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.824257 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7776579 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

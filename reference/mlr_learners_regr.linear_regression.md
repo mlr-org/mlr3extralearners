@@ -55,22 +55,22 @@ instantiated via
 
 ## Parameters
 
-|                           |           |         |             |                       |
-|---------------------------|-----------|---------|-------------|-----------------------|
-| Id                        | Type      | Default | Levels      | Range                 |
-| subset                    | untyped   | \-      |             | \-                    |
-| na.action                 | untyped   | \-      |             | \-                    |
-| S                         | character | 0       | 0, 1, 2     | \-                    |
-| C                         | logical   | FALSE   | TRUE, FALSE | \-                    |
-| R                         | numeric   | 1e-08   |             | \\(-\infty, \infty)\\ |
-| minimal                   | logical   | FALSE   | TRUE, FALSE | \-                    |
-| additional_stats          | logical   | FALSE   | TRUE, FALSE | \-                    |
-| use_qr                    | logical   | FALSE   | TRUE, FALSE | \-                    |
-| output_debug_info         | logical   | FALSE   | TRUE, FALSE | \-                    |
-| do_not_check_capabilities | logical   | FALSE   | TRUE, FALSE | \-                    |
-| num_decimal_places        | integer   | 2       |             | \\\[1, \infty)\\      |
-| batch_size                | integer   | 100     |             | \\\[1, \infty)\\      |
-| options                   | untyped   | NULL    |             | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| subset | untyped | \- |  | \- |
+| na.action | untyped | \- |  | \- |
+| S | character | 0 | 0, 1, 2 | \- |
+| C | logical | FALSE | TRUE, FALSE | \- |
+| R | numeric | 1e-08 |  | \\(-\infty, \infty)\\ |
+| minimal | logical | FALSE | TRUE, FALSE | \- |
+| additional_stats | logical | FALSE | TRUE, FALSE | \- |
+| use_qr | logical | FALSE | TRUE, FALSE | \- |
+| output_debug_info | logical | FALSE | TRUE, FALSE | \- |
+| do_not_check_capabilities | logical | FALSE | TRUE, FALSE | \- |
+| num_decimal_places | integer | 2 |  | \\\[1, \infty)\\ |
+| batch_size | integer | 100 |  | \\\[1, \infty)\\ |
+| options | untyped | NULL |  | \- |
 
 ## See also
 
@@ -238,11 +238,10 @@ print(learner$model)
 #> 
 #> mpg =
 #> 
-#>       3.6641 * am +
-#>       0.0233 * disp +
-#>       1.7329 * qsec +
-#>      -7.1622 * wt +
-#>       5.0468
+#>       3.6182 * am +
+#>       1.5977 * qsec +
+#>      -3.8708 * wt +
+#>       2.7836
 
 
 # Make predictions for the test rows
@@ -251,5 +250,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.85202 
+#> 7.046172 
 ```

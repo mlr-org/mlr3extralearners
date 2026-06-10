@@ -27,22 +27,22 @@ instantiated via
 
 ## Parameters
 
-|               |           |                |                               |                       |
-|---------------|-----------|----------------|-------------------------------|-----------------------|
-| Id            | Type      | Default        | Levels                        | Range                 |
-| family        | character | Binomial       | Binomial, AdaExp, AUC, custom | \-                    |
-| custom.family | untyped   | \-             |                               | \-                    |
-| link          | character | logit          | logit, probit                 | \-                    |
-| type          | character | adaboost       | glm, adaboost                 | \-                    |
-| center        | logical   | TRUE           | TRUE, FALSE                   | \-                    |
-| mstop         | integer   | 100            |                               | \\(-\infty, \infty)\\ |
-| nu            | numeric   | 0.1            |                               | \\(-\infty, \infty)\\ |
-| risk          | character | inbag          | inbag, oobag, none            | \-                    |
-| oobweights    | untyped   | NULL           |                               | \-                    |
-| trace         | logical   | FALSE          | TRUE, FALSE                   | \-                    |
-| stopintern    | untyped   | FALSE          |                               | \-                    |
-| na.action     | untyped   | stats::na.omit |                               | \-                    |
-| contrasts.arg | untyped   | \-             |                               | \-                    |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| family | character | Binomial | Binomial, AdaExp, AUC, custom | \- |
+| custom.family | untyped | \- |  | \- |
+| link | character | logit | logit, probit | \- |
+| type | character | adaboost | glm, adaboost | \- |
+| center | logical | TRUE | TRUE, FALSE | \- |
+| mstop | integer | 100 |  | \\(-\infty, \infty)\\ |
+| nu | numeric | 0.1 |  | \\(-\infty, \infty)\\ |
+| risk | character | inbag | inbag, oobag, none | \- |
+| oobweights | untyped | NULL |  | \- |
+| trace | logical | FALSE | TRUE, FALSE | \- |
+| stopintern | untyped | FALSE |  | \- |
+| na.action | untyped | stats::na.omit |  | \- |
+| contrasts.arg | untyped | \- |  | \- |
 
 ## Offset
 
@@ -189,21 +189,23 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.1229175 
+#> Offset:  -0.05040235 
 #> 
 #> Coefficients: 
 #> 
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#> (Intercept)          V1         V11         V12         V16         V21 
-#>   2.4890524  -2.9997691  -2.5645462  -0.5347677   0.4485879  -0.5948280 
-#>         V22         V28         V31         V36         V45         V46 
-#>  -0.1381582  -0.8415717   0.1060563   0.6094305  -0.3003898  -0.3110316 
-#>         V47         V49          V5         V52         V58 
-#>  -2.0550797  -5.6252768  -2.2285594 -20.4023415  -3.0851164 
+#>  (Intercept)           V1          V11          V12          V16          V21 
+#>   1.74132101  -2.46988513  -1.16309413  -1.53152031   0.05034270  -0.38551542 
+#>          V23          V24          V28          V29          V31          V36 
+#>  -0.25562750  -0.09757706  -0.12707990  -0.31993986   0.35217967   0.47555171 
+#>          V37           V4          V44          V45          V48          V49 
+#>   0.27477169  -0.71646322  -0.34899652  -1.28301097  -0.43277691  -4.80044718 
+#>          V52          V57          V59           V7 
+#> -11.48254822  22.63335918 -21.81750839   0.37217923 
 #> attr(,"offset")
-#> [1] -0.1229175
+#> [1] -0.05040235
 #> 
 
 
@@ -213,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.2463768 
 ```

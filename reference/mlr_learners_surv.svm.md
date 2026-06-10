@@ -38,24 +38,24 @@ instantiated via
 
 ## Parameters
 
-|             |           |            |                                                 |                       |
-|-------------|-----------|------------|-------------------------------------------------|-----------------------|
-| Id          | Type      | Default    | Levels                                          | Range                 |
-| type        | character | regression | regression, vanbelle1, vanbelle2, hybrid        | \-                    |
-| diff.meth   | character | \-         | makediff1, makediff2, makediff3                 | \-                    |
-| gamma       | numeric   | NULL       |                                                 | \\(-\infty, \infty)\\ |
-| mu          | numeric   | NULL       |                                                 | \\(-\infty, \infty)\\ |
-| opt.meth    | character | quadprog   | quadprog, ipop                                  | \-                    |
-| kernel      | character | lin_kernel | lin_kernel, add_kernel, rbf_kernel, poly_kernel | \-                    |
-| kernel.pars | untyped   | \-         |                                                 | \-                    |
-| sgf.sv      | integer   | 5          |                                                 | \\\[0, \infty)\\      |
-| sigf        | integer   | 7          |                                                 | \\\[0, \infty)\\      |
-| maxiter     | integer   | 20         |                                                 | \\\[0, \infty)\\      |
-| margin      | numeric   | 0.05       |                                                 | \\\[0, \infty)\\      |
-| bound       | numeric   | 10         |                                                 | \\\[0, \infty)\\      |
-| eig.tol     | numeric   | 1e-06      |                                                 | \\\[0, \infty)\\      |
-| conv.tol    | numeric   | 1e-07      |                                                 | \\\[0, \infty)\\      |
-| posd.tol    | numeric   | 1e-08      |                                                 | \\\[0, \infty)\\      |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| type | character | regression | regression, vanbelle1, vanbelle2, hybrid | \- |
+| diff.meth | character | \- | makediff1, makediff2, makediff3 | \- |
+| gamma | numeric | NULL |  | \\(-\infty, \infty)\\ |
+| mu | numeric | NULL |  | \\(-\infty, \infty)\\ |
+| opt.meth | character | quadprog | quadprog, ipop | \- |
+| kernel | character | lin_kernel | lin_kernel, add_kernel, rbf_kernel, poly_kernel | \- |
+| kernel.pars | untyped | \- |  | \- |
+| sgf.sv | integer | 5 |  | \\\[0, \infty)\\ |
+| sigf | integer | 7 |  | \\\[0, \infty)\\ |
+| maxiter | integer | 20 |  | \\\[0, \infty)\\ |
+| margin | numeric | 0.05 |  | \\\[0, \infty)\\ |
+| bound | numeric | 10 |  | \\\[0, \infty)\\ |
+| eig.tol | numeric | 1e-06 |  | \\\[0, \infty)\\ |
+| conv.tol | numeric | 1e-07 |  | \\\[0, \infty)\\ |
+| posd.tol | numeric | 1e-08 |  | \\\[0, \infty)\\ |
 
 ## Prediction types
 
