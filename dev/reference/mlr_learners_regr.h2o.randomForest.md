@@ -113,7 +113,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrH2ORandomForest$new()`](#method-LearnerRegrH2ORandomForest-new)
+- [`LearnerRegrH2ORandomForest$new()`](#method-LearnerRegrH2ORandomForest-initialize)
 
 - [`LearnerRegrH2ORandomForest$clone()`](#method-LearnerRegrH2ORandomForest-clone)
 
@@ -134,7 +134,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrH2ORandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -145,7 +145,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrH2ORandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -190,23 +190,23 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: drf
-#> Model ID:  DRF_model_R_1781101935297_112 
+#> Model ID:  DRF_model_R_1781102499045_112 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50               10427         4
+#> 1              50                       50               10950         4
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1         8    5.32000          7         18    11.98000
+#> 1         8    5.80000          8         18    12.82000
 #> 
 #> 
 #> H2ORegressionMetrics: drf
 #> ** Reported on training data. **
 #> ** Metrics reported on Out-Of-Bag training samples **
 #> 
-#> MSE:  4.524242
-#> RMSE:  2.127027
-#> MAE:  1.652027
-#> RMSLE:  0.1181648
-#> Mean Residual Deviance :  4.524242
+#> MSE:  5.526591
+#> RMSE:  2.35087
+#> MAE:  1.810064
+#> RMSLE:  0.1161023
+#> Mean Residual Deviance :  5.526591
 #> 
 #> 
 #> 
@@ -219,5 +219,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.54568 
+#> 8.041474 
 ```

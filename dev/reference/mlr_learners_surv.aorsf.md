@@ -152,7 +152,7 @@ bcjaeger
 
 ### Public methods
 
-- [`LearnerSurvAorsf$new()`](#method-LearnerSurvAorsf-new)
+- [`LearnerSurvAorsf$new()`](#method-LearnerSurvAorsf-initialize)
 
 - [`LearnerSurvAorsf$oob_error()`](#method-LearnerSurvAorsf-oob_error)
 
@@ -176,7 +176,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvAorsf$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -187,7 +187,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerSurvAorsf$oob_error()`
 
 OOB concordance error extracted from the model slot
 `eval_oobag$stat_values`
@@ -202,7 +202,7 @@ OOB concordance error extracted from the model slot
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvAorsf$importance()`
 
 The importance scores are extracted from the model.
 
@@ -216,7 +216,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvAorsf$clone()`
 
 The objects of this class are cloneable with this method.
 

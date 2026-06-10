@@ -119,7 +119,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrM5P$new()`](#method-LearnerRegrM5P-new)
+- [`LearnerRegrM5P$new()`](#method-LearnerRegrM5P-initialize)
 
 - [`LearnerRegrM5P$marshal()`](#method-LearnerRegrM5P-marshal)
 
@@ -144,7 +144,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrM5P$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -155,7 +155,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrM5P$marshal()`
 
 Marshal the learner's model.
 
@@ -173,7 +173,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrM5P$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -191,7 +191,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrM5P$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -235,48 +235,24 @@ print(learner$model)
 #> M5 pruned model tree:
 #> (using smoothed linear models)
 #> 
-#> hp <= 116.5 : 
-#> |   disp <= 93.35 : LM1 (2/12.961%)
-#> |   disp >  93.35 : LM2 (7/6.328%)
-#> hp >  116.5 : 
-#> |   hp <= 192.5 : 
-#> |   |   disp <= 339 : LM3 (6/5.747%)
-#> |   |   disp >  339 : LM4 (2/4.32%)
-#> |   hp >  192.5 : LM5 (4/15.713%)
+#> hp <= 94 : LM1 (6/28.444%)
+#> hp >  94 : LM2 (15/26.628%)
 #> 
 #> LM num: 1
 #> mpg = 
-#>  -0.8804 * carb 
-#>  - 0.0206 * disp 
-#>  - 0.0663 * hp 
-#>  + 35.0879
+#>  -0.9978 * carb 
+#>  - 0.0474 * disp 
+#>  + 2.7441 * drat 
+#>  + 22.8044
 #> 
 #> LM num: 2
 #> mpg = 
-#>  -0.8804 * carb 
-#>  - 0.0206 * disp 
-#>  - 0.0593 * hp 
-#>  + 33.8457
+#>  -0.6985 * carb 
+#>  - 0.0269 * disp 
+#>  + 1.9209 * drat 
+#>  + 20.7633
 #> 
-#> LM num: 3
-#> mpg = 
-#>  -1.0131 * carb 
-#>  - 0.0255 * disp 
-#>  + 27.7302
-#> 
-#> LM num: 4
-#> mpg = 
-#>  -1.0608 * carb 
-#>  - 0.0255 * disp 
-#>  + 27.9377
-#> 
-#> LM num: 5
-#> mpg = 
-#>  -1.1194 * carb 
-#>  - 0.0304 * disp 
-#>  + 29.3903
-#> 
-#> Number of Rules : 5
+#> Number of Rules : 2
 
 
 # Make predictions for the test rows
@@ -285,5 +261,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.379322 
+#>  10.0802 
 ```

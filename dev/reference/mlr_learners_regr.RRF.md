@@ -106,7 +106,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrRRF$new()`](#method-LearnerRegrRRF-new)
+- [`LearnerRegrRRF$new()`](#method-LearnerRegrRRF-initialize)
 
 - [`LearnerRegrRRF$importance()`](#method-LearnerRegrRRF-importance)
 
@@ -131,7 +131,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRRF$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -142,7 +142,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrRRF$importance()`
 
 The importance scores are extracted from the slot `importance`.
 
@@ -156,7 +156,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerRegrRRF$oob_error()`
 
 OOB errors are extracted from the model slot `mse`.
 
@@ -170,7 +170,7 @@ OOB errors are extracted from the model slot `mse`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRRF$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -218,13 +218,13 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 3
 #> 
-#>           Mean of squared residuals: 8.002711
-#>                     % Var explained: 74.23
+#>           Mean of squared residuals: 6.468165
+#>                     % Var explained: 80.57
 print(learner$importance())
-#>       disp         hp         wt        cyl       qsec       carb       drat 
-#> 149.637278 122.342775 102.856565  67.758478  60.020231  35.299607  28.485791 
+#>         wt         hp       disp        cyl       drat       qsec       carb 
+#> 148.214898 139.549293 133.500426  65.988815  61.348203  35.015157  23.862255 
 #>         vs         am       gear 
-#>   9.581435   3.815772   3.173523 
+#>  12.167788   9.652275   5.462063 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.295113 
+#> 4.676604 
 ```

@@ -55,7 +55,7 @@ instantiated via
 
 MacDonald, B., Ranjan, P., Chipman, H. (2015). “GPfit: An R package for
 fitting a Gaussian process model to deterministic simulator outputs.”
-*Journal of Statistical Software*, **64**, 1–23. ISSN 1548-7660,
+*Journal of Statistical Software*, **64**, 1–23. ISSN 1548-7660.
 [doi:10.18637/jss.v064.i12](https://doi.org/10.18637/jss.v064.i12) .
 
 ## See also
@@ -99,7 +99,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrGPfit$new()`](#method-LearnerRegrGPfit-new)
+- [`LearnerRegrGPfit$new()`](#method-LearnerRegrGPfit-initialize)
 
 - [`LearnerRegrGPfit$clone()`](#method-LearnerRegrGPfit-clone)
 
@@ -120,7 +120,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGPfit$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -131,7 +131,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGPfit$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -171,6 +171,7 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+#> Warning: did not converge in 10 iterations
 
 print(learner$model)
 #> $model
@@ -181,11 +182,11 @@ print(learner$model)
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
 #>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]  -2.110075  -1.752589   1.249957  -1.934632   0.214088   1.185799
+#> [1]  -3.000142  -2.874345   -2.49553  -2.841465  0.7371091  0.2872457
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]  -1.507496   1.281039  -1.097714  0.01040665
+#> [1]  -1.368393   1.454411  -1.616999  0.04057465
 #> 
-#> sigma^2_hat: [1] 40.28066
+#> sigma^2_hat: [1] 38.17372
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,7 +202,7 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  22.900   1.000   5.424 
+#>   1.000   4.000   8.000 460.000   4.930   5.000 264.000  22.900   1.000   5.424 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
@@ -215,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.755606 
+#>  12.5427 
 ```

@@ -91,7 +91,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerClassifSparseLDA$new()`](#method-LearnerClassifSparseLDA-new)
+- [`LearnerClassifSparseLDA$new()`](#method-LearnerClassifSparseLDA-initialize)
 
 - [`LearnerClassifSparseLDA$clone()`](#method-LearnerClassifSparseLDA-clone)
 
@@ -112,7 +112,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifSparseLDA$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -123,7 +123,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifSparseLDA$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -173,7 +173,7 @@ print(learner$model)
 #> classes = M, R 
 #> 
 #> Top 5 predictors (out of 60):
-#>  V20, V26, V46, V43, V29
+#>  V41, V37, V21, V15, V22
 
 
 # Make predictions for the test rows
@@ -182,5 +182,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3768116 
+#>  0.4347826 
 ```

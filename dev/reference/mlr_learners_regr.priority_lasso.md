@@ -118,7 +118,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerRegrPriorityLasso$new()`](#method-LearnerRegrPriorityLasso-new)
+- [`LearnerRegrPriorityLasso$new()`](#method-LearnerRegrPriorityLasso-initialize)
 
 - [`LearnerRegrPriorityLasso$selected_features()`](#method-LearnerRegrPriorityLasso-selected_features)
 
@@ -140,7 +140,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrPriorityLasso$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -151,7 +151,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerRegrPriorityLasso$selected_features()`
 
 Selected features when coef is positive
 
@@ -165,7 +165,7 @@ Selected features when coef is positive
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrPriorityLasso$clone()`
 
 The objects of this class are cloneable with this method.
 

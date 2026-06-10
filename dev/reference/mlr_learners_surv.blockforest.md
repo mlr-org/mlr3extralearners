@@ -75,7 +75,7 @@ Hornung, R., Wright, N. M (2019). “Block Forests: Random forests for
 blocks of clinical and omics covariate data.” *BMC Bioinformatics*,
 **20**(1), 1–17.
 [doi:10.1186/s12859-019-2942-y](https://doi.org/10.1186/s12859-019-2942-y)
-, <https://doi.org/10.1186/s12859-019-2942-y>.
+. <https://doi.org/10.1186/s12859-019-2942-y>.
 
 ## See also
 
@@ -118,7 +118,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvBlockForest$new()`](#method-LearnerSurvBlockForest-new)
+- [`LearnerSurvBlockForest$new()`](#method-LearnerSurvBlockForest-initialize)
 
 - [`LearnerSurvBlockForest$importance()`](#method-LearnerSurvBlockForest-importance)
 
@@ -140,7 +140,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvBlockForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -151,7 +151,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvBlockForest$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -166,7 +166,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvBlockForest$clone()`
 
 The objects of this class are cloneable with this method.
 

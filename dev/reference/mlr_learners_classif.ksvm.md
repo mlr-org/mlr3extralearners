@@ -92,7 +92,7 @@ mboecker
 
 ### Public methods
 
-- [`LearnerClassifKSVM$new()`](#method-LearnerClassifKSVM-new)
+- [`LearnerClassifKSVM$new()`](#method-LearnerClassifKSVM-initialize)
 
 - [`LearnerClassifKSVM$clone()`](#method-LearnerClassifKSVM-clone)
 
@@ -113,7 +113,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifKSVM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -124,7 +124,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifKSVM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -171,12 +171,12 @@ print(learner$model)
 #>  parameter : cost C = 1 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0146187497165276 
+#>  Hyperparameter : sigma =  0.0109978544777615 
 #> 
-#> Number of Support Vectors : 111 
+#> Number of Support Vectors : 105 
 #> 
-#> Objective Function Value : -56.4424 
-#> Training error : 0.028777 
+#> Objective Function Value : -63.5594 
+#> Training error : 0.057554 
 
 
 # Make predictions for the test rows
@@ -185,5 +185,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1594203 
+#>  0.2028986 
 ```

@@ -106,7 +106,7 @@ pierrecamilleri
 
 ### Public methods
 
-- [`LearnerRegrGam$new()`](#method-LearnerRegrGam-new)
+- [`LearnerRegrGam$new()`](#method-LearnerRegrGam-initialize)
 
 - [`LearnerRegrGam$clone()`](#method-LearnerRegrGam-clone)
 
@@ -127,7 +127,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGam$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -138,7 +138,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGam$clone()`
 
 The objects of this class are cloneable with this method.
 

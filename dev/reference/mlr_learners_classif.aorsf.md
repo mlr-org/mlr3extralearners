@@ -112,7 +112,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifObliqueRandomForest$new()`](#method-LearnerClassifObliqueRandomForest-new)
+- [`LearnerClassifObliqueRandomForest$new()`](#method-LearnerClassifObliqueRandomForest-initialize)
 
 - [`LearnerClassifObliqueRandomForest$oob_error()`](#method-LearnerClassifObliqueRandomForest-oob_error)
 
@@ -137,7 +137,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifObliqueRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -148,7 +148,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerClassifObliqueRandomForest$oob_error()`
 
 OOB concordance error extracted from the model slot
 `eval_oobag$stat_values`
@@ -163,7 +163,7 @@ OOB concordance error extracted from the model slot
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifObliqueRandomForest$importance()`
 
 The importance scores are extracted from the model.
 
@@ -177,7 +177,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifObliqueRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -227,34 +227,32 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 60
 #>    N predictors per node: 8
-#>  Average leaves per tree: 4.926
+#>  Average leaves per tree: 5.196
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.90
+#>           OOB stat value: 0.91
 #>            OOB stat type: AUC-ROC
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>         V11         V12         V36         V45         V10         V37 
-#> 0.436363636 0.363184080 0.314655172 0.314606742 0.313559322 0.272340426 
-#>         V49         V52         V46          V9          V5         V20 
-#> 0.262008734 0.247663551 0.239130435 0.220338983 0.215686275 0.207547170 
-#>         V47         V48         V21         V44         V43          V4 
-#> 0.205607477 0.191964286 0.179824561 0.179104478 0.169565217 0.155660377 
-#>         V31         V13         V19         V51         V16         V17 
-#> 0.154185022 0.146341463 0.144186047 0.121212121 0.112676056 0.111607143 
-#>         V42         V35         V38         V58         V59         V22 
-#> 0.095238095 0.095238095 0.092307692 0.090517241 0.085308057 0.083743842 
-#>         V18         V57         V39          V1         V15         V29 
-#> 0.082125604 0.071428571 0.069651741 0.069306931 0.068376068 0.066666667 
-#>         V23         V28         V32         V30         V53         V33 
-#> 0.066350711 0.064039409 0.063829787 0.061674009 0.061135371 0.054621849 
-#>         V60         V34          V8         V14         V50         V40 
-#> 0.052419355 0.048780488 0.046808511 0.040404040 0.039800995 0.039473684 
-#>          V6          V2         V25         V27         V55          V7 
-#> 0.038461538 0.036363636 0.035714286 0.034146341 0.031818182 0.031746032 
-#>         V24          V3         V26         V41         V56         V54 
-#> 0.028169014 0.024896266 0.023584906 0.022421525 0.010256410 0.009433962 
+#>        V11        V36        V12        V35        V37         V1        V21 
+#> 0.44303797 0.42660550 0.33644860 0.28384279 0.26382979 0.25000000 0.24878049 
+#>         V9        V49        V45        V10        V13        V20        V46 
+#> 0.24200913 0.22857143 0.22842640 0.21052632 0.20576132 0.20512821 0.19831224 
+#>        V52        V28        V22        V16        V29        V44        V19 
+#> 0.17351598 0.16666667 0.16256158 0.15899582 0.15350877 0.14347826 0.14159292 
+#>        V57        V48        V23         V4        V18         V8        V39 
+#> 0.13488372 0.12612613 0.12272727 0.12037037 0.11637931 0.11616162 0.11374408 
+#>        V47        V26        V17        V27        V31        V30        V43 
+#> 0.11336032 0.11162791 0.10869565 0.10126582 0.10043668 0.09722222 0.09523810 
+#>         V2        V38        V24        V15        V40        V59        V34 
+#> 0.08502024 0.08333333 0.07943925 0.07627119 0.07488987 0.07441860 0.06735751 
+#>        V51        V25        V14        V58         V7        V33        V32 
+#> 0.06329114 0.05687204 0.05633803 0.04888889 0.04716981 0.04453441 0.04435484 
+#>        V41        V50        V42        V54        V55         V5         V6 
+#> 0.04424779 0.04366812 0.04347826 0.04255319 0.03982301 0.03791469 0.03781513 
+#>        V56         V3        V60        V53 
+#> 0.03097345 0.02192982 0.02066116 0.02032520 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -262,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>   0.173913 
 ```

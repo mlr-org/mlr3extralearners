@@ -121,7 +121,7 @@ pkopper
 
 ### Public methods
 
-- [`LearnerRegrEarth$new()`](#method-LearnerRegrEarth-new)
+- [`LearnerRegrEarth$new()`](#method-LearnerRegrEarth-initialize)
 
 - [`LearnerRegrEarth$clone()`](#method-LearnerRegrEarth-clone)
 
@@ -142,7 +142,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrEarth$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -153,7 +153,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrEarth$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -194,11 +194,11 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> Selected 3 of 10 terms, and 2 of 10 predictors
+#> Selected 4 of 10 terms, and 2 of 10 predictors
 #> Termination condition: GRSq -Inf at 10 terms
-#> Importance: disp-unused, hp, wt, am-unused, carb-unused, cyl-unused, ...
-#> Number of terms at each degree of interaction: 1 2 (additive model)
-#> GCV 9.509035    RSS 115.9197    GRSq 0.7913741    RSq 0.8664794
+#> Importance: wt, qsec, am-unused, carb-unused, cyl-unused, disp-unused, ...
+#> Number of terms at each degree of interaction: 1 3 (additive model)
+#> GCV 7.488881    RSS 69.89622    GRSq 0.7543506    RSq 0.8796318
 
 
 # Make predictions for the test rows
@@ -207,5 +207,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.819319 
+#> 9.022196 
 ```

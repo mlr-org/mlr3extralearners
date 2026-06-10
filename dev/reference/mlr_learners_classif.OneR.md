@@ -113,7 +113,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerClassifOneR$new()`](#method-LearnerClassifOneR-new)
+- [`LearnerClassifOneR$new()`](#method-LearnerClassifOneR-initialize)
 
 - [`LearnerClassifOneR$marshal()`](#method-LearnerClassifOneR-marshal)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifOneR$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifOneR$marshal()`
 
 Marshal the learner's model.
 
@@ -167,7 +167,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifOneR$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -185,7 +185,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifOneR$clone()`
 
 The objects of this class are cloneable with this method.
 

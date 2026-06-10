@@ -105,7 +105,7 @@ bbayukari
 
 ### Public methods
 
-- [`LearnerClassifAbess$new()`](#method-LearnerClassifAbess-new)
+- [`LearnerClassifAbess$new()`](#method-LearnerClassifAbess-initialize)
 
 - [`LearnerClassifAbess$selected_features()`](#method-LearnerClassifAbess-selected_features)
 
@@ -127,7 +127,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifAbess$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -138,7 +138,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerClassifAbess$selected_features()`
 
 Extract the name of selected features from the model by
 [`abess::extract()`](https://abess-team.github.io/abess/reference/extract.abess.html).
@@ -153,7 +153,7 @@ The names of selected features
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifAbess$clone()`
 
 The objects of this class are cloneable with this method.
 

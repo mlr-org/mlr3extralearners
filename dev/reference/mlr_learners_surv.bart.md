@@ -151,7 +151,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvLearnerSurvBART$new()`](#method-LearnerSurvLearnerSurvBART-new)
+- [`LearnerSurvLearnerSurvBART$new()`](#method-LearnerSurvLearnerSurvBART-initialize)
 
 - [`LearnerSurvLearnerSurvBART$importance()`](#method-LearnerSurvLearnerSurvBART-importance)
 
@@ -173,7 +173,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvLearnerSurvBART$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -184,7 +184,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvLearnerSurvBART$importance()`
 
 Two types of importance scores are supported based on the value of the
 parameter `importance`:
@@ -211,7 +211,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvLearnerSurvBART$clone()`
 
 The objects of this class are cloneable with this method.
 

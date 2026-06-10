@@ -111,7 +111,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrSimpleLinearRegression$new()`](#method-LearnerRegrSimpleLinearRegression-new)
+- [`LearnerRegrSimpleLinearRegression$new()`](#method-LearnerRegrSimpleLinearRegression-initialize)
 
 - [`LearnerRegrSimpleLinearRegression$marshal()`](#method-LearnerRegrSimpleLinearRegression-marshal)
 
@@ -136,7 +136,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrSimpleLinearRegression$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -147,7 +147,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrSimpleLinearRegression$marshal()`
 
 Marshal the learner's model.
 
@@ -165,7 +165,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrSimpleLinearRegression$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -183,7 +183,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrSimpleLinearRegression$clone()`
 
 The objects of this class are cloneable with this method.
 

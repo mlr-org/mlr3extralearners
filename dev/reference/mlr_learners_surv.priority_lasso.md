@@ -140,7 +140,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvPriorityLasso$new()`](#method-LearnerSurvPriorityLasso-new)
+- [`LearnerSurvPriorityLasso$new()`](#method-LearnerSurvPriorityLasso-initialize)
 
 - [`LearnerSurvPriorityLasso$selected_features()`](#method-LearnerSurvPriorityLasso-selected_features)
 
@@ -161,7 +161,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvPriorityLasso$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -172,7 +172,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvPriorityLasso$selected_features()`
 
 Selected features, i.e. those where the coefficient is non-zero.
 
@@ -186,7 +186,7 @@ Selected features, i.e. those where the coefficient is non-zero.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvPriorityLasso$clone()`
 
 The objects of this class are cloneable with this method.
 

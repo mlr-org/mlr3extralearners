@@ -84,7 +84,7 @@ instantiated via
 ## References
 
 Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
-5–32. ISSN 1573-0565,
+5–32. ISSN 1573-0565.
 [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A%3A1010933404324)
 .
 
@@ -129,7 +129,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerRegrRandomForestSRC$new()`](#method-LearnerRegrRandomForestSRC-new)
+- [`LearnerRegrRandomForestSRC$new()`](#method-LearnerRegrRandomForestSRC-initialize)
 
 - [`LearnerRegrRandomForestSRC$importance()`](#method-LearnerRegrRandomForestSRC-importance)
 
@@ -155,7 +155,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRandomForestSRC$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -166,7 +166,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrRandomForestSRC$importance()`
 
 The importance scores are extracted from the model slot `importance`.
 
@@ -180,7 +180,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerRegrRandomForestSRC$selected_features()`
 
 Selected features are extracted from the model slot `var.used`.
 
@@ -199,7 +199,7 @@ not when prediction is required.
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerRegrRandomForestSRC$oob_error()`
 
 OOB error extracted from the model slot `err.rate`.
 
@@ -213,7 +213,7 @@ OOB error extracted from the model slot `err.rate`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRandomForestSRC$clone()`
 
 The objects of this class are cloneable with this method.
 

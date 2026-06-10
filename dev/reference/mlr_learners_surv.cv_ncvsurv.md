@@ -80,7 +80,7 @@ instantiated via
 Breheny P, Huang J (2011). “Coordinate descent algorithms for nonconvex
 penalized regression, with applications to biological feature
 selection.” *Annals of Applied Statistics*, **5**(1), 232–253. ISSN
-1932-6157, [doi:10.1214/10-AOAS388](https://doi.org/10.1214/10-AOAS388)
+1932-6157. [doi:10.1214/10-AOAS388](https://doi.org/10.1214/10-AOAS388)
 .
 
 ## See also
@@ -124,7 +124,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvNCVsurv$new()`](#method-LearnerSurvNCVsurv-new)
+- [`LearnerSurvNCVsurv$new()`](#method-LearnerSurvNCVsurv-initialize)
 
 - [`LearnerSurvNCVsurv$selected_features()`](#method-LearnerSurvNCVsurv-selected_features)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvNCVsurv$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvNCVsurv$selected_features()`
 
 Returns the set of selected features which have non-zero coefficients.
 Calls the internal `coef.cv.ncvreg()` function.
@@ -179,7 +179,7 @@ feature names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvNCVsurv$clone()`
 
 The objects of this class are cloneable with this method.
 

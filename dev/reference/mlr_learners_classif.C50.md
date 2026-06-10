@@ -64,7 +64,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerClassifC50$new()`](#method-LearnerClassifC50-new)
+- [`LearnerClassifC50$new()`](#method-LearnerClassifC50-initialize)
 
 - [`LearnerClassifC50$clone()`](#method-LearnerClassifC50-clone)
 
@@ -85,7 +85,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifC50$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -96,7 +96,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifC50$clone()`
 
 The objects of this class are cloneable with this method.
 

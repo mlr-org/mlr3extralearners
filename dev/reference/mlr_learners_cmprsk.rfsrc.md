@@ -99,7 +99,7 @@ Ishwaran, H., Gerds, A. T, Kogalur, B. U, Moore, D. R, Gange, J. S, Lau,
 M. B (2014). “Random survival forests for competing risks.”
 *Biostatistics*, **15**(4), 757–773.
 [doi:10.1093/BIOSTATISTICS/KXU010](https://doi.org/10.1093/BIOSTATISTICS/KXU010)
-, <https://doi.org/10.1093/BIOSTATISTICS/KXU010>.
+. <https://doi.org/10.1093/BIOSTATISTICS/KXU010>.
 
 ## See also
 
@@ -142,7 +142,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerCompRisksRandomForestSRC$new()`](#method-LearnerCompRisksRandomForestSRC-new)
+- [`LearnerCompRisksRandomForestSRC$new()`](#method-LearnerCompRisksRandomForestSRC-initialize)
 
 - [`LearnerCompRisksRandomForestSRC$importance()`](#method-LearnerCompRisksRandomForestSRC-importance)
 
@@ -167,7 +167,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerCompRisksRandomForestSRC$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -178,7 +178,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerCompRisksRandomForestSRC$importance()`
 
 The importance scores are extracted from the model slot `importance` and
 are cause-specific.
@@ -199,7 +199,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerCompRisksRandomForestSRC$selected_features()`
 
 Selected features are extracted from the model slot `var.used`.
 
@@ -218,7 +218,7 @@ not when prediction is required.
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerCompRisksRandomForestSRC$oob_error()`
 
 Extracts the out-of-bag (OOB) cumulative incidence function (CIF) error
 from the model's `err.rate` slot.
@@ -245,7 +245,7 @@ observed proportion of events for each cause in the training data.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerCompRisksRandomForestSRC$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -293,7 +293,7 @@ print(learner$model)
 #>                     Number of events: 1=12, 2=74
 #>                      Number of trees: 500
 #>            Forest terminal node size: 15
-#>        Average no. of terminal nodes: 8.664
+#>        Average no. of terminal nodes: 8.838
 #> No. of variables tried at each split: 5
 #>               Total no. of variables: 17
 #>        Resampling used to grow trees: swor
@@ -302,26 +302,26 @@ print(learner$model)
 #>                               Family: surv-CR
 #>                       Splitting rule: logrankCR *random*
 #>        Number of random split points: 10
-#>    (OOB) Requested performance error: 0.27902499, 0.22473543
+#>    (OOB) Requested performance error: 0.26452712, 0.26722102
 #> 
 print(learner$importance(cause = 1)) # VIMP for cause = 1
-#>         bili          age      protime      ascites        edema          ast 
-#>  0.215698237  0.157737883  0.071090046  0.037827872  0.037622256  0.035120048 
-#>         chol        stage      albumin         trig     alk.phos          trt 
-#>  0.031348775  0.020629171  0.017916229  0.008116755  0.007976542 -0.001032541 
-#>      spiders     platelet          sex       hepato       copper 
-#> -0.001087312 -0.001283437 -0.001604022 -0.003829597 -0.008968982 
+#>          bili        hepato        copper       ascites           age 
+#>  0.2122594862  0.0680040251  0.0618114747  0.0506962658  0.0404808119 
+#>       protime         edema          chol         stage           ast 
+#>  0.0397303345  0.0373758463  0.0327141850  0.0260321138  0.0235058118 
+#>       albumin      alk.phos           sex      platelet          trig 
+#>  0.0157407812  0.0080840258  0.0071128393  0.0050527521  0.0038829193 
+#>       spiders           trt 
+#> -0.0004714787 -0.0019649614 
 print(learner$importance(cause = 2)) # VIMP for cause = 2
-#>          bili           age       albumin       ascites        copper 
-#>  2.217119e-01  1.199428e-01  6.502418e-02  5.164280e-02  3.777686e-02 
-#>         edema       protime          trig         stage           ast 
-#>  3.655075e-02  3.520195e-02  1.514953e-02  1.503740e-02  9.737018e-03 
-#>          chol      platelet           sex      alk.phos           trt 
-#>  8.949317e-03  8.238653e-03  4.108875e-03  4.061198e-03  3.845495e-04 
-#>        hepato       spiders 
-#> -3.621585e-05 -9.834406e-04 
+#>         bili      ascites       copper        edema       hepato      albumin 
+#>  0.201035962  0.079324061  0.061332649  0.059640804  0.044897398  0.028842582 
+#>          age     alk.phos      protime         chol        stage         trig 
+#>  0.020653406  0.020462159  0.019846894  0.017589697  0.015198956  0.011386964 
+#>     platelet          ast      spiders          sex          trt 
+#>  0.008632355  0.007608202  0.005355866 -0.001452286 -0.001748697 
 print(learner$oob_error()) # weighted-mean across causes
-#> [1] 0.2323107
+#> [1] 0.2668451
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.9452872 
+#>  0.8783561 
 ```

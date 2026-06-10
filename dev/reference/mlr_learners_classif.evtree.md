@@ -50,7 +50,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifEvtree$new()`](#method-LearnerClassifEvtree-new)
+- [`LearnerClassifEvtree$new()`](#method-LearnerClassifEvtree-initialize)
 
 - [`LearnerClassifEvtree$clone()`](#method-LearnerClassifEvtree-clone)
 
@@ -71,7 +71,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifEvtree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -82,7 +82,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifEvtree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -135,15 +135,21 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V4 < 0.0521
-#> |   |   [3] V11 < 0.1748: R (n = 35, err = 2.9%)
-#> |   |   [4] V11 >= 0.1748
-#> |   |   |   [5] V15 < 0.5607: M (n = 37, err = 10.8%)
-#> |   |   |   [6] V15 >= 0.5607: R (n = 10, err = 10.0%)
-#> |   [7] V4 >= 0.0521: M (n = 57, err = 21.1%)
+#> |   [2] V15 < 0.5419
+#> |   |   [3] V45 < 0.1854
+#> |   |   |   [4] V10 < 0.1508: R (n = 36, err = 5.6%)
+#> |   |   |   [5] V10 >= 0.1508
+#> |   |   |   |   [6] V48 < 0.0513: R (n = 11, err = 9.1%)
+#> |   |   |   |   [7] V48 >= 0.0513: M (n = 22, err = 4.5%)
+#> |   |   [8] V45 >= 0.1854
+#> |   |   |   [9] V11 < 0.11: R (n = 7, err = 28.6%)
+#> |   |   |   [10] V11 >= 0.11: M (n = 41, err = 7.3%)
+#> |   [11] V15 >= 0.5419
+#> |   |   [12] V31 < 0.3788: M (n = 11, err = 0.0%)
+#> |   |   [13] V31 >= 0.3788: R (n = 11, err = 0.0%)
 #> 
-#> Number of inner nodes:    3
-#> Number of terminal nodes: 4
+#> Number of inner nodes:    6
+#> Number of terminal nodes: 7
 
 
 # Make predictions for the test rows
@@ -152,5 +158,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.2753623 
 ```

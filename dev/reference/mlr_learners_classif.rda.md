@@ -49,7 +49,7 @@ instantiated via
 
 Friedman JH (1989). “Regularized Discriminant Analysis.” *Journal of the
 American Statistical Association*, **84**(405), 165–175. ISSN 01621459,
-1537274X, <http://www.jstor.org/stable/2289860>.
+1537274X. <http://www.jstor.org/stable/2289860>.
 
 ## See also
 
@@ -92,7 +92,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifRda$new()`](#method-LearnerClassifRda-new)
+- [`LearnerClassifRda$new()`](#method-LearnerClassifRda-initialize)
 
 - [`LearnerClassifRda$clone()`](#method-LearnerClassifRda-clone)
 
@@ -113,7 +113,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifRda$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -124,7 +124,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifRda$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -169,16 +169,16 @@ print(learner$model)
 #> rda(formula = formula, data = data)
 #> 
 #> Regularization parameters: 
-#>     gamma    lambda 
-#> 0.1517355 0.4641689 
+#>      gamma     lambda 
+#> 0.06239921 0.57074605 
 #> 
 #> Prior probabilities of groups: 
 #>         M         R 
-#> 0.5179856 0.4820144 
+#> 0.5251799 0.4748201 
 #> 
 #> Misclassification rate: 
-#>        apparent: 1.439 %
-#> cross-validated: 14.195 %
+#>        apparent: 0.719 %
+#> cross-validated: 15.708 %
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.1594203 
 ```

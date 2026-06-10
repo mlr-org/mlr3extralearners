@@ -77,7 +77,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -120,7 +120,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerClassifMob$new()`](#method-LearnerClassifMob-new)
+- [`LearnerClassifMob$new()`](#method-LearnerClassifMob-initialize)
 
 - [`LearnerClassifMob$clone()`](#method-LearnerClassifMob-clone)
 
@@ -141,7 +141,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifMob$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -152,7 +152,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifMob$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -200,11 +200,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
 #>  row_ids     truth  response
-#>        1    benign    benign
-#>        2    benign malignant
+#>        3    benign    benign
+#>        4    benign malignant
 #>        5    benign    benign
 #>      ---       ---       ---
+#>      676 malignant malignant
+#>      677    benign    benign
 #>      679    benign    benign
-#>      682 malignant malignant
-#>      683 malignant malignant
 ```

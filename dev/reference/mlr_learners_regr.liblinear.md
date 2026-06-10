@@ -108,7 +108,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerRegrLiblineaR$new()`](#method-LearnerRegrLiblineaR-new)
+- [`LearnerRegrLiblineaR$new()`](#method-LearnerRegrLiblineaR-initialize)
 
 - [`LearnerRegrLiblineaR$clone()`](#method-LearnerRegrLiblineaR-clone)
 
@@ -129,7 +129,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrLiblineaR$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -140,7 +140,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrLiblineaR$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -188,10 +188,10 @@ print(learner$model)
 #> [1] 11
 #> 
 #> $W
-#>              am         carb       cyl        disp      drat      gear
-#> [1,] 0.07368455 -0.008880466 0.1846303 -0.03246143 0.3166306 0.3062866
-#>                hp     qsec         vs         wt       Bias
-#> [1,] -0.001700407 1.397542 0.08749106 0.07897874 0.07128688
+#>              am         carb       cyl        disp      drat     gear
+#> [1,] 0.04755348 -0.006371224 0.1617526 -0.04104208 0.2511162 0.253418
+#>              hp     qsec         vs        wt       Bias
+#> [1,] 0.01842133 1.296472 0.08678057 0.1010542 0.06199604
 #> 
 #> $Bias
 #> [1] 1
@@ -209,5 +209,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 17.89279 
+#> 11.71883 
 ```

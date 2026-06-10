@@ -135,7 +135,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrGaussianProcesses$new()`](#method-LearnerRegrGaussianProcesses-new)
+- [`LearnerRegrGaussianProcesses$new()`](#method-LearnerRegrGaussianProcesses-initialize)
 
 - [`LearnerRegrGaussianProcesses$marshal()`](#method-LearnerRegrGaussianProcesses-marshal)
 
@@ -160,7 +160,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGaussianProcesses$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -171,7 +171,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrGaussianProcesses$marshal()`
 
 Marshal the learner's model.
 
@@ -189,7 +189,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrGaussianProcesses$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -207,7 +207,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGaussianProcesses$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -255,13 +255,13 @@ print(learner$model)
 #> 
 #> All values shown based on: Normalize training data
 #> 
-#> Average Target Value : 0.4407142857142857
+#> Average Target Value : 0.4257345491388045
 #> Inverted Covariance Matrix:
-#>     Lowest Value = -0.23170314867353659
-#>     Highest Value = 0.8810732139328801
+#>     Lowest Value = -0.22418130672116837
+#>     Highest Value = 0.8806515087354744
 #> Inverted Covariance Matrix * Target-value Vector:
-#>     Lowest Value = -0.13390728095170024
-#>     Highest Value = 0.21870476896168226
+#>     Lowest Value = -0.17769661350775737
+#>     Highest Value = 0.26271698748308686
 #>  
 #> 
 
@@ -272,5 +272,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 15.92454 
+#> 9.341855 
 ```

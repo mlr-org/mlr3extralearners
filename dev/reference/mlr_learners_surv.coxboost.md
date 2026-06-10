@@ -77,7 +77,7 @@ instantiated via
 
 Binder, Harald, Schumacher, Martin (2008). “Allowing for mandatory
 covariates in boosting estimation of sparse high-dimensional survival
-models.” *BMC Bioinformatics*, **9**(1), 1-10. ISSN 14712105,
+models.” *BMC Bioinformatics*, **9**(1), 1-10. ISSN 14712105.
 [doi:10.1186/1471-2105-9-14](https://doi.org/10.1186/1471-2105-9-14) .
 
 ## See also
@@ -121,7 +121,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvCoxboost$new()`](#method-LearnerSurvCoxboost-new)
+- [`LearnerSurvCoxboost$new()`](#method-LearnerSurvCoxboost-initialize)
 
 - [`LearnerSurvCoxboost$selected_features()`](#method-LearnerSurvCoxboost-selected_features)
 
@@ -142,7 +142,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvCoxboost$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -153,7 +153,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvCoxboost$selected_features()`
 
 Returns the set of selected features which have non-zero coefficients.
 Calls the internal `coef.CoxBoost()` function.
@@ -177,7 +177,7 @@ feature names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvCoxboost$clone()`
 
 The objects of this class are cloneable with this method.
 

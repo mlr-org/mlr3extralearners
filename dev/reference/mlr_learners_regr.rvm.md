@@ -101,7 +101,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerRegrRVM$new()`](#method-LearnerRegrRVM-new)
+- [`LearnerRegrRVM$new()`](#method-LearnerRegrRVM-initialize)
 
 - [`LearnerRegrRVM$clone()`](#method-LearnerRegrRVM-clone)
 
@@ -122,7 +122,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRVM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -133,7 +133,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRVM$clone()`
 
 The objects of this class are cloneable with this method.
 

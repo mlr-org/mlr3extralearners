@@ -110,7 +110,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerRegrGBM$new()`](#method-LearnerRegrGBM-new)
+- [`LearnerRegrGBM$new()`](#method-LearnerRegrGBM-initialize)
 
 - [`LearnerRegrGBM$importance()`](#method-LearnerRegrGBM-importance)
 
@@ -133,7 +133,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -144,7 +144,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrGBM$importance()`
 
 The importance scores are extracted by
 [`gbm::relative.influence()`](https://rdrr.io/pkg/gbm/man/relative.influence.html)
@@ -160,7 +160,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGBM$clone()`
 
 The objects of this class are cloneable with this method.
 

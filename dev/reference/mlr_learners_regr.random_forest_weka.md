@@ -95,7 +95,7 @@ instantiated via
 ## References
 
 Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
-5–32. ISSN 1573-0565,
+5–32. ISSN 1573-0565.
 [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A%3A1010933404324)
 .
 
@@ -147,7 +147,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrRandomForestWeka$new()`](#method-LearnerRegrRandomForestWeka-new)
+- [`LearnerRegrRandomForestWeka$new()`](#method-LearnerRegrRandomForestWeka-initialize)
 
 - [`LearnerRegrRandomForestWeka$marshal()`](#method-LearnerRegrRandomForestWeka-marshal)
 
@@ -172,7 +172,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRandomForestWeka$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -183,7 +183,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrRandomForestWeka$marshal()`
 
 Marshal the learner's model.
 
@@ -201,7 +201,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrRandomForestWeka$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -219,7 +219,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRandomForestWeka$clone()`
 
 The objects of this class are cloneable with this method.
 

@@ -18,6 +18,8 @@ Useful links:
 
 Authors:
 
+- Sebastian Fischer <sebf.fischer@gmail.com>
+
 - Raphael Sonabend <raphaelsonabend@gmail.com>
   ([ORCID](https://orcid.org/0000-0001-9225-4654))
 

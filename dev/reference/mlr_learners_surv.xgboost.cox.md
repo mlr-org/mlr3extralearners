@@ -209,7 +209,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvXgboostCox$new()`](#method-LearnerSurvXgboostCox-new)
+- [`LearnerSurvXgboostCox$new()`](#method-LearnerSurvXgboostCox-initialize)
 
 - [`LearnerSurvXgboostCox$importance()`](#method-LearnerSurvXgboostCox-importance)
 
@@ -231,7 +231,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvXgboostCox$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -242,7 +242,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvXgboostCox$importance()`
 
 The importance scores are calculated with
 [`xgboost::xgb.importance()`](https://rdrr.io/pkg/xgboost/man/xgb.importance.html).
@@ -257,7 +257,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvXgboostCox$clone()`
 
 The objects of this class are cloneable with this method.
 

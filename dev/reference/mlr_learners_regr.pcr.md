@@ -98,7 +98,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrPcr$new()`](#method-LearnerRegrPcr-new)
+- [`LearnerRegrPcr$new()`](#method-LearnerRegrPcr-initialize)
 
 - [`LearnerRegrPcr$clone()`](#method-LearnerRegrPcr-clone)
 
@@ -119,7 +119,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrPcr$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -130,7 +130,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrPcr$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -182,5 +182,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 19.68719 
+#> 19.24426 
 ```

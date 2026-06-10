@@ -129,39 +129,37 @@ Whether the learner has been marshaled.</p></dd>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifRandomTree-new"><code>LearnerClassifRandomTree$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifRandomTree-initialize"><code>LearnerClassifRandomTree$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifRandomTree-marshal"><code>LearnerClassifRandomTree$marshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifRandomTree-unmarshal"><code>LearnerClassifRandomTree$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifRandomTree-clone"><code>LearnerClassifRandomTree$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifRandomTree-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifRandomTree-initialize"></a><div class="section">
+<h3 id="learnerclassifrandomtree-new-"><code>LearnerClassifRandomTree$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrandomtree-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.random_tree.html">LearnerClassifRandomTree</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifRandomTree-marshal"></a><div class="section">
-<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifRandomTree-marshal"></a><div class="section">
+<h3 id="learnerclassifrandomtree-marshal-"><code>LearnerClassifRandomTree$marshal()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrandomtree-marshal-"></a></h3>
 <p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifRandomTree</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
@@ -171,14 +169,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifRandomTree-unmarshal"></a><div class="section">
-<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifRandomTree-unmarshal"></a><div class="section">
+<h3 id="learnerclassifrandomtree-unmarshal-"><code>LearnerClassifRandomTree$unmarshal()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrandomtree-unmarshal-"></a></h3>
 <p>Unmarshal the learner's model.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifRandomTree</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
@@ -188,14 +186,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifRandomTree-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifRandomTree-clone"></a><div class="section">
+<h3 id="learnerclassifrandomtree-clone-"><code>LearnerClassifRandomTree$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrandomtree-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifRandomTree</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -205,6 +203,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </div>
 
 </div>
+
 
     </div>
 
@@ -238,46 +237,48 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> RandomTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==========</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &lt; 0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V49 &lt; 0.04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V12 &lt; 0.16 : R (16/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V12 &gt;= 0.16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V27 &lt; 0.74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V30 &lt; 0.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V19 &lt; 0.85 : R (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V19 &gt;= 0.85 : M (4/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V30 &gt;= 0.34 : R (12/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V27 &gt;= 0.74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V22 &lt; 0.69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V20 &lt; 0.42 : M (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V20 &gt;= 0.42 : R (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V22 &gt;= 0.69 : M (9/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V49 &gt;= 0.04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V6 &lt; 0.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V28 &lt; 0.77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V35 &lt; 0.18 : R (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V35 &gt;= 0.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V10 &lt; 0.23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V17 &lt; 0.25 : R (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V17 &gt;= 0.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   V19 &lt; 0.86 : M (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   V19 &gt;= 0.86 : R (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V10 &gt;= 0.23 : M (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V28 &gt;= 0.77 : M (15/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V6 &gt;= 0.12 : M (21/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &gt;= 0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V39 &lt; 0.31 : R (20/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V39 &gt;= 0.31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V32 &lt; 0.44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V4 &lt; 0.03 : R (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V4 &gt;= 0.03 : M (6/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V32 &gt;= 0.44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V21 &lt; 0.09 : M (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V21 &gt;= 0.09</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V24 &lt; 0.9 : R (13/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V24 &gt;= 0.9 : M (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &lt; 0.39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V18 &lt; 0.19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V3 &lt; 0.1 : R (16/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V3 &gt;= 0.1 : M (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V18 &gt;= 0.19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V32 &lt; 0.49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V12 &lt; 0.17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V53 &lt; 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V36 &lt; 0.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V21 &lt; 0.87 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V21 &gt;= 0.87 : M (5/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V36 &gt;= 0.55 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V53 &gt;= 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V43 &lt; 0.25 : R (11/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V43 &gt;= 0.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V28 &lt; 0.63 : M (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V28 &gt;= 0.63 : R (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V12 &gt;= 0.17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V52 &lt; 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V23 &lt; 0.65 : R (6/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V23 &gt;= 0.65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V21 &lt; 0.62 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V21 &gt;= 0.62 : M (7/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V52 &gt;= 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V31 &lt; 0.55 : M (26/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V31 &gt;= 0.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V31 &lt; 0.57 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V31 &gt;= 0.57 : M (3/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V32 &gt;= 0.49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V3 &lt; 0.02 : R (9/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V3 &gt;= 0.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V36 &lt; 0.49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V33 &lt; 0.45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V18 &lt; 0.27 : M (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V18 &gt;= 0.27 : R (4/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V33 &gt;= 0.45 : M (8/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V36 &gt;= 0.49 : R (11/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &gt;= 0.39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V30 &lt; 0.37 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V30 &gt;= 0.37 : M (22/0)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 41</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -286,7 +287,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

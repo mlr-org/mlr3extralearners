@@ -132,7 +132,7 @@ sebffischer
 
 ### Public methods
 
-- [`LearnerClassifGlmer$new()`](#method-LearnerClassifGlmer-new)
+- [`LearnerClassifGlmer$new()`](#method-LearnerClassifGlmer-initialize)
 
 - [`LearnerClassifGlmer$clone()`](#method-LearnerClassifGlmer-clone)
 
@@ -153,7 +153,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifGlmer$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -164,7 +164,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifGlmer$clone()`
 
 The objects of this class are cloneable with this method.
 

@@ -155,7 +155,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrSMOreg$new()`](#method-LearnerRegrSMOreg-new)
+- [`LearnerRegrSMOreg$new()`](#method-LearnerRegrSMOreg-initialize)
 
 - [`LearnerRegrSMOreg$marshal()`](#method-LearnerRegrSMOreg-marshal)
 
@@ -180,7 +180,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrSMOreg$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -191,7 +191,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrSMOreg$marshal()`
 
 Marshal the learner's model.
 
@@ -209,7 +209,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrSMOreg$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -227,7 +227,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrSMOreg$clone()`
 
 The objects of this class are cloneable with this method.
 

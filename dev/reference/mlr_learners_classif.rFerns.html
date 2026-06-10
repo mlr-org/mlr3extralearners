@@ -131,63 +131,61 @@ turns importance calculation off. To enable importance calculation by default,
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifRferns-new"><code>LearnerClassifRferns$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifRferns-initialize"><code>LearnerClassifRferns$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifRferns-importance"><code>LearnerClassifRferns$importance()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifRferns-oob_error"><code>LearnerClassifRferns$oob_error()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifRferns-clone"><code>LearnerClassifRferns$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifRferns-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifRferns-initialize"></a><div class="section">
+<h3 id="learnerclassifrferns-new-"><code>LearnerClassifRferns$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrferns-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.rFerns.html">LearnerClassifRferns</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifRferns-importance"></a><div class="section">
-<h3 id="method-importance-">Method <code>importance()</code><a class="anchor" aria-label="anchor" href="#method-importance-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifRferns-importance"></a><div class="section">
+<h3 id="learnerclassifrferns-importance-"><code>LearnerClassifRferns$importance()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrferns-importance-"></a></h3>
 <p>The importance scores are extracted from the model slot <code>importance</code>.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifRferns</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p>Named <code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric()</a></code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifRferns-oob_error"></a><div class="section">
-<h3 id="method-oob-error-">Method <code>oob_error()</code><a class="anchor" aria-label="anchor" href="#method-oob-error-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifRferns-oob_error"></a><div class="section">
+<h3 id="learnerclassifrferns-oob-error-"><code>LearnerClassifRferns$oob_error()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrferns-oob-error-"></a></h3>
 <p>OOB error is extracted from the model slot <code>oobErr</code>.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifRferns</span><span class="op">$</span><span class="fu">oob_error</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
 <p><code>numeric(1)</code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifRferns-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifRferns-clone"></a><div class="section">
+<h3 id="learnerclassifrferns-clone-"><code>LearnerClassifRferns$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassifrferns-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifRferns</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -197,6 +195,7 @@ turns importance calculation off. To enable importance calculation by default,
 </div>
 
 </div>
+
 
     </div>
 
@@ -232,33 +231,33 @@ turns importance calculation off. To enable importance calculation by default,
 <span class="r-out co"><span class="r-pr">#&gt;</span>  OOB error 23.02%; OOB confusion matrix:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          True</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Predicted  M  R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         M 58 17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         R 15 49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         M 60 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         R 15 47</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V11           V12            V9           V48           V49 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1104063853  0.1088222231  0.1050602307  0.0849941361  0.0836345719 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V10            V4           V45           V21           V47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0788692887  0.0679289783  0.0663881008  0.0572384277  0.0503401246 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V20           V46           V13            V5            V8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0483185322  0.0476616380  0.0393219901  0.0393058880  0.0388001550 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V51           V34           V44           V43           V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0376834206  0.0355510794  0.0344694226  0.0336690945  0.0333952054 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V52           V17            V3           V37            V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0332939618  0.0313140635  0.0298332054  0.0296149468  0.0280299251 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V22           V18           V33            V6           V58 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0276807095  0.0261272245  0.0237711975  0.0236605733  0.0235715417 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V7           V32           V16           V35           V27 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0208856429  0.0195208553  0.0194077053  0.0189382868  0.0181960119 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V19            V1           V28           V31           V23 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0176352276  0.0170486783  0.0159344122  0.0156660458  0.0152378707 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V50           V39           V59           V14           V53 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0118330842  0.0116504609  0.0115976569  0.0104429963  0.0103989988 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V29           V54           V26           V38           V56 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0103224222  0.0087922464  0.0087581174  0.0087343515  0.0080466734 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V55           V24           V42           V25           V57 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0068190078  0.0065205552  0.0047500075  0.0025818618  0.0012415804 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V60           V30           V40           V41           V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0010901743  0.0002757883 -0.0001791605 -0.0007590708 -0.0008028123 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V11           V10           V49           V12           V48 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1039269730  0.0902919049  0.0858252104  0.0838892360  0.0816895740 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V9           V47           V13           V46           V36 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0664462744  0.0663531065  0.0568809247  0.0536207694  0.0527306765 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V21           V51           V37           V17           V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0466403087  0.0433009170  0.0407737564  0.0376307564  0.0373541915 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V27            V5           V28           V18           V45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0324093311  0.0302378724  0.0298234961  0.0296775874  0.0283213978 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V1           V44           V42           V22           V31 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0269393157  0.0252489799  0.0251857543  0.0247134254  0.0246928333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V58           V34           V25           V52            V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0245227007  0.0239206285  0.0233516864  0.0233236882  0.0225865365 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V35           V29           V43           V14            V4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0225305911  0.0216126794  0.0214370931  0.0204044417  0.0201549700 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V15           V23           V26            V2           V54 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0194229812  0.0171425479  0.0163427236  0.0160633702  0.0159933512 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V16           V33           V24           V55           V53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0148088147  0.0131111548  0.0128634903  0.0121748203  0.0109575257 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V57           V19           V38           V59           V32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0100730102  0.0097316059  0.0097237164  0.0083291081  0.0080730707 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V30            V3           V50           V41           V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0079685054  0.0078894965  0.0077157731  0.0077023018  0.0046982195 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V7            V6           V40           V56           V39 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0039234991  0.0026306569  0.0021106743  0.0008520433 -0.0053165654 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -266,7 +265,7 @@ turns importance calculation off. To enable importance calculation by default,
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1304348 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

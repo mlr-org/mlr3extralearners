@@ -107,7 +107,7 @@ lona-k
 
 ### Public methods
 
-- [`LearnerRegrQGam$new()`](#method-LearnerRegrQGam-new)
+- [`LearnerRegrQGam$new()`](#method-LearnerRegrQGam-initialize)
 
 - [`LearnerRegrQGam$clone()`](#method-LearnerRegrQGam-clone)
 
@@ -128,7 +128,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrQGam$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -139,7 +139,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrQGam$clone()`
 
 The objects of this class are cloneable with this method.
 

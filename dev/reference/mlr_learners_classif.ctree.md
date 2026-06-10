@@ -81,7 +81,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -124,7 +124,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerClassifCTree$new()`](#method-LearnerClassifCTree-new)
+- [`LearnerClassifCTree$new()`](#method-LearnerClassifCTree-initialize)
 
 - [`LearnerClassifCTree$clone()`](#method-LearnerClassifCTree-clone)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifCTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifCTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -209,13 +209,15 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V11 <= 0.1786
-#> |   |   [3] V1 <= 0.0293: R (n = 41, err = 9.8%)
-#> |   |   [4] V1 > 0.0293: M (n = 11, err = 45.5%)
-#> |   [5] V11 > 0.1786: M (n = 87, err = 23.0%)
+#> |   [2] V11 <= 0.1579
+#> |   |   [3] V4 <= 0.0505: R (n = 37, err = 5.4%)
+#> |   |   [4] V4 > 0.0505: M (n = 10, err = 30.0%)
+#> |   [5] V11 > 0.1579
+#> |   |   [6] V17 <= 0.6687: M (n = 66, err = 15.2%)
+#> |   |   [7] V17 > 0.6687: R (n = 26, err = 42.3%)
 #> 
-#> Number of inner nodes:    2
-#> Number of terminal nodes: 3
+#> Number of inner nodes:    3
+#> Number of terminal nodes: 4
 
 
 # Make predictions for the test rows
@@ -224,5 +226,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.2898551 
 ```

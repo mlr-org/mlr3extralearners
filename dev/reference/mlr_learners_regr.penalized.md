@@ -102,7 +102,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerRegrPenalized$new()`](#method-LearnerRegrPenalized-new)
+- [`LearnerRegrPenalized$new()`](#method-LearnerRegrPenalized-initialize)
 
 - [`LearnerRegrPenalized$clone()`](#method-LearnerRegrPenalized-clone)
 
@@ -123,7 +123,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrPenalized$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -134,7 +134,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrPenalized$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -178,7 +178,7 @@ print(learner$model)
 #> Penalized linear regression object
 #> 11 regression coefficients
 #> 
-#> Loglikelihood =   -44.01079 
+#> Loglikelihood =   -40.56062 
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.673592 
+#> 27.48816 
 ```

@@ -91,7 +91,7 @@ instantiated via
 ## References
 
 Howard, Jeremy, Gugger, Sylvain (2020). “Fastai: A Layered API for Deep
-Learning.” *Information*, **11**(2), 108. ISSN 2078-2489,
+Learning.” *Information*, **11**(2), 108. ISSN 2078-2489.
 [doi:10.3390/info11020108](https://doi.org/10.3390/info11020108) .
 
 ## See also
@@ -162,7 +162,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifFastai$new()`](#method-LearnerClassifFastai-new)
+- [`LearnerClassifFastai$new()`](#method-LearnerClassifFastai-initialize)
 
 - [`LearnerClassifFastai$marshal()`](#method-LearnerClassifFastai-marshal)
 
@@ -187,7 +187,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifFastai$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -198,7 +198,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifFastai$marshal()`
 
 Marshal the learner's model.
 
@@ -216,7 +216,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifFastai$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -234,7 +234,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifFastai$clone()`
 
 The objects of this class are cloneable with this method.
 

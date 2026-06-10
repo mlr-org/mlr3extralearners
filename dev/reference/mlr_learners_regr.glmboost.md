@@ -98,7 +98,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerRegrGLMBoost$new()`](#method-LearnerRegrGLMBoost-new)
+- [`LearnerRegrGLMBoost$new()`](#method-LearnerRegrGLMBoost-initialize)
 
 - [`LearnerRegrGLMBoost$clone()`](#method-LearnerRegrGLMBoost-clone)
 
@@ -119,7 +119,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGLMBoost$new()`
 
 Create a `LearnerRegrGLMBoost` object.
 
@@ -129,7 +129,7 @@ Create a `LearnerRegrGLMBoost` object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGLMBoost$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -184,15 +184,15 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  20.30952 
+#> Offset:  20.99048 
 #> 
 #> Coefficients: 
-#> (Intercept)          am        carb        drat          hp          vs 
-#> 14.01935953  2.95082850 -0.63630826  0.30761265 -0.03799823 -0.48610215 
-#>          wt 
-#> -2.57615290 
+#>  (Intercept)           am         carb          cyl         disp         drat 
+#>  9.733783794  1.241470437 -0.391644720 -1.289025664  0.001893173  0.875371532 
+#>           hp         qsec           wt 
+#> -0.007177975  0.123579017 -2.159145423 
 #> attr(,"offset")
-#> [1] 20.30952
+#> [1] 20.99048
 #> 
 
 
@@ -202,5 +202,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  10.2731 
+#> 5.444999 
 ```

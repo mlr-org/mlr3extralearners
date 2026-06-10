@@ -49,7 +49,7 @@ Bergmeir, Christoph, Benitez, M. J (2023). “RSNNS: Neural Networks using
 the Stuttgart Neural Network Simulator (SNNS).” *R package version
 0.4-17*.
 [doi:10.32614/CRAN.package.RSNNS](https://doi.org/10.32614/CRAN.package.RSNNS)
-, <https://CRAN.R-project.org/package=RSNNS>.
+. <https://CRAN.R-project.org/package=RSNNS>.
 
 ## See also
 
@@ -92,7 +92,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerClassifMLP$new()`](#method-LearnerClassifMLP-new)
+- [`LearnerClassifMLP$new()`](#method-LearnerClassifMLP-initialize)
 
 - [`LearnerClassifMLP$clone()`](#method-LearnerClassifMLP-clone)
 
@@ -113,7 +113,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifMLP$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -124,7 +124,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifMLP$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -195,5 +195,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>   0.173913 
 ```

@@ -121,7 +121,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifSimpleLogistic$new()`](#method-LearnerClassifSimpleLogistic-new)
+- [`LearnerClassifSimpleLogistic$new()`](#method-LearnerClassifSimpleLogistic-initialize)
 
 - [`LearnerClassifSimpleLogistic$marshal()`](#method-LearnerClassifSimpleLogistic-marshal)
 
@@ -146,7 +146,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifSimpleLogistic$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -157,7 +157,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifSimpleLogistic$marshal()`
 
 Marshal the learner's model.
 
@@ -175,7 +175,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifSimpleLogistic$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -193,7 +193,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifSimpleLogistic$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -237,36 +237,16 @@ print(learner$model)
 #> SimpleLogistic:
 #> 
 #> Class M :
-#> -1.75 + 
-#> [V1] * 7.03 +
-#> [V11] * 3.66 +
-#> [V12] * 1.08 +
-#> [V16] * -0.72 +
-#> [V17] * -0.71 +
-#> [V20] * 0.76 +
-#> [V24] * 0.82 +
-#> [V31] * -1.09 +
-#> [V36] * -1.91 +
-#> [V44] * 2.63 +
-#> [V47] * 2.65 +
-#> [V5] * 3.36 +
-#> [V51] * 20
+#> -0.69 + 
+#> [V11] * 3.22 +
+#> [V36] * -1.29 +
+#> [V47] * 3.77
 #> 
 #> Class R :
-#> 1.75 + 
-#> [V1] * -7.03 +
-#> [V11] * -3.66 +
-#> [V12] * -1.08 +
-#> [V16] * 0.72 +
-#> [V17] * 0.71 +
-#> [V20] * -0.76 +
-#> [V24] * -0.82 +
-#> [V31] * 1.09 +
-#> [V36] * 1.91 +
-#> [V44] * -2.63 +
-#> [V47] * -2.65 +
-#> [V5] * -3.36 +
-#> [V51] * -20
+#> 0.69 + 
+#> [V11] * -3.22 +
+#> [V36] * 1.29 +
+#> [V47] * -3.77
 #> 
 
 
@@ -276,5 +256,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.2608696 
 ```

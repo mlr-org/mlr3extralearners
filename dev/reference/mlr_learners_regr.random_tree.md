@@ -113,7 +113,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrRandomTree$new()`](#method-LearnerRegrRandomTree-new)
+- [`LearnerRegrRandomTree$new()`](#method-LearnerRegrRandomTree-initialize)
 
 - [`LearnerRegrRandomTree$marshal()`](#method-LearnerRegrRandomTree-marshal)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRandomTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrRandomTree$marshal()`
 
 Marshal the learner's model.
 
@@ -167,7 +167,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrRandomTree$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -185,7 +185,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRandomTree$clone()`
 
 The objects of this class are cloneable with this method.
 

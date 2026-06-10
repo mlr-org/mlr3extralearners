@@ -88,7 +88,7 @@ sebffischer
 
 ### Public methods
 
-- [`LearnerRegrRSM$new()`](#method-LearnerRegrRSM-new)
+- [`LearnerRegrRSM$new()`](#method-LearnerRegrRSM-initialize)
 
 - [`LearnerRegrRSM$clone()`](#method-LearnerRegrRSM-clone)
 
@@ -109,7 +109,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRSM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -120,7 +120,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRSM$clone()`
 
 The objects of this class are cloneable with this method.
 

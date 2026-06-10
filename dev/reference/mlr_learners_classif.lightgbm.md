@@ -252,7 +252,7 @@ kapsner
 
 ### Public methods
 
-- [`LearnerClassifLightGBM$new()`](#method-LearnerClassifLightGBM-new)
+- [`LearnerClassifLightGBM$new()`](#method-LearnerClassifLightGBM-initialize)
 
 - [`LearnerClassifLightGBM$importance()`](#method-LearnerClassifLightGBM-importance)
 
@@ -275,7 +275,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifLightGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -286,7 +286,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifLightGBM$importance()`
 
 The importance scores are extracted from `lbg.importance`.
 
@@ -300,7 +300,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifLightGBM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -347,24 +347,26 @@ print(learner$model)
 #> Objective: binary
 #> Fitted to dataset with 60 columns
 print(learner$importance())
-#>          V11          V21          V52          V12          V37          V23 
-#> 0.1779920559 0.0864024486 0.0683772400 0.0526059884 0.0523209367 0.0462857560 
-#>          V49          V17          V48          V47          V45          V36 
-#> 0.0434243698 0.0412384679 0.0387398243 0.0381390540 0.0377307603 0.0351458664 
-#>          V27          V51          V39          V42           V9           V4 
-#> 0.0277955267 0.0270798895 0.0244563325 0.0201061309 0.0198007552 0.0190059231 
-#>          V20          V44          V43           V1          V55           V5 
-#> 0.0166367408 0.0135674536 0.0103299347 0.0094514885 0.0084582567 0.0072926470 
-#>          V31          V32          V46          V15          V28          V16 
-#> 0.0071170572 0.0064698422 0.0060971931 0.0060423261 0.0053447352 0.0050995098 
-#>          V57          V13          V18          V38          V22           V6 
-#> 0.0047708204 0.0045335140 0.0040752230 0.0034702300 0.0034282191 0.0034039116 
-#>          V53          V60          V10          V34          V58           V8 
-#> 0.0032061218 0.0024245615 0.0021354938 0.0019470863 0.0017886884 0.0011451814 
-#>          V24          V35          V59          V54          V26          V41 
-#> 0.0010478753 0.0009521375 0.0007937241 0.0005745016 0.0004788983 0.0003370568 
-#>          V56          V29          V30          V33 
-#> 0.0003344992 0.0002727368 0.0002187753 0.0001062329 
+#>          V11          V10          V52          V48          V49          V27 
+#> 2.015010e-01 7.825511e-02 5.562380e-02 5.142263e-02 4.847983e-02 4.206179e-02 
+#>          V45          V55          V37          V21          V51           V4 
+#> 4.006485e-02 3.715807e-02 3.014633e-02 3.009445e-02 2.671887e-02 2.507879e-02 
+#>          V12          V31          V57          V28          V17          V43 
+#> 2.471371e-02 2.411583e-02 2.188670e-02 2.137885e-02 1.893520e-02 1.767650e-02 
+#>          V36           V5          V58          V59           V1          V22 
+#> 1.715818e-02 1.557907e-02 1.505119e-02 1.170503e-02 1.101129e-02 9.895450e-03 
+#>           V9          V46          V42          V32           V2          V16 
+#> 9.421293e-03 8.606984e-03 8.602118e-03 8.587761e-03 8.131850e-03 8.123463e-03 
+#>          V19          V54          V15          V20          V29          V23 
+#> 7.475027e-03 7.454984e-03 6.631870e-03 4.115160e-03 3.671654e-03 3.394756e-03 
+#>           V6          V33          V60          V53          V44          V41 
+#> 3.372693e-03 3.219355e-03 3.214449e-03 3.169586e-03 3.059985e-03 2.925467e-03 
+#>          V24          V18           V3          V26          V13          V25 
+#> 2.838048e-03 2.817264e-03 2.746053e-03 2.398142e-03 2.190020e-03 1.616375e-03 
+#>           V8          V47          V50          V39           V7          V14 
+#> 1.301138e-03 1.266440e-03 1.115042e-03 8.132389e-04 6.344407e-04 4.447574e-04 
+#>          V30          V38          V35          V56 
+#> 2.947187e-04 2.814254e-04 2.664010e-04 8.554023e-05 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -372,5 +374,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1304348 
+#>  0.2173913 
 ```

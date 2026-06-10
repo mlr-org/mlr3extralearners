@@ -50,7 +50,7 @@ instantiated via
 ## References
 
 Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
-5–32. ISSN 1573-0565,
+5–32. ISSN 1573-0565.
 [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A%3A1010933404324)
 .
 
@@ -95,7 +95,7 @@ pat-s
 
 ### Public methods
 
-- [`LearnerRegrRandomForest$new()`](#method-LearnerRegrRandomForest-new)
+- [`LearnerRegrRandomForest$new()`](#method-LearnerRegrRandomForest-initialize)
 
 - [`LearnerRegrRandomForest$importance()`](#method-LearnerRegrRandomForest-importance)
 
@@ -120,7 +120,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -131,7 +131,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrRandomForest$importance()`
 
 The importance scores are extracted from the slot `importance`.
 Parameter 'importance' must be set to either `"mse"` or `"nodepurity"`.
@@ -146,7 +146,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerRegrRandomForest$oob_error()`
 
 OOB errors are extracted from the model slot `mse`.
 
@@ -160,7 +160,7 @@ OOB errors are extracted from the model slot `mse`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 

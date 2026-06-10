@@ -121,7 +121,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvGLMBoost$new()`](#method-LearnerSurvGLMBoost-new)
+- [`LearnerSurvGLMBoost$new()`](#method-LearnerSurvGLMBoost-initialize)
 
 - [`LearnerSurvGLMBoost$importance()`](#method-LearnerSurvGLMBoost-importance)
 
@@ -144,7 +144,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvGLMBoost$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -155,7 +155,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvGLMBoost$importance()`
 
 Importance scores are extracted with the function
 [`mboost::varimp()`](https://rdrr.io/pkg/mboost/man/varimp.html) and
@@ -177,7 +177,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvGLMBoost$selected_features()`
 
 Selected features are extracted with the function
 [`mboost::coef.glmboost()`](https://rdrr.io/pkg/mboost/man/methods.html)
@@ -198,7 +198,7 @@ makes it difficult to get the original feature names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvGLMBoost$clone()`
 
 The objects of this class are cloneable with this method.
 

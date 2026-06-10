@@ -65,7 +65,7 @@ Marc Becker
 
 ### Public methods
 
-- [`LearnerRegrBotorchFullyBayesian$new()`](#method-LearnerRegrBotorchFullyBayesian-new)
+- [`LearnerRegrBotorchFullyBayesian$new()`](#method-LearnerRegrBotorchFullyBayesian-initialize)
 
 - [`LearnerRegrBotorchFullyBayesian$marshal()`](#method-LearnerRegrBotorchFullyBayesian-marshal)
 
@@ -90,7 +90,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBotorchFullyBayesian$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -101,7 +101,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrBotorchFullyBayesian$marshal()`
 
 Marshal the learner's model.
 
@@ -115,11 +115,11 @@ Marshal the learner's model.
 
   (any)  
   Additional arguments passed to
-  [`mlr3::marshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
+  [`marshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrBotorchFullyBayesian$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -133,11 +133,11 @@ Unmarshal the learner's model.
 
   (any)  
   Additional arguments passed to
-  [`mlr3::unmarshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
+  [`unmarshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBotorchFullyBayesian$clone()`
 
 The objects of this class are cloneable with this method.
 

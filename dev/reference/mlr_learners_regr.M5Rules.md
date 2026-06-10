@@ -118,7 +118,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerRegrM5Rules$new()`](#method-LearnerRegrM5Rules-new)
+- [`LearnerRegrM5Rules$new()`](#method-LearnerRegrM5Rules-initialize)
 
 - [`LearnerRegrM5Rules$marshal()`](#method-LearnerRegrM5Rules-marshal)
 
@@ -143,7 +143,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrM5Rules$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -154,7 +154,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrM5Rules$marshal()`
 
 Marshal the learner's model.
 
@@ -172,7 +172,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrM5Rules$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -190,7 +190,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrM5Rules$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -237,27 +237,27 @@ print(learner$model)
 #> 
 #> Rule: 1
 #> IF
-#>  cyl > 5
+#>  hp > 116.5
 #> THEN
 #> 
 #> mpg = 
-#>  -0.0332 * hp 
-#>  - 3.6789 * wt 
-#>  + 36.045 [16/17.41%]
+#>  -0.0261 * hp 
+#>  - 2.5601 * wt 
+#>  + 31.1757 [14/30.246%]
 #> 
 #> Rule: 2
 #> IF
-#>  disp <= 108.05
+#>  disp > 93.35
 #> THEN
 #> 
 #> mpg = 
-#>  -0.1346 * disp 
-#>  + 41.8466 [3/21.068%]
+#>  -5.3573 * wt 
+#>  + 36.8909 [5/13.715%]
 #> 
 #> Rule: 3
 #> 
 #> mpg = 
-#>  + 22.1 [2/100%]
+#>  + 31.4 [2/100%]
 #> 
 #> 
 
@@ -268,5 +268,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.62116 
+#> 6.354826 
 ```

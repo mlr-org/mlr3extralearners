@@ -77,7 +77,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -120,7 +120,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerRegrMob$new()`](#method-LearnerRegrMob-new)
+- [`LearnerRegrMob$new()`](#method-LearnerRegrMob-initialize)
 
 - [`LearnerRegrMob$clone()`](#method-LearnerRegrMob-clone)
 
@@ -141,7 +141,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrMob$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -152,7 +152,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrMob$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -190,11 +190,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        8  24.4 23.00000
-#>       10  19.2 15.29091
-#>       12  16.4 15.29091
+#>        3  22.8  20.4381
+#>        5  18.7  20.4381
+#>        7  14.3  20.4381
 #>      ---   ---      ---
-#>       26  27.3 23.00000
-#>       28  30.4 23.00000
-#>       29  15.8 23.00000
+#>       23  15.2  20.4381
+#>       26  27.3  20.4381
+#>       30  19.7  20.4381
 ```

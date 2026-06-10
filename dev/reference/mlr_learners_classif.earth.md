@@ -120,7 +120,7 @@ pkopper
 
 ### Public methods
 
-- [`LearnerClassifEarth$new()`](#method-LearnerClassifEarth-new)
+- [`LearnerClassifEarth$new()`](#method-LearnerClassifEarth-initialize)
 
 - [`LearnerClassifEarth$clone()`](#method-LearnerClassifEarth-clone)
 
@@ -141,7 +141,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifEarth$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -152,7 +152,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifEarth$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -195,13 +195,13 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> GLM (family binomial, link logit):
 #>  nulldev  df       dev  df   devratio     AIC iters converged
-#>  192.112 138   50.1885 125      0.739   78.19     8         1
+#>  192.688 138   50.6304 124      0.737   80.63     8         1
 #> 
-#> Earth selected 14 of 21 terms, and 10 of 60 predictors
+#> Earth selected 15 of 21 terms, and 10 of 60 predictors
 #> Termination condition: RSq changed by less than 0.001 at 21 terms
-#> Importance: V11, V51, V36, V44, V17, V18, V38, V23, V28, V2, V1-unused, ...
-#> Number of terms at each degree of interaction: 1 13 (additive model)
-#> Earth GCV 0.128862    RSS 11.6291    GRSq 0.489803    RSq 0.6639408
+#> Importance: V9, V47, V16, V20, V52, V28, V31, V30, V39, V14, V1-unused, ...
+#> Number of terms at each degree of interaction: 1 14 (additive model)
+#> Earth GCV 0.1383843    RSS 12.0464    GRSq 0.4543706    RSq 0.653323
 
 
 # Make predictions for the test rows
@@ -210,5 +210,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3188406 
+#>  0.2608696 
 ```

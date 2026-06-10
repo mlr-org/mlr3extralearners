@@ -148,11 +148,11 @@ For information on how to configure the validation set, see the <em>Validation</
 Extracted from <code>model$evaluation_log</code></p></dd>
 
 
-<dt><code>internal_tuned_values</code></dt>
+    <dt><code>internal_tuned_values</code></dt>
 <dd><p>Returns the early stopped iterations if <code>early_stopping_rounds</code> was set during training.</p></dd>
 
 
-<dt><code>validate</code></dt>
+    <dt><code>validate</code></dt>
 <dd><p>How to construct the internal validation data. This parameter can be either <code>NULL</code>, a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 
 
@@ -163,52 +163,50 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifCatboost-new"><code>LearnerClassifCatboost$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifCatboost-initialize"><code>LearnerClassifCatboost$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifCatboost-importance"><code>LearnerClassifCatboost$importance()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifCatboost-clone"><code>LearnerClassifCatboost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifCatboost-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifCatboost-initialize"></a><div class="section">
+<h3 id="learnerclassifcatboost-new-"><code>LearnerClassifCatboost$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassifcatboost-new-"></a></h3>
 <p>Create a <code>LearnerClassifCatboost</code> object.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.catboost.html">LearnerClassifCatboost</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifCatboost-importance"></a><div class="section">
-<h3 id="method-importance-">Method <code>importance()</code><a class="anchor" aria-label="anchor" href="#method-importance-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifCatboost-importance"></a><div class="section">
+<h3 id="learnerclassifcatboost-importance-"><code>LearnerClassifCatboost$importance()</code><a class="anchor" aria-label="anchor" href="#learnerclassifcatboost-importance-"></a></h3>
 <p>The importance scores are calculated using
 <code><a href="https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html" class="external-link">catboost::catboost.get_feature_importance()</a></code>,
 setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifCatboost</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p>Named <code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric()</a></code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifCatboost-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifCatboost-clone"></a><div class="section">
+<h3 id="learnerclassifcatboost-clone-"><code>LearnerClassifCatboost$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassifcatboost-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifCatboost</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -218,6 +216,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 </div>
 
 </div>
+
 
     </div>
 
@@ -255,23 +254,23 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: Logloss</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 60 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V12        V48         V9        V10        V21        V27        V17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13.5938703  8.9052590  6.6952012  5.9287493  5.1998541  4.9160888  4.8551518 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V5        V20        V31        V57        V33        V40        V45 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.6546748  4.4985126  4.4977202  3.7580139  3.6327616  3.0827853  2.8937507 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V52        V30        V24        V51        V26         V7        V28 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.6625499  2.2245958  1.6511007  1.5024024  1.3849451  1.2645132  1.1967815 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V39        V11        V56        V50        V49         V4        V16 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.1707301  1.1142013  1.0788604  1.0057286  0.9209427  0.7728054  0.7242834 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V25        V47        V13         V8        V38        V19        V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.6643453  0.6626251  0.5438679  0.5089282  0.4749198  0.4661763  0.4569107 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V55         V1        V14        V15        V18         V2        V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4353927  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V23        V29         V3        V32        V34        V35        V37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V48        V17        V27        V16        V20        V31 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20.9760245 10.4130761  4.6535626  4.1212093  4.1068093  3.8586654  3.4379337 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V7        V43        V34         V5        V13         V1        V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.1669165  3.0429843  2.7103880  2.6581284  2.3681007  2.2561913  2.2026116 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V53        V23        V45        V49        V28        V12         V4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.9829525  1.9729286  1.8974367  1.8364034  1.8266273  1.6594250  1.5784350 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V39        V21        V18        V46        V37        V15        V56 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.5710994  1.5441520  1.1843109  1.1415336  1.0721717  1.0075611  0.9873999 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V54        V26        V35        V24        V19        V40        V47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.9703320  0.9676981  0.9176497  0.8825183  0.8686925  0.8406235  0.7845374 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V55        V36        V38        V10        V14        V57         V2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.6837356  0.5974125  0.4485031  0.3403313  0.3367704  0.1261568  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V22        V25        V29         V3        V30        V32        V33 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V41        V42        V43        V44        V46        V53        V54 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V41        V42        V44        V50        V51        V58        V59 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V58        V59         V6        V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V6        V60         V8         V9 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -280,7 +279,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -116,7 +116,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerClassifPriorityLasso$new()`](#method-LearnerClassifPriorityLasso-new)
+- [`LearnerClassifPriorityLasso$new()`](#method-LearnerClassifPriorityLasso-initialize)
 
 - [`LearnerClassifPriorityLasso$selected_features()`](#method-LearnerClassifPriorityLasso-selected_features)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifPriorityLasso$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerClassifPriorityLasso$selected_features()`
 
 Selected features, i.e. those where the coefficient is non-zero.
 
@@ -163,7 +163,7 @@ Selected features, i.e. those where the coefficient is non-zero.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifPriorityLasso$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -208,10 +208,8 @@ learner$train(task, row_ids = ids$train)
 
 # Selected features
 learner$selected_features()
-#>  [1] "b1.1"   "b1.2"   "b1.3"   "b1.4"   "b2.1"   "b2.3"   "b2.4"   "b3.1"  
-#>  [9] "b3.19"  "b3.2"   "b3.3"   "b3.4"   "b3.5"   "b3.7"   "b3.8"   "b3.9"  
-#> [17] "b4.607" "b4.623" "b4.641" "b4.670" "b4.79"  "b4.825" "b4.916" "b4.937"
-#> [25] "b4.97"  "b4.977"
+#>  [1] "b1.1"   "b1.2"   "b1.4"   "b2.3"   "b4.1"   "b4.123" "b4.140" "b4.269"
+#>  [9] "b4.433" "b4.549" "b4.607" "b4.748" "b4.891" "b4.977"
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -219,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3863636 
+#>  0.3787879 
 ```

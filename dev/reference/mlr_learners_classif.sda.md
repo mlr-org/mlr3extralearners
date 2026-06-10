@@ -38,8 +38,8 @@ instantiated via
 
 Ahdesmaeki, Miika, Strimmer, Korbinian (2010). “Feature selection in
 omics prediction problems using cat scores and false nondiscovery rate
-control.” *The Annals of Applied Statistics*, **4**(1). ISSN 1932-6157,
-[doi:10.1214/09-aoas277](https://doi.org/10.1214/09-aoas277) ,
+control.” *The Annals of Applied Statistics*, **4**(1). ISSN 1932-6157.
+[doi:10.1214/09-aoas277](https://doi.org/10.1214/09-aoas277) .
 <http://dx.doi.org/10.1214/09-AOAS277>.
 
 ## See also
@@ -83,7 +83,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifSda$new()`](#method-LearnerClassifSda-new)
+- [`LearnerClassifSda$new()`](#method-LearnerClassifSda-initialize)
 
 - [`LearnerClassifSda$clone()`](#method-LearnerClassifSda-clone)
 
@@ -104,7 +104,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifSda$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -115,7 +115,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifSda$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -158,55 +158,55 @@ learner$train(task, row_ids = ids$train)
 #> Number of observations: 139 
 #> Number of classes: 2 
 #> 
-#> Estimating optimal shrinkage intensity lambda.freq (frequencies): 1 
+#> Estimating optimal shrinkage intensity lambda.freq (frequencies): 0.4772 
 #> Estimating variances (pooled across classes)
-#> Estimating optimal shrinkage intensity lambda.var (variance vector): 0.0224 
+#> Estimating optimal shrinkage intensity lambda.var (variance vector): 0.0246 
 #> 
 #> 
 #> Computing inverse correlation matrix (pooled across classes)
-#> Estimating optimal shrinkage intensity lambda (correlation matrix): 0.1088 
+#> Estimating optimal shrinkage intensity lambda (correlation matrix): 0.1129 
 
 print(learner$model)
 #> $regularization
 #>       lambda   lambda.var lambda.freqs 
-#>   0.10882329   0.02240994   1.00000000 
+#>   0.11294037   0.02459139   0.47720776 
 #> 
 #> $freqs
-#>   M   R 
-#> 0.5 0.5 
+#>         M         R 
+#> 0.5319693 0.4680307 
 #> 
 #> $alpha
 #>         M         R 
-#> -5.284538  2.656742 
+#> -3.685402  1.213844 
 #> 
 #> $beta
-#>          V1        V10       V11       V12         V13       V14        V15
-#> M  6.475755  0.5995425  2.035124  1.667783 -0.04540274  0.431664  0.2096241
-#> R -6.475755 -0.5995425 -2.035124 -1.667783  0.04540274 -0.431664 -0.2096241
-#>         V16        V17        V18        V19       V2        V20        V21
-#> M -1.017762 -0.7446471  0.2358578  0.5780533  5.76242  0.3079091  0.4509186
-#> R  1.017762  0.7446471 -0.2358578 -0.5780533 -5.76242 -0.3079091 -0.4509186
-#>          V22        V23       V24        V25        V26        V27        V28
-#> M  0.2165823  0.3050291  1.304381 -0.7199358  0.3602363  0.4452565  0.1564064
-#> R -0.2165823 -0.3050291 -1.304381  0.7199358 -0.3602363 -0.4452565 -0.1564064
-#>          V29        V3       V30       V31        V32        V33       V34
-#> M  0.7425003 -8.165451  1.346448 -2.697565  0.2462608 -0.1529699 -0.563593
-#> R -0.7425003  8.165451 -1.346448  2.697565 -0.2462608  0.1529699  0.563593
-#>          V35        V36       V37        V38       V39        V4       V40
-#> M  0.6492151 -0.8632795 -2.218193  0.8328993  2.029809  8.559479 -1.487516
-#> R -0.6492151  0.8632795  2.218193 -0.8328993 -2.029809 -8.559479  1.487516
-#>          V41        V42        V43       V44        V45       V46       V47
-#> M  0.6357656  0.6810533  0.7516528  1.735981 -0.3793608  1.945963  4.017191
-#> R -0.6357656 -0.6810533 -0.7516528 -1.735981  0.3793608 -1.945963 -4.017191
-#>         V48       V49         V5       V50       V51      V52       V53
-#> M  4.137168  4.560566  0.4531699 -12.34299 -9.481463 -1.49694  2.289222
-#> R -4.137168 -4.560566 -0.4531699  12.34299  9.481463  1.49694 -2.289222
-#>         V54       V55       V56       V57       V58       V59          V6
-#> M -3.702621 -11.77647  3.301789 -7.838687  5.113754  9.322009 -0.02802959
-#> R  3.702621  11.77647 -3.301789  7.838687 -5.113754 -9.322009  0.02802959
-#>         V60        V7         V8         V9
-#> M  1.100024 -5.017902  0.5508548  0.9077097
-#> R -1.100024  5.017902 -0.5508548 -0.9077097
+#>          V1        V10       V11      V12         V13       V14        V15
+#> M -2.268629  0.2073660  2.818856  3.74828 -0.02592719 -1.245994 -0.1937456
+#> R  2.578551 -0.2356947 -3.203946 -4.26034  0.02946915  1.416212  0.2202136
+#>          V16        V17        V18        V19        V2        V20        V21
+#> M -0.8278322 -0.5331972  0.4732042  0.1972468  7.884877  0.7769046  0.5255499
+#> R  0.9409241  0.6060384 -0.5378496 -0.2241931 -8.962046 -0.8830392 -0.5973464
+#>          V22        V23        V24        V25       V26         V27        V28
+#> M  0.7120717  0.5612926  0.2849834 -0.5588728 -1.648565  0.04043186  0.7906867
+#> R -0.8093492 -0.6379719 -0.3239155  0.6352216  1.873779 -0.04595533 -0.8987041
+#>          V29        V3       V30       V31        V32        V33        V34
+#> M -0.7915155 -8.139517  1.099471 -1.380915  0.6388862  0.6266211 -0.8874557
+#> R  0.8996460  9.251473 -1.249672  1.569564 -0.7261657 -0.7122250  1.0086928
+#>          V35       V36        V37       V38        V39        V4       V40
+#> M  0.2522107 -1.407939 -0.8297501  1.612497  0.6343462  7.429152 -1.834244
+#> R -0.2866658  1.600280  0.9431040 -1.832784 -0.7210055 -8.444063  2.084823
+#>          V41         V42       V43        V44        V45       V46       V47
+#> M -0.2658599  0.08836527  1.061612 -0.8900766  0.6139369  3.160707  5.227112
+#> R  0.3021796 -0.10043703 -1.206641  1.0116718 -0.6978081 -3.592497 -5.941198
+#>         V48       V49        V5       V50       V51       V52       V53
+#> M  4.936402  3.581472  1.032866 -17.94073 -5.436372 -1.341630 -8.042503
+#> R -5.610774 -4.070744 -1.173968  20.39165  6.179045  1.524912  9.141206
+#>         V54       V55       V56        V57         V58       V59         V6
+#> M  5.169912 -10.30599  1.637745  0.2869094 -0.06096408  5.409358  0.7318378
+#> R -5.876184  11.71391 -1.861480 -0.3261047  0.06929251 -6.148341 -0.8318156
+#>          V60        V7        V8        V9
+#> M -0.8806759 -1.249238 -1.968410  1.378583
+#> R  1.0009868  1.419899  2.237318 -1.566914
 #> attr(,"class")
 #> [1] "shrinkage"
 #> 
@@ -221,5 +221,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.3043478 
 ```

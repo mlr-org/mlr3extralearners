@@ -144,7 +144,7 @@ Knowledge Discovery and Data Mining*, 785–794. ACM.
 
 Avinash B, Hyunsu C, Toby H (2022). “Survival Regression with
 Accelerated Failure Time Model in XGBoost.” *Journal of Computational
-and Graphical Statistics*. ISSN 15372715,
+and Graphical Statistics*. ISSN 15372715.
 [doi:10.1080/10618600.2022.2067548](https://doi.org/10.1080/10618600.2022.2067548)
 .
 
@@ -211,7 +211,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvXgboostAFT$new()`](#method-LearnerSurvXgboostAFT-new)
+- [`LearnerSurvXgboostAFT$new()`](#method-LearnerSurvXgboostAFT-initialize)
 
 - [`LearnerSurvXgboostAFT$importance()`](#method-LearnerSurvXgboostAFT-importance)
 
@@ -233,7 +233,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvXgboostAFT$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -244,7 +244,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvXgboostAFT$importance()`
 
 The importance scores are calculated with
 [`xgboost::xgb.importance()`](https://rdrr.io/pkg/xgboost/man/xgb.importance.html).
@@ -259,7 +259,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvXgboostAFT$clone()`
 
 The objects of this class are cloneable with this method.
 

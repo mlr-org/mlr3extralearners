@@ -129,7 +129,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvSVM$new()`](#method-LearnerSurvSVM-new)
+- [`LearnerSurvSVM$new()`](#method-LearnerSurvSVM-initialize)
 
 - [`LearnerSurvSVM$clone()`](#method-LearnerSurvSVM-clone)
 
@@ -149,7 +149,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvSVM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -160,7 +160,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvSVM$clone()`
 
 The objects of this class are cloneable with this method.
 

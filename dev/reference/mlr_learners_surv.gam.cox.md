@@ -127,7 +127,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvGamCox$new()`](#method-LearnerSurvGamCox-new)
+- [`LearnerSurvGamCox$new()`](#method-LearnerSurvGamCox-initialize)
 
 - [`LearnerSurvGamCox$clone()`](#method-LearnerSurvGamCox-clone)
 
@@ -147,7 +147,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvGamCox$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -158,7 +158,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvGamCox$clone()`
 
 The objects of this class are cloneable with this method.
 

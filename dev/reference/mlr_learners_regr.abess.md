@@ -105,7 +105,7 @@ bbayukari
 
 ### Public methods
 
-- [`LearnerRegrAbess$new()`](#method-LearnerRegrAbess-new)
+- [`LearnerRegrAbess$new()`](#method-LearnerRegrAbess-initialize)
 
 - [`LearnerRegrAbess$selected_features()`](#method-LearnerRegrAbess-selected_features)
 
@@ -127,7 +127,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrAbess$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -138,7 +138,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerRegrAbess$selected_features()`
 
 Extract the name of selected features from the model by
 [`abess::extract()`](https://abess-team.github.io/abess/reference/extract.abess.html).
@@ -153,7 +153,7 @@ The names of selected features
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrAbess$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -198,16 +198,16 @@ print(learner$model)
 #> abess.default(x = task$data(cols = task$feature_names), y = as.matrix(task$data(cols = task$target_names)), 
 #>     num.threads = 1L)
 #> 
-#>   support.size       dev      GIC
-#> 1            0 17.110907 59.63404
-#> 2            1  4.113238 32.26199
-#> 3            2  3.425128 30.98106
-#> 4            3  2.218567 24.42480
-#> 5            4  2.128909 26.12208
-#> 6            5  2.075209 28.14915
-#> 7            6  2.049385 30.44975
-#> 8            7  2.045569 32.97418
-#> 9            8  2.039768 35.47811
+#>   support.size        dev      GIC
+#> 1            0 11.7221315 51.69105
+#> 2            1  2.2537949 19.62849
+#> 3            2  1.7400721 16.75960
+#> 4            3  1.4123403 14.94092
+#> 5            4  1.1781003 13.69625
+#> 6            5  1.0913112 14.65283
+#> 7            6  1.0267198 15.93517
+#> 8            7  0.9385973 16.61424
+#> 9            8  0.8875076 18.00245
 
 
 # Make predictions for the test rows
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.683361 
+#> 14.11097 
 ```

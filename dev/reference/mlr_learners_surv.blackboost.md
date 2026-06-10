@@ -151,7 +151,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvBlackBoost$new()`](#method-LearnerSurvBlackBoost-new)
+- [`LearnerSurvBlackBoost$new()`](#method-LearnerSurvBlackBoost-initialize)
 
 - [`LearnerSurvBlackBoost$clone()`](#method-LearnerSurvBlackBoost-clone)
 
@@ -171,7 +171,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvBlackBoost$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -182,7 +182,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvBlackBoost$clone()`
 
 The objects of this class are cloneable with this method.
 

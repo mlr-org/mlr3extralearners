@@ -120,37 +120,35 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifH2OGLM-new"><code>LearnerClassifH2OGLM$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifH2OGLM-initialize"><code>LearnerClassifH2OGLM$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifH2OGLM-clone"><code>LearnerClassifH2OGLM$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifH2OGLM-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifH2OGLM-initialize"></a><div class="section">
+<h3 id="learnerclassifh-oglm-new-"><code>LearnerClassifH2OGLM$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassifh-oglm-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.h2o.glm.html">LearnerClassifH2OGLM</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifH2OGLM-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifH2OGLM-clone"></a><div class="section">
+<h3 id="learnerclassifh-oglm-clone-"><code>LearnerClassifH2OGLM$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassifh-oglm-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifH2OGLM</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -160,6 +158,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 </div>
 
 </div>
+
 
     </div>
 
@@ -193,72 +192,72 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialModel: glm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  GLM_model_R_1781101935297_56 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  GLM_model_R_1781102499045_56 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GLM Model: summary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     family  link                               regularization</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 binomial logit Elastic Net (alpha = 0.5, lambda = 0.04877 )</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     family  link                              regularization</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 binomial logit Elastic Net (alpha = 0.5, lambda = 0.0422 )</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number_of_predictors_total number_of_active_predictors number_of_iterations</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         60                          28                    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         60                          31                    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     training_frame</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 data_sid_b4eb_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 data_sid_9d28_11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: glm coefficients</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       names coefficients standardized_coefficients</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Intercept     3.423016                 -0.213625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        V1     0.000000                  0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Intercept     4.193232                 -0.284625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        V1    -1.089722                 -0.023821</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3       V10     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4       V11    -3.673049                 -0.511814</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5       V12    -1.405007                 -0.194877</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       V11    -1.806287                 -0.232238</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       V12    -3.390909                 -0.473188</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    names coefficients standardized_coefficients</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56   V59     0.000000                  0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56   V59   -43.137291                 -0.259179</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 57    V6     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58   V60     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59    V7     0.000000                  0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58   V60    -8.256180                 -0.044212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59    V7     1.865824                  0.116033</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 60    V8     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61    V9    -1.260492                 -0.161735</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61    V9    -1.106547                 -0.134481</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialMetrics: glm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.107774</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3282895</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.357067</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.1244292</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.9474886</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.9483206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.8949772</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.567808</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance:  99.26463</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AIC:  157.2646</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1115319</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3339639</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.3694801</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.1204782</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.9469854</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.9469956</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.8939709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.5519942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance:  102.7155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AIC:  166.7155</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M  R    Error     Rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M      67  6 0.082192    =6/73</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R      11 55 0.166667   =11/66</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 78 61 0.122302  =17/139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M      63 11 0.148649   =11/74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R       6 59 0.092308    =6/65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 69 70 0.122302  =17/139</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Maximum Metrics: Maximum metrics at their respective thresholds</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         metric threshold     value idx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.525933  0.866142  60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.316496  0.920680  88</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.613617  0.902256  49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.549431  0.877698  58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  0.963932  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.153603  1.000000 114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  0.963932  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.549431  0.757431  58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.492031  0.863014  66</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.525933  0.875571  60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  0.963932 73.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  0.963932 65.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.005559 73.000000 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.153603 66.000000 114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  0.963932  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  0.963932  0.984848   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.005559  1.000000 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.153603  1.000000 114</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.480613  0.874074  69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.357913  0.913043  84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.624980  0.897436  51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.514402  0.877698  63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  0.960062  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.158415  1.000000 110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  0.960062  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.480613  0.757471  69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.511685  0.876923  65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.480613  0.879522  69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  0.960062 74.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  0.960062 64.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.000885 74.000000 138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.158415 65.000000 110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  0.960062  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  0.960062  0.984615   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.000885  1.000000 138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.158415  1.000000 110</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -271,7 +270,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

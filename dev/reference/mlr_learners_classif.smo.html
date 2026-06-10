@@ -155,39 +155,37 @@ Whether the learner has been marshaled.</p></dd>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifSMO-new"><code>LearnerClassifSMO$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifSMO-initialize"><code>LearnerClassifSMO$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifSMO-marshal"><code>LearnerClassifSMO$marshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifSMO-unmarshal"><code>LearnerClassifSMO$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifSMO-clone"><code>LearnerClassifSMO$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifSMO-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifSMO-initialize"></a><div class="section">
+<h3 id="learnerclassifsmo-new-"><code>LearnerClassifSMO$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassifsmo-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.smo.html">LearnerClassifSMO</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifSMO-marshal"></a><div class="section">
-<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifSMO-marshal"></a><div class="section">
+<h3 id="learnerclassifsmo-marshal-"><code>LearnerClassifSMO$marshal()</code><a class="anchor" aria-label="anchor" href="#learnerclassifsmo-marshal-"></a></h3>
 <p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSMO</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
@@ -197,14 +195,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifSMO-unmarshal"></a><div class="section">
-<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifSMO-unmarshal"></a><div class="section">
+<h3 id="learnerclassifsmo-unmarshal-"><code>LearnerClassifSMO$unmarshal()</code><a class="anchor" aria-label="anchor" href="#learnerclassifsmo-unmarshal-"></a></h3>
 <p>Unmarshal the learner's model.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSMO</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
@@ -214,14 +212,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifSMO-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifSMO-clone"></a><div class="section">
+<h3 id="learnerclassifsmo-clone-"><code>LearnerClassifSMO$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassifsmo-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSMO</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -231,6 +229,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </div>
 
 </div>
+
 
     </div>
 
@@ -271,69 +270,69 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Machine linear: showing attribute weights, not support vectors.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         -0.8685 * (normalized) V1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5092 * (normalized) V10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1281 * (normalized) V11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8401 * (normalized) V12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1161 * (normalized) V13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1064 * (normalized) V14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5372 * (normalized) V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7824 * (normalized) V16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7577 * (normalized) V17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5512 * (normalized) V18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3198 * (normalized) V19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6295 * (normalized) V2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4969 * (normalized) V20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3373 * (normalized) V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5556 * (normalized) V22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2011 * (normalized) V23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5844 * (normalized) V24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5795 * (normalized) V25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4337 * (normalized) V26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5478 * (normalized) V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6297 * (normalized) V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2078 * (normalized) V29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1295 * (normalized) V3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4023 * (normalized) V30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.5399 * (normalized) V31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1855 * (normalized) V32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6114 * (normalized) V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7278 * (normalized) V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0942 * (normalized) V35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7534 * (normalized) V36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8954 * (normalized) V37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6551 * (normalized) V38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1196 * (normalized) V39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.288  * (normalized) V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0988 * (normalized) V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0298 * (normalized) V41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2093 * (normalized) V42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0836 * (normalized) V43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1059 * (normalized) V44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3354 * (normalized) V45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4788 * (normalized) V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5012 * (normalized) V47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6302 * (normalized) V48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7119 * (normalized) V49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4478 * (normalized) V5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.443  * (normalized) V50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5324 * (normalized) V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1011 * (normalized) V52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4359 * (normalized) V53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5266 * (normalized) V54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8363 * (normalized) V55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2311 * (normalized) V56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7764 * (normalized) V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3406 * (normalized) V58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1956 * (normalized) V59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4034 * (normalized) V6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6643 * (normalized) V60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.357  * (normalized) V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1453 * (normalized) V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5426 * (normalized) V9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.6917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         -0.5041 * (normalized) V1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7449 * (normalized) V10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3916 * (normalized) V11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0778 * (normalized) V12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6025 * (normalized) V13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3083 * (normalized) V14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.087  * (normalized) V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6755 * (normalized) V16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6709 * (normalized) V17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2805 * (normalized) V18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8781 * (normalized) V19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1525 * (normalized) V2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.165  * (normalized) V20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5701 * (normalized) V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4022 * (normalized) V22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4148 * (normalized) V23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1774 * (normalized) V24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1144 * (normalized) V25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2432 * (normalized) V26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7378 * (normalized) V27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4619 * (normalized) V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1208 * (normalized) V29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.649  * (normalized) V3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3047 * (normalized) V30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1437 * (normalized) V31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0781 * (normalized) V32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2886 * (normalized) V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.182  * (normalized) V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2415 * (normalized) V35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.863  * (normalized) V36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7669 * (normalized) V37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4171 * (normalized) V38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5889 * (normalized) V39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2701 * (normalized) V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2155 * (normalized) V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0626 * (normalized) V41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0812 * (normalized) V42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5959 * (normalized) V43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3423 * (normalized) V44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7373 * (normalized) V45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7034 * (normalized) V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1407 * (normalized) V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6603 * (normalized) V48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0012 * (normalized) V49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4698 * (normalized) V5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3726 * (normalized) V50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4744 * (normalized) V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.19   * (normalized) V52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4317 * (normalized) V53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6044 * (normalized) V54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3464 * (normalized) V55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1344 * (normalized) V56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4038 * (normalized) V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9835 * (normalized) V58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1341 * (normalized) V59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2331 * (normalized) V6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1583 * (normalized) V60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7037 * (normalized) V7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8219 * (normalized) V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9061 * (normalized) V9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.5933</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 6055 (91.123% cached)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 5817 (91.153% cached)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -344,7 +343,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

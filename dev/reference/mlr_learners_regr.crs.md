@@ -107,7 +107,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerRegrCrs$new()`](#method-LearnerRegrCrs-new)
+- [`LearnerRegrCrs$new()`](#method-LearnerRegrCrs-initialize)
 
 - [`LearnerRegrCrs$clone()`](#method-LearnerRegrCrs-clone)
 
@@ -128,7 +128,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrCrs$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -139,7 +139,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrCrs$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -193,11 +193,12 @@ predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
+#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases
 #> Warning: NaNs produced
 
 # Score the predictions
 predictions$score()
-#>     regr.mse 
-#> 2.486288e+13 
+#> regr.mse 
+#> 271667.1 
 ```

@@ -127,7 +127,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrH2OGBM$new()`](#method-LearnerRegrH2OGBM-new)
+- [`LearnerRegrH2OGBM$new()`](#method-LearnerRegrH2OGBM-initialize)
 
 - [`LearnerRegrH2OGBM$clone()`](#method-LearnerRegrH2OGBM-clone)
 
@@ -148,7 +148,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrH2OGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -159,7 +159,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrH2OGBM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -204,7 +204,7 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: gbm
-#> Model ID:  GBM_model_R_1781101935297_110 
+#> Model ID:  GBM_model_R_1781102499045_110 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
 #> 1              50                       50                4188         1
@@ -215,11 +215,11 @@ print(learner$model)
 #> H2ORegressionMetrics: gbm
 #> ** Reported on training data. **
 #> 
-#> MSE:  7.411084
-#> RMSE:  2.722331
-#> MAE:  2.200999
-#> RMSLE:  0.1193936
-#> Mean Residual Deviance :  7.411084
+#> MSE:  9.184165
+#> RMSE:  3.030539
+#> MAE:  2.427781
+#> RMSLE:  0.1475841
+#> Mean Residual Deviance :  9.184165
 #> 
 #> 
 #> 
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.666158 
+#> 17.21474 
 ```

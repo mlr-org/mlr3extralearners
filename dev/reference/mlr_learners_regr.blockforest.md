@@ -64,7 +64,7 @@ Hornung, R., Wright, N. M (2019). “Block Forests: Random forests for
 blocks of clinical and omics covariate data.” *BMC Bioinformatics*,
 **20**(1), 1–17.
 [doi:10.1186/s12859-019-2942-y](https://doi.org/10.1186/s12859-019-2942-y)
-, <https://doi.org/10.1186/s12859-019-2942-y>.
+. <https://doi.org/10.1186/s12859-019-2942-y>.
 
 ## See also
 
@@ -107,7 +107,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerRegrBlockForest$new()`](#method-LearnerRegrBlockForest-new)
+- [`LearnerRegrBlockForest$new()`](#method-LearnerRegrBlockForest-initialize)
 
 - [`LearnerRegrBlockForest$importance()`](#method-LearnerRegrBlockForest-importance)
 
@@ -130,7 +130,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBlockForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -141,7 +141,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrBlockForest$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -156,7 +156,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBlockForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -196,10 +196,10 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>         cyl          wt        disp        carb          hp          am 
-#>  9.23900153  7.21374206  6.81001720  6.31108122  4.43007056  3.47119427 
-#>        gear        drat          vs        qsec 
-#>  0.87809194  0.48950275 -0.02182732 -0.14945044 
+#>        cyl         am         wt       carb         hp       disp       drat 
+#> 11.9394962 10.6769366  5.9816950  4.4629126  2.5374563  1.3956209  1.3949878 
+#>       gear       qsec         vs 
+#>  0.0000000 -0.0128000 -0.5813867 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -207,16 +207,16 @@ pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        2  21.0 20.34776
-#>        3  22.8 26.11434
-#>        6  18.1 21.49083
+#>        3  22.8 29.14092
+#>        8  24.4 22.40970
+#>        9  22.8 22.94789
 #>      ---   ---      ---
-#>       26  27.3 29.66158
-#>       27  26.0 25.42961
-#>       29  15.8 18.65217
+#>       22  15.5 17.38557
+#>       29  15.8 19.90925
+#>       31  15.0 18.97562
 
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 5.644489 
+#> 14.34865 
 ```

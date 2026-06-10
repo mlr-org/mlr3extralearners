@@ -88,7 +88,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifMda$new()`](#method-LearnerClassifMda-new)
+- [`LearnerClassifMda$new()`](#method-LearnerClassifMda-initialize)
 
 - [`LearnerClassifMda$clone()`](#method-LearnerClassifMda-clone)
 
@@ -109,7 +109,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifMda$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -120,7 +120,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifMda$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -168,13 +168,13 @@ print(learner$model)
 #> 
 #> Percent Between-Group Variance Explained:
 #>     v1     v2     v3     v4     v5 
-#>  52.26  70.44  87.85  95.30 100.00 
+#>  50.50  76.05  88.47  94.40 100.00 
 #> 
 #> Degrees of Freedom (per dimension): 61 
 #> 
-#> Training Misclassification Error: 0.02158 ( N = 139 )
+#> Training Misclassification Error: 0.01439 ( N = 139 )
 #> 
-#> Deviance: 13.592 
+#> Deviance: 17.673 
 
 
 # Make predictions for the test rows
@@ -183,5 +183,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.2463768 
 ```

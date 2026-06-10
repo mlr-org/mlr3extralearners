@@ -61,7 +61,7 @@ Hornung, R., Wright, N. M (2019). “Block Forests: Random forests for
 blocks of clinical and omics covariate data.” *BMC Bioinformatics*,
 **20**(1), 1–17.
 [doi:10.1186/s12859-019-2942-y](https://doi.org/10.1186/s12859-019-2942-y)
-, <https://doi.org/10.1186/s12859-019-2942-y>.
+. <https://doi.org/10.1186/s12859-019-2942-y>.
 
 ## See also
 
@@ -104,7 +104,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerClassifBlockForest$new()`](#method-LearnerClassifBlockForest-new)
+- [`LearnerClassifBlockForest$new()`](#method-LearnerClassifBlockForest-initialize)
 
 - [`LearnerClassifBlockForest$importance()`](#method-LearnerClassifBlockForest-importance)
 
@@ -127,7 +127,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifBlockForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -138,7 +138,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifBlockForest$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -153,7 +153,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifBlockForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -197,30 +197,30 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>           V11           V12           V49           V10           V23 
-#>  2.518486e-02  1.836189e-02  1.255891e-02  1.215333e-02  8.593173e-03 
-#>            V4            V9           V48           V37           V52 
-#>  8.091093e-03  8.071717e-03  7.428911e-03  6.520137e-03  6.017052e-03 
-#>           V28           V16           V43           V35           V36 
-#>  5.279799e-03  4.893949e-03  4.704207e-03  4.512209e-03  4.379729e-03 
-#>           V13            V2           V27           V51           V18 
-#>  4.228193e-03  3.888750e-03  3.874989e-03  3.374025e-03  3.095184e-03 
-#>           V21           V47           V20           V26           V22 
-#>  3.079271e-03  3.063573e-03  3.015526e-03  3.001243e-03  2.970408e-03 
-#>            V5           V46           V17           V25           V44 
-#>  2.652028e-03  1.847357e-03  1.796716e-03  1.666667e-03  1.630680e-03 
-#>            V1           V45           V29           V33           V55 
-#>  1.524361e-03  1.326511e-03  1.299991e-03  1.224830e-03  1.096926e-03 
-#>           V14           V19           V24           V34           V50 
-#>  1.020372e-03  8.446094e-04  8.386184e-04  7.016431e-04  6.871724e-04 
-#>            V7           V38           V39           V30           V41 
-#>  6.596010e-04  5.262105e-04  2.285914e-04  1.842377e-04  7.027328e-05 
-#>           V56           V31            V6           V32           V53 
-#>  4.855610e-05 -1.685686e-05 -6.916202e-05 -4.081633e-04 -4.098980e-04 
-#>           V57            V3           V40           V54           V42 
-#> -8.297361e-04 -8.633288e-04 -9.142900e-04 -9.873399e-04 -1.553301e-03 
-#>            V8           V58           V15           V59           V60 
-#> -1.566136e-03 -1.739487e-03 -2.068885e-03 -2.317532e-03 -2.748677e-03 
+#>           V12           V10           V11            V9           V48 
+#>  2.467812e-02  1.693477e-02  1.430006e-02  1.153365e-02  1.113880e-02 
+#>           V36           V37            V4           V23           V16 
+#>  9.570694e-03  7.956822e-03  7.673649e-03  7.255807e-03  5.961789e-03 
+#>           V28           V22           V47           V49           V32 
+#>  5.190480e-03  5.091811e-03  4.869703e-03  4.344197e-03  4.199487e-03 
+#>           V31            V5           V25           V15            V7 
+#>  4.186003e-03  3.771192e-03  3.708870e-03  3.303584e-03  3.250094e-03 
+#>           V21           V19           V51           V26           V17 
+#>  3.067984e-03  3.000624e-03  2.981109e-03  2.816906e-03  2.767923e-03 
+#>           V55           V13           V39           V27           V59 
+#>  2.378917e-03  2.310717e-03  2.176463e-03  2.176193e-03  2.172237e-03 
+#>           V35            V8           V40           V54           V24 
+#>  2.125813e-03  2.113871e-03  2.105229e-03  1.986805e-03  1.969537e-03 
+#>           V46           V60           V45           V38           V20 
+#>  1.692432e-03  1.416058e-03  1.314347e-03  1.168567e-03  1.152396e-03 
+#>           V44            V2           V56           V29           V34 
+#>  1.094636e-03  1.033702e-03  8.195394e-04  6.625346e-04  5.936613e-04 
+#>           V42           V52           V18           V50           V43 
+#>  5.622418e-04  5.219366e-04  4.609496e-04  9.180033e-05  1.802402e-05 
+#>           V14            V3           V53           V30           V41 
+#> -1.493056e-05 -1.060201e-04 -1.452169e-04 -4.545455e-04 -1.128140e-03 
+#>           V33            V1           V58            V6           V57 
+#> -1.160882e-03 -1.325528e-03 -1.787850e-03 -1.843338e-03 -1.870007e-03 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -228,16 +228,16 @@ pred
 #> 
 #> ── <PredictionClassif> for 69 observations: ────────────────────────────────────
 #>  row_ids truth response    prob.M     prob.R
-#>        2     R        M 0.5055397 0.49446032
-#>        4     R        R 0.3713333 0.62866667
-#>       11     R        R 0.1173333 0.88266667
+#>        2     R        M 0.5437937 0.45620635
+#>        4     R        R 0.4163333 0.58366667
+#>        6     R        R 0.3969524 0.60304762
 #>      ---   ---      ---       ---        ---
-#>      202     M        M 0.9182857 0.08171429
-#>      206     M        M 0.8051111 0.19488889
-#>      208     M        M 0.6073333 0.39266667
+#>      193     M        M 0.8206825 0.17931746
+#>      197     M        M 0.8915000 0.10850000
+#>      202     M        M 0.9326667 0.06733333
 
 # Score the predictions
 pred$score()
 #> classif.ce 
-#>  0.1884058 
+#>   0.173913 
 ```

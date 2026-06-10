@@ -118,7 +118,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerClassifJRip$new()`](#method-LearnerClassifJRip-new)
+- [`LearnerClassifJRip$new()`](#method-LearnerClassifJRip-initialize)
 
 - [`LearnerClassifJRip$marshal()`](#method-LearnerClassifJRip-marshal)
 
@@ -143,7 +143,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifJRip$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -154,7 +154,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifJRip$marshal()`
 
 Marshal the learner's model.
 
@@ -172,7 +172,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifJRip$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -190,7 +190,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifJRip$clone()`
 
 The objects of this class are cloneable with this method.
 

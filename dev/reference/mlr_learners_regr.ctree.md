@@ -81,7 +81,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -124,7 +124,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerRegrCTree$new()`](#method-LearnerRegrCTree-new)
+- [`LearnerRegrCTree$new()`](#method-LearnerRegrCTree-initialize)
 
 - [`LearnerRegrCTree$clone()`](#method-LearnerRegrCTree-clone)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrCTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrCTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -204,8 +204,8 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] wt <= 3.215: 23.408 (n = 12, err = 235.7)
-#> |   [3] wt > 3.215: 15.322 (n = 9, err = 86.6)
+#> |   [2] wt <= 3.15: 26.222 (n = 9, err = 169.0)
+#> |   [3] wt > 3.15: 16.375 (n = 12, err = 175.5)
 #> 
 #> Number of inner nodes:    1
 #> Number of terminal nodes: 2
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 18.12867 
+#> 15.03543 
 ```

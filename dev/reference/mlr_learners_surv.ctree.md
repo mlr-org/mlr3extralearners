@@ -96,7 +96,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -139,7 +139,7 @@ adibender
 
 ### Public methods
 
-- [`LearnerSurvCTree$new()`](#method-LearnerSurvCTree-new)
+- [`LearnerSurvCTree$new()`](#method-LearnerSurvCTree-initialize)
 
 - [`LearnerSurvCTree$clone()`](#method-LearnerSurvCTree-clone)
 
@@ -159,7 +159,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvCTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -170,7 +170,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvCTree$clone()`
 
 The objects of this class are cloneable with this method.
 

@@ -125,7 +125,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerRegrIBk$new()`](#method-LearnerRegrIBk-new)
+- [`LearnerRegrIBk$new()`](#method-LearnerRegrIBk-initialize)
 
 - [`LearnerRegrIBk$marshal()`](#method-LearnerRegrIBk-marshal)
 
@@ -150,7 +150,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrIBk$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -161,7 +161,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrIBk$marshal()`
 
 Marshal the learner's model.
 
@@ -179,7 +179,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrIBk$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -197,7 +197,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrIBk$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -249,5 +249,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.58636 
+#> 20.04545 
 ```

@@ -121,7 +121,7 @@ ielbadisy
 
 ### Public methods
 
-- [`LearnerSurvDNN$new()`](#method-LearnerSurvDNN-new)
+- [`LearnerSurvDNN$new()`](#method-LearnerSurvDNN-initialize)
 
 - [`LearnerSurvDNN$marshal()`](#method-LearnerSurvDNN-marshal)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvDNN$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerSurvDNN$marshal()`
 
 Marshal the learner's model.
 
@@ -174,7 +174,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerSurvDNN$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -192,7 +192,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvDNN$clone()`
 
 The objects of this class are cloneable with this method.
 

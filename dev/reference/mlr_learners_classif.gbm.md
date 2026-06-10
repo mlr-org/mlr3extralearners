@@ -95,7 +95,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerClassifGBM$new()`](#method-LearnerClassifGBM-new)
+- [`LearnerClassifGBM$new()`](#method-LearnerClassifGBM-initialize)
 
 - [`LearnerClassifGBM$importance()`](#method-LearnerClassifGBM-importance)
 
@@ -118,7 +118,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -129,7 +129,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifGBM$importance()`
 
 The importance scores are extracted by
 [`gbm::relative.influence()`](https://rdrr.io/pkg/gbm/man/relative.influence.html)
@@ -145,7 +145,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifGBM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -190,25 +190,25 @@ print(learner$model)
 #> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)
 #> A gradient boosted model with bernoulli loss function.
 #> 100 iterations were performed.
-#> There were 60 predictors of which 33 had non-zero influence.
+#> There were 60 predictors of which 38 had non-zero influence.
 print(learner$importance())
-#>         V9        V11         V4        V52        V51        V12        V28 
-#> 15.1280383 11.4150942  9.6221225  9.1809888  6.4969190  6.4934382  6.3054916 
-#>        V37        V23        V46        V13        V36        V43        V27 
-#>  6.2155608  6.0123146  5.7564818  5.0524117  4.5346852  4.5074247  3.8692203 
-#>        V15        V49        V45        V21        V42         V1        V47 
-#>  3.6757248  3.1210176  3.0707548  2.5055839  2.1491876  1.9052501  1.8636673 
-#>        V55        V53        V31        V20        V57        V44        V59 
-#>  1.7476976  1.6285421  1.4657299  1.1082008  0.8763042  0.6655266  0.5381255 
-#>        V41        V14        V19         V5        V33        V10        V16 
-#>  0.5106523  0.4907215  0.4582818  0.4457135  0.3904980  0.0000000  0.0000000 
-#>        V17        V18         V2        V22        V24        V25        V26 
+#>        V11        V12        V49        V37         V9        V52        V48 
+#> 13.4862945 10.8507445 10.1353422  9.1629714  8.5546602  6.8511051  5.6667167 
+#>        V10        V20        V47        V44        V36        V16        V55 
+#>  5.6659050  5.3120255  5.2931250  3.6985375  3.4727083  3.4518371  3.2512399 
+#>        V21        V13         V4        V15        V31        V28        V14 
+#>  2.9419351  2.7175836  2.6997055  2.6670158  2.5651119  2.5616668  2.0615066 
+#>        V45        V17         V7        V27        V33        V50        V23 
+#>  1.8751880  1.8622760  1.7862101  1.7614294  1.6617142  1.5588306  1.3970091 
+#>        V46        V35        V32         V3        V42        V57        V58 
+#>  0.8723289  0.8231040  0.8177847  0.7532723  0.7458688  0.6555525  0.6297826 
+#>        V39        V40        V30         V1        V18        V19         V2 
+#>  0.5851849  0.5492947  0.4288566  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V22        V24        V25        V26        V29        V34        V38 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V29         V3        V30        V32        V34        V35        V38 
+#>        V41        V43         V5        V51        V53        V54        V56 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V39        V40        V48        V50        V54        V56        V58 
-#>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>         V6        V60         V7         V8 
+#>        V59         V6        V60         V8 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.1884058 
 ```

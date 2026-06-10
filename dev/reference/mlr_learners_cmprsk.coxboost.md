@@ -132,7 +132,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerCompRisksCoxboost$new()`](#method-LearnerCompRisksCoxboost-new)
+- [`LearnerCompRisksCoxboost$new()`](#method-LearnerCompRisksCoxboost-initialize)
 
 - [`LearnerCompRisksCoxboost$selected_features()`](#method-LearnerCompRisksCoxboost-selected_features)
 
@@ -153,7 +153,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerCompRisksCoxboost$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -164,7 +164,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerCompRisksCoxboost$selected_features()`
 
 Returns the set of cause-specific selected features which have non-zero
 coefficients. Calls the internal `coef.CoxBoost()` function.
@@ -193,7 +193,7 @@ feature names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerCompRisksCoxboost$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -241,15 +241,15 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> cause '1':
 #> 10 boosting steps resulting in 2 non-zero coefficients  
-#> partial log-likelihood: -50.95547 
+#> partial log-likelihood: -48.27623 
 #> 
 #> cause '2':
-#> 10 boosting steps resulting in 5 non-zero coefficients  
-#> partial log-likelihood: -281.717 
+#> 10 boosting steps resulting in 7 non-zero coefficients  
+#> partial log-likelihood: -286.8528 
 print(learner$selected_features(cause = 1)) # for cause = 1
-#> [1] "age"    "copper"
+#> [1] "age"  "chol"
 print(learner$selected_features(cause = 2)) # for cause = 2
-#> [1] "age"     "copper"  "albumin" "bili"    "protime"
+#> [1] "age"      "copper"   "platelet" "albumin"  "ast"      "bili"     "protime" 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -257,5 +257,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.7843404 
+#>  0.8723984 
 ```

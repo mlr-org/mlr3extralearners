@@ -98,7 +98,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerRegrGAMBoost$new()`](#method-LearnerRegrGAMBoost-new)
+- [`LearnerRegrGAMBoost$new()`](#method-LearnerRegrGAMBoost-initialize)
 
 - [`LearnerRegrGAMBoost$clone()`](#method-LearnerRegrGAMBoost-clone)
 
@@ -119,7 +119,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGAMBoost$new()`
 
 Create a `LearnerRegrGAMBoost` object.
 
@@ -129,7 +129,7 @@ Create a `LearnerRegrGAMBoost` object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGAMBoost$clone()`
 
 The objects of this class are cloneable with this method.
 

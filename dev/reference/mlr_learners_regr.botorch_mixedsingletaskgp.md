@@ -56,7 +56,7 @@ Marc Becker
 
 ### Public methods
 
-- [`LearnerRegrBotorchMixedSingleTaskGP$new()`](#method-LearnerRegrBotorchMixedSingleTaskGP-new)
+- [`LearnerRegrBotorchMixedSingleTaskGP$new()`](#method-LearnerRegrBotorchMixedSingleTaskGP-initialize)
 
 - [`LearnerRegrBotorchMixedSingleTaskGP$marshal()`](#method-LearnerRegrBotorchMixedSingleTaskGP-marshal)
 
@@ -81,7 +81,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBotorchMixedSingleTaskGP$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -92,7 +92,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrBotorchMixedSingleTaskGP$marshal()`
 
 Marshal the learner's model.
 
@@ -110,7 +110,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrBotorchMixedSingleTaskGP$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -128,7 +128,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBotorchMixedSingleTaskGP$clone()`
 
 The objects of this class are cloneable with this method.
 

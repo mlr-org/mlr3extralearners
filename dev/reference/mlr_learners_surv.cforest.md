@@ -120,7 +120,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -163,7 +163,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvCForest$new()`](#method-LearnerSurvCForest-new)
+- [`LearnerSurvCForest$new()`](#method-LearnerSurvCForest-initialize)
 
 - [`LearnerSurvCForest$clone()`](#method-LearnerSurvCForest-clone)
 
@@ -183,7 +183,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvCForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -194,7 +194,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvCForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -5979,8 +5979,8 @@ print(learner$model)
 #> $info$control$applyfun
 #> function (X, FUN, ...) 
 #> parallel::mclapply(X, FUN, ..., mc.set.seed = TRUE, mc.cores = cores)
-#> <bytecode: 0x55ccdd729c70>
-#> <environment: 0x55ccf254edf0>
+#> <bytecode: 0x556f259059e0>
+#> <environment: 0x556f3f454118>
 #> 
 #> $info$control$saveinfo
 #> [1] FALSE
@@ -5999,8 +5999,8 @@ print(learner$model)
 #>     .select(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x55ccdd6c21d8>
-#> <environment: 0x55ccf2549b10>
+#> <bytecode: 0x556f23e20098>
+#> <environment: 0x556f3b7fa658>
 #> 
 #> $info$control$splitfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6010,8 +6010,8 @@ print(learner$model)
 #>     .split(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x55ccdd6c0210>
-#> <environment: 0x55ccf2549a30>
+#> <bytecode: 0x556f2191c868>
+#> <environment: 0x556f3b7fa578>
 #> 
 #> $info$control$svselectfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6021,8 +6021,8 @@ print(learner$model)
 #>     .select(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x55ccdd6c21d8>
-#> <environment: 0x55ccf2549950>
+#> <bytecode: 0x556f23e20098>
+#> <environment: 0x556f3b7fa498>
 #> 
 #> $info$control$svsplitfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6032,8 +6032,8 @@ print(learner$model)
 #>     .split(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x55ccdd6c0210>
-#> <environment: 0x55ccf2549800>
+#> <bytecode: 0x556f2191c868>
+#> <environment: 0x556f3b7fa348>
 #> 
 #> $info$control$teststat
 #> [1] "quadratic"
@@ -6077,8 +6077,8 @@ print(learner$model)
 #> $trafo
 #> function (subset, weights, info, estfun, object, ...) 
 #> list(estfun = Y, unweighted = TRUE)
-#> <bytecode: 0x55ccdd7c6a30>
-#> <environment: 0x55ccf25523a8>
+#> <bytecode: 0x556f23717498>
+#> <environment: 0x556f3f4576d0>
 #> 
 #> $predictf
 #> ~age + los + revasc + revascdays + stchange + sysbp

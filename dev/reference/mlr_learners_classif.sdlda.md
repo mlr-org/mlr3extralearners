@@ -38,7 +38,7 @@ instantiated via
 
 Pang H, Tong T, Zhao H (2009). “Shrinkage-Based Diagonal Discriminant
 Analysis and Its Applications in High-Dimensional Data.” *Biometrics*,
-**65**(4), 1021–1029. ISSN 0006341X, 15410420,
+**65**(4), 1021–1029. ISSN 0006341X, 15410420.
 <http://www.jstor.org/stable/20640622>.
 
 ## See also
@@ -82,7 +82,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifSdlda$new()`](#method-LearnerClassifSdlda-new)
+- [`LearnerClassifSdlda$new()`](#method-LearnerClassifSdlda-initialize)
 
 - [`LearnerClassifSdlda$clone()`](#method-LearnerClassifSdlda-clone)
 
@@ -103,7 +103,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifSdlda$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -114,7 +114,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifSdlda$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -161,7 +161,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (57.55%), R (42.45%) 
+#>   M (51.08%), R (48.92%) 
 
 
 # Make predictions for the test rows
@@ -170,5 +170,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.4492754 
+#>  0.5797101 
 ```

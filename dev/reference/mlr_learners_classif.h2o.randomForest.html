@@ -120,37 +120,35 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifH2ORandomForest-new"><code>LearnerClassifH2ORandomForest$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifH2ORandomForest-initialize"><code>LearnerClassifH2ORandomForest$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifH2ORandomForest-clone"><code>LearnerClassifH2ORandomForest$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifH2ORandomForest-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifH2ORandomForest-initialize"></a><div class="section">
+<h3 id="learnerclassifh-orandomforest-new-"><code>LearnerClassifH2ORandomForest$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassifh-orandomforest-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.h2o.randomForest.html">LearnerClassifH2ORandomForest</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifH2ORandomForest-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifH2ORandomForest-clone"></a><div class="section">
+<h3 id="learnerclassifh-orandomforest-clone-"><code>LearnerClassifH2ORandomForest$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassifh-orandomforest-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifH2ORandomForest</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -160,6 +158,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 </div>
 
 </div>
+
 
     </div>
 
@@ -193,53 +192,53 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialModel: drf</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DRF_model_R_1781101935297_58 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DRF_model_R_1781102499045_58 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model Summary: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1              50                       50               13282         5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1              50                       50               13350         5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   max_depth mean_depth min_leaves max_leaves mean_leaves</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         8    6.28000         13         22    16.56000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         9    6.86000         13         21    16.66000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialMetrics: drf</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Metrics reported on Out-Of-Bag training samples **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1348152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3671719</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.4232824</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.1664594</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.9095149</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.923958</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.8190299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.4600405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1399157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3740531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.438105</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.1637427</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.8921261</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.890249</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.7842523</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.4353987</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M  R    Error     Rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M      54 13 0.194030   =13/67</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R      10 62 0.138889   =10/72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 64 75 0.165468  =23/139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M      68  8 0.105263    =8/76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R      14 49 0.222222   =14/63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 82 57 0.158273  =22/139</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Maximum Metrics: Maximum metrics at their respective thresholds</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         metric threshold     value idx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.476190  0.843537  43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.285714  0.886076  65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.611111  0.876866  30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.526316  0.834532  39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.529412  0.816667  31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.260870  0.851955  63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.578947  0.855513  29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.529412  0.841727  31</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  1.000000  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.200000  1.000000  74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.111111  1.000000  78</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  1.000000  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.526316  0.673241  39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.500000  0.820896  41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.526316  0.836132  39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  1.000000 67.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  1.000000 67.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.045455 67.000000  89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.200000 72.000000  74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.529412  0.680667  31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.473684  0.809524  35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.529412  0.836257  31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  1.000000 76.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  1.000000 59.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.000000 76.000000  84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.111111 63.000000  78</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  1.000000  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  1.000000  0.930556   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.045455  1.000000  89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.200000  1.000000  74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  1.000000  0.936508   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.000000  1.000000  84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.111111  1.000000  78</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -252,7 +251,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.115942 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

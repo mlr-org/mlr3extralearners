@@ -113,7 +113,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifREPTree$new()`](#method-LearnerClassifREPTree-new)
+- [`LearnerClassifREPTree$new()`](#method-LearnerClassifREPTree-initialize)
 
 - [`LearnerClassifREPTree$marshal()`](#method-LearnerClassifREPTree-marshal)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifREPTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifREPTree$marshal()`
 
 Marshal the learner's model.
 
@@ -167,7 +167,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifREPTree$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -185,7 +185,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifREPTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -230,12 +230,18 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> V12 < 0.17 : R (31/3) [13/3]
-#> V12 >= 0.17
-#> |   V52 < 0.01 : R (9/1) [7/3]
-#> |   V52 >= 0.01 : M (52/10) [27/9]
+#> V45 < 0.34
+#> |   V12 < 0.17 : R (21/0) [20/4]
+#> |   V12 >= 0.17
+#> |   |   V24 < 0.65
+#> |   |   |   V26 < 0.18 : M (2/0) [1/0]
+#> |   |   |   V26 >= 0.18 : R (18/0) [4/2]
+#> |   |   V24 >= 0.65
+#> |   |   |   V33 < 0.57 : M (29/1) [14/2]
+#> |   |   |   V33 >= 0.57 : R (4/0) [3/1]
+#> V45 >= 0.34 : M (18/0) [5/1]
 #> 
-#> Size of the tree : 5
+#> Size of the tree : 11
 
 
 # Make predictions for the test rows
@@ -244,5 +250,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.3623188 
 ```

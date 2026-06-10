@@ -72,7 +72,7 @@ This learner returns three prediction types:
 
 Jackson, H. C (2016). “flexsurv: A Platform for Parametric Survival
 Modeling in R.” *Journal of Statistical Software*, **70**(8), 1–33.
-[doi:10.18637/JSS.V070.I08](https://doi.org/10.18637/JSS.V070.I08) ,
+[doi:10.18637/JSS.V070.I08](https://doi.org/10.18637/JSS.V070.I08) .
 <https://www.jstatsoft.org/index.php/jss/article/view/v070i08>.
 
 ## See also
@@ -116,7 +116,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvFlexReg$new()`](#method-LearnerSurvFlexReg-new)
+- [`LearnerSurvFlexReg$new()`](#method-LearnerSurvFlexReg-initialize)
 
 - [`LearnerSurvFlexReg$clone()`](#method-LearnerSurvFlexReg-clone)
 
@@ -136,7 +136,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvFlexReg$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -147,7 +147,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvFlexReg$clone()`
 
 The objects of this class are cloneable with this method.
 

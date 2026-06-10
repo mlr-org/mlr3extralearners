@@ -52,7 +52,7 @@ instantiated via
 ## References
 
 Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
-5–32. ISSN 1573-0565,
+5–32. ISSN 1573-0565.
 [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A%3A1010933404324)
 .
 
@@ -97,7 +97,7 @@ pat-s
 
 ### Public methods
 
-- [`LearnerClassifRandomForest$new()`](#method-LearnerClassifRandomForest-new)
+- [`LearnerClassifRandomForest$new()`](#method-LearnerClassifRandomForest-initialize)
 
 - [`LearnerClassifRandomForest$importance()`](#method-LearnerClassifRandomForest-importance)
 
@@ -122,7 +122,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -133,7 +133,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifRandomForest$importance()`
 
 The importance scores are extracted from the slot `importance`.
 Parameter 'importance' must be set to either `"accuracy"` or `"gini"`.
@@ -148,7 +148,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerClassifRandomForest$oob_error()`
 
 OOB errors are extracted from the model slot `err.rate`.
 
@@ -162,7 +162,7 @@ OOB errors are extracted from the model slot `err.rate`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -209,36 +209,36 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 7
 #> 
-#>         OOB estimate of  error rate: 20.86%
+#>         OOB estimate of  error rate: 17.27%
 #> Confusion matrix:
 #>    M  R class.error
-#> M 62 10   0.1388889
-#> R 19 48   0.2835821
+#> M 56 12   0.1764706
+#> R 12 59   0.1690141
 print(learner$importance())
-#>           V11           V12           V10           V48           V49 
-#>  0.0181955005  0.0173106895  0.0144533545  0.0127228895  0.0119584618 
-#>           V46            V9           V45           V52           V47 
-#>  0.0092879548  0.0082958530  0.0081476894  0.0077930617  0.0071736648 
-#>           V44           V31           V36           V18           V27 
-#>  0.0064025104  0.0059683161  0.0051002765  0.0043858140  0.0041587361 
-#>           V13            V4           V28           V51           V55 
-#>  0.0039716024  0.0036951305  0.0036231012  0.0036129307  0.0033079747 
-#>           V20            V5           V54           V16           V43 
-#>  0.0028783690  0.0026596114  0.0024618658  0.0024103986  0.0023055580 
-#>           V59           V35           V21           V17           V19 
-#>  0.0022620703  0.0021883015  0.0020601032  0.0020172245  0.0019475369 
-#>           V39           V23            V2           V26           V37 
-#>  0.0019277762  0.0018284225  0.0018155126  0.0018076027  0.0017956459 
-#>           V32           V15           V38           V40           V29 
-#>  0.0017569850  0.0017171559  0.0014893089  0.0014308241  0.0012957413 
-#>           V34           V30           V14            V3           V25 
-#>  0.0012951775  0.0011219324  0.0011023557  0.0010192684  0.0010187147 
-#>            V6           V58            V7            V1           V33 
-#>  0.0010149608  0.0008920869  0.0006247920  0.0005901815  0.0005763442 
-#>           V24           V42           V50           V53           V56 
-#>  0.0004100286  0.0003803225  0.0003647475  0.0002496688  0.0001872851 
-#>           V22            V8           V57           V41           V60 
-#>  0.0001006858 -0.0002539445 -0.0003150588 -0.0004564134 -0.0004877132 
+#>           V11           V10            V9           V12           V36 
+#>  2.621585e-02  2.188125e-02  2.125988e-02  2.073400e-02  1.317182e-02 
+#>           V48           V37           V47           V49           V21 
+#>  9.239019e-03  9.000047e-03  8.627747e-03  6.925199e-03  5.775911e-03 
+#>           V35           V51           V52           V20           V28 
+#>  5.561269e-03  4.503900e-03  4.480674e-03  4.318433e-03  4.178690e-03 
+#>           V17           V13           V23            V5            V8 
+#>  4.156241e-03  4.029278e-03  4.018897e-03  3.711800e-03  3.684275e-03 
+#>           V16           V22           V46            V4           V44 
+#>  3.408834e-03  2.916480e-03  2.899727e-03  2.791589e-03  2.464530e-03 
+#>           V45           V27            V1           V55           V29 
+#>  2.389192e-03  2.281599e-03  2.213317e-03  2.098781e-03  1.924160e-03 
+#>           V50           V24           V15           V30           V18 
+#>  1.899155e-03  1.797884e-03  1.703872e-03  1.604608e-03  1.497972e-03 
+#>           V31           V39           V19           V25           V53 
+#>  1.474334e-03  1.407030e-03  1.354396e-03  1.271912e-03  1.153386e-03 
+#>           V59           V33           V32            V3           V38 
+#>  1.067066e-03  8.686886e-04  7.569063e-04  7.291114e-04  6.968371e-04 
+#>           V58           V34           V42            V7           V14 
+#>  6.265501e-04  5.713201e-04  5.517982e-04  5.299784e-04  3.889278e-04 
+#>           V54           V56           V26           V43            V2 
+#>  3.423898e-04  2.420158e-04  2.225020e-04  1.845797e-04  1.615774e-04 
+#>           V60            V6           V57           V41           V40 
+#>  6.551199e-05 -8.325112e-05 -1.736956e-04 -1.945364e-04 -1.302706e-03 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -246,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1304348 
+#>  0.2608696 
 ```

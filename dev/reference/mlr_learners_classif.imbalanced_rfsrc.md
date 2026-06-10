@@ -135,7 +135,7 @@ HarutyunyanLiana
 
 ### Public methods
 
-- [`LearnerClassifImbalancedRandomForestSRC$new()`](#method-LearnerClassifImbalancedRandomForestSRC-new)
+- [`LearnerClassifImbalancedRandomForestSRC$new()`](#method-LearnerClassifImbalancedRandomForestSRC-initialize)
 
 - [`LearnerClassifImbalancedRandomForestSRC$importance()`](#method-LearnerClassifImbalancedRandomForestSRC-importance)
 
@@ -161,7 +161,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifImbalancedRandomForestSRC$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -172,7 +172,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifImbalancedRandomForestSRC$importance()`
 
 The importance scores are extracted from the slot `importance`.
 
@@ -186,7 +186,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerClassifImbalancedRandomForestSRC$selected_features()`
 
 Selected features are extracted from the model slot `var.used`.
 
@@ -205,7 +205,7 @@ not when prediction is required.
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerClassifImbalancedRandomForestSRC$oob_error()`
 
 OOB error extracted from the model slot `err.rate`.
 
@@ -219,7 +219,7 @@ OOB error extracted from the model slot `err.rate`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifImbalancedRandomForestSRC$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -261,10 +261,10 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #>                          Sample size: 139
-#>            Frequency of class labels: M=75, R=64
+#>            Frequency of class labels: M=82, R=57
 #>                      Number of trees: 3000
 #>            Forest terminal node size: 1
-#>        Average no. of terminal nodes: 17.487
+#>        Average no. of terminal nodes: 16.3263
 #> No. of variables tried at each split: 8
 #>               Total no. of variables: 60
 #>        Resampling used to grow trees: swor
@@ -273,47 +273,47 @@ print(learner$model)
 #>                               Family: class
 #>                       Splitting rule: auc *random*
 #>        Number of random split points: 10
-#>                     Imbalanced ratio: 1.1719
-#>                    (OOB) Brier score: 0.14253542
-#>         (OOB) Normalized Brier score: 0.57014169
-#>                            (OOB) AUC: 0.916875
-#>                       (OOB) Log-loss: 0.44921315
-#>                         (OOB) PR-AUC: 0.90389147
-#>                         (OOB) G-mean: 0.84372685
-#>    (OOB) Requested performance error: 0.15627315
+#>                     Imbalanced ratio: 1.4386
+#>                    (OOB) Brier score: 0.1282184
+#>         (OOB) Normalized Brier score: 0.51287359
+#>                            (OOB) AUC: 0.92490372
+#>                       (OOB) Log-loss: 0.41131006
+#>                         (OOB) PR-AUC: 0.91065583
+#>                         (OOB) G-mean: 0.83617402
+#>    (OOB) Requested performance error: 0.16382598
 #> 
 #> Confusion matrix:
 #> 
 #>           predicted
 #>   observed  M  R class.error
-#>          M 67  8      0.1067
-#>          R 13 51      0.2031
+#>          M 76  6      0.0732
+#>          R 14 43      0.2456
 #> 
-#>       (OOB) Misclassification rate: 0.1510791
+#>       (OOB) Misclassification rate: 0.1438849
 #> 
 #> Random-classifier baselines (uniform):
 #>    Brier: 0.25   Normalized Brier: 1   Log-loss: 0.69314718
 print(learner$importance())
-#>          V17          V43          V27          V44          V51          V16 
-#>  0.042425826  0.042425826  0.033762861  0.033762861  0.027740741  0.025191574 
-#>          V18          V36          V37          V52           V4          V14 
-#>  0.025191574  0.025191574  0.025191574  0.025191574  0.022904094  0.016709117 
-#>          V45           V5          V48          V12           V2          V23 
-#>  0.016709117  0.012688345  0.010560202  0.008312783  0.008312783  0.008312783 
-#>          V24          V28          V30          V53           V7          V20 
-#>  0.008312783  0.008312783  0.008312783  0.008312783  0.008312783  0.006320140 
-#>          V21          V22           V1          V10          V42          V49 
-#>  0.006320140  0.006320140  0.002101440  0.002101440  0.002101440  0.002101440 
-#>          V54          V57          V58           V9          V13          V15 
-#>  0.002101440  0.002101440  0.002101440  0.002101440  0.000000000  0.000000000 
-#>          V19          V25           V3          V32          V33          V34 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V35          V38          V39          V40          V41          V46 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V50          V55          V59          V11          V31          V26 
-#>  0.000000000  0.000000000  0.000000000 -0.001849875 -0.001849875 -0.008231676 
-#>          V29          V47          V56           V6          V60           V8 
-#> -0.008231676 -0.008231676 -0.008231676 -0.008231676 -0.008231676 -0.008231676 
+#>          V47          V23          V37          V11          V52          V44 
+#>  0.040378479  0.035019526  0.035019526  0.029696182  0.029696182  0.026254770 
+#>          V31          V49          V55           V9          V42          V32 
+#>  0.025066914  0.025066914  0.025066914  0.025066914  0.024407746  0.019677439 
+#>          V40          V43          V21          V22          V36           V5 
+#>  0.019677439  0.019677439  0.016669593  0.015234954  0.015234954  0.015234954 
+#>          V24          V27          V19          V28           V3          V38 
+#>  0.014323306  0.014323306  0.009780150  0.009780150  0.009780150  0.009780150 
+#>          V39          V48           V8          V10           V4           V1 
+#>  0.009780150  0.009780150  0.009780150  0.005519361  0.005519361  0.004361115 
+#>          V17          V18          V25          V35          V51           V7 
+#>  0.004361115  0.004361115  0.004361115  0.004361115  0.004361115  0.004361115 
+#>          V20          V46          V59          V12          V41          V45 
+#>  0.001536615  0.001536615  0.001536615  0.000000000  0.000000000  0.000000000 
+#>          V53          V56          V57          V58          V14          V16 
+#>  0.000000000  0.000000000  0.000000000  0.000000000 -0.005483167 -0.005483167 
+#>           V2          V26          V29          V30          V50          V54 
+#> -0.005483167 -0.005483167 -0.005483167 -0.005483167 -0.005483167 -0.005483167 
+#>          V60          V34          V15          V33           V6          V13 
+#> -0.005483167 -0.009667073 -0.015213631 -0.015213631 -0.015213631 -0.034348327 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -321,5 +321,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#> 0.08695652 
+#>  0.2318841 
 ```

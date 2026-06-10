@@ -105,7 +105,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifDecisionStump$new()`](#method-LearnerClassifDecisionStump-new)
+- [`LearnerClassifDecisionStump$new()`](#method-LearnerClassifDecisionStump-initialize)
 
 - [`LearnerClassifDecisionStump$marshal()`](#method-LearnerClassifDecisionStump-marshal)
 
@@ -130,7 +130,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifDecisionStump$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -141,7 +141,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifDecisionStump$marshal()`
 
 Marshal the learner's model.
 
@@ -159,7 +159,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifDecisionStump$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -177,7 +177,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifDecisionStump$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -222,21 +222,21 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> V12 <= 0.22505 : R
-#> V12 > 0.22505 : M
-#> V12 is missing : M
+#> V11 <= 0.19795000000000001 : R
+#> V11 > 0.19795000000000001 : M
+#> V11 is missing : M
 #> 
 #> Class distributions
 #> 
-#> V12 <= 0.22505
+#> V11 <= 0.19795000000000001
 #> M    R   
-#> 0.19298245614035087  0.8070175438596491  
-#> V12 > 0.22505
+#> 0.21428571428571427  0.7857142857142857  
+#> V11 > 0.19795000000000001
 #> M    R   
-#> 0.7439024390243902   0.25609756097560976 
-#> V12 is missing
+#> 0.7469879518072289   0.25301204819277107 
+#> V11 is missing
 #> M    R   
-#> 0.5179856115107914   0.48201438848920863 
+#> 0.5323741007194245   0.4676258992805755  
 #> 
 
 
@@ -246,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.2463768 
 ```

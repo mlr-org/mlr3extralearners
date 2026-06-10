@@ -112,7 +112,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerRegrObliqueRandomForest$new()`](#method-LearnerRegrObliqueRandomForest-new)
+- [`LearnerRegrObliqueRandomForest$new()`](#method-LearnerRegrObliqueRandomForest-initialize)
 
 - [`LearnerRegrObliqueRandomForest$oob_error()`](#method-LearnerRegrObliqueRandomForest-oob_error)
 
@@ -137,7 +137,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrObliqueRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -148,7 +148,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerRegrObliqueRandomForest$oob_error()`
 
 OOB concordance error extracted from the model slot
 `eval_oobag$stat_values`
@@ -163,7 +163,7 @@ OOB concordance error extracted from the model slot
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrObliqueRandomForest$importance()`
 
 The importance scores are extracted from the model.
 
@@ -177,7 +177,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrObliqueRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -225,18 +225,18 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.252
+#>  Average leaves per tree: 3.242
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.70
+#>           OOB stat value: 0.68
 #>            OOB stat type: RSQ
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>       drat       carb         am         wt         hp        cyl       disp 
-#> 0.07871720 0.07650273 0.07594937 0.05135135 0.04494382 0.04402516 0.03591160 
-#>       gear       qsec         vs 
-#> 0.03115265 0.02631579 0.01351351 
+#>         wt       disp        cyl         hp       drat       carb         am 
+#> 0.35579515 0.18713450 0.07854985 0.05813953 0.05309735 0.04696133 0.03750000 
+#>       qsec       gear         vs 
+#> 0.02873563 0.02631579 0.01515152 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -244,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.62494 
+#> 8.711101 
 ```
