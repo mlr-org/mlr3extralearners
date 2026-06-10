@@ -9,6 +9,8 @@
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"cox"` and cannot be changed.
+#' - `cox.ties` is initialized to `"breslow"` to keep the tie-handling behavior of earlier glmnet versions,
+#' and to silence the glmnet v5.0 warning about the upcoming default change to `"efron"`.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -78,7 +80,7 @@ LearnerSurvGlmnet = R6Class(
         upper.limits     = p_uty(default = Inf, tags = "train"),
         relax            = p_lgl(default = FALSE, tags = "train"),
         trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
-        cox.ties         = p_fct(c("breslow", "efron"), default = "efron", tags = "train"),
+        cox.ties         = p_fct(c("breslow", "efron"), default = "breslow", tags = "train"),
         # glmnet::relax.glmnet() parameters
         maxp             = p_int(1L, tags = "train"),
         path             = p_lgl(default = FALSE, tags = "train"),

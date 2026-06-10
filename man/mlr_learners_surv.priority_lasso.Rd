@@ -28,6 +28,8 @@ for computing the baseline hazard.
 \itemize{
 \item \code{family} is set to \code{"cox"} for the Cox survival objective and cannot be changed
 \item \code{type.measure} is set to \code{"deviance"} (cross-validation measure) and cannot be changed
+\item \code{cox.ties} is initialized to \code{"breslow"} to keep the tie-handling behavior of earlier glmnet versions,
+and to silence the glmnet v5.0 warning about the upcoming default change to \code{"efron"}
 }
 }
 

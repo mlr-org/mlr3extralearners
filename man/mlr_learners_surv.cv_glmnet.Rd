@@ -12,6 +12,8 @@ Calls \code{glmnet::cv.glmnet()} from package \CRANpkg{glmnet}.
 
 \itemize{
 \item \code{family} is set to \code{"cox"} and cannot be changed.
+\item \code{cox.ties} is initialized to \code{"breslow"} to keep the tie-handling behavior of earlier glmnet versions,
+and to silence the glmnet v5.0 warning about the upcoming default change to \code{"efron"}.
 }
 }
 
@@ -69,11 +71,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   exclude \tab untyped \tab - \tab  \tab - \cr
+   exclude \tab untyped \tab NULL \tab  \tab - \cr
    penalty.factor \tab untyped \tab - \tab  \tab - \cr
    lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
-   cox.ties \tab character \tab efron \tab breslow, efron \tab - \cr
+   cox.ties \tab character \tab breslow \tab breslow, efron \tab - \cr
    maxp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    path \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -88,15 +90,15 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    epsnr \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   maxit \tab integer \tab 1e+05 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   dfmax \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   pmax \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   dfmax \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   pmax \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    exact \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    stype \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    ctype \tab integer \tab - \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
-   use_pred_offset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   use_pred_offset \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 

@@ -21,6 +21,8 @@
 #' @section Initial parameter values:
 #' - `family` is set to `"cox"` for the Cox survival objective and cannot be changed
 #' - `type.measure` is set to `"deviance"` (cross-validation measure) and cannot be changed
+#' - `cox.ties` is initialized to `"breslow"` to keep the tie-handling behavior of earlier glmnet versions,
+#' and to silence the glmnet v5.0 warning about the upcoming default change to `"efron"`
 #'
 #' @inheritSection mlr_learners_classif.priority_lasso Scope and supported arguments
 #' @templateVar id surv.priority_lasso
