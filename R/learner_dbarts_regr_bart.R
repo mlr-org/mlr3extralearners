@@ -83,7 +83,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
 
       pars = self$param_set$get_values(tags = "train")
 
-      # Extact just the features from the task data.
+      # Extract just the features from the task data.
       data = task$data(cols = task$feature_names)
 
       # Convert from data.table to normal data.frame, just to be safe.

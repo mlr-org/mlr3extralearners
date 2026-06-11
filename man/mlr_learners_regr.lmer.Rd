@@ -11,7 +11,7 @@ Calls \code{lme4::lmer()} from \CRANpkg{lme4}.
 \section{Formula}{
 
 Although most mlr3 learners don't allow to specify the formula manually, and automatically
-set it by valling \code{task$formula()}, this learner allows to set the \code{formula} because it's core
+set it by calling \code{task$formula()}, this learner allows to set the \code{formula} because it's core
 functionality depends it. This means that it might not always use all features that are available
 in the \link[mlr3:Task]{task}.
 Be aware, that this can sometimes lead to unexpected error messages,

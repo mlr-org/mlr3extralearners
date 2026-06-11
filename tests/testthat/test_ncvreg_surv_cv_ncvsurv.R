@@ -12,7 +12,7 @@ test_that("prediction lambda", {
   learner = lrn("surv.cv_ncvsurv")
   expect_silent(learner$train(task))
 
-  # predict: lamdba.min (by default)
+  # predict: lambda.min (by default)
   p1 = learner$predict(task)
   # predict: last lambda => practically no regularization
   lam = learner$model$lambda[100]
