@@ -396,7 +396,7 @@ learners (thanks to @bblodfon)
 
 # mlr3extralearners 0.5.35
 
-*   Full installatio in workflow 'test\_selection' (is faster than the previous
+*   Full installation in workflow 'test\_selection' (is faster than the previous
     approach, where selected packages were installed from CRAN)
 
 # mlr3extralearners 0.5.34
@@ -413,7 +413,7 @@ learners (thanks to @bblodfon)
 
 *   chore: add new parameters for kde and rfsrc
 
-*   temporarily disable feat\_all test for obliqeRSF (failed in $score() stage, because issue only happened in CI and could not be reproduced
+*   temporarily disable feat\_all test for obliqueRSF (failed in $score() stage, because issue only happened in CI and could not be reproduced
 
 # mlr3extralearners 0.5.31
 
@@ -447,7 +447,7 @@ learners (thanks to @bblodfon)
 
 *   Introduce parameter `early_stopping_split` for lightgbm learners
 *   Tidy description of R package
-*   Udpate NEWS.md for previous releases
+*   Update NEWS.md for previous releases
 
 # mlr3extralearners 0.5.24
 
@@ -476,7 +476,7 @@ learners (thanks to @bblodfon)
 
 # mlr3extralearners 0.5.19
 
-*   Provide correct range for neighors argument for Cubist
+*   Provide correct range for neighbors argument for Cubist
 
 # mlr3extralearners 0.5.18
 
@@ -645,4 +645,4 @@ learners (thanks to @bblodfon)
 
 # mlr3extralearners 0.1.0
 
-*   Initial release. mlr3extralearners contains all learners from the mlr3learners organisation, which is now archived.
+*   Initial release. mlr3extralearners contains all learners from the mlr3learners organization, which is now archived.

@@ -9,7 +9,7 @@ test_that("paramtest regr.gamboost train", {
     "data", # handled via mlr3
     "weights", # handled via mlr3
     "control", # handled to mboost::boost_control
-    "center", # depreacated
+    "center", # deprecated
     "custom.family",
     "nuirange", # Parameter belongs to the families GammaReg etc.
     "d", # Belongs to the Huber family

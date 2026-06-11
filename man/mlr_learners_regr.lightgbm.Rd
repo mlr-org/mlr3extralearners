@@ -146,7 +146,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \item \code{num_threads}:
 \itemize{
 \item Actual default: 0L
-\item Initital value: 1L
+\item Initial value: 1L
 \item Reason for change: Prevents accidental conflicts with \code{future}.
 }
 \item \code{verbose}:

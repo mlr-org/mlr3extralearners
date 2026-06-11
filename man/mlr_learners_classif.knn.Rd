@@ -3,7 +3,7 @@
 \name{mlr_learners_classif.knn}
 \alias{mlr_learners_classif.knn}
 \alias{LearnerClassifKnn}
-\title{Classification K-nearest Neighbour Learner}
+\title{Classification K-nearest Neighbor Learner}
 \description{
 K-nearest neighbor classification.
 Calls \code{class::knn()} from \CRANpkg{class}.

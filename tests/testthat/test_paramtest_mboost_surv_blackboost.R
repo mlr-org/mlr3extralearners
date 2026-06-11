@@ -13,7 +13,7 @@ test_that("paramtest surv.blackboost train", {
     "custom.family", # pass a custom family (the rest is parametrized by characters)
     "pargs", # Args for families are implemented explicitly
     "maxvar", # not implemented by the author
-    "numsurrogate", # for backward compatability with party
+    "numsurrogate", # for backward compatibility with party
     "applyfun", # parallelization
     "cores", # parallelization
     "saveinfo", # parallelization

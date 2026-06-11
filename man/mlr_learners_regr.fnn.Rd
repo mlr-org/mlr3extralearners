@@ -5,7 +5,7 @@
 \alias{LearnerRegrFNN}
 \title{Regression Fast Nearest Neighbor Search Learner}
 \description{
-Fast Nearest Neighbour Regression.
+Fast Nearest Neighbor Regression.
 Calls \code{FNN::knn.reg()} from \CRANpkg{FNN}.
 }
 \section{Dictionary}{

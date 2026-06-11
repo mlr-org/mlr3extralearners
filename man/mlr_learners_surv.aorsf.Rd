@@ -8,7 +8,7 @@
 Accelerated oblique random survival forest.
 Calls \code{aorsf::orsf()} from \CRANpkg{aorsf}.
 Note that although the learner has the property \code{"missing"} and it can in
-principle deal with missing values, the behaviour has to be configured using
+principle deal with missing values, the behavior has to be configured using
 the parameter \code{na_action}.
 }
 \section{Initial parameter values}{

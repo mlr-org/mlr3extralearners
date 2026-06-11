@@ -160,7 +160,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \item \code{objective}:
 \itemize{
 \item Depends on the task: if binary classification, then this parameter is set to
-\code{"binary"}, otherwise \code{"multiclasss"} and cannot be changed.
+\code{"binary"}, otherwise \code{"multiclass"} and cannot be changed.
 }
 }
 }

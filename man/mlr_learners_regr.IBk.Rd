@@ -5,7 +5,7 @@
 \alias{LearnerRegrIBk}
 \title{Regression IBk Learner}
 \description{
-Instance based algorithm: K-nearest neighbours regression.
+Instance based algorithm: K-nearest neighbors regression.
 Calls \code{RWeka::IBk()} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{

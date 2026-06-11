@@ -69,7 +69,7 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 \code{dbarts::dbart}.
 \item Parameter: nchain, combineChains, combinechains
 \item The parameters are removed as parallelization of multiple models is handled by future.
-\item Parameter: sigest, sigdf, sigquant, keeptres
+\item Parameter: sigest, sigdf, sigquant, keeptrees
 \item Regression only.
 }
 }

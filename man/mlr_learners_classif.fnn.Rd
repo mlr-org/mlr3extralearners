@@ -3,9 +3,9 @@
 \name{mlr_learners_classif.fnn}
 \alias{mlr_learners_classif.fnn}
 \alias{LearnerClassifFNN}
-\title{Fast Nearest Neighbour Classification}
+\title{Fast Nearest Neighbor Classification}
 \description{
-Fast Nearest Neighbour Classification.
+Fast Nearest Neighbor Classification.
 Calls \code{FNN::knn()} from \CRANpkg{FNN}.
 }
 \section{Dictionary}{

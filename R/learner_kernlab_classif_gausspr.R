@@ -68,7 +68,7 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
       pars = self$param_set$get_values(tags = "train")
       kpar = pars$kpar
       pars$kpar = NULL
-      # kpars and pars are treated seperately
+      # kpars and pars are treated separately
       kpars = pars[names(pars) %in% kpars_names]
       pars = pars[names(pars) %nin% kpars_names]
       pars$type = "classification"
