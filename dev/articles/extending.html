@@ -332,14 +332,14 @@ the <code><a href="https://paradox.mlr-org.com/reference/Domain.html" class="ext
 This function return <code>TRUE</code> if the input is valid and a
 <code>character(1)</code> with the error message otherwise.</p>
 <p><strong>Custom Parameters</strong></p>
-<p>Sometimes you might want to add paramters that are not present in the
-upstream function. One example is the <code>mtry.ratio</code> parameter
-of <code>lrn("surv.ranger")</code>. Such parameters should usually not
-have <code>default</code> values (because we are here not calling an
-upstream function with a default behaviour) but instead have their value
-initialized during construction and have the <code>"required"</code>
-tag. This avoids having to deal with the case where this parameter has
-no value set. When contributing a learner to
+<p>Sometimes you might want to add parameters that are not present in
+the upstream function. One example is the <code>mtry.ratio</code>
+parameter of <code>lrn("surv.ranger")</code>. Such parameters should
+usually not have <code>default</code> values (because we are here not
+calling an upstream function with a default behavior) but instead have
+their value initialized during construction and have the
+<code>"required"</code> tag. This avoids having to deal with the case
+where this parameter has no value set. When contributing a learner to
 <code>mlr3extralearners</code> this information should go into the
 <em>Custom parameters</em> section.</p>
 </div>

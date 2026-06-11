@@ -1,6 +1,6 @@
 # Classification IBk Learner
 
-Instance based algorithm: K-nearest neighbours regression. Calls
+Instance based algorithm: K-nearest neighbors regression. Calls
 [`RWeka::IBk()`](https://rdrr.io/pkg/RWeka/man/Weka_classifier_lazy.html)
 from [RWeka](https://CRAN.R-project.org/package=RWeka).
 
@@ -218,7 +218,7 @@ The objects of this class are cloneable with this method.
 learner = lrn("classif.IBk")
 print(learner)
 #> 
-#> ── <LearnerClassifIBk> (classif.IBk): Nearest Neighbour ────────────────────────
+#> ── <LearnerClassifIBk> (classif.IBk): Nearest Neighbor ─────────────────────────
 #> • Model: -
 #> • Parameters: list()
 #> • Packages: mlr3, mlr3extralearners, and RWeka

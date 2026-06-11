@@ -4,7 +4,7 @@ Accelerated oblique random classification forest. Calls
 [`aorsf::orsf()`](https://docs.ropensci.org/aorsf/reference/orsf.html)
 from [aorsf](https://CRAN.R-project.org/package=aorsf). Note that
 although the learner has the property `"missing"` and it can in
-principle deal with missing values, the behaviour has to be configured
+principle deal with missing values, the behavior has to be configured
 using the parameter `na_action`.
 
 ## Initial parameter values
@@ -227,34 +227,34 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 60
 #>    N predictors per node: 8
-#>  Average leaves per tree: 4.462
+#>  Average leaves per tree: 4.922
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.85
+#>           OOB stat value: 0.87
 #>            OOB stat type: AUC-ROC
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>         V11         V36         V46         V31         V47         V12 
-#> 0.333333333 0.252380952 0.248803828 0.247826087 0.246861925 0.244444444 
-#>         V35         V10         V49         V13         V45         V48 
-#> 0.242990654 0.242290749 0.239436620 0.221153846 0.220095694 0.204081633 
-#>         V20         V37         V51         V52         V21         V57 
-#> 0.201970443 0.193965517 0.188118812 0.171945701 0.171052632 0.170506912 
-#>         V44         V22         V14          V9          V4         V32 
-#> 0.166666667 0.159817352 0.144144144 0.141509434 0.130044843 0.116279070 
-#>         V19         V54         V42         V43         V16          V1 
-#> 0.115577889 0.114285714 0.100502513 0.090909091 0.087962963 0.084577114 
-#>         V17          V2         V40         V18         V33         V34 
-#> 0.082901554 0.082251082 0.076576577 0.067961165 0.065727700 0.065502183 
-#>         V23         V39          V3         V24          V5          V8 
-#> 0.063636364 0.062780269 0.058823529 0.058365759 0.058295964 0.057692308 
-#>         V15         V38         V41          V7         V26         V53 
-#> 0.057142857 0.054621849 0.051282051 0.045081967 0.043478261 0.040178571 
-#>         V30         V58         V28         V29         V27         V56 
-#> 0.038095238 0.036866359 0.033175355 0.031111111 0.030701754 0.028436019 
-#>          V6         V55         V50         V25         V60         V59 
-#> 0.028089888 0.027272727 0.017647059 0.014925373 0.008771930 0.004716981 
+#>         V49         V11         V36         V48         V45         V35 
+#> 0.395744681 0.348214286 0.310679612 0.273584906 0.258771930 0.254237288 
+#>         V12         V37         V44         V13         V20         V19 
+#> 0.250000000 0.234146341 0.216814159 0.212669683 0.200000000 0.194805195 
+#>         V46         V47         V10          V9         V21         V43 
+#> 0.194092827 0.184684685 0.183486239 0.175965665 0.174887892 0.167420814 
+#>         V57         V34         V22          V2         V31         V52 
+#> 0.160714286 0.141666667 0.134199134 0.131221719 0.123931624 0.120689655 
+#>         V40          V1         V18         V58         V38         V54 
+#> 0.117073171 0.114155251 0.102040816 0.093896714 0.087136929 0.084577114 
+#>         V51         V56          V4         V23         V59         V17 
+#> 0.083333333 0.081896552 0.081896552 0.081730769 0.076923077 0.076190476 
+#>         V15          V5          V3         V16         V39         V50 
+#> 0.067632850 0.058295964 0.057416268 0.056277056 0.052863436 0.052631579 
+#>         V28         V42          V8         V24         V14         V33 
+#> 0.051282051 0.046025105 0.045662100 0.045248869 0.044554455 0.044247788 
+#>         V27         V41         V29         V26         V30         V55 
+#> 0.042918455 0.042654028 0.034146341 0.030303030 0.020242915 0.018691589 
+#>          V7         V32         V60         V53          V6         V25 
+#> 0.014925373 0.014492754 0.013452915 0.012145749 0.009756098 0.000000000 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -262,5 +262,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.1594203 
 ```

@@ -4,7 +4,7 @@ Accelerated oblique random regression forest. Calls
 [`aorsf::orsf()`](https://docs.ropensci.org/aorsf/reference/orsf.html)
 from [aorsf](https://CRAN.R-project.org/package=aorsf). Note that
 although the learner has the property `"missing"` and it can in
-principle deal with missing values, the behaviour has to be configured
+principle deal with missing values, the behavior has to be configured
 using the parameter `na_action`.
 
 ## Initial parameter values
@@ -225,18 +225,18 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.244
+#>  Average leaves per tree: 3.252
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.61
+#>           OOB stat value: 0.49
 #>            OOB stat type: RSQ
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>         cyl          wt        disp        carb          hp        gear 
-#> 0.141479100 0.133903134 0.068306011 0.065217391 0.050704225 0.043731778 
-#>        qsec        drat          vs          am 
-#> 0.020527859 0.019390582 0.015822785 0.009615385 
+#>         wt       disp       carb       gear        cyl         am         hp 
+#> 0.20680628 0.12747875 0.06876791 0.06129032 0.05671642 0.04100946 0.03380282 
+#>       drat       qsec         vs 
+#> 0.02266289 0.01424501 0.01186944 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -244,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 26.21315 
+#> 9.834271 
 ```

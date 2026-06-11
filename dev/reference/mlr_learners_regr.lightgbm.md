@@ -146,7 +146,7 @@ instantiated via
 
   - Actual default: 0L
 
-  - Initital value: 1L
+  - Initial value: 1L
 
   - Reason for change: Prevents accidental conflicts with `future`.
 
@@ -343,5 +343,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 34.65331 
+#> 46.43746 
 ```

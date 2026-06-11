@@ -1,7 +1,7 @@
 # Cross-Validated GLM with Elastic Net Regularization Survival Learner
 
 Generalized linear models with elastic net regularization. Calls
-[`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
 from package [glmnet](https://CRAN.R-project.org/package=glmnet).
 
 ## Initial parameter values
@@ -19,7 +19,7 @@ This learner returns three prediction types:
 1.  `lp`: a vector containing the linear predictors (relative risk
     scores), where each score corresponds to a specific test
     observation. Calculated using
-    [`glmnet::predict.cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/predict.cv.glmnet.html).
+    [`glmnet::predict.cv.glmnet()`](https://glmnet.stanford.edu/reference/predict.cv.glmnet.html).
 
 2.  `crank`: same as `lp`.
 
@@ -107,11 +107,11 @@ instantiated via
 
 If a `Task` contains a column with the `offset` role, it is
 automatically incorporated during training via the `offset` argument in
-[`glmnet::glmnet()`](https://rdrr.io/pkg/glmnet/man/glmnet.html). During
-prediction, the offset column from the test set is used only if
+[`glmnet::glmnet()`](https://glmnet.stanford.edu/reference/glmnet.html).
+During prediction, the offset column from the test set is used only if
 `use_pred_offset = TRUE` (default), passed via the `newoffset` argument
 in
-[`glmnet::predict.glmnet()`](https://rdrr.io/pkg/glmnet/man/predict.glmnet.html).
+[`glmnet::predict.glmnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html).
 Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is
 applied, effectively disabling the offset adjustment during prediction.
 
@@ -207,7 +207,7 @@ Creates a new instance of this
 ### `LearnerSurvCVGlmnet$selected_features()`
 
 Returns the set of selected features as reported by
-[`glmnet::predict.glmnet()`](https://rdrr.io/pkg/glmnet/man/predict.glmnet.html)
+[`glmnet::predict.glmnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html)
 with `type` set to `"nonzero"`.
 
 #### Usage

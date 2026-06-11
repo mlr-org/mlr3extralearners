@@ -9,7 +9,7 @@
   subset of
   [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
   arguments. The
-  [`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
   pass-through hyperparameters were removed because they were not
   consistently forwarded
   ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
@@ -507,7 +507,7 @@ Bugfixes:
 
 ## mlr3extralearners 0.5.35
 
-- Full installatio in workflow ‘test_selection’ (is faster than the
+- Full installation in workflow ‘test_selection’ (is faster than the
   previous approach, where selected packages were installed from CRAN)
 
 ## mlr3extralearners 0.5.34
@@ -524,7 +524,7 @@ Bugfixes:
 
 - chore: add new parameters for kde and rfsrc
 
-- temporarily disable feat_all test for obliqeRSF (failed in \$score()
+- temporarily disable feat_all test for obliqueRSF (failed in \$score()
   stage, because issue only happened in CI and could not be reproduced
 
 ## mlr3extralearners 0.5.31
@@ -561,7 +561,7 @@ Bugfixes:
 
 - Introduce parameter `early_stopping_split` for lightgbm learners
 - Tidy description of R package
-- Udpate NEWS.md for previous releases
+- Update NEWS.md for previous releases
 
 ## mlr3extralearners 0.5.24
 
@@ -592,7 +592,7 @@ Bugfixes:
 
 ## mlr3extralearners 0.5.19
 
-- Provide correct range for neighors argument for Cubist
+- Provide correct range for neighbors argument for Cubist
 
 ## mlr3extralearners 0.5.18
 
@@ -787,4 +787,4 @@ Bugfixes:
 ## mlr3extralearners 0.1.0
 
 - Initial release. mlr3extralearners contains all learners from the
-  mlr3learners organisation, which is now archived.
+  mlr3learners organization, which is now archived.

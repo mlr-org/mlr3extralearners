@@ -56,7 +56,7 @@
 <div class="section level3">
 <h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
 <ul><li>
-<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
 <code>surv.cv_glmnet</code>: removed the parameters <code>standardize.response</code>, <code>type.gaussian</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are not applicable to the Cox family (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
@@ -457,7 +457,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.35" id="mlr3extralearners-0535">mlr3extralearners 0.5.35<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0535"></a></h2>
-<ul><li>Full installatio in workflow ‘test_selection’ (is faster than the previous approach, where selected packages were installed from CRAN)</li>
+<ul><li>Full installation in workflow ‘test_selection’ (is faster than the previous approach, where selected packages were installed from CRAN)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.34" id="mlr3extralearners-0534">mlr3extralearners 0.5.34<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0534"></a></h2>
@@ -470,7 +470,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.32" id="mlr3extralearners-0532">mlr3extralearners 0.5.32<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0532"></a></h2>
 <ul><li><p>chore: add new parameters for kde and rfsrc</p></li>
-<li><p>temporarily disable feat_all test for obliqeRSF (failed in $score() stage, because issue only happened in CI and could not be reproduced</p></li>
+<li><p>temporarily disable feat_all test for obliqueRSF (failed in $score() stage, because issue only happened in CI and could not be reproduced</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.31" id="mlr3extralearners-0531">mlr3extralearners 0.5.31<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0531"></a></h2>
@@ -503,7 +503,7 @@
 <h2 class="pkg-version" data-toc-text="0.5.25" id="mlr3extralearners-0525">mlr3extralearners 0.5.25<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0525"></a></h2>
 <ul><li>Introduce parameter <code>early_stopping_split</code> for lightgbm learners</li>
 <li>Tidy description of R package</li>
-<li>Udpate NEWS.md for previous releases</li>
+<li>Update NEWS.md for previous releases</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.24" id="mlr3extralearners-0524">mlr3extralearners 0.5.24<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0524"></a></h2>
@@ -534,7 +534,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.19" id="mlr3extralearners-0519">mlr3extralearners 0.5.19<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0519"></a></h2>
-<ul><li>Provide correct range for neighors argument for Cubist</li>
+<ul><li>Provide correct range for neighbors argument for Cubist</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.18" id="mlr3extralearners-0518">mlr3extralearners 0.5.18<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0518"></a></h2>
@@ -728,7 +728,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="mlr3extralearners-010">mlr3extralearners 0.1.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-010"></a></h2>
-<ul><li>Initial release. mlr3extralearners contains all learners from the mlr3learners organisation, which is now archived.</li>
+<ul><li>Initial release. mlr3extralearners contains all learners from the mlr3learners organization, which is now archived.</li>
 </ul></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

@@ -1,6 +1,6 @@
 # Regression IBk Learner
 
-Instance based algorithm: K-nearest neighbours regression. Calls
+Instance based algorithm: K-nearest neighbors regression. Calls
 [`RWeka::IBk()`](https://rdrr.io/pkg/RWeka/man/Weka_classifier_lazy.html)
 from [RWeka](https://CRAN.R-project.org/package=RWeka).
 
@@ -249,5 +249,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.518182 
+#> 14.25545 
 ```

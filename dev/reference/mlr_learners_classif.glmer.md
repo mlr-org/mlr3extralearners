@@ -11,7 +11,7 @@ Generalized linear model with random effects. Calls
 ## Formula
 
 Although most mlr3 learners don't allow to specify the formula manually,
-and automatically set it by valling `task$formula()`, this learner
+and automatically set it by calling `task$formula()`, this learner
 allows to set the `formula` because it's core functionality depends it.
 This means that it might not always use all features that are available
 in the [task](https://mlr3.mlr-org.com/reference/Task.html). Be aware,
