@@ -183,29 +183,29 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2ORegressionModel: deeplearning</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DeepLearning_model_R_1781102499045_109 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DeepLearning_model_R_1781160052759_109 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Status of Neuron Layers: predicting mpg, regression, gaussian distribution, Quadratic loss, 42,601 weights/biases, 508.1 KB, 210 training samples, mini-batch size 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     1    10     Input  0.00 %       NA       NA        NA       NA       NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005639 0.003970 0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.028669 0.059761 0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4     1    Linear      NA 0.000000 0.000000  0.000463 0.000367 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005810 0.006101 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.015334 0.053419 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4     1    Linear      NA 0.000000 0.000000  0.000316 0.000222 0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   mean_weight weight_rms mean_bias bias_rms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          NA         NA        NA       NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   -0.000251   0.097053  0.487353 0.011373</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   -0.002054   0.069524  0.994042 0.006839</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4    0.004634   0.091568  0.000990 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    0.004525   0.098696  0.495626 0.005454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   -0.000423   0.069246  0.999032 0.002737</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   -0.001769   0.101077 -0.001112 0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2ORegressionMetrics: deeplearning</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Metrics reported on full training frame **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  11.55727</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  3.399598</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MAE:  2.561183</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSLE:  0.161321</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Residual Deviance :  11.55727</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  2.411397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  1.552867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MAE:  1.226484</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSLE:  0.08189962</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Residual Deviance :  2.411397</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -218,7 +218,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18.46943 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.03947 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

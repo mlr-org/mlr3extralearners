@@ -221,8 +221,9 @@ because they are not consistently supported or forwarded through the full train/
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Selected features</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "b1.1"   "b1.2"   "b1.4"   "b2.3"   "b4.1"   "b4.123" "b4.140" "b4.269"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "b4.433" "b4.549" "b4.607" "b4.748" "b4.891" "b4.977"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "b1.1"   "b1.2"   "b1.3"   "b1.4"   "b2.3"   "b3.11"  "b3.18"  "b3.19" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "b3.2"   "b3.4"   "b3.8"   "b3.9"   "b4.10"  "b4.123" "b4.164" "b4.269"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "b4.483" "b4.607" "b4.66"  "b4.825" "b4.891" "b4.977"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
