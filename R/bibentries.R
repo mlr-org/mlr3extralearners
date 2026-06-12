@@ -1,4 +1,6 @@
-bibentries = c( # nolint start
+# fmt: skip
+# nolint start
+bibentries = c(
   breiman_2001 = bibentry("article",
     title       = "Random Forests",
     author      = "Breiman, Leo",
@@ -1034,5 +1036,17 @@ bibentries = c( # nolint start
     series = "Springer Series in Information Sciences",
     volume = "30",
     isbn = "978-3540967120"
+  ),
+  li_2024 = bibentry("article",
+    title = paste(
+      "Does combining numerous data types in multi-omics data improve or hinder performance in survival prediction? Insights from a large-scale benchmark study"
+    ),
+    author = "Li, Y. and Herold, T. and Mansmann, U. and Hornung, R.",
+    journal = "BMC Medical Informatics and Decision Making",
+    volume = "24",
+    number = "1",
+    pages = "1--14",
+    year = "2024",
+    doi = "10.1186/S12911-024-02642-9"
   )
 ) # nolint end
