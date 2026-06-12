@@ -2,7 +2,7 @@
 adaptive_block_order = function(data, target, pv) {
   blocks = pv$blocks
   if (length(blocks) < 2L || !isTRUE(pv$adaptive.order)) {
-    return(list(blocks = blocks, block_imp = NULL, order = seq_along(blocks)))
+    return(list(blocks = blocks, penalty.factors = NULL, order = seq_along(blocks)))
   }
 
   # Decide on the arguments for cv.glmnet()
