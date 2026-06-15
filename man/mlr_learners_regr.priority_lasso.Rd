@@ -55,6 +55,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    type.gaussian \tab character \tab - \tab covariance, naive \tab - \cr
    include.allintercepts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    use.blocks \tab untyped \tab "all" \tab  \tab - \cr
+   adaptive.order \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -67,6 +68,34 @@ because they are not consistently supported or forwarded through the full train/
 (e.g. handling missing test data, or performing relaxed lasso fits).
 
 Please open an issue if there is a need for supporting more learner parameters.
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{adaptive.order}: if \code{TRUE}, the priority order of blocks is estimated from the data
+following Herrmann et al. (2024), instead of using the user-supplied block order.
+For each block, a Ridge regression (\code{alpha = 0}) is fit using \code{cv.glmnet()} on that block alone.
+The importance of a block is measured by the mean absolute coefficient (MAC) score at the
+\code{lambda.min} value (the lambda giving minimum cross-validation error).
+A penalty factor of \code{1 / MAC} is then assigned to each block.
+Blocks are sorted by increasing penalty factor, i.e., blocks with larger MAC
+(stronger average signal) receive higher priority (come first).
+Also, the block‑wise penalty factors are attached to the fitted model object as
+\code{learner$model$penalty.factors}.
+}
+
+This method is useful when no domain knowledge is available to specify block priority.
+In this step, data are \strong{standardized by default} (\code{standardize = TRUE}), but this can
+be overridden by the learner's \code{standardize} parameter. \code{lambda.min} is always used
+to derive the block priority.
+Additional arguments such as \code{nfolds}, \code{type.measure}, and \code{cox.ties} (if provided) are
+forwarded to each block‑wise \code{cv.glmnet()} fit.
+The \code{max.coef} parameter, if supplied, it is re‑ordered accordingly to align
+with the new block order.
+
+This parameter is ignored when fewer than two blocks are provided.
+It defaults to \code{FALSE} for backward compatibility.
 }
 
 \examples{
@@ -111,6 +140,11 @@ Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 \dQuote{Priority-Lasso: a simple hierarchical approach to the prediction of clinical outcome using multi-omics data.}
 \emph{BMC Bioinformatics}, \bold{19}.
 \doi{10.1186/s12859-018-2344-6}.
+
+Herrmann, M., Probst, P., Hornung, R., Jurinovic, V., Boulesteix, L. A (2021).
+\dQuote{Large-scale benchmark study of survival prediction methods using multi-omics data.}
+\emph{Briefings in Bioinformatics}, \bold{22}(3), 1--15.
+\doi{10.1093/BIB/BBAA167}.
 }
 \seealso{
 \itemize{
