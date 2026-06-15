@@ -1,55 +1,74 @@
-#' Compute adaptive block order and penalty factors for priority lasso
+# This function computes an adaptive block order based on the importance of each
+# block as determined by fitting a glmnet model to each block separately.
+# The importance is measured by the mean absolute coefficient (MAC) of the fitted
+# model for each block, and the penalty factor is set to be inversely proportional
+# to this importance. Blocks with higher importance (lower penalty factor) will be
+# ordered first in the priority lasso model.
 adaptive_block_order = function(data, target, pv) {
   blocks = pv$blocks
-  if (length(blocks) < 2L || !isTRUE(pv$adaptive.order)) {
-    return(list(blocks = blocks, penalty.factors = NULL, order = seq_along(blocks)))
-  }
 
-  # Decide on the arguments for cv.glmnet()
-  fit_args = list(
+  # decide on the parameters to pass to cv.glmnet
+  fit.args = list(
     y = target,
     family = pv$family,
-    alpha = 0,
+    alpha = 0, # Ridge penalty
     standardize = pv$standardize %??% TRUE,
     nfolds = pv$nfolds %??% 10L
   )
 
   # extract additional arguments if they are not NULL
   if (!is.null(pv$type.measure)) {
-    fit_args$type.measure = pv$type.measure
+    fit.args$type.measure = pv$type.measure
   }
   if (!is.null(pv$cox.ties)) {
-    fit_args$cox.ties = pv$cox.ties
+    fit.args$cox.ties = pv$cox.ties
   }
 
-  # Compute each block penalty
-  penalty_factors = vapply(
-    blocks,
-    function(block) {
-      fit = invoke(
-        glmnet::cv.glmnet,
-        x = data[, block, drop = FALSE],
-        .args = fit_args
+  penalty.factors = vapply(
+    seq_along(blocks),
+    function(i) {
+      block = blocks[[i]]
+      fit = tryCatch(
+        invoke(
+          glmnet::cv.glmnet,
+          x = data[, block, drop = FALSE],
+          .args = fit.args
+        ),
+        error = function(e) NULL
       )
-      #browser()
 
-      coef_mat = coef(fit, s = "lambda.min")
-      # -1 to remove the intercept
-      coefs = as.vector(coef_mat[-1, , drop = FALSE])
-      #coefs = as.matrix(coef(fit, s = "lambda.min"))
-      #coefs = coefs[rownames(coefs) != "(Intercept)", , drop = FALSE]
-      macs = mean(abs(coefs))
-      if (is.na(macs) || macs < 1e-8) Inf else 1 / macs
+      # If the model fitting fails, assign an infinite penalty factor to the block to ensure it is penalized the most.
+      if (is.null(fit)) {
+        return(Inf)
+      }
+
+      # browser()
+      coef.mat = as.matrix(coef(fit, s = "lambda.min"))
+      if ("(Intercept)" %in% rownames(coef.mat)) {
+        coef.mat = coef.mat[rownames(coef.mat) != "(Intercept)", , drop = FALSE]
+      }
+
+      macs = mean(abs(as.vector(coef.mat)))
+      if (is.na(macs) || macs <= 1e-12) Inf else 1 / macs
     },
     numeric(1L)
   )
 
   # Order by increasing importance (lower penalty means more important block)
-  block_order = order(penalty_factors, na.last = TRUE, decreasing = FALSE)
+  block.order = order(penalty.factors, na.last = TRUE, decreasing = FALSE)
+  pv$blocks = blocks[block.order]
+
+  if (!is.null(pv$max.coef) && length(pv$max.coef) == length(block.order)) {
+    pv$max.coef = pv$max.coef[block.order]
+  }
+
+  # we don't need to pass this to prioritylasso::prioritylasso()
+  pv$adaptive.order = NULL
+  pf = penalty.factors[block.order]
+  names(pf) = names(pv$blocks)
 
   list(
-    blocks = blocks[block_order],
-    penalty.factors = penalty_factors[block_order],
-    order = block_order
+    pv = pv,
+    penalty.factors = pf
   )
 }
