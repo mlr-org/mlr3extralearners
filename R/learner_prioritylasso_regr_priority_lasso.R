@@ -19,7 +19,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib("klau2018priolasso", "li_2024")`
+#' `r format_bib("klau2018priolasso", "herrmann_2021")`
 #'
 #' @template seealso_learner
 #' @template example_prioritylasso
