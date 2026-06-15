@@ -1037,16 +1037,14 @@ bibentries = c(
     volume = "30",
     isbn = "978-3540967120"
   ),
-  li_2024 = bibentry("article",
-    title = paste(
-      "Does combining numerous data types in multi-omics data improve or hinder performance in survival prediction? Insights from a large-scale benchmark study"
-    ),
-    author = "Li, Y. and Herold, T. and Mansmann, U. and Hornung, R.",
-    journal = "BMC Medical Informatics and Decision Making",
-    volume = "24",
-    number = "1",
-    pages = "1--14",
-    year = "2024",
-    doi = "10.1186/S12911-024-02642-9"
+  herrmann_2021 = bibentry("article",
+    title = "Large-scale benchmark study of survival prediction methods using multi-omics data",
+    author = "Herrmann, M. and Probst, P. and Hornung, R. and Jurinovic, V. and Boulesteix, A. L.",
+    journal = "Briefings in Bioinformatics",
+    volume = "22",
+    number = "3",
+    pages = "1--15",
+    year = "2021",
+    doi = "10.1093/BIB/BBAA167"
   )
 ) # nolint end

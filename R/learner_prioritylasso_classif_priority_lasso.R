@@ -23,7 +23,7 @@
 #'
 #' @section Custom mlr3 parameters:
 #' - `adaptive.order`: if `TRUE`, the priority order of blocks is estimated from the data
-#' following Li et al. (2024), instead of using the user-supplied block order.
+#' following Herrmann et al. (2024), instead of using the user-supplied block order.
 #' For each block, a Ridge regression (`alpha = 0`) is fit using `cv.glmnet()` on that block alone.
 #' The importance of a block is measured by the mean absolute coefficient (MAC) score at the
 #' `lambda.min` value (the lambda giving minimum cross-validation error).
@@ -49,7 +49,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib("klau2018priolasso", "li_2024")`
+#' `r format_bib("klau2018priolasso", "herrmann_2021")`
 #'
 #' @template seealso_learner
 #' @template example_prioritylasso
