@@ -15,6 +15,10 @@ The `glmnet::cv.glmnet()` pass-through hyperparameters were removed because they
 * `surv.survdnn`: added the `.threads` train parameter (#594).
 * `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and `jaxlib` Python dependencies so they are installed automatically.
 
+## New Features
+
+* `priority_lasso` learners now support automatic block-priority derivation via `adaptive.order = TRUE`, following the approach in [Li et al. (2024)](http://doi.org/10.1186/S12911-024-02642-9).
+
 # mlr3extralearners 1.5.2
 
 ## Other
