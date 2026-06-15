@@ -42,7 +42,6 @@ adaptive_block_order = function(data, target, pv) {
         return(Inf)
       }
 
-      # browser()
       coef.mat = as.matrix(coef(fit, s = "lambda.min"))
       if ("(Intercept)" %in% rownames(coef.mat)) {
         coef.mat = coef.mat[rownames(coef.mat) != "(Intercept)", , drop = FALSE]
