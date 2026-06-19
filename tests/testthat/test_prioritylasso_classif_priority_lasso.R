@@ -50,15 +50,22 @@ test_that("adaptive.order works", {
     type.measure = "class",
     blocks = blocks,
     nfolds = 5L,
-    predict_type = "prob",
-    block1.penalization = FALSE
+    predict_type = "prob"
   )
   lrn_non_adapt$id = "PL_non_adaptive"
   lrn_non_adapt$train(task, part$train)
 
   expect_list(lrn_non_adapt$model$blocks, len = 2)
-  expect_equal(names(lrn_non_adapt$model$blocks), c("noise", "signal")) # block order didn't change
-  expect_null(lrn_non_adapt$model$block.penalty.factors) # no penalty factors since adaptive.order != TRUE
+  # block order didn't change
+  expect_equal(names(lrn_non_adapt$model$blocks), c("noise", "signal"))
+  # stored coefficients should be in the original order of features
+  expect_equal(
+    names(lrn_non_adapt$model$coefficients),
+    task$feature_names
+  )
+  expect_subset(lrn_non_adapt$selected_features(), task$feature_names)
+  # no penalty factors since adaptive.order != TRUE
+  expect_null(lrn_non_adapt$model$block.penalty.factors)
 
   # now fit adaptive priority block model
   lrn_adapt = lrn(
@@ -74,6 +81,12 @@ test_that("adaptive.order works", {
 
   expect_list(lrn_adapt$model$blocks, len = 2)
   expect_equal(names(lrn_adapt$model$blocks), c("signal", "noise")) # order changed
+  # stored coefficients should be in the original order of features
+  expect_equal(
+    names(lrn_adapt$model$coefficients),
+    task$feature_names
+  )
+  expect_subset(lrn_adapt$selected_features(), task$feature_names)
   expect_equal(names(lrn_adapt$model$block.penalty.factors), c("signal", "noise"))
   expect_true(lrn_adapt$model$block.penalty.factors[1] <= lrn_adapt$model$block.penalty.factors[2])
 
@@ -89,12 +102,20 @@ test_that("block1.penalization = FALSE works", {
   task = tsk("sonar")
   learner = lrn(
     "classif.priority_lasso",
-    blocks = list(a = 1:30, 31:60),
+    blocks = list(a = 1:20, b = 21:60),
     type.measure = "class",
     predict_type = "prob",
     block1.penalization = FALSE
   )
   learner$train(task)
+  # 1st block should be unpenalized and fit with glm()
+  expect_class(learner$model$block1unpen, "glm")
+
+  sf = learner$selected_features()
+  # selected features do not contain the intercept (which is always non-zero in the unpenalized fit)
+  expect_true("(Intercept)" %nin% sf)
+  # selected features include all the features in the first block (since unpenalized)
+  expect_all_true(task$feature_names[1:20] %in% sf)
 
   # prediction works
   expect_silent({

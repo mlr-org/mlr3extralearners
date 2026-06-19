@@ -47,8 +47,16 @@ test_that("adaptive.order works", {
   lrn_non_adapt$train(task, part$train)
 
   expect_list(lrn_non_adapt$model$blocks, len = 2)
-  expect_equal(names(lrn_non_adapt$model$blocks), c("noise", "signal")) # block order didn't change
-  expect_null(lrn_non_adapt$model$block.penalty.factors) # no penalty factors since adaptive.order != TRUE
+  # block order didn't change
+  expect_equal(names(lrn_non_adapt$model$blocks), c("noise", "signal"))
+  # stored coefficients should be in the original order of features
+  expect_equal(
+    names(lrn_non_adapt$model$coefficients),
+    task$feature_names
+  )
+  expect_subset(lrn_adapt$selected_features(), task$feature_names)
+  # no penalty factors since adaptive.order != TRUE
+  expect_null(lrn_non_adapt$model$block.penalty.factors)
 
   # now fit adaptive priority block model
   lrn_adapt = lrn("regr.priority_lasso", blocks = blocks, adaptive.order = TRUE, nfolds = 5L, id = "PL_adaptive")
@@ -58,6 +66,12 @@ test_that("adaptive.order works", {
   expect_equal(names(lrn_adapt$model$blocks), c("signal", "noise")) # order changed
   expect_equal(names(lrn_adapt$model$block.penalty.factors), c("signal", "noise"))
   expect_true(lrn_adapt$model$block.penalty.factors[1] <= lrn_adapt$model$block.penalty.factors[2])
+  # stored coefficients should be in the original order of features
+  expect_equal(
+    names(lrn_adapt$model$coefficients),
+    task$feature_names
+  )
+  expect_subset(lrn_adapt$selected_features(), task$feature_names)
 
   # adaptive model should have better performance than non-adaptive model
   p_adapt = lrn_adapt$predict(task, part$test)

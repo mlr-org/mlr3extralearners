@@ -65,6 +65,12 @@ test_that("adaptive.order works", {
     names(lrn_non_adapt$model$blocks),
     c("noise1", "noise2", "signal") # block order didn't change
   )
+  # coefficients should be in the original order of features
+  expect_equal(
+    names(lrn_non_adapt$model$coefficients),
+    task$feature_names
+  )
+  expect_subset(lrn_non_adapt$selected_features(), task$feature_names)
   expect_null(lrn_non_adapt$model$block.penalty.factors) # no penalty factors since adaptive.order != TRUE
 
   # Adaptive (order determined by data)
@@ -76,6 +82,12 @@ test_that("adaptive.order works", {
     names(lrn_adapt$model$blocks),
     c("signal", "noise1", "noise2") # order changed!
   )
+  # coefficients should be in the original order of features
+  expect_equal(
+    names(lrn_adapt$model$coefficients),
+    task$feature_names
+  )
+  expect_subset(lrn_adapt$selected_features(), task$feature_names)
   expect_equal(
     names(lrn_adapt$model$block.penalty.factors),
     c("signal", "noise1", "noise2") # order changed!
