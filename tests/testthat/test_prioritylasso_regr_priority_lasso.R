@@ -54,7 +54,7 @@ test_that("adaptive.order works", {
     names(lrn_non_adapt$model$coefficients),
     task$feature_names
   )
-  expect_subset(lrn_adapt$selected_features(), task$feature_names)
+  expect_subset(lrn_non_adapt$selected_features(), task$feature_names)
   # no penalty factors since adaptive.order != TRUE
   expect_null(lrn_non_adapt$model$block.penalty.factors)
 
