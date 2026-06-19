@@ -94,7 +94,9 @@ LearnerSurvPriorityLasso = R6Class(
       if (is.null(self$model)) {
         stopf("No model stored")
       }
-      coefs = self$model$coefficients
+
+      # uses prioritylasso:::coef.prioritylasso()
+      coefs = stats::coef(self$model)$coefficients
       coefs = coefs[coefs != 0]
       names(coefs)
     }
