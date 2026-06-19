@@ -133,8 +133,6 @@ LearnerSurvPriorityLasso = R6Class(
 
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
-      # reorder newdata columns according to the block order in the model
-      newdata = newdata[, unlist(self$model$blocks), drop = FALSE]
       pv = self$param_set$get_values(tags = "predict")
 
       # get linear predictor for train data

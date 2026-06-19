@@ -17,7 +17,7 @@ The `glmnet::cv.glmnet()` pass-through hyperparameters were removed because they
 
 ## New Features
 
-* `priority_lasso` learners now support automatic block-priority derivation via `adaptive.order = TRUE`, following the approach in Herrmann et al. (2021).
+* `classif.priority_lasso`, `regr.priority_lasso`, and `surv.priority_lasso` now support automatic block-priority derivation via `adaptive.order = TRUE`, following Herrmann et al. (2021), and prediction for automatic block ordering was fixed upstream in `prioritylasso` version 0.4.0.
 
 # mlr3extralearners 1.5.2
 
