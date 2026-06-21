@@ -96,3 +96,39 @@ adaptive_block_order = function(data, target, pv) {
     penalty.factors = pf
   )
 }
+
+#' @title Extract class names from a fitted prioritylasso model
+#'
+#' @description
+#' Determines the class labels (in the order: negative, positive) from a
+#' `prioritylasso` model object.
+#' It checks the following sources in sequence:
+#' 1. `glmnet.fit` slots (standard penalized fits).
+#' 2. The task object as a fallback.
+#'
+#' @param model A fitted prioritylasso model (from `prioritylasso::prioritylasso()`).
+#' @param task The mlr3 binary classification task (`TaskClassif`) used for prediction.
+#' Must have `negative` and `positive` fields.
+#' @return A character vector of length 2, first element is the negative class, second is the positive class.
+#' @keywords internal
+get_prioritylasso_classnames = function(model, task) {
+  classnames = NULL
+
+  # Try glmnet.fit slots
+  fits = model$glmnet.fit
+  if (!is.null(fits) && length(fits) >= 1L) {
+    for (i in seq_along(fits)) {
+      if (!is.null(fits[[i]]$classnames)) {
+        classnames = fits[[i]]$classnames
+        break
+      }
+    }
+  }
+
+  # If not found, use task directly
+  if (is.null(classnames) || length(classnames) != 2L) {
+    classnames = c(task$negative, task$positive)
+  }
+
+  classnames
+}

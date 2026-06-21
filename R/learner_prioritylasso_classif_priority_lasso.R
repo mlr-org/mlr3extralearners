@@ -149,13 +149,7 @@ LearnerClassifPriorityLasso = R6Class(
         invoke(predict, self$model, newdata = newdata, type = "response", .args = pv)
       )
 
-      # solve issue when block1.penalization = FALSE and the first glmnet fit is empty
-      fits = self$model$glmnet.fit
-      fit_idx = if (!is.null(fits[[1L]]$classnames)) 1L else 2L
-      if (length(fits) < fit_idx || is.null(fits[[fit_idx]]$classnames)) {
-        stopf("Could not determine class names from fitted glmnet models")
-      }
-      classnames = fits[[fit_idx]]$classnames
+      classnames = get_prioritylasso_classnames(self$model, task)
 
       if (self$predict_type == "response") {
         response = fifelse(p <= 0.5, classnames[1L], classnames[2L])
