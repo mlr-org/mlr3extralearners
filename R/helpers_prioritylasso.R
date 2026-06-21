@@ -1,9 +1,34 @@
-# This function computes an adaptive block order based on the importance of each
-# block as determined by fitting a glmnet model to each block separately.
-# The importance is measured by the mean absolute coefficient (MAC) of the fitted
-# model for each block, and the penalty factor is set to be inversely proportional
-# to this importance. Blocks with higher importance (lower penalty factor) will be
-# ordered first in the priority lasso model.
+#' @title Compute adaptive block order and penalty factors for priority lasso
+#'
+#' @description
+#' This function determines an adaptive ordering of blocks for the priority lasso
+#' algorithm by assessing each block's predictive signal. It fits a Ridge
+#' (`alpha = 0`) `glmnet` model to each block individually using cross-validation,
+#' and computes the **mean absolute coefficient (MAC)** at the `lambda.min`
+#' value. The penalty factor for each block is set to the inverse of its MAC,
+#' so that blocks with stronger signals (higher MAC) receive smaller penalty
+#' factors and are placed earlier in the priority order.
+#'
+#' This is useful when no prior knowledge about block importance is available.
+#' The function returns a modified parameter list (`pv`) with reordered `blocks`
+#' and (if present) `max.coef`, along with the computed penalty factors.
+#'
+#' @param data A numeric matrix of features (rows = observations, columns = features).
+#' @param target A vector of response values (binary for classification, numeric for
+#'   regression) used as the outcome in each block-wise `cv.glmnet` fit.
+#' @param pv A list of parameters passed to `prioritylasso::prioritylasso()`. It
+#'   must contain at least `blocks` (a list of feature vector indices) and `family`.
+#'   Other relevant elements (`standardize`, `nfolds`, `type.measure`, etc.)
+#'   are extracted and forwarded to `cv.glmnet`.
+#'
+#' @return A list with two components:
+#'  - `pv`: The modified parameter list, with `blocks` reordered by increasing
+#'     penalty factor and `max.coef` (if present) reordered accordingly. The
+#'     `adaptive.order` element is removed.
+#'  - `penalty.factors`: A named numeric vector of penalty factors for the
+#'     reordered blocks, with names taken from the block names.
+#'
+#' @keywords internal
 adaptive_block_order = function(data, target, pv) {
   blocks = pv$blocks
 
