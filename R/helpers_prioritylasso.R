@@ -125,7 +125,8 @@ get_prioritylasso_classnames = function(model, task) {
     }
   }
 
-  # If not found, use task directly
+  # If not found, use task directly (case where 1 block has been fit, and it is
+  # unpenalized, so a glm model if fit instead of glmnet)
   if (is.null(classnames) || length(classnames) != 2L) {
     classnames = c(task$negative, task$positive)
   }
