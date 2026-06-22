@@ -27,7 +27,7 @@
 #'     `adaptive.order` element is removed.
 #'  - `penalty.factors`: A named numeric vector of penalty factors for the
 #'     reordered blocks, with names taken from the block names.
-#'
+#' @noRd
 #' @keywords internal
 adaptive_block_order = function(data, target, pv) {
   blocks = pv$blocks
@@ -109,7 +109,10 @@ adaptive_block_order = function(data, target, pv) {
 #' @param model A fitted prioritylasso model (from `prioritylasso::prioritylasso()`).
 #' @param task The mlr3 binary classification task (`TaskClassif`) used for prediction.
 #' Must have `negative` and `positive` fields.
+#'
 #' @return A character vector of length 2, first element is the negative class, second is the positive class.
+#'
+#' @noRd
 #' @keywords internal
 get_prioritylasso_classnames = function(model, task) {
   classnames = NULL
