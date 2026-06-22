@@ -58,7 +58,7 @@ Suggests:
     apcluster,
     BART (>= 2.9.10),
     blockForest (>= 0.2.7),
-    brnn,
+    brnn (>= 0.9.4),
     bst,
     C50,
     callr,
