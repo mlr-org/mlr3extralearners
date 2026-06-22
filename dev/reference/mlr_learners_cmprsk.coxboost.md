@@ -240,14 +240,14 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #> cause '1':
-#> 10 boosting steps resulting in 2 non-zero coefficients  
-#> partial log-likelihood: -50.66644 
+#> 10 boosting steps resulting in 3 non-zero coefficients  
+#> partial log-likelihood: -54.2776 
 #> 
 #> cause '2':
 #> 10 boosting steps resulting in 6 non-zero coefficients  
-#> partial log-likelihood: -278.3775 
+#> partial log-likelihood: -291.0977 
 print(learner$selected_features(cause = 1)) # for cause = 1
-#> [1] "age"  "chol"
+#> [1] "age"      "copper"   "platelet"
 print(learner$selected_features(cause = 2)) # for cause = 2
 #> [1] "age"     "copper"  "albumin" "ast"     "bili"    "protime"
 
@@ -257,5 +257,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.8518363 
+#>  0.8429209 
 ```
