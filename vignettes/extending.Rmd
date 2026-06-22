@@ -317,6 +317,38 @@ learner$importance()
 
 If it runs without erroring, that's a very good start!
 
+### Weighted Training
+
+The following example assigns the `weights_learner`-role to a task column to show how weights influence model fitting.
+
+```{r, eval = rpart_available}
+task = tsk("mtcars")
+
+# row ids with am == 1
+row_ids_am_1 = task$row_ids[task$data(cols = "am") == 1L]
+
+# unweighted learner
+learner = LearnerRegrRpartSimple$new()
+pred = learner$train(task)$predict(task)
+pred$filter(row_ids_am_1)$score(msr("regr.mse"))
+
+# define learner weights based on am-columns with value "1"
+task_wt = tsk("mtcars")$cbind(data.table::data.table(
+  w_fit = ifelse(task$data(cols = "am")[[1L]] == 1, 30, 1)
+))
+
+# set column roles so the learner can recognize which columns determine the respective weights
+task_wt$set_col_roles(cols = "w_fit", roles = "weights_learner")
+
+# weighted learner
+learner_wt = LearnerRegrRpartSimple$new()
+pred_wt = learner_wt$train(task_wt)$predict(task_wt)
+
+pred_wt$filter(row_ids_am_1)$score(msr("regr.mse"))
+```
+
+Based on the Mean Squared Error for the subset of cars having `am == 1` it becomes evident, that the weighted learner focuses more on minimizing the error for those observations than the unweighted learner.
+
 ### Autotest
 
 To ensure that a learner correctly handles different task properties, feature types, and edge cases, `mlr3extralearners` relies on a standardized autotest framework.
