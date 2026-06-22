@@ -172,10 +172,10 @@ print(learner$model)
 #> Problem type: classification 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0104151242805109 
+#>  Hyperparameter : sigma =  0.012911518561252 
 #> 
 #> Number of training instances learned : 139 
-#> Train error : 0.09352518 
+#> Train error : 0.057553957 
 
 
 # Make predictions for the test rows

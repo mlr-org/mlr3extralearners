@@ -244,36 +244,16 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt;= 163.8 : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt;= 101.55 : LM1 (3/14.978%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;  101.55 : LM2 (7/19.993%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;  163.8 : LM3 (11/26.036%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/35.573%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0409 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 1.553 * drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0162 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.766 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 29.6719</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.1836 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.014 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.7761 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 35.4569</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0335 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 1.553 * drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0258 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.766 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 29.0025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	1.4933 * drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0156 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.6621 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 23.9178</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -282,7 +262,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.311305 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14.76922 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
