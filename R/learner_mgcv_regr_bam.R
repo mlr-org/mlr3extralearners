@@ -24,7 +24,6 @@
 #'
 #' @import R6
 #' @import mlr3
-#' @import mgcv
 #' @import paradox
 #' @import mlr3extralearners
 #' @importFrom mlr3misc invoke
