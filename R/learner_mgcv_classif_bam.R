@@ -126,7 +126,7 @@ LearnerClassifBam <- R6::R6Class(
       colnames(model_pred) = task$class_names
 
       if (self$predict_type == "response") {
-        class_indices = max.col(model_pred, ties.method = "random")
+        class_indices = max.col(model_pred, ties.method = "first")
         response = colnames(model_pred)[class_indices]
         list(response = unname(response))
       } else {
