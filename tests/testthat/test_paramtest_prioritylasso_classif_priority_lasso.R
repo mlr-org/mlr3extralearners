@@ -34,7 +34,8 @@ test_that("classif.priority_lasso train", {
     "type.gaussian", # not applicable to classification
     "standardize.response", # not supported
     "type.multinomial", # not supported
-    "cox.ties" # not supported
+    "cox.ties", # not supported
+    "adaptive.order" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

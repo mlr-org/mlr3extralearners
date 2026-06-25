@@ -13,12 +13,13 @@
 #' - `type.measure` set to `"mse"` (cross-validation measure) and cannot be changed
 #'
 #' @inheritSection mlr_learners_classif.priority_lasso Scope and supported arguments
+#' @inheritSection mlr_learners_classif.priority_lasso Custom mlr3 parameters
 #'
 #' @templateVar id regr.priority_lasso
 #' @template learner
 #'
 #' @references
-#' `r format_bib("klau2018priolasso")`
+#' `r format_bib("klau2018priolasso", "herrmann_2021")`
 #'
 #' @template seealso_learner
 #' @template example_prioritylasso
@@ -52,7 +53,9 @@ LearnerRegrPriorityLasso = R6Class(
         type.gaussian         = p_fct(c("covariance", "naive"), tags = "train"),
         # prioritylasso:::predict.prioritylasso() parameters
         include.allintercepts = p_lgl(default = FALSE, tags = "predict"),
-        use.blocks            = p_uty(default = "all", tags = "predict")
+        use.blocks            = p_uty(default = "all", tags = "predict"),
+        # Custom mlr3 parameters
+        adaptive.order        = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -74,7 +77,9 @@ LearnerRegrPriorityLasso = R6Class(
       if (is.null(self$model)) {
         stopf("No model stored")
       }
-      coefs = self$model$coefficients
+
+      # uses prioritylasso:::coef.prioritylasso()
+      coefs = stats::coef(self$model)$coefficients
       coefs = coefs[coefs != 0]
       names(coefs)
     }
@@ -89,18 +94,45 @@ LearnerRegrPriorityLasso = R6Class(
 
       data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
-      invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pv)
+
+      # If adaptive.order is TRUE, compute block order and penalty factors from the data
+      res = NULL
+      if (length(pv$blocks) >= 2L && isTRUE(pv$adaptive.order)) {
+        pv$adaptive.order = NULL
+        res = adaptive_block_order(data, target, pv)
+        pv = res$pv
+      }
+
+      model = invoke(
+        prioritylasso::prioritylasso,
+        X = data,
+        Y = target,
+        .args = pv
+      )
+
+      # add block penalty factors to the model object
+      if (!is.null(res)) {
+        model$block.penalty.factors = res$penalty.factors
+      }
+
+      model
     },
 
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
 
-      pred = as.numeric(
-        invoke(predict, self$model, newdata = newdata, type = "response", .args = pv)
+      p = as.numeric(
+        invoke(
+          predict,
+          self$model,
+          newdata = newdata,
+          type = "response",
+          .args = pv
+        )
       )
 
-      list(response = pred)
+      list(response = p)
     }
   )
 )

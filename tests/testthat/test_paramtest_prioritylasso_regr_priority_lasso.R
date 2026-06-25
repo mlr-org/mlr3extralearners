@@ -35,7 +35,8 @@ test_that("regr.priority_lasso train", {
     "type.logistic", # not applicable to regression
     "standardize.response", # not supported
     "type.multinomial", # not supported
-    "cox.ties" # not supported
+    "cox.ties", # not supported
+    "adaptive.order" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

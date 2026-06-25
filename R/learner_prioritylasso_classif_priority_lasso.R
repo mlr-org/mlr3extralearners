@@ -21,11 +21,35 @@
 #' @section Initial parameter values:
 #' - `family` is set to `"binomial"` and cannot be changed
 #'
+#' @section Custom mlr3 parameters:
+#' - `adaptive.order`: if `TRUE`, the priority order of blocks is estimated from the data
+#' following Herrmann et al. (2021), instead of using the user-supplied block order.
+#' For each block, a Ridge regression (`alpha = 0`) is fit using `cv.glmnet()` on that block alone.
+#' The importance of a block is measured by the mean absolute coefficient (MAC) score at the
+#' `lambda.min` value (the lambda giving minimum cross-validation error).
+#' A penalty factor of `1 / MAC` is then assigned to each block.
+#' Blocks are sorted by increasing penalty factor, i.e., blocks with larger MAC
+#' (stronger average signal) receive higher priority (come first).
+#' Also, the block‑wise penalty factors are attached to the fitted model object as
+#' `learner$model$block.penalty.factors`.
+#'
+#' This method is useful when no domain knowledge is available to specify block priority.
+#' In this step, data are **standardized by default** (`standardize = TRUE`), but this can
+#' be overridden by the learner's `standardize` parameter. `lambda.min` is always used
+#' to derive the block priority.
+#' Additional arguments such as `nfolds`, `type.measure`, `weights` and `cox.ties` (if provided) are
+#' forwarded to each block‑wise `cv.glmnet()` fit.
+#' The `max.coef` parameter, if supplied, it is re‑ordered accordingly to align
+#' with the new block order.
+#'
+#' This parameter is ignored when fewer than two blocks are provided.
+#' It defaults to `FALSE` for backward compatibility.
+#'
 #' @templateVar id classif.priority_lasso
 #' @template learner
 #'
 #' @references
-#' `r format_bib("klau2018priolasso")`
+#' `r format_bib("klau2018priolasso", "herrmann_2021")`
 #'
 #' @template seealso_learner
 #' @template example_prioritylasso
@@ -59,7 +83,9 @@ LearnerClassifPriorityLasso = R6Class(
         type.logistic         = p_fct(c("Newton", "modified.Newton"), default = "Newton", tags = "train"),
         # prioritylasso:::predict.prioritylasso() parameters
         include.allintercepts = p_lgl(default = FALSE, tags = "predict"),
-        use.blocks            = p_uty(default = "all", tags = "predict")
+        use.blocks            = p_uty(default = "all", tags = "predict"),
+        # Custom mlr3 parameters
+        adaptive.order        = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -81,7 +107,9 @@ LearnerClassifPriorityLasso = R6Class(
       if (is.null(self$model)) {
         stopf("No model stored")
       }
-      coefs = self$model$coefficients
+
+      # uses prioritylasso:::coef.prioritylasso()
+      coefs = stats::coef(self$model)$coefficients
       coefs = coefs[coefs != 0]
       names(coefs)
     }
@@ -95,16 +123,46 @@ LearnerClassifPriorityLasso = R6Class(
 
       data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
-      invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pv)
+
+      # If adaptive.order is TRUE, compute block order and penalty factors from the data
+      res = NULL
+      if (length(pv$blocks) >= 2L && isTRUE(pv$adaptive.order)) {
+        pv$adaptive.order = NULL
+        res = adaptive_block_order(data, target, pv)
+        pv = res$pv
+      }
+
+      model = invoke(
+        prioritylasso::prioritylasso,
+        X = data,
+        Y = target,
+        .args = pv
+      )
+
+      # add block penalty factors to the model object
+      if (!is.null(res)) {
+        model$block.penalty.factors = res$penalty.factors
+      }
+
+      model
     },
 
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
 
-      p = invoke(predict, self$model, newdata = newdata, type = "response", .args = pv)
-      p = drop(p)
-      classnames = self$model$glmnet.fit[[1L]]$classnames
+      p = as.numeric(
+        invoke(
+          predict,
+          self$model,
+          newdata = newdata,
+          type = "response",
+          .args = pv
+        )
+      )
+
+      classnames = get_prioritylasso_classnames(self$model, task)
+
       if (self$predict_type == "response") {
         response = fifelse(p <= 0.5, classnames[1L], classnames[2L])
         list(response = drop(response))

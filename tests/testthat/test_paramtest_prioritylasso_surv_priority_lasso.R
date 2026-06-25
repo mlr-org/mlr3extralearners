@@ -36,7 +36,8 @@ test_that("surv.priority_lasso train", {
     "type.logistic", # not applicable to survival
     "standardize.response", # not supported
     "type.multinomial", # not applicable to survival
-    "type.gaussian" # not applicable to survival
+    "type.gaussian", # not applicable to survival
+    "adaptive.order" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
