@@ -15,6 +15,7 @@ The `glmnet::cv.glmnet()` pass-through hyperparameters were removed because they
 * `surv.priority_lasso`: added the train parameter `cox.ties`, initialized to `"breslow"` (#594).
 * `surv.survdnn`: added the `.threads` train parameter (#594).
 * `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and `jaxlib` Python dependencies so they are installed automatically.
+* `regr.bart`'s hyperparameter `sigdf` was changed to type `double`.
 
 ## New Features
 
