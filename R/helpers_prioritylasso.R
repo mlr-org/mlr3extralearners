@@ -18,7 +18,7 @@
 #'   regression) used as the outcome in each block-wise `cv.glmnet` fit.
 #' @param pv A list of parameters passed to `prioritylasso::prioritylasso()`. It
 #'   must contain at least `blocks` (a list of feature vector indices) and `family`.
-#'   Other relevant elements (`standardize`, `nfolds`, `type.measure`, etc.)
+#'   Other relevant elements (`standardize`, `nfolds`, `type.measure`, `weights`, etc.)
 #'   are extracted and forwarded to `cv.glmnet`.
 #'
 #' @return A list with two components:
@@ -38,7 +38,8 @@ adaptive_block_order = function(data, target, pv) {
     family = pv$family,
     alpha = 0, # Ridge penalty
     standardize = pv$standardize %??% TRUE,
-    nfolds = pv$nfolds %??% 10L
+    nfolds = pv$nfolds %??% 10L,
+    weights = pv$weights %??% NULL
   )
 
   # extract additional arguments if they are not NULL

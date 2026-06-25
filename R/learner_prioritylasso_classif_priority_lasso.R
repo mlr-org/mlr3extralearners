@@ -37,7 +37,7 @@
 #' In this step, data are **standardized by default** (`standardize = TRUE`), but this can
 #' be overridden by the learner's `standardize` parameter. `lambda.min` is always used
 #' to derive the block priority.
-#' Additional arguments such as `nfolds`, `type.measure`, and `cox.ties` (if provided) are
+#' Additional arguments such as `nfolds`, `type.measure`, `weights` and `cox.ties` (if provided) are
 #' forwarded to each block‑wise `cv.glmnet()` fit.
 #' The `max.coef` parameter, if supplied, it is re‑ordered accordingly to align
 #' with the new block order.
