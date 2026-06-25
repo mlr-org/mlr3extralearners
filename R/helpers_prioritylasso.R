@@ -59,10 +59,20 @@ adaptive_block_order = function(data, target, pv) {
           x = data[, block, drop = FALSE],
           .args = fit.args
         ),
-        error = function(e) NULL
+        error = function(e) {
+          warning_mlr3(
+            sprintf(
+              "adaptive_block_order(): cv.glmnet failed for block %i, assigning Inf penalty factor (%s).",
+              i,
+              conditionMessage(e)
+            )
+          )
+          NULL
+        }
       )
 
-      # If the model fitting fails, assign an infinite penalty factor to the block to ensure it is penalized the most.
+      # If the model fitting fails, assign an infinite penalty factor to the
+      # block to ensure it is penalized the most
       if (is.null(fit)) {
         return(Inf)
       }
