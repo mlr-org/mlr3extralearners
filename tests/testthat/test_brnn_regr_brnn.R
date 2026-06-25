@@ -1,6 +1,7 @@
 skip_if_not_installed("brnn")
 
 test_that("autotest", {
+  withr::local_seed(42)
   learner = lrn("regr.brnn")
   expect_learner(learner)
   # note that you can skip tests using the exclude argument

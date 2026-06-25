@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 1.5.2
+Version: 1.5.2.9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -54,11 +54,11 @@ Suggests:
     actuar,
     ada,
     adabag,
-    aorsf (>= 0.1.5),
+    aorsf (>= 0.1.6),
     apcluster,
-    BART (>= 2.9.9),
-    blockForest (>= 0.2.6),
-    brnn,
+    BART (>= 2.9.10),
+    blockForest (>= 0.2.7),
+    brnn (>= 0.9.4),
     bst,
     C50,
     callr,
@@ -82,8 +82,8 @@ Suggests:
     formattable,
     frbs (>= 3.2-0),
     future,
-    gbm (>= 2.2.2),
-    glmnet (>= 4.1-6),
+    gbm (>= 2.2.3),
+    glmnet (>= 5.0),
     GPfit (>= 1.0-9),
     h2o (>= 3.44.0.3),
     jsonlite,
@@ -97,7 +97,7 @@ Suggests:
     lightgbm (>= 4.5.0),
     lme4 (>= 1.1-38),
     MASS,
-    mboost (>= 2.9-10),
+    mboost (>= 2.9-11),
     mda,
     mgcv (>= 1.9-4),
     mirai,
@@ -109,15 +109,14 @@ Suggests:
     neuralnet,
     nnet,
     partykit (>= 1.2-21),
-    penalized (>= 0.9-52),
+    penalized (>= 0.9-53),
     pls (>= 2.9-0),
     polyreg,
-    prioritylasso (>= 0.3.1),
-    pseudo,
+    prioritylasso (>= 0.4.0),
     qgam,
     randomForest,
-    randomForestSRC (>= 3.5.0),
-    ranger (>= 0.17.0),
+    randomForestSRC (>= 3.6.2),
+    ranger (>= 0.18.0),
     remotes,
     reticulate,
     rFerns,
@@ -137,14 +136,14 @@ Suggests:
     stats,
     stepPlr,
     survdistr (>= 0.0.3),
-    survdnn (>= 0.7.5),
+    survdnn (>= 0.7.6),
     survival,
-    survivalsvm (>= 0.0.5),
+    survivalsvm (>= 0.0.6),
     tensorflow (>= 2.0.0),
     testthat,
     tgp (>= 2.4-23),
     torch (>= 0.16.3),
-    xgboost (>= 3.2.0.1)
+    xgboost (>= 3.2.1.1)
 VignetteBuilder:
     knitr,
     rmarkdown
@@ -158,4 +157,4 @@ Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0.9000

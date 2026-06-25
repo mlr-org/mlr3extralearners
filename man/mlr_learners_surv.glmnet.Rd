@@ -12,6 +12,8 @@ Calls \code{glmnet::glmnet()} from package \CRANpkg{glmnet}.
 
 \itemize{
 \item \code{family} is set to \code{"cox"} and cannot be changed.
+\item \code{cox.ties} is initialized to \code{"breslow"} to keep the tie-handling behavior of earlier glmnet versions,
+and to silence the glmnet v5.0 warning about the upcoming default change to \code{"efron"}.
 }
 }
 
@@ -21,11 +23,11 @@ This learner returns three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{glmnet::predict.coxnet()}.
+Calculated using \code{glmnet::predict.glmnet()}.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{glmnet::survfit.coxnet()}.
+Calculated using \code{glmnet:::survfit.coxnet()}.
 Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
 into survival predictions and are described in \code{survival::survfit.coxph()}.
 By default the Breslow estimator is used for computing the baseline hazard.
@@ -53,14 +55,14 @@ custom resampling strategies (blocked design, stratification).
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
 incorporated during training via the \code{offset} argument in \code{glmnet::glmnet()}.
 During prediction, the offset column from the test set is used only if
-\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{glmnet::predict.coxnet()}.
+\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{glmnet::predict.glmnet()}.
 Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.
 }
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.glmnet")
 }\if{html}{\out{</div>}}
@@ -79,46 +81,42 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
    alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   devmax \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   dfmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   eps \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   epsnr \tab numeric \tab 1e-08 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   exact \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   exclude \tab untyped \tab - \tab  \tab - \cr
-   exmx \tab numeric \tab 250 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   gamma \tab untyped \tab - \tab  \tab - \cr
-   grouped \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   lambda \tab untyped \tab - \tab  \tab - \cr
-   lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
-   maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mnlam \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   use_pred_offset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   penalty.factor \tab untyped \tab - \tab  \tab - \cr
-   pmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   pmin \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   prec \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   s \tab numeric \tab 0.01 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   lambda \tab untyped \tab NULL \tab  \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   type.logistic \tab character \tab Newton \tab Newton, modified.Newton \tab - \cr
-   type.multinomial \tab character \tab ungrouped \tab ungrouped, grouped \tab - \cr
+   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   exclude \tab untyped \tab NULL \tab  \tab - \cr
+   penalty.factor \tab untyped \tab - \tab  \tab - \cr
+   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
+   relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   cox.ties \tab character \tab breslow \tab breslow, efron \tab - \cr
+   maxp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   path \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   devmax \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   eps \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mnlam \tab integer \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pmin \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   exmx \tab numeric \tab 250 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   prec \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   epsnr \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   dfmax \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   pmax \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   exact \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   s \tab numeric \tab 0.01 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   gamma \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    stype \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    ctype \tab integer \tab - \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
+   use_pred_offset \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -166,81 +164,95 @@ Friedman J, Hastie T, Tibshirani R (2010).
 }
 \author{
 be-marc
+
+bblodfon
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvGlmnet}
 }
+\section{Active bindings}{
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{native_model}}{(\code{coxnet})\cr
+The fitted model.}
+  }
+  \if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerSurvGlmnet-new}{\code{LearnerSurvGlmnet$new()}}
-\item \href{#method-LearnerSurvGlmnet-selected_features}{\code{LearnerSurvGlmnet$selected_features()}}
-\item \href{#method-LearnerSurvGlmnet-clone}{\code{LearnerSurvGlmnet$clone()}}
+  \itemize{
+    \item \href{#method-LearnerSurvGlmnet-initialize}{\code{LearnerSurvGlmnet$new()}}
+    \item \href{#method-LearnerSurvGlmnet-selected_features}{\code{LearnerSurvGlmnet$selected_features()}}
+    \item \href{#method-LearnerSurvGlmnet-clone}{\code{LearnerSurvGlmnet$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvGlmnet-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvGlmnet-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGlmnet$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerSurvGlmnet-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvGlmnet-initialize}{}}}
+\subsection{\code{LearnerSurvGlmnet$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvGlmnet$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvGlmnet-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGlmnet-selected_features}{}}}
-\subsection{Method \code{selected_features()}}{
-Returns the set of selected features as reported by \code{glmnet::predict.glmnet()}
+\subsection{\code{LearnerSurvGlmnet$selected_features()}}{
+  Returns the set of selected features as reported by \code{glmnet::predict.glmnet()}
 with \code{type} set to \code{"nonzero"}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGlmnet$selected_features(lambda = NULL)}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvGlmnet$selected_features(lambda = NULL)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{lambda}}{(\code{numeric(1)})\cr
+Custom \code{lambda}, defaults to the active lambda depending on parameter set.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    (\code{character()}) of feature names.
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{lambda}}{(\code{numeric(1)})\cr
-Custom \code{lambda}, defaults to the active lambda depending on parameter set.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-(\code{character()}) of feature names.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvGlmnet-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGlmnet-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGlmnet$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvGlmnet$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvGlmnet$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

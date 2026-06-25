@@ -10,7 +10,7 @@ Calls \code{randomForestSRC::rfsrc()} from \CRANpkg{randomForestSRC}.
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("cmprsk.rfsrc")
 }\if{html}{\out{</div>}}
@@ -128,7 +128,8 @@ predictions$score()
 Ishwaran, H., Gerds, A. T, Kogalur, B. U, Moore, D. R, Gange, J. S, Lau, M. B (2014).
 \dQuote{Random survival forests for competing risks.}
 \emph{Biostatistics}, \bold{15}(4), 757--773.
-\doi{10.1093/BIOSTATISTICS/KXU010}, \url{https://doi.org/10.1093/BIOSTATISTICS/KXU010}.
+\doi{10.1093/BIOSTATISTICS/KXU010}.
+\url{https://doi.org/10.1093/BIOSTATISTICS/KXU010}.
 }
 \seealso{
 \itemize{
@@ -149,120 +150,128 @@ bblodfon
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerCompRisksRandomForestSRC-new}{\code{LearnerCompRisksRandomForestSRC$new()}}
-\item \href{#method-LearnerCompRisksRandomForestSRC-importance}{\code{LearnerCompRisksRandomForestSRC$importance()}}
-\item \href{#method-LearnerCompRisksRandomForestSRC-selected_features}{\code{LearnerCompRisksRandomForestSRC$selected_features()}}
-\item \href{#method-LearnerCompRisksRandomForestSRC-oob_error}{\code{LearnerCompRisksRandomForestSRC$oob_error()}}
-\item \href{#method-LearnerCompRisksRandomForestSRC-clone}{\code{LearnerCompRisksRandomForestSRC$clone()}}
+  \itemize{
+    \item \href{#method-LearnerCompRisksRandomForestSRC-initialize}{\code{LearnerCompRisksRandomForestSRC$new()}}
+    \item \href{#method-LearnerCompRisksRandomForestSRC-importance}{\code{LearnerCompRisksRandomForestSRC$importance()}}
+    \item \href{#method-LearnerCompRisksRandomForestSRC-selected_features}{\code{LearnerCompRisksRandomForestSRC$selected_features()}}
+    \item \href{#method-LearnerCompRisksRandomForestSRC-oob_error}{\code{LearnerCompRisksRandomForestSRC$oob_error()}}
+    \item \href{#method-LearnerCompRisksRandomForestSRC-clone}{\code{LearnerCompRisksRandomForestSRC$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerCompRisksRandomForestSRC-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerCompRisksRandomForestSRC-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerCompRisksRandomForestSRC$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerCompRisksRandomForestSRC-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerCompRisksRandomForestSRC-initialize}{}}}
+\subsection{\code{LearnerCompRisksRandomForestSRC$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerCompRisksRandomForestSRC$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerCompRisksRandomForestSRC-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerCompRisksRandomForestSRC-importance}{}}}
-\subsection{Method \code{importance()}}{
-The importance scores are extracted from the model slot \code{importance} and
+\subsection{\code{LearnerCompRisksRandomForestSRC$importance()}}{
+  The importance scores are extracted from the model slot \code{importance} and
 are cause-specific.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerCompRisksRandomForestSRC$importance(cause = 1)}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerCompRisksRandomForestSRC$importance(cause = 1)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{cause}}{Integer value indicating the event of interest}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    Named \code{numeric()}.
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{cause}}{Integer value indicating the event of interest}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-Named \code{numeric()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerCompRisksRandomForestSRC-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerCompRisksRandomForestSRC-selected_features}{}}}
-\subsection{Method \code{selected_features()}}{
-Selected features are extracted from the model slot \code{var.used}.
+\subsection{\code{LearnerCompRisksRandomForestSRC$selected_features()}}{
+  Selected features are extracted from the model slot \code{var.used}.
 
 \strong{Note}: Due to a known issue in \code{randomForestSRC}, enabling \code{var.used = "all.trees"}
 causes prediction to fail. Therefore, this setting should be used exclusively
 for feature selection purposes and not when prediction is required.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerCompRisksRandomForestSRC$selected_features()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerCompRisksRandomForestSRC$selected_features()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{character()}.
+  }
 }
 
-\subsection{Returns}{
-\code{character()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerCompRisksRandomForestSRC-oob_error"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerCompRisksRandomForestSRC-oob_error}{}}}
-\subsection{Method \code{oob_error()}}{
-Extracts the out-of-bag (OOB) cumulative incidence function (CIF) error
+\subsection{\code{LearnerCompRisksRandomForestSRC$oob_error()}}{
+  Extracts the out-of-bag (OOB) cumulative incidence function (CIF) error
 from the model's \code{err.rate} slot.
 
 If \code{cause = "mean"} (default), the function returns a weighted average
 of the cause-specific OOB errors, where the weights correspond to the
 observed proportion of events for each cause in the training data.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerCompRisksRandomForestSRC$oob_error(cause = "mean")}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{cause}}{Integer (event type) or \code{"mean"} (default). Use a specific
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerCompRisksRandomForestSRC$oob_error(cause = "mean")}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{cause}}{Integer (event type) or \code{"mean"} (default). Use a specific
 event type to retrieve its OOB error, or \code{"mean"} to compute the weighted
 average across causes.}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{numeric()}.
+  }
 }
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-\code{numeric()}.
-}
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerCompRisksRandomForestSRC-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerCompRisksRandomForestSRC-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerCompRisksRandomForestSRC$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerCompRisksRandomForestSRC$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerCompRisksRandomForestSRC$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

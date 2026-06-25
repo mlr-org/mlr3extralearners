@@ -22,7 +22,7 @@ test_that("paramtest surv.cv_coxboost train", {
     # handled by future
     "multicore", # handled by future
     "parallel", # coerced internally
-    "stepno" # optimised in cv.CoxBoost
+    "stepno" # optimized in cv.CoxBoost
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

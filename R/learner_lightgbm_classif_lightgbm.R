@@ -22,7 +22,7 @@
 #'   * Reason for change: Prevents accidental conflicts with mlr messaging system.
 #' * `objective`:
 #'   * Depends on the task: if binary classification, then this parameter is set to
-#'   `"binary"`, otherwise `"multiclasss"` and cannot be changed.
+#'   `"binary"`, otherwise `"multiclass"` and cannot be changed.
 #'
 #' @section Custom mlr3 parameters:
 #' * `num_class`:

@@ -1,5 +1,5 @@
 glmnet_get_lambda = function(self, pv) {
-  model = self$model$model
+  model = self$native_model
 
   if (is.null(model)) {
     stopf("Learner '%s' has no model stored", self$id)
@@ -12,7 +12,8 @@ glmnet_get_lambda = function(self, pv) {
     model[[s]]
   } else if (is.numeric(s)) {
     s
-  } else { # null / missing
+  } else {
+    # null / missing
     if (inherits(model, "cv.glmnet")) {
       model[["lambda.1se"]]
     } else if (length(model$lambda) == 1L) {
@@ -20,7 +21,8 @@ glmnet_get_lambda = function(self, pv) {
     } else {
       default = self$param_set$default$s
       warningf(
-        "Multiple lambdas have been fit. Lambda will be set to %s (see parameter 's').", default
+        "Multiple lambdas have been fit. Lambda will be set to %s (see parameter 's').",
+        default
       )
       default
     }
@@ -37,7 +39,7 @@ glmnet_feature_names = function(model) {
 }
 
 glmnet_selected_features = function(self, lambda = NULL) {
-  model = self$model$model
+  model = self$native_model
   if (is.null(model)) {
     stopf("No model stored")
   }
@@ -45,11 +47,11 @@ glmnet_selected_features = function(self, lambda = NULL) {
   assert_number(lambda, null.ok = TRUE, lower = 0)
   lambda = lambda %??% glmnet_get_lambda(self)
   nonzero = predict(model, type = "nonzero", s = lambda)
-  if (is.data.frame(nonzero)) {
-    nonzero = nonzero[[1L]]
+
+  nonzero = if (is.data.frame(nonzero)) {
+    nonzero[[1L]]
   } else {
-    nonzero = unlist(map(nonzero, 1L), use.names = FALSE)
-    nonzero = if (length(nonzero)) sort(unique(nonzero)) else integer()
+    sort(unique(unlist(nonzero, use.names = FALSE)))
   }
 
   glmnet_feature_names(model)[nonzero]
@@ -58,7 +60,9 @@ glmnet_selected_features = function(self, lambda = NULL) {
 glmnet_set_offset = function(task, phase = "train", pv) {
   assert_choice(phase, c("train", "predict"))
 
-  if ("offset" %nin% task$properties) return(pv)
+  if ("offset" %nin% task$properties) {
+    return(pv)
+  }
 
   use_pred_offset = isTRUE(pv$use_pred_offset)
   is_train = phase == "train"
@@ -83,8 +87,9 @@ glmnet_invoke = function(data, target, pv, cv = FALSE) {
     pv = pv[!is_ctrl_pars]
   }
 
-  invoke(
-    if (cv) glmnet::cv.glmnet else glmnet::glmnet,
-    x = data, y = target, .args = pv
-  )
+  if (cv) {
+    invoke(glmnet::cv.glmnet, x = data, y = target, .args = pv)
+  } else {
+    invoke(glmnet::glmnet, x = data, y = target, .args = pv)
+  }
 }

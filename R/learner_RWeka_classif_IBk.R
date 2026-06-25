@@ -3,7 +3,7 @@
 #' @name mlr_learners_classif.IBk
 #'
 #' @description
-#' Instance based algorithm: K-nearest neighbours regression.
+#' Instance based algorithm: K-nearest neighbors regression.
 #' Calls `RWeka::IBk()` from \CRANpkg{RWeka}.
 #'
 #'
@@ -74,7 +74,7 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
         param_set = ps,
         properties = c("twoclass", "multiclass", "marshal"),
         man = "mlr3extralearners::mlr_learners_classif.IBk",
-        label = "Nearest Neighbour"
+        label = "Nearest Neighbor"
       )
     },
 

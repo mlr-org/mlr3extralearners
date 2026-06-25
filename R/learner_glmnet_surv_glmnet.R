@@ -1,6 +1,7 @@
 #' @title GLM with Elastic Net Regularization Survival Learner
 #' @name mlr_learners_surv.glmnet
 #' @author be-marc
+#' @author bblodfon
 #'
 #' @description
 #' Generalized linear models with elastic net regularization.
@@ -8,16 +9,18 @@
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"cox"` and cannot be changed.
+#' - `cox.ties` is initialized to `"breslow"` to keep the tie-handling behavior of earlier glmnet versions,
+#' and to silence the glmnet v5.0 warning about the upcoming default change to `"efron"`.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using `glmnet::predict.coxnet()`.
+#' Calculated using `glmnet::predict.glmnet()`.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using `glmnet::survfit.coxnet()`.
+#' Calculated using `glmnet:::survfit.coxnet()`.
 #' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
 #' into survival predictions and are described in `survival::survfit.coxph()`.
 #' By default the Breslow estimator is used for computing the baseline hazard.
@@ -42,7 +45,7 @@
 #' If a `Task` contains a column with the `offset` role, it is automatically
 #' incorporated during training via the `offset` argument in `glmnet::glmnet()`.
 #' During prediction, the offset column from the test set is used only if
-#' `use_pred_offset = TRUE` (default), passed via the `newoffset` argument in `glmnet::predict.coxnet()`.
+#' `use_pred_offset = TRUE` (default), passed via the `newoffset` argument in `glmnet::predict.glmnet()`.
 #' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied,
 #' effectively disabling the offset adjustment during prediction.
 #'
@@ -55,56 +58,64 @@
 #' @export
 #' @template seealso_learner
 #' @template example
-LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
+LearnerSurvGlmnet = R6Class(
+  "LearnerSurvGlmnet",
   inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      # fmt: skip
       ps = ps(
-        alignment        = p_fct(c("lambda", "fraction"), default = "lambda", tags = "train"),
+        # glmnet::glmnet() parameters
         alpha            = p_dbl(0, 1, default = 1, tags = "train"),
-        big              = p_dbl(default = 9.9e35, tags = "train"),
-        devmax           = p_dbl(0, 1, default = 0.999, tags = "train"),
-        dfmax            = p_int(0L, tags = "train"),
-        eps              = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
-        epsnr            = p_dbl(0, 1, default = 1.0e-8, tags = "train"),
-        exact            = p_lgl(default = FALSE, tags = "predict"),
-        exclude          = p_uty(tags = "train"),
-        exmx             = p_dbl(default = 250.0, tags = "train"),
-        fdev             = p_dbl(0, 1, default = 1.0e-5, tags = "train"),
-        gamma            = p_uty(tags = "train"),
-        grouped          = p_lgl(default = TRUE, tags = "train"),
-        intercept        = p_lgl(default = TRUE, tags = "train"),
-        keep             = p_lgl(default = FALSE, tags = "train"),
-        lambda           = p_uty(tags = "train"),
-        lambda.min.ratio = p_dbl(0, 1, tags = "train"),
-        lower.limits     = p_uty(default = -Inf, tags = "train"),
-        maxit            = p_int(1L, default = 100000L, tags = "train"),
-        mnlam            = p_int(1L, default = 5L, tags = "train"),
-        mxit             = p_int(1L, default = 100L, tags = "train"),
-        mxitnr           = p_int(1L, default = 25L, tags = "train"),
         nlambda          = p_int(1L, default = 100L, tags = "train"),
-        use_pred_offset  = p_lgl(default = TRUE, tags = "predict"),
-        parallel         = p_lgl(default = FALSE, tags = "train"),
-        penalty.factor   = p_uty(tags = "train"),
-        pmax             = p_int(0L, tags = "train"),
-        pmin             = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
-        prec             = p_dbl(default = 1e-10, tags = "train"),
-        predict.gamma    = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"),
-        relax            = p_lgl(default = FALSE, tags = "train"),
-        s                = p_dbl(0, default = 0.01, tags = "predict"),
+        lambda.min.ratio = p_dbl(0, 1, tags = "train"),
+        lambda           = p_uty(default = NULL, tags = "train"),
         standardize      = p_lgl(default = TRUE, tags = "train"),
-        thresh           = p_dbl(0, default = 1e-07, tags = "train"),
-        trace.it         = p_int(0, 1, default = 0, tags = "train"),
-        type.logistic    = p_fct(c("Newton", "modified.Newton"), default = "Newton", tags = "train"),
-        type.multinomial = p_fct(c("ungrouped", "grouped"), default = "ungrouped", tags = "train"),
+        intercept        = p_lgl(default = TRUE, tags = "train"),
+        exclude          = p_uty(default = NULL, tags = "train"),
+        penalty.factor   = p_uty(tags = "train"),
+        lower.limits     = p_uty(default = -Inf, tags = "train"),
         upper.limits     = p_uty(default = Inf, tags = "train"),
+        relax            = p_lgl(default = FALSE, tags = "train"),
+        trace.it         = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
+        cox.ties         = p_fct(c("breslow", "efron"), default = "breslow", tags = "train"),
+        # glmnet::relax.glmnet() parameters
+        maxp             = p_int(1L, tags = "train"),
+        path             = p_lgl(default = FALSE, tags = "train"),
+        # glmnet::glmnet.control() parameters
+        fdev             = p_dbl(0, 1, default = 1.0e-5, tags = "train"),
+        devmax           = p_dbl(0, 1, default = 0.999, tags = "train"),
+        eps              = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
+        big              = p_dbl(default = 9.9e+35, tags = "train"),
+        mnlam            = p_int(default = 5L, tags = "train"),
+        pmin             = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
+        exmx             = p_dbl(default = 250, tags = "train"),
+        prec             = p_dbl(default = 1e-10, tags = "train"),
+        mxit             = p_int(1L, default = 100L, tags = "train"),
+        epsnr            = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
+        mxitnr           = p_int(1L, default = 25L, tags = "train"),
+        thresh           = p_dbl(0, default = 1e-07, tags = "train"),
+        maxit            = p_int(1L, default = 100000L, tags = "train"),
+        dfmax            = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
+        pmax             = p_int(0L, default = NULL, special_vals = list(NULL), tags = "train"),
+        # glmnet::predict.glmnet() parameters
+        exact            = p_lgl(default = FALSE, tags = "predict"),
+        s                = p_dbl(0, default = 0.01, tags = "predict"),
+        # glmnet::predict.relaxed() parameters
+        gamma            = p_dbl(0, 1, default = 1, tags = "predict"),
+        # glmnet:::survfit.coxnet() parameters => survfit.coxph() parameters for distr prediction
         stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
-        ctype            = p_int(lower = 1L, upper = 2L, tags = "predict") # how to handle ties
+        ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties
+        # for using the offset during prediction
+        use_pred_offset  = p_lgl(init = TRUE, tags = "predict")
       )
 
-      ps$set_values(use_pred_offset = TRUE)
+      # TODO: Remove `cox.ties` initialization once glmnet >= 5.1 defaults to
+      # cox.ties = "efron" without warnings.
+      # Setting now explicitly to avoid warnings.
+      ps$set_values(cox.ties = "breslow")
 
       super$initialize(
         id = "surv.glmnet",
@@ -131,6 +142,14 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
     }
   ),
 
+  active = list(
+    #' @field native_model (`coxnet`)\cr
+    #' The fitted model.
+    native_model = function() {
+      self$model$model
+    }
+  ),
+
   private = list(
     .train = function(task) {
       data = as.matrix(task$data(cols = task$feature_names))
@@ -153,19 +172,25 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
-      pv = rename(pv, "predict.gamma", "gamma")
       pv$s = glmnet_get_lambda(self, pv)
       pv = glmnet_set_offset(task, "predict", pv)
 
       # get survival matrix
-      fit = invoke(survival::survfit, formula = self$model$model,
-                   x = self$model$x, y = self$model$y,
-                   weights = self$model$weights, offset = self$model$offset,
-                   newx = newdata, se.fit = FALSE, .args = pv)
+      fit = invoke(
+        survival::survfit,
+        formula = self$native_model,
+        x = self$model$x,
+        y = self$model$y,
+        weights = self$model$weights,
+        offset = self$model$offset,
+        newx = newdata,
+        se.fit = FALSE,
+        .args = pv
+      )
 
       # get linear predictor
       lp = as.numeric(
-        invoke(predict, self$model$model, newx = newdata, type = "link", .args = pv)
+        invoke(predict, self$native_model, newx = newdata, type = "link", .args = pv)
       )
 
       mlr3proba::surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
