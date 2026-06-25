@@ -23,7 +23,7 @@
 #'
 #' @section Custom mlr3 parameters:
 #' - `adaptive.order`: if `TRUE`, the priority order of blocks is estimated from the data
-#' following Herrmann et al. (2024), instead of using the user-supplied block order.
+#' following Herrmann et al. (2021), instead of using the user-supplied block order.
 #' For each block, a Ridge regression (`alpha = 0`) is fit using `cv.glmnet()` on that block alone.
 #' The importance of a block is measured by the mean absolute coefficient (MAC) score at the
 #' `lambda.min` value (the lambda giving minimum cross-validation error).
@@ -31,7 +31,7 @@
 #' Blocks are sorted by increasing penalty factor, i.e., blocks with larger MAC
 #' (stronger average signal) receive higher priority (come first).
 #' Also, the block‑wise penalty factors are attached to the fitted model object as
-#' `learner$model$penalty.factors`.
+#' `learner$model$block.penalty.factors`.
 #'
 #' This method is useful when no domain knowledge is available to specify block priority.
 #' In this step, data are **standardized by default** (`standardize = TRUE`), but this can
