@@ -169,8 +169,7 @@ ACM.
 Avinash B, Hyunsu C, Toby H (2022).
 \dQuote{Survival Regression with Accelerated Failure Time Model in XGBoost.}
 \emph{Journal of Computational and Graphical Statistics}.
-ISSN 15372715.
-\doi{10.1080/10618600.2022.2067548}.
+ISSN 15372715, \doi{10.1080/10618600.2022.2067548}.
 }
 \seealso{
 \itemize{

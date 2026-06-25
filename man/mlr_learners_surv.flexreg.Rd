@@ -95,8 +95,7 @@ predictions$score()
 Jackson, H. C (2016).
 \dQuote{flexsurv: A Platform for Parametric Survival Modeling in R.}
 \emph{Journal of Statistical Software}, \bold{70}(8), 1--33.
-\doi{10.18637/JSS.V070.I08}.
-\url{https://www.jstatsoft.org/index.php/jss/article/view/v070i08}.
+\doi{10.18637/JSS.V070.I08}, \url{https://www.jstatsoft.org/index.php/jss/article/view/v070i08}.
 }
 \seealso{
 \itemize{

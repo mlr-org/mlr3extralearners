@@ -77,8 +77,7 @@ predictions$score()
 Friedman JH (1989).
 \dQuote{Regularized Discriminant Analysis.}
 \emph{Journal of the American Statistical Association}, \bold{84}(405), 165--175.
-ISSN 01621459, 1537274X.
-\url{http://www.jstor.org/stable/2289860}.
+ISSN 01621459, 1537274X, \url{http://www.jstor.org/stable/2289860}.
 }
 \seealso{
 \itemize{

@@ -75,8 +75,7 @@ predictions$score()
 Bergmeir, Christoph, Benitez, M. J (2023).
 \dQuote{RSNNS: Neural Networks using the Stuttgart Neural Network Simulator (SNNS).}
 \emph{R package version 0.4-17}.
-\doi{10.32614/CRAN.package.RSNNS}.
-\url{https://CRAN.R-project.org/package=RSNNS}.
+\doi{10.32614/CRAN.package.RSNNS}, \url{https://CRAN.R-project.org/package=RSNNS}.
 }
 \seealso{
 \itemize{
