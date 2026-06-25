@@ -74,6 +74,11 @@
 <li>
 <code>regr.botorch_fullybayesian</code> now declares its <code>numpyro</code>, <code>jax</code>, and <code>jaxlib</code> Python dependencies so they are installed automatically.</li>
 </ul></div>
+<div class="section level3">
+<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code> now support automatic block-priority derivation via <code>adaptive.order = TRUE</code>, following Herrmann et al. (2021), and prediction for automatic block ordering was fixed upstream in <code>prioritylasso</code> version 0.4.0.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.5.2" id="mlr3extralearners-152">mlr3extralearners 1.5.2<a class="anchor" aria-label="anchor" href="#mlr3extralearners-152"></a></h2>

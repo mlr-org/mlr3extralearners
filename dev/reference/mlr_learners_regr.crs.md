@@ -192,12 +192,11 @@ predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
-#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 #> Warning: prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases
 #> Warning: NaNs produced
 
 # Score the predictions
 predictions$score()
-#>    regr.mse 
-#> 65573196032 
+#> regr.mse 
+#>  14957.1 
 ```

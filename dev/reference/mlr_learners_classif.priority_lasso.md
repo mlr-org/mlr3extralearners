@@ -23,6 +23,33 @@ parameters.
 
 - `family` is set to `"binomial"` and cannot be changed
 
+## Custom mlr3 parameters
+
+- `adaptive.order`: if `TRUE`, the priority order of blocks is estimated
+  from the data following Herrmann et al. (2021), instead of using the
+  user-supplied block order. For each block, a Ridge regression
+  (`alpha = 0`) is fit using `cv.glmnet()` on that block alone. The
+  importance of a block is measured by the mean absolute coefficient
+  (MAC) score at the `lambda.min` value (the lambda giving minimum
+  cross-validation error). A penalty factor of `1 / MAC` is then
+  assigned to each block. Blocks are sorted by increasing penalty
+  factor, i.e., blocks with larger MAC (stronger average signal) receive
+  higher priority (come first). Also, the block‑wise penalty factors are
+  attached to the fitted model object as
+  `learner$model$block.penalty.factors`.
+
+This method is useful when no domain knowledge is available to specify
+block priority. In this step, data are **standardized by default**
+(`standardize = TRUE`), but this can be overridden by the learner's
+`standardize` parameter. `lambda.min` is always used to derive the block
+priority. Additional arguments such as `nfolds`, `type.measure`,
+`weights` and `cox.ties` (if provided) are forwarded to each block‑wise
+`cv.glmnet()` fit. The `max.coef` parameter, if supplied, it is
+re‑ordered accordingly to align with the new block order.
+
+This parameter is ignored when fewer than two blocks are provided. It
+defaults to `FALSE` for backward compatibility.
+
 ## Dictionary
 
 This [Learner](https://mlr3.mlr-org.com/reference/Learner.html) can be
@@ -64,6 +91,7 @@ instantiated via
 | type.logistic | character | Newton | Newton, modified.Newton | \- |
 | include.allintercepts | logical | FALSE | TRUE, FALSE | \- |
 | use.blocks | untyped | "all" |  | \- |
+| adaptive.order | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 
@@ -72,6 +100,11 @@ Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 clinical outcome using multi-omics data.” *BMC Bioinformatics*, **19**.
 [doi:10.1186/s12859-018-2344-6](https://doi.org/10.1186/s12859-018-2344-6)
 .
+
+Herrmann, M., Probst, P., Hornung, R., Jurinovic, V., Boulesteix, L. A
+(2021). “Large-scale benchmark study of survival prediction methods
+using multi-omics data.” *Briefings in Bioinformatics*, **22**(3), 1–15.
+[doi:10.1093/BIB/BBAA167](https://doi.org/10.1093/BIB/BBAA167) .
 
 ## See also
 
@@ -208,8 +241,9 @@ learner$train(task, row_ids = ids$train)
 
 # Selected features
 learner$selected_features()
-#>  [1] "b1.1"   "b1.2"   "b2.3"   "b3.19"  "b3.7"   "b3.8"   "b4.1"   "b4.10" 
-#>  [9] "b4.269" "b4.4"   "b4.6"   "b4.607" "b4.612" "b4.641" "b4.9"   "b4.937"
+#>  [1] "b1.1"   "b1.2"   "b2.1"   "b2.3"   "b3.13"  "b3.18"  "b3.19"  "b3.2"  
+#>  [9] "b3.4"   "b3.5"   "b3.7"   "b4.10"  "b4.269" "b4.4"   "b4.607" "b4.623"
+#> [17] "b4.641" "b4.823" "b4.825" "b4.891" "b4.977"
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -217,5 +251,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3787879 
+#>  0.2878788 
 ```

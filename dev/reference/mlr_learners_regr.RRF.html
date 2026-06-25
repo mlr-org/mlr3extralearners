@@ -220,13 +220,13 @@ IEEE.
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 9.267398</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 74.26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 8.183448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 77.85</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp       cyl        hp        vs      drat      carb      qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 154.12125 148.55931 122.98786 115.50572  34.28968  27.94472  27.64660  26.13391 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      gear        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  22.01700  13.54991 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         wt       disp        cyl         hp       drat       qsec         am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180.404942 169.314899 107.459227  86.938463  83.941757  24.057163  16.698244 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         vs       gear       carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  16.334296  15.229197   6.193208 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -234,7 +234,7 @@ IEEE.
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3.614539 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.113783 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

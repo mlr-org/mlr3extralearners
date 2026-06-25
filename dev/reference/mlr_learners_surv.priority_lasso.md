@@ -75,6 +75,7 @@ instantiated via
 | cox.ties | character | breslow | breslow, efron | \- |
 | include.allintercepts | logical | FALSE | TRUE, FALSE | \- |
 | use.blocks | untyped | "all" |  | \- |
+| adaptive.order | logical | FALSE | TRUE, FALSE | \- |
 
 ## Scope and supported arguments
 
@@ -89,6 +90,33 @@ performing relaxed lasso fits).
 Please open an issue if there is a need for supporting more learner
 parameters.
 
+## Custom mlr3 parameters
+
+- `adaptive.order`: if `TRUE`, the priority order of blocks is estimated
+  from the data following Herrmann et al. (2021), instead of using the
+  user-supplied block order. For each block, a Ridge regression
+  (`alpha = 0`) is fit using `cv.glmnet()` on that block alone. The
+  importance of a block is measured by the mean absolute coefficient
+  (MAC) score at the `lambda.min` value (the lambda giving minimum
+  cross-validation error). A penalty factor of `1 / MAC` is then
+  assigned to each block. Blocks are sorted by increasing penalty
+  factor, i.e., blocks with larger MAC (stronger average signal) receive
+  higher priority (come first). Also, the block‑wise penalty factors are
+  attached to the fitted model object as
+  `learner$model$block.penalty.factors`.
+
+This method is useful when no domain knowledge is available to specify
+block priority. In this step, data are **standardized by default**
+(`standardize = TRUE`), but this can be overridden by the learner's
+`standardize` parameter. `lambda.min` is always used to derive the block
+priority. Additional arguments such as `nfolds`, `type.measure`,
+`weights` and `cox.ties` (if provided) are forwarded to each block‑wise
+`cv.glmnet()` fit. The `max.coef` parameter, if supplied, it is
+re‑ordered accordingly to align with the new block order.
+
+This parameter is ignored when fewer than two blocks are provided. It
+defaults to `FALSE` for backward compatibility.
+
 ## References
 
 Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
@@ -96,6 +124,11 @@ Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 clinical outcome using multi-omics data.” *BMC Bioinformatics*, **19**.
 [doi:10.1186/s12859-018-2344-6](https://doi.org/10.1186/s12859-018-2344-6)
 .
+
+Herrmann, M., Probst, P., Hornung, R., Jurinovic, V., Boulesteix, L. A
+(2021). “Large-scale benchmark study of survival prediction methods
+using multi-omics data.” *Briefings in Bioinformatics*, **22**(3), 1–15.
+[doi:10.1093/BIB/BBAA167](https://doi.org/10.1093/BIB/BBAA167) .
 
 ## See also
 

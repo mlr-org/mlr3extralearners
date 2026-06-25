@@ -5,8 +5,10 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Survival Priority Lasso Learner — mlr_learners_surv.priority_lasso"><meta name="description" content="Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-Calls prioritylasso::prioritylasso() from prioritylasso."><meta property="og:description" content="Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Survival Priority Lasso Learner — mlr_learners_surv.priority_lasso"><meta name="description" content="Patient outcome prediction based on multi-omics data taking practitioners’
+preferences into account.
+Calls prioritylasso::prioritylasso() from prioritylasso."><meta property="og:description" content="Patient outcome prediction based on multi-omics data taking practitioners’
+preferences into account.
 Calls prioritylasso::prioritylasso() from prioritylasso."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
@@ -55,7 +57,8 @@ Calls prioritylasso::prioritylasso() from prioritylasso."><meta name="robots" co
     </div>
 
     <div class="ref-description section level2">
-    <p>Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
+    <p>Patient outcome prediction based on multi-omics data taking practitioners’
+preferences into account.
 Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> from <a href="https://CRAN.R-project.org/package=prioritylasso" class="external-link"><span class="pkg">prioritylasso</span></a>.</p>
     </div>
 
@@ -101,7 +104,7 @@ and to silence the glmnet v5.0 warning about the upcoming default change to <cod
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>blocks</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>max.coef</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>block1.penalization</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda.type</td><td>character</td><td>lambda.min</td><td>lambda.min, lambda.1se</td><td>-</td></tr><tr><td>standardize</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nfolds</td><td>integer</td><td>10</td><td></td><td>\([3, \infty)\)</td></tr><tr><td>foldid</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>cvoffset</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cvoffsetnfolds</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>return.x</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>grouped</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace.it</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>cox.ties</td><td>character</td><td>breslow</td><td>breslow, efron</td><td>-</td></tr><tr><td>include.allintercepts</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>use.blocks</td><td>untyped</td><td>"all"</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>blocks</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>max.coef</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>block1.penalization</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda.type</td><td>character</td><td>lambda.min</td><td>lambda.min, lambda.1se</td><td>-</td></tr><tr><td>standardize</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nfolds</td><td>integer</td><td>10</td><td></td><td>\([3, \infty)\)</td></tr><tr><td>foldid</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>cvoffset</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cvoffsetnfolds</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>return.x</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>grouped</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace.it</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>cox.ties</td><td>character</td><td>breslow</td><td>breslow, efron</td><td>-</td></tr><tr><td>include.allintercepts</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>use.blocks</td><td>untyped</td><td>"all"</td><td></td><td>-</td></tr><tr><td>adaptive.order</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="scope-and-supported-arguments">Scope and supported arguments<a class="anchor" aria-label="anchor" href="#scope-and-supported-arguments"></a></h2>
 
@@ -114,11 +117,41 @@ because they are not consistently supported or forwarded through the full train/
 <p>Please open an issue if there is a need for supporting more learner parameters.</p>
     </div>
     <div class="section level2">
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
+
+
+<ul><li><p><code>adaptive.order</code>: if <code>TRUE</code>, the priority order of blocks is estimated from the data
+following Herrmann et al. (2021), instead of using the user-supplied block order.
+For each block, a Ridge regression (<code>alpha = 0</code>) is fit using <code>cv.glmnet()</code> on that block alone.
+The importance of a block is measured by the mean absolute coefficient (MAC) score at the
+<code>lambda.min</code> value (the lambda giving minimum cross-validation error).
+A penalty factor of <code>1 / MAC</code> is then assigned to each block.
+Blocks are sorted by increasing penalty factor, i.e., blocks with larger MAC
+(stronger average signal) receive higher priority (come first).
+Also, the block‑wise penalty factors are attached to the fitted model object as
+<code>learner$model$block.penalty.factors</code>.</p></li>
+</ul><p>This method is useful when no domain knowledge is available to specify block priority.
+In this step, data are <strong>standardized by default</strong> (<code>standardize = TRUE</code>), but this can
+be overridden by the learner's <code>standardize</code> parameter. <code>lambda.min</code> is always used
+to derive the block priority.
+Additional arguments such as <code>nfolds</code>, <code>type.measure</code>, <code>weights</code> and <code>cox.ties</code> (if provided) are
+forwarded to each block‑wise <code>cv.glmnet()</code> fit.
+The <code>max.coef</code> parameter, if supplied, it is re‑ordered accordingly to align
+with the new block order.</p>
+<p>This parameter is ignored when fewer than two blocks are provided.
+It defaults to <code>FALSE</code> for backward compatibility.</p>
+    </div>
+    <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 “Priority-Lasso: a simple hierarchical approach to the prediction of clinical outcome using multi-omics data.”
 <em>BMC Bioinformatics</em>, <b>19</b>.
 <a href="https://doi.org/10.1186/s12859-018-2344-6" class="external-link">doi:10.1186/s12859-018-2344-6</a>
+.</p>
+<p>Herrmann, M., Probst, P., Hornung, R., Jurinovic, V., Boulesteix, L. A (2021).
+“Large-scale benchmark study of survival prediction methods using multi-omics data.”
+<em>Briefings in Bioinformatics</em>, <b>22</b>(3), 1–15.
+<a href="https://doi.org/10.1093/BIB/BBAA167" class="external-link">doi:10.1093/BIB/BBAA167</a>
 .</p>
     </div>
     <div class="section level2">
