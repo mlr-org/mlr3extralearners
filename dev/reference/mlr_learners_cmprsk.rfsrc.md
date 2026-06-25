@@ -293,7 +293,7 @@ print(learner$model)
 #>                     Number of events: 1=12, 2=74
 #>                      Number of trees: 500
 #>            Forest terminal node size: 15
-#>        Average no. of terminal nodes: 9.128
+#>        Average no. of terminal nodes: 9.172
 #> No. of variables tried at each split: 5
 #>               Total no. of variables: 17
 #>        Resampling used to grow trees: swor
@@ -302,28 +302,28 @@ print(learner$model)
 #>                               Family: surv-CR
 #>                       Splitting rule: logrankCR *random*
 #>        Number of random split points: 10
-#>    (OOB) Requested performance error: 0.18184135, 0.27204137
+#>    (OOB) Requested performance error: 0.35062582, 0.23206574
 #> 
 print(learner$importance(cause = 1)) # VIMP for cause = 1
-#>          bili           age         edema       protime          chol 
-#>  3.926570e-01  8.078917e-02  6.982725e-02  5.505906e-02  5.023341e-02 
-#>       ascites           ast       albumin        copper          trig 
-#>  4.273242e-02  4.105966e-02  2.664294e-02  1.652292e-02  6.833807e-03 
-#>           sex         stage      alk.phos        hepato           trt 
-#>  1.421594e-03  9.102298e-04  7.449865e-04 -2.969075e-05 -7.978138e-04 
-#>       spiders      platelet 
-#> -1.713676e-03 -8.223270e-03 
+#>          bili       protime           age       ascites           ast 
+#>  1.394050e-01  6.600676e-02  4.373465e-02  3.972935e-02  2.066916e-02 
+#>         edema        hepato           trt      platelet      alk.phos 
+#>  1.808697e-02  1.109947e-02  1.216063e-03  7.960324e-04  2.703757e-04 
+#>          trig        copper           sex          chol         stage 
+#> -1.284630e-06 -1.969333e-03 -2.657638e-03 -7.183492e-03 -8.211351e-03 
+#>       spiders       albumin 
+#> -9.086010e-03 -1.043473e-02 
 print(learner$importance(cause = 2)) # VIMP for cause = 2
-#>          bili         edema           age       ascites           ast 
-#>  2.153948e-01  1.336370e-01  8.848916e-02  7.836013e-02  3.738133e-02 
-#>          chol       albumin      alk.phos          trig        copper 
-#>  3.733859e-02  3.279011e-02  2.942879e-02  2.632599e-02  2.176834e-02 
-#>       protime      platelet        hepato       spiders           sex 
-#>  1.985544e-02  1.424680e-02  5.643619e-03  3.158537e-03  2.676100e-03 
-#>         stage           trt 
-#>  2.576902e-04 -8.813779e-05 
+#>          bili        copper       ascites       protime       albumin 
+#>  0.1747523270  0.1096067148  0.0760671192  0.0738892109  0.0716735214 
+#>         edema           age          trig      alk.phos          chol 
+#>  0.0667544351  0.0213588476  0.0159875107  0.0145199359  0.0134864218 
+#>       spiders           ast           sex        hepato      platelet 
+#>  0.0092697770  0.0088212215  0.0023784341  0.0014369968  0.0013667273 
+#>           trt         stage 
+#> -0.0002284904 -0.0010487759 
 print(learner$oob_error()) # weighted-mean across causes
-#> [1] 0.2594553
+#> [1] 0.248609
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -331,5 +331,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.9048456 
+#>  0.8626548 
 ```

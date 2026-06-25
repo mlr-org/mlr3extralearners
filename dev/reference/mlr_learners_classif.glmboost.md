@@ -196,14 +196,14 @@ print(learner$model)
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#>  (Intercept)          V11          V12          V16          V21          V22 
-#>   1.47951271  -1.83509388  -0.56184884   0.18005669  -0.25584510  -0.12937500 
-#>          V28          V29          V31          V36           V4          V43 
-#>  -0.44911181  -0.08768392   0.81069790   0.72926223  -1.68689051  -0.75505285 
-#>          V45          V46          V49           V5          V51          V52 
-#>  -1.04164604  -0.26568733  -3.40646072  -0.90882894 -12.06544837 -13.05152536 
-#>          V57 
-#>   9.24175476 
+#> (Intercept)         V11         V12         V15         V16         V20 
+#>   2.3164677  -2.6990010  -1.0400972   0.1208171   0.1092684  -0.0417549 
+#>         V21         V22         V28         V29         V35         V36 
+#>  -0.1473360  -0.6843447  -0.3211006  -0.2296736   0.1443559   1.0342058 
+#>          V4         V44         V45         V48         V49         V52 
+#>  -4.1667154  -0.6041982  -1.8163782  -1.1977993  -0.6291820  -5.3096234 
+#>         V55          V9 
+#>   5.2760067  -1.0534351 
 #> attr(,"offset")
 #> [1] -0.07930252
 #> 
@@ -215,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>  0.2753623 
 ```

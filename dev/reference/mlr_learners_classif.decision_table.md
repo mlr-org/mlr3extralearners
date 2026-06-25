@@ -268,9 +268,9 @@ print(learner$model)
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
 #>  Total number of subsets evaluated: 458
-#>  Merit of best subset found:   84.892
+#>  Merit of best subset found:   81.295
 #> Evaluation (for feature selection): CV (leave one out) 
-#> Feature set: 4,5,51,1
+#> Feature set: 4,19,51,1
 
 
 # Make predictions for the test rows

@@ -184,7 +184,6 @@ ISSN 1548-7660.
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>did not converge in 10 iterations</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $model</span>
@@ -195,11 +194,11 @@ ISSN 1548-7660.
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation: Exponential (power = 1.95)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation Parameters: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -1.160883  -1.894948  0.4772355   2.174954 0.06327011  -3.022212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   -2.63934  -1.929957   -2.66264 -0.8523499  -1.730743 -0.2714226</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -2.991382  0.1103125  -1.365349   0.1791232</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -1.697727  0.7692336  -2.110453  0.04126462</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 26.56709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 140.8285</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> delta_lb(beta_hat): [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -215,11 +214,11 @@ ISSN 1548-7660.
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$high</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   6.000   8.000 472.000   4.930   5.000 264.000  22.900   1.000   5.424 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  20.220   1.000   5.424 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$low</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 75.700  2.760  3.000 52.000 14.500  0.000  1.513 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.513 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -229,7 +228,7 @@ ISSN 1548-7660.
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.049076 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.23087 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
