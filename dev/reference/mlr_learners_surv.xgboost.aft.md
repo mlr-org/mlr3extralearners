@@ -144,7 +144,7 @@ Knowledge Discovery and Data Mining*, 785–794. ACM.
 
 Avinash B, Hyunsu C, Toby H (2022). “Survival Regression with
 Accelerated Failure Time Model in XGBoost.” *Journal of Computational
-and Graphical Statistics*. ISSN 15372715.
+and Graphical Statistics*. ISSN 15372715,
 [doi:10.1080/10618600.2022.2067548](https://doi.org/10.1080/10618600.2022.2067548)
 .
 

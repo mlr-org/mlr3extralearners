@@ -77,7 +77,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-. <https://doi.org/10.1198/106186006x133933>.
+, <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -200,11 +200,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
 #>  row_ids     truth  response
-#>        2    benign malignant
-#>        7    benign    benign
-#>       11    benign malignant
+#>        3    benign malignant
+#>        6 malignant malignant
+#>        7    benign malignant
 #>      ---       ---       ---
-#>      673    benign malignant
-#>      676 malignant malignant
+#>      681 malignant malignant
+#>      682 malignant malignant
 #>      683 malignant malignant
 ```

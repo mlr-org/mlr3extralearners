@@ -88,8 +88,7 @@ If this is not wanted, <code>scale = FALSE`` has to be set. We replace the GPfit
     <p>MacDonald, B., Ranjan, P., Chipman, H. (2015).
 “GPfit: An R package for fitting a Gaussian process model to deterministic simulator outputs.”
 <em>Journal of Statistical Software</em>, <b>64</b>, 1–23.
-ISSN 1548-7660.
-<a href="https://doi.org/10.18637/jss.v064.i12" class="external-link">doi:10.18637/jss.v064.i12</a>
+ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-link">doi:10.18637/jss.v064.i12</a>
 .</p>
     </div>
     <div class="section level2">
@@ -194,11 +193,11 @@ ISSN 1548-7660.
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation: Exponential (power = 1.95)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation Parameters: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   -2.63934  -1.929957   -2.66264 -0.8523499  -1.730743 -0.2714226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -1.400693  -1.424472  -2.567661  -1.019729   -2.77991   1.502105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -1.697727  0.7692336  -2.110453  0.04126462</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   1.642642   1.094031  -2.831723   0.8515819</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 140.8285</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 29.02399</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> delta_lb(beta_hat): [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -214,11 +213,11 @@ ISSN 1548-7660.
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$high</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  20.220   1.000   5.424 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  22.900   1.000   5.424 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$low</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.513 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 75.700  2.760  3.000 52.000 14.500  0.000  1.615 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -228,7 +227,7 @@ ISSN 1548-7660.
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16.23087 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23.23865 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

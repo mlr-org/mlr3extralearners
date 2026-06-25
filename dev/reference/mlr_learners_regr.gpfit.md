@@ -55,7 +55,7 @@ instantiated via
 
 MacDonald, B., Ranjan, P., Chipman, H. (2015). “GPfit: An R package for
 fitting a Gaussian process model to deterministic simulator outputs.”
-*Journal of Statistical Software*, **64**, 1–23. ISSN 1548-7660.
+*Journal of Statistical Software*, **64**, 1–23. ISSN 1548-7660,
 [doi:10.18637/jss.v064.i12](https://doi.org/10.18637/jss.v064.i12) .
 
 ## See also
@@ -181,11 +181,11 @@ print(learner$model)
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
 #>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]   -2.63934  -1.929957   -2.66264 -0.8523499  -1.730743 -0.2714226
+#> [1]  -1.400693  -1.424472  -2.567661  -1.019729   -2.77991   1.502105
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]  -1.697727  0.7692336  -2.110453  0.04126462
+#> [1]   1.642642   1.094031  -2.831723   0.8515819
 #> 
-#> sigma^2_hat: [1] 140.8285
+#> sigma^2_hat: [1] 29.02399
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,11 +201,11 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  20.220   1.000   5.424 
+#>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  22.900   1.000   5.424 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
-#>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.513 
+#>  0.000  1.000  4.000 75.700  2.760  3.000 52.000 14.500  0.000  1.615 
 #> 
 #> 
 
@@ -215,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 16.23087 
+#> 23.23865 
 ```

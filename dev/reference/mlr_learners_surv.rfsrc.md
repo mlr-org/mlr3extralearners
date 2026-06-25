@@ -119,11 +119,11 @@ instantiated via
 
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008). “Random survival
 forests.” *The Annals of Applied Statistics*, **2**(3).
-[doi:10.1214/08-aoas169](https://doi.org/10.1214/08-aoas169) .
+[doi:10.1214/08-aoas169](https://doi.org/10.1214/08-aoas169) ,
 <https://doi.org/10.1214/08-aoas169>.
 
 Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
-5–32. ISSN 1573-0565.
+5–32. ISSN 1573-0565,
 [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A%3A1010933404324)
 .
 

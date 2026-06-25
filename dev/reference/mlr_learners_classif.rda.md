@@ -49,7 +49,7 @@ instantiated via
 
 Friedman JH (1989). “Regularized Discriminant Analysis.” *Journal of the
 American Statistical Association*, **84**(405), 165–175. ISSN 01621459,
-1537274X. <http://www.jstor.org/stable/2289860>.
+1537274X, <http://www.jstor.org/stable/2289860>.
 
 ## See also
 
@@ -170,15 +170,15 @@ print(learner$model)
 #> 
 #> Regularization parameters: 
 #>     gamma    lambda 
-#> 0.2441087 0.7469207 
+#> 0.4022112 0.3652456 
 #> 
 #> Prior probabilities of groups: 
 #>         M         R 
-#> 0.5251799 0.4748201 
+#> 0.5395683 0.4604317 
 #> 
 #> Misclassification rate: 
-#>        apparent: 4.317 %
-#> cross-validated: 14.532 %
+#>        apparent: 5.755 %
+#> cross-validated: 20.436 %
 
 
 # Make predictions for the test rows

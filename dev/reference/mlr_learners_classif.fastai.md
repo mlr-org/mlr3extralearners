@@ -91,7 +91,7 @@ instantiated via
 ## References
 
 Howard, Jeremy, Gugger, Sylvain (2020). “Fastai: A Layered API for Deep
-Learning.” *Information*, **11**(2), 108. ISSN 2078-2489.
+Learning.” *Information*, **11**(2), 108. ISSN 2078-2489,
 [doi:10.3390/info11020108](https://doi.org/10.3390/info11020108) .
 
 ## See also

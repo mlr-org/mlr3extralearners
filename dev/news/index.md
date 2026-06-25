@@ -44,6 +44,7 @@
   ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
 - `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and
   `jaxlib` Python dependencies so they are installed automatically.
+- `regr.bart`’s hyperparameter `sigdf` was changed to type `double`.
 
 ### New Features
 

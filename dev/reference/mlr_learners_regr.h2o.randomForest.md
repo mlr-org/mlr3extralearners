@@ -190,23 +190,23 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: drf
-#> Model ID:  DRF_model_R_1782410431214_112 
+#> Model ID:  DRF_model_R_1782414500988_113 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50               10604         4
+#> 1              50                       50               10134         2
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1         8    5.88000          7         17    12.26000
+#> 1         8    5.60000          4         17    11.50000
 #> 
 #> 
 #> H2ORegressionMetrics: drf
 #> ** Reported on training data. **
 #> ** Metrics reported on Out-Of-Bag training samples **
 #> 
-#> MSE:  5.873587
-#> RMSE:  2.423548
-#> MAE:  1.896811
-#> RMSLE:  0.127711
-#> Mean Residual Deviance :  5.873587
+#> MSE:  5.280269
+#> RMSE:  2.297884
+#> MAE:  1.857562
+#> RMSLE:  0.1196046
+#> Mean Residual Deviance :  5.280269
 #> 
 #> 
 #> 
@@ -219,5 +219,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.864834 
+#> 5.971422 
 ```

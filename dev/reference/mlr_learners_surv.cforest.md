@@ -120,7 +120,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-. <https://doi.org/10.1198/106186006x133933>.
+, <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -5979,8 +5979,8 @@ print(learner$model)
 #> $info$control$applyfun
 #> function (X, FUN, ...) 
 #> parallel::mclapply(X, FUN, ..., mc.set.seed = TRUE, mc.cores = cores)
-#> <bytecode: 0x56552370a720>
-#> <environment: 0x565548c26f60>
+#> <bytecode: 0x56255a561ee8>
+#> <environment: 0x56257c0450e0>
 #> 
 #> $info$control$saveinfo
 #> [1] FALSE
@@ -5999,8 +5999,8 @@ print(learner$model)
 #>     .select(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x5655238e2200>
-#> <environment: 0x565548c1de50>
+#> <bytecode: 0x56255a42d680>
+#> <environment: 0x56257c26aec0>
 #> 
 #> $info$control$splitfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6010,8 +6010,8 @@ print(learner$model)
 #>     .split(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x5655238e02e0>
-#> <environment: 0x565548c1dd70>
+#> <bytecode: 0x56255a42b450>
+#> <environment: 0x56257c26afa0>
 #> 
 #> $info$control$svselectfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6021,8 +6021,8 @@ print(learner$model)
 #>     .select(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x5655238e2200>
-#> <environment: 0x565548c1dc90>
+#> <bytecode: 0x56255a42d680>
+#> <environment: 0x56257c26b080>
 #> 
 #> $info$control$svsplitfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6032,8 +6032,8 @@ print(learner$model)
 #>     .split(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x5655238e02e0>
-#> <environment: 0x565548c1db40>
+#> <bytecode: 0x56255a42b450>
+#> <environment: 0x56257c26b1d0>
 #> 
 #> $info$control$teststat
 #> [1] "quadratic"
@@ -6077,8 +6077,8 @@ print(learner$model)
 #> $trafo
 #> function (subset, weights, info, estfun, object, ...) 
 #> list(estfun = Y, unweighted = TRUE)
-#> <bytecode: 0x5655236e9868>
-#> <environment: 0x565548c2a518>
+#> <bytecode: 0x56255a549298>
+#> <environment: 0x5625796ed678>
 #> 
 #> $predictf
 #> ~age + los + revasc + revascdays + stchange + sysbp

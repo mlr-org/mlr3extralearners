@@ -38,7 +38,7 @@ instantiated via
 
 Pang H, Tong T, Zhao H (2009). “Shrinkage-Based Diagonal Discriminant
 Analysis and Its Applications in High-Dimensional Data.” *Biometrics*,
-**65**(4), 1021–1029. ISSN 0006341X, 15410420.
+**65**(4), 1021–1029. ISSN 0006341X, 15410420,
 <http://www.jstor.org/stable/20640622>.
 
 ## See also
@@ -161,7 +161,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (53.96%), R (46.04%) 
+#>   M (51.08%), R (48.92%) 
 
 
 # Make predictions for the test rows
@@ -170,5 +170,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.5217391 
+#>  0.5797101 
 ```

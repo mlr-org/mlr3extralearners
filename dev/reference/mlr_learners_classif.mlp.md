@@ -49,7 +49,7 @@ Bergmeir, Christoph, Benitez, M. J (2023). “RSNNS: Neural Networks using
 the Stuttgart Neural Network Simulator (SNNS).” *R package version
 0.4-17*.
 [doi:10.32614/CRAN.package.RSNNS](https://doi.org/10.32614/CRAN.package.RSNNS)
-. <https://CRAN.R-project.org/package=RSNNS>.
+, <https://CRAN.R-project.org/package=RSNNS>.
 
 ## See also
 
@@ -195,5 +195,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.1449275 
 ```

@@ -96,7 +96,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-. <https://doi.org/10.1198/106186006x133933>.
+, <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
