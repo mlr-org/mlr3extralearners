@@ -98,11 +98,17 @@ LearnerRegrPriorityLasso = R6Class(
       # If adaptive.order is TRUE, compute block order and penalty factors from the data
       res = NULL
       if (length(pv$blocks) >= 2L && isTRUE(pv$adaptive.order)) {
+        pv$adaptive.order = NULL
         res = adaptive_block_order(data, target, pv)
         pv = res$pv
       }
 
-      model = invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pv)
+      model = invoke(
+        prioritylasso::prioritylasso,
+        X = data,
+        Y = target,
+        .args = pv
+      )
 
       # add block penalty factors to the model object
       if (!is.null(res)) {
@@ -117,7 +123,13 @@ LearnerRegrPriorityLasso = R6Class(
       pv = self$param_set$get_values(tags = "predict")
 
       p = as.numeric(
-        invoke(predict, self$model, newdata = newdata, type = "response", .args = pv)
+        invoke(
+          predict,
+          self$model,
+          newdata = newdata,
+          type = "response",
+          .args = pv
+        )
       )
 
       list(response = p)

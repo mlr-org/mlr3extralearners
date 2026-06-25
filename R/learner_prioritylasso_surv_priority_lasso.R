@@ -115,11 +115,17 @@ LearnerSurvPriorityLasso = R6Class(
       # If adaptive.order is TRUE, compute block order and penalty factors from the data
       res = NULL
       if (length(pv$blocks) >= 2L && isTRUE(pv$adaptive.order)) {
+        pv$adaptive.order = NULL
         res = adaptive_block_order(data, target, pv)
         pv = res$pv
       }
 
-      model = invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pv)
+      model = invoke(
+        prioritylasso::prioritylasso,
+        X = data,
+        Y = target,
+        .args = pv
+      )
 
       # add (time, status) of training data for breslow distr prediction
       model$train_times = task$times()
@@ -144,7 +150,13 @@ LearnerSurvPriorityLasso = R6Class(
 
       # get linear predictor for test data
       lp_test = as.numeric(
-        invoke(predict, self$model, newdata = newdata, type = "link", .args = pv)
+        invoke(
+          predict,
+          self$model,
+          newdata = newdata,
+          type = "link",
+          .args = pv
+        )
       )
 
       # get survival probability matrix using the Breslow estimator for the baseline hazard

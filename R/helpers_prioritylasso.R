@@ -96,8 +96,6 @@ adaptive_block_order = function(data, target, pv) {
     pv$max.coef = pv$max.coef[block.order]
   }
 
-  # we don't need to pass this to prioritylasso::prioritylasso()
-  pv$adaptive.order = NULL
   pf = penalty.factors[block.order]
   names(pf) = names(pv$blocks)
 
