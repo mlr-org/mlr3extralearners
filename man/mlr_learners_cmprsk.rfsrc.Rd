@@ -128,8 +128,7 @@ predictions$score()
 Ishwaran, H., Gerds, A. T, Kogalur, B. U, Moore, D. R, Gange, J. S, Lau, M. B (2014).
 \dQuote{Random survival forests for competing risks.}
 \emph{Biostatistics}, \bold{15}(4), 757--773.
-\doi{10.1093/BIOSTATISTICS/KXU010}.
-\url{https://doi.org/10.1093/BIOSTATISTICS/KXU010}.
+\doi{10.1093/BIOSTATISTICS/KXU010}, \url{https://doi.org/10.1093/BIOSTATISTICS/KXU010}.
 }
 \seealso{
 \itemize{

@@ -84,8 +84,7 @@ predictions$score()
 Breheny P, Huang J (2011).
 \dQuote{Coordinate descent algorithms for nonconvex penalized regression, with applications to biological feature selection.}
 \emph{Annals of Applied Statistics}, \bold{5}(1), 232--253.
-ISSN 1932-6157.
-\doi{10.1214/10-AOAS388}.
+ISSN 1932-6157, \doi{10.1214/10-AOAS388}.
 }
 \seealso{
 \itemize{
