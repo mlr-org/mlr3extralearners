@@ -59,6 +59,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    initial.mesh.size.real \tab untyped \tab - \tab  \tab - \cr
    initial.mesh.size.integer \tab untyped \tab - \tab  \tab - \cr
    max.bb.eval \tab untyped \tab - \tab  \tab - \cr
+   max.eval \tab untyped \tab - \tab  \tab - \cr
    min.mesh.size.real \tab untyped \tab - \tab  \tab - \cr
    min.mesh.size.integer \tab untyped \tab - \tab  \tab - \cr
    min.frame.size.real \tab untyped \tab - \tab  \tab - \cr
