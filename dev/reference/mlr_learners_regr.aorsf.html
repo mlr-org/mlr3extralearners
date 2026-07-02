@@ -225,16 +225,16 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.226</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.59</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: RSQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          wt          hp        carb        disp         cyl        qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.077994429 0.071052632 0.046997389 0.045454545 0.035031847 0.034759358 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          am        gear        drat          vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.024767802 0.020338983 0.009146341 0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          wt         cyl          hp          am        carb        disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.151162791 0.088397790 0.081395349 0.075471698 0.044444444 0.027932961 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        gear        drat        qsec          vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.024242424 0.018716578 0.017595308 0.006269592 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -242,7 +242,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20.17305 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15.24079 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

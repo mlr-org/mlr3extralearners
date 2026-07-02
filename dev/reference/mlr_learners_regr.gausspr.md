@@ -173,10 +173,10 @@ print(learner$model)
 #> Problem type: regression 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.385765524297983 
+#>  Hyperparameter : sigma =  0.532955271124133 
 #> 
 #> Number of training instances learned : 21 
-#> Train error : 0.13700484 
+#> Train error : 0.122406534 
 
 
 # Make predictions for the test rows
@@ -185,5 +185,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 21.25847 
+#> 13.65008 
 ```
