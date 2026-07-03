@@ -255,7 +255,7 @@ print(learner$model)
 #> #attributes=61 #classindex=0
 #> Network structure (nodes followed by parents)
 #> Class(2): 
-#> V1(2): Class 
+#> V1(1): Class 
 #> V10(2): Class 
 #> V11(2): Class 
 #> V12(2): Class 
@@ -268,14 +268,14 @@ print(learner$model)
 #> V19(1): Class 
 #> V2(1): Class 
 #> V20(1): Class 
-#> V21(1): Class 
+#> V21(2): Class 
 #> V22(1): Class 
 #> V23(1): Class 
 #> V24(1): Class 
 #> V25(1): Class 
 #> V26(1): Class 
 #> V27(1): Class 
-#> V28(2): Class 
+#> V28(1): Class 
 #> V29(1): Class 
 #> V3(1): Class 
 #> V30(1): Class 
@@ -283,8 +283,8 @@ print(learner$model)
 #> V32(1): Class 
 #> V33(1): Class 
 #> V34(1): Class 
-#> V35(1): Class 
-#> V36(1): Class 
+#> V35(2): Class 
+#> V36(2): Class 
 #> V37(1): Class 
 #> V38(1): Class 
 #> V39(1): Class 
@@ -293,10 +293,10 @@ print(learner$model)
 #> V41(1): Class 
 #> V42(1): Class 
 #> V43(1): Class 
-#> V44(1): Class 
-#> V45(1): Class 
+#> V44(2): Class 
+#> V45(2): Class 
 #> V46(1): Class 
-#> V47(1): Class 
+#> V47(2): Class 
 #> V48(2): Class 
 #> V49(2): Class 
 #> V5(1): Class 
@@ -313,13 +313,13 @@ print(learner$model)
 #> V6(1): Class 
 #> V60(1): Class 
 #> V7(1): Class 
-#> V8(2): Class 
+#> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -947.1113106453466
-#> LogScore BDeu: -967.726115940276
-#> LogScore MDL: -975.0044347395874
-#> LogScore ENTROPY: -913.3235105754538
-#> LogScore AIC: -938.3235105754538
+#> LogScore Bayes: -1224.1940814482728
+#> LogScore BDeu: -1249.9625880669344
+#> LogScore MDL: -1257.8420656327387
+#> LogScore ENTROPY: -1181.3577196692133
+#> LogScore AIC: -1212.3577196692133
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3623188 
+#>  0.2318841 
 ```

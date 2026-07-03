@@ -9,7 +9,7 @@
   subset of
   [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
   arguments. The
-  [`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
   pass-through hyperparameters were removed because they were not
   consistently forwarded
   ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
@@ -45,6 +45,9 @@
 - `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and
   `jaxlib` Python dependencies so they are installed automatically.
 - `regr.bart`’s hyperparameter `sigdf` was changed to type `double`.
+- `regr.crs`: added the train parameter `max.eval` for compatibility
+  with `crs` (\>= 0.15-45)
+  ([\#601](https://github.com/mlr-org/mlr3extralearners/issues/601)).
 
 ### New Features
 

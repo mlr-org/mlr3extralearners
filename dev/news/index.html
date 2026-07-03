@@ -56,7 +56,7 @@
 <div class="section level3">
 <h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
 <ul><li>
-<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
 <code>surv.cv_glmnet</code>: removed the parameters <code>standardize.response</code>, <code>type.gaussian</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are not applicable to the Cox family (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
@@ -76,6 +76,8 @@
 <code>regr.botorch_fullybayesian</code> now declares its <code>numpyro</code>, <code>jax</code>, and <code>jaxlib</code> Python dependencies so they are installed automatically.</li>
 <li>
 <code>regr.bart</code>’s hyperparameter <code>sigdf</code> was changed to type <code>double</code>.</li>
+<li>
+<code>regr.crs</code>: added the train parameter <code>max.eval</code> for compatibility with <code>crs</code> (&gt;= 0.15-45) (<a href="https://github.com/mlr-org/mlr3extralearners/issues/601" class="external-link">#601</a>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>

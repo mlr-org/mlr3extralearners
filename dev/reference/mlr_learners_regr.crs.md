@@ -58,6 +58,7 @@ instantiated via
 | initial.mesh.size.real | untyped | \- |  | \- |
 | initial.mesh.size.integer | untyped | \- |  | \- |
 | max.bb.eval | untyped | \- |  | \- |
+| max.eval | untyped | \- |  | \- |
 | min.mesh.size.real | untyped | \- |  | \- |
 | min.mesh.size.integer | untyped | \- |  | \- |
 | min.frame.size.real | untyped | \- |  | \- |
@@ -195,5 +196,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 51533953 
+#> 2903.266 
 ```
