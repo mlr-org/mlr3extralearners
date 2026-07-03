@@ -16,6 +16,7 @@ The `glmnet::cv.glmnet()` pass-through hyperparameters were removed because they
 * `surv.survdnn`: added the `.threads` train parameter (#594).
 * `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and `jaxlib` Python dependencies so they are installed automatically.
 * `regr.bart`'s hyperparameter `sigdf` was changed to type `double`.
+* `regr.crs`: added the train parameter `max.eval` for compatibility with `crs` (>= 0.15-45) (#601).
 
 ## New Features
 
