@@ -214,43 +214,43 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: glm
-#> Model ID:  GLM_model_R_1784031075208_111 
+#> Model ID:  GLM_model_R_1784031523981_111 
 #> GLM Model: summary
 #>     family     link                              regularization
-#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.1633 )
+#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 0.8139 )
 #>   number_of_predictors_total number_of_active_predictors number_of_iterations
 #> 1                         10                           9                    1
 #>     training_frame
-#> 1 data_sid_ac4e_31
+#> 1 data_sid_a012_31
 #> 
 #> Coefficients: glm coefficients
 #>        names coefficients standardized_coefficients
-#> 1  Intercept    27.091199                 21.419048
-#> 2         am     1.063127                  0.544073
-#> 3       carb    -0.595461                 -0.827955
-#> 4        cyl    -0.324427                 -0.612291
-#> 5       disp    -0.005681                 -0.792229
-#> 6       drat     0.664359                  0.365468
-#> 7       gear     0.314846                  0.236009
-#> 8         hp    -0.014589                 -0.984471
+#> 1  Intercept    24.778583                 18.552381
+#> 2         am     0.967975                  0.448085
+#> 3       carb    -0.350423                 -0.616983
+#> 4        cyl    -0.336745                 -0.569202
+#> 5       disp    -0.004936                 -0.603813
+#> 6       drat     0.952436                  0.470532
+#> 7       gear     0.151231                  0.113363
+#> 8         hp    -0.011232                 -0.725979
 #> 9       qsec     0.000000                  0.000000
-#> 10        vs     1.125544                  0.570755
-#> 11        wt    -1.222138                 -1.275401
+#> 10        vs     0.213996                  0.103370
+#> 11        wt    -1.145207                 -1.071208
 #> 
 #> H2ORegressionMetrics: glm
 #> ** Reported on training data. **
 #> 
-#> MSE:  6.647436
-#> RMSE:  2.578262
-#> MAE:  2.05917
-#> RMSLE:  0.1138209
-#> Mean Residual Deviance :  6.647436
-#> R^2 :  0.8523905
-#> Null Deviance :945.7124
+#> MSE:  5.04551
+#> RMSE:  2.246221
+#> MAE:  1.658264
+#> RMSLE:  0.1121633
+#> Mean Residual Deviance :  5.04551
+#> R^2 :  0.7935683
+#> Null Deviance :513.2724
 #> Null D.o.F. :20
-#> Residual Deviance :139.5962
+#> Residual Deviance :105.9557
 #> Residual D.o.F. :11
-#> AIC :121.3743
+#> AIC :115.5839
 #> 
 #> 
 #> 
@@ -263,5 +263,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.799867 
+#> 13.04104 
 ```

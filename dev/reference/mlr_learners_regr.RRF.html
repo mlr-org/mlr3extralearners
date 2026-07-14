@@ -50,7 +50,7 @@ Calls RRF::RRF() from RRF."><meta name="robots" content="noindex"></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Regularized Random Forest Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RRF_regr_RRF.R" class="external-link"><code>R/learner_RRF_regr_RRF.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_RRF_regr_RRF.R" class="external-link"><code>R/learner_RRF_regr_RRF.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.RRF.Rd</code></div>
     </div>
 
@@ -220,13 +220,13 @@ IEEE.
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 6.924259</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 82.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 5.143878</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 81.21</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       disp         wt         hp        cyl       drat         vs       carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 198.064703 159.853395 115.439683  96.318550  46.904600  46.147737  34.999835 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       qsec       gear         am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  34.538578  15.755075   9.106389 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         hp         wt       disp       drat        cyl       carb       qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 157.672420  93.869905  82.510790  62.861251  62.486103  29.502965  23.518816 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         vs       gear         am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  15.246308   3.773264   1.362928 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -234,7 +234,7 @@ IEEE.
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3.556784 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9.80108 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

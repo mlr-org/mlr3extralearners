@@ -50,7 +50,7 @@ Calls catboost::catboost.train() from package 'catboost'."><meta name="robots" c
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Gradient Boosted Decision Trees Regression Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_catboost_regr_catboost.R" class="external-link"><code>R/learner_catboost_regr_catboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_catboost_regr_catboost.R" class="external-link"><code>R/learner_catboost_regr_catboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.catboost.Rd</code></div>
     </div>
 
@@ -252,10 +252,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp       cyl        hp      drat      qsec      gear      carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.748905 17.033442 14.681094 10.336117  9.179059  8.514619  7.587008  7.333971 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        vs        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.005656  3.580128 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       cyl      disp        hp        wt      carb      qsec      drat        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23.538577 22.382540 12.907318 11.597513  9.441762  7.252220  4.856879  2.863661 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      gear        am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.790561  2.368968 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -263,7 +263,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.418086 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.273771 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -56,7 +56,7 @@ the parameter na_action.'><meta name="robots" content="noindex"></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Oblique Random Forest Classifier</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_aorsf_classif_aorsf.R" class="external-link"><code>R/learner_aorsf_classif_aorsf.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_aorsf_classif_aorsf.R" class="external-link"><code>R/learner_aorsf_classif_aorsf.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.aorsf.Rd</code></div>
     </div>
 
@@ -225,7 +225,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 4.996</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 5.006</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.91</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: AUC-ROC</span>
@@ -233,24 +233,24 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V12        V11        V49         V1        V10        V51        V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.42986425 0.41232227 0.36082474 0.35426009 0.31250000 0.29113924 0.26530612 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V48        V47        V31        V45        V46        V35        V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.25541126 0.24644550 0.22009569 0.21645022 0.21551724 0.21428571 0.21363636 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V52        V43        V13        V37         V9        V17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.20526316 0.19417476 0.18957346 0.18309859 0.15789474 0.15104167 0.14953271 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V53        V28        V20        V21        V39        V50         V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.14354067 0.13877551 0.13084112 0.12217195 0.10619469 0.10454545 0.10416667 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V34        V19        V41        V29        V18        V15        V14 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.10267857 0.10091743 0.10084034 0.09952607 0.09649123 0.09565217 0.09313725 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V40        V42        V22        V38        V23        V33         V8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.08906883 0.08403361 0.08121827 0.07425743 0.06986900 0.06787330 0.06722689 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V30        V27        V56         V4         V6        V32        V58 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.06278027 0.05882353 0.05829596 0.05357143 0.05263158 0.05020921 0.05000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V5        V26         V7        V25        V59        V55        V24 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.04977376 0.04950495 0.04782609 0.04587156 0.04278075 0.03982301 0.03603604 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V3        V54        V57        V60 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03589744 0.02380952 0.02066116 0.01456311 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V12        V11        V36        V37        V51        V47        V49 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.47179487 0.42788462 0.37500000 0.34146341 0.29411765 0.28947368 0.28787879 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V43        V48        V44        V45        V28        V46        V13 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.28448276 0.26222222 0.26168224 0.24390244 0.22222222 0.21827411 0.21559633 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V10        V17        V29        V54         V9        V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.21327014 0.21256039 0.17733990 0.16161616 0.15315315 0.15025907 0.14537445 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V19        V35        V22        V21        V20        V23         V4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.14285714 0.13875598 0.13875598 0.12173913 0.11818182 0.11520737 0.11061947 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V39        V18        V27        V15        V57        V24        V30 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.10648148 0.10593220 0.10500000 0.10326087 0.10267857 0.10091743 0.09502262 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V2        V34        V38        V58         V8        V26         V1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.09009009 0.08585859 0.08450704 0.08333333 0.07655502 0.07623318 0.07296137 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V33        V31         V3        V25        V42        V56        V32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.07179487 0.07142857 0.06572770 0.06511628 0.06392694 0.05882353 0.05769231 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V14        V55        V53        V50        V40         V5        V59 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.05555556 0.05314010 0.04975124 0.04803493 0.04149378 0.03947368 0.03305785 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V41         V7        V60         V6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03301887 0.03111111 0.02173913 0.02116402 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -258,7 +258,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

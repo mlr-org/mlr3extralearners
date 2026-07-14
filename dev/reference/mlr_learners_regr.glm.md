@@ -213,13 +213,13 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> (Intercept)           am         carb          cyl         disp         drat  
-#>    12.75802      2.90673      0.02304     -0.28275      0.01403      0.92804  
+#>    52.17793      2.20401     -1.96697     -2.51451     -0.01908      1.31299  
 #>        gear           hp         qsec           vs           wt  
-#>     0.06763     -0.01877      0.93127     -0.53537     -4.06849  
+#>    -0.70302      0.01019     -0.68993     -1.57310      0.83017  
 #> 
 #> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual
-#> Null Deviance:       795.1 
-#> Residual Deviance: 102.6     AIC: 116.9
+#> Null Deviance:       912 
+#> Residual Deviance: 63.42     AIC: 106.8
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.141546 
+#> 23.04039 
 ```
