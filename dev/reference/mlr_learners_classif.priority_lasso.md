@@ -241,9 +241,8 @@ learner$train(task, row_ids = ids$train)
 
 # Selected features
 learner$selected_features()
-#>  [1] "b1.1"   "b1.2"   "b1.4"   "b2.1"   "b2.3"   "b2.5"   "b3.4"   "b3.7"  
-#>  [9] "b4.1"   "b4.10"  "b4.106" "b4.164" "b4.269" "b4.466" "b4.607" "b4.825"
-#> [17] "b4.977"
+#>  [1] "b1.1"   "b1.2"   "b2.3"   "b3.13"  "b3.19"  "b3.2"   "b3.7"   "b4.1"  
+#>  [9] "b4.140" "b4.29"  "b4.641" "b4.670" "b4.736" "b4.780" "b4.823" "b4.977"
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)

@@ -193,17 +193,17 @@ print(learner$model)
 #> Final Confusion Matrix for Data:
 #>           Final Prediction
 #> True value  M  R
-#>          M 74  0
-#>          R  3 62
+#>          M 79  0
+#>          R  0 60
 #> 
-#> Train Error: 0.022 
+#> Train Error: 0 
 #> 
-#> Out-Of-Bag Error:  0.043  iteration= 48 
+#> Out-Of-Bag Error:  0.05  iteration= 49 
 #> 
 #> Additional Estimates of number of iterations:
 #> 
 #> train.err1 train.kap1 
-#>         37         37 
+#>         47         47 
 #> 
 
 
@@ -213,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>   0.115942 
 ```

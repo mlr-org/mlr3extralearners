@@ -56,7 +56,7 @@ the parameter na_action.'><meta name="robots" content="noindex"></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Accelerated Oblique Random Survival Forest Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_aorsf_surv_aorsf.R" class="external-link"><code>R/learner_aorsf_surv_aorsf.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_aorsf_surv_aorsf.R" class="external-link"><code>R/learner_aorsf_surv_aorsf.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.aorsf.Rd</code></div>
     </div>
 
@@ -250,7 +250,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 41.044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 41.138</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
@@ -260,7 +260,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        los        age   stchange      sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5769601  0.5144497  0.2145753  0.2062493  0.1331029  0.1092029 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5786782  0.5121305  0.2170486  0.2064692  0.1311216  0.1100545 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -268,7 +268,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8457482 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8458306 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

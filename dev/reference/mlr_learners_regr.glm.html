@@ -52,7 +52,7 @@ For logistic regression please use mlr_learners_classif.log_reg."><meta name="ro
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Generalized Linear Regression</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.glm.Rd</code></div>
     </div>
 
@@ -227,23 +227,22 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   -89.66160      4.76035     -1.52363      3.35311      0.01745      3.75991  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   22.414288     4.041374     1.632694    -0.444439     0.008696    -1.083788  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     6.20269      0.04678      3.54666           NA     -5.72850  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   -0.186914    -0.043208     1.044544    -2.248114    -4.430682  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  11 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    686.4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 60.86 	AIC: 103.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    870.4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 92.12 	AIC: 114.6</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56.51357 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   18.146 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
