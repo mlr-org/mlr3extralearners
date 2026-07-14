@@ -11,9 +11,11 @@
 #' @return (`character()`)\cr
 assert_python_packages = function(packages, python_version = NULL) {
   reticulate::py_require(packages, python_version = python_version)
-  available = map_lgl(packages, reticulate::py_module_available)
+  # packages may carry pip-style version constraints, e.g. "fastcore<2.0.0"
+  modules = trimws(sub("[<>=!~\\[].*$", "", packages))
+  available = map_lgl(modules, reticulate::py_module_available)
   if (any(!available)) {
-    stopf("Package %s not available.", as_short_string(packages[!available]))
+    stopf("Package %s not available.", as_short_string(modules[!available]))
   }
   invisible(packages)
 }

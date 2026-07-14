@@ -116,6 +116,7 @@ extralrns
 extratrees
 faisolo
 fastai
+fastcore
 fifelse
 flexreg
 flexspline
@@ -146,6 +147,7 @@ Harutyunyan
 hastie
 Hefei
 henrifnk
+Herrmann
 hollmann
 holte
 hornung

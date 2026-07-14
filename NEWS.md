@@ -10,6 +10,7 @@ The `glmnet::cv.glmnet()` pass-through hyperparameters were removed because they
 ## Other
 
 * Updated minimum versions of suggested packages, most notably `glmnet` (>= 5.0) (#594).
+* `classif.fastai` now pins its `fastcore` Python dependency to a version below 2.0.0 because `fastai` (<= 2.8.7) is incompatible with `fastcore` 2.0 but does not declare an upper bound.
 * The `h2o` learners no longer emit a spurious warning about an outdated H2O cluster version when training or predicting.
 * `surv.cv_glmnet` and `surv.glmnet`: updated for `glmnet` v5.0, added the train parameters `cox.ties` (initialized to `"breslow"` to keep the previous tie-handling behavior), `maxp`, and `path`, added the predict parameter `exact` (`surv.cv_glmnet` only), fixed predictions for relaxed fits (`relax = TRUE`), and added a read-only `native_model` field that returns the fitted `glmnet` model (#594).
 * `surv.priority_lasso`: added the train parameter `cox.ties`, initialized to `"breslow"` (#594).
