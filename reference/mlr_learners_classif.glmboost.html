@@ -50,7 +50,7 @@ Calls mboost::glmboost() from mboost."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Boosted Generalized Linear Classification Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.glmboost.Rd</code></div>
     </div>
 
@@ -213,14 +213,14 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          V1         V11         V12         V14         V16 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.47520827 -8.55890072 -2.22273983 -1.65706720  0.16451721  0.23098754 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V21         V22         V28         V31         V36          V4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.77314837 -0.17800782 -0.03566219  0.23985462  1.46205856 -0.90086682 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V44         V45         V47         V48         V51         V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.31333387 -0.73987044 -0.54993891 -1.08307209 -0.75783109 -3.97734948 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V58 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -4.79770255 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V16          V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.21472410  -6.20572677  -1.94466622  -0.17610105   0.30788170  -0.08432835 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V21          V24          V31          V35          V36          V43 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.27713192  -0.19010035   0.59374178   0.27858826   0.44404754  -1.72237603 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V45          V46          V49          V52          V57           V6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.15863327  -0.11603959  -7.59421977 -16.42557441   1.82133930   0.36091620 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V60           V7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5.82125283   0.71856710 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.06483891</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -232,7 +232,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3333333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
