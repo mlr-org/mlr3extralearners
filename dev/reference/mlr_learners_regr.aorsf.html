@@ -56,7 +56,7 @@ the parameter na_action.'><meta name="robots" content="noindex"></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Oblique Random Forest Regressor</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_aorsf_regr_aorsf.R" class="external-link"><code>R/learner_aorsf_regr_aorsf.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_aorsf_regr_aorsf.R" class="external-link"><code>R/learner_aorsf_regr_aorsf.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.aorsf.Rd</code></div>
     </div>
 
@@ -225,16 +225,16 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.228</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.68</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: RSQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          wt        disp          hp        carb         cyl        drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.155000000 0.077540107 0.065868263 0.055232558 0.035483871 0.031700288 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          am        gear        qsec          vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.024922118 0.018018018 0.010526316 0.006734007 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        cyl         am         wt       carb         hp       disp         vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.18413598 0.12539185 0.10306407 0.07142857 0.05555556 0.04213483 0.03571429 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       drat       gear       qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03438395 0.03343465 0.02956989 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -242,7 +242,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.40761 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  15.7101 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

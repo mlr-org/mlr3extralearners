@@ -50,7 +50,7 @@ Class h2o::h2o.deeplearning() from package h2o."><meta name="robots" content="no
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification H2O Deep Learning Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_h2o_classif_deeplearning.R" class="external-link"><code>R/learner_h2o_classif_deeplearning.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_h2o_classif_deeplearning.R" class="external-link"><code>R/learner_h2o_classif_deeplearning.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.h2o.deeplearning.Rd</code></div>
     </div>
 
@@ -183,58 +183,58 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialModel: deeplearning</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DeepLearning_model_R_1784024701182_1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Status of Neuron Layers: predicting Class, 2-class classification, bernoulli distribution, CrossEntropy loss, 52,802 weights/biases, 632.9 KB, 139 training samples, mini-batch size 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DeepLearning_model_R_1784031075208_1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Status of Neuron Layers: predicting Class, 2-class classification, bernoulli distribution, CrossEntropy loss, 52,802 weights/biases, 632.9 KB, 144 training samples, mini-batch size 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     1    60     Input  0.00 %       NA       NA        NA       NA       NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.003849 0.002989 0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.008821 0.017654 0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4     2   Softmax      NA 0.000000 0.000000  0.001331 0.001380 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.004234 0.002805 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.017557 0.052629 0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4     2   Softmax      NA 0.000000 0.000000  0.001587 0.000850 0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   mean_weight weight_rms mean_bias bias_rms</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          NA         NA        NA       NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   -0.000453   0.090836  0.498238 0.003841</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   -0.001191   0.069496  0.999002 0.003507</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   -0.015526   0.404122  0.000002 0.001830</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   -0.000548   0.091043  0.494631 0.006472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   -0.001198   0.069603  0.997955 0.004212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   -0.002733   0.387318  0.000000 0.000334</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialMetrics: deeplearning</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Metrics reported on full training frame **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1018182</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3190897</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.5377671</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.0693038</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.928903</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.8667443</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.8578059</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1680567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.4099471</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.8818712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.1362869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.9130802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.8535136</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.8261603</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M  R    Error     Rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M      72  7 0.088608    =7/79</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R       3 57 0.050000    =3/60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 75 64 0.071942  =10/139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M      68 11 0.139241   =11/79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R       8 52 0.133333    =8/60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 76 63 0.136691  =19/139</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Maximum Metrics: Maximum metrics at their respective thresholds</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         metric threshold     value idx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.817697  0.919355  63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.817697  0.937500  63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.817697  0.901899  63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.817697  0.928058  63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  0.999998  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.001375  1.000000 112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  0.999998  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.817697  0.855992  63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.860256  0.911392  61</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.817697  0.930696  63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  0.999998 79.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  0.999998 59.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.000000 79.000000 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.001375 60.000000 112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  0.999998  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  0.999998  0.983333   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.000000  1.000000 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.001375  1.000000 112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.032551  0.845528  61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.000143  0.910494  82</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.189374  0.833333  52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.032551  0.863309  61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  1.000000  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.000000  1.000000 110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  1.000000  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.032551  0.723771  61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.032551  0.860759  61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.032551  0.863713  61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  1.000000 79.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  1.000000 58.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.000000 79.000000 137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.000000 60.000000 110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  1.000000  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  1.000000  0.966667   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.000000  1.000000 137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.000000  1.000000 110</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -246,7 +246,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3478261 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
