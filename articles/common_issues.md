@@ -40,7 +40,7 @@ similar arguments that can be specified, namely `init` and `default`. On
 the one hand, the argument `default` should describe the default value
 that the upstream package uses when no specific value is set. E.g., if
 one were to connect the linear model to `mlr3`, the default for the
-parameter `singualr.ok` can be accessed via `formals(lm)$singular.ok`.
+parameter `singular.ok` can be accessed via `formals(lm)$singular.ok`.
 Note that these default values do not set any specific parameter values
 in the `$param_set` of the `Learner`. On the other hand, the `init`
 field describes to what the parameter value should be initialized to (so

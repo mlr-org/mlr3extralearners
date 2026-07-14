@@ -113,7 +113,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifRandomTree$new()`](#method-LearnerClassifRandomTree-new)
+- [`LearnerClassifRandomTree$new()`](#method-LearnerClassifRandomTree-initialize)
 
 - [`LearnerClassifRandomTree$marshal()`](#method-LearnerClassifRandomTree-marshal)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifRandomTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifRandomTree$marshal()`
 
 Marshal the learner's model.
 
@@ -167,7 +167,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifRandomTree$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -185,7 +185,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifRandomTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -230,48 +230,52 @@ print(learner$model)
 #> RandomTree
 #> ==========
 #> 
-#> V9 < 0.12
-#> |   V5 < 0.08
-#> |   |   V50 < 0.01
-#> |   |   |   V21 < 0.65 : R (9/0)
-#> |   |   |   V21 >= 0.65 : M (3/0)
-#> |   |   V50 >= 0.01 : R (21/0)
-#> |   V5 >= 0.08
-#> |   |   V52 < 0.01
-#> |   |   |   V6 < 0.11 : M (2/0)
-#> |   |   |   V6 >= 0.11 : R (4/0)
-#> |   |   V52 >= 0.01 : M (7/0)
-#> V9 >= 0.12
-#> |   V11 < 0.18
-#> |   |   V46 < 0.06 : R (8/0)
-#> |   |   V46 >= 0.06
-#> |   |   |   V59 < 0 : R (2/0)
-#> |   |   |   V59 >= 0
-#> |   |   |   |   V36 < 0.8 : M (5/0)
-#> |   |   |   |   V36 >= 0.8 : R (1/0)
-#> |   V11 >= 0.18
-#> |   |   V15 < 0.56
-#> |   |   |   V43 < 0.19
-#> |   |   |   |   V51 < 0.01 : R (3/0)
-#> |   |   |   |   V51 >= 0.01
-#> |   |   |   |   |   V18 < 0.76
-#> |   |   |   |   |   |   V55 < 0.02 : M (10/0)
-#> |   |   |   |   |   |   V55 >= 0.02 : R (1/0)
-#> |   |   |   |   |   V18 >= 0.76 : R (2/0)
-#> |   |   |   V43 >= 0.19
-#> |   |   |   |   V41 < 0.64 : M (41/0)
-#> |   |   |   |   V41 >= 0.64
-#> |   |   |   |   |   V14 < 0.26 : R (1/0)
-#> |   |   |   |   |   V14 >= 0.26 : M (2/0)
-#> |   |   V15 >= 0.56
-#> |   |   |   V29 < 0.31 : M (4/0)
-#> |   |   |   V29 >= 0.31
-#> |   |   |   |   V33 < 0.16 : M (3/0)
-#> |   |   |   |   V33 >= 0.16
-#> |   |   |   |   |   V1 < 0.1 : R (9/0)
-#> |   |   |   |   |   V1 >= 0.1 : M (1/0)
+#> V10 < 0.15
+#> |   V1 < 0.05
+#> |   |   V11 < 0.18
+#> |   |   |   V21 < 0.56 : R (21/0)
+#> |   |   |   V21 >= 0.56
+#> |   |   |   |   V6 < 0.05
+#> |   |   |   |   |   V19 < 0.86 : M (2/0)
+#> |   |   |   |   |   V19 >= 0.86 : R (1/0)
+#> |   |   |   |   V6 >= 0.05
+#> |   |   |   |   |   V3 < 0 : M (1/0)
+#> |   |   |   |   |   V3 >= 0
+#> |   |   |   |   |   |   V5 < 0.12 : R (13/0)
+#> |   |   |   |   |   |   V5 >= 0.12 : M (1/0)
+#> |   |   V11 >= 0.18
+#> |   |   |   V25 < 0.86 : M (4/0)
+#> |   |   |   V25 >= 0.86
+#> |   |   |   |   V22 < 0.82 : R (4/0)
+#> |   |   |   |   V22 >= 0.82 : M (1/0)
+#> |   V1 >= 0.05 : M (6/0)
+#> V10 >= 0.15
+#> |   V12 < 0.13
+#> |   |   V52 < 0.02 : R (8/0)
+#> |   |   V52 >= 0.02 : M (1/0)
+#> |   V12 >= 0.13
+#> |   |   V36 < 0.39
+#> |   |   |   V16 < 0.69
+#> |   |   |   |   V32 < 0.22
+#> |   |   |   |   |   V46 < 0.07 : R (2/0)
+#> |   |   |   |   |   V46 >= 0.07 : M (4/0)
+#> |   |   |   |   V32 >= 0.22 : M (35/0)
+#> |   |   |   V16 >= 0.69
+#> |   |   |   |   V26 < 0.56 : M (4/0)
+#> |   |   |   |   V26 >= 0.56
+#> |   |   |   |   |   V23 < 0.85 : R (6/0)
+#> |   |   |   |   |   V23 >= 0.85 : M (2/0)
+#> |   |   V36 >= 0.39
+#> |   |   |   V16 < 0.22 : M (6/0)
+#> |   |   |   V16 >= 0.22
+#> |   |   |   |   V40 < 0.59
+#> |   |   |   |   |   V51 < 0.02
+#> |   |   |   |   |   |   V24 < 0.76 : R (5/0)
+#> |   |   |   |   |   |   V24 >= 0.76 : M (1/0)
+#> |   |   |   |   |   V51 >= 0.02 : M (6/0)
+#> |   |   |   |   V40 >= 0.59 : R (5/0)
 #> 
-#> Size of the tree : 41
+#> Size of the tree : 45
 
 
 # Make predictions for the test rows
@@ -280,5 +284,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.2753623 
 ```

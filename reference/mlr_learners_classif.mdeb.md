@@ -81,7 +81,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifMdeb$new()`](#method-LearnerClassifMdeb-new)
+- [`LearnerClassifMdeb$new()`](#method-LearnerClassifMdeb-initialize)
 
 - [`LearnerClassifMdeb$clone()`](#method-LearnerClassifMdeb-clone)
 
@@ -102,7 +102,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifMdeb$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -113,7 +113,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifMdeb$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -160,7 +160,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (50.36%), R (49.64%) 
+#>   M (54.68%), R (45.32%) 
 
 
 # Make predictions for the test rows
@@ -169,5 +169,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.2463768 
 ```

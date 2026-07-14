@@ -107,7 +107,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerRegrBlockForest$new()`](#method-LearnerRegrBlockForest-new)
+- [`LearnerRegrBlockForest$new()`](#method-LearnerRegrBlockForest-initialize)
 
 - [`LearnerRegrBlockForest$importance()`](#method-LearnerRegrBlockForest-importance)
 
@@ -130,7 +130,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBlockForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -141,7 +141,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrBlockForest$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -156,7 +156,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBlockForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -196,10 +196,10 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>         wt         hp       gear       disp       drat         am        cyl 
-#> 9.41946822 5.72475200 4.25981431 3.93559913 2.98602220 2.19602921 1.88117192 
-#>       carb         vs       qsec 
-#> 1.45110584 0.54002831 0.06802339 
+#>        cyl         wt         hp       disp       gear         am       carb 
+#> 10.7438233  8.1741812  5.3354741  5.0832597  3.2326212  2.3248077  1.8298877 
+#>       drat         vs       qsec 
+#>  1.0140740  0.1361191  0.0686479 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -207,16 +207,16 @@ pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        7  14.3 14.91976
-#>        8  24.4 23.47462
-#>       10  19.2 19.98734
+#>        2  21.0 20.27487
+#>        4  21.4 18.78612
+#>        5  18.7 15.41562
 #>      ---   ---      ---
-#>       29  15.8 20.15766
-#>       30  19.7 21.12723
-#>       31  15.0 17.01911
+#>       25  19.2 14.91242
+#>       29  15.8 17.59842
+#>       30  19.7 19.25260
 
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 9.944901 
+#> 7.414959 
 ```

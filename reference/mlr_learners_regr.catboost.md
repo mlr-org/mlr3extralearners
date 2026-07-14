@@ -207,7 +207,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerRegrCatboost$new()`](#method-LearnerRegrCatboost-new)
+- [`LearnerRegrCatboost$new()`](#method-LearnerRegrCatboost-initialize)
 
 - [`LearnerRegrCatboost$importance()`](#method-LearnerRegrCatboost-importance)
 
@@ -230,7 +230,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrCatboost$new()`
 
 Create a `LearnerRegrCatboost` object.
 
@@ -240,7 +240,7 @@ Create a `LearnerRegrCatboost` object.
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrCatboost$importance()`
 
 The importance scores are calculated using
 [`catboost::catboost.get_feature_importance()`](https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html),
@@ -256,7 +256,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrCatboost$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -303,10 +303,10 @@ print(learner$model)
 #> Loss function: RMSE
 #> Fit to 10 feature(s)
 print(learner$importance())
-#>         hp       carb       disp        cyl         wt       qsec       drat 
-#> 19.1139942 15.0129579 13.8378730 12.9197594  9.5811844  8.6460569  7.4830238 
-#>         vs       gear         am 
-#>  7.1981809  5.2373945  0.9695751 
+#>      disp        wt       cyl        hp      carb      drat      qsec      gear 
+#> 17.511444 15.947466 15.048109 13.665939 12.055015  8.758707  5.670914  4.474055 
+#>        am        vs 
+#>  3.722457  3.145892 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -314,5 +314,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 22.22053 
+#> 15.00203 
 ```

@@ -4,7 +4,7 @@ Accelerated oblique random classification forest. Calls
 [`aorsf::orsf()`](https://docs.ropensci.org/aorsf/reference/orsf.html)
 from [aorsf](https://CRAN.R-project.org/package=aorsf). Note that
 although the learner has the property `"missing"` and it can in
-principle deal with missing values, the behaviour has to be configured
+principle deal with missing values, the behavior has to be configured
 using the parameter `na_action`.
 
 ## Initial parameter values
@@ -112,7 +112,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifObliqueRandomForest$new()`](#method-LearnerClassifObliqueRandomForest-new)
+- [`LearnerClassifObliqueRandomForest$new()`](#method-LearnerClassifObliqueRandomForest-initialize)
 
 - [`LearnerClassifObliqueRandomForest$oob_error()`](#method-LearnerClassifObliqueRandomForest-oob_error)
 
@@ -137,7 +137,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifObliqueRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -148,7 +148,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerClassifObliqueRandomForest$oob_error()`
 
 OOB concordance error extracted from the model slot
 `eval_oobag$stat_values`
@@ -163,7 +163,7 @@ OOB concordance error extracted from the model slot
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifObliqueRandomForest$importance()`
 
 The importance scores are extracted from the model.
 
@@ -177,7 +177,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifObliqueRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -227,32 +227,32 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 60
 #>    N predictors per node: 8
-#>  Average leaves per tree: 4.588
+#>  Average leaves per tree: 5.178
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.89
+#>           OOB stat value: 0.90
 #>            OOB stat type: AUC-ROC
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>        V12        V11        V13        V10        V48         V9        V46 
-#> 0.47511312 0.44782609 0.30526316 0.27802691 0.27053140 0.26146789 0.24537037 
-#>        V36        V47        V43        V49        V51        V22        V45 
-#> 0.23880597 0.23834197 0.23626374 0.23041475 0.22935780 0.21000000 0.20434783 
-#>        V35         V1        V16        V52         V2        V44        V21 
-#> 0.19909502 0.19248826 0.16915423 0.16826923 0.16239316 0.16203704 0.15226337 
-#>        V17         V4        V37        V15        V23         V8        V34 
-#> 0.15000000 0.14356436 0.14150943 0.14070352 0.12440191 0.09905660 0.09174312 
-#>         V5        V38        V20        V24        V18        V50        V33 
-#> 0.08962264 0.08612440 0.07978723 0.07964602 0.07555556 0.07476636 0.07407407 
-#>        V14        V25        V53        V59        V19        V28        V42 
-#> 0.07386364 0.07368421 0.06763285 0.06250000 0.06030151 0.05911330 0.05825243 
-#>        V29         V7        V31        V57        V40         V3         V6 
-#> 0.05769231 0.05729167 0.05392157 0.05365854 0.04838710 0.04716981 0.04591837 
-#>        V26        V39        V41        V30        V32        V27        V58 
-#> 0.04188482 0.04000000 0.03781513 0.03720930 0.03500000 0.03056769 0.02955665 
-#>        V60        V55        V56        V54 
-#> 0.02392344 0.01604278 0.01315789 0.00000000 
+#>        V11        V12        V44        V45        V21        V48        V20 
+#> 0.44813278 0.34222222 0.28767123 0.28193833 0.27142857 0.27038627 0.26732673 
+#>        V49        V13        V37        V43        V36        V10        V22 
+#> 0.25821596 0.25225225 0.24875622 0.24352332 0.23853211 0.23287671 0.22624434 
+#>        V47        V51        V17        V46        V31        V16        V23 
+#> 0.22072072 0.19831224 0.19711538 0.17050691 0.15094340 0.14937759 0.13574661 
+#>        V35        V52        V27         V9        V24        V19        V18 
+#> 0.13524590 0.13157895 0.12980769 0.12621359 0.12558140 0.12254902 0.12107623 
+#>        V57        V59        V28         V8         V1         V4        V34 
+#> 0.11520737 0.10373444 0.10000000 0.09756098 0.09345794 0.09216590 0.09216590 
+#>        V38        V29         V5        V32        V41        V39        V26 
+#> 0.09004739 0.07296137 0.06635071 0.06451613 0.06190476 0.06060606 0.05909091 
+#>        V42        V25        V40        V33        V60        V30        V15 
+#> 0.05853659 0.05504587 0.05381166 0.05000000 0.04566210 0.04524887 0.04347826 
+#>         V2        V14        V54        V55         V6        V58        V56 
+#> 0.04186047 0.03902439 0.03404255 0.03389831 0.03015075 0.02966102 0.02926829 
+#>         V3        V53        V50         V7 
+#> 0.02314815 0.02262443 0.01869159 0.01428571 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -260,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3188406 
+#>  0.1884058 
 ```

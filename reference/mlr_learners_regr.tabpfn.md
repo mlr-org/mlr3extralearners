@@ -171,7 +171,7 @@ b-zhou
 
 ### Public methods
 
-- [`LearnerRegrTabPFN$new()`](#method-LearnerRegrTabPFN-new)
+- [`LearnerRegrTabPFN$new()`](#method-LearnerRegrTabPFN-initialize)
 
 - [`LearnerRegrTabPFN$marshal()`](#method-LearnerRegrTabPFN-marshal)
 
@@ -196,7 +196,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrTabPFN$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -207,7 +207,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrTabPFN$marshal()`
 
 Marshal the learner's model.
 
@@ -225,7 +225,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrTabPFN$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -243,7 +243,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrTabPFN$clone()`
 
 The objects of this class are cloneable with this method.
 

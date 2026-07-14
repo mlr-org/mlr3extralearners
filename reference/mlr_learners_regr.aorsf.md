@@ -4,7 +4,7 @@ Accelerated oblique random regression forest. Calls
 [`aorsf::orsf()`](https://docs.ropensci.org/aorsf/reference/orsf.html)
 from [aorsf](https://CRAN.R-project.org/package=aorsf). Note that
 although the learner has the property `"missing"` and it can in
-principle deal with missing values, the behaviour has to be configured
+principle deal with missing values, the behavior has to be configured
 using the parameter `na_action`.
 
 ## Initial parameter values
@@ -112,7 +112,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerRegrObliqueRandomForest$new()`](#method-LearnerRegrObliqueRandomForest-new)
+- [`LearnerRegrObliqueRandomForest$new()`](#method-LearnerRegrObliqueRandomForest-initialize)
 
 - [`LearnerRegrObliqueRandomForest$oob_error()`](#method-LearnerRegrObliqueRandomForest-oob_error)
 
@@ -137,7 +137,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrObliqueRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -148,7 +148,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerRegrObliqueRandomForest$oob_error()`
 
 OOB concordance error extracted from the model slot
 `eval_oobag$stat_values`
@@ -163,7 +163,7 @@ OOB concordance error extracted from the model slot
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrObliqueRandomForest$importance()`
 
 The importance scores are extracted from the model.
 
@@ -177,7 +177,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrObliqueRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -225,18 +225,18 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.216
+#>  Average leaves per tree: 3.256
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.70
+#>           OOB stat value: 0.62
 #>            OOB stat type: RSQ
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>          wt         cyl          hp        carb        disp        qsec 
-#> 0.210526316 0.091428571 0.084084084 0.080597015 0.050147493 0.048913043 
-#>          am        gear        drat          vs 
-#> 0.040935673 0.036585366 0.017191977 0.009009009 
+#>         wt       disp         hp       qsec         vs        cyl       carb 
+#> 0.42148760 0.11797753 0.05974026 0.04477612 0.03947368 0.03832753 0.03170029 
+#>         am       gear       drat 
+#> 0.02923977 0.02017291 0.01149425 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -244,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.44803 
+#> 7.764014 
 ```

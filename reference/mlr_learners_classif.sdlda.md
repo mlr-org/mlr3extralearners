@@ -82,7 +82,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifSdlda$new()`](#method-LearnerClassifSdlda-new)
+- [`LearnerClassifSdlda$new()`](#method-LearnerClassifSdlda-initialize)
 
 - [`LearnerClassifSdlda$clone()`](#method-LearnerClassifSdlda-clone)
 
@@ -103,7 +103,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifSdlda$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -114,7 +114,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifSdlda$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -161,7 +161,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (53.24%), R (46.76%) 
+#>   M (54.68%), R (45.32%) 
 
 
 # Make predictions for the test rows
@@ -170,5 +170,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.5362319 
+#>  0.5072464 
 ```

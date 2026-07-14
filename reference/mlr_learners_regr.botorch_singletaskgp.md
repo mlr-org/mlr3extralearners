@@ -57,7 +57,7 @@ Marc Becker
 
 ### Public methods
 
-- [`LearnerRegrBotorchSingleTaskGP$new()`](#method-LearnerRegrBotorchSingleTaskGP-new)
+- [`LearnerRegrBotorchSingleTaskGP$new()`](#method-LearnerRegrBotorchSingleTaskGP-initialize)
 
 - [`LearnerRegrBotorchSingleTaskGP$marshal()`](#method-LearnerRegrBotorchSingleTaskGP-marshal)
 
@@ -82,7 +82,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBotorchSingleTaskGP$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -93,7 +93,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrBotorchSingleTaskGP$marshal()`
 
 Marshal the learner's model.
 
@@ -107,11 +107,11 @@ Marshal the learner's model.
 
   (any)  
   Additional arguments passed to
-  [`mlr3::marshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
+  [`marshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrBotorchSingleTaskGP$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -125,11 +125,11 @@ Unmarshal the learner's model.
 
   (any)  
   Additional arguments passed to
-  [`mlr3::unmarshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
+  [`unmarshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBotorchSingleTaskGP$clone()`
 
 The objects of this class are cloneable with this method.
 

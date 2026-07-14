@@ -118,7 +118,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerRegrM5Rules$new()`](#method-LearnerRegrM5Rules-new)
+- [`LearnerRegrM5Rules$new()`](#method-LearnerRegrM5Rules-initialize)
 
 - [`LearnerRegrM5Rules$marshal()`](#method-LearnerRegrM5Rules-marshal)
 
@@ -143,7 +143,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrM5Rules$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -154,7 +154,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrM5Rules$marshal()`
 
 Marshal the learner's model.
 
@@ -172,7 +172,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrM5Rules$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -190,7 +190,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrM5Rules$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -233,16 +233,23 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> M5 pruned model rules 
 #> (using smoothed linear models) :
-#> Number of Rules : 1
+#> Number of Rules : 2
 #> 
 #> Rule: 1
+#> IF
+#>  disp > 101.55
+#> THEN
 #> 
 #> mpg = 
-#>  -0.8201 * carb 
-#>  + 3.617 * drat 
-#>  - 0.057 * hp 
-#>  - 0.6883 * qsec 
-#>  + 29.1765 [21/34.784%]
+#>  2.4543 * am 
+#>  + 1.7833 * drat 
+#>  - 0.0606 * hp 
+#>  + 21.1985 [16/29.268%]
+#> 
+#> Rule: 2
+#> 
+#> mpg = 
+#>  + 30.88 [5/100%]
 #> 
 #> 
 
@@ -253,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 23.21398 
+#> 5.861484 
 ```

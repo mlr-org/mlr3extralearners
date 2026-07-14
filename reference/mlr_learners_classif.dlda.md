@@ -83,7 +83,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifDiagLda$new()`](#method-LearnerClassifDiagLda-new)
+- [`LearnerClassifDiagLda$new()`](#method-LearnerClassifDiagLda-initialize)
 
 - [`LearnerClassifDiagLda$clone()`](#method-LearnerClassifDiagLda-clone)
 
@@ -104,7 +104,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifDiagLda$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -115,7 +115,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifDiagLda$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -162,7 +162,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (53.24%), R (46.76%) 
+#>   M (51.8%), R (48.2%) 
 
 
 # Make predictions for the test rows
@@ -171,5 +171,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3188406 
+#>  0.2608696 
 ```

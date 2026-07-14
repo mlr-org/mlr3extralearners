@@ -116,7 +116,7 @@ salauer
 
 ### Public methods
 
-- [`LearnerRegrGlm$new()`](#method-LearnerRegrGlm-new)
+- [`LearnerRegrGlm$new()`](#method-LearnerRegrGlm-initialize)
 
 - [`LearnerRegrGlm$clone()`](#method-LearnerRegrGlm-clone)
 
@@ -137,7 +137,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGlm$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -148,7 +148,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGlm$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -213,13 +213,13 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> (Intercept)           am         carb          cyl         disp         drat  
-#>   -57.05461     -1.12528     -3.45623      0.16365     -0.00154      5.08528  
+#>    22.25316      2.91510     -0.01342     -0.41630      0.01768     -1.24935  
 #>        gear           hp         qsec           vs           wt  
-#>     8.11759      0.05349      2.22364     -6.64877     -1.60907  
+#>     0.86605     -0.02859      0.72617      0.36791     -3.76593  
 #> 
 #> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual
-#> Null Deviance:       673.8 
-#> Residual Deviance: 59.25     AIC: 105.4
+#> Null Deviance:       672.1 
+#> Residual Deviance: 83.89     AIC: 112.7
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 50.56542 
+#> 7.547953 
 ```

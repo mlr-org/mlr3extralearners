@@ -118,7 +118,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerSurvBlockForest$new()`](#method-LearnerSurvBlockForest-new)
+- [`LearnerSurvBlockForest$new()`](#method-LearnerSurvBlockForest-initialize)
 
 - [`LearnerSurvBlockForest$importance()`](#method-LearnerSurvBlockForest-importance)
 
@@ -140,7 +140,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvBlockForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -151,7 +151,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvBlockForest$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -166,7 +166,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvBlockForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -207,25 +207,25 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#> revascdays     revasc        age        los   stchange      sysbp 
-#> 0.12800270 0.07884597 0.02213023 0.02180894 0.01586975 0.01203451 
+#> revascdays     revasc        age        los      sysbp   stchange 
+#> 0.14695715 0.07473552 0.03346605 0.01408183 0.01188823 0.01137222 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids time status     crank     distr
-#>        2    5  FALSE  16.28325 <list[1]>
-#>        3    2  FALSE  54.35909 <list[1]>
-#>        5  180  FALSE  12.21572 <list[1]>
-#>      ---  ---    ---       ---       ---
-#>      987  180  FALSE  14.96672 <list[1]>
-#>      990   12   TRUE 102.56760 <list[1]>
-#>      992   26   TRUE  96.28185 <list[1]>
+#>  row_ids  time status     crank     distr
+#>        3   2.0  FALSE  63.78204 <list[1]>
+#>        9 180.0  FALSE   4.93410 <list[1]>
+#>       11 115.0   TRUE  64.36755 <list[1]>
+#>      ---   ---    ---       ---       ---
+#>      995   0.5   TRUE  91.55939 <list[1]>
+#>      996  69.0   TRUE  87.35348 <list[1]>
+#>      997   2.0   TRUE 107.18030 <list[1]>
 
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8329923 
+#>   0.8480333 
 ```

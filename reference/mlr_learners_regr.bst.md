@@ -111,7 +111,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerRegrBst$new()`](#method-LearnerRegrBst-new)
+- [`LearnerRegrBst$new()`](#method-LearnerRegrBst-initialize)
 
 - [`LearnerRegrBst$clone()`](#method-LearnerRegrBst-clone)
 
@@ -132,7 +132,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBst$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -143,7 +143,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBst$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -195,15 +195,15 @@ print(learner$model)
 #> Base learner:  ls 
 #> Number of boosting iterations: mstop = 50 
 #> Step size:  0.1 
-#> Offset:  20.17619 
+#> Offset:  19.10476 
 #> 
 #> Coefficients: 
 #>           am         carb          cyl         disp         drat         gear 
-#>  4.245846439 -0.292487571  0.000000000 -0.009810324  0.000000000  0.000000000 
+#>  2.973503604  0.000000000  0.000000000 -0.009987268  0.000000000  0.000000000 
 #>           hp         qsec           vs           wt 
-#>  0.000000000  0.000000000  2.860971282  0.000000000 
+#>  0.000000000  0.000000000  3.823620802  0.000000000 
 #> attr(,"offset")
-#> [1] 20.17619
+#> [1] 19.10476
 #> 
 
 
@@ -213,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  7.53975 
+#> 20.40592 
 ```

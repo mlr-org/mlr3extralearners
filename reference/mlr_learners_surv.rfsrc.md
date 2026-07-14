@@ -168,7 +168,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvRandomForestSRC$new()`](#method-LearnerSurvRandomForestSRC-new)
+- [`LearnerSurvRandomForestSRC$new()`](#method-LearnerSurvRandomForestSRC-initialize)
 
 - [`LearnerSurvRandomForestSRC$importance()`](#method-LearnerSurvRandomForestSRC-importance)
 
@@ -193,7 +193,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvRandomForestSRC$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -204,7 +204,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvRandomForestSRC$importance()`
 
 The importance scores are extracted from the model slot `importance`.
 
@@ -218,7 +218,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvRandomForestSRC$selected_features()`
 
 Selected features are extracted from the model slot `var.used`.
 
@@ -237,7 +237,7 @@ not when prediction is required.
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerSurvRandomForestSRC$oob_error()`
 
 OOB error extracted from the model slot `err.rate`.
 
@@ -251,7 +251,7 @@ OOB error extracted from the model slot `err.rate`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvRandomForestSRC$clone()`
 
 The objects of this class are cloneable with this method.
 

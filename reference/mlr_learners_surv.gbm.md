@@ -1,8 +1,8 @@
 # Survival Gradient Boosting Machine Learner
 
 Gradient Boosting for Survival Analysis. Calls
-[`gbm::gbm()`](https://rdrr.io/pkg/gbm/man/gbm.html) from
-[gbm](https://CRAN.R-project.org/package=gbm).
+[`gbm::gbm()`](https://gbm-developers.github.io/gbm/reference/gbm.html)
+from [gbm](https://CRAN.R-project.org/package=gbm).
 
 ## Prediction types
 
@@ -131,7 +131,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvGBM$new()`](#method-LearnerSurvGBM-new)
+- [`LearnerSurvGBM$new()`](#method-LearnerSurvGBM-initialize)
 
 - [`LearnerSurvGBM$importance()`](#method-LearnerSurvGBM-importance)
 
@@ -153,7 +153,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -164,7 +164,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvGBM$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -179,7 +179,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvGBM$clone()`
 
 The objects of this class are cloneable with this method.
 

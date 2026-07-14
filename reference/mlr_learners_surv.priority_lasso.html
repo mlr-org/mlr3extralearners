@@ -5,17 +5,11 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Survival Priority Lasso Learner — mlr_learners_surv.priority_lasso"><meta name="description" content="Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-Calls prioritylasso::prioritylasso() from prioritylasso.
-Many parameters for this survival learner are the same as mlr_learners_surv.cv_glmnet
-as prioritylasso() calls glmnet::cv.glmnet() during training phase.
-Note that prioritylasso() has ways to deal with block-wise missing data,
-but this feature is not supported currently."><meta property="og:description" content="Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-Calls prioritylasso::prioritylasso() from prioritylasso.
-Many parameters for this survival learner are the same as mlr_learners_surv.cv_glmnet
-as prioritylasso() calls glmnet::cv.glmnet() during training phase.
-Note that prioritylasso() has ways to deal with block-wise missing data,
-but this feature is not supported currently."></head><body>
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Survival Priority Lasso Learner — mlr_learners_surv.priority_lasso"><meta name="description" content="Patient outcome prediction based on multi-omics data taking practitioners’
+preferences into account.
+Calls prioritylasso::prioritylasso() from prioritylasso."><meta property="og:description" content="Patient outcome prediction based on multi-omics data taking practitioners’
+preferences into account.
+Calls prioritylasso::prioritylasso() from prioritylasso."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -23,7 +17,7 @@ but this feature is not supported currently."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,12 +57,9 @@ but this feature is not supported currently."></head><body>
     </div>
 
     <div class="ref-description section level2">
-    <p>Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> from <a href="https://CRAN.R-project.org/package=prioritylasso" class="external-link"><span class="pkg">prioritylasso</span></a>.
-Many parameters for this survival learner are the same as <a href="mlr_learners_surv.cv_glmnet.html">mlr_learners_surv.cv_glmnet</a>
-as <code>prioritylasso()</code> calls <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> during training phase.
-Note that <code>prioritylasso()</code> has ways to deal with block-wise missing data,
-but this feature is not supported currently.</p>
+    <p>Patient outcome prediction based on multi-omics data taking practitioners’
+preferences into account.
+Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> from <a href="https://CRAN.R-project.org/package=prioritylasso" class="external-link"><span class="pkg">prioritylasso</span></a>.</p>
     </div>
 
 
@@ -90,7 +81,9 @@ for computing the baseline hazard.</p></li>
 
 
 <ul><li><p><code>family</code> is set to <code>"cox"</code> for the Cox survival objective and cannot be changed</p></li>
-<li><p><code>type.measure</code> set to <code>"deviance"</code> (cross-validation measure)</p></li>
+<li><p><code>type.measure</code> is set to <code>"deviance"</code> (cross-validation measure) and cannot be changed</p></li>
+<li><p><code>cox.ties</code> is initialized to <code>"breslow"</code> to keep the tie-handling behavior of earlier glmnet versions,
+and to silence the glmnet v5.0 warning about the upcoming default change to <code>"efron"</code></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
@@ -111,13 +104,54 @@ for computing the baseline hazard.</p></li>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>blocks</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>max.coef</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>block1.penalization</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda.type</td><td>character</td><td>lambda.min</td><td>lambda.min, lambda.1se</td><td>-</td></tr><tr><td>standardize</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nfolds</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>foldid</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>cvoffset</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cvoffsetnfolds</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>return.x</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>include.allintercepts</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>use.blocks</td><td>untyped</td><td>"all"</td><td></td><td>-</td></tr><tr><td>alignment</td><td>character</td><td>lambda</td><td>lambda, fraction</td><td>-</td></tr><tr><td>alpha</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>big</td><td>numeric</td><td>9.9e+35</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>devmax</td><td>numeric</td><td>0.999</td><td></td><td>\([0, 1]\)</td></tr><tr><td>dfmax</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>eps</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, 1]\)</td></tr><tr><td>epsnr</td><td>numeric</td><td>1e-08</td><td></td><td>\([0, 1]\)</td></tr><tr><td>exclude</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>exmx</td><td>numeric</td><td>250</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>fdev</td><td>numeric</td><td>1e-05</td><td></td><td>\([0, 1]\)</td></tr><tr><td>gamma</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>grouped</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>intercept</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>keep</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda.min.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>lower.limits</td><td>untyped</td><td>-Inf</td><td></td><td>-</td></tr><tr><td>maxit</td><td>integer</td><td>100000</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mnlam</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mxit</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mxitnr</td><td>integer</td><td>25</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nlambda</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>offset</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>parallel</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>penalty.factor</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>pmax</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>pmin</td><td>numeric</td><td>1e-09</td><td></td><td>\([0, 1]\)</td></tr><tr><td>prec</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>standardize.response</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>thresh</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>trace.it</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>type.gaussian</td><td>character</td><td>-</td><td>covariance, naive</td><td>-</td></tr><tr><td>type.logistic</td><td>character</td><td>Newton</td><td>Newton, modified.Newton</td><td>-</td></tr><tr><td>type.multinomial</td><td>character</td><td>ungrouped</td><td>ungrouped, grouped</td><td>-</td></tr><tr><td>upper.limits</td><td>untyped</td><td>Inf</td><td></td><td>-</td></tr><tr><td>relax</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>blocks</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>max.coef</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>block1.penalization</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda.type</td><td>character</td><td>lambda.min</td><td>lambda.min, lambda.1se</td><td>-</td></tr><tr><td>standardize</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nfolds</td><td>integer</td><td>10</td><td></td><td>\([3, \infty)\)</td></tr><tr><td>foldid</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>cvoffset</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cvoffsetnfolds</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>return.x</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>grouped</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace.it</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>cox.ties</td><td>character</td><td>breslow</td><td>breslow, efron</td><td>-</td></tr><tr><td>include.allintercepts</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>use.blocks</td><td>untyped</td><td>"all"</td><td></td><td>-</td></tr><tr><td>adaptive.order</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+    <div class="section level2">
+    <h2 id="scope-and-supported-arguments">Scope and supported arguments<a class="anchor" aria-label="anchor" href="#scope-and-supported-arguments"></a></h2>
+
+
+<p>This learner intentionally exposes a focused subset of training and prediction arguments.
+It is designed to work well out of the box, without requiring extensive parameter tuning.
+Some arguments from <code>cv.glmnet()</code>, <code>glmnet()</code>, and <code>predict.prioritylasso()</code> are not included,
+because they are not consistently supported or forwarded through the full train/predict path
+(e.g. handling missing test data, or performing relaxed lasso fits).</p>
+<p>Please open an issue if there is a need for supporting more learner parameters.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
+
+
+<ul><li><p><code>adaptive.order</code>: if <code>TRUE</code>, the priority order of blocks is estimated from the data
+following Herrmann et al. (2021), instead of using the user-supplied block order.
+For each block, a Ridge regression (<code>alpha = 0</code>) is fit using <code>cv.glmnet()</code> on that block alone.
+The importance of a block is measured by the mean absolute coefficient (MAC) score at the
+<code>lambda.min</code> value (the lambda giving minimum cross-validation error).
+A penalty factor of <code>1 / MAC</code> is then assigned to each block.
+Blocks are sorted by increasing penalty factor, i.e., blocks with larger MAC
+(stronger average signal) receive higher priority (come first).
+Also, the block‑wise penalty factors are attached to the fitted model object as
+<code>learner$model$block.penalty.factors</code>.</p></li>
+</ul><p>This method is useful when no domain knowledge is available to specify block priority.
+In this step, data are <strong>standardized by default</strong> (<code>standardize = TRUE</code>), but this can
+be overridden by the learner's <code>standardize</code> parameter. <code>lambda.min</code> is always used
+to derive the block priority.
+Additional arguments such as <code>nfolds</code>, <code>type.measure</code>, <code>weights</code> and <code>cox.ties</code> (if provided) are
+forwarded to each block‑wise <code>cv.glmnet()</code> fit.
+The <code>max.coef</code> parameter, if supplied, it is re‑ordered accordingly to align
+with the new block order.</p>
+<p>This parameter is ignored when fewer than two blocks are provided.
+It defaults to <code>FALSE</code> for backward compatibility.</p>
+    </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 “Priority-Lasso: a simple hierarchical approach to the prediction of clinical outcome using multi-omics data.”
 <em>BMC Bioinformatics</em>, <b>19</b>.
 <a href="https://doi.org/10.1186/s12859-018-2344-6" class="external-link">doi:10.1186/s12859-018-2344-6</a>
+.</p>
+<p>Herrmann, M., Probst, P., Hornung, R., Jurinovic, V., Boulesteix, L. A (2021).
+“Large-scale benchmark study of survival prediction methods using multi-omics data.”
+<em>Briefings in Bioinformatics</em>, <b>22</b>(3), 1–15.
+<a href="https://doi.org/10.1093/BIB/BBAA167" class="external-link">doi:10.1093/BIB/BBAA167</a>
 .</p>
     </div>
     <div class="section level2">
@@ -135,6 +169,7 @@ for computing the baseline hazard.</p></li>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
     <p>HarutyunyanLiana</p>
+<p>bblodfon</p>
     </div>
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
@@ -145,48 +180,46 @@ for computing the baseline hazard.</p></li>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerSurvPriorityLasso-new"><code>LearnerSurvPriorityLasso$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerSurvPriorityLasso-initialize"><code>LearnerSurvPriorityLasso$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvPriorityLasso-selected_features"><code>LearnerSurvPriorityLasso$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvPriorityLasso-clone"><code>LearnerSurvPriorityLasso$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerSurvPriorityLasso-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerSurvPriorityLasso-initialize"></a><div class="section">
+<h3 id="learnersurvprioritylasso-new-"><code>LearnerSurvPriorityLasso$new()</code><a class="anchor" aria-label="anchor" href="#learnersurvprioritylasso-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_surv.priority_lasso.html">LearnerSurvPriorityLasso</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerSurvPriorityLasso-selected_features"></a><div class="section">
-<h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
+<p></p><hr><a id="method-LearnerSurvPriorityLasso-selected_features"></a><div class="section">
+<h3 id="learnersurvprioritylasso-selected-features-"><code>LearnerSurvPriorityLasso$selected_features()</code><a class="anchor" aria-label="anchor" href="#learnersurvprioritylasso-selected-features-"></a></h3>
 <p>Selected features, i.e. those where the coefficient is non-zero.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvPriorityLasso</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-LearnerSurvPriorityLasso-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerSurvPriorityLasso-clone"></a><div class="section">
+<h3 id="learnersurvprioritylasso-clone-"><code>LearnerSurvPriorityLasso$clone()</code><a class="anchor" aria-label="anchor" href="#learnersurvprioritylasso-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvPriorityLasso</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -196,6 +229,7 @@ for computing the baseline hazard.</p></li>
 </div>
 
 </div>
+
 
     </div>
 
@@ -207,34 +241,28 @@ for computing the baseline hazard.</p></li>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
 <span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># check task's features</span></span></span>
+<span class="r-in"><span><span class="co"># Check task's features</span></span></span>
 <span class="r-in"><span><span class="va">task</span><span class="op">$</span><span class="va">feature_names</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "age"        "los"        "revasc"     "revascdays" "stchange"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [6] "sysbp"     </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># partition features to 2 blocks</span></span></span>
+<span class="r-in"><span><span class="co"># Partition features to 2 blocks</span></span></span>
 <span class="r-in"><span><span class="va">blocks</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>bl1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, bl2 <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># define learner</span></span></span>
+<span class="r-in"><span><span class="co"># Define learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.priority_lasso"</span>, blocks <span class="op">=</span> <span class="va">blocks</span>, block1.penalization <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
 <span class="r-in"><span>              lambda.type <span class="op">=</span> <span class="st">"lambda.1se"</span>, standardize <span class="op">=</span> <span class="cn">TRUE</span>, nfolds <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># selected features</span></span></span>
+<span class="r-in"><span><span class="co"># Selected features</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "age"        "los"        "revasc"     "revascdays"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
-<span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">pred</span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank        lp     distr</span>
@@ -247,7 +275,7 @@ for computing the baseline hazard.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     1000  15.0  FALSE 3.7133697 3.7133697 &lt;list[1]&gt;</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
-<span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   0.7351317 </span>
 </code></pre></div>
@@ -261,7 +289,7 @@ for computing the baseline hazard.</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

@@ -4,7 +4,7 @@ Accelerated oblique random survival forest. Calls
 [`aorsf::orsf()`](https://docs.ropensci.org/aorsf/reference/orsf.html)
 from [aorsf](https://CRAN.R-project.org/package=aorsf). Note that
 although the learner has the property `"missing"` and it can in
-principle deal with missing values, the behaviour has to be configured
+principle deal with missing values, the behavior has to be configured
 using the parameter `na_action`.
 
 ## Initial parameter values
@@ -152,7 +152,7 @@ bcjaeger
 
 ### Public methods
 
-- [`LearnerSurvAorsf$new()`](#method-LearnerSurvAorsf-new)
+- [`LearnerSurvAorsf$new()`](#method-LearnerSurvAorsf-initialize)
 
 - [`LearnerSurvAorsf$oob_error()`](#method-LearnerSurvAorsf-oob_error)
 
@@ -176,7 +176,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvAorsf$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -187,7 +187,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerSurvAorsf$oob_error()`
 
 OOB concordance error extracted from the model slot
 `eval_oobag$stat_values`
@@ -202,7 +202,7 @@ OOB concordance error extracted from the model slot
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvAorsf$importance()`
 
 The importance scores are extracted from the model.
 
@@ -216,7 +216,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvAorsf$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -265,17 +265,17 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 6
 #>    N predictors per node: 3
-#>  Average leaves per tree: 41.136
+#>  Average leaves per tree: 41.138
 #> Min observations in leaf: 5
 #>       Min events in leaf: 1
-#>           OOB stat value: 0.82
+#>           OOB stat value: 0.84
 #>            OOB stat type: Harrell's C-index
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
 #> revascdays     revasc        los        age   stchange      sysbp 
-#>  0.5799527  0.5529516  0.2225851  0.1717906  0.1262333  0.1072194 
+#>  0.5786782  0.5121305  0.2170486  0.2064692  0.1311216  0.1100545 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -283,5 +283,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8783013 
+#>   0.8458306 
 ```

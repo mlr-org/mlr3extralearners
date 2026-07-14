@@ -124,7 +124,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerClassifCTree$new()`](#method-LearnerClassifCTree-new)
+- [`LearnerClassifCTree$new()`](#method-LearnerClassifCTree-initialize)
 
 - [`LearnerClassifCTree$clone()`](#method-LearnerClassifCTree-clone)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifCTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifCTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -209,19 +209,13 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V11 <= 0.168
-#> |   |   [3] V4 <= 0.0505
-#> |   |   |   [4] V51 <= 0.0199: R (n = 33, err = 0.0%)
-#> |   |   |   [5] V51 > 0.0199: R (n = 7, err = 14.3%)
-#> |   |   [6] V4 > 0.0505: M (n = 9, err = 33.3%)
-#> |   [7] V11 > 0.168
-#> |   |   [8] V17 <= 0.6613: M (n = 59, err = 13.6%)
-#> |   |   [9] V17 > 0.6613
-#> |   |   |   [10] V45 <= 0.0945: M (n = 11, err = 9.1%)
-#> |   |   |   [11] V45 > 0.0945: R (n = 20, err = 15.0%)
+#> |   [2] V11 <= 0.197: R (n = 54, err = 16.7%)
+#> |   [3] V11 > 0.197
+#> |   |   [4] V17 <= 0.9039: M (n = 76, err = 17.1%)
+#> |   |   [5] V17 > 0.9039: R (n = 9, err = 22.2%)
 #> 
-#> Number of inner nodes:    5
-#> Number of terminal nodes: 6
+#> Number of inner nodes:    2
+#> Number of terminal nodes: 3
 
 
 # Make predictions for the test rows
@@ -230,5 +224,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.3043478 
 ```

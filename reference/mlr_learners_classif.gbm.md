@@ -1,8 +1,8 @@
 # Gradient Boosting Classification Learner
 
 Gradient Boosting Classification Algorithm. Calls
-[`gbm::gbm()`](https://rdrr.io/pkg/gbm/man/gbm.html) from
-[gbm](https://CRAN.R-project.org/package=gbm).
+[`gbm::gbm()`](https://gbm-developers.github.io/gbm/reference/gbm.html)
+from [gbm](https://CRAN.R-project.org/package=gbm).
 
 ## Dictionary
 
@@ -95,7 +95,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerClassifGBM$new()`](#method-LearnerClassifGBM-new)
+- [`LearnerClassifGBM$new()`](#method-LearnerClassifGBM-initialize)
 
 - [`LearnerClassifGBM$importance()`](#method-LearnerClassifGBM-importance)
 
@@ -118,7 +118,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -129,10 +129,10 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifGBM$importance()`
 
 The importance scores are extracted by
-[`gbm::relative.influence()`](https://rdrr.io/pkg/gbm/man/relative.influence.html)
+[`gbm::relative.influence()`](https://gbm-developers.github.io/gbm/reference/relative.influence.html)
 from the model.
 
 #### Usage
@@ -145,7 +145,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifGBM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -190,25 +190,25 @@ print(learner$model)
 #> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)
 #> A gradient boosted model with bernoulli loss function.
 #> 100 iterations were performed.
-#> There were 60 predictors of which 37 had non-zero influence.
+#> There were 60 predictors of which 36 had non-zero influence.
 print(learner$importance())
-#>        V12        V11        V49        V21        V51        V46         V9 
-#> 14.4625995 12.4196783 11.3036158 10.2168093  8.2102877  5.9241672  5.2009081 
-#>        V36        V10         V4        V43        V16        V37        V48 
-#>  5.0230283  4.4584804  4.0828081  4.0468226  3.7992717  3.7337534  3.6874352 
-#>        V45        V27        V58        V19        V39        V23        V13 
-#>  3.3269787  3.1636114  2.8903470  2.8571339  2.8282126  2.5487319  1.8319719 
-#>        V20        V32        V28        V55        V14        V47        V30 
-#>  1.7429575  1.7343268  1.6409825  1.4315228  1.2250174  0.9837638  0.8871257 
-#>        V26         V3        V34        V60        V38        V53        V52 
-#>  0.7378842  0.6780014  0.6546724  0.6075556  0.4768374  0.4747938  0.3768921 
-#>        V29        V54         V1        V15        V17        V18         V2 
-#>  0.3472707  0.3166034  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V22        V24        V25        V31        V33        V35        V40 
+#>        V12        V11        V15        V36        V21        V47         V9 
+#> 21.1100528 15.4825436  8.2767569  7.5131431  6.7782545  6.1283181  5.6077803 
+#>        V31        V45        V51        V44         V4        V29        V10 
+#>  4.8557388  4.2046111  3.8793789  3.7055763  3.3881371  3.3353806  3.0410074 
+#>        V27        V35        V22        V37        V40        V48        V28 
+#>  2.7669571  2.5316775  2.0892932  2.0168312  1.9766002  1.9692486  1.9580201 
+#>        V39        V16         V6        V20        V59         V7         V3 
+#>  1.9279391  1.6135290  1.4999342  1.4895207  0.8499301  0.8033539  0.7477812 
+#>        V43        V55         V8        V41        V49        V52        V19 
+#>  0.7403549  0.6118849  0.6005993  0.5249559  0.5004613  0.4323888  0.4097792 
+#>        V23         V1        V13        V14        V17        V18         V2 
+#>  0.3367017  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V24        V25        V26        V30        V32        V33        V34 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V41        V42        V44         V5        V50        V56        V57 
+#>        V38        V42        V46         V5        V50        V53        V54 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V59         V6         V7         V8 
+#>        V56        V57        V58        V60 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows

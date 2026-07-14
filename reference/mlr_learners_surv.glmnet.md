@@ -8,6 +8,10 @@ from package [glmnet](https://CRAN.R-project.org/package=glmnet).
 
 - `family` is set to `"cox"` and cannot be changed.
 
+- `cox.ties` is initialized to `"breslow"` to keep the tie-handling
+  behavior of earlier glmnet versions, and to silence the glmnet v5.0
+  warning about the upcoming default change to `"efron"`.
+
 ## Prediction types
 
 This learner returns three prediction types:
@@ -15,15 +19,15 @@ This learner returns three prediction types:
 1.  `lp`: a vector containing the linear predictors (relative risk
     scores), where each score corresponds to a specific test
     observation. Calculated using
-    [`glmnet::predict.coxnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html).
+    [`glmnet::predict.glmnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html).
 
 2.  `crank`: same as `lp`.
 
 3.  `distr`: a survival matrix in two dimensions, where observations are
     represented in rows and time points in columns. Calculated using
-    [`glmnet::survfit.coxnet()`](https://glmnet.stanford.edu/reference/survfit.coxnet.html).
-    Parameters `stype` and `ctype` relate to how `lp` predictions are
-    transformed into survival predictions and are described in
+    `glmnet:::survfit.coxnet()`. Parameters `stype` and `ctype` relate
+    to how `lp` predictions are transformed into survival predictions
+    and are described in
     [`survival::survfit.coxph()`](https://rdrr.io/pkg/survival/man/survfit.coxph.html).
     By default the Breslow estimator is used for computing the baseline
     hazard.
@@ -58,7 +62,7 @@ automatically incorporated during training via the `offset` argument in
 During prediction, the offset column from the test set is used only if
 `use_pred_offset = TRUE` (default), passed via the `newoffset` argument
 in
-[`glmnet::predict.coxnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html).
+[`glmnet::predict.glmnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html).
 Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is
 applied, effectively disabling the offset adjustment during prediction.
 
@@ -85,49 +89,45 @@ instantiated via
 
 ## Parameters
 
-|  |  |  |  |  |
-|----|----|----|----|----|
-| Id | Type | Default | Levels | Range |
-| alignment | character | lambda | lambda, fraction | \- |
-| alpha | numeric | 1 |  | \\\[0, 1\]\\ |
-| big | numeric | 9.9e+35 |  | \\(-\infty, \infty)\\ |
-| devmax | numeric | 0.999 |  | \\\[0, 1\]\\ |
-| dfmax | integer | \- |  | \\\[0, \infty)\\ |
-| eps | numeric | 1e-06 |  | \\\[0, 1\]\\ |
-| epsnr | numeric | 1e-08 |  | \\\[0, 1\]\\ |
-| exact | logical | FALSE | TRUE, FALSE | \- |
-| exclude | untyped | \- |  | \- |
-| exmx | numeric | 250 |  | \\(-\infty, \infty)\\ |
-| fdev | numeric | 1e-05 |  | \\\[0, 1\]\\ |
-| gamma | untyped | \- |  | \- |
-| grouped | logical | TRUE | TRUE, FALSE | \- |
-| intercept | logical | TRUE | TRUE, FALSE | \- |
-| keep | logical | FALSE | TRUE, FALSE | \- |
-| lambda | untyped | \- |  | \- |
-| lambda.min.ratio | numeric | \- |  | \\\[0, 1\]\\ |
-| lower.limits | untyped | -Inf |  | \- |
-| maxit | integer | 100000 |  | \\\[1, \infty)\\ |
-| mnlam | integer | 5 |  | \\\[1, \infty)\\ |
-| mxit | integer | 100 |  | \\\[1, \infty)\\ |
-| mxitnr | integer | 25 |  | \\\[1, \infty)\\ |
-| nlambda | integer | 100 |  | \\\[1, \infty)\\ |
-| use_pred_offset | logical | TRUE | TRUE, FALSE | \- |
-| parallel | logical | FALSE | TRUE, FALSE | \- |
-| penalty.factor | untyped | \- |  | \- |
-| pmax | integer | \- |  | \\\[0, \infty)\\ |
-| pmin | numeric | 1e-09 |  | \\\[0, 1\]\\ |
-| prec | numeric | 1e-10 |  | \\(-\infty, \infty)\\ |
-| predict.gamma | numeric | gamma.1se |  | \\(-\infty, \infty)\\ |
-| relax | logical | FALSE | TRUE, FALSE | \- |
-| s | numeric | 0.01 |  | \\\[0, \infty)\\ |
-| standardize | logical | TRUE | TRUE, FALSE | \- |
-| thresh | numeric | 1e-07 |  | \\\[0, \infty)\\ |
-| trace.it | integer | 0 |  | \\\[0, 1\]\\ |
-| type.logistic | character | Newton | Newton, modified.Newton | \- |
-| type.multinomial | character | ungrouped | ungrouped, grouped | \- |
-| upper.limits | untyped | Inf |  | \- |
-| stype | integer | 2 |  | \\\[1, 2\]\\ |
-| ctype | integer | \- |  | \\\[1, 2\]\\ |
+|                  |           |         |                |                       |
+|------------------|-----------|---------|----------------|-----------------------|
+| Id               | Type      | Default | Levels         | Range                 |
+| alpha            | numeric   | 1       |                | \\\[0, 1\]\\          |
+| nlambda          | integer   | 100     |                | \\\[1, \infty)\\      |
+| lambda.min.ratio | numeric   | \-      |                | \\\[0, 1\]\\          |
+| lambda           | untyped   | NULL    |                | \-                    |
+| standardize      | logical   | TRUE    | TRUE, FALSE    | \-                    |
+| intercept        | logical   | TRUE    | TRUE, FALSE    | \-                    |
+| exclude          | untyped   | NULL    |                | \-                    |
+| penalty.factor   | untyped   | \-      |                | \-                    |
+| lower.limits     | untyped   | -Inf    |                | \-                    |
+| upper.limits     | untyped   | Inf     |                | \-                    |
+| relax            | logical   | FALSE   | TRUE, FALSE    | \-                    |
+| trace.it         | integer   | 0       |                | \\\[0, 1\]\\          |
+| cox.ties         | character | breslow | breslow, efron | \-                    |
+| maxp             | integer   | \-      |                | \\\[1, \infty)\\      |
+| path             | logical   | FALSE   | TRUE, FALSE    | \-                    |
+| fdev             | numeric   | 1e-05   |                | \\\[0, 1\]\\          |
+| devmax           | numeric   | 0.999   |                | \\\[0, 1\]\\          |
+| eps              | numeric   | 1e-06   |                | \\\[0, 1\]\\          |
+| big              | numeric   | 9.9e+35 |                | \\(-\infty, \infty)\\ |
+| mnlam            | integer   | 5       |                | \\(-\infty, \infty)\\ |
+| pmin             | numeric   | 1e-09   |                | \\\[0, 1\]\\          |
+| exmx             | numeric   | 250     |                | \\(-\infty, \infty)\\ |
+| prec             | numeric   | 1e-10   |                | \\(-\infty, \infty)\\ |
+| mxit             | integer   | 100     |                | \\\[1, \infty)\\      |
+| epsnr            | numeric   | 1e-06   |                | \\\[0, 1\]\\          |
+| mxitnr           | integer   | 25      |                | \\\[1, \infty)\\      |
+| thresh           | numeric   | 1e-07   |                | \\\[0, \infty)\\      |
+| maxit            | integer   | 100000  |                | \\\[1, \infty)\\      |
+| dfmax            | integer   | NULL    |                | \\\[0, \infty)\\      |
+| pmax             | integer   | NULL    |                | \\\[0, \infty)\\      |
+| exact            | logical   | FALSE   | TRUE, FALSE    | \-                    |
+| s                | numeric   | 0.01    |                | \\\[0, \infty)\\      |
+| gamma            | numeric   | 1       |                | \\\[0, 1\]\\          |
+| stype            | integer   | 2       |                | \\\[1, 2\]\\          |
+| ctype            | integer   | \-      |                | \\\[1, 2\]\\          |
+| use_pred_offset  | logical   | \-      | TRUE, FALSE    | \-                    |
 
 ## References
 
@@ -167,17 +167,26 @@ Statistical Software*, **33**(1), 1–22.
 
 be-marc
 
+bblodfon
+
 ## Super classes
 
 [`mlr3::Learner`](https://mlr3.mlr-org.com/reference/Learner.html) -\>
 [`mlr3proba::LearnerSurv`](https://mlr3proba.mlr-org.com/reference/LearnerSurv.html)
 -\> `LearnerSurvGlmnet`
 
+## Active bindings
+
+- `native_model`:
+
+  (`coxnet`)  
+  The fitted model.
+
 ## Methods
 
 ### Public methods
 
-- [`LearnerSurvGlmnet$new()`](#method-LearnerSurvGlmnet-new)
+- [`LearnerSurvGlmnet$new()`](#method-LearnerSurvGlmnet-initialize)
 
 - [`LearnerSurvGlmnet$selected_features()`](#method-LearnerSurvGlmnet-selected_features)
 
@@ -198,7 +207,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvGlmnet$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -209,7 +218,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvGlmnet$selected_features()`
 
 Returns the set of selected features as reported by
 [`glmnet::predict.glmnet()`](https://glmnet.stanford.edu/reference/predict.glmnet.html)
@@ -234,7 +243,7 @@ names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvGlmnet$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -257,7 +266,7 @@ print(learner)
 #> 
 #> ── <LearnerSurvGlmnet> (surv.glmnet): Regularized Generalized Linear Model ─────
 #> • Model: -
-#> • Parameters: use_pred_offset=TRUE
+#> • Parameters: cox.ties=breslow, use_pred_offset=TRUE
 #> • Packages: mlr3, mlr3proba, mlr3extralearners, and glmnet
 #> • Predict Types: [crank], distr, and lp
 #> • Feature Types: logical, integer, and numeric
@@ -273,12 +282,11 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
-#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
 
 print(learner$model)
 #> $model
 #> 
-#> Call:  (if (cv) glmnet::cv.glmnet else glmnet::glmnet)(x = data, y = target,      family = "cox") 
+#> Call:  glmnet::glmnet(x = data, y = target, family = "cox", cox.ties = "breslow") 
 #> 
 #>    Df  %Dev   Lambda
 #> 1   0  0.00 0.192200

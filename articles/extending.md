@@ -242,11 +242,11 @@ constraints. This function return `TRUE` if the input is valid and a
 
 **Custom Parameters**
 
-Sometimes you might want to add paramters that are not present in the
+Sometimes you might want to add parameters that are not present in the
 upstream function. One example is the `mtry.ratio` parameter of
 `lrn("surv.ranger")`. Such parameters should usually not have `default`
 values (because we are here not calling an upstream function with a
-default behaviour) but instead have their value initialized during
+default behavior) but instead have their value initialized during
 construction and have the `"required"` tag. This avoids having to deal
 with the case where this parameter has no value set. When contributing a
 learner to `mlr3extralearners` this information should go into the

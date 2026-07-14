@@ -145,7 +145,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrDecisionTable$new()`](#method-LearnerRegrDecisionTable-new)
+- [`LearnerRegrDecisionTable$new()`](#method-LearnerRegrDecisionTable-initialize)
 
 - [`LearnerRegrDecisionTable$marshal()`](#method-LearnerRegrDecisionTable-marshal)
 
@@ -170,7 +170,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrDecisionTable$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -181,7 +181,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrDecisionTable$marshal()`
 
 Marshal the learner's model.
 
@@ -199,7 +199,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrDecisionTable$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -217,7 +217,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrDecisionTable$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -261,14 +261,14 @@ print(learner$model)
 #> Decision Table:
 #> 
 #> Number of training instances: 21
-#> Number of Rules : 12
+#> Number of Rules : 11
 #> Non matches covered by Majority class.
 #>  Best first.
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 59
-#>  Merit of best subset found:    3.617
+#>  Total number of subsets evaluated: 81
+#>  Merit of best subset found:    2.527
 #> Evaluation (for feature selection): CV (leave one out) 
 #> Feature set: 4,11,1
 
@@ -279,5 +279,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.26741 
+#> 6.335933 
 ```

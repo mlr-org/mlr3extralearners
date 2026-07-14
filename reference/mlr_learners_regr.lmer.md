@@ -7,7 +7,7 @@ Linear model with random effects. Calls
 ## Formula
 
 Although most mlr3 learners don't allow to specify the formula manually,
-and automatically set it by valling `task$formula()`, this learner
+and automatically set it by calling `task$formula()`, this learner
 allows to set the `formula` because it's core functionality depends it.
 This means that it might not always use all features that are available
 in the [task](https://mlr3.mlr-org.com/reference/Task.html). Be aware,
@@ -121,7 +121,7 @@ s-kganz
 
 ### Public methods
 
-- [`LearnerRegrLmer$new()`](#method-LearnerRegrLmer-new)
+- [`LearnerRegrLmer$new()`](#method-LearnerRegrLmer-initialize)
 
 - [`LearnerRegrLmer$clone()`](#method-LearnerRegrLmer-clone)
 
@@ -142,7 +142,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrLmer$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -153,7 +153,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrLmer$clone()`
 
 The objects of this class are cloneable with this method.
 

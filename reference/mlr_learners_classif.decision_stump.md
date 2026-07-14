@@ -105,7 +105,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifDecisionStump$new()`](#method-LearnerClassifDecisionStump-new)
+- [`LearnerClassifDecisionStump$new()`](#method-LearnerClassifDecisionStump-initialize)
 
 - [`LearnerClassifDecisionStump$marshal()`](#method-LearnerClassifDecisionStump-marshal)
 
@@ -130,7 +130,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifDecisionStump$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -141,7 +141,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifDecisionStump$marshal()`
 
 Marshal the learner's model.
 
@@ -159,7 +159,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifDecisionStump$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -177,7 +177,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifDecisionStump$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -222,21 +222,21 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> V11 <= 0.17885 : R
-#> V11 > 0.17885 : M
+#> V11 <= 0.19825 : R
+#> V11 > 0.19825 : M
 #> V11 is missing : M
 #> 
 #> Class distributions
 #> 
-#> V11 <= 0.17885
+#> V11 <= 0.19825
 #> M    R   
-#> 0.17307692307692307  0.8269230769230769  
-#> V11 > 0.17885
+#> 0.18032786885245902  0.819672131147541   
+#> V11 > 0.19825
 #> M    R   
-#> 0.7471264367816092   0.25287356321839083 
+#> 0.7564102564102564   0.24358974358974358 
 #> V11 is missing
 #> M    R   
-#> 0.5323741007194245   0.4676258992805755  
+#> 0.5035971223021583   0.49640287769784175 
 #> 
 
 

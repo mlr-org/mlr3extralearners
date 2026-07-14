@@ -92,7 +92,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifRda$new()`](#method-LearnerClassifRda-new)
+- [`LearnerClassifRda$new()`](#method-LearnerClassifRda-initialize)
 
 - [`LearnerClassifRda$clone()`](#method-LearnerClassifRda-clone)
 
@@ -113,7 +113,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifRda$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -124,7 +124,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifRda$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -169,16 +169,16 @@ print(learner$model)
 #> rda(formula = formula, data = data)
 #> 
 #> Regularization parameters: 
-#>      gamma     lambda 
-#> 0.03132334 0.49375595 
+#>     gamma    lambda 
+#> 0.2493263 0.4532548 
 #> 
 #> Prior probabilities of groups: 
 #>         M         R 
-#> 0.5539568 0.4460432 
+#> 0.5683453 0.4316547 
 #> 
 #> Misclassification rate: 
-#>        apparent: 0 %
-#> cross-validated: 18.79 %
+#>        apparent: 5.755 %
+#> cross-validated: 17.801 %
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>  0.1594203 
 ```

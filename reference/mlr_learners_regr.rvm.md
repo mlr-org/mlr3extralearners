@@ -101,7 +101,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerRegrRVM$new()`](#method-LearnerRegrRVM-new)
+- [`LearnerRegrRVM$new()`](#method-LearnerRegrRVM-initialize)
 
 - [`LearnerRegrRVM$clone()`](#method-LearnerRegrRVM-clone)
 
@@ -122,7 +122,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRVM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -133,7 +133,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRVM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -179,11 +179,11 @@ print(learner$model)
 #> Problem type: regression 
 #>  
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.000225196650379571 
+#>  Hyperparameter : sigma =  0.000130837323698551 
 #> 
-#> Number of Relevance Vectors : 10 
-#> Variance :  10.68061
-#> Training error : 6.483900488 
+#> Number of Relevance Vectors : 6 
+#> Variance :  5.40859
+#> Training error : 3.892009342 
 
 
 # Make predictions for the test rows
@@ -192,5 +192,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  23.6855 
+#> 9.660946 
 ```

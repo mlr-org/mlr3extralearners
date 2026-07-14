@@ -88,7 +88,7 @@ sebffischer
 
 ### Public methods
 
-- [`LearnerRegrRSM$new()`](#method-LearnerRegrRSM-new)
+- [`LearnerRegrRSM$new()`](#method-LearnerRegrRSM-initialize)
 
 - [`LearnerRegrRSM$clone()`](#method-LearnerRegrRSM-clone)
 
@@ -109,7 +109,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRSM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -120,7 +120,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRSM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -168,27 +168,27 @@ print(learner$model)
 #> 
 #> Coefficients:
 #>                                               (Intercept)  
-#>                                                 25.321734  
+#>                                                -13.414630  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)am  
-#>                                                  0.973394  
+#>                                                  4.745459  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)carb  
-#>                                                 -0.029559  
+#>                                                 -0.371930  
 #>  FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)cyl  
-#>                                                 -0.387835  
+#>                                                  0.178372  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)disp  
-#>                                                  0.009403  
+#>                                                  0.005557  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)drat  
-#>                                                 -0.591857  
+#>                                                  2.921268  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)gear  
-#>                                                  0.050892  
+#>                                                 -0.756716  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)hp  
-#>                                                 -0.009557  
+#>                                                 -0.003042  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)qsec  
-#>                                                  0.883142  
+#>                                                  1.793992  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)vs  
-#>                                                  0.185348  
+#>                                                 -1.316422  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)wt  
-#>                                                 -5.552483  
+#>                                                 -2.637847  
 #> 
 
 
@@ -198,5 +198,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 10.89482 
+#> 11.42125 
 ```

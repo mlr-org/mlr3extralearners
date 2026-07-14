@@ -94,7 +94,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerClassifGausspr$new()`](#method-LearnerClassifGausspr-new)
+- [`LearnerClassifGausspr$new()`](#method-LearnerClassifGausspr-initialize)
 
 - [`LearnerClassifGausspr$clone()`](#method-LearnerClassifGausspr-clone)
 
@@ -115,7 +115,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifGausspr$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -126,7 +126,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifGausspr$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -172,10 +172,10 @@ print(learner$model)
 #> Problem type: classification 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0130140643360138 
+#>  Hyperparameter : sigma =  0.0134748757055166 
 #> 
 #> Number of training instances learned : 139 
-#> Train error : 0.050359712 
+#> Train error : 0.064748201 
 
 
 # Make predictions for the test rows
@@ -184,5 +184,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>  0.2028986 
 ```

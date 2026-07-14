@@ -129,7 +129,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerRegrRandomForestSRC$new()`](#method-LearnerRegrRandomForestSRC-new)
+- [`LearnerRegrRandomForestSRC$new()`](#method-LearnerRegrRandomForestSRC-initialize)
 
 - [`LearnerRegrRandomForestSRC$importance()`](#method-LearnerRegrRandomForestSRC-importance)
 
@@ -155,7 +155,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRandomForestSRC$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -166,7 +166,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrRandomForestSRC$importance()`
 
 The importance scores are extracted from the model slot `importance`.
 
@@ -180,7 +180,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerRegrRandomForestSRC$selected_features()`
 
 Selected features are extracted from the model slot `var.used`.
 
@@ -199,7 +199,7 @@ not when prediction is required.
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerRegrRandomForestSRC$oob_error()`
 
 OOB error extracted from the model slot `err.rate`.
 
@@ -213,7 +213,7 @@ OOB error extracted from the model slot `err.rate`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRandomForestSRC$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -256,7 +256,7 @@ print(learner$model)
 #>                          Sample size: 21
 #>                      Number of trees: 500
 #>            Forest terminal node size: 5
-#>        Average no. of terminal nodes: 2.374
+#>        Average no. of terminal nodes: 2.142
 #> No. of variables tried at each split: 4
 #>               Total no. of variables: 10
 #>        Resampling used to grow trees: swor
@@ -265,14 +265,14 @@ print(learner$model)
 #>                               Family: regr
 #>                       Splitting rule: mse *random*
 #>        Number of random split points: 10
-#>                      (OOB) R squared: 0.71092544
-#>    (OOB) Requested performance error: 12.49146223
+#>                      (OOB) R squared: 0.68490284
+#>    (OOB) Requested performance error: 13.87098208
 #> 
 print(learner$importance())
-#>        disp          wt         cyl          hp          vs        drat 
-#> 29.70957785 27.60907526 15.95150148 10.05314843  2.40299857  0.38835582 
-#>        carb        qsec        gear          am 
-#>  0.32918456  0.23607653  0.12345968  0.06031854 
+#>       disp        cyl         hp         wt         vs       gear       carb 
+#> 20.2449566 17.1130710 14.8469099 13.0054206  2.5663462  0.7024614  0.5328980 
+#>       drat         am       qsec 
+#>  0.4406462  0.2253661  0.1025469 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -280,5 +280,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.461797 
+#> 5.670341 
 ```

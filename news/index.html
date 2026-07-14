@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,11 +52,39 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.6.0" id="mlr3extralearners-160">mlr3extralearners 1.6.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-160"></a></h2>
 <div class="section level3">
-<h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
+<h3 id="breaking-changes-1-6-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-6-0"></a></h3>
 <ul><li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.cv_glmnet</code>: removed the parameters <code>standardize.response</code>, <code>type.gaussian</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are not applicable to the Cox family (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.glmnet</code>: removed the parameters <code>alignment</code>, <code>parallel</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are CV-only or not applicable to the Cox family, and renamed the predict parameter <code>predict.gamma</code> to <code>gamma</code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-1-6-0">Other<a class="anchor" aria-label="anchor" href="#other-1-6-0"></a></h3>
+<ul><li>Updated minimum versions of suggested packages, most notably <code>glmnet</code> (&gt;= 5.0) (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>classif.fastai</code> now pins its <code>fastcore</code> Python dependency to a version below 2.0.0 because <code>fastai</code> (&lt;= 2.8.7) is incompatible with <code>fastcore</code> 2.0 but does not declare an upper bound.</li>
+<li>The <code>h2o</code> learners no longer emit a spurious warning about an outdated H2O cluster version when training or predicting.</li>
+<li>
+<code>surv.cv_glmnet</code> and <code>surv.glmnet</code>: updated for <code>glmnet</code> v5.0, added the train parameters <code>cox.ties</code> (initialized to <code>"breslow"</code> to keep the previous tie-handling behavior), <code>maxp</code>, and <code>path</code>, added the predict parameter <code>exact</code> (<code>surv.cv_glmnet</code> only), fixed predictions for relaxed fits (<code>relax = TRUE</code>), and added a read-only <code>native_model</code> field that returns the fitted <code>glmnet</code> model (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.priority_lasso</code>: added the train parameter <code>cox.ties</code>, initialized to <code>"breslow"</code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>surv.survdnn</code>: added the <code>.threads</code> train parameter (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
 <code>regr.botorch_fullybayesian</code> now declares its <code>numpyro</code>, <code>jax</code>, and <code>jaxlib</code> Python dependencies so they are installed automatically.</li>
+<li>
+<code>regr.bart</code>’s hyperparameter <code>sigdf</code> was changed to type <code>double</code>.</li>
+<li>
+<code>regr.crs</code>: added the train parameter <code>max.eval</code> for compatibility with <code>crs</code> (&gt;= 0.15-45) (<a href="https://github.com/mlr-org/mlr3extralearners/issues/601" class="external-link">#601</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-1-6-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-6-0"></a></h3>
+<ul><li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code> now support automatic block-priority derivation via <code>adaptive.order = TRUE</code>, following Herrmann et al. (2021), and prediction for automatic block ordering was fixed upstream in <code>prioritylasso</code> version 0.4.0.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -441,7 +469,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.35" id="mlr3extralearners-0535">mlr3extralearners 0.5.35<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0535"></a></h2>
-<ul><li>Full installatio in workflow ‘test_selection’ (is faster than the previous approach, where selected packages were installed from CRAN)</li>
+<ul><li>Full installation in workflow ‘test_selection’ (is faster than the previous approach, where selected packages were installed from CRAN)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.34" id="mlr3extralearners-0534">mlr3extralearners 0.5.34<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0534"></a></h2>
@@ -454,7 +482,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.32" id="mlr3extralearners-0532">mlr3extralearners 0.5.32<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0532"></a></h2>
 <ul><li><p>chore: add new parameters for kde and rfsrc</p></li>
-<li><p>temporarily disable feat_all test for obliqeRSF (failed in $score() stage, because issue only happened in CI and could not be reproduced</p></li>
+<li><p>temporarily disable feat_all test for obliqueRSF (failed in $score() stage, because issue only happened in CI and could not be reproduced</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.31" id="mlr3extralearners-0531">mlr3extralearners 0.5.31<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0531"></a></h2>
@@ -487,7 +515,7 @@
 <h2 class="pkg-version" data-toc-text="0.5.25" id="mlr3extralearners-0525">mlr3extralearners 0.5.25<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0525"></a></h2>
 <ul><li>Introduce parameter <code>early_stopping_split</code> for lightgbm learners</li>
 <li>Tidy description of R package</li>
-<li>Udpate NEWS.md for previous releases</li>
+<li>Update NEWS.md for previous releases</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.24" id="mlr3extralearners-0524">mlr3extralearners 0.5.24<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0524"></a></h2>
@@ -518,7 +546,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.19" id="mlr3extralearners-0519">mlr3extralearners 0.5.19<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0519"></a></h2>
-<ul><li>Provide correct range for neighors argument for Cubist</li>
+<ul><li>Provide correct range for neighbors argument for Cubist</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.18" id="mlr3extralearners-0518">mlr3extralearners 0.5.18<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0518"></a></h2>
@@ -712,7 +740,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="mlr3extralearners-010">mlr3extralearners 0.1.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-010"></a></h2>
-<ul><li>Initial release. mlr3extralearners contains all learners from the mlr3learners organisation, which is now archived.</li>
+<ul><li>Initial release. mlr3extralearners contains all learners from the mlr3learners organization, which is now archived.</li>
 </ul></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
@@ -723,7 +751,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

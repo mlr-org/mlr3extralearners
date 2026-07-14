@@ -147,7 +147,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifRandomForestWeka$new()`](#method-LearnerClassifRandomForestWeka-new)
+- [`LearnerClassifRandomForestWeka$new()`](#method-LearnerClassifRandomForestWeka-initialize)
 
 - [`LearnerClassifRandomForestWeka$marshal()`](#method-LearnerClassifRandomForestWeka-marshal)
 
@@ -172,7 +172,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifRandomForestWeka$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -183,7 +183,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifRandomForestWeka$marshal()`
 
 Marshal the learner's model.
 
@@ -201,7 +201,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifRandomForestWeka$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -219,7 +219,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifRandomForestWeka$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -273,5 +273,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.1449275 
 ```

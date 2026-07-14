@@ -115,7 +115,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifVotedPerceptron$new()`](#method-LearnerClassifVotedPerceptron-new)
+- [`LearnerClassifVotedPerceptron$new()`](#method-LearnerClassifVotedPerceptron-initialize)
 
 - [`LearnerClassifVotedPerceptron$marshal()`](#method-LearnerClassifVotedPerceptron-marshal)
 
@@ -140,7 +140,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifVotedPerceptron$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -151,7 +151,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifVotedPerceptron$marshal()`
 
 Marshal the learner's model.
 
@@ -169,7 +169,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifVotedPerceptron$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -187,7 +187,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifVotedPerceptron$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -237,5 +237,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.2318841 
 ```

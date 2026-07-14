@@ -105,7 +105,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrDecisionStump$new()`](#method-LearnerRegrDecisionStump-new)
+- [`LearnerRegrDecisionStump$new()`](#method-LearnerRegrDecisionStump-initialize)
 
 - [`LearnerRegrDecisionStump$marshal()`](#method-LearnerRegrDecisionStump-marshal)
 
@@ -130,7 +130,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrDecisionStump$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -141,7 +141,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrDecisionStump$marshal()`
 
 Marshal the learner's model.
 
@@ -159,7 +159,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrDecisionStump$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -177,7 +177,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrDecisionStump$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -222,9 +222,9 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> hp <= 100.0 : 27.78
-#> hp > 100.0 : 16.512500000000003
-#> hp is missing : 19.195238095238096
+#> wt <= 2.26 : 32.23333333333333
+#> wt > 2.26 : 17.84444444444445
+#> wt is missing : 19.900000000000002
 #> 
 
 
@@ -234,5 +234,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 33.07511 
+#> 17.25426 
 ```

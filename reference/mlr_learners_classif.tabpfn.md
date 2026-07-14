@@ -166,7 +166,7 @@ b-zhou
 
 ### Public methods
 
-- [`LearnerClassifTabPFN$new()`](#method-LearnerClassifTabPFN-new)
+- [`LearnerClassifTabPFN$new()`](#method-LearnerClassifTabPFN-initialize)
 
 - [`LearnerClassifTabPFN$marshal()`](#method-LearnerClassifTabPFN-marshal)
 
@@ -191,7 +191,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifTabPFN$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -202,7 +202,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifTabPFN$marshal()`
 
 Marshal the learner's model.
 
@@ -220,7 +220,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifTabPFN$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -238,7 +238,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifTabPFN$clone()`
 
 The objects of this class are cloneable with this method.
 

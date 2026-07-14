@@ -147,7 +147,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerClassifH2ODeeplearning$new()`](#method-LearnerClassifH2ODeeplearning-new)
+- [`LearnerClassifH2ODeeplearning$new()`](#method-LearnerClassifH2ODeeplearning-initialize)
 
 - [`LearnerClassifH2ODeeplearning$clone()`](#method-LearnerClassifH2ODeeplearning-clone)
 
@@ -168,7 +168,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifH2ODeeplearning$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -179,7 +179,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifH2ODeeplearning$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -218,67 +218,64 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
-#> Warning: 
-#> Your H2O cluster version is (2 years, 5 months and 20 days) old. There may be a newer version available.
-#> Please download and install the latest version from: https://h2o-release.s3.amazonaws.com/h2o/latest_stable.html
 
 print(learner$model)
 #> Model Details:
 #> ==============
 #> 
 #> H2OBinomialModel: deeplearning
-#> Model ID:  DeepLearning_model_R_1781098996955_1 
-#> Status of Neuron Layers: predicting Class, 2-class classification, bernoulli distribution, CrossEntropy loss, 52,802 weights/biases, 632.9 KB, 139 training samples, mini-batch size 1
+#> Model ID:  DeepLearning_model_R_1784032212300_1 
+#> Status of Neuron Layers: predicting Class, 2-class classification, bernoulli distribution, CrossEntropy loss, 52,802 weights/biases, 632.9 KB, 147 training samples, mini-batch size 1
 #>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum
 #> 1     1    60     Input  0.00 %       NA       NA        NA       NA       NA
-#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.007900 0.012060 0.000000
-#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.036643 0.151136 0.000000
-#> 4     4     2   Softmax      NA 0.000000 0.000000  0.015934 0.115423 0.000000
+#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.003174 0.002143 0.000000
+#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.015287 0.059589 0.000000
+#> 4     4     2   Softmax      NA 0.000000 0.000000  0.001545 0.006292 0.000000
 #>   mean_weight weight_rms mean_bias bias_rms
 #> 1          NA         NA        NA       NA
-#> 2   -0.000635   0.090666  0.500170 0.002374
-#> 3   -0.000428   0.069258  0.999639 0.003188
-#> 4   -0.035016   0.392523  0.000000 0.002028
+#> 2    0.000259   0.091279  0.497196 0.005527
+#> 3   -0.000611   0.069451  0.998430 0.004182
+#> 4   -0.000649   0.402314 -0.000006 0.002027
 #> 
 #> 
 #> H2OBinomialMetrics: deeplearning
 #> ** Reported on training data. **
 #> ** Metrics reported on full training frame **
 #> 
-#> MSE:  0.3239009
-#> RMSE:  0.5691229
-#> LogLoss:  1.630663
-#> Mean Per-Class Error:  0.3857143
-#> AUC:  0.73706
-#> AUCPR:  0.7426902
-#> Gini:  0.4741201
+#> MSE:  0.1153778
+#> RMSE:  0.3396731
+#> LogLoss:  0.6310853
+#> Mean Per-Class Error:  0.1314628
+#> AUC:  0.907314
+#> AUCPR:  0.87892
+#> Gini:  0.814628
 #> 
 #> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
-#>         M   R    Error     Rate
-#> M      16  54 0.771429   =54/70
-#> R       0  69 0.000000    =0/69
-#> Totals 16 123 0.388489  =54/139
+#>         M  R    Error     Rate
+#> M      69  9 0.115385    =9/78
+#> R       9 52 0.147541    =9/61
+#> Totals 78 61 0.129496  =18/139
 #> 
 #> Maximum Metrics: Maximum metrics at their respective thresholds
 #>                         metric threshold     value idx
-#> 1                       max f1  0.000016  0.718750 122
-#> 2                       max f2  0.000016  0.864662 122
-#> 3                 max f0point5  0.114246  0.700389  46
-#> 4                 max accuracy  0.114246  0.683453  46
-#> 5                max precision  0.998458  1.000000   0
-#> 6                   max recall  0.000016  1.000000 122
-#> 7              max specificity  0.998458  1.000000   0
-#> 8             max absolute_mcc  0.114246  0.385339  46
-#> 9   max min_per_class_accuracy  0.023617  0.666667  68
-#> 10 max mean_per_class_accuracy  0.114246  0.682298  46
-#> 11                     max tns  0.998458 70.000000   0
-#> 12                     max fns  0.998458 68.000000   0
-#> 13                     max fps  0.000000 70.000000 138
-#> 14                     max tps  0.000016 69.000000 122
-#> 15                     max tnr  0.998458  1.000000   0
-#> 16                     max fnr  0.998458  0.985507   0
+#> 1                       max f1  0.538088  0.852459  60
+#> 2                       max f2  0.034129  0.874233  81
+#> 3                 max f0point5  0.804724  0.871886  54
+#> 4                 max accuracy  0.804724  0.870504  54
+#> 5                max precision  0.999998  1.000000   0
+#> 6                   max recall  0.000000  1.000000 125
+#> 7              max specificity  0.999998  1.000000   0
+#> 8             max absolute_mcc  0.804724  0.737124  54
+#> 9   max min_per_class_accuracy  0.489948  0.858974  63
+#> 10 max mean_per_class_accuracy  0.538088  0.868537  60
+#> 11                     max tns  0.999998 78.000000   0
+#> 12                     max fns  0.999998 60.000000   0
+#> 13                     max fps  0.000000 78.000000 138
+#> 14                     max tps  0.000000 61.000000 125
+#> 15                     max tnr  0.999998  1.000000   0
+#> 16                     max fnr  0.999998  0.983607   0
 #> 17                     max fpr  0.000000  1.000000 138
-#> 18                     max tpr  0.000016  1.000000 122
+#> 18                     max tpr  0.000000  1.000000 125
 #> 
 #> Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 #> 
@@ -290,5 +287,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.4347826 
+#>  0.2028986 
 ```

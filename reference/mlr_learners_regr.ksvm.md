@@ -94,7 +94,7 @@ mboecker
 
 ### Public methods
 
-- [`LearnerRegrKSVM$new()`](#method-LearnerRegrKSVM-new)
+- [`LearnerRegrKSVM$new()`](#method-LearnerRegrKSVM-initialize)
 
 - [`LearnerRegrKSVM$clone()`](#method-LearnerRegrKSVM-clone)
 
@@ -115,7 +115,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrKSVM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -126,7 +126,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrKSVM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -173,12 +173,12 @@ print(learner$model)
 #>  parameter : epsilon = 0.1  cost C = 1 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0679232080593892 
+#>  Hyperparameter : sigma =  0.0580492147051206 
 #> 
-#> Number of Support Vectors : 20 
+#> Number of Support Vectors : 19 
 #> 
-#> Objective Function Value : -6.3262 
-#> Training error : 0.229364 
+#> Objective Function Value : -6.0184 
+#> Training error : 0.149554 
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.93661 
+#> 7.727357 
 ```

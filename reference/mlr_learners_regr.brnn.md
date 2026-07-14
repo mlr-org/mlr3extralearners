@@ -85,7 +85,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerRegrBrnn$new()`](#method-LearnerRegrBrnn-new)
+- [`LearnerRegrBrnn$new()`](#method-LearnerRegrBrnn-initialize)
 
 - [`LearnerRegrBrnn$clone()`](#method-LearnerRegrBrnn-clone)
 
@@ -106,7 +106,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBrnn$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -117,7 +117,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBrnn$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -159,7 +159,7 @@ learner$train(task, row_ids = ids$train)
 #> Number of parameters (weights and biases) to estimate: 24 
 #> Nguyen-Widrow method
 #> Scaling factor= 0.7234904 
-#> gamma= 7.1763     alpha= 3.1224   beta= 8.7761 
+#> gamma= 2.4034     alpha= 4.1778   beta= 1.3765 
 
 print(learner$model)
 #> A Bayesian regularized neural network 
@@ -174,5 +174,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  9.01004 
+#> 29.93976 
 ```

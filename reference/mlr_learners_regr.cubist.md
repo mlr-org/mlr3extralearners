@@ -91,7 +91,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerRegrCubist$new()`](#method-LearnerRegrCubist-new)
+- [`LearnerRegrCubist$new()`](#method-LearnerRegrCubist-initialize)
 
 - [`LearnerRegrCubist$clone()`](#method-LearnerRegrCubist-clone)
 
@@ -112,7 +112,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrCubist$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -123,7 +123,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrCubist$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -184,5 +184,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.33021 
+#> 9.527288 
 ```

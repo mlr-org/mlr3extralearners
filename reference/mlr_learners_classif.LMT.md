@@ -120,7 +120,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerClassifLMT$new()`](#method-LearnerClassifLMT-new)
+- [`LearnerClassifLMT$new()`](#method-LearnerClassifLMT-initialize)
 
 - [`LearnerClassifLMT$marshal()`](#method-LearnerClassifLMT-marshal)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifLMT$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifLMT$marshal()`
 
 Marshal the learner's model.
 
@@ -174,7 +174,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifLMT$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -192,7 +192,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifLMT$clone()`
 
 The objects of this class are cloneable with this method.
 

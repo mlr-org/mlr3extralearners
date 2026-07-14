@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,39 +135,37 @@ Whether the learner has been marshaled.</p></dd>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifNaiveBayesWeka-new"><code>LearnerClassifNaiveBayesWeka$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifNaiveBayesWeka-initialize"><code>LearnerClassifNaiveBayesWeka$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifNaiveBayesWeka-marshal"><code>LearnerClassifNaiveBayesWeka$marshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifNaiveBayesWeka-unmarshal"><code>LearnerClassifNaiveBayesWeka$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifNaiveBayesWeka-clone"><code>LearnerClassifNaiveBayesWeka$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifNaiveBayesWeka-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifNaiveBayesWeka-initialize"></a><div class="section">
+<h3 id="learnerclassifnaivebayesweka-new-"><code>LearnerClassifNaiveBayesWeka$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassifnaivebayesweka-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.naive_bayes_weka.html">LearnerClassifNaiveBayesWeka</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifNaiveBayesWeka-marshal"></a><div class="section">
-<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifNaiveBayesWeka-marshal"></a><div class="section">
+<h3 id="learnerclassifnaivebayesweka-marshal-"><code>LearnerClassifNaiveBayesWeka$marshal()</code><a class="anchor" aria-label="anchor" href="#learnerclassifnaivebayesweka-marshal-"></a></h3>
 <p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifNaiveBayesWeka</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
@@ -177,14 +175,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifNaiveBayesWeka-unmarshal"></a><div class="section">
-<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifNaiveBayesWeka-unmarshal"></a><div class="section">
+<h3 id="learnerclassifnaivebayesweka-unmarshal-"><code>LearnerClassifNaiveBayesWeka$unmarshal()</code><a class="anchor" aria-label="anchor" href="#learnerclassifnaivebayesweka-unmarshal-"></a></h3>
 <p>Unmarshal the learner's model.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifNaiveBayesWeka</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
@@ -194,14 +192,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifNaiveBayesWeka-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifNaiveBayesWeka-clone"></a><div class="section">
+<h3 id="learnerclassifnaivebayesweka-clone-"><code>LearnerClassifNaiveBayesWeka$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassifnaivebayesweka-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifNaiveBayesWeka</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -211,6 +209,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </div>
 
 </div>
+
 
     </div>
 
@@ -244,367 +243,367 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  Class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Attribute            M       R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 (0.49)  (0.51)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 (0.52)  (0.48)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===============================</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0324  0.0214</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0214   0.014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0363  0.0213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.026  0.0148</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0011  0.0011</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2323  0.1627</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1167  0.1121</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0046  0.0046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2635  0.1627</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.139  0.1203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0051  0.0051</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2659  0.1771</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1132   0.112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0048  0.0048</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3051  0.1742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.127  0.1254</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0052  0.0052</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2918  0.1803</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1084  0.1302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0049  0.0049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3193  0.1774</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1202  0.1432</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.005   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3073  0.2164</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1051  0.1289</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0043  0.0043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3309  0.2132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1369   0.129</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.005   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3085  0.2656</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1299  0.1496</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0049  0.0049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3148  0.3084</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1661   0.201</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0061  0.0061</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3623  0.3802</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1952  0.2418</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0068  0.0068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.4165  0.4211</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2259  0.2785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3343  0.2584</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1733  0.1583</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.007   0.007</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.4642  0.4542</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2408  0.2596</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3354   0.301</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1973   0.211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0066  0.0066</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.5471  0.4822</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.253  0.2586</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0067  0.0067</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3739  0.3808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2118  0.2607</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.007   0.007</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0436  0.0302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0373  0.0256</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0018  0.0018</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6066  0.5095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2623  0.2551</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0066  0.0066</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6513  0.5586</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2559  0.2529</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean            0.413  0.4371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2327  0.2962</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0071  0.0071</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.4532  0.4619</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2481   0.277</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0068  0.0068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.5381  0.4732</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2507  0.2645</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0068  0.0068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean            0.045  0.0267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0339  0.0177</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0012  0.0012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6136  0.4959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2528   0.267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0068  0.0068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6722  0.5511</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2507    0.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0072  0.0072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6686  0.5962</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.236  0.2536</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0065  0.0065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6868  0.5817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2408  0.2527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0073  0.0073</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6901   0.633</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2157  0.2381</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6869  0.6159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2495  0.2425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.007   0.007</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.7162  0.6773</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2056  0.2204</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0073  0.0073</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6972  0.6748</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2418  0.2227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0072  0.0072</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.7102  0.6981</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2097  0.2189</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0071  0.0071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6871  0.7011</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2349  0.2317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0075  0.0075</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.7293  0.7178</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2302  0.2225</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.7094  0.7113</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2327  0.2318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0071  0.0071</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.7494  0.6994</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2549   0.216</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.7101  0.7013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2677   0.205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0076  0.0076</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.7409  0.6764</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2632  0.1991</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0075  0.0075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6903  0.6802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2659  0.2101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0072  0.0072</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6837  0.6238</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.246  0.2291</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6317  0.6318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.251  0.2398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0075  0.0075</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0512  0.0354</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0491  0.0307</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0023  0.0023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean             0.05  0.0322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0363  0.0241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0015  0.0015</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.6065  0.5743</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2054  0.2306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.007   0.007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.5638   0.565</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2247  0.2392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0071  0.0071</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.5128  0.5181</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2182  0.2042</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0066  0.0066</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.4491  0.4421</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.212  0.2151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0065  0.0065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3939  0.4252</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1918  0.2151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0066  0.0066</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3389   0.419</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1872  0.2485</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.4847  0.5087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2247  0.2137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0067  0.0067</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.4225  0.4363</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2092  0.2157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0064  0.0064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3866   0.423</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1917  0.2203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0071  0.0071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3596  0.4342</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2047  0.2487</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0069  0.0069</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2921  0.4394</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2102  0.2483</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0072  0.0072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3243  0.4444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2356  0.2584</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0071  0.0071</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2747  0.4462</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2073  0.2545</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3011  0.4448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.224  0.2567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0072  0.0072</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2846  0.4053</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1971   0.247</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0067  0.0067</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2991  0.3321</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1703  0.2226</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.007   0.007</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3031   0.296</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1631  0.2093</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.007   0.007</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean            0.066  0.0451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0636  0.0338</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0033  0.0033</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2835  0.3049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1544  0.1921</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2939  0.4076</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.2042  0.2392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0066  0.0066</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3108  0.3287</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1805  0.2109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0063  0.0063</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3349  0.2896</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1778  0.1969</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0062  0.0062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0631  0.0395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0438  0.0311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.002   0.002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.3045  0.2855</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1642  0.1784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0065  0.0065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2939  0.2755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1647  0.1633</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2761  0.2567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1692  0.1577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0055  0.0055</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2996  0.2338</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1621   0.152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0052  0.0052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2905  0.2233</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1712  0.1442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0058  0.0058</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2604   0.194</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1387  0.1194</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0055  0.0055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2793  0.1933</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1373   0.113</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0053  0.0053</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2321  0.1763</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1484  0.1114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2419   0.171</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.139  0.1132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0056  0.0056</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2216  0.1405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1753  0.0929</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean             0.24  0.1376</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1711  0.0914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0051  0.0051</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean            0.182  0.1119</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.147  0.0842</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0045  0.0045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1989  0.1064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1557  0.0788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0054  0.0054</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1422   0.093</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0937  0.0613</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0032  0.0032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1456  0.0862</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1001  0.0572</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.004   0.004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1078  0.0698</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0677  0.0451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0022  0.0022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1117  0.0648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0694  0.0425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0024  0.0024</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0607   0.039</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0371  0.0273</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0013  0.0013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0671  0.0363</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0373  0.0263</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0014  0.0014</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0944  0.0638</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0657  0.0484</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.003   0.003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0882  0.0621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0545  0.0486</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0024  0.0024</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0213  0.0171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0143  0.0107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0008  0.0008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0186  0.0131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0116  0.0086</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0244   0.016</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0157   0.009</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0007  0.0007</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0206  0.0118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0148  0.0077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0009  0.0009</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0158  0.0114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0093  0.0074</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0004  0.0004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0158  0.0106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0111  0.0072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0007  0.0007</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0113  0.0101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0077  0.0062</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0117  0.0096</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0079  0.0059</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0004  0.0004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0119  0.0094</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.008   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean            0.013  0.0091</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0089  0.0053</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0003  0.0003</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0094  0.0086</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0082  0.0052</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0103  0.0086</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0089  0.0052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0004  0.0004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0087  0.0077</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0065  0.0048</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0087  0.0073</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.006   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0004  0.0004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0074  0.0078</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0056  0.0062</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0078  0.0077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0061  0.0061</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0004  0.0004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0081  0.0067</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0066   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0101  0.0062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0084  0.0045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0005  0.0005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0082  0.0071</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0072   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0089  0.0067</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0073  0.0049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0004  0.0004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1079   0.096</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0525  0.0665</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0028  0.0028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean            0.119  0.0957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0579  0.0648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0022  0.0022</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0068  0.0058</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0066  0.0038</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.0068  0.0054</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0059  0.0034</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0005  0.0005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1203  0.1183</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.       0.052  0.0677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0028  0.0028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1321  0.1095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0565  0.0626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0023  0.0023</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1337   0.119</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0601  0.0809</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.003   0.003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean            0.157  0.1159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0748   0.083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0031  0.0031</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.1976  0.1421</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.0925  0.1004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         68      71</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   precision       0.004   0.004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   mean           0.2208  0.1439</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std. dev.      0.1061  0.1061</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   weight sum         73      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   precision      0.0041  0.0041</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -615,7 +614,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3623188 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -627,7 +626,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

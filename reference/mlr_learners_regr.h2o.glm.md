@@ -137,7 +137,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrH2OGLM$new()`](#method-LearnerRegrH2OGLM-new)
+- [`LearnerRegrH2OGLM$new()`](#method-LearnerRegrH2OGLM-initialize)
 
 - [`LearnerRegrH2OGLM$clone()`](#method-LearnerRegrH2OGLM-clone)
 
@@ -158,7 +158,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrH2OGLM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -169,7 +169,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrH2OGLM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -214,43 +214,43 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: glm
-#> Model ID:  GLM_model_R_1781098996955_112 
+#> Model ID:  GLM_model_R_1784032212300_111 
 #> GLM Model: summary
 #>     family     link                              regularization
-#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.0504 )
+#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 0.9594 )
 #>   number_of_predictors_total number_of_active_predictors number_of_iterations
-#> 1                         10                          10                    1
+#> 1                         10                           9                    1
 #>     training_frame
-#> 1 data_sid_a67f_31
+#> 1 data_sid_a90d_31
 #> 
 #> Coefficients: glm coefficients
 #>        names coefficients standardized_coefficients
-#> 1  Intercept    24.999044                 20.366667
-#> 2         am     1.528707                  0.782341
-#> 3       carb    -0.312935                 -0.572561
-#> 4        cyl    -0.566402                 -0.979479
-#> 5       disp    -0.006867                 -0.833696
-#> 6       drat     0.340301                  0.151004
-#> 7       gear     0.145014                  0.108703
-#> 8         hp    -0.007970                 -0.586232
-#> 9       qsec     0.163290                  0.281206
-#> 10        vs     1.035212                  0.529787
-#> 11        wt    -1.091384                 -1.064005
+#> 1  Intercept    27.883716                 19.966667
+#> 2         am     1.351212                  0.672381
+#> 3       carb    -0.300407                 -0.515758
+#> 4        cyl    -0.526010                 -0.957611
+#> 5       disp    -0.005271                 -0.633090
+#> 6       drat     0.559827                  0.316086
+#> 7       gear     0.003898                  0.003239
+#> 8         hp    -0.010947                 -0.768428
+#> 9       qsec     0.000000                  0.000000
+#> 10        vs     0.695101                  0.352480
+#> 11        wt    -1.124176                 -1.125035
 #> 
 #> H2ORegressionMetrics: glm
 #> ** Reported on training data. **
 #> 
-#> MSE:  6.942498
-#> RMSE:  2.634862
-#> MAE:  1.983882
-#> RMSLE:  0.1100408
-#> Mean Residual Deviance :  6.942498
-#> R^2 :  0.8183785
-#> Null Deviance :802.7267
+#> MSE:  6.225263
+#> RMSE:  2.495048
+#> MAE:  2.043949
+#> RMSLE:  0.1127074
+#> Mean Residual Deviance :  6.225263
+#> R^2 :  0.809782
+#> Null Deviance :687.2667
 #> Null D.o.F. :20
-#> Residual Deviance :145.7925
-#> Residual D.o.F. :10
-#> AIC :124.2863
+#> Residual Deviance :130.7305
+#> Residual D.o.F. :11
+#> AIC :119.9963
 #> 
 #> 
 #> 
@@ -263,5 +263,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.952641 
+#> 7.824495 
 ```

@@ -120,7 +120,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvFlexSpline$new()`](#method-LearnerSurvFlexSpline-new)
+- [`LearnerSurvFlexSpline$new()`](#method-LearnerSurvFlexSpline-initialize)
 
 - [`LearnerSurvFlexSpline$clone()`](#method-LearnerSurvFlexSpline-clone)
 
@@ -140,7 +140,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvFlexSpline$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -151,7 +151,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvFlexSpline$clone()`
 
 The objects of this class are cloneable with this method.
 

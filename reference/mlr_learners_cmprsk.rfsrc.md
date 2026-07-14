@@ -142,7 +142,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerCompRisksRandomForestSRC$new()`](#method-LearnerCompRisksRandomForestSRC-new)
+- [`LearnerCompRisksRandomForestSRC$new()`](#method-LearnerCompRisksRandomForestSRC-initialize)
 
 - [`LearnerCompRisksRandomForestSRC$importance()`](#method-LearnerCompRisksRandomForestSRC-importance)
 
@@ -167,7 +167,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerCompRisksRandomForestSRC$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -178,7 +178,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerCompRisksRandomForestSRC$importance()`
 
 The importance scores are extracted from the model slot `importance` and
 are cause-specific.
@@ -199,7 +199,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerCompRisksRandomForestSRC$selected_features()`
 
 Selected features are extracted from the model slot `var.used`.
 
@@ -218,7 +218,7 @@ not when prediction is required.
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerCompRisksRandomForestSRC$oob_error()`
 
 Extracts the out-of-bag (OOB) cumulative incidence function (CIF) error
 from the model's `err.rate` slot.
@@ -245,7 +245,7 @@ observed proportion of events for each cause in the training data.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerCompRisksRandomForestSRC$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -293,7 +293,7 @@ print(learner$model)
 #>                     Number of events: 1=12, 2=74
 #>                      Number of trees: 500
 #>            Forest terminal node size: 15
-#>        Average no. of terminal nodes: 8.8
+#>        Average no. of terminal nodes: 9.146
 #> No. of variables tried at each split: 5
 #>               Total no. of variables: 17
 #>        Resampling used to grow trees: swor
@@ -302,28 +302,28 @@ print(learner$model)
 #>                               Family: surv-CR
 #>                       Splitting rule: logrankCR *random*
 #>        Number of random split points: 10
-#>    (OOB) Requested performance error: 0.22308933, 0.16196841
+#>    (OOB) Requested performance error: 0.28263023, 0.19333282
 #> 
 print(learner$importance(cause = 1)) # VIMP for cause = 1
-#>          bili           age       ascites       protime        copper 
-#>  2.907504e-01  1.044636e-01  7.995038e-02  6.169972e-02  5.692907e-02 
-#>          chol         edema           ast       albumin      platelet 
-#>  5.428394e-02  4.828354e-02  3.694843e-02  2.486482e-02  1.207022e-02 
-#>      alk.phos          trig        hepato           trt           sex 
-#>  1.162111e-02  5.874156e-03  3.789134e-03  1.101057e-05 -1.142881e-03 
-#>         stage       spiders 
-#> -5.845814e-03 -6.281199e-03 
+#>          bili       protime         edema        copper       ascites 
+#>  0.2150443246  0.0857401296  0.0630953282  0.0602223452  0.0293985101 
+#>           age       albumin           ast         stage      platelet 
+#>  0.0279956019  0.0267777597  0.0226188773  0.0167292407  0.0096052437 
+#>          chol           sex           trt        hepato      alk.phos 
+#>  0.0075143462  0.0038320342  0.0009862565 -0.0006023219 -0.0013402542 
+#>       spiders          trig 
+#> -0.0055146425 -0.0117805422 
 print(learner$importance(cause = 2)) # VIMP for cause = 2
-#>          bili       ascites        copper         edema           age 
-#>  0.2401967847  0.1346617843  0.1067217420  0.1009923723  0.0678068425 
-#>       albumin       protime          chol      alk.phos           ast 
-#>  0.0483575586  0.0278623811  0.0268682224  0.0229334739  0.0190073956 
-#>          trig      platelet       spiders         stage           sex 
-#>  0.0156836361  0.0133976497  0.0053658230  0.0043624472  0.0034571307 
-#>        hepato           trt 
-#>  0.0026082267 -0.0005104828 
+#>          bili         edema       albumin       protime       ascites 
+#>  0.1575467224  0.1381361066  0.0825611620  0.0821410423  0.0773792859 
+#>        copper          trig           ast      platelet           age 
+#>  0.0400617621  0.0137547718  0.0129748853  0.0111090035  0.0095330208 
+#>          chol         stage      alk.phos       spiders           trt 
+#>  0.0074709862  0.0064270258  0.0036041994  0.0033878768 -0.0001094001 
+#>           sex        hepato 
+#> -0.0003615709 -0.0020265086 
 print(learner$oob_error()) # weighted-mean across causes
-#> [1] 0.1704969
+#> [1] 0.2057929
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -331,5 +331,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.9093089 
+#>  0.8560177 
 ```

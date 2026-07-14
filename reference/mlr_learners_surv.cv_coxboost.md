@@ -135,7 +135,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvCVCoxboost$new()`](#method-LearnerSurvCVCoxboost-new)
+- [`LearnerSurvCVCoxboost$new()`](#method-LearnerSurvCVCoxboost-initialize)
 
 - [`LearnerSurvCVCoxboost$selected_features()`](#method-LearnerSurvCVCoxboost-selected_features)
 
@@ -156,7 +156,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvCVCoxboost$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -167,7 +167,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvCVCoxboost$selected_features()`
 
 Returns the set of selected features which have non-zero coefficients.
 Calls the internal `coef.CoxBoost()` function.
@@ -191,7 +191,7 @@ feature names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvCVCoxboost$clone()`
 
 The objects of this class are cloneable with this method.
 

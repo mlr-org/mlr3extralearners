@@ -119,7 +119,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrM5P$new()`](#method-LearnerRegrM5P-new)
+- [`LearnerRegrM5P$new()`](#method-LearnerRegrM5P-initialize)
 
 - [`LearnerRegrM5P$marshal()`](#method-LearnerRegrM5P-marshal)
 
@@ -144,7 +144,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrM5P$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -155,7 +155,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrM5P$marshal()`
 
 Marshal the learner's model.
 
@@ -173,7 +173,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrM5P$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -191,7 +191,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrM5P$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -234,15 +234,23 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> M5 pruned model tree:
 #> (using smoothed linear models)
-#> LM1 (21/36.319%)
+#> 
+#> wt <= 2.26 : LM1 (5/39.399%)
+#> wt >  2.26 : LM2 (16/22.942%)
 #> 
 #> LM num: 1
 #> mpg = 
-#>  -1.7167 * cyl 
-#>  - 2.86 * wt 
-#>  + 39.7266
+#>  -1.156 * cyl 
+#>  - 2.5172 * wt 
+#>  + 38.1869
 #> 
-#> Number of Rules : 1
+#> LM num: 2
+#> mpg = 
+#>  -1.335 * cyl 
+#>  - 2.8262 * wt 
+#>  + 37.0054
+#> 
+#> Number of Rules : 2
 
 
 # Make predictions for the test rows
@@ -251,5 +259,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.693905 
+#> 3.508781 
 ```

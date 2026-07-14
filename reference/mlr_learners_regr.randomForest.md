@@ -95,7 +95,7 @@ pat-s
 
 ### Public methods
 
-- [`LearnerRegrRandomForest$new()`](#method-LearnerRegrRandomForest-new)
+- [`LearnerRegrRandomForest$new()`](#method-LearnerRegrRandomForest-initialize)
 
 - [`LearnerRegrRandomForest$importance()`](#method-LearnerRegrRandomForest-importance)
 
@@ -120,7 +120,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -131,7 +131,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrRandomForest$importance()`
 
 The importance scores are extracted from the slot `importance`.
 Parameter 'importance' must be set to either `"mse"` or `"nodepurity"`.
@@ -146,7 +146,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerRegrRandomForest$oob_error()`
 
 OOB errors are extracted from the model slot `mse`.
 
@@ -160,7 +160,7 @@ OOB errors are extracted from the model slot `mse`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -207,13 +207,13 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 3
 #> 
-#>           Mean of squared residuals: 8.056185
-#>                     % Var explained: 79.67
+#>           Mean of squared residuals: 7.370286
+#>                     % Var explained: 60.45
 print(learner$importance())
-#>         wt       disp         hp        cyl       drat         vs         am 
-#> 12.3238874 12.3183765  5.0314961  4.4271590  3.6242264  0.8493700  0.8454334 
-#>       gear       carb       qsec 
-#>  0.5843739  0.5053460  0.1046344 
+#>          cyl         disp           hp           wt           vs         qsec 
+#>  5.119438172  4.150256834  3.096350581  2.713795931  1.459084881  0.481186852 
+#>         carb         drat         gear           am 
+#>  0.462439240  0.397770636  0.212063813 -0.006560471 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -221,5 +221,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.366221 
+#> 18.61454 
 ```

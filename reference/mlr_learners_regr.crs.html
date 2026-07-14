@@ -15,7 +15,7 @@ Calls crs::crs() from crs."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +79,7 @@ Calls <code><a href="https://rdrr.io/pkg/crs/man/crs.html" class="external-link"
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>degree</td><td>integer</td><td>3</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>segments</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>include</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>lambda</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda.discrete</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda.discrete.num</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cv</td><td>character</td><td>nomad</td><td>nomad, exhaustive, none</td><td>-</td></tr><tr><td>cv.threshold</td><td>integer</td><td>1000</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cv.func</td><td>character</td><td>cv.ls</td><td>cv.ls, cv.gcv, cv.aic</td><td>-</td></tr><tr><td>kernel</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>degree.max</td><td>integer</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>segments.max</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>degree.min</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>segments.min</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cv.df.min</td><td>integer</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>complexity</td><td>character</td><td>degree-knots</td><td>degree-knots, degree, knots</td><td>-</td></tr><tr><td>knots</td><td>character</td><td>quantiles</td><td>quantiles, uniform, auto</td><td>-</td></tr><tr><td>basis</td><td>character</td><td>auto</td><td>auto, additive, tensor, glp</td><td>-</td></tr><tr><td>prune</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>restarts</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nmulti</td><td>integer</td><td>5</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>singular.ok</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>deriv</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>data.return</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model.return</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>random.seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>tau</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>initial.mesh.size.real</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>initial.mesh.size.integer</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>max.bb.eval</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.mesh.size.real</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.mesh.size.integer</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.frame.size.real</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.frame.size.integer</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>display.nomad.progress</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>display.warnings</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>opts</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>degree</td><td>integer</td><td>3</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>segments</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>include</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>lambda</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda.discrete</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda.discrete.num</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cv</td><td>character</td><td>nomad</td><td>nomad, exhaustive, none</td><td>-</td></tr><tr><td>cv.threshold</td><td>integer</td><td>1000</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cv.func</td><td>character</td><td>cv.ls</td><td>cv.ls, cv.gcv, cv.aic</td><td>-</td></tr><tr><td>kernel</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>degree.max</td><td>integer</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>segments.max</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>degree.min</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>segments.min</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cv.df.min</td><td>integer</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>complexity</td><td>character</td><td>degree-knots</td><td>degree-knots, degree, knots</td><td>-</td></tr><tr><td>knots</td><td>character</td><td>quantiles</td><td>quantiles, uniform, auto</td><td>-</td></tr><tr><td>basis</td><td>character</td><td>auto</td><td>auto, additive, tensor, glp</td><td>-</td></tr><tr><td>prune</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>restarts</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nmulti</td><td>integer</td><td>5</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>singular.ok</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>deriv</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>data.return</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model.return</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>random.seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>tau</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>initial.mesh.size.real</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>initial.mesh.size.integer</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>max.bb.eval</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>max.eval</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.mesh.size.real</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.mesh.size.integer</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.frame.size.real</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min.frame.size.integer</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>display.nomad.progress</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>display.warnings</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>opts</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
@@ -105,37 +105,35 @@ Calls <code><a href="https://rdrr.io/pkg/crs/man/crs.html" class="external-link"
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerRegrCrs-new"><code>LearnerRegrCrs$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerRegrCrs-initialize"><code>LearnerRegrCrs$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrCrs-clone"><code>LearnerRegrCrs$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html#method-predict_newdata_fast"><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerRegrCrs-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html#method-predict_newdata_fast"><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerRegrCrs-initialize"></a><div class="section">
+<h3 id="learnerregrcrs-new-"><code>LearnerRegrCrs$new()</code><a class="anchor" aria-label="anchor" href="#learnerregrcrs-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_regr.crs.html">LearnerRegrCrs</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerRegrCrs-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p></p><hr><a id="method-LearnerRegrCrs-clone"></a><div class="section">
+<h3 id="learnerregrcrs-clone-"><code>LearnerRegrCrs$clone()</code><a class="anchor" aria-label="anchor" href="#learnerregrcrs-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerRegrCrs</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -145,6 +143,7 @@ Calls <code><a href="https://rdrr.io/pkg/crs/man/crs.html" class="external-link"
 </div>
 
 </div>
+
 
     </div>
 
@@ -183,15 +182,13 @@ Calls <code><a href="https://rdrr.io/pkg/crs/man/crs.html" class="external-link"
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>some 'x' values beyond boundary knots may cause ill-conditioned bases</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>some 'x' values beyond boundary knots may cause ill-conditioned bases</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 761731.6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8433.243 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -203,7 +200,7 @@ Calls <code><a href="https://rdrr.io/pkg/crs/man/crs.html" class="external-link"
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

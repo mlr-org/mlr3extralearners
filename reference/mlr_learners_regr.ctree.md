@@ -124,7 +124,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerRegrCTree$new()`](#method-LearnerRegrCTree-new)
+- [`LearnerRegrCTree$new()`](#method-LearnerRegrCTree-initialize)
 
 - [`LearnerRegrCTree$clone()`](#method-LearnerRegrCTree-clone)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrCTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrCTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -204,8 +204,8 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] wt <= 2.77: 27.229 (n = 7, err = 206.5)
-#> |   [3] wt > 2.77: 17.593 (n = 14, err = 225.4)
+#> |   [2] cyl <= 6: 22.225 (n = 12, err = 227.7)
+#> |   [3] cyl > 6: 14.844 (n = 9, err = 32.1)
 #> 
 #> Number of inner nodes:    1
 #> Number of terminal nodes: 2
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.914026 
+#> 27.47417 
 ```

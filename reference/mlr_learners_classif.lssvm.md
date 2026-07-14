@@ -100,7 +100,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerClassifLSSVM$new()`](#method-LearnerClassifLSSVM-new)
+- [`LearnerClassifLSSVM$new()`](#method-LearnerClassifLSSVM-initialize)
 
 - [`LearnerClassifLSSVM$clone()`](#method-LearnerClassifLSSVM-clone)
 
@@ -121,7 +121,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifLSSVM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -132,7 +132,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifLSSVM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -180,10 +180,10 @@ print(learner$model)
 #>  parameter : tau = 0.01 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0119494217320985 
+#>  Hyperparameter : sigma =  0.0125019794377136 
 #> 
 #> Number of data points used for training : 46 
-#> Training error : 0.028777 
+#> Training error : 0.057554 
 
 
 # Make predictions for the test rows
@@ -192,5 +192,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>  0.1449275 
 ```

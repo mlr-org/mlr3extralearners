@@ -98,7 +98,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerClassifGAMBoost$new()`](#method-LearnerClassifGAMBoost-new)
+- [`LearnerClassifGAMBoost$new()`](#method-LearnerClassifGAMBoost-initialize)
 
 - [`LearnerClassifGAMBoost$clone()`](#method-LearnerClassifGAMBoost-clone)
 
@@ -119,7 +119,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifGAMBoost$new()`
 
 Create a `LearnerClassifGAMBoost` object.
 
@@ -129,7 +129,7 @@ Create a `LearnerClassifGAMBoost` object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifGAMBoost$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -189,14 +189,13 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.09379931 
+#> Offset:  -0.05040235 
 #> Number of baselearners:  60 
 #> 
 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.

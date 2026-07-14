@@ -98,7 +98,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvNelson$new()`](#method-LearnerSurvNelson-new)
+- [`LearnerSurvNelson$new()`](#method-LearnerSurvNelson-initialize)
 
 - [`LearnerSurvNelson$clone()`](#method-LearnerSurvNelson-clone)
 
@@ -118,7 +118,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvNelson$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -129,7 +129,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvNelson$clone()`
 
 The objects of this class are cloneable with this method.
 

@@ -213,7 +213,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerClassifCatboost$new()`](#method-LearnerClassifCatboost-new)
+- [`LearnerClassifCatboost$new()`](#method-LearnerClassifCatboost-initialize)
 
 - [`LearnerClassifCatboost$importance()`](#method-LearnerClassifCatboost-importance)
 
@@ -236,7 +236,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifCatboost$new()`
 
 Create a `LearnerClassifCatboost` object.
 
@@ -246,7 +246,7 @@ Create a `LearnerClassifCatboost` object.
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifCatboost$importance()`
 
 The importance scores are calculated using
 [`catboost::catboost.get_feature_importance()`](https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html),
@@ -262,7 +262,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifCatboost$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -311,23 +311,23 @@ print(learner$model)
 #> Loss function: Logloss
 #> Fit to 60 feature(s)
 print(learner$importance())
-#>        V12        V36        V49        V52        V48        V27        V11 
-#> 12.8545829  8.3773237  8.2895257  5.9263886  5.4719475  5.0293940  4.2131520 
-#>        V55        V31        V45         V9        V54         V7        V46 
-#>  3.7508630  3.5430958  3.0944579  3.0871238  2.9167012  2.9015683  2.8641527 
-#>        V17        V33        V21        V60        V23        V34        V26 
-#>  2.7170582  2.3568276  2.3083101  2.0735472  1.7496753  1.5182143  1.3380546 
-#>         V4        V37        V56        V53         V5        V43        V19 
-#>  1.3356201  1.3308873  1.2568809  1.1412605  1.0872997  1.0606096  1.0017603 
-#>        V57        V40        V10        V29        V24        V38        V14 
-#>  0.9425475  0.9137607  0.7885341  0.7207519  0.6704271  0.6456716  0.2781899 
-#>        V15        V41         V1        V13        V16        V18         V2 
-#>  0.2525168  0.1913174  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V20        V22        V25        V28         V3        V30        V32 
+#>        V11        V12        V31        V10        V27        V49        V54 
+#> 12.5464662  7.9104229  7.5053433  6.1066237  6.0452296  5.4397752  3.6823803 
+#>         V8        V56        V16        V33         V9        V50         V6 
+#>  3.6256631  3.3303175  3.2738024  3.0178083  2.8207659  2.7202542  2.6979018 
+#>        V21        V23        V17        V26        V37        V20        V34 
+#>  2.3300973  1.9176697  1.7917534  1.7650755  1.6528435  1.5997962  1.5882640 
+#>        V15        V45        V28         V1         V7        V57        V53 
+#>  1.4907487  1.4739976  1.4549170  1.3243718  1.2028853  1.1601185  1.1395525 
+#>        V48        V14        V32        V46        V40         V5        V24 
+#>  0.9001244  0.8433496  0.7878833  0.7643000  0.7367625  0.7074195  0.6558984 
+#>        V59        V25        V19        V13        V18         V2        V22 
+#>  0.5791939  0.5416986  0.5413499  0.3271749  0.0000000  0.0000000  0.0000000 
+#>        V29         V3        V30        V35        V36        V38        V39 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V35        V39        V42        V44        V47        V50        V51 
+#>         V4        V41        V42        V43        V44        V47        V51 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V58        V59         V6         V8 
+#>        V52        V55        V58        V60 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
@@ -336,5 +336,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1449275 
+#>   0.173913 
 ```

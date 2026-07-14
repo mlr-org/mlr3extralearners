@@ -98,7 +98,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerClassifGLMBoost$new()`](#method-LearnerClassifGLMBoost-new)
+- [`LearnerClassifGLMBoost$new()`](#method-LearnerClassifGLMBoost-initialize)
 
 - [`LearnerClassifGLMBoost$clone()`](#method-LearnerClassifGLMBoost-clone)
 
@@ -119,7 +119,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifGLMBoost$new()`
 
 Create a `LearnerClassifGLMBoost` object.
 
@@ -129,7 +129,7 @@ Create a `LearnerClassifGLMBoost` object.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifGLMBoost$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -189,23 +189,23 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.02158609 
+#> Offset:  -0.06483891 
 #> 
 #> Coefficients: 
 #> 
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#> (Intercept)         V11         V12         V15         V20         V21 
-#>  1.06030377 -1.47623085 -0.90033585  0.63632011 -0.04122684 -0.23553378 
-#>         V24         V28         V31         V36          V4         V43 
-#> -0.22893522 -0.22267833  0.49573585  0.97525705 -0.78642191 -0.16860590 
-#>         V45         V46         V49         V51         V52         V57 
-#> -0.65530084 -0.92667801 -8.96320028 -6.74505130 -8.73370108 19.87171628 
-#>          V7 
-#>  0.17968413 
+#> (Intercept)          V1         V11         V12         V14         V16 
+#>  1.47520827 -8.55890072 -2.22273983 -1.65706720  0.16451721  0.23098754 
+#>         V21         V22         V28         V31         V36          V4 
+#> -0.77314837 -0.17800782 -0.03566219  0.23985462  1.46205856 -0.90086682 
+#>         V44         V45         V47         V48         V51         V52 
+#> -0.31333387 -0.73987044 -0.54993891 -1.08307209 -0.75783109 -3.97734948 
+#>         V58 
+#> -4.79770255 
 #> attr(,"offset")
-#> [1] -0.02158609
+#> [1] -0.06483891
 #> 
 
 
@@ -215,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.3333333 
 ```

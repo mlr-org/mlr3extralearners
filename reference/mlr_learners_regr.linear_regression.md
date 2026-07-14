@@ -120,7 +120,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrLinearRegression$new()`](#method-LearnerRegrLinearRegression-new)
+- [`LearnerRegrLinearRegression$new()`](#method-LearnerRegrLinearRegression-initialize)
 
 - [`LearnerRegrLinearRegression$marshal()`](#method-LearnerRegrLinearRegression-marshal)
 
@@ -145,7 +145,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrLinearRegression$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -156,7 +156,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrLinearRegression$marshal()`
 
 Marshal the learner's model.
 
@@ -174,7 +174,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrLinearRegression$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -192,7 +192,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrLinearRegression$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -238,9 +238,10 @@ print(learner$model)
 #> 
 #> mpg =
 #> 
-#>      -0.0408 * hp +
-#>      -3.2983 * wt +
-#>      36.8953
+#>      -0.8191 * cyl +
+#>       1.0266 * qsec +
+#>      -3.8325 * wt +
+#>      19.2962
 
 
 # Make predictions for the test rows
@@ -249,5 +250,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.352125 
+#> 10.19102 
 ```

@@ -139,7 +139,7 @@ adibender
 
 ### Public methods
 
-- [`LearnerSurvCTree$new()`](#method-LearnerSurvCTree-new)
+- [`LearnerSurvCTree$new()`](#method-LearnerSurvCTree-initialize)
 
 - [`LearnerSurvCTree$clone()`](#method-LearnerSurvCTree-clone)
 
@@ -159,7 +159,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvCTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -170,7 +170,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvCTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -219,17 +219,17 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] age <= 72
-#> |   |   [3] revascdays <= 170
-#> |   |   |   [4] revasc <= 0: 19.000 (n = 79)
-#> |   |   |   [5] revasc > 0: Inf (n = 239)
-#> |   |   [6] revascdays > 170
-#> |   |   |   [7] revascdays <= 179: Inf (n = 7)
-#> |   |   |   [8] revascdays > 179: Inf (n = 92)
-#> |   [9] age > 72
+#> |   [2] age <= 71
+#> |   |   [3] revascdays <= 171
+#> |   |   |   [4] revasc <= 0
+#> |   |   |   |   [5] los <= 3: 10.000 (n = 34)
+#> |   |   |   |   [6] los > 3: 45.000 (n = 45)
+#> |   |   |   [7] revasc > 0: Inf (n = 221)
+#> |   |   [8] revascdays > 171: Inf (n = 88)
+#> |   [9] age > 71
 #> |   |   [10] revascdays <= 173
-#> |   |   |   [11] revasc <= 0: 22.000 (n = 96)
-#> |   |   |   [12] revasc > 0: Inf (n = 105)
+#> |   |   |   [11] revasc <= 0: 23.000 (n = 106)
+#> |   |   |   [12] revasc > 0: Inf (n = 124)
 #> |   |   [13] revascdays > 173: Inf (n = 52)
 #> 
 #> Number of inner nodes:    6
@@ -242,5 +242,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.7724282 
+#>   0.8231541 
 ```

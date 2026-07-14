@@ -124,7 +124,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrSGD$new()`](#method-LearnerRegrSGD-new)
+- [`LearnerRegrSGD$new()`](#method-LearnerRegrSGD-initialize)
 
 - [`LearnerRegrSGD$marshal()`](#method-LearnerRegrSGD-marshal)
 
@@ -149,7 +149,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrSGD$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -160,7 +160,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrSGD$marshal()`
 
 Marshal the learner's model.
 
@@ -178,7 +178,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrSGD$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -196,7 +196,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrSGD$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -241,17 +241,17 @@ print(learner$model)
 #> 
 #> mpg = 
 #> 
-#>          3.4246 (normalized) am
-#>  +      -2.0539 (normalized) carb
-#>  +       2.4431 (normalized) cyl
-#>  +      -0.3439 (normalized) disp
-#>  +       4.7361 (normalized) drat
-#>  +       1.4717 (normalized) gear
-#>  +      -4.3485 (normalized) hp
-#>  +       6.5669 (normalized) qsec
-#>  +       0.9003 (normalized) vs
-#>  +      -5.4385 (normalized) wt
-#>  +      17.7057
+#>          4.6779 (normalized) am
+#>  +      -5.6505 (normalized) carb
+#>  +       3.4465 (normalized) cyl
+#>  +      -0.6558 (normalized) disp
+#>  +       2.3129 (normalized) drat
+#>  +       2.0108 (normalized) gear
+#>  +      -3.1619 (normalized) hp
+#>  +       7.6858 (normalized) qsec
+#>  +      -0.1118 (normalized) vs
+#>  +      -8.1231 (normalized) wt
+#>  +      15.8694
 
 
 # Make predictions for the test rows
@@ -260,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.729218 
+#> 2.497896 
 ```

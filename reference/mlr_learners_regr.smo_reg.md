@@ -155,7 +155,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrSMOreg$new()`](#method-LearnerRegrSMOreg-new)
+- [`LearnerRegrSMOreg$new()`](#method-LearnerRegrSMOreg-initialize)
 
 - [`LearnerRegrSMOreg$marshal()`](#method-LearnerRegrSMOreg-marshal)
 
@@ -180,7 +180,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrSMOreg$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -191,7 +191,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrSMOreg$marshal()`
 
 Marshal the learner's model.
 
@@ -209,7 +209,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrSMOreg$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -227,7 +227,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrSMOreg$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -271,21 +271,21 @@ print(learner$model)
 #> SMOreg
 #> 
 #> weights (not support vectors):
-#>  -       0.0058 * (normalized) am
-#>  -       0.1015 * (normalized) carb
-#>  -       0.1322 * (normalized) cyl
-#>  -       0.0165 * (normalized) disp
-#>  +       0.0544 * (normalized) drat
-#>  +       0.0042 * (normalized) gear
-#>  -       0.2342 * (normalized) hp
-#>  -       0.0598 * (normalized) qsec
-#>  +       0.007  * (normalized) vs
-#>  -       0.2557 * (normalized) wt
-#>  +       0.7147
+#>  +       0.0187 * (normalized) am
+#>  -       0.4557 * (normalized) carb
+#>  +       0.1913 * (normalized) cyl
+#>  -       0.1322 * (normalized) disp
+#>  +       0.1325 * (normalized) drat
+#>  +       0.2303 * (normalized) gear
+#>  -       0.0256 * (normalized) hp
+#>  +       0.1452 * (normalized) qsec
+#>  -       0.0268 * (normalized) vs
+#>  -       0.335  * (normalized) wt
+#>  +       0.4036
 #> 
 #> 
 #> 
-#> Number of kernel evaluations: 231 (98.167% cached)
+#> Number of kernel evaluations: 231 (96.8% cached)
 
 
 # Make predictions for the test rows
@@ -294,5 +294,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.51805 
+#>  9.75208 
 ```

@@ -15,7 +15,7 @@ Calls glmnet::glmnet() from package glmnet."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,6 +65,8 @@ Calls <code><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="e
 
 
 <ul><li><p><code>family</code> is set to <code>"cox"</code> and cannot be changed.</p></li>
+<li><p><code>cox.ties</code> is initialized to <code>"breslow"</code> to keep the tie-handling behavior of earlier glmnet versions,
+and to silence the glmnet v5.0 warning about the upcoming default change to <code>"efron"</code>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
@@ -72,11 +74,11 @@ Calls <code><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="e
 
 <p>This learner returns three prediction types:</p><ol><li><p><code>lp</code>: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using <code><a href="https://glmnet.stanford.edu/reference/predict.glmnet.html" class="external-link">glmnet::predict.coxnet()</a></code>.</p></li>
+Calculated using <code><a href="https://glmnet.stanford.edu/reference/predict.glmnet.html" class="external-link">glmnet::predict.glmnet()</a></code>.</p></li>
 <li><p><code>crank</code>: same as <code>lp</code>.</p></li>
 <li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using <code><a href="https://glmnet.stanford.edu/reference/survfit.coxnet.html" class="external-link">glmnet::survfit.coxnet()</a></code>.
+Calculated using <code>glmnet:::survfit.coxnet()</code>.
 Parameters <code>stype</code> and <code>ctype</code> relate to how <code>lp</code> predictions are transformed
 into survival predictions and are described in <code><a href="https://rdrr.io/pkg/survival/man/survfit.coxph.html" class="external-link">survival::survfit.coxph()</a></code>.
 By default the Breslow estimator is used for computing the baseline hazard.</p></li>
@@ -102,7 +104,7 @@ custom resampling strategies (blocked design, stratification).</p>
 <p>If a <code>Task</code> contains a column with the <code>offset</code> role, it is automatically
 incorporated during training via the <code>offset</code> argument in <code><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet::glmnet()</a></code>.
 During prediction, the offset column from the test set is used only if
-<code>use_pred_offset = TRUE</code> (default), passed via the <code>newoffset</code> argument in <code><a href="https://glmnet.stanford.edu/reference/predict.glmnet.html" class="external-link">glmnet::predict.coxnet()</a></code>.
+<code>use_pred_offset = TRUE</code> (default), passed via the <code>newoffset</code> argument in <code><a href="https://glmnet.stanford.edu/reference/predict.glmnet.html" class="external-link">glmnet::predict.glmnet()</a></code>.
 Otherwise, if the user sets <code>use_pred_offset = FALSE</code>, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.</p>
     </div>
@@ -125,7 +127,7 @@ effectively disabling the offset adjustment during prediction.</p>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>alignment</td><td>character</td><td>lambda</td><td>lambda, fraction</td><td>-</td></tr><tr><td>alpha</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>big</td><td>numeric</td><td>9.9e+35</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>devmax</td><td>numeric</td><td>0.999</td><td></td><td>\([0, 1]\)</td></tr><tr><td>dfmax</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>eps</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, 1]\)</td></tr><tr><td>epsnr</td><td>numeric</td><td>1e-08</td><td></td><td>\([0, 1]\)</td></tr><tr><td>exact</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>exclude</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>exmx</td><td>numeric</td><td>250</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>fdev</td><td>numeric</td><td>1e-05</td><td></td><td>\([0, 1]\)</td></tr><tr><td>gamma</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>grouped</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>intercept</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>keep</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lambda</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda.min.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>lower.limits</td><td>untyped</td><td>-Inf</td><td></td><td>-</td></tr><tr><td>maxit</td><td>integer</td><td>100000</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mnlam</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mxit</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mxitnr</td><td>integer</td><td>25</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nlambda</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>use_pred_offset</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>parallel</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>penalty.factor</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>pmax</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>pmin</td><td>numeric</td><td>1e-09</td><td></td><td>\([0, 1]\)</td></tr><tr><td>prec</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>predict.gamma</td><td>numeric</td><td>gamma.1se</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>relax</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>s</td><td>numeric</td><td>0.01</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>standardize</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>thresh</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>trace.it</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>type.logistic</td><td>character</td><td>Newton</td><td>Newton, modified.Newton</td><td>-</td></tr><tr><td>type.multinomial</td><td>character</td><td>ungrouped</td><td>ungrouped, grouped</td><td>-</td></tr><tr><td>upper.limits</td><td>untyped</td><td>Inf</td><td></td><td>-</td></tr><tr><td>stype</td><td>integer</td><td>2</td><td></td><td>\([1, 2]\)</td></tr><tr><td>ctype</td><td>integer</td><td>-</td><td></td><td>\([1, 2]\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>alpha</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>nlambda</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>lambda.min.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>lambda</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>standardize</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>intercept</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>exclude</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>penalty.factor</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lower.limits</td><td>untyped</td><td>-Inf</td><td></td><td>-</td></tr><tr><td>upper.limits</td><td>untyped</td><td>Inf</td><td></td><td>-</td></tr><tr><td>relax</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace.it</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>cox.ties</td><td>character</td><td>breslow</td><td>breslow, efron</td><td>-</td></tr><tr><td>maxp</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>path</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>fdev</td><td>numeric</td><td>1e-05</td><td></td><td>\([0, 1]\)</td></tr><tr><td>devmax</td><td>numeric</td><td>0.999</td><td></td><td>\([0, 1]\)</td></tr><tr><td>eps</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, 1]\)</td></tr><tr><td>big</td><td>numeric</td><td>9.9e+35</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>mnlam</td><td>integer</td><td>5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>pmin</td><td>numeric</td><td>1e-09</td><td></td><td>\([0, 1]\)</td></tr><tr><td>exmx</td><td>numeric</td><td>250</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>prec</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>mxit</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>epsnr</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, 1]\)</td></tr><tr><td>mxitnr</td><td>integer</td><td>25</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>thresh</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxit</td><td>integer</td><td>100000</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>dfmax</td><td>integer</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>pmax</td><td>integer</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>exact</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>s</td><td>numeric</td><td>0.01</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>gamma</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>stype</td><td>integer</td><td>2</td><td></td><td>\([1, 2]\)</td></tr><tr><td>ctype</td><td>integer</td><td>-</td><td></td><td>\([1, 2]\)</td></tr><tr><td>use_pred_offset</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Friedman J, Hastie T, Tibshirani R (2010).
@@ -149,47 +151,55 @@ effectively disabling the offset adjustment during prediction.</p>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
     <p>be-marc</p>
+<p>bblodfon</p>
     </div>
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
     <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3proba.mlr-org.com/reference/LearnerSurv.html" class="external-link">mlr3proba::LearnerSurv</a></code> -&gt; <code>LearnerSurvGlmnet</code></p>
     </div>
     <div class="section level2">
+    <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>native_model</code></dt>
+<dd><p>(<code>coxnet</code>)<br>
+The fitted model.</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerSurvGlmnet-new"><code>LearnerSurvGlmnet$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerSurvGlmnet-initialize"><code>LearnerSurvGlmnet$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvGlmnet-selected_features"><code>LearnerSurvGlmnet$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvGlmnet-clone"><code>LearnerSurvGlmnet$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerSurvGlmnet-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerSurvGlmnet-initialize"></a><div class="section">
+<h3 id="learnersurvglmnet-new-"><code>LearnerSurvGlmnet$new()</code><a class="anchor" aria-label="anchor" href="#learnersurvglmnet-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_surv.glmnet.html">LearnerSurvGlmnet</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerSurvGlmnet-selected_features"></a><div class="section">
-<h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
+<p></p><hr><a id="method-LearnerSurvGlmnet-selected_features"></a><div class="section">
+<h3 id="learnersurvglmnet-selected-features-"><code>LearnerSurvGlmnet$selected_features()</code><a class="anchor" aria-label="anchor" href="#learnersurvglmnet-selected-features-"></a></h3>
 <p>Returns the set of selected features as reported by <code><a href="https://glmnet.stanford.edu/reference/predict.glmnet.html" class="external-link">glmnet::predict.glmnet()</a></code>
 with <code>type</code> set to <code>"nonzero"</code>.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvGlmnet</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span>lambda <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>lambda</code></dt>
 <dd><p>(<code>numeric(1)</code>)<br>
@@ -197,20 +207,19 @@ Custom <code>lambda</code>, defaults to the active lambda depending on parameter
 
 
 </dl><p></p></div>
-</div>
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>) of feature names.</p>
 </div>
 
-</div><p></p><hr><a id="method-LearnerSurvGlmnet-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerSurvGlmnet-clone"></a><div class="section">
+<h3 id="learnersurvglmnet-clone-"><code>LearnerSurvGlmnet$clone()</code><a class="anchor" aria-label="anchor" href="#learnersurvglmnet-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvGlmnet</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -220,6 +229,7 @@ Custom <code>lambda</code>, defaults to the active lambda depending on parameter
 </div>
 
 </div>
+
 
     </div>
 
@@ -231,7 +241,7 @@ Custom <code>lambda</code>, defaults to the active lambda depending on parameter
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvGlmnet&gt;</span><span style="font-weight: bold;"> (surv.glmnet): Regularized Generalized Linear Model</span> <span style="color: #00BBBB;">─────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: use_pred_offset=TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: cox.ties=breslow, use_pred_offset=TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">glmnet</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, and numeric</span>
@@ -247,12 +257,11 @@ Custom <code>lambda</code>, defaults to the active lambda depending on parameter
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $model</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  (if (cv) glmnet::cv.glmnet else glmnet::glmnet)(x = data, y = target,      family = "cox") </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glmnet::glmnet(x = data, y = target, family = "cox", cox.ties = "breslow") </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Df  %Dev   Lambda</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   0  0.00 0.192200</span>
@@ -1071,7 +1080,7 @@ Custom <code>lambda</code>, defaults to the active lambda depending on parameter
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

@@ -4,12 +4,6 @@ Patient outcome prediction based on multi-omics data taking
 practitioners’ preferences into account. Calls
 [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
 from [prioritylasso](https://CRAN.R-project.org/package=prioritylasso).
-Many parameters for this survival learner are the same as
-[mlr_learners_surv.cv_glmnet](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.cv_glmnet.md)
-as `prioritylasso()` calls
-[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
-during training phase. Note that `prioritylasso()` has ways to deal with
-block-wise missing data, but this feature is not supported currently.
 
 ## Prediction types
 
@@ -33,7 +27,12 @@ This learner returns three prediction types:
 - `family` is set to `"cox"` for the Cox survival objective and cannot
   be changed
 
-- `type.measure` set to `"deviance"` (cross-validation measure)
+- `type.measure` is set to `"deviance"` (cross-validation measure) and
+  cannot be changed
+
+- `cox.ties` is initialized to `"breslow"` to keep the tie-handling
+  behavior of earlier glmnet versions, and to silence the glmnet v5.0
+  warning about the upcoming default change to `"efron"`
 
 ## Dictionary
 
@@ -65,49 +64,58 @@ instantiated via
 | block1.penalization | logical | TRUE | TRUE, FALSE | \- |
 | lambda.type | character | lambda.min | lambda.min, lambda.1se | \- |
 | standardize | logical | TRUE | TRUE, FALSE | \- |
-| nfolds | integer | 5 |  | \\\[1, \infty)\\ |
+| nfolds | integer | 10 |  | \\\[3, \infty)\\ |
 | foldid | untyped | NULL |  | \- |
 | cvoffset | logical | FALSE | TRUE, FALSE | \- |
 | cvoffsetnfolds | integer | 10 |  | \\\[1, \infty)\\ |
 | return.x | logical | TRUE | TRUE, FALSE | \- |
+| lambda | untyped | NULL |  | \- |
+| grouped | logical | TRUE | TRUE, FALSE | \- |
+| trace.it | integer | 0 |  | \\\[0, 1\]\\ |
+| cox.ties | character | breslow | breslow, efron | \- |
 | include.allintercepts | logical | FALSE | TRUE, FALSE | \- |
 | use.blocks | untyped | "all" |  | \- |
-| alignment | character | lambda | lambda, fraction | \- |
-| alpha | numeric | 1 |  | \\\[0, 1\]\\ |
-| big | numeric | 9.9e+35 |  | \\(-\infty, \infty)\\ |
-| devmax | numeric | 0.999 |  | \\\[0, 1\]\\ |
-| dfmax | integer | \- |  | \\\[0, \infty)\\ |
-| eps | numeric | 1e-06 |  | \\\[0, 1\]\\ |
-| epsnr | numeric | 1e-08 |  | \\\[0, 1\]\\ |
-| exclude | untyped | \- |  | \- |
-| exmx | numeric | 250 |  | \\(-\infty, \infty)\\ |
-| fdev | numeric | 1e-05 |  | \\\[0, 1\]\\ |
-| gamma | untyped | \- |  | \- |
-| grouped | logical | TRUE | TRUE, FALSE | \- |
-| intercept | logical | TRUE | TRUE, FALSE | \- |
-| keep | logical | FALSE | TRUE, FALSE | \- |
-| lambda | untyped | \- |  | \- |
-| lambda.min.ratio | numeric | \- |  | \\\[0, 1\]\\ |
-| lower.limits | untyped | -Inf |  | \- |
-| maxit | integer | 100000 |  | \\\[1, \infty)\\ |
-| mnlam | integer | 5 |  | \\\[1, \infty)\\ |
-| mxit | integer | 100 |  | \\\[1, \infty)\\ |
-| mxitnr | integer | 25 |  | \\\[1, \infty)\\ |
-| nlambda | integer | 100 |  | \\\[1, \infty)\\ |
-| offset | untyped | NULL |  | \- |
-| parallel | logical | FALSE | TRUE, FALSE | \- |
-| penalty.factor | untyped | \- |  | \- |
-| pmax | integer | \- |  | \\\[0, \infty)\\ |
-| pmin | numeric | 1e-09 |  | \\\[0, 1\]\\ |
-| prec | numeric | 1e-10 |  | \\(-\infty, \infty)\\ |
-| standardize.response | logical | FALSE | TRUE, FALSE | \- |
-| thresh | numeric | 1e-07 |  | \\\[0, \infty)\\ |
-| trace.it | integer | 0 |  | \\\[0, 1\]\\ |
-| type.gaussian | character | \- | covariance, naive | \- |
-| type.logistic | character | Newton | Newton, modified.Newton | \- |
-| type.multinomial | character | ungrouped | ungrouped, grouped | \- |
-| upper.limits | untyped | Inf |  | \- |
-| relax | logical | FALSE | TRUE, FALSE | \- |
+| adaptive.order | logical | FALSE | TRUE, FALSE | \- |
+
+## Scope and supported arguments
+
+This learner intentionally exposes a focused subset of training and
+prediction arguments. It is designed to work well out of the box,
+without requiring extensive parameter tuning. Some arguments from
+`cv.glmnet()`, `glmnet()`, and `predict.prioritylasso()` are not
+included, because they are not consistently supported or forwarded
+through the full train/predict path (e.g. handling missing test data, or
+performing relaxed lasso fits).
+
+Please open an issue if there is a need for supporting more learner
+parameters.
+
+## Custom mlr3 parameters
+
+- `adaptive.order`: if `TRUE`, the priority order of blocks is estimated
+  from the data following Herrmann et al. (2021), instead of using the
+  user-supplied block order. For each block, a Ridge regression
+  (`alpha = 0`) is fit using `cv.glmnet()` on that block alone. The
+  importance of a block is measured by the mean absolute coefficient
+  (MAC) score at the `lambda.min` value (the lambda giving minimum
+  cross-validation error). A penalty factor of `1 / MAC` is then
+  assigned to each block. Blocks are sorted by increasing penalty
+  factor, i.e., blocks with larger MAC (stronger average signal) receive
+  higher priority (come first). Also, the block‑wise penalty factors are
+  attached to the fitted model object as
+  `learner$model$block.penalty.factors`.
+
+This method is useful when no domain knowledge is available to specify
+block priority. In this step, data are **standardized by default**
+(`standardize = TRUE`), but this can be overridden by the learner's
+`standardize` parameter. `lambda.min` is always used to derive the block
+priority. Additional arguments such as `nfolds`, `type.measure`,
+`weights` and `cox.ties` (if provided) are forwarded to each block‑wise
+`cv.glmnet()` fit. The `max.coef` parameter, if supplied, it is
+re‑ordered accordingly to align with the new block order.
+
+This parameter is ignored when fewer than two blocks are provided. It
+defaults to `FALSE` for backward compatibility.
 
 ## References
 
@@ -116,6 +124,11 @@ Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 clinical outcome using multi-omics data.” *BMC Bioinformatics*, **19**.
 [doi:10.1186/s12859-018-2344-6](https://doi.org/10.1186/s12859-018-2344-6)
 .
+
+Herrmann, M., Probst, P., Hornung, R., Jurinovic, V., Boulesteix, L. A
+(2021). “Large-scale benchmark study of survival prediction methods
+using multi-omics data.” *Briefings in Bioinformatics*, **22**(3), 1–15.
+[doi:10.1093/BIB/BBAA167](https://doi.org/10.1093/BIB/BBAA167) .
 
 ## See also
 
@@ -148,6 +161,8 @@ clinical outcome using multi-omics data.” *BMC Bioinformatics*, **19**.
 
 HarutyunyanLiana
 
+bblodfon
+
 ## Super classes
 
 [`mlr3::Learner`](https://mlr3.mlr-org.com/reference/Learner.html) -\>
@@ -158,7 +173,7 @@ HarutyunyanLiana
 
 ### Public methods
 
-- [`LearnerSurvPriorityLasso$new()`](#method-LearnerSurvPriorityLasso-new)
+- [`LearnerSurvPriorityLasso$new()`](#method-LearnerSurvPriorityLasso-initialize)
 
 - [`LearnerSurvPriorityLasso$selected_features()`](#method-LearnerSurvPriorityLasso-selected_features)
 
@@ -179,7 +194,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvPriorityLasso$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -190,7 +205,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvPriorityLasso$selected_features()`
 
 Selected features, i.e. those where the coefficient is non-zero.
 
@@ -204,7 +219,7 @@ Selected features, i.e. those where the coefficient is non-zero.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvPriorityLasso$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -227,34 +242,28 @@ task = tsk("grace")
 # Create train and test set
 ids = partition(task)
 
-# check task's features
+# Check task's features
 task$feature_names
 #> [1] "age"        "los"        "revasc"     "revascdays" "stchange"  
 #> [6] "sysbp"     
 
-# partition features to 2 blocks
+# Partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:6)
 
-# define learner
+# Define learner
 learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALSE,
               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
-#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
-#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
-#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
-#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
-#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
-#> Warning: Starting in glmnet 5.1, the default Cox tie-handling method will change from 'breslow' to 'efron' (matching survival::coxph). To silence this message and lock in the v5.0 default, pass cox.ties = 'breslow' explicitly. To preview the v5.1 behavior, pass cox.ties = 'efron'.
 
-# selected features
+# Selected features
 learner$selected_features()
 #> [1] "age"        "los"        "revasc"     "revascdays"
 
-# Make predictions for the test observations
-pred = learner$predict(task, row_ids = ids$test)
-pred
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+predictions
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
 #>  row_ids  time status     crank        lp     distr
@@ -267,7 +276,7 @@ pred
 #>     1000  15.0  FALSE 3.7133697 3.7133697 <list[1]>
 
 # Score the predictions
-pred$score()
+predictions$score()
 #> surv.cindex 
 #>   0.7351317 
 ```

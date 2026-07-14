@@ -99,7 +99,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrGPfit$new()`](#method-LearnerRegrGPfit-new)
+- [`LearnerRegrGPfit$new()`](#method-LearnerRegrGPfit-initialize)
 
 - [`LearnerRegrGPfit$clone()`](#method-LearnerRegrGPfit-clone)
 
@@ -120,7 +120,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGPfit$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -131,7 +131,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGPfit$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -171,6 +171,7 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+#> Warning: did not converge in 10 iterations
 
 print(learner$model)
 #> $model
@@ -180,12 +181,12 @@ print(learner$model)
 #> 
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
-#>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]  -1.761717  -1.268593  -2.988963  -2.039852  -2.654352  -1.193291
+#>     beta_hat.1 beta_hat.2  beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
+#> [1]  -2.760573  -2.928093 0.007785152 -0.1113106  -2.111883  -1.533596
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]   1.516587  0.6450859  -1.876996   0.7418312
+#> [1]   1.311275  0.9547329  -2.979976   0.1770475
 #> 
-#> sigma^2_hat: [1] 37.6077
+#> sigma^2_hat: [1] 23.63815
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,11 +202,11 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   8.000   8.000 472.000   4.430   5.000 335.000  22.900   1.000   5.345 
+#>   1.000   8.000   8.000 472.000   4.110   5.000 335.000  22.900   1.000   5.345 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
-#>  0.000  1.000  4.000 71.100  2.930  3.000 62.000 14.600  0.000  1.835 
+#>  0.000  1.000  4.000 79.000  2.760  3.000 62.000 14.600  0.000  1.935 
 #> 
 #> 
 
@@ -215,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.68936 
+#> 21.26457 
 ```

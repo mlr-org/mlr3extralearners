@@ -115,7 +115,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrKStar$new()`](#method-LearnerRegrKStar-new)
+- [`LearnerRegrKStar$new()`](#method-LearnerRegrKStar-initialize)
 
 - [`LearnerRegrKStar$marshal()`](#method-LearnerRegrKStar-marshal)
 
@@ -140,7 +140,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrKStar$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -151,7 +151,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrKStar$marshal()`
 
 Marshal the learner's model.
 
@@ -169,7 +169,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrKStar$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -187,7 +187,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrKStar$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -241,5 +241,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.026307 
+#> 11.91678 
 ```

@@ -78,9 +78,9 @@ instantiated via
 
 ### Public methods
 
-- [`LearnerRegrPoly$new()`](#method-LearnerRegrPolyFit-new)
+- [`LearnerRegrPolyFit$new()`](#method-LearnerRegrPolyFit-initialize)
 
-- [`LearnerRegrPoly$clone()`](#method-LearnerRegrPolyFit-clone)
+- [`LearnerRegrPolyFit$clone()`](#method-LearnerRegrPolyFit-clone)
 
 Inherited methods
 
@@ -99,24 +99,24 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrPolyFit$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
 
 #### Usage
 
-    LearnerRegrPoly$new()
+    LearnerRegrPolyFit$new()
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrPolyFit$clone()`
 
 The objects of this class are cloneable with this method.
 
 #### Usage
 
-    LearnerRegrPoly$clone(deep = FALSE)
+    LearnerRegrPolyFit$clone(deep = FALSE)
 
 #### Arguments
 

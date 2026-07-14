@@ -98,7 +98,7 @@
   : Classification Neural Network Learner
 - [`mlr_learners_classif.fnn`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.fnn.md)
   [`LearnerClassifFNN`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.fnn.md)
-  : Fast Nearest Neighbour Classification
+  : Fast Nearest Neighbor Classification
 - [`mlr_learners_classif.gam`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.gam.md)
   [`LearnerClassifGam`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.gam.md)
   : Classification Generalized Additive Model Learner
@@ -134,7 +134,7 @@
   : Classification Imbalanced Random Forest Src Learner
 - [`mlr_learners_classif.knn`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.knn.md)
   [`LearnerClassifKnn`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.knn.md)
-  : Classification K-nearest Neighbour Learner
+  : Classification K-nearest Neighbor Learner
 - [`mlr_learners_classif.kstar`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.kstar.md)
   [`LearnerClassifKStar`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.kstar.md)
   : Classification KStar Learner

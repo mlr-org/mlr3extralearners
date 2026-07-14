@@ -162,7 +162,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifFastai$new()`](#method-LearnerClassifFastai-new)
+- [`LearnerClassifFastai$new()`](#method-LearnerClassifFastai-initialize)
 
 - [`LearnerClassifFastai$marshal()`](#method-LearnerClassifFastai-marshal)
 
@@ -187,7 +187,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifFastai$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -198,7 +198,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifFastai$marshal()`
 
 Marshal the learner's model.
 
@@ -216,7 +216,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifFastai$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -234,7 +234,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifFastai$clone()`
 
 The objects of this class are cloneable with this method.
 

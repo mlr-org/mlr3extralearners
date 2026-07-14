@@ -113,7 +113,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrRandomTree$new()`](#method-LearnerRegrRandomTree-new)
+- [`LearnerRegrRandomTree$new()`](#method-LearnerRegrRandomTree-initialize)
 
 - [`LearnerRegrRandomTree$marshal()`](#method-LearnerRegrRandomTree-marshal)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrRandomTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrRandomTree$marshal()`
 
 Marshal the learner's model.
 
@@ -167,7 +167,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrRandomTree$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -185,7 +185,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrRandomTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -231,39 +231,41 @@ print(learner$model)
 #> ==========
 #> 
 #> wt < 3.33
-#> |   wt < 2.33
-#> |   |   wt < 2.17
-#> |   |   |   wt < 1.72 : 30.4 (1/0)
-#> |   |   |   wt >= 1.72
-#> |   |   |   |   disp < 99.65 : 27.3 (1/0)
-#> |   |   |   |   disp >= 99.65 : 26 (1/0)
-#> |   |   wt >= 2.17 : 32.4 (1/0)
-#> |   wt >= 2.33
-#> |   |   hp < 79.5 : 24.4 (1/0)
-#> |   |   hp >= 79.5
-#> |   |   |   vs < 0.5 : 21 (2/0)
-#> |   |   |   vs >= 0.5 : 21.43 (3/0)
+#> |   disp < 78.85
+#> |   |   hp < 65.5 : 33.9 (1/0)
+#> |   |   hp >= 65.5 : 32.4 (1/0)
+#> |   disp >= 78.85
+#> |   |   wt < 2.23
+#> |   |   |   disp < 99.65 : 27.3 (1/0)
+#> |   |   |   disp >= 99.65 : 26 (1/0)
+#> |   |   wt >= 2.23
+#> |   |   |   hp < 96
+#> |   |   |   |   wt < 3.17 : 22.8 (2/0)
+#> |   |   |   |   wt >= 3.17 : 24.4 (1/0)
+#> |   |   |   hp >= 96
+#> |   |   |   |   hp < 142.5
+#> |   |   |   |   |   am < 0.5 : 21.45 (2/0)
+#> |   |   |   |   |   am >= 0.5 : 21 (1/0)
+#> |   |   |   |   hp >= 142.5 : 19.7 (1/0)
 #> wt >= 3.33
 #> |   hp < 192.5
-#> |   |   drat < 3.08
-#> |   |   |   hp < 165 : 15.5 (1/0)
-#> |   |   |   hp >= 165 : 16.4 (1/0)
-#> |   |   drat >= 3.08
-#> |   |   |   disp < 332
-#> |   |   |   |   drat < 3.54 : 15.2 (1/0)
-#> |   |   |   |   drat >= 3.54
-#> |   |   |   |   |   qsec < 18.6 : 19.2 (1/0)
-#> |   |   |   |   |   qsec >= 18.6 : 17.8 (1/0)
-#> |   |   |   disp >= 332
-#> |   |   |   |   drat < 3.12 : 19.2 (1/0)
-#> |   |   |   |   drat >= 3.12 : 18.7 (1/0)
+#> |   |   drat < 3.54
+#> |   |   |   qsec < 17.18
+#> |   |   |   |   disp < 359 : 15.5 (1/0)
+#> |   |   |   |   disp >= 359 : 19.2 (1/0)
+#> |   |   |   qsec >= 17.18
+#> |   |   |   |   drat < 3.11
+#> |   |   |   |   |   wt < 3.75 : 17.3 (1/0)
+#> |   |   |   |   |   wt >= 3.75 : 15.2 (1/0)
+#> |   |   |   |   drat >= 3.11 : 15.2 (1/0)
+#> |   |   drat >= 3.54 : 19.2 (1/0)
 #> |   hp >= 192.5
-#> |   |   wt < 4.54
-#> |   |   |   wt < 3.71 : 14.3 (1/0)
-#> |   |   |   wt >= 3.71 : 13.3 (1/0)
-#> |   |   wt >= 4.54 : 10.4 (2/0)
+#> |   |   disp < 405
+#> |   |   |   am < 0.5 : 13.3 (1/0)
+#> |   |   |   am >= 0.5 : 15 (1/0)
+#> |   |   disp >= 405 : 10.4 (2/0)
 #> 
-#> Size of the tree : 33
+#> Size of the tree : 35
 
 
 # Make predictions for the test rows
@@ -272,5 +274,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 17.66434 
+#> 5.546364 
 ```

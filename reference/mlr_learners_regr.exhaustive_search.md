@@ -112,7 +112,7 @@ ngerman
 
 ### Public methods
 
-- [`LearnerRegrExhaustiveSearch$new()`](#method-LearnerRegrExhaustiveSearch-new)
+- [`LearnerRegrExhaustiveSearch$new()`](#method-LearnerRegrExhaustiveSearch-initialize)
 
 - [`LearnerRegrExhaustiveSearch$selected_features()`](#method-LearnerRegrExhaustiveSearch-selected_features)
 
@@ -134,7 +134,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrExhaustiveSearch$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -145,7 +145,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerRegrExhaustiveSearch$selected_features()`
 
 Extracts selected features of this learner.
 
@@ -155,7 +155,7 @@ Extracts selected features of this learner.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrExhaustiveSearch$clone()`
 
 The objects of this class are cloneable with this method.
 

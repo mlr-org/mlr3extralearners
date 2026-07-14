@@ -140,7 +140,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerSurvRanger$new()`](#method-LearnerSurvRanger-new)
+- [`LearnerSurvRanger$new()`](#method-LearnerSurvRanger-initialize)
 
 - [`LearnerSurvRanger$importance()`](#method-LearnerSurvRanger-importance)
 
@@ -164,7 +164,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvRanger$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -175,7 +175,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerSurvRanger$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -190,7 +190,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerSurvRanger$oob_error()`
 
 The out-of-bag error is extracted from the model slot
 `prediction.error`.
@@ -205,7 +205,7 @@ The out-of-bag error is extracted from the model slot
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvRanger$clone()`
 
 The objects of this class are cloneable with this method.
 

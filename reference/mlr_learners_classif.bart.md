@@ -77,7 +77,7 @@ instantiated via
 - The parameters are removed as parallelization of multiple models is
   handled by future.
 
-- Parameter: sigest, sigdf, sigquant, keeptres
+- Parameter: sigest, sigdf, sigquant, keeptrees
 
 - Regression only.
 
@@ -133,7 +133,7 @@ ck37
 
 ### Public methods
 
-- [`LearnerClassifBart$new()`](#method-LearnerClassifBart-new)
+- [`LearnerClassifBart$new()`](#method-LearnerClassifBart-initialize)
 
 - [`LearnerClassifBart$clone()`](#method-LearnerClassifBart-clone)
 
@@ -154,7 +154,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifBart$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -165,7 +165,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifBart$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -248,34 +248,34 @@ learner$train(task, row_ids = ids$train)
 #> iteration: 800 (of 1000)
 #> iteration: 900 (of 1000)
 #> iteration: 1000 (of 1000)
-#> total seconds in loop: 0.470544
+#> total seconds in loop: 0.483103
 #> 
 #> Tree sizes, last iteration:
-#> [1] 2 2 2 2 1 3 3 2 3 3 1 4 2 2 2 3 2 2 
-#> 3 3 2 2 3 3 4 2 2 4 3 2 2 3 2 2 4 2 2 3 
-#> 2 4 1 3 2 2 2 2 1 2 2 1 2 2 4 2 2 2 3 4 
-#> 2 3 4 2 2 2 2 2 2 3 2 2 1 2 2 2 2 2 3 3 
-#> 2 3 2 3 3 2 3 2 2 2 2 2 2 2 3 3 1 3 1 2 
-#> 2 3 3 2 3 2 3 2 2 2 2 2 2 4 3 2 2 3 3 2 
-#> 3 2 2 2 2 2 3 2 3 1 3 2 2 2 2 2 3 2 2 2 
-#> 2 4 3 2 3 2 2 3 2 2 4 2 2 2 2 3 4 2 2 2 
-#> 3 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 3 3 
-#> 3 3 2 1 2 3 2 2 2 2 2 2 2 2 2 4 2 2 2 2 
-#> 3 2 
+#> [1] 2 4 2 2 2 2 3 2 1 3 2 2 2 3 2 2 2 3 
+#> 3 2 2 2 2 2 2 2 3 2 2 2 2 2 2 3 3 2 2 3 
+#> 2 2 3 3 3 2 2 2 2 2 2 3 2 2 2 2 1 2 2 3 
+#> 2 3 4 2 4 3 2 5 3 2 3 2 3 3 5 2 2 2 5 2 
+#> 3 3 4 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2 2 4 
+#> 2 2 6 2 3 2 2 3 2 3 4 3 2 2 2 2 2 1 2 3 
+#> 2 3 3 2 3 2 2 2 2 3 2 3 2 2 3 1 2 2 4 2 
+#> 2 2 2 3 2 3 3 3 2 2 2 2 2 3 3 3 2 2 2 2 
+#> 2 1 2 3 2 3 2 2 2 2 3 3 4 2 2 3 2 2 5 2 
+#> 3 2 2 2 2 2 2 2 4 2 3 3 2 2 1 1 2 2 2 1 
+#> 3 3 
 #> 
 #> Variable Usage, last iteration (var:count):
-#> (1: 7) (2: 4) (3: 2) (4: 7) (5: 7) 
-#> (6: 6) (7: 3) (8: 5) (9: 3) (10: 1) 
-#> (11: 5) (12: 6) (13: 4) (14: 9) (15: 4) 
-#> (16: 3) (17: 1) (18: 6) (19: 7) (20: 4) 
-#> (21: 6) (22: 4) (23: 6) (24: 10) (25: 3) 
-#> (26: 5) (27: 7) (28: 3) (29: 1) (30: 4) 
-#> (31: 5) (32: 6) (33: 5) (34: 3) (35: 1) 
-#> (36: 3) (37: 2) (38: 7) (39: 3) (40: 2) 
-#> (41: 3) (42: 4) (43: 8) (44: 4) (45: 5) 
-#> (46: 5) (47: 4) (48: 8) (49: 5) (50: 4) 
-#> (51: 2) (52: 2) (53: 4) (54: 1) (55: 4) 
-#> (56: 3) (57: 4) (58: 4) (59: 7) (60: 4) 
+#> (1: 3) (2: 6) (3: 6) (4: 4) (5: 1) 
+#> (6: 5) (7: 3) (8: 4) (9: 7) (10: 3) 
+#> (11: 5) (12: 2) (13: 2) (14: 9) (15: 6) 
+#> (16: 9) (17: 2) (18: 5) (19: 6) (20: 10) 
+#> (21: 5) (22: 2) (23: 4) (24: 6) (25: 5) 
+#> (26: 8) (27: 4) (28: 3) (29: 6) (30: 6) 
+#> (31: 4) (32: 9) (33: 5) (34: 4) (35: 3) 
+#> (36: 9) (37: 2) (38: 6) (39: 2) (40: 5) 
+#> (41: 2) (42: 3) (43: 7) (44: 6) (45: 7) 
+#> (46: 10) (47: 2) (48: 3) (49: 5) (50: 2) 
+#> (51: 3) (52: 4) (53: 4) (54: 2) (55: 5) 
+#> (56: 2) (57: 5) (58: 5) (59: 1) (60: 3) 
 #> 
 #> DONE BART
 #> 
@@ -293,5 +293,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.1594203 
 ```

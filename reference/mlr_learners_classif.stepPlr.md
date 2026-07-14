@@ -82,7 +82,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifStepPlr$new()`](#method-LearnerClassifStepPlr-new)
+- [`LearnerClassifStepPlr$new()`](#method-LearnerClassifStepPlr-initialize)
 
 - [`LearnerClassifStepPlr$clone()`](#method-LearnerClassifStepPlr-clone)
 
@@ -103,7 +103,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifStepPlr$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -114,7 +114,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifStepPlr$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -161,25 +161,25 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> Intercept        V1       V10       V11       V12       V13       V14       V15 
-#>  15.29701 -56.17509   2.97135   3.75887  -6.38097 -45.39492  45.47562 -20.71881 
+#>  50.60392 -26.52631 -20.73559  -2.96078 -26.39808 -12.49310  -9.27745  15.92602 
 #>       V16       V17       V18       V19        V2       V20       V21       V22 
-#>  23.50993   5.10827  19.57971 -44.64033 -67.88538  17.63166 -13.59176  -6.06553 
+#>  -7.94063  41.27059 -12.59837 -15.39833 -12.97673   1.80173  -2.29850 -33.02843 
 #>       V23       V24       V25       V26       V27       V28       V29        V3 
-#>  27.23736 -38.73642  24.02468  13.14736 -46.25590  44.91472 -30.00767  18.31448 
+#>  22.62706 -25.16588   1.65737   6.32634  10.55257 -14.66807  10.98875  46.23917 
 #>       V30       V31       V32       V33       V34       V35       V36       V37 
-#>  -2.04691  49.59281 -45.54456  21.80360  -5.22535 -12.51219  17.52595  12.59628 
+#> -29.08678  47.94476 -53.27668  -0.76690  21.75596 -23.89805  26.35604 -12.77982 
 #>       V38       V39        V4       V40       V41       V42       V43       V44 
-#>  -0.06353 -14.90366 -31.21407  13.89638   6.93352  -3.44299  -4.23976 -26.36194 
+#>  31.83447 -44.72434 -50.61731  30.68105   7.68776 -31.44883  20.10923 -21.92182 
 #>       V45       V46       V47       V48       V49        V5       V50       V51 
-#>   0.74103  12.25145  -5.67375 -64.74474 -47.15338 -28.88413  38.48159 -15.41344 
+#>  -5.78313  10.28297  -7.20247 -13.14178 -47.02688 -36.14222  40.99814 -33.32972 
 #>       V52       V53       V54       V55       V56       V57       V58       V59 
-#> -26.65661 -32.08613  -3.65562 -17.51374  -1.86563  -4.72993 -14.29921 -13.08665 
+#> -30.58473 -13.05386  -3.71323  12.11954  -7.63253  -1.48813 -15.56199  -5.24311 
 #>        V6       V60        V7        V8        V9 
-#>  -1.40892   0.29685  32.30362   8.38128 -33.77257 
+#> -20.35056  -5.99458  -3.15479   9.31429 -36.04280 
 #> 
-#>     Null deviance: 187.42 on 138 degrees of freedom
-#> Residual deviance: 9.36 on 96.83 degrees of freedom
-#>             Score: deviance + 4.9 * df = 217.44 
+#>     Null deviance: 191.82 on 138 degrees of freedom
+#> Residual deviance: 6.81 on 100.55 degrees of freedom
+#>             Score: deviance + 4.9 * df = 196.53 
 
 
 # Make predictions for the test rows
@@ -188,5 +188,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.3623188 
 ```

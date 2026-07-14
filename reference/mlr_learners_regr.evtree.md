@@ -50,7 +50,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerRegrEvtree$new()`](#method-LearnerRegrEvtree-new)
+- [`LearnerRegrEvtree$new()`](#method-LearnerRegrEvtree-initialize)
 
 - [`LearnerRegrEvtree$clone()`](#method-LearnerRegrEvtree-clone)
 
@@ -71,7 +71,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrEvtree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -82,7 +82,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrEvtree$clone()`
 
 The objects of this class are cloneable with this method.
 

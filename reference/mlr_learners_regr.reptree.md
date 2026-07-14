@@ -113,7 +113,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerRegrREPTree$new()`](#method-LearnerRegrREPTree-new)
+- [`LearnerRegrREPTree$new()`](#method-LearnerRegrREPTree-initialize)
 
 - [`LearnerRegrREPTree$marshal()`](#method-LearnerRegrREPTree-marshal)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrREPTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerRegrREPTree$marshal()`
 
 Marshal the learner's model.
 
@@ -167,7 +167,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerRegrREPTree$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -185,7 +185,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrREPTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -231,15 +231,13 @@ print(learner$model)
 #> ============
 #> 
 #> cyl < 5
-#> |   disp < 107.7 : 31.57 (2/0) [1/12.25]
-#> |   disp >= 107.7 : 23.32 (2/0.64) [2/14.06]
+#> |   disp < 107.7 : 31 (2/2.4) [2/19.05]
+#> |   disp >= 107.7 : 23.43 (2/2.56) [1/8.41]
 #> cyl >= 5
-#> |   hp < 197.5
-#> |   |   cyl < 7 : 19.75 (3/0.72) [1/6.76]
-#> |   |   cyl >= 7 : 16.8 (3/2.67) [1/3]
-#> |   hp >= 197.5 : 13.2 (4/4.28) [2/5.43]
+#> |   disp < 281 : 19.53 (5/2.14) [1/0.16]
+#> |   disp >= 281 : 14.19 (5/3.71) [3/12.2]
 #> 
-#> Size of the tree : 9
+#> Size of the tree : 7
 
 
 # Make predictions for the test rows
@@ -248,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 3.043422 
+#> 6.220447 
 ```

@@ -1,8 +1,8 @@
 # Regression Gradient Boosting Machine Learner
 
 Gradient Boosting Regression Algorithm. Calls
-[`gbm::gbm()`](https://rdrr.io/pkg/gbm/man/gbm.html) from
-[gbm](https://CRAN.R-project.org/package=gbm).
+[`gbm::gbm()`](https://gbm-developers.github.io/gbm/reference/gbm.html)
+from [gbm](https://CRAN.R-project.org/package=gbm).
 
 Weights are ignored for quantile prediction.
 
@@ -110,7 +110,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerRegrGBM$new()`](#method-LearnerRegrGBM-new)
+- [`LearnerRegrGBM$new()`](#method-LearnerRegrGBM-initialize)
 
 - [`LearnerRegrGBM$importance()`](#method-LearnerRegrGBM-importance)
 
@@ -133,7 +133,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -144,10 +144,10 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrGBM$importance()`
 
 The importance scores are extracted by
-[`gbm::relative.influence()`](https://rdrr.io/pkg/gbm/man/relative.influence.html)
+[`gbm::relative.influence()`](https://gbm-developers.github.io/gbm/reference/relative.influence.html)
 from the model.
 
 #### Usage
@@ -160,7 +160,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrGBM$clone()`
 
 The objects of this class are cloneable with this method.
 

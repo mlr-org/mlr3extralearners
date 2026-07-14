@@ -113,7 +113,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifREPTree$new()`](#method-LearnerClassifREPTree-new)
+- [`LearnerClassifREPTree$new()`](#method-LearnerClassifREPTree-initialize)
 
 - [`LearnerClassifREPTree$marshal()`](#method-LearnerClassifREPTree-marshal)
 
@@ -138,7 +138,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifREPTree$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -149,7 +149,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifREPTree$marshal()`
 
 Marshal the learner's model.
 
@@ -167,7 +167,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifREPTree$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -185,7 +185,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifREPTree$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -230,14 +230,20 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> V11 < 0.2 : R (36/5) [21/7]
-#> V11 >= 0.2
-#> |   V28 < 0.72
-#> |   |   V39 < 0.17 : R (6/0) [3/1]
-#> |   |   V39 >= 0.17 : M (25/6) [13/4]
-#> |   V28 >= 0.72 : M (25/0) [10/2]
+#> V12 < 0.13 : R (26/3) [8/2]
+#> V12 >= 0.13
+#> |   V48 < 0.11
+#> |   |   V39 < 0.43
+#> |   |   |   V52 < 0 : R (5/0) [1/0]
+#> |   |   |   V52 >= 0
+#> |   |   |   |   V21 < 0.56
+#> |   |   |   |   |   V36 < 0.21 : M (4/1) [3/1]
+#> |   |   |   |   |   V36 >= 0.21 : R (5/0) [4/0]
+#> |   |   |   |   V21 >= 0.56 : M (23/1) [16/4]
+#> |   |   V39 >= 0.43 : R (8/0) [3/1]
+#> |   V48 >= 0.11 : M (21/0) [12/4]
 #> 
-#> Size of the tree : 7
+#> Size of the tree : 13
 
 
 # Make predictions for the test rows
@@ -246,5 +252,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.2753623 
 ```

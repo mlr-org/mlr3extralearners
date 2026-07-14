@@ -121,7 +121,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifSimpleLogistic$new()`](#method-LearnerClassifSimpleLogistic-new)
+- [`LearnerClassifSimpleLogistic$new()`](#method-LearnerClassifSimpleLogistic-initialize)
 
 - [`LearnerClassifSimpleLogistic$marshal()`](#method-LearnerClassifSimpleLogistic-marshal)
 
@@ -146,7 +146,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifSimpleLogistic$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -157,7 +157,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifSimpleLogistic$marshal()`
 
 Marshal the learner's model.
 
@@ -175,7 +175,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifSimpleLogistic$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -193,7 +193,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifSimpleLogistic$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -237,38 +237,46 @@ print(learner$model)
 #> SimpleLogistic:
 #> 
 #> Class M :
-#> -2.42 + 
-#> [V1] * 7.93 +
-#> [V11] * 3.24 +
-#> [V16] * -0.87 +
-#> [V23] * 0.87 +
-#> [V24] * 0.66 +
-#> [V28] * 0.6  +
-#> [V31] * -1 +
-#> [V36] * -1.05 +
-#> [V4] * 5.35 +
-#> [V46] * 1.82 +
-#> [V49] * 8.83 +
-#> [V5] * 4.65 +
-#> [V8] * -1.53 +
-#> [V9] * 1.25
+#> -2.65 + 
+#> [V11] * 3.16 +
+#> [V12] * 1.25 +
+#> [V15] * -0.84 +
+#> [V21] * 0.99 +
+#> [V29] * 0.79 +
+#> [V31] * -1.27 +
+#> [V36] * -1.78 +
+#> [V40] * -0.81 +
+#> [V43] * 2.26 +
+#> [V45] * 2.73 +
+#> [V48] * 2.72 +
+#> [V49] * 11.2 +
+#> [V5] * 3.15 +
+#> [V51] * 28.62 +
+#> [V54] * 37.78 +
+#> [V57] * -36 +
+#> [V59] * 25.96 +
+#> [V7] * -2.48
 #> 
 #> Class R :
-#> 2.42 + 
-#> [V1] * -7.93 +
-#> [V11] * -3.24 +
-#> [V16] * 0.87 +
-#> [V23] * -0.87 +
-#> [V24] * -0.66 +
-#> [V28] * -0.6 +
-#> [V31] * 1    +
-#> [V36] * 1.05 +
-#> [V4] * -5.35 +
-#> [V46] * -1.82 +
-#> [V49] * -8.83 +
-#> [V5] * -4.65 +
-#> [V8] * 1.53 +
-#> [V9] * -1.25
+#> 2.65 + 
+#> [V11] * -3.16 +
+#> [V12] * -1.25 +
+#> [V15] * 0.84 +
+#> [V21] * -0.99 +
+#> [V29] * -0.79 +
+#> [V31] * 1.27 +
+#> [V36] * 1.78 +
+#> [V40] * 0.81 +
+#> [V43] * -2.26 +
+#> [V45] * -2.73 +
+#> [V48] * -2.72 +
+#> [V49] * -11.2 +
+#> [V5] * -3.15 +
+#> [V51] * -28.62 +
+#> [V54] * -37.78 +
+#> [V57] * 36 +
+#> [V59] * -25.96 +
+#> [V7] * 2.48
 #> 
 
 
@@ -278,5 +286,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.3333333 
 ```

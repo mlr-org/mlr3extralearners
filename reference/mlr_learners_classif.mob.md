@@ -120,7 +120,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerClassifMob$new()`](#method-LearnerClassifMob-new)
+- [`LearnerClassifMob$new()`](#method-LearnerClassifMob-initialize)
 
 - [`LearnerClassifMob$clone()`](#method-LearnerClassifMob-clone)
 
@@ -141,7 +141,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifMob$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -152,7 +152,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifMob$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -201,10 +201,10 @@ learner$predict(task, row_ids = ids$test)
 #> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
 #>  row_ids     truth  response
 #>        1    benign malignant
-#>        5    benign malignant
-#>        8    benign malignant
+#>        2    benign malignant
+#>        9    benign malignant
 #>      ---       ---       ---
-#>      680    benign malignant
-#>      681 malignant malignant
+#>      677    benign malignant
+#>      682 malignant malignant
 #>      683 malignant malignant
 ```

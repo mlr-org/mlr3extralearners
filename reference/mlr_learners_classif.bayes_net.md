@@ -137,7 +137,7 @@ damirpolat
 
 ### Public methods
 
-- [`LearnerClassifBayesNet$new()`](#method-LearnerClassifBayesNet-new)
+- [`LearnerClassifBayesNet$new()`](#method-LearnerClassifBayesNet-initialize)
 
 - [`LearnerClassifBayesNet$marshal()`](#method-LearnerClassifBayesNet-marshal)
 
@@ -162,7 +162,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifBayesNet$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -173,7 +173,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifBayesNet$marshal()`
 
 Marshal the learner's model.
 
@@ -191,7 +191,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifBayesNet$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -209,7 +209,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifBayesNet$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -260,14 +260,14 @@ print(learner$model)
 #> V11(2): Class 
 #> V12(2): Class 
 #> V13(2): Class 
-#> V14(1): Class 
+#> V14(2): Class 
 #> V15(1): Class 
 #> V16(1): Class 
 #> V17(1): Class 
 #> V18(1): Class 
 #> V19(1): Class 
-#> V2(1): Class 
-#> V20(1): Class 
+#> V2(2): Class 
+#> V20(2): Class 
 #> V21(2): Class 
 #> V22(1): Class 
 #> V23(1): Class 
@@ -275,7 +275,7 @@ print(learner$model)
 #> V25(1): Class 
 #> V26(1): Class 
 #> V27(1): Class 
-#> V28(1): Class 
+#> V28(2): Class 
 #> V29(1): Class 
 #> V3(1): Class 
 #> V30(1): Class 
@@ -283,43 +283,43 @@ print(learner$model)
 #> V32(1): Class 
 #> V33(1): Class 
 #> V34(1): Class 
-#> V35(1): Class 
+#> V35(2): Class 
 #> V36(2): Class 
-#> V37(2): Class 
+#> V37(1): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(1): Class 
-#> V40(2): Class 
+#> V4(2): Class 
+#> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
 #> V43(1): Class 
 #> V44(1): Class 
-#> V45(1): Class 
-#> V46(1): Class 
-#> V47(1): Class 
+#> V45(2): Class 
+#> V46(2): Class 
+#> V47(2): Class 
 #> V48(2): Class 
-#> V49(1): Class 
-#> V5(1): Class 
+#> V49(2): Class 
+#> V5(2): Class 
 #> V50(1): Class 
-#> V51(1): Class 
-#> V52(1): Class 
+#> V51(2): Class 
+#> V52(2): Class 
 #> V53(1): Class 
-#> V54(2): Class 
+#> V54(1): Class 
 #> V55(1): Class 
 #> V56(1): Class 
 #> V57(1): Class 
 #> V58(1): Class 
 #> V59(1): Class 
-#> V6(1): Class 
+#> V6(2): Class 
 #> V60(1): Class 
 #> V7(1): Class 
-#> V8(1): Class 
+#> V8(2): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -895.0048430896016
-#> LogScore BDeu: -913.9017479432871
-#> LogScore MDL: -920.9477544158707
-#> LogScore ENTROPY: -864.2013041848678
-#> LogScore AIC: -887.2013041848678
+#> LogScore Bayes: -1876.721093300332
+#> LogScore BDeu: -1916.2328034489474
+#> LogScore MDL: -1926.9392849049752
+#> LogScore ENTROPY: -1810.9791474764043
+#> LogScore AIC: -1857.9791474764043
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.3043478 
 ```

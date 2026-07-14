@@ -19,7 +19,7 @@ and in the documentation of lightgbm::lgb.train()."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.2</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,7 +99,7 @@ and in the documentation of <code><a href="https://rdrr.io/pkg/lightgbm/man/lgb.
 <li><p>Reason for change: Prevents accidental conflicts with mlr messaging system.</p></li>
 </ul></li>
 <li><p><code>objective</code>:</p><ul><li><p>Depends on the task: if binary classification, then this parameter is set to
-<code>"binary"</code>, otherwise <code>"multiclasss"</code> and cannot be changed.</p></li>
+<code>"binary"</code>, otherwise <code>"multiclass"</code> and cannot be changed.</p></li>
 </ul></li>
 </ul></div>
     <div class="section level2">
@@ -152,11 +152,11 @@ If <code>first_metric_only = FALSE</code> (default), the learner stops when any 
 Extracted from <code>model$evaluation_log</code></p></dd>
 
 
-<dt><code>internal_tuned_values</code></dt>
+    <dt><code>internal_tuned_values</code></dt>
 <dd><p>Returns the early stopped iterations if <code>early_stopping_rounds</code> was set during training.</p></dd>
 
 
-<dt><code>validate</code></dt>
+    <dt><code>validate</code></dt>
 <dd><p>How to construct the internal validation data. This parameter can be either <code>NULL</code>, a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 
 
@@ -167,50 +167,48 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
-
-<ul><li><p><a href="#method-LearnerClassifLightGBM-new"><code>LearnerClassifLightGBM$new()</code></a></p></li>
+<p></p><ul><li><p><a href="#method-LearnerClassifLightGBM-initialize"><code>LearnerClassifLightGBM$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifLightGBM-importance"><code>LearnerClassifLightGBM$importance()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifLightGBM-clone"><code>LearnerClassifLightGBM$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
-</ul></details></p><hr><a id="method-LearnerClassifLightGBM-new"></a><div class="section">
-<h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict_newdata"><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+</ul></details></p><hr><a id="method-LearnerClassifLightGBM-initialize"></a><div class="section">
+<h3 id="learnerclassiflightgbm-new-"><code>LearnerClassifLightGBM$new()</code><a class="anchor" aria-label="anchor" href="#learnerclassiflightgbm-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_classif.lightgbm.html">LearnerClassifLightGBM</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+</div>
 
-</div><p></p><hr><a id="method-LearnerClassifLightGBM-importance"></a><div class="section">
-<h3 id="method-importance-">Method <code>importance()</code><a class="anchor" aria-label="anchor" href="#method-importance-"></a></h3>
+<p></p><hr><a id="method-LearnerClassifLightGBM-importance"></a><div class="section">
+<h3 id="learnerclassiflightgbm-importance-"><code>LearnerClassifLightGBM$importance()</code><a class="anchor" aria-label="anchor" href="#learnerclassiflightgbm-importance-"></a></h3>
 <p>The importance scores are extracted from <code>lbg.importance</code>.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifLightGBM</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p>Named <code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric()</a></code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-LearnerClassifLightGBM-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+</div>
+
+<p></p><hr><a id="method-LearnerClassifLightGBM-clone"></a><div class="section">
+<h3 id="learnerclassiflightgbm-clone-"><code>LearnerClassifLightGBM$clone()</code><a class="anchor" aria-label="anchor" href="#learnerclassiflightgbm-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifLightGBM</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
+</div><p></p><div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
@@ -220,6 +218,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 </div>
 
 </div>
+
 
     </div>
 
@@ -255,26 +254,24 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Objective: binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted to dataset with 60 columns</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V16           V9          V51          V21          V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1282709410 0.0786211061 0.0697479378 0.0638330903 0.0540878169 0.0458941228 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V47          V45           V4          V36          V48          V31 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0401018293 0.0386424900 0.0372561965 0.0365420615 0.0360441297 0.0329605549 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V23          V55          V12          V27          V28          V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0329279686 0.0312960213 0.0288737585 0.0288541613 0.0209999100 0.0192610042 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V17          V46           V3          V26          V54          V33 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0182009455 0.0169404468 0.0138533227 0.0136395533 0.0129265043 0.0098754436 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V29          V42          V58           V7          V49          V10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0083749946 0.0078957832 0.0069992482 0.0069782879 0.0061043328 0.0059789705 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V60           V6          V13           V8          V32          V57 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0045084737 0.0036760174 0.0035541151 0.0032910833 0.0030722670 0.0029493271 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V24          V20          V50          V40          V59          V35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0028438988 0.0026259865 0.0024451727 0.0023645674 0.0022515076 0.0020794003 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V38           V1          V44          V18          V14          V19 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0018586518 0.0018307706 0.0016661580 0.0016127648 0.0015174008 0.0009145429 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V53          V43          V22          V39           V5          V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0006679626 0.0005259241 0.0004904522 0.0003992146 0.0003063967 0.0002684425 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V56          V34 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0001804733 0.0001160935 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V36           V9          V45          V11          V23          V21 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.371918e-01 1.157896e-01 7.804839e-02 7.528389e-02 6.474067e-02 6.441499e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V51          V59          V12          V28          V49          V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.654269e-02 3.256880e-02 3.059745e-02 2.961400e-02 2.943335e-02 2.941975e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V41          V48           V4          V55          V17          V15 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.499615e-02 2.292088e-02 2.089952e-02 2.008444e-02 1.997387e-02 1.846256e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V33          V47          V20          V10          V27          V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.307064e-02 1.266723e-02 1.255499e-02 1.209654e-02 1.170335e-02 1.166881e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V31          V39          V16          V42          V37          V18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.164831e-02 1.153909e-02 9.290491e-03 7.222801e-03 6.511000e-03 5.551505e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V43          V38          V44          V26          V53           V6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.382433e-03 4.035834e-03 2.425229e-03 2.172804e-03 2.017899e-03 1.552019e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V1           V5          V25          V32           V2          V22 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.463773e-03 1.219362e-03 1.045564e-03 6.130677e-04 2.949501e-04 2.802030e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V24          V30          V35           V8           V7          V19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.506766e-04 2.443372e-04 2.339874e-04 1.711198e-04 8.269336e-05 3.456671e-06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V29 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.010237e-06 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -282,7 +279,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1014493 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -294,7 +291,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

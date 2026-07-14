@@ -1,6 +1,6 @@
 # Classification IBk Learner
 
-Instance based algorithm: K-nearest neighbours regression. Calls
+Instance based algorithm: K-nearest neighbors regression. Calls
 [`RWeka::IBk()`](https://rdrr.io/pkg/RWeka/man/Weka_classifier_lazy.html)
 from [RWeka](https://CRAN.R-project.org/package=RWeka).
 
@@ -125,7 +125,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerClassifIBk$new()`](#method-LearnerClassifIBk-new)
+- [`LearnerClassifIBk$new()`](#method-LearnerClassifIBk-initialize)
 
 - [`LearnerClassifIBk$marshal()`](#method-LearnerClassifIBk-marshal)
 
@@ -150,7 +150,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifIBk$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -161,7 +161,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifIBk$marshal()`
 
 Marshal the learner's model.
 
@@ -179,7 +179,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifIBk$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -197,7 +197,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifIBk$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -218,7 +218,7 @@ The objects of this class are cloneable with this method.
 learner = lrn("classif.IBk")
 print(learner)
 #> 
-#> ── <LearnerClassifIBk> (classif.IBk): Nearest Neighbour ────────────────────────
+#> ── <LearnerClassifIBk> (classif.IBk): Nearest Neighbor ─────────────────────────
 #> • Model: -
 #> • Parameters: list()
 #> • Packages: mlr3, mlr3extralearners, and RWeka

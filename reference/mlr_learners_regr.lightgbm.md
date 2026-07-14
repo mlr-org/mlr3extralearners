@@ -146,7 +146,7 @@ instantiated via
 
   - Actual default: 0L
 
-  - Initital value: 1L
+  - Initial value: 1L
 
   - Reason for change: Prevents accidental conflicts with `future`.
 
@@ -239,7 +239,7 @@ kapsner
 
 ### Public methods
 
-- [`LearnerRegrLightGBM$new()`](#method-LearnerRegrLightGBM-new)
+- [`LearnerRegrLightGBM$new()`](#method-LearnerRegrLightGBM-initialize)
 
 - [`LearnerRegrLightGBM$importance()`](#method-LearnerRegrLightGBM-importance)
 
@@ -262,7 +262,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrLightGBM$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -273,7 +273,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerRegrLightGBM$importance()`
 
 The importance scores are extracted from `lbg.importance`.
 
@@ -287,7 +287,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrLightGBM$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -343,5 +343,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 32.10228 
+#> 23.50072 
 ```

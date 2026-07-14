@@ -120,7 +120,7 @@ sumny
 
 ### Public methods
 
-- [`LearnerRegrMob$new()`](#method-LearnerRegrMob-new)
+- [`LearnerRegrMob$new()`](#method-LearnerRegrMob-initialize)
 
 - [`LearnerRegrMob$clone()`](#method-LearnerRegrMob-clone)
 
@@ -141,7 +141,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrMob$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -152,7 +152,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrMob$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -190,11 +190,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        5  18.7 20.91429
-#>        9  22.8 20.91429
-#>       10  19.2 20.91429
+#>        4  21.4 19.95238
+#>        7  14.3 19.95238
+#>       11  17.8 19.95238
 #>      ---   ---      ---
-#>       21  21.5 20.91429
-#>       26  27.3 20.91429
-#>       30  19.7 20.91429
+#>       25  19.2 19.95238
+#>       30  19.7 19.95238
+#>       31  15.0 19.95238
 ```

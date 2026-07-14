@@ -1,11 +1,64 @@
 # Changelog
 
-## mlr3extralearners (development version)
+## mlr3extralearners 1.6.0
+
+### Breaking Changes
+
+- `classif.priority_lasso`, `regr.priority_lasso`, and
+  `surv.priority_lasso`: the parameter sets were reduced to a focused
+  subset of
+  [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
+  arguments. The
+  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
+  pass-through hyperparameters were removed because they were not
+  consistently forwarded
+  ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
+- `surv.cv_glmnet`: removed the parameters `standardize.response`,
+  `type.gaussian`, `type.logistic`, and `type.multinomial`, which are
+  not applicable to the Cox family
+  ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
+- `surv.glmnet`: removed the parameters `alignment`, `parallel`,
+  `type.logistic`, and `type.multinomial`, which are CV-only or not
+  applicable to the Cox family, and renamed the predict parameter
+  `predict.gamma` to `gamma`
+  ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
 
 ### Other
 
+- Updated minimum versions of suggested packages, most notably `glmnet`
+  (\>= 5.0)
+  ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
+- `classif.fastai` now pins its `fastcore` Python dependency to a
+  version below 2.0.0 because `fastai` (\<= 2.8.7) is incompatible with
+  `fastcore` 2.0 but does not declare an upper bound.
+- The `h2o` learners no longer emit a spurious warning about an outdated
+  H2O cluster version when training or predicting.
+- `surv.cv_glmnet` and `surv.glmnet`: updated for `glmnet` v5.0, added
+  the train parameters `cox.ties` (initialized to `"breslow"` to keep
+  the previous tie-handling behavior), `maxp`, and `path`, added the
+  predict parameter `exact` (`surv.cv_glmnet` only), fixed predictions
+  for relaxed fits (`relax = TRUE`), and added a read-only
+  `native_model` field that returns the fitted `glmnet` model
+  ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
+- `surv.priority_lasso`: added the train parameter `cox.ties`,
+  initialized to `"breslow"`
+  ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
+- `surv.survdnn`: added the `.threads` train parameter
+  ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
 - `regr.botorch_fullybayesian` now declares its `numpyro`, `jax`, and
   `jaxlib` Python dependencies so they are installed automatically.
+- `regr.bart`’s hyperparameter `sigdf` was changed to type `double`.
+- `regr.crs`: added the train parameter `max.eval` for compatibility
+  with `crs` (\>= 0.15-45)
+  ([\#601](https://github.com/mlr-org/mlr3extralearners/issues/601)).
+
+### New Features
+
+- `classif.priority_lasso`, `regr.priority_lasso`, and
+  `surv.priority_lasso` now support automatic block-priority derivation
+  via `adaptive.order = TRUE`, following Herrmann et al. (2021), and
+  prediction for automatic block ordering was fixed upstream in
+  `prioritylasso` version 0.4.0.
 
 ## mlr3extralearners 1.5.2
 
@@ -471,7 +524,7 @@ Bugfixes:
 
 ## mlr3extralearners 0.5.35
 
-- Full installatio in workflow ‘test_selection’ (is faster than the
+- Full installation in workflow ‘test_selection’ (is faster than the
   previous approach, where selected packages were installed from CRAN)
 
 ## mlr3extralearners 0.5.34
@@ -488,7 +541,7 @@ Bugfixes:
 
 - chore: add new parameters for kde and rfsrc
 
-- temporarily disable feat_all test for obliqeRSF (failed in \$score()
+- temporarily disable feat_all test for obliqueRSF (failed in \$score()
   stage, because issue only happened in CI and could not be reproduced
 
 ## mlr3extralearners 0.5.31
@@ -525,7 +578,7 @@ Bugfixes:
 
 - Introduce parameter `early_stopping_split` for lightgbm learners
 - Tidy description of R package
-- Udpate NEWS.md for previous releases
+- Update NEWS.md for previous releases
 
 ## mlr3extralearners 0.5.24
 
@@ -556,7 +609,7 @@ Bugfixes:
 
 ## mlr3extralearners 0.5.19
 
-- Provide correct range for neighors argument for Cubist
+- Provide correct range for neighbors argument for Cubist
 
 ## mlr3extralearners 0.5.18
 
@@ -751,4 +804,4 @@ Bugfixes:
 ## mlr3extralearners 0.1.0
 
 - Initial release. mlr3extralearners contains all learners from the
-  mlr3learners organisation, which is now archived.
+  mlr3learners organization, which is now archived.

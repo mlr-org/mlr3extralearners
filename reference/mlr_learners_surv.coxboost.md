@@ -121,7 +121,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvCoxboost$new()`](#method-LearnerSurvCoxboost-new)
+- [`LearnerSurvCoxboost$new()`](#method-LearnerSurvCoxboost-initialize)
 
 - [`LearnerSurvCoxboost$selected_features()`](#method-LearnerSurvCoxboost-selected_features)
 
@@ -142,7 +142,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvCoxboost$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -153,7 +153,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvCoxboost$selected_features()`
 
 Returns the set of selected features which have non-zero coefficients.
 Calls the internal `coef.CoxBoost()` function.
@@ -177,7 +177,7 @@ feature names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvCoxboost$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -218,8 +218,8 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> 100 boosting steps resulting in 5 non-zero coefficients  
-#> partial log-likelihood: -1112.095 
+#> 100 boosting steps resulting in 4 non-zero coefficients  
+#> partial log-likelihood: -1133.891 
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8422982 
+#>   0.8352961 
 ```

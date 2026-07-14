@@ -124,7 +124,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerClassifJ48$new()`](#method-LearnerClassifJ48-new)
+- [`LearnerClassifJ48$new()`](#method-LearnerClassifJ48-initialize)
 
 - [`LearnerClassifJ48$marshal()`](#method-LearnerClassifJ48-marshal)
 
@@ -149,7 +149,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifJ48$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -160,7 +160,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifJ48$marshal()`
 
 Marshal the learner's model.
 
@@ -178,7 +178,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifJ48$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -196,7 +196,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifJ48$clone()`
 
 The objects of this class are cloneable with this method.
 

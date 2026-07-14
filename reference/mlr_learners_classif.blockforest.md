@@ -104,7 +104,7 @@ bblodfon
 
 ### Public methods
 
-- [`LearnerClassifBlockForest$new()`](#method-LearnerClassifBlockForest-new)
+- [`LearnerClassifBlockForest$new()`](#method-LearnerClassifBlockForest-initialize)
 
 - [`LearnerClassifBlockForest$importance()`](#method-LearnerClassifBlockForest-importance)
 
@@ -127,7 +127,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifBlockForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -138,7 +138,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifBlockForest$importance()`
 
 The importance scores are extracted from the model slot
 `variable.importance`.
@@ -153,7 +153,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifBlockForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -197,30 +197,30 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>            V9           V52           V11           V49           V45 
-#>  1.504971e-02  1.141597e-02  1.034671e-02  1.013254e-02  8.324989e-03 
-#>           V12           V36           V48           V46           V59 
-#>  6.305913e-03  6.275966e-03  6.271275e-03  4.374764e-03  4.367932e-03 
-#>            V5           V33           V10           V47           V28 
-#>  4.044939e-03  3.289845e-03  3.008766e-03  2.951231e-03  2.364315e-03 
-#>           V54           V31           V37           V50           V60 
-#>  1.993189e-03  1.733754e-03  1.708764e-03  1.561162e-03  1.433336e-03 
-#>           V16           V27           V14           V19           V55 
-#>  1.429911e-03  1.419141e-03  1.386435e-03  1.137227e-03  1.051739e-03 
-#>           V21           V39           V20            V4            V8 
-#>  9.576992e-04  7.039188e-04  5.768300e-04  4.537911e-04  4.186033e-04 
-#>           V35           V24           V38           V29           V57 
-#>  3.846154e-04  3.773585e-04  3.302983e-04  2.267170e-04  1.831310e-04 
-#>           V44           V25           V23           V17           V15 
-#>  1.821807e-04  7.103430e-05  3.205128e-05  2.333333e-05  1.558926e-05 
-#>           V32           V22           V30           V26           V40 
-#>  1.318643e-05  0.000000e+00  0.000000e+00 -2.220446e-18 -3.324954e-05 
-#>           V42           V51           V18           V34           V56 
-#> -1.814059e-04 -2.557374e-04 -3.044872e-04 -4.419697e-04 -6.088486e-04 
-#>           V41            V2            V1           V58           V53 
-#> -7.805703e-04 -9.304197e-04 -1.471792e-03 -1.564561e-03 -2.184537e-03 
-#>            V3           V13            V7           V43            V6 
-#> -2.265317e-03 -2.997020e-03 -3.045175e-03 -3.449011e-03 -5.022730e-03 
+#>           V12           V11           V48            V9           V36 
+#>  2.137469e-02  1.574910e-02  1.226463e-02  9.802168e-03  9.622927e-03 
+#>           V51           V13           V52           V28           V60 
+#>  9.074532e-03  7.335748e-03  6.778665e-03  6.665737e-03  6.537105e-03 
+#>           V10           V37           V45           V47            V6 
+#>  6.412493e-03  5.347678e-03  4.707840e-03  4.596750e-03  4.400350e-03 
+#>           V35            V7           V59           V49            V5 
+#>  4.187278e-03  4.157334e-03  3.937942e-03  3.700467e-03  3.414926e-03 
+#>           V58           V54            V1            V2           V27 
+#>  3.216173e-03  3.172202e-03  3.142267e-03  3.091277e-03  2.563780e-03 
+#>           V42            V3           V30           V39           V41 
+#>  2.309017e-03  2.131233e-03  1.867354e-03  1.864489e-03  1.828531e-03 
+#>           V46           V21           V40           V43           V34 
+#>  1.788334e-03  1.699060e-03  1.505051e-03  1.286264e-03  1.240362e-03 
+#>           V14           V24           V18           V19           V55 
+#>  1.203518e-03  1.096055e-03  9.954610e-04  9.852708e-04  8.386814e-04 
+#>           V56           V15           V31           V16           V20 
+#>  8.333333e-04  7.273987e-04  4.994597e-04  3.323075e-04  2.558386e-04 
+#>           V23           V32           V17           V25           V38 
+#>  1.626685e-04  8.888453e-05  1.936886e-05 -1.684078e-04 -2.229261e-04 
+#>           V50           V22           V44            V8           V57 
+#> -4.885443e-04 -4.918818e-04 -5.371580e-04 -6.713884e-04 -8.129810e-04 
+#>           V26           V53           V29            V4           V33 
+#> -1.295713e-03 -1.466105e-03 -1.561089e-03 -1.939434e-03 -2.269215e-03 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -228,16 +228,16 @@ pred
 #> 
 #> ── <PredictionClassif> for 69 observations: ────────────────────────────────────
 #>  row_ids truth response    prob.M    prob.R
-#>        1     R        M 0.7531746 0.2468254
-#>        4     R        M 0.6046111 0.3953889
-#>        5     R        R 0.2945397 0.7054603
+#>        3     R        R 0.4642222 0.5357778
+#>        4     R        R 0.3180556 0.6819444
+#>        5     R        M 0.5165000 0.4835000
 #>      ---   ---      ---       ---       ---
-#>      197     M        M 0.8514524 0.1485476
-#>      203     M        M 0.6932222 0.3067778
-#>      206     M        M 0.7014444 0.2985556
+#>      185     M        M 0.8530000 0.1470000
+#>      204     M        M 0.8400000 0.1600000
+#>      207     M        M 0.5081905 0.4918095
 
 # Score the predictions
 pred$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.2463768 
 ```

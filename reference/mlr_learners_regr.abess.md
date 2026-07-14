@@ -105,7 +105,7 @@ bbayukari
 
 ### Public methods
 
-- [`LearnerRegrAbess$new()`](#method-LearnerRegrAbess-new)
+- [`LearnerRegrAbess$new()`](#method-LearnerRegrAbess-initialize)
 
 - [`LearnerRegrAbess$selected_features()`](#method-LearnerRegrAbess-selected_features)
 
@@ -127,7 +127,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrAbess$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -138,7 +138,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerRegrAbess$selected_features()`
 
 Extract the name of selected features from the model by
 [`abess::extract()`](https://abess-team.github.io/abess/reference/extract.abess.html).
@@ -153,7 +153,7 @@ The names of selected features
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrAbess$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -199,15 +199,15 @@ print(learner$model)
 #>     num.threads = 1L)
 #> 
 #>   support.size       dev      GIC
-#> 1            0 20.691655 63.62434
-#> 2            1  4.541893 34.34379
-#> 3            2  3.258363 29.93286
-#> 4            3  2.579368 27.58914
-#> 5            4  2.401918 28.65590
-#> 6            5  2.340910 30.67919
-#> 7            6  2.260994 32.51331
-#> 8            7  2.218550 34.67892
-#> 9            8  2.202040 37.08562
+#> 1            0 14.562132 56.24691
+#> 2            1  4.314852 33.26689
+#> 3            2  3.346067 30.49063
+#> 4            3  2.828156 29.52283
+#> 5            4  2.646182 30.68975
+#> 6            5  2.531774 32.32518
+#> 7            6  2.465942 34.33547
+#> 8            7  2.381211 36.16478
+#> 9            8  2.306860 38.06219
 
 
 # Make predictions for the test rows
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.995335 
+#> 5.969168 
 ```

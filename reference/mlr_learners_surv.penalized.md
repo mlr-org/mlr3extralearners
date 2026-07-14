@@ -118,7 +118,7 @@ RaphaelS1
 
 ### Public methods
 
-- [`LearnerSurvPenalized$new()`](#method-LearnerSurvPenalized-new)
+- [`LearnerSurvPenalized$new()`](#method-LearnerSurvPenalized-initialize)
 
 - [`LearnerSurvPenalized$selected_features()`](#method-LearnerSurvPenalized-selected_features)
 
@@ -139,7 +139,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerSurvPenalized$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -150,7 +150,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `selected_features()`
+### `LearnerSurvPenalized$selected_features()`
 
 Selected features are extracted with the method
 [`coef()`](https://rdrr.io/r/stats/coef.html) of the S4 model object,
@@ -172,7 +172,7 @@ makes it difficult to get the original feature names.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerSurvPenalized$clone()`
 
 The objects of this class are cloneable with this method.
 

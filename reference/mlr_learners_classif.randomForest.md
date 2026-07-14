@@ -97,7 +97,7 @@ pat-s
 
 ### Public methods
 
-- [`LearnerClassifRandomForest$new()`](#method-LearnerClassifRandomForest-new)
+- [`LearnerClassifRandomForest$new()`](#method-LearnerClassifRandomForest-initialize)
 
 - [`LearnerClassifRandomForest$importance()`](#method-LearnerClassifRandomForest-importance)
 
@@ -122,7 +122,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifRandomForest$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -133,7 +133,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `importance()`
+### `LearnerClassifRandomForest$importance()`
 
 The importance scores are extracted from the slot `importance`.
 Parameter 'importance' must be set to either `"accuracy"` or `"gini"`.
@@ -148,7 +148,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerClassifRandomForest$oob_error()`
 
 OOB errors are extracted from the model slot `err.rate`.
 
@@ -162,7 +162,7 @@ OOB errors are extracted from the model slot `err.rate`.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifRandomForest$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -209,36 +209,36 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 7
 #> 
-#>         OOB estimate of  error rate: 20.86%
+#>         OOB estimate of  error rate: 17.27%
 #> Confusion matrix:
 #>    M  R class.error
-#> M 59 11   0.1571429
-#> R 18 51   0.2608696
+#> M 66  9    0.120000
+#> R 15 49    0.234375
 print(learner$importance())
-#>           V11            V9           V12           V10           V49 
-#>  3.152360e-02  2.197854e-02  1.893821e-02  1.859014e-02  1.198404e-02 
-#>           V48           V36            V4           V45           V13 
-#>  1.101038e-02  8.358391e-03  8.264907e-03  7.188903e-03  6.262938e-03 
-#>           V37           V52           V51           V28           V21 
-#>  5.973683e-03  5.105015e-03  5.025215e-03  4.663591e-03  4.441254e-03 
-#>           V35            V5           V18           V15           V20 
-#>  3.846350e-03  3.743919e-03  3.248970e-03  3.225444e-03  3.146308e-03 
-#>           V47           V17           V14           V19           V31 
-#>  2.877852e-03  2.761701e-03  2.399842e-03  2.398907e-03  2.330408e-03 
-#>           V50           V27           V16           V22           V44 
-#>  2.281964e-03  2.268882e-03  2.221092e-03  2.170410e-03  2.045426e-03 
-#>            V3           V38           V26           V29           V34 
-#>  1.869199e-03  1.755320e-03  1.693634e-03  1.635436e-03  1.479122e-03 
-#>           V41           V32           V42           V46            V1 
-#>  1.393162e-03  1.344301e-03  1.291470e-03  1.266704e-03  1.223959e-03 
-#>           V57           V54           V23            V8           V59 
-#>  1.147473e-03  9.405880e-04  9.074265e-04  8.659198e-04  7.560477e-04 
-#>           V53           V24           V40            V7           V58 
-#>  7.136363e-04  6.783272e-04  6.033633e-04  5.993992e-04  4.350737e-04 
-#>           V39           V43           V30           V55           V25 
-#>  3.883995e-04  3.754243e-04  3.087232e-04  1.767326e-04  1.751461e-04 
-#>           V60            V6            V2           V33           V56 
-#>  5.024820e-05  1.553435e-05 -1.573278e-04 -4.743140e-04 -8.423865e-04 
+#>            V9           V12           V11           V49           V48 
+#>  1.996979e-02  1.694383e-02  1.674601e-02  1.350104e-02  1.285047e-02 
+#>           V10           V47           V37           V36           V45 
+#>  1.161776e-02  9.330856e-03  7.568507e-03  7.486231e-03  7.070680e-03 
+#>           V46           V51            V8           V21            V5 
+#>  6.531716e-03  6.506853e-03  5.083806e-03  4.685809e-03  4.612192e-03 
+#>           V44           V28           V27           V31            V4 
+#>  4.249123e-03  4.235498e-03  3.899552e-03  3.796755e-03  3.472598e-03 
+#>           V52           V13            V1           V17           V58 
+#>  3.113010e-03  2.531993e-03  2.466008e-03  2.284268e-03  2.080661e-03 
+#>            V3           V59           V15            V2           V32 
+#>  1.983147e-03  1.917750e-03  1.714236e-03  1.693750e-03  1.673887e-03 
+#>           V24           V18           V29           V54           V26 
+#>  1.566072e-03  1.554664e-03  1.487743e-03  1.454627e-03  1.446561e-03 
+#>           V42           V19           V34           V50           V23 
+#>  1.347701e-03  1.332140e-03  1.320682e-03  1.273433e-03  1.237523e-03 
+#>            V7           V35           V39           V16           V43 
+#>  1.201812e-03  1.130786e-03  1.122967e-03  1.088901e-03  9.581489e-04 
+#>           V60           V20            V6           V30           V53 
+#>  9.480124e-04  9.127355e-04  8.523619e-04  7.618112e-04  7.555803e-04 
+#>           V22           V25           V14           V41           V55 
+#>  7.134950e-04  6.999026e-04  6.704322e-04  6.058360e-04  3.673276e-04 
+#>           V56           V38           V40           V33           V57 
+#>  3.378323e-04  2.253273e-04  2.096813e-04  6.354722e-05 -7.344617e-04 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -246,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.2463768 
 ```

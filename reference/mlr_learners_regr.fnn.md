@@ -1,6 +1,6 @@
 # Regression Fast Nearest Neighbor Search Learner
 
-Fast Nearest Neighbour Regression. Calls
+Fast Nearest Neighbor Regression. Calls
 [`FNN::knn.reg()`](https://rdrr.io/pkg/FNN/man/knn.reg.html) from
 [FNN](https://CRAN.R-project.org/package=FNN).
 
@@ -80,7 +80,7 @@ be-marc
 
 ### Public methods
 
-- [`LearnerRegrFNN$new()`](#method-LearnerRegrFNN-new)
+- [`LearnerRegrFNN$new()`](#method-LearnerRegrFNN-initialize)
 
 - [`LearnerRegrFNN$clone()`](#method-LearnerRegrFNN-clone)
 
@@ -101,7 +101,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrFNN$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -112,7 +112,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrFNN$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -133,7 +133,7 @@ The objects of this class are cloneable with this method.
 learner = lrn("regr.fnn")
 print(learner)
 #> 
-#> ── <LearnerRegrFNN> (regr.fnn): Fast Nearest Neighbour ─────────────────────────
+#> ── <LearnerRegrFNN> (regr.fnn): Fast Nearest Neighbor ──────────────────────────
 #> • Model: -
 #> • Parameters: list()
 #> • Packages: mlr3, mlr3extralearners, and FNN
@@ -161,28 +161,28 @@ print(learner$model)
 #>  3:     1     1     4 108.0  3.85     4    93 18.61     1 2.320
 #>  4:     0     1     6 258.0  3.08     3   110 19.44     1 3.215
 #>  5:     0     2     8 360.0  3.15     3   175 17.02     0 3.440
-#>  6:     0     2     4 146.7  3.69     4    62 20.00     1 3.190
-#>  7:     0     4     6 167.6  3.92     4   123 18.90     1 3.440
-#>  8:     0     3     8 275.8  3.07     3   180 17.40     0 4.070
-#>  9:     0     3     8 275.8  3.07     3   180 17.60     0 3.730
-#> 10:     0     4     8 460.0  3.00     3   215 17.82     0 5.424
-#> 11:     1     2     4  75.7  4.93     4    52 18.52     1 1.615
-#> 12:     1     1     4  71.1  4.22     4    65 19.90     1 1.835
-#> 13:     0     1     4 120.1  3.70     3    97 20.01     1 2.465
-#> 14:     0     2     8 304.0  3.15     3   150 17.30     0 3.435
-#> 15:     0     4     8 350.0  3.73     3   245 15.41     0 3.840
-#> 16:     1     1     4  79.0  4.08     4    66 18.90     1 1.935
-#> 17:     1     2     4 120.3  4.43     5    91 16.70     0 2.140
-#> 18:     1     4     8 351.0  4.22     5   264 14.50     0 3.170
-#> 19:     1     6     6 145.0  3.62     5   175 15.50     0 2.770
-#> 20:     1     8     8 301.0  3.54     5   335 14.60     0 3.570
+#>  6:     0     4     8 360.0  3.21     3   245 15.84     0 3.570
+#>  7:     0     2     4 146.7  3.69     4    62 20.00     1 3.190
+#>  8:     0     2     4 140.8  3.92     4    95 22.90     1 3.150
+#>  9:     0     4     6 167.6  3.92     4   123 18.30     1 3.440
+#> 10:     0     4     6 167.6  3.92     4   123 18.90     1 3.440
+#> 11:     0     3     8 275.8  3.07     3   180 17.60     0 3.730
+#> 12:     0     4     8 472.0  2.93     3   205 17.98     0 5.250
+#> 13:     0     4     8 460.0  3.00     3   215 17.82     0 5.424
+#> 14:     1     1     4  78.7  4.08     4    66 19.47     1 2.200
+#> 15:     1     2     4  75.7  4.93     4    52 18.52     1 1.615
+#> 16:     0     2     8 304.0  3.15     3   150 17.30     0 3.435
+#> 17:     0     4     8 350.0  3.73     3   245 15.41     0 3.840
+#> 18:     1     1     4  79.0  4.08     4    66 18.90     1 1.935
+#> 19:     1     4     8 351.0  4.22     5   264 14.50     0 3.170
+#> 20:     1     6     6 145.0  3.62     5   175 15.50     0 2.770
 #> 21:     1     2     4 121.0  4.11     4   109 18.60     1 2.780
 #>        am  carb   cyl  disp  drat  gear    hp  qsec    vs    wt
 #>     <num> <num> <num> <num> <num> <num> <num> <num> <num> <num>
 #> 
 #> $y
-#>  [1] 21.0 21.0 22.8 21.4 18.7 24.4 17.8 16.4 17.3 10.4 30.4 33.9 21.5 15.2 13.3
-#> [16] 27.3 26.0 15.8 19.7 15.0 21.4
+#>  [1] 21.0 21.0 22.8 21.4 18.7 14.3 24.4 22.8 19.2 17.8 17.3 10.4 10.4 32.4 30.4
+#> [16] 15.2 13.3 27.3 15.8 19.7 21.4
 #> 
 
 
@@ -192,5 +192,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.67818 
+#> 14.02525 
 ```

@@ -96,7 +96,7 @@ annanzrv
 
 ### Public methods
 
-- [`LearnerClassifAdaBoosting$new()`](#method-LearnerClassifAdaBoosting-new)
+- [`LearnerClassifAdaBoosting$new()`](#method-LearnerClassifAdaBoosting-initialize)
 
 - [`LearnerClassifAdaBoosting$oob_error()`](#method-LearnerClassifAdaBoosting-oob_error)
 
@@ -119,7 +119,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifAdaBoosting$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -130,7 +130,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `oob_error()`
+### `LearnerClassifAdaBoosting$oob_error()`
 
 The oob error is extracted extracted from the model slot `$model$errs`.
 
@@ -144,7 +144,7 @@ Named [`numeric()`](https://rdrr.io/r/base/numeric.html).
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifAdaBoosting$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -193,12 +193,12 @@ print(learner$model)
 #> Final Confusion Matrix for Data:
 #>           Final Prediction
 #> True value  M  R
-#>          M 77  0
-#>          R  0 62
+#>          M 75  0
+#>          R  0 64
 #> 
 #> Train Error: 0 
 #> 
-#> Out-Of-Bag Error:  0.043  iteration= 42 
+#> Out-Of-Bag Error:  0.058  iteration= 47 
 #> 
 #> Additional Estimates of number of iterations:
 #> 
@@ -213,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.1449275 
 ```

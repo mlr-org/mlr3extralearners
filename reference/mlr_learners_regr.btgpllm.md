@@ -109,7 +109,7 @@ awinterstetter
 
 ### Public methods
 
-- [`LearnerRegrBtgpllm$new()`](#method-LearnerRegrBtgpllm-new)
+- [`LearnerRegrBtgpllm$new()`](#method-LearnerRegrBtgpllm-initialize)
 
 - [`LearnerRegrBtgpllm$clone()`](#method-LearnerRegrBtgpllm-clone)
 
@@ -130,7 +130,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerRegrBtgpllm$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -141,7 +141,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerRegrBtgpllm$clone()`
 
 The objects of this class are cloneable with this method.
 
@@ -212,5 +212,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 18.63938 
+#> 46.31993 
 ```

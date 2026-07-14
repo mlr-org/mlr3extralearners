@@ -116,7 +116,7 @@ henrifnk
 
 ### Public methods
 
-- [`LearnerClassifAdaBoostM1$new()`](#method-LearnerClassifAdaBoostM1-new)
+- [`LearnerClassifAdaBoostM1$new()`](#method-LearnerClassifAdaBoostM1-initialize)
 
 - [`LearnerClassifAdaBoostM1$marshal()`](#method-LearnerClassifAdaBoostM1-marshal)
 
@@ -141,7 +141,7 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### Method `new()`
+### `LearnerClassifAdaBoostM1$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
@@ -152,7 +152,7 @@ Creates a new instance of this
 
 ------------------------------------------------------------------------
 
-### Method `marshal()`
+### `LearnerClassifAdaBoostM1$marshal()`
 
 Marshal the learner's model.
 
@@ -170,7 +170,7 @@ Marshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `unmarshal()`
+### `LearnerClassifAdaBoostM1$unmarshal()`
 
 Unmarshal the learner's model.
 
@@ -188,7 +188,7 @@ Unmarshal the learner's model.
 
 ------------------------------------------------------------------------
 
-### Method `clone()`
+### `LearnerClassifAdaBoostM1$clone()`
 
 The objects of this class are cloneable with this method.
 
