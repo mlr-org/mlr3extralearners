@@ -184,7 +184,6 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>did not converge in 10 iterations</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>did not converge in 10 iterations</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $model</span>
@@ -195,11 +194,11 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation: Exponential (power = 1.95)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation Parameters: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -2.033635  -1.487827   1.222925   1.833974 -0.9676104  -2.253674</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   -2.74539  -1.330234   1.393321    1.60884 -0.9573537   0.050025</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -2.368828  0.4592725  -2.425541   0.6275459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.8814918  0.7298652  -2.692023   -1.817448</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 25.76641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 30.35972</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> delta_lb(beta_hat): [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -215,11 +214,11 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$high</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   6.000   8.000 460.000   4.430   5.000 264.000  22.900   1.000   5.424 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  22.900   1.000   5.424 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$low</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 65.000 14.500  0.000  1.513 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.513 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -229,7 +228,7 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.784046 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.684544 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -241,7 +240,7 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

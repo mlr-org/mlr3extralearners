@@ -1,8 +1,8 @@
 # Gradient Boosting Classification Learner
 
 Gradient Boosting Classification Algorithm. Calls
-[`gbm::gbm()`](https://rdrr.io/pkg/gbm/man/gbm.html) from
-[gbm](https://CRAN.R-project.org/package=gbm).
+[`gbm::gbm()`](https://gbm-developers.github.io/gbm/reference/gbm.html)
+from [gbm](https://CRAN.R-project.org/package=gbm).
 
 ## Dictionary
 
@@ -132,7 +132,7 @@ Creates a new instance of this
 ### `LearnerClassifGBM$importance()`
 
 The importance scores are extracted by
-[`gbm::relative.influence()`](https://rdrr.io/pkg/gbm/man/relative.influence.html)
+[`gbm::relative.influence()`](https://gbm-developers.github.io/gbm/reference/relative.influence.html)
 from the model.
 
 #### Usage
@@ -190,25 +190,25 @@ print(learner$model)
 #> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)
 #> A gradient boosted model with bernoulli loss function.
 #> 100 iterations were performed.
-#> There were 60 predictors of which 41 had non-zero influence.
+#> There were 60 predictors of which 40 had non-zero influence.
 print(learner$importance())
-#>        V11        V12        V45        V36         V4        V52        V10 
-#> 16.9002420 10.8954337  7.9997185  7.7813996  7.7592206  6.5137014  6.0804337 
-#>        V23        V27         V5         V1         V9        V54        V49 
-#>  5.9000216  4.6815097  4.6403718  4.5072821  4.4175540  3.6158617  3.3390161 
-#>        V47        V51        V43        V31        V13        V48        V21 
-#>  3.3190230  3.2386227  3.0049131  2.8955456  2.8152071  2.5995293  2.0976145 
-#>        V39        V15        V20        V44        V57        V59         V8 
-#>  2.0726399  2.0309468  1.6270919  1.5842686  1.5392560  1.4019548  1.3433839 
-#>        V16        V19        V34        V24        V55        V33        V28 
-#>  1.2343172  1.1084834  1.0503552  1.0156894  0.8353872  0.7612363  0.6853245 
-#>        V26         V2        V29        V60        V17        V56        V14 
-#>  0.6650085  0.5668839  0.5216948  0.4900799  0.4433011  0.3141445  0.0000000 
-#>        V18        V22        V25         V3        V30        V32        V35 
+#>        V11        V36        V52        V16        V39        V13        V21 
+#> 19.7841735  9.2129833  8.6147467  6.5959736  6.1549992  5.8121404  5.7315055 
+#>        V51        V47         V4         V9        V48        V28        V12 
+#>  5.5584262  5.3605864  4.7662658  4.6028037  4.5760288  4.5319774  3.8906407 
+#>        V23        V31        V43        V45        V17        V19        V26 
+#>  3.4495576  2.8738526  2.8416800  2.8005369  2.4050489  1.9435413  1.8438779 
+#>        V55        V20        V27        V59        V15        V22        V58 
+#>  1.7841628  1.7078705  1.5540983  1.4586130  1.3583877  1.1581030  1.0702761 
+#>         V6        V35        V46        V40        V44        V57        V24 
+#>  1.0339737  0.9572028  0.9386053  0.8929792  0.8770403  0.8027042  0.7474881 
+#>        V29         V5        V53         V3        V32         V1        V10 
+#>  0.6277185  0.5988681  0.3974609  0.3728581  0.3328809  0.0000000  0.0000000 
+#>        V14        V18         V2        V25        V30        V33        V34 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V37        V38        V40        V41        V42        V46        V50 
+#>        V37        V38        V41        V42        V49        V50        V54 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V53        V58         V6         V7 
+#>        V56        V60         V7         V8 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1594203 
+#>  0.2028986 
 ```

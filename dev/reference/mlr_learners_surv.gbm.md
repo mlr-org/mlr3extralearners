@@ -1,8 +1,8 @@
 # Survival Gradient Boosting Machine Learner
 
 Gradient Boosting for Survival Analysis. Calls
-[`gbm::gbm()`](https://rdrr.io/pkg/gbm/man/gbm.html) from
-[gbm](https://CRAN.R-project.org/package=gbm).
+[`gbm::gbm()`](https://gbm-developers.github.io/gbm/reference/gbm.html)
+from [gbm](https://CRAN.R-project.org/package=gbm).
 
 ## Prediction types
 

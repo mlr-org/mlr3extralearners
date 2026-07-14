@@ -213,20 +213,21 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> (Intercept)           am         carb          cyl         disp         drat  
-#>   -11.05648      2.58580     -1.14822      1.70967      0.01252      2.16369  
+#>   -89.66160      4.76035     -1.52363      3.35311      0.01745      3.75991  
 #>        gear           hp         qsec           vs           wt  
-#>     2.87884     -0.01980      1.00990      1.08249     -4.25963  
+#>     6.20269      0.04678      3.54666           NA     -5.72850  
 #> 
-#> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual
-#> Null Deviance:       915.9 
-#> Residual Deviance: 73.79     AIC: 110
+#> Degrees of Freedom: 20 Total (i.e. Null);  11 Residual
+#> Null Deviance:       686.4 
+#> Residual Deviance: 60.86     AIC: 103.9
 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
+#> Warning: prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases
 
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.36804 
+#> 56.51357 
 ```

@@ -1,8 +1,8 @@
 # Regression Gradient Boosting Machine Learner
 
 Gradient Boosting Regression Algorithm. Calls
-[`gbm::gbm()`](https://rdrr.io/pkg/gbm/man/gbm.html) from
-[gbm](https://CRAN.R-project.org/package=gbm).
+[`gbm::gbm()`](https://gbm-developers.github.io/gbm/reference/gbm.html)
+from [gbm](https://CRAN.R-project.org/package=gbm).
 
 Weights are ignored for quantile prediction.
 
@@ -147,7 +147,7 @@ Creates a new instance of this
 ### `LearnerRegrGBM$importance()`
 
 The importance scores are extracted by
-[`gbm::relative.influence()`](https://rdrr.io/pkg/gbm/man/relative.influence.html)
+[`gbm::relative.influence()`](https://gbm-developers.github.io/gbm/reference/relative.influence.html)
 from the model.
 
 #### Usage

@@ -28,6 +28,9 @@
 - Updated minimum versions of suggested packages, most notably `glmnet`
   (\>= 5.0)
   ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
+- `classif.fastai` now pins its `fastcore` Python dependency to a
+  version below 2.0.0 because `fastai` (\<= 2.8.7) is incompatible with
+  `fastcore` 2.0 but does not declare an upper bound.
 - The `h2o` learners no longer emit a spurious warning about an outdated
   H2O cluster version when training or predicting.
 - `surv.cv_glmnet` and `surv.glmnet`: updated for `glmnet` v5.0, added

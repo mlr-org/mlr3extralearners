@@ -65,6 +65,8 @@
 <div class="section level3">
 <h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
 <ul><li>Updated minimum versions of suggested packages, most notably <code>glmnet</code> (&gt;= 5.0) (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<li>
+<code>classif.fastai</code> now pins its <code>fastcore</code> Python dependency to a version below 2.0.0 because <code>fastai</code> (&lt;= 2.8.7) is incompatible with <code>fastcore</code> 2.0 but does not declare an upper bound.</li>
 <li>The <code>h2o</code> learners no longer emit a spurious warning about an outdated H2O cluster version when training or predicting.</li>
 <li>
 <code>surv.cv_glmnet</code> and <code>surv.glmnet</code>: updated for <code>glmnet</code> v5.0, added the train parameters <code>cox.ties</code> (initialized to <code>"breslow"</code> to keep the previous tie-handling behavior), <code>maxp</code>, and <code>path</code>, added the predict parameter <code>exact</code> (<code>surv.cv_glmnet</code> only), fixed predictions for relaxed fits (<code>relax = TRUE</code>), and added a read-only <code>native_model</code> field that returns the fitted <code>glmnet</code> model (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
@@ -749,7 +751,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

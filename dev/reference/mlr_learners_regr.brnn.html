@@ -174,13 +174,13 @@ Calls <code><a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-lin
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of parameters (weights and biases) to estimate: 24 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nguyen-Widrow method</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Scaling factor= 0.7234904 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gamma= 1.8755 	 alpha= 2.0068 	 beta= 2.9074 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma= 7.7469 	 alpha= 3.7469 	 beta= 11.5142 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A Bayesian regularized neural network </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 - 2 - 1 with 24 weights, biases and connection strengths</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Inputs and output were  normalized</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Training finished because  Maximum number of epochs reached </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Training finished because  Changes in F= beta*SCE + alpha*Ew in last 3 iterations less than 0.001 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -189,7 +189,7 @@ Calls <code><a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-lin
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19.71368 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.345364 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -201,7 +201,7 @@ Calls <code><a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-lin
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>
