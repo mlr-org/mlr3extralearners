@@ -1,6 +1,7 @@
 skip_if_not_installed("reticulate")
 skip_if_not_installed("callr")
 skip_on_os(c("windows", "mac"))
+skip_on_cran()
 
 test_that("autotest: regr.botorch_singletaskgp", {
   expect_true(callr::r(function() {
@@ -9,13 +10,19 @@ test_that("autotest: regr.botorch_singletaskgp", {
     library(mlr3)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(
+      list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE),
+      source
+    )
 
     mirai::daemons(1, .compute = "mlr3_encapsulation")
 
-    mirai::everywhere({
-      Sys.setenv(RETICULATE_PYTHON = "managed")
-    }, .compute = "mlr3_encapsulation")
+    mirai::everywhere(
+      {
+        Sys.setenv(RETICULATE_PYTHON = "managed")
+      },
+      .compute = "mlr3_encapsulation"
+    )
 
     learner = mlr3::lrn("regr.botorch_singletaskgp")
     expect_learner(learner)
@@ -35,7 +42,18 @@ test_that("kernels: regr.botorch_singletaskgp", {
 
     task = tsk("mtcars")
     # Cannot fit model with "cosine" on this dataset
-    kernels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "rq", "piecewise_polynomial", "constant")
+    kernels = c(
+      "matern_2.5",
+      "matern_1.5",
+      "matern_0.5",
+      "rbf",
+      "linear",
+      "polynomial",
+      "periodic",
+      "rq",
+      "piecewise_polynomial",
+      "constant"
+    )
 
     for (k in kernels) {
       learner = mlr3::lrn("regr.botorch_singletaskgp", kernel = k)
@@ -91,4 +109,3 @@ test_that("outcome_transforms: regr.botorch_singletaskgp", {
     TRUE
   }))
 })
-
