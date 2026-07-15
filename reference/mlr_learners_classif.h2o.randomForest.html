@@ -50,7 +50,7 @@ Calls h2o::h2o.randomForest() from package h2o."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification H2O Random Forest Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_h2o_classif_randomForest.R" class="external-link"><code>R/learner_h2o_classif_randomForest.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_h2o_classif_randomForest.R" class="external-link"><code>R/learner_h2o_classif_randomForest.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.h2o.randomForest.Rd</code></div>
     </div>
 
@@ -192,53 +192,53 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialModel: drf</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DRF_model_R_1784032706781_58 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  DRF_model_R_1784104713728_58 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model Summary: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1              50                       50               13448         5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1              50                       50               12629         5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   max_depth mean_depth min_leaves max_leaves mean_leaves</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        10    6.92000         11         22    16.80000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         9    6.44000         11         21    15.52000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialMetrics: drf</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Metrics reported on Out-Of-Bag training samples **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1450476</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3808512</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.4425562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.2045833</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.8791667</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.8727056</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.7583333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.4161532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1346601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3669607</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.411964</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.2043651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.8924394</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.8915914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.7848789</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.4566065</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M  R    Error     Rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M      49 26 0.346667   =26/75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R       4 60 0.062500    =4/64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 53 86 0.215827  =30/139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M      57 19 0.250000   =19/76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R      10 53 0.158730   =10/63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 67 72 0.208633  =29/139</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Maximum Metrics: Maximum metrics at their respective thresholds</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         metric threshold     value idx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.368421  0.800000  55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.333333  0.881503  58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.588235  0.799180  36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.523810  0.784173  43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.409091  0.785185  44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.176471  0.879888  68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.666667  0.862069  22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.666667  0.798561  22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  1.000000  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.142857  1.000000  79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.176471  1.000000  68</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  1.000000  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.368421  0.606315  55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.466667  0.750000  45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.368421  0.795417  55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  1.000000 75.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  1.000000 63.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.000000 75.000000  90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.142857 64.000000  79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.666667  0.637168  22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.454545  0.777778  38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.409091  0.795635  44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  1.000000 76.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  1.000000 58.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.000000 76.000000  85</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.176471 63.000000  68</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  1.000000  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  1.000000  0.984375   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.000000  1.000000  90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.142857  1.000000  79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  1.000000  0.920635   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.000000  1.000000  85</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.176471  1.000000  68</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -251,7 +251,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -259,7 +259,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

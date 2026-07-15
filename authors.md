@@ -25,7 +25,7 @@
 
 - **Byron Jaeger**. Contributor.
 
-- **Sebastian Fischer**. Maintainer, author.
+- **Sebastian Fischer**. Author.
 
 - **Zezhi Wang**. Contributor.
 
@@ -39,7 +39,7 @@
 
 - **Baisu Zhou**. Contributor.
 
-- **Marc Becker**. Contributor.
+- **Marc Becker**. Maintainer, author.
   [](https://orcid.org/0000-0002-8115-0400)
 
 - **Nikolai German**. Contributor.
@@ -51,7 +51,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/inst/CITATION)
+[`inst/CITATION`](https://github.com/mlr-org/mlr3extralearners/blob/main/inst/CITATION)
 
 Fischer S, Zobolas J, Sonabend R, Becker M, Lang M, Binder M, Schneider
 L, Burk L, Schratz P, Jaeger B, Lauer S, Kapsner L, Mücke M, Wang Z,

@@ -50,7 +50,7 @@ Calls RWeka::M5P() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression M5P Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_RWeka_regr_m5p.R" class="external-link"><code>R/learner_RWeka_regr_m5p.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_regr_m5p.R" class="external-link"><code>R/learner_RWeka_regr_m5p.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.m5p.Rd</code></div>
     </div>
 
@@ -244,12 +244,13 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/47.616%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/45.511%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0442 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 30.2322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	5.9832 * am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0578 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 26.3468</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
 <span class="r-in"><span></span></span>
@@ -260,7 +261,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.70923 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.867446 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -268,7 +269,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">
