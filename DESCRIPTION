@@ -16,7 +16,7 @@ Authors@R: c(
     person("Javier", "García", , "geshter@hotmail.com", role = "ctb"),
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
-    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
+    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = "aut"),
     person("Zezhi", "Wang", , "homura@mail.ustc.edu.cn", role = "ctb"),
     person("John", "Zobolas", , "bblodfon@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-3609-8674")),
@@ -25,7 +25,7 @@ Authors@R: c(
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
     person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Marc", "Becker", , "marcbecker@posteo.de", role = "ctb",
+    person("Marc", "Becker", , "marcbecker@posteo.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-8115-0400")),
     person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
     person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb"),
@@ -152,9 +152,9 @@ Remotes:
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba
 Config/Needs/website: rmarkdown
+Config/roxygen2/version: 8.0.0.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-Config/roxygen2/version: 8.0.0.9000
