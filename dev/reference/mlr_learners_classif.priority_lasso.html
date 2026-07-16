@@ -19,7 +19,7 @@ Only binary classification is supported."><meta name="robots" content="noindex">
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,7 @@ Only binary classification is supported."><meta name="robots" content="noindex">
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Priority Lasso Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_prioritylasso_classif_priority_lasso.R" class="external-link"><code>R/learner_prioritylasso_classif_priority_lasso.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_prioritylasso_classif_priority_lasso.R" class="external-link"><code>R/learner_prioritylasso_classif_priority_lasso.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.priority_lasso.Rd</code></div>
     </div>
 
@@ -251,9 +251,8 @@ It defaults to <code>FALSE</code> for backward compatibility.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Selected features</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "b1.1"   "b1.2"   "b1.3"   "b1.4"   "b2.1"   "b2.3"   "b3.2"   "b3.4"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "b3.7"   "b3.8"   "b3.9"   "b4.10"  "b4.140" "b4.269" "b4.309" "b4.466"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "b4.623" "b4.66"  "b4.823" "b4.825" "b4.977"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "b1.1"   "b1.2"   "b1.4"   "b2.1"   "b2.3"   "b2.5"   "b4.10"  "b4.140"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "b4.164" "b4.269" "b4.309" "b4.6"   "b4.641" "b4.825" "b4.880" "b4.977"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -261,7 +260,7 @@ It defaults to <code>FALSE</code> for backward compatibility.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2575758 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3257576 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -269,7 +268,7 @@ It defaults to <code>FALSE</code> for backward compatibility.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -15,7 +15,7 @@ Calls RWeka::DecisionStump() from RWeka."><meta name="robots" content="noindex">
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls RWeka::DecisionStump() from RWeka."><meta name="robots" content="noindex">
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Decision Stump Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_RWeka_classif_decision_stump.R" class="external-link"><code>R/learner_RWeka_classif_decision_stump.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_classif_decision_stump.R" class="external-link"><code>R/learner_RWeka_classif_decision_stump.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.decision_stump.Rd</code></div>
     </div>
 
@@ -237,21 +237,21 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &lt;= 0.16505 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &gt; 0.16505 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 is missing : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.19615 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.19615 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing : M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &lt;= 0.16505</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.19615</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.14583333333333334	0.8541666666666666	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &gt; 0.16505</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.26785714285714285	0.7321428571428571	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.19615</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7472527472527473	0.25274725274725274	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7951807228915663	0.20481927710843373	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.539568345323741	0.460431654676259	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5827338129496403	0.4172661870503597	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -261,7 +261,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3768116 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -269,7 +269,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

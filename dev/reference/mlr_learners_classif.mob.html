@@ -15,7 +15,7 @@ Calls partykit::mob() from mob."><meta name="robots" content="noindex"></head><b
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls partykit::mob() from mob."><meta name="robots" content="noindex"></head><b
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Model-based Recursive Partitioning Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_partykit_classif_mob.R" class="external-link"><code>R/learner_partykit_classif_mob.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_partykit_classif_mob.R" class="external-link"><code>R/learner_partykit_classif_mob.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.mob.Rd</code></div>
     </div>
 
@@ -189,16 +189,7 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/mob.html" class="external-
 <span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionClassif&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">225</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids     truth  response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1    benign    benign</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        4    benign malignant</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        6 malignant malignant</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---       ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      679    benign    benign</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      680    benign    benign</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      682 malignant malignant</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in model.frame.default(delete.response(object$terms), newdata, xlev = xlev):</span> factor bare_nuclei has new levels 6</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -206,7 +197,7 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/mob.html" class="external-
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

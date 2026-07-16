@@ -15,7 +15,7 @@ Calls mboost::glmboost() from mboost."><meta name="robots" content="noindex"></h
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls mboost::glmboost() from mboost."><meta name="robots" content="noindex"></h
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Boosted Generalized Linear Classification Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.glmboost.Rd</code></div>
     </div>
 
@@ -206,23 +206,21 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.05040235 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.1375516 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          V1         V11         V12         V16         V20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.4297720  -1.0765337  -1.8740806  -0.5559525   0.9034014  -0.2589779 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V21         V28         V31         V35         V36         V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.2351099  -0.6121839   0.6247951   0.2422397   0.5515094  -0.4087230 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V45         V46         V49          V5         V51         V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.4209185  -0.4901742  -6.3427744  -0.7254288 -13.5798322 -20.4605205 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V54 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -1.7247665 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)          V11          V12          V16          V21          V22 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.35415333  -1.30115459  -0.62772345   0.54295415  -0.26490439  -0.07448371 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V23          V36          V39           V4          V44          V45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.28621475   1.33926438  -0.28732597  -3.37251868  -1.06325404  -0.82744010 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V46          V49           V5          V51          V57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.21238309  -4.66277925  -2.48072732 -14.78492832  18.97079466 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.05040235</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.1375516</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -232,7 +230,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -240,7 +238,7 @@ No offset is applied during prediction for this learner.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

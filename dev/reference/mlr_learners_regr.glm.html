@@ -17,7 +17,7 @@ For logistic regression please use mlr_learners_classif.log_reg."><meta name="ro
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@ For logistic regression please use mlr_learners_classif.log_reg."><meta name="ro
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Generalized Linear Regression</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.glm.Rd</code></div>
     </div>
 
@@ -227,13 +227,13 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    52.17793      2.20401     -1.96697     -2.51451     -0.01908      1.31299  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   -1.995265    -0.086443    -1.554513     0.652333     0.003314     3.012838  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    -0.70302      0.01019     -0.68993     -1.57310      0.83017  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3.666236    -0.019604     0.393996    -1.053963    -2.009030  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    912 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 63.42 	AIC: 106.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    499 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 69.02 	AIC: 108.6</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -242,7 +242,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23.04039 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.63407 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -250,7 +250,7 @@ John Wiley &amp; Sons.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

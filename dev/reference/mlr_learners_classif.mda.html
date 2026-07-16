@@ -15,7 +15,7 @@ Calls mda::mda() from mda."><meta name="robots" content="noindex"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls mda::mda() from mda."><meta name="robots" content="noindex"></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Discriminant Analysis Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_mda_classif_mda.R" class="external-link"><code>R/learner_mda_classif_mda.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mda_classif_mda.R" class="external-link"><code>R/learner_mda_classif_mda.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.mda.Rd</code></div>
     </div>
 
@@ -186,13 +186,13 @@ Calls <code><a href="https://rdrr.io/pkg/mda/man/mda.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Percent Between-Group Variance Explained:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     v1     v2     v3     v4     v5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  60.71  77.34  89.30  95.40 100.00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  53.27  81.86  91.53  96.96 100.00 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom (per dimension): 61 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Training Misclassification Error: 0.00719 ( N = 139 )</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Training Misclassification Error: 0.05036 ( N = 139 )</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Deviance: 5.074 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Deviance: 35.021 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -201,7 +201,7 @@ Calls <code><a href="https://rdrr.io/pkg/mda/man/mda.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -209,7 +209,7 @@ Calls <code><a href="https://rdrr.io/pkg/mda/man/mda.html" class="external-link"
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

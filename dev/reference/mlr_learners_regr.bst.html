@@ -15,7 +15,7 @@ Calls bst::bst() from bst."><meta name="robots" content="noindex"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls bst::bst() from bst."><meta name="robots" content="noindex"></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Gradient Boosting Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_bst_regr_bst.R" class="external-link"><code>R/learner_bst_regr_bst.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_bst_regr_bst.R" class="external-link"><code>R/learner_bst_regr_bst.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.bst.Rd</code></div>
     </div>
 
@@ -192,15 +192,15 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> Base learner:  ls </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 50 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  18.87143 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  21.07143 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          am        carb         cyl        disp        drat        gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.90939051 -0.02102000  0.00000000 -0.01030296  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          hp        qsec          vs          wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  3.86658080  0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         am       carb        cyl       disp       drat       gear         hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.7942949 -0.2784294  0.0000000 -0.0109974  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       qsec         vs         wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  2.2587142  0.0000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 18.87143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21.07143</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -210,7 +210,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21.58427 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.37302 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -218,7 +218,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

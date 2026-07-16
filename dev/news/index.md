@@ -4,6 +4,13 @@
 
 ### Breaking Changes
 
+- `classif.mlp` was renamed to `classif.mlp_rsnns` because its id
+  clashed with the `classif.mlp` learner in `mlr3torch`.
+
+## mlr3extralearners 1.6.0
+
+### Breaking Changes
+
 - `classif.priority_lasso`, `regr.priority_lasso`, and
   `surv.priority_lasso`: the parameter sets were reduced to a focused
   subset of

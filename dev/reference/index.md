@@ -162,8 +162,8 @@
 - [`mlr_learners_classif.mdeb`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mdeb.md)
   [`LearnerClassifMdeb`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mdeb.md)
   : Classification Linear Discriminant Analysis Learner
-- [`mlr_learners_classif.mlp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mlp.md)
-  [`LearnerClassifMLP`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mlp.md)
+- [`mlr_learners_classif.mlp_rsnns`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mlp_rsnns.md)
+  [`LearnerClassifMLPRsnns`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mlp_rsnns.md)
   : Classification Multilayer Perceptron Learner
 - [`mlr_learners_classif.mob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mob.md)
   [`LearnerClassifMob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mob.md)

@@ -15,7 +15,7 @@ Calls catboost::catboost.train() from package 'catboost'."><meta name="robots" c
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls catboost::catboost.train() from package 'catboost'."><meta name="robots" c
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Gradient Boosted Decision Trees Regression Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/R/learner_catboost_regr_catboost.R" class="external-link"><code>R/learner_catboost_regr_catboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_catboost_regr_catboost.R" class="external-link"><code>R/learner_catboost_regr_catboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.catboost.Rd</code></div>
     </div>
 
@@ -252,10 +252,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       cyl      disp        hp        wt      carb      qsec      drat        vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23.538577 22.382540 12.907318 11.597513  9.441762  7.252220  4.856879  2.863661 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      gear        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.790561  2.368968 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp      carb       cyl        hp        am      gear      qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21.992144 16.114839 11.949687 10.118112  9.195332  7.865075  6.628161  5.782605 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      drat        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5.304010  5.050036 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -263,7 +263,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.273771 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.873925 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -271,7 +271,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

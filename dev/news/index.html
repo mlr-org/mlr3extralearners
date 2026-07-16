@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.2.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,13 +48,21 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.6.0/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
 <div class="section level3">
 <h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<ul><li>
+<code>classif.mlp</code> was renamed to <code>classif.mlp_rsnns</code> because its id clashed with the <code>classif.mlp</code> learner in <code>mlr3torch</code>.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.6.0" id="mlr3extralearners-160">mlr3extralearners 1.6.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-160"></a></h2>
+<div class="section level3">
+<h3 id="breaking-changes-1-6-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-6-0"></a></h3>
 <ul><li>
 <code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
@@ -63,7 +71,7 @@
 <code>surv.glmnet</code>: removed the parameters <code>alignment</code>, <code>parallel</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are CV-only or not applicable to the Cox family, and renamed the predict parameter <code>predict.gamma</code> to <code>gamma</code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
+<h3 id="other-1-6-0">Other<a class="anchor" aria-label="anchor" href="#other-1-6-0"></a></h3>
 <ul><li>Updated minimum versions of suggested packages, most notably <code>glmnet</code> (&gt;= 5.0) (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
 <code>classif.fastai</code> now pins its <code>fastcore</code> Python dependency to a version below 2.0.0 because <code>fastai</code> (&lt;= 2.8.7) is incompatible with <code>fastcore</code> 2.0 but does not declare an upper bound.</li>
@@ -82,7 +90,7 @@
 <code>regr.crs</code>: added the train parameter <code>max.eval</code> for compatibility with <code>crs</code> (&gt;= 0.15-45) (<a href="https://github.com/mlr-org/mlr3extralearners/issues/601" class="external-link">#601</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="new-features-1-6-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-6-0"></a></h3>
 <ul><li>
 <code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code> now support automatic block-priority derivation via <code>adaptive.order = TRUE</code>, following Herrmann et al. (2021), and prediction for automatic block ordering was fixed upstream in <code>prioritylasso</code> version 0.4.0.</li>
 </ul></div>
@@ -747,7 +755,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas, Marc Becker.</p>
 </div>
 
 <div class="pkgdown-footer-right">

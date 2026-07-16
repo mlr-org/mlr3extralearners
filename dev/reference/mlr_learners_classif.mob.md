@@ -197,14 +197,5 @@ learner$param_set$values$predict_fun = predict_fun
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
-#> 
-#> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
-#>  row_ids     truth  response
-#>        1    benign    benign
-#>        4    benign malignant
-#>        6 malignant malignant
-#>      ---       ---       ---
-#>      679    benign    benign
-#>      680    benign    benign
-#>      682 malignant malignant
+#> Error in model.frame.default(delete.response(object$terms), newdata, xlev = xlev): factor bare_nuclei has new levels 6
 ```

@@ -14,17 +14,21 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Sebastian Fischer <sebf.fischer@gmail.com>
+**Maintainer**: Marc Becker <marcbecker@posteo.de>
+([ORCID](https://orcid.org/0000-0002-8115-0400))
 
 Authors:
 
-- Sebastian Fischer <sebf.fischer@gmail.com>
+- Marc Becker <marcbecker@posteo.de>
+  ([ORCID](https://orcid.org/0000-0002-8115-0400))
 
 - Raphael Sonabend <raphaelsonabend@gmail.com>
   ([ORCID](https://orcid.org/0000-0001-9225-4654))
 
 - Patrick Schratz <patrick.schratz@gmail.com>
   ([ORCID](https://orcid.org/0000-0003-0748-6624))
+
+- Sebastian Fischer <sebf.fischer@gmail.com>
 
 - John Zobolas <bblodfon@gmail.com>
   ([ORCID](https://orcid.org/0000-0002-3609-8674))
@@ -58,9 +62,6 @@ Other contributors:
 - Anna Nazarova <anna.nazarova@outlook.com> \[contributor\]
 
 - Baisu Zhou <baisu.zhou@outlook.com> \[contributor\]
-
-- Marc Becker <marcbecker@posteo.de>
-  ([ORCID](https://orcid.org/0000-0002-8115-0400)) \[contributor\]
 
 - Nikolai German <niko.german@gmail.com> \[contributor\]
 
