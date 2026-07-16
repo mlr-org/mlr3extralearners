@@ -1,3 +1,9 @@
+# mlr3extralearners (development version)
+
+## Breaking Changes
+
+* `classif.mlp` was renamed to `classif.mlp_rsnns` because its id clashed with the `classif.mlp` learner in `mlr3torch`.
+
 # mlr3extralearners 1.6.0
 ## Breaking Changes
 

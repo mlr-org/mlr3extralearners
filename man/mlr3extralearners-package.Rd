@@ -18,13 +18,14 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com}
+\strong{Maintainer}: Marc Becker \email{marcbecker@posteo.de} (\href{https://orcid.org/0000-0002-8115-0400}{ORCID})
 
 Authors:
 \itemize{
-  \item Sebastian Fischer \email{sebf.fischer@gmail.com}
+  \item Marc Becker \email{marcbecker@posteo.de} (\href{https://orcid.org/0000-0002-8115-0400}{ORCID})
   \item Raphael Sonabend \email{raphaelsonabend@gmail.com} (\href{https://orcid.org/0000-0001-9225-4654}{ORCID})
   \item Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
+  \item Sebastian Fischer \email{sebf.fischer@gmail.com}
   \item John Zobolas \email{bblodfon@gmail.com} (\href{https://orcid.org/0000-0002-3609-8674}{ORCID})
 }
 
@@ -42,7 +43,6 @@ Other contributors:
   \item Lona Koers \email{lona.koers@gmail.com} [contributor]
   \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
   \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
-  \item Marc Becker \email{marcbecker@posteo.de} (\href{https://orcid.org/0000-0002-8115-0400}{ORCID}) [contributor]
   \item Nikolai German \email{niko.german@gmail.com} [contributor]
   \item Alexander Winterstetter \email{alexanderwinterstetter@gmail.com} [contributor]
   \item Imad El Badisy \email{elbadisyimad@gmail.com} [contributor]
