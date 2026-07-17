@@ -78,7 +78,8 @@ predictions$score()
 Rong, Xiao (2022).
 \dQuote{deepnet: Deep Learning Toolkit in R.}
 \emph{R package version 0.2.1}.
-\doi{10.32614/CRAN.package.deepnet}, \url{https://CRAN.R-project.org/package=deepnet}.
+\doi{10.32614/CRAN.package.deepnet}.
+\url{https://CRAN.R-project.org/package=deepnet}.
 }
 \seealso{
 \itemize{

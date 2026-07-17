@@ -73,7 +73,8 @@ predictions$score()
 MacDonald, B., Ranjan, P., Chipman, H. (2015).
 \dQuote{GPfit: An R package for fitting a Gaussian process model to deterministic simulator outputs.}
 \emph{Journal of Statistical Software}, \bold{64}, 1--23.
-ISSN 1548-7660, \doi{10.18637/jss.v064.i12}.
+ISSN 1548-7660.
+\doi{10.18637/jss.v064.i12}.
 }
 \seealso{
 \itemize{

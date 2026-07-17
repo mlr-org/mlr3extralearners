@@ -143,12 +143,14 @@ predictions$score()
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008).
 \dQuote{Random survival forests.}
 \emph{The Annals of Applied Statistics}, \bold{2}(3).
-\doi{10.1214/08-aoas169}, \url{https://doi.org/10.1214/08-aoas169}.
+\doi{10.1214/08-aoas169}.
+\url{https://doi.org/10.1214/08-aoas169}.
 
 Breiman, Leo (2001).
 \dQuote{Random Forests.}
 \emph{Machine Learning}, \bold{45}(1), 5--32.
-ISSN 1573-0565, \doi{10.1023/A:1010933404324}.
+ISSN 1573-0565.
+\doi{10.1023/A:1010933404324}.
 }
 \seealso{
 \itemize{

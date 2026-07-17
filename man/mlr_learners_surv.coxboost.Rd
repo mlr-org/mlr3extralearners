@@ -94,7 +94,8 @@ predictions$score()
 Binder, Harald, Schumacher, Martin (2008).
 \dQuote{Allowing for mandatory covariates in boosting estimation of sparse high-dimensional survival models.}
 \emph{BMC Bioinformatics}, \bold{9}(1), 1-10.
-ISSN 14712105, \doi{10.1186/1471-2105-9-14}.
+ISSN 14712105.
+\doi{10.1186/1471-2105-9-14}.
 }
 \seealso{
 \itemize{

@@ -141,7 +141,8 @@ Hothorn T, Zeileis A (2015).
 Hothorn T, Hornik K, Zeileis A (2006).
 \dQuote{Unbiased Recursive Partitioning: A Conditional Inference Framework.}
 \emph{Journal of Computational and Graphical Statistics}, \bold{15}(3), 651--674.
-\doi{10.1198/106186006x133933}, \url{https://doi.org/10.1198/106186006x133933}.
+\doi{10.1198/106186006x133933}.
+\url{https://doi.org/10.1198/106186006x133933}.
 }
 \seealso{
 \itemize{

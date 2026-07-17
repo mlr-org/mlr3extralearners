@@ -89,7 +89,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 Howard, Jeremy, Gugger, Sylvain (2020).
 \dQuote{Fastai: A Layered API for Deep Learning.}
 \emph{Information}, \bold{11}(2), 108.
-ISSN 2078-2489, \doi{10.3390/info11020108}.
+ISSN 2078-2489.
+\doi{10.3390/info11020108}.
 }
 \seealso{
 \itemize{

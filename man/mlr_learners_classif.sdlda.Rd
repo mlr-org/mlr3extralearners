@@ -65,7 +65,8 @@ predictions$score()
 Pang H, Tong T, Zhao H (2009).
 \dQuote{Shrinkage-Based Diagonal Discriminant Analysis and Its Applications in High-Dimensional Data.}
 \emph{Biometrics}, \bold{65}(4), 1021--1029.
-ISSN 0006341X, 15410420, \url{http://www.jstor.org/stable/20640622}.
+ISSN 0006341X, 15410420.
+\url{http://www.jstor.org/stable/20640622}.
 }
 \seealso{
 \itemize{

@@ -79,7 +79,8 @@ predictions$score()
 Breiman, Leo (2001).
 \dQuote{Random Forests.}
 \emph{Machine Learning}, \bold{45}(1), 5--32.
-ISSN 1573-0565, \doi{10.1023/A:1010933404324}.
+ISSN 1573-0565.
+\doi{10.1023/A:1010933404324}.
 }
 \seealso{
 \itemize{
