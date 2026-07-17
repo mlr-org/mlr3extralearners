@@ -72,7 +72,7 @@ This learner returns three prediction types:
 
 Jackson, H. C (2016). “flexsurv: A Platform for Parametric Survival
 Modeling in R.” *Journal of Statistical Software*, **70**(8), 1–33.
-[doi:10.18637/JSS.V070.I08](https://doi.org/10.18637/JSS.V070.I08) ,
+[doi:10.18637/JSS.V070.I08](https://doi.org/10.18637/JSS.V070.I08) .
 <https://www.jstatsoft.org/index.php/jss/article/view/v070i08>.
 
 ## See also

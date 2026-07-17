@@ -75,7 +75,7 @@ Hornung, R., Wright, N. M (2019). “Block Forests: Random forests for
 blocks of clinical and omics covariate data.” *BMC Bioinformatics*,
 **20**(1), 1–17.
 [doi:10.1186/s12859-019-2942-y](https://doi.org/10.1186/s12859-019-2942-y)
-, <https://doi.org/10.1186/s12859-019-2942-y>.
+. <https://doi.org/10.1186/s12859-019-2942-y>.
 
 ## See also
 

@@ -91,7 +91,7 @@ This learner returns three prediction types, using the internal
 
 Binder, Harald, Schumacher, Martin (2008). “Allowing for mandatory
 covariates in boosting estimation of sparse high-dimensional survival
-models.” *BMC Bioinformatics*, **9**(1), 1-10. ISSN 14712105,
+models.” *BMC Bioinformatics*, **9**(1), 1-10. ISSN 14712105.
 [doi:10.1186/1471-2105-9-14](https://doi.org/10.1186/1471-2105-9-14) .
 
 ## See also

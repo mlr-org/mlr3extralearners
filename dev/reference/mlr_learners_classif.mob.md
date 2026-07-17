@@ -77,7 +77,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -197,5 +197,14 @@ learner$param_set$values$predict_fun = predict_fun
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
-#> Error in model.frame.default(delete.response(object$terms), newdata, xlev = xlev): factor bare_nuclei has new levels 6
+#> 
+#> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
+#>  row_ids     truth  response
+#>        5    benign malignant
+#>        8    benign malignant
+#>        9    benign malignant
+#>      ---       ---       ---
+#>      674    benign malignant
+#>      681 malignant malignant
+#>      682 malignant malignant
 ```

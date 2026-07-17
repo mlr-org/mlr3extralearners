@@ -111,7 +111,7 @@ Körfer, Max, Hoo, Bin S, Schirrmeister, Tibor R, Hutter, Frank (2025).
 “Accurate predictions on small data with a tabular foundation model.”
 *Nature*.
 [doi:10.1038/s41586-024-08328-6](https://doi.org/10.1038/s41586-024-08328-6)
-, <https://www.nature.com/articles/s41586-024-08328-6>.
+. <https://www.nature.com/articles/s41586-024-08328-6>.
 
 Hollmann, Noah, Müller, Samuel, Eggensperger, Katharina, Hutter, Frank
 (2023). “TabPFN: A transformer that solves small tabular classification

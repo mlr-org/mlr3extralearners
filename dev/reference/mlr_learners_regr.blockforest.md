@@ -64,7 +64,7 @@ Hornung, R., Wright, N. M (2019). “Block Forests: Random forests for
 blocks of clinical and omics covariate data.” *BMC Bioinformatics*,
 **20**(1), 1–17.
 [doi:10.1186/s12859-019-2942-y](https://doi.org/10.1186/s12859-019-2942-y)
-, <https://doi.org/10.1186/s12859-019-2942-y>.
+. <https://doi.org/10.1186/s12859-019-2942-y>.
 
 ## See also
 
@@ -196,10 +196,10 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>       disp         hp         am        cyl         wt       gear       qsec 
-#> 11.2922980  9.3848921  6.6840815  5.9587928  5.3642656  3.9517219  2.9888230 
-#>       carb       drat         vs 
-#>  2.3602897  2.1270092  0.9449235 
+#>        cyl       carb       disp         hp         wt       drat         am 
+#>  6.3327291  3.4463447  3.2306667  3.0261685  1.6952787  1.2799746  0.4413012 
+#>         vs       gear       qsec 
+#>  0.2517394  0.1923925 -0.4127436 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -207,16 +207,16 @@ pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        2  21.0 21.16482
-#>        6  18.1 21.59606
-#>       10  19.2 19.98478
+#>       11  17.8 18.91467
+#>       12  16.4 17.21647
+#>       14  15.2 16.83997
 #>      ---   ---      ---
-#>       28  30.4 25.04060
-#>       29  15.8 18.66423
-#>       31  15.0 17.37230
+#>       24  13.3 15.38059
+#>       26  27.3 24.76257
+#>       31  15.0 17.17671
 
 # Score the predictions
 pred$score()
 #> regr.mse 
-#>  6.57265 
+#> 17.74785 
 ```

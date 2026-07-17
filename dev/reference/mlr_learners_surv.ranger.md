@@ -95,7 +95,7 @@ Statistical Software*, **77**(1), 1–17.
 [doi:10.18637/jss.v077.i01](https://doi.org/10.18637/jss.v077.i01) .
 
 Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
-5–32. ISSN 1573-0565,
+5–32. ISSN 1573-0565.
 [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A%3A1010933404324)
 .
 
