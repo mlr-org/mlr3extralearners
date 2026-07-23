@@ -67,6 +67,9 @@ a marshaled `LearnerRegrTabPFN` into R again, you then need to call
 
 - `inference_config` is currently not supported.
 
+- `n_jobs` is deprecated upstream in favor of `n_preprocessing_jobs` and
+  is only kept for backward compatibility.
+
 - `random_state` accepts either an integer or the special value `"None"`
   which corresponds to `None` in Python. Following the original Python
   implementation, the default `random_state` is `0`.
@@ -96,7 +99,8 @@ instantiated via
 |----|----|----|----|----|
 | Id | Type | Default | Levels | Range |
 | output_type | character | mean | mean, median, mode | \- |
-| n_estimators | integer | 4 |  | \\\[1, \infty)\\ |
+| n_estimators | integer | 8 |  | \\\[1, \infty)\\ |
+| auto_scale_n_estimators | logical | TRUE | TRUE, FALSE | \- |
 | categorical_features_indices | untyped | \- |  | \- |
 | softmax_temperature | numeric | 0.9 |  | \\\[0, \infty)\\ |
 | average_before_softmax | logical | FALSE | TRUE, FALSE | \- |
@@ -104,10 +108,14 @@ instantiated via
 | device | untyped | "auto" |  | \- |
 | ignore_pretraining_limits | logical | FALSE | TRUE, FALSE | \- |
 | inference_precision | character | auto | auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 | \- |
-| fit_mode | character | fit_preprocessors | low_memory, fit_preprocessors, fit_with_cache | \- |
+| fit_mode | character | fit_preprocessors | low_memory, fit_preprocessors, fit_with_cache, batched | \- |
 | memory_saving_mode | untyped | "auto" |  | \- |
+| keep_cache_on_device | logical | TRUE | TRUE, FALSE | \- |
 | random_state | integer | 0 |  | \\(-\infty, \infty)\\ |
 | n_jobs | integer | \- |  | \\\[1, \infty)\\ |
+| n_preprocessing_jobs | integer | 1 |  | \\\[1, \infty)\\ |
+| differentiable_input | logical | FALSE | TRUE, FALSE | \- |
+| show_progress_bar | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 

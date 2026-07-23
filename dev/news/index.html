@@ -58,6 +58,11 @@
 <ul><li>
 <code>classif.mlp</code> was renamed to <code>classif.mlp_rsnns</code> because its id clashed with the <code>classif.mlp</code> learner in <code>mlr3torch</code>.</li>
 </ul></div>
+<div class="section level3">
+<h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
+<ul><li>
+<code>classif.tabpfn</code> and <code>regr.tabpfn</code>: updated the parameter sets to match <code>tabpfn</code> 8.1.0, adding <code>auto_scale_n_estimators</code>, <code>keep_cache_on_device</code>, <code>n_preprocessing_jobs</code>, <code>differentiable_input</code>, and <code>show_progress_bar</code> (plus <code>eval_metric</code> and <code>tuning_config</code> for classification), adding the <code>"batched"</code> option to <code>fit_mode</code>, and correcting the informational default of <code>n_estimators</code> to <code>8</code>.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.6.0" id="mlr3extralearners-160">mlr3extralearners 1.6.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-160"></a></h2>
