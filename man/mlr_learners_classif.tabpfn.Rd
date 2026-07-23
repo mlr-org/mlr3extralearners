@@ -14,7 +14,7 @@ This learner relies on \CRANpkg{reticulate} to handle Python dependencies.
 It is not necessary to install any Python package manually in advance or specify a Python environment
 via \code{reticulate::use_python()}, \code{reticulate::use_virtualenv()}, \code{reticulate::use_condaenv()},
 or \code{reticulate::use_miniconda()}.
-By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{tapfn}, \code{torch}, etc.) will be installed
+By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{tabpfn}, \code{torch}, etc.) will be installed
 automatically, if not already.
 Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
 unless an existing environment (e.g., \code{"r-reticulate"}) in reticulate's
@@ -26,6 +26,17 @@ You may also manually install \code{tabpfn} into a Python environment following 
 and specify the environment via \verb{reticulate::use_*()} before calling \verb{$train()} or \verb{$predict()}.
 Note that the GPU version of PyTorch cannot be loaded by \code{reticulate::use_condaenv()} from a conda environment.
 To use a conda environment, please install the CPU version of PyTorch.
+}
+
+\section{License acceptance}{
+
+Since \code{tabpfn} version 8, the default model version (v3) requires a one-time acceptance of the Prior Labs
+license before the model weights can be downloaded.
+On the first call to \verb{$train()} or \verb{$predict()}, \code{tabpfn} opens a browser window to log in and accept the
+license, and caches the resulting token for subsequent calls.
+In non-interactive environments (e.g., on a server or in continuous integration), this browser flow fails.
+Instead, log in at \url{https://ux.priorlabs.ai}, accept the license on the licenses tab, copy your API key from
+\url{https://ux.priorlabs.ai/account}, and set it as the environment variable \code{TABPFN_TOKEN} before training.
 }
 
 \section{Saving a Learner}{

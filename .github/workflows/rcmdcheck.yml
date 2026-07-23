@@ -34,8 +34,7 @@ jobs:
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
+      TABPFN_TOKEN: ${{ secrets.TABPFN_TOKEN }}
 
     steps:
       - uses: actions/checkout@v7
@@ -57,6 +56,23 @@ jobs:
         run: |
           R -q -e 'install.packages("torch")'
           R -q -e 'torch::install_torch()'
+
+      - uses: actions/setup-python@v5
+        if: ${{ !matrix.config.depends_only }}
+        with:
+          python-version: "3.12"
+
+      - name: Cache Python environments
+        id: cache-pyenvs
+        if: ${{ !matrix.config.depends_only }}
+        uses: actions/cache@v4
+        with:
+          path: ~/.virtualenvs
+          key: pyenvs-${{ runner.os }}-${{ hashFiles('R/install_python_test_envs.R') }}
+
+      - name: Install Python environments
+        if: ${{ !matrix.config.depends_only && steps.cache-pyenvs.outputs.cache-hit != 'true' }}
+        run: R -q -e 'source("R/install_python_test_envs.R"); install_python_test_envs()'
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
