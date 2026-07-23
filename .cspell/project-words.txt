@@ -439,6 +439,7 @@ varimp
 varprob
 VIMP
 virtualenv
+virtualenvs
 Vreg
 Vsurv
 watchlist
