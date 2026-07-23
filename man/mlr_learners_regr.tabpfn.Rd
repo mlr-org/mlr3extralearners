@@ -59,6 +59,7 @@ or a \href{https://docs.pytorch.org/docs/stable/tensor_attributes.html}{\code{to
 e.g., \code{"torch.float32"}, \code{"torch.float64"}, etc.
 Non-float dtypes are not supported.
 \item \code{inference_config} is currently not supported.
+\item \code{n_jobs} is deprecated upstream in favor of \code{n_preprocessing_jobs} and is only kept for backward compatibility.
 \item \code{random_state} accepts either an integer or the special value \code{"None"}
 which corresponds to \code{None} in Python.
 Following the original Python implementation, the default \code{random_state} is \code{0}.
@@ -87,7 +88,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    output_type \tab character \tab mean \tab mean, median, mode \tab - \cr
-   n_estimators \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_estimators \tab integer \tab 8 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   auto_scale_n_estimators \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    categorical_features_indices \tab untyped \tab - \tab  \tab - \cr
    softmax_temperature \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    average_before_softmax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -95,10 +97,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    device \tab untyped \tab "auto" \tab  \tab - \cr
    ignore_pretraining_limits \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    inference_precision \tab character \tab auto \tab auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 \tab - \cr
-   fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache \tab - \cr
+   fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache, batched \tab - \cr
    memory_saving_mode \tab untyped \tab "auto" \tab  \tab - \cr
+   keep_cache_on_device \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    random_state \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    n_jobs \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_preprocessing_jobs \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   differentiable_input \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   show_progress_bar \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

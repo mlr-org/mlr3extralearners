@@ -4,6 +4,10 @@
 
 * `classif.mlp` was renamed to `classif.mlp_rsnns` because its id clashed with the `classif.mlp` learner in `mlr3torch`.
 
+## Other
+
+* `classif.tabpfn` and `regr.tabpfn`: updated the parameter sets to match `tabpfn` 8.1.0, adding `auto_scale_n_estimators`, `keep_cache_on_device`, `n_preprocessing_jobs`, `differentiable_input`, and `show_progress_bar` (plus `eval_metric` and `tuning_config` for classification), adding the `"batched"` option to `fit_mode`, and correcting the informational default of `n_estimators` to `8`.
+
 # mlr3extralearners 1.6.0
 ## Breaking Changes
 
