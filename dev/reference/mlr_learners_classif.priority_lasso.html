@@ -251,9 +251,9 @@ It defaults to <code>FALSE</code> for backward compatibility.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Selected features</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "b1.1"   "b1.2"   "b1.4"   "b2.1"   "b2.3"   "b2.5"   "b3.19"  "b3.2"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "b3.3"   "b3.4"   "b3.7"   "b3.8"   "b4.164" "b4.6"   "b4.607" "b4.623"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "b4.670" "b4.811" "b4.823" "b4.825" "b4.885" "b4.977"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "b1.1"   "b1.2"   "b1.3"   "b1.4"   "b2.1"   "b2.3"   "b2.4"   "b2.5"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "b3.2"   "b3.4"   "b3.8"   "b4.10"  "b4.269" "b4.6"   "b4.623" "b4.634"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "b4.641" "b4.644" "b4.8"   "b4.825" "b4.977"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -261,7 +261,7 @@ It defaults to <code>FALSE</code> for backward compatibility.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3030303 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3257576 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

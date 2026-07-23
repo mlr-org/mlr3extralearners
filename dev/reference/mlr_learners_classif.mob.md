@@ -202,9 +202,9 @@ learner$predict(task, row_ids = ids$test)
 #>  row_ids     truth  response
 #>        1    benign malignant
 #>        3    benign malignant
-#>        5    benign malignant
+#>        4    benign malignant
 #>      ---       ---       ---
-#>      672    benign    benign
-#>      673    benign malignant
-#>      682 malignant malignant
+#>      680    benign malignant
+#>      681 malignant malignant
+#>      683 malignant malignant
 ```

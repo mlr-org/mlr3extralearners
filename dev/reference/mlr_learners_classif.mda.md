@@ -168,13 +168,13 @@ print(learner$model)
 #> 
 #> Percent Between-Group Variance Explained:
 #>     v1     v2     v3     v4     v5 
-#>  51.35  76.52  89.02  96.99 100.00 
+#>  49.05  75.85  90.18  97.28 100.00 
 #> 
 #> Degrees of Freedom (per dimension): 61 
 #> 
 #> Training Misclassification Error: 0.02158 ( N = 139 )
 #> 
-#> Deviance: 21.363 
+#> Deviance: 12.283 
 
 
 # Make predictions for the test rows
@@ -183,5 +183,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.2463768 
 ```

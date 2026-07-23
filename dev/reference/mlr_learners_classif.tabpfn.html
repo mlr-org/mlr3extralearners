@@ -68,7 +68,7 @@ Uses <a href="https://CRAN.R-project.org/package=reticulate" class="external-lin
 It is not necessary to install any Python package manually in advance or specify a Python environment
 via <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_python()</a></code>, <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_virtualenv()</a></code>, <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_condaenv()</a></code>,
 or <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_miniconda()</a></code>.
-By calling <code>$train()</code> or <code>$predict()</code>, the required Python packages (<code>tapfn</code>, <code>torch</code>, etc.) will be installed
+By calling <code>$train()</code> or <code>$predict()</code>, the required Python packages (<code>tabpfn</code>, <code>torch</code>, etc.) will be installed
 automatically, if not already.
 Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
 unless an existing environment (e.g., <code>"r-reticulate"</code>) in reticulate's
@@ -79,6 +79,18 @@ contains all the necessary packages.</p>
 and specify the environment via <code>reticulate::use_*()</code> before calling <code>$train()</code> or <code>$predict()</code>.
 Note that the GPU version of PyTorch cannot be loaded by <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_condaenv()</a></code> from a conda environment.
 To use a conda environment, please install the CPU version of PyTorch.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="license-acceptance">License acceptance<a class="anchor" aria-label="anchor" href="#license-acceptance"></a></h2>
+
+
+<p>Since <code>tabpfn</code> version 8, the default model version (v3) requires a one-time acceptance of the Prior Labs
+license before the model weights can be downloaded.
+On the first call to <code>$train()</code> or <code>$predict()</code>, <code>tabpfn</code> opens a browser window to log in and accept the
+license, and caches the resulting token for subsequent calls.
+In non-interactive environments (e.g., on a server or in continuous integration), this browser flow fails.
+Instead, log in at <a href="https://ux.priorlabs.ai" class="external-link">https://ux.priorlabs.ai</a>, accept the license on the licenses tab, copy your API key from
+<a href="https://ux.priorlabs.ai/account" class="external-link">https://ux.priorlabs.ai/account</a>, and set it as the environment variable <code>TABPFN_TOKEN</code> before training.</p>
     </div>
     <div class="section level2">
     <h2 id="saving-a-learner">Saving a Learner<a class="anchor" aria-label="anchor" href="#saving-a-learner"></a></h2>
