@@ -27,6 +27,15 @@ python_requirements = list(
       "tabpfn==8.1.0"
     )
   ),
+  tabfm = list(
+    python = "3.12",
+    packages = c(
+      "torch==2.13.0",
+      "tabfm[pytorch]==1.0.1",
+      # safetensors is required by the pytorch backend to load the weights but is not declared by tabfm[pytorch]
+      "safetensors"
+    )
+  ),
   botorch = list(
     python = "3.12",
     packages = c(

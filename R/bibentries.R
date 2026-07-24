@@ -834,6 +834,13 @@ bibentries = c(
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
   ),
+
+  google2026tabfm = bibentry("misc",
+    title = "TabFM: Tabular Foundation Models",
+    author = person("Google Research"),
+    year = "2026",
+    URL = "https://github.com/google-research/tabfm"
+  ),
   adabag2013 = bibentry("article",
     title = "adabag: An R Package for Classification with Boosting and Bagging",
     volume = "54",
