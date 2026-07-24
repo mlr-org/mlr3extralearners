@@ -243,6 +243,9 @@
 - [`mlr_learners_classif.stepPlr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.stepPlr.md)
   [`LearnerClassifStepPlr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.stepPlr.md)
   : Classification Logistic Regression Learner
+- [`mlr_learners_classif.tabfm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.tabfm.md)
+  [`LearnerClassifTabFM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.tabfm.md)
+  : TabFM Classification Learner
 - [`mlr_learners_classif.tabpfn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.tabpfn.md)
   [`LearnerClassifTabPFN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.tabpfn.md)
   : TabPFN Classification Learner
@@ -469,6 +472,9 @@
 - [`mlr_learners_regr.smo_reg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.smo_reg.md)
   [`LearnerRegrSMOreg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.smo_reg.md)
   : Regression Support Vector Machine Learner
+- [`mlr_learners_regr.tabfm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabfm.md)
+  [`LearnerRegrTabFM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabfm.md)
+  : TabFM Regression Learner
 - [`mlr_learners_regr.tabpfn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabpfn.md)
   [`LearnerRegrTabPFN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabpfn.md)
   : TabPFN Regression Learner

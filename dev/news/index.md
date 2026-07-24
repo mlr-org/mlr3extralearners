@@ -9,6 +9,8 @@
 
 ### Other
 
+- New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm`
+  Python package, the tabular foundation model from Google Research.
 - `classif.tabpfn` and `regr.tabpfn`: updated the parameter sets to
   match `tabpfn` 8.1.0, adding `auto_scale_n_estimators`,
   `keep_cache_on_device`, `n_preprocessing_jobs`,
