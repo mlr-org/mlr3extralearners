@@ -28,7 +28,7 @@ test_that("hotstarting works", {
 test_that("early stopping works", {
   learner = lrn("classif.lightgbm", num_iterations = 1000, early_stopping_rounds = 10)
   learner$validate = 0.2
-  task = tsk("pima")
+  task = tsk("sonar")
 
   learner$train(task)
 
