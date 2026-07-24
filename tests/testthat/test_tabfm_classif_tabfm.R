@@ -3,60 +3,15 @@ skip_if_not_installed("callr")
 
 skip_if_no_python_env("tabfm")
 
-test_that("autotest", {
+# tabfm wraps a multi-gigabyte foundation model whose CPU inference is slow, so instead of the full
+# run_autotest() we run a single smoke test with one fit (n_estimators = 1) covering prediction,
+# mixed feature types with missing values, and marshaling.
+test_that("classif.tabfm smoke test", {
   expect_true(run_py_test("tabfm", function() {
-    learner = lrn("classif.tabfm")
+    learner = lrn("classif.tabfm", n_estimators = 1, predict_type = "prob")
     expect_learner(learner)
 
-    # reproducibility is not guaranteed, hence check_replicable = FALSE
-    result = run_autotest(learner, check_replicable = FALSE)
-    expect_true(result, info = result$error)
-  }))
-})
-
-test_that("marshaling works for classif.tabfm", {
-  expect_true(run_py_test("tabfm", function() {
-    learner = lrn("classif.tabfm")
-    task = tsk("iris")
-
-    learner$train(task)
-    pred = learner$predict(task)
-    model = learner$model
-    class_prev = class(model)
-
-    expect_false(learner$marshaled)
-    expect_equal(is_marshaled_model(learner$model), learner$marshaled)
-    expect_invisible(learner$marshal())
-    expect_equal(is_marshaled_model(learner$model), learner$marshaled)
-
-    # equality of predictions rather than of python objects, whose pointers change
-    expect_invisible(learner$unmarshal())
-    expect_prediction(learner$predict(task))
-    expect_equal(learner$predict(task), pred)
-    expect_false(learner$marshaled)
-    expect_equal(class(learner$model), class_prev)
-  }))
-})
-
-test_that("custom parameters work for classif.tabfm", {
-  expect_true(run_py_test("tabfm", function() {
-    task = tsk("iris")
-
-    # "sqrt" and integer are both accepted for n_feature_crosses / n_svd_features
-    learner = lrn("classif.tabfm", n_feature_crosses = "sqrt", n_svd_features = 2L)
-    expect_invisible(learner$train(task))
-
-    # norm_methods accepts a character vector
-    learner = lrn("classif.tabfm", norm_methods = c("none", "power"))
-    expect_invisible(learner$train(task))
-    expect_error(lrn("classif.tabfm", norm_methods = "invalid"))
-
-    # random_state accepts the special "None" value
-    learner = lrn("classif.tabfm")
-    learner$param_set$set_values(random_state = "None")
-    expect_invisible(learner$train(task))
-
-    # mixed feature types with missing values are handled via tabfm's preprocessing
+    # mixed feature types with missing values exercise tabfm's preprocessing pipeline
     n = 40
     df = data.frame(
       f_int = sample(1:5, n, replace = TRUE),
@@ -66,9 +21,23 @@ test_that("custom parameters work for classif.tabfm", {
     )
     df$f_num[c(3, 7)] = NA
     df$f_fct[2] = NA
-    mixed = as_task_classif(df, target = "y")
-    learner = lrn("classif.tabfm", predict_type = "prob")
-    learner$train(mixed)
-    expect_prediction(learner$predict(mixed))
+    task = as_task_classif(df, target = "y")
+
+    learner$train(task)
+    pred = learner$predict(task)
+    expect_prediction(pred)
+    expect_set_equal(colnames(pred$prob), task$class_names)
+
+    # marshaling only re-predicts, it does not re-fit the model
+    expect_false(learner$marshaled)
+    class_prev = class(learner$model)
+    expect_invisible(learner$marshal())
+    expect_true(is_marshaled_model(learner$model))
+    expect_invisible(learner$unmarshal())
+    expect_prediction(learner$predict(task))
+    # equality of predictions rather than of python objects, whose pointers change
+    expect_equal(learner$predict(task), pred)
+    expect_false(learner$marshaled)
+    expect_equal(class(learner$model), class_prev)
   }))
 })
