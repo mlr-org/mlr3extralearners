@@ -66,7 +66,7 @@ jobs:
       - name: Cache Python environments
         id: cache-pyenvs
         if: ${{ !matrix.config.depends_only }}
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.virtualenvs
           key: pyenvs-${{ runner.os }}-${{ hashFiles('R/install_python_test_envs.R') }}
