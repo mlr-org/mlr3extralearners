@@ -58,7 +58,7 @@ jobs:
           R -q -e 'install.packages("torch")'
           R -q -e 'torch::install_torch()'
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         if: ${{ !matrix.config.depends_only }}
         with:
           python-version: "3.12"
