@@ -303,10 +303,10 @@ print(learner$model)
 #> Loss function: RMSE
 #> Fit to 10 feature(s)
 print(learner$importance())
-#>       cyl      disp        wt      carb        vs      drat      qsec        hp 
-#> 17.614011 15.658221 15.421234 13.688282 13.500929  8.021418  6.702690  5.606064 
-#>      gear        am 
-#>  2.387676  1.399475 
+#>        wt      disp      carb       cyl        hp      drat      gear        vs 
+#> 20.189333 19.003470 12.730871 10.470051  9.491620  7.108439  6.420478  5.036050 
+#>      qsec        am 
+#>  5.004400  4.545288 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -314,5 +314,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.51824 
+#> 7.190691 
 ```

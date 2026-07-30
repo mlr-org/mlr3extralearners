@@ -218,10 +218,10 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        wt        hp        vs       cyl      disp      carb      drat        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.7040226 4.4125137 4.3025270 4.2413880 4.2243608 4.0160528 1.9891502 1.0753558 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      qsec      gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4602125 0.4122720 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        hp       cyl      disp      gear        wt        am      carb        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.3812052 6.6820609 4.4694843 3.8420470 3.2503003 3.0878333 1.9378061 0.7729174 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      drat      qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.6187506 0.1663463 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -229,18 +229,18 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionRegr&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">11</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1  21.0 19.84364</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        2  21.0 19.65878</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        4  21.4 21.16856</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        4  21.4 18.76471</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        9  22.8 22.37521</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10  19.2 18.73573</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       27  26.0 23.71841</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       30  19.7 18.52888</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       32  21.4 25.05538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       25  19.2 16.17515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       28  30.4 24.30483</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       31  15.0 17.10667</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.019077 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.441639 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
