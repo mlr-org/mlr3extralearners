@@ -48,7 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{glmnet}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{glmnet}, \CRANpkg{survdistr}
 }
 }
 
@@ -99,6 +99,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    stype \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    ctype \tab integer \tab - \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    use_pred_offset \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   strata \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 
@@ -110,6 +111,19 @@ During prediction, the offset column from the test set is used only if
 \code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{glmnet::predict.glmnet()}.
 Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.
+}
+
+\section{Stratification}{
+
+Parameter \code{strata} can be set to the name of one task column used as the
+stratification variable.
+During training, the column is removed from the data, converted to an integer,
+and is attached to the survival response via \code{glmnet::stratifySurv()}.
+During prediction, the same task column is passed as \code{newstrata} for survival
+distribution predictions (\code{distr}) in the \code{survfit} function.
+Constant interpolation via \code{survdistr} is used to align the survival probabilities
+to a common set of time points across all strata.
+The rest of the prediction types do not depend on the strata column.
 }
 
 \examples{
