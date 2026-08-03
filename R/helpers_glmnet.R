@@ -6,7 +6,7 @@ glmnet_get_lambda = function(self, pv) {
   }
 
   pv = pv %??% self$param_set$get_values(tags = "predict")
-  s = pv$s
+  s = pv[["s"]]
 
   if (is.character(s)) {
     model[[s]]
@@ -55,6 +55,72 @@ glmnet_selected_features = function(self, lambda = NULL) {
   }
 
   glmnet_feature_names(model)[nonzero]
+}
+
+glmnet_stratify_surv = function(task, pv) {
+  if (is.null(pv$strata)) {
+    return(task$truth())
+  }
+
+  assert_string(pv$strata)
+  assert_subset(pv$strata, task$feature_names)
+
+  glmnet::stratifySurv(
+    task$truth(),
+    strata = as.integer(task$data(cols = pv$strata)[[1L]])
+  )
+}
+
+glmnet_set_newstrata = function(task, pv) {
+  if (is.null(pv$strata)) {
+    return(pv)
+  }
+
+  assert_string(pv$strata)
+  assert_subset(pv$strata, task$feature_names)
+
+  pv$newstrata = task$data(cols = pv$strata)[[1L]]
+  remove_named(pv, "strata")
+}
+
+glmnet_surv_return = function(fit, lp, pv) {
+  if (is.null(pv$newstrata)) {
+    surv = t(fit$surv)
+    dimnames(surv) = NULL
+    return(mlr3proba::surv_return(times = fit$time, surv = surv, lp = lp))
+  }
+
+  # number of time points per observation
+  ntimes = as.integer(fit$strata)
+  ids = rep(seq_along(ntimes), ntimes)
+  # one element (times vector) per observation
+  times_list = split(fit$time, ids)
+  # one element (survival probability vector) per observation
+  surv_list = split(fit$surv, ids)
+  common_times = sort(unique(fit$time))
+
+  # different strata correspond to different sets of time points
+  # interpolate survival probabilities to common time points
+  res = Map(
+    function(x, times) {
+      survdistr::interp(
+        x = x,
+        times = times,
+        eval_times = common_times,
+        method = "const_surv",
+        output = "surv",
+        add_times = FALSE,
+        check = FALSE
+      )
+    },
+    surv_list,
+    times_list
+  )
+  # survival matrix with common times
+  surv = do.call(rbind, res)
+  dimnames(surv) = NULL
+
+  mlr3proba::surv_return(times = common_times, surv = surv, lp = lp)
 }
 
 glmnet_set_offset = function(task, phase = "train", pv) {
