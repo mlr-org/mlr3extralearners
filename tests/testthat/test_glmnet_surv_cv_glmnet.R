@@ -103,3 +103,19 @@ test_that("relax = TRUE works", {
   p4 = learner$predict(task, test_rows)
   expect_false(all(p2$lp == p4$lp))
 })
+
+test_that("stratified Cox model works", {
+  task = tsk("gbcs")
+  train_rows = 1:600
+  test_rows = 601:task$nrow
+  unique_times = task$unique_times(rows = train_rows)
+
+  learner = lrn("surv.glmnet", lambda = 0.03, strata = "hormone")
+  learner$train(task, train_rows)
+  assert_class(learner$model$y, "stratifySurv")
+  expect_equal(colnames(learner$model$x), setdiff(task$feature_names, "hormone"))
+
+  p = learner$predict(task, test_rows)
+  expect_class(p$lp, "numeric")
+  expect_matrix(p$data$distr, nrows = length(test_rows), ncols = length(unique_times))
+})
