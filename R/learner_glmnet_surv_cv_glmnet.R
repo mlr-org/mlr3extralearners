@@ -26,6 +26,7 @@
 #' By default the Breslow estimator is used for computing the baseline hazard.
 #'
 #' @inheritSection mlr_learners_surv.glmnet Offset
+#' @inheritSection mlr_learners_surv.glmnet Stratification
 #'
 #' @templateVar id surv.cv_glmnet
 #' @template learner
@@ -96,7 +97,8 @@ LearnerSurvCVGlmnet = R6Class(
         stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
         ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties
         # for using the offset during prediction
-        use_pred_offset  = p_lgl(init = TRUE, tags = "predict")
+        use_pred_offset  = p_lgl(init = TRUE, tags = "predict"),
+        strata           = p_uty(default = NULL, tags = c("train", "predict"))
       )
 
       # TODO: Remove `cox.ties` initialization once glmnet >= 5.1 defaults to
@@ -110,7 +112,7 @@ LearnerSurvCVGlmnet = R6Class(
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         properties = c("weights", "selected_features", "offset"),
-        packages = c("mlr3extralearners", "glmnet"),
+        packages = c("mlr3extralearners", "glmnet", "survdistr"),
         man = "mlr3extralearners::mlr_learners_surv.cv_glmnet",
         label = "Regularized Generalized Linear Model"
       )
@@ -139,9 +141,11 @@ LearnerSurvCVGlmnet = R6Class(
 
   private = list(
     .train = function(task) {
-      data = as.matrix(task$data(cols = task$feature_names))
-      target = task$truth()
       pv = self$param_set$get_values(tags = "train")
+      feature_names = setdiff(task$feature_names, pv$strata)
+      data = as.matrix(task$data(cols = feature_names))
+      target = glmnet_stratify_surv(task, pv)
+      pv$strata = NULL
       pv$family = "cox"
       pv$weights = private$.get_weights(task)
       pv = glmnet_set_offset(task, "train", pv)
@@ -157,14 +161,16 @@ LearnerSurvCVGlmnet = R6Class(
     },
 
     .predict = function(task) {
-      newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
+      newdata = as.matrix(remove_named(ordered_features(task, self), pv$strata))
+
       pv = rename(pv, "predict.gamma", "gamma")
-      # one predict method requires numeric gamma always
+      # one predict method requires numeric gamma always and not "gamma.1se" or "gamma.min"
       if (inherits(self$native_model, "cv.relaxed") && is.character(pv$gamma)) {
         pv$gamma = self$native_model$relaxed[[pv$gamma]] # gamma.1se or gamma.min
       }
       pv = glmnet_set_offset(task, "predict", pv)
+      pv = glmnet_set_newstrata(task, pv)
 
       # get survival matrix
       fit = invoke(
@@ -184,7 +190,7 @@ LearnerSurvCVGlmnet = R6Class(
         invoke(predict, self$native_model, newx = newdata, type = "link", .args = pv)
       )
 
-      mlr3proba::surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
+      glmnet_surv_return(fit, lp, pv)
     }
   )
 )
