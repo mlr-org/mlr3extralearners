@@ -49,7 +49,7 @@
 #' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied,
 #' effectively disabling the offset adjustment during prediction.
 #'
-#' @section Stratified Cox models:
+#' @section Stratification:
 #' Parameter `strata` can be set to the name of one task column used as the
 #' stratification variable.
 #' During training, the column is removed from the data, converted to an integer,
@@ -58,7 +58,7 @@
 #' distribution predictions (`distr`) in the `survfit` function.
 #' Constant interpolation via `survdistr` is used to align the survival probabilities
 #' to a common set of time points across all strata.
-#' Linear predictor (`lp`) and `crank` prediction types do not depend on the strata column.
+#' The rest of the prediction types do not depend on the strata column.
 #'
 #' @templateVar id surv.glmnet
 #' @template learner
@@ -186,6 +186,7 @@ LearnerSurvGlmnet = R6Class(
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       newdata = as.matrix(remove_named(ordered_features(task, self), pv$strata))
+
       pv[["s"]] = glmnet_get_lambda(self, pv)
       pv = glmnet_set_offset(task, "predict", pv)
       pv = glmnet_set_newstrata(task, pv)
