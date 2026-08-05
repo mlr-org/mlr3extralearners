@@ -149,6 +149,7 @@ VignetteBuilder:
     rmarkdown
 Remotes:
     catboost/catboost/catboost/R-package,
+    mlr-org/mlr3,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba
 Config/Needs/website: rmarkdown
