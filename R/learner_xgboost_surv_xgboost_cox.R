@@ -139,6 +139,16 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       self$state$internal_valid_scores
     },
 
+    #' @field best_valid_scores (named `list()` or `NULL`)
+    #' Validation metrics of the best boosting round, extracted from the xgboost model's
+    #' `evaluation_log`.
+    #' Because XGBoost also predicts with the `best_iteration`, these are identical to
+    #' `$internal_valid_scores` whenever early stopping is enabled.
+    #' If early stopping is not enabled, no best round is tracked and this is an empty list.
+    best_valid_scores = function() {
+      self$state$best_valid_scores
+    },
+
     #' @field internal_tuned_values (named `list()` or `NULL`)
     #' If early stopping is activated, this returns a list with the early stopped
     #' iterations (`nrounds`), which is extracted from the best iteration of the model.
@@ -183,17 +193,23 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       list(nrounds = attributes(self$model)$early_stop$best_iteration)
     },
 
-    .extract_internal_valid_scores = function() {
+    .extract_internal_valid_scores = function(which = "last") {
       model = self$model
-      if (is.null(attributes(model)$evaluation_log)) {
+      log = attributes(model)$evaluation_log
+      if (is.null(log)) {
         return(named_list())
       }
 
-      iter = attributes(model)$early_stop$best_iteration
-      if (is.null(iter)) {
-        iter = xgboost::xgb.get.num.boosted.rounds(model)
+      best_iter = attributes(model)$early_stop$best_iteration
+      iter = if (which == "best") {
+        # the best iteration is only tracked when early stopping is enabled
+        if (is.null(best_iter)) return(named_list())
+        best_iter
+      } else {
+        # when early stopping was used, xgboost also predicts with the best iteration,
+        # so this is the score of the model that is used for prediction
+        best_iter %??% xgboost::xgb.get.num.boosted.rounds(model)
       }
-      log = attributes(model)$evaluation_log
       patterns = NULL # silence data.table note
       as.list(log[
         iter,

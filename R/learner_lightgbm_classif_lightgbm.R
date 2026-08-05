@@ -496,9 +496,19 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       list(num_iterations = self$model$best_iter)
     },
 
-    .extract_internal_valid_scores = function() {
+    .extract_internal_valid_scores = function(which = "last") {
       if (is.null(self$model$record_evals$test)) {
         return(named_list())
+      }
+
+      if (which == "best") {
+        # the best iteration is only tracked when early stopping is enabled
+        if (is.null(self$state$param_vals$early_stopping_rounds)) {
+          return(named_list())
+        }
+        return(map(self$model$record_evals$test, function(metric) {
+          metric$eval[[self$model$best_iter]]
+        }))
       }
 
       map(self$model$record_evals$test, function(metric) {
@@ -513,6 +523,14 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
     #' Extracted from `model$evaluation_log`
     internal_valid_scores = function() {
       self$state$internal_valid_scores
+    },
+
+    #' @field best_valid_scores
+    #' The validation scores for all metrics at the best iteration (`model$best_iter`), i.e. the iteration
+    #' that is also reported via `$internal_tuned_values`.
+    #' Only tracked when `early_stopping_rounds` is set, otherwise an empty list.
+    best_valid_scores = function() {
+      self$state$best_valid_scores
     },
 
     #' @field internal_tuned_values

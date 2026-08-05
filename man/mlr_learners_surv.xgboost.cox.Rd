@@ -191,6 +191,13 @@ If early stopping is enabled, the scores correspond to the
 \code{best_iteration} selected by early stopping. Otherwise, the scores are
 taken from the final boosting round (\code{nrounds}).}
 
+    \item{\code{best_valid_scores}}{(named \code{list()} or \code{NULL})
+Validation metrics of the best boosting round, extracted from the xgboost model's
+\code{evaluation_log}.
+Because XGBoost also predicts with the \code{best_iteration}, these are identical to
+\verb{$internal_valid_scores} whenever early stopping is enabled.
+If early stopping is not enabled, no best round is tracked and this is an empty list.}
+
     \item{\code{internal_tuned_values}}{(named \code{list()} or \code{NULL})
 If early stopping is activated, this returns a list with the early stopped
 iterations (\code{nrounds}), which is extracted from the best iteration of the model.
