@@ -19,7 +19,7 @@ glmnet_get_lambda = function(self, pv) {
     } else if (length(model$lambda) == 1L) {
       model$lambda
     } else {
-      default = self$param_set$default$s
+      default = self$param_set$default[["s"]]
       warningf(
         "Multiple lambdas have been fit. Lambda will be set to %s (see parameter 's').",
         default
