@@ -110,7 +110,7 @@ test_that("stratified Cox model works", {
   test_rows = 601:task$nrow
   unique_times = task$unique_times(rows = train_rows)
 
-  learner = lrn("surv.glmnet", lambda = 0.03, strata = "hormone")
+  learner = lrn("surv.cv_glmnet", strata = "hormone")
   learner$train(task, train_rows)
   assert_class(learner$model$y, "stratifySurv")
   expect_equal(colnames(learner$model$x), setdiff(task$feature_names, "hormone"))
