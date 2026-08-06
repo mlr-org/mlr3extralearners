@@ -81,8 +81,8 @@ glmnet_set_newstrata = function(task, pv) {
   remove_named(pv, "strata")
 }
 
-glmnet_surv_return = function(fit, lp, pv) {
-  if (is.null(pv$newstrata)) {
+glmnet_surv_return = function(fit, lp, newstrata) {
+  if (is.null(newstrata)) {
     surv = t(fit$surv)
     dimnames(surv) = NULL
     return(mlr3proba::surv_return(times = fit$time, surv = surv, lp = lp))

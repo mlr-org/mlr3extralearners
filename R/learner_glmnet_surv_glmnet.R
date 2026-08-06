@@ -210,7 +210,7 @@ LearnerSurvGlmnet = R6Class(
         invoke(predict, self$native_model, newx = newdata, type = "link", .args = pv)
       )
 
-      glmnet_surv_return(fit, lp, pv)
+      glmnet_surv_return(fit, lp, pv$newstrata)
     }
   )
 )
