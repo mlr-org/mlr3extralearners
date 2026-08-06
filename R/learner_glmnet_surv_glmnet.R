@@ -169,7 +169,7 @@ LearnerSurvGlmnet = R6Class(
       feature_names = setdiff(task$feature_names, pv$strata)
       data = as.matrix(task$data(cols = feature_names))
       target = glmnet_stratify_surv(task, pv)
-      remove_named(pv, "strata")
+      pv = remove_named(pv, "strata")
       pv$family = "cox"
       pv$weights = private$.get_weights(task)
       pv = glmnet_set_offset(task, "train", pv)
