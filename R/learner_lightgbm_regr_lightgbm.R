@@ -382,23 +382,24 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       list(num_iterations = self$model$best_iter)
     },
 
-    .extract_internal_valid_scores = function(which = "last") {
+    .extract_internal_valid_scores = function() {
       if (is.null(self$model$record_evals$test)) {
         return(named_list())
       }
 
-      if (which == "best") {
-        # the best iteration is only tracked when early stopping is enabled
-        if (is.null(self$state$param_vals$early_stopping_rounds)) {
-          return(named_list())
-        }
-        return(map(self$model$record_evals$test, function(metric) {
-          metric$eval[[self$model$best_iter]]
-        }))
+      map(self$model$record_evals$test, function(metric) {
+        metric$eval[[length(metric$eval)]]
+      })
+    },
+
+    .extract_best_valid_scores = function() {
+      # the best iteration is only tracked when early stopping is enabled
+      if (is.null(self$model$record_evals$test) || is.null(self$state$param_vals$early_stopping_rounds)) {
+        return(named_list())
       }
 
       map(self$model$record_evals$test, function(metric) {
-        metric$eval[[length(metric$eval)]]
+        metric$eval[[self$model$best_iter]]
       })
     }
   ),

@@ -183,20 +183,22 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       list(nrounds = attributes(self$model)$early_stop$best_iteration)
     },
 
-    .extract_internal_valid_scores = function(which = "last") {
-      log = attributes(self$model)$evaluation_log
-      if (is.null(log)) {
-        return(named_list())
-      }
+    .extract_internal_valid_scores = function() {
+      # when early stopping was used, xgboost also predicts with the best iteration,
+      # so this is the score of the model that is used for prediction
       best_iter = attributes(self$model)$early_stop$best_iteration
-      iter = if (which == "best") {
-        # the best iteration is only tracked when early stopping is enabled
-        if (is.null(best_iter)) return(named_list())
-        best_iter
-      } else {
-        # when early stopping was used, xgboost also predicts with the best iteration,
-        # so this is the score of the model that is used for prediction
-        best_iter %??% xgboost::xgb.get.num.boosted.rounds(self$model)
+      private$.valid_scores_at(best_iter %??% xgboost::xgb.get.num.boosted.rounds(self$model))
+    },
+
+    .extract_best_valid_scores = function() {
+      # the best iteration is only tracked when early stopping is enabled
+      private$.valid_scores_at(attributes(self$model)$early_stop$best_iteration)
+    },
+
+    .valid_scores_at = function(iter) {
+      log = attributes(self$model)$evaluation_log
+      if (is.null(log) || is.null(iter)) {
+        return(named_list())
       }
       patterns = NULL # silence data.table note
       as.list(log[
