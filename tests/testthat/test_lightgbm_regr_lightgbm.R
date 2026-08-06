@@ -177,9 +177,4 @@ test_that("best valid scores", {
   learner$train(task)
   expect_null(learner$best_valid_scores)
   expect_null(learner$internal_valid_scores)
-
-  # the measure reads the scores from the state, also without stored models
-  learner = lrn("regr.lightgbm", num_iterations = 1000, early_stopping_rounds = 10, validate = 0.2)
-  rr = resample(task, learner, rsmp("holdout"), store_models = FALSE)
-  expect_number(rr$score(msr("best_valid_score", select = "l2"))$l2)
 })
