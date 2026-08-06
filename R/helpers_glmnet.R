@@ -62,7 +62,6 @@ glmnet_stratify_surv = function(task, pv) {
     return(task$truth())
   }
 
-  assert_string(pv$strata)
   assert_subset(pv$strata, task$feature_names)
 
   glmnet::stratifySurv(
@@ -76,7 +75,6 @@ glmnet_set_newstrata = function(task, pv) {
     return(pv)
   }
 
-  assert_string(pv$strata)
   assert_subset(pv$strata, task$feature_names)
 
   pv$newstrata = as.integer(task$data(cols = pv$strata)[[1L]])

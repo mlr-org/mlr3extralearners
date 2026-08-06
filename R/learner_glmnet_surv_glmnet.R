@@ -121,7 +121,8 @@ LearnerSurvGlmnet = R6Class(
         ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties
         # for using the offset during prediction
         use_pred_offset  = p_lgl(init = TRUE, tags = "predict"),
-        strata           = p_uty(default = NULL, tags = c("train", "predict"))
+        strata           = p_uty(default = NULL, tags = c("train", "predict"),
+                                 custom_check = crate(function(x) checkmate::check_string(x, null.ok = TRUE)))
       )
 
       # TODO: Remove `cox.ties` initialization once glmnet >= 5.1 defaults to
@@ -168,7 +169,7 @@ LearnerSurvGlmnet = R6Class(
       feature_names = setdiff(task$feature_names, pv$strata)
       data = as.matrix(task$data(cols = feature_names))
       target = glmnet_stratify_surv(task, pv)
-      pv$strata = NULL
+      remove_named(pv, "strata")
       pv$family = "cox"
       pv$weights = private$.get_weights(task)
       pv = glmnet_set_offset(task, "train", pv)
