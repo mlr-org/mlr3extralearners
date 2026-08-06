@@ -79,7 +79,7 @@ glmnet_set_newstrata = function(task, pv) {
   assert_string(pv$strata)
   assert_subset(pv$strata, task$feature_names)
 
-  pv$newstrata = task$data(cols = pv$strata)[[1L]]
+  pv$newstrata = as.integer(task$data(cols = pv$strata)[[1L]])
   remove_named(pv, "strata")
 }
 
