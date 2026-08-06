@@ -147,3 +147,39 @@ test_that("mlr3measures are equal to internal measures", {
 
   expect_equal(log_mlr3, log_internal, tolerance = 1e-1)
 })
+
+test_that("best valid scores", {
+  task = tsk("mtcars")
+
+  # lightgbm keeps the last iteration, so the best scores can differ from the final ones
+  learner = lrn("regr.lightgbm", num_iterations = 1000, early_stopping_rounds = 10, validate = 0.2)
+  learner$train(task)
+
+  expect_list(learner$best_valid_scores, types = "numeric")
+  expect_equal(names(learner$best_valid_scores), names(learner$internal_valid_scores))
+  # the best iteration is the one reported as internally tuned value
+  best_iter = learner$internal_tuned_values$num_iterations
+  expect_equal(
+    learner$best_valid_scores$l2,
+    learner$model$record_evals$test$l2$eval[[best_iter]]
+  )
+  # l2 is minimized, so the best iteration is at most as bad as the last one
+  expect_true(learner$best_valid_scores$l2 <= learner$internal_valid_scores$l2)
+
+  # without early stopping no best iteration is tracked
+  learner = lrn("regr.lightgbm", num_iterations = 20, validate = 0.2)
+  learner$train(task)
+  expect_equal(learner$best_valid_scores, named_list())
+  expect_list(learner$internal_valid_scores, types = "numeric")
+
+  # without validation nothing is reported at all
+  learner = lrn("regr.lightgbm", num_iterations = 20)
+  learner$train(task)
+  expect_null(learner$best_valid_scores)
+  expect_null(learner$internal_valid_scores)
+
+  # the measure reads the scores from the state, also without stored models
+  learner = lrn("regr.lightgbm", num_iterations = 1000, early_stopping_rounds = 10, validate = 0.2)
+  rr = resample(task, learner, rsmp("holdout"), store_models = FALSE)
+  expect_number(rr$score(msr("best_valid_score", select = "l2"))$l2)
+})
