@@ -108,7 +108,7 @@ glmnet_surv_return = function(fit, lp, newstrata) {
         method = "const_surv",
         output = "surv",
         add_times = FALSE,
-        check = FALSE
+        check = FALSE # survfit always returns decreasing survival probabilities
       )
     },
     surv_list,
