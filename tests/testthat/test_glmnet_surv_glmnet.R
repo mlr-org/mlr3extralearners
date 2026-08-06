@@ -102,12 +102,14 @@ test_that("stratified Cox model works", {
   test_rows = 601:task$nrow
   unique_times = task$unique_times(rows = train_rows)
 
+  expect_error(lrn("surv.glmnet", lambda = 0.03, strata = 42L))
+  expect_error(lrn("surv.glmnet", lambda = 0.03, strata = "non_existing_column")$train(task))
   learner = lrn("surv.glmnet", lambda = 0.03, strata = "hormone")
   learner$train(task, train_rows)
-  assert_class(learner$model$y, "stratifySurv")
+  expect_class(learner$model$y, "stratifySurv")
   expect_equal(colnames(learner$model$x), setdiff(task$feature_names, "hormone"))
 
   p = learner$predict(task, test_rows)
-  expect_class(p$lp, "numeric")
+  expect_numeric(p$lp)
   expect_matrix(p$data$distr, nrows = length(test_rows), ncols = length(unique_times))
 })
