@@ -70,6 +70,9 @@ During prediction, the same task column is passed as \code{newstrata} for surviv
 distribution predictions (\code{distr}) in the \code{survfit} function.
 Constant interpolation via \code{survdistr} is used to align the survival probabilities
 to a common set of time points across all strata.
+Note that if an observation in the test set has a stratum not present in the
+training set, the prediction will fail, as the baseline hazard cannot be estimated
+for unseen strata.
 The rest of the prediction types do not depend on the strata column.
 }
 

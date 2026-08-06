@@ -70,14 +70,29 @@ glmnet_stratify_surv = function(task, pv) {
   )
 }
 
-glmnet_set_newstrata = function(task, pv) {
+glmnet_set_newstrata = function(self, task, pv) {
   if (is.null(pv$strata)) {
     return(pv)
   }
 
   assert_subset(pv$strata, task$feature_names)
 
-  pv$newstrata = as.integer(task$data(cols = pv$strata)[[1L]])
+  pred_strata = as.integer(task$data(cols = pv$strata)[[1L]])
+  train_strata = attr(self$model$y, "strata")
+
+  train_levels = unique(train_strata)
+  pred_levels = unique(pred_strata)
+  unseen_levels = setdiff(pred_levels, train_levels)
+
+  if (length(unseen_levels) > 0L) {
+    error_learner_predict(
+      "Learner '%s': parameter 'strata' contains unseen levels in prediction data: %s",
+      self$id,
+      str_collapse(unseen_levels, quote = "'", sep = ", ")
+    )
+  }
+
+  pv$newstrata = pred_strata
   remove_named(pv, "strata")
 }
 

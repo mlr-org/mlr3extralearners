@@ -171,7 +171,7 @@ LearnerSurvCVGlmnet = R6Class(
         pv$gamma = self$native_model$relaxed[[pv$gamma]] # gamma.1se or gamma.min
       }
       pv = glmnet_set_offset(task, "predict", pv)
-      pv = glmnet_set_newstrata(task, pv)
+      pv = glmnet_set_newstrata(self, task, pv)
 
       # get survival matrix
       fit = invoke(

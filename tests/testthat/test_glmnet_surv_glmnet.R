@@ -112,4 +112,21 @@ test_that("stratified Cox model works", {
   p = learner$predict(task, test_rows)
   expect_numeric(p$lp)
   expect_matrix(p$data$distr, nrows = length(test_rows), ncols = length(unique_times))
+
+  # add one more test row with a stratum not present in the training set, prediction should fail
+  task$rbind(
+    data = data.table(
+      time = 1000,
+      status = 0L,
+      age = 55,
+      estrg_recp = 20,
+      grade = 2L,
+      hormone = 3L, # hormone is only 1 or 2 in training set
+      menopause = 1L,
+      nodes = 2L,
+      prog_recp = 30,
+      size = 25
+    )
+  )
+  expect_error(learner$predict(task, task$nrow))
 })

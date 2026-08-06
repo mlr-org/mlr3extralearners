@@ -58,6 +58,9 @@
 #' distribution predictions (`distr`) in the `survfit` function.
 #' Constant interpolation via `survdistr` is used to align the survival probabilities
 #' to a common set of time points across all strata.
+#' Note that if an observation in the test set has a stratum not present in the
+#' training set, the prediction will fail, as the baseline hazard cannot be estimated
+#' for unseen strata.
 #' The rest of the prediction types do not depend on the strata column.
 #'
 #' @templateVar id surv.glmnet
@@ -190,7 +193,7 @@ LearnerSurvGlmnet = R6Class(
 
       pv[["s"]] = glmnet_get_lambda(self, pv)
       pv = glmnet_set_offset(task, "predict", pv)
-      pv = glmnet_set_newstrata(task, pv)
+      pv = glmnet_set_newstrata(self, task, pv)
 
       # get survival matrix
       fit = invoke(
