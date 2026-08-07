@@ -2,6 +2,13 @@
 
 ## mlr3extralearners (development version)
 
+### New Features
+
+- `surv.cv_glmnet` and `surv.glmnet`: added the `strata` parameter for
+  fitting stratified Cox models via
+  [`glmnet::stratifySurv()`](https://glmnet.stanford.edu/reference/stratifySurv.html)
+  ([\#396](https://github.com/mlr-org/mlr3extralearners/issues/396)).
+
 ### Breaking Changes
 
 - `classif.mlp` was renamed to `classif.mlp_rsnns` because its id
@@ -18,6 +25,10 @@
   and `tuning_config` for classification), adding the `"batched"` option
   to `fit_mode`, and correcting the informational default of
   `n_estimators` to `8`.
+- Fixed a partial argument-matching bug in survival `glmnet` learners
+  where `stype` could be matched to predict argument `s`, causing `s` to
+  be overwritten by `stype = 1` or `2` and predictions to be
+  over-regularized.
 
 ## mlr3extralearners 1.6.0
 

@@ -196,10 +196,10 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>         cyl          am        disp          hp        carb          wt 
-#>  6.57067124  4.26635789  3.10174245  2.66327450  2.58359728  2.04006724 
-#>        drat        gear        qsec          vs 
-#>  0.84286760  0.14324397 -0.01094312 -0.06777600 
+#>          wt        disp         cyl          hp        carb          am 
+#>  7.80815820  6.48654384  6.05727064  5.36227911  2.24606188  1.86736029 
+#>        gear          vs        drat        qsec 
+#>  1.84696526  0.37856714  0.17642920 -0.04802328 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -207,16 +207,16 @@ pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        2  21.0 20.08033
-#>        6  18.1 20.43588
-#>        7  14.3 15.57364
+#>        3  22.8 26.34559
+#>        5  18.7 16.12954
+#>        7  14.3 15.11012
 #>      ---   ---      ---
-#>       22  15.5 16.98315
-#>       31  15.0 16.94741
-#>       32  21.4 25.08876
+#>       19  30.4 28.20362
+#>       21  21.5 23.76680
+#>       30  19.7 19.84313
 
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 6.343885 
+#> 10.02765 
 ```

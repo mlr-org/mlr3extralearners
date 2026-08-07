@@ -66,6 +66,22 @@ in
 Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is
 applied, effectively disabling the offset adjustment during prediction.
 
+## Stratification
+
+Parameter `strata` can be set to the name of one task column used as the
+stratification variable. During training, the column is removed from the
+data, converted to an integer, and is attached to the survival response
+via
+[`glmnet::stratifySurv()`](https://glmnet.stanford.edu/reference/stratifySurv.html).
+During prediction, the same task column is passed as `newstrata` for
+survival distribution predictions (`distr`) in the `survfit` function.
+Constant interpolation via `survdistr` is used to align the survival
+probabilities to a common set of time points across all strata. Note
+that if an observation in the test set has a stratum not present in the
+training set, the prediction will fail, as the baseline hazard cannot be
+estimated for unseen strata. The rest of the prediction types do not
+depend on the strata column.
+
 ## Dictionary
 
 This [Learner](https://mlr3.mlr-org.com/reference/Learner.html) can be
@@ -85,7 +101,8 @@ instantiated via
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
   [mlr3proba](https://CRAN.R-project.org/package=mlr3proba),
   [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
-  [glmnet](https://CRAN.R-project.org/package=glmnet)
+  [glmnet](https://CRAN.R-project.org/package=glmnet),
+  [survdistr](https://CRAN.R-project.org/package=survdistr)
 
 ## Parameters
 
@@ -128,6 +145,7 @@ instantiated via
 | stype            | integer   | 2       |                | \\\[1, 2\]\\          |
 | ctype            | integer   | \-      |                | \\\[1, 2\]\\          |
 | use_pred_offset  | logical   | \-      | TRUE, FALSE    | \-                    |
+| strata           | untyped   | NULL    |                | \-                    |
 
 ## References
 
@@ -267,7 +285,7 @@ print(learner)
 #> ── <LearnerSurvGlmnet> (surv.glmnet): Regularized Generalized Linear Model ─────
 #> • Model: -
 #> • Parameters: cox.ties=breslow, use_pred_offset=TRUE
-#> • Packages: mlr3, mlr3proba, mlr3extralearners, and glmnet
+#> • Packages: mlr3, mlr3proba, mlr3extralearners, glmnet, and survdistr
 #> • Predict Types: [crank], distr, and lp
 #> • Feature Types: logical, integer, and numeric
 #> • Encapsulation: none (fallback: -)
