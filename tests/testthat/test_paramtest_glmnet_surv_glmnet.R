@@ -11,6 +11,7 @@ test_that("surv.glmnet", {
     "family", # only "cox" is applicable for this learner
     "weights", # handled by mlr3
     "offset", # handled by mlr3
+    "strata", # mlr3-only parameter, used in stratifySurv() at train and newstrata at predict
     "fit", # fit object is passed on to relax.glmnet()
     "check.args", # default TRUE is good for mlr3, no need to expose
     "type.gaussian", # not applicable for cox family
@@ -34,6 +35,7 @@ test_that("predict surv.glmnet", {
     "newx", # handled via mlr3
     "type", # handled via mlr3
     "newoffset", # handled by mlr3
+    "strata", # mlr3-only parameter, used in stratifySurv() at train and newstrata at predict
     "formula", # handled via mlr3
     "stype", # for distr prediction
     "ctype", # for distr prediction

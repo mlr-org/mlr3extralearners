@@ -49,6 +49,20 @@
 #' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied,
 #' effectively disabling the offset adjustment during prediction.
 #'
+#' @section Stratification:
+#' Parameter `strata` can be set to the name of one task column used as the
+#' stratification variable.
+#' During training, the column is removed from the data, converted to an integer,
+#' and is attached to the survival response via `glmnet::stratifySurv()`.
+#' During prediction, the same task column is passed as `newstrata` for survival
+#' distribution predictions (`distr`) in the `survfit` function.
+#' Constant interpolation via `survdistr` is used to align the survival probabilities
+#' to a common set of time points across all strata.
+#' Note that if an observation in the test set has a stratum not present in the
+#' training set, the prediction will fail, as the baseline hazard cannot be estimated
+#' for unseen strata.
+#' The rest of the prediction types do not depend on the strata column.
+#'
 #' @templateVar id surv.glmnet
 #' @template learner
 #'
@@ -109,7 +123,9 @@ LearnerSurvGlmnet = R6Class(
         stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
         ctype            = p_int(lower = 1L, upper = 2L, tags = "predict"), # how to handle ties
         # for using the offset during prediction
-        use_pred_offset  = p_lgl(init = TRUE, tags = "predict")
+        use_pred_offset  = p_lgl(init = TRUE, tags = "predict"),
+        strata           = p_uty(default = NULL, tags = c("train", "predict"),
+                                 custom_check = crate(function(x) checkmate::check_string(x, null.ok = TRUE)))
       )
 
       # TODO: Remove `cox.ties` initialization once glmnet >= 5.1 defaults to
@@ -123,7 +139,7 @@ LearnerSurvGlmnet = R6Class(
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         properties = c("weights", "selected_features", "offset"),
-        packages = c("mlr3extralearners", "glmnet"),
+        packages = c("mlr3extralearners", "glmnet", "survdistr"),
         man = "mlr3extralearners::mlr_learners_surv.glmnet",
         label = "Regularized Generalized Linear Model"
       )
@@ -152,9 +168,11 @@ LearnerSurvGlmnet = R6Class(
 
   private = list(
     .train = function(task) {
-      data = as.matrix(task$data(cols = task$feature_names))
-      target = task$truth()
       pv = self$param_set$get_values(tags = "train")
+      feature_names = setdiff(task$feature_names, pv$strata)
+      data = as.matrix(task$data(cols = feature_names))
+      target = glmnet_stratify_surv(task, pv)
+      pv = remove_named(pv, "strata")
       pv$family = "cox"
       pv$weights = private$.get_weights(task)
       pv = glmnet_set_offset(task, "train", pv)
@@ -170,10 +188,12 @@ LearnerSurvGlmnet = R6Class(
     },
 
     .predict = function(task) {
-      newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
-      pv$s = glmnet_get_lambda(self, pv)
+      newdata = as.matrix(remove_named(ordered_features(task, self), pv$strata))
+
+      pv[["s"]] = glmnet_get_lambda(self, pv)
       pv = glmnet_set_offset(task, "predict", pv)
+      pv = glmnet_set_newstrata(self, task, pv)
 
       # get survival matrix
       fit = invoke(
@@ -193,7 +213,7 @@ LearnerSurvGlmnet = R6Class(
         invoke(predict, self$native_model, newx = newdata, type = "link", .args = pv)
       )
 
-      mlr3proba::surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
+      glmnet_surv_return(fit, lp, pv$newstrata)
     }
   )
 )
