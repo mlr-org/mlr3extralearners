@@ -235,6 +235,10 @@ kapsner
     \item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
 Extracted from \code{model$evaluation_log}}
 
+    \item{\code{best_valid_scores}}{The validation scores for all metrics at the best iteration (\code{model$best_iter}), i.e. the iteration
+that is also reported via \verb{$internal_tuned_values}.
+Only tracked when \code{early_stopping_rounds} is set, otherwise an empty list.}
+
     \item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
 
     \item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
