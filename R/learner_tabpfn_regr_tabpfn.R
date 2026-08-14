@@ -14,6 +14,8 @@
 #'   The point predictions are stored as `$response` of the prediction object.
 #'
 #' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
+#'   It is only needed to mark numeric or logical features as categorical,
+#'   because `factor`, `ordered`, and `character` features are passed to `tabpfn` as categorical columns anyway.
 #'
 #' - `device` must be a string.
 #'   If set to `"auto"`, the behavior is the same as original.
@@ -97,7 +99,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
 
       super$initialize(
         id = "regr.tabpfn",
-        feature_types = c("integer", "numeric", "logical"),
+        feature_types = c("integer", "numeric", "logical", "character", "factor", "ordered"),
         predict_types = c("response", "quantiles"),
         param_set = ps,
         packages = "reticulate",
@@ -155,27 +157,20 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
         pars$random_state = reticulate::py_none()
       }
 
-      # x is an (n_samples, n_features) array
-      x = as.matrix(task$data(cols = task$feature_names))
-      # force NaN to make conversion work,
-      # otherwise reticulate will not convert NAs in logical and integer columns to
-      # np.nan properly
-      x[is.na(x)] = NaN
-      # y is an (n_samples,) array
-      y = task$truth()
-
       # convert categorical_features_indices to python indexing
       categ_indices = pars$categorical_features_indices
       if (!is.null(categ_indices)) {
-        if (max(categ_indices) > ncol(x)) {
+        if (max(categ_indices) > length(task$feature_names)) {
           stop("categorical_features_indices must not exceed number of features")
         }
         pars$categorical_features_indices = as.integer(categ_indices - 1)
       }
 
       regressor = mlr3misc::invoke(tabpfn$TabPFNRegressor, .args = pars)
-      x_py = reticulate::r_to_py(x)
-      y_py = reticulate::r_to_py(y)
+      # X is an (n_samples, n_features) pandas data frame
+      x_py = tabpfn_data(task)
+      # y is an (n_samples,) array
+      y_py = reticulate::r_to_py(task$truth())
       fitted = mlr3misc::invoke(regressor$fit, X = x_py, y = y_py)
 
       structure(list(fitted = fitted), class = "tabpfn_model")
@@ -186,10 +181,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
       reticulate::import("tabpfn")
       model = self$model$fitted
 
-      x = as.matrix(task$data(cols = task$feature_names))
-      # NA -> NaN, same reason as in $.train
-      x[is.na(x)] = NaN
-      x_py = reticulate::r_to_py(x)
+      x_py = tabpfn_data(task)
 
       if (self$predict_type == "response") {
         pars = self$param_set$get_values(tags = "predict")

@@ -11,6 +11,7 @@
 ## Other
 
 * New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm` Python package, the tabular foundation model from Google Research.
+* `classif.tabpfn` and `regr.tabpfn`: added support for the feature types `character`, `factor`, and `ordered`, which are passed to `tabpfn` as categorical columns and ordinally encoded there. Previously the features were converted to a numeric matrix, which ruled out categorical features even though `tabpfn` supports them.
 * `classif.tabpfn` and `regr.tabpfn`: updated the parameter sets to match `tabpfn` 8.1.0, adding `auto_scale_n_estimators`, `keep_cache_on_device`, `n_preprocessing_jobs`, `differentiable_input`, and `show_progress_bar` (plus `eval_metric` and `tuning_config` for classification), adding the `"batched"` option to `fit_mode`, and correcting the informational default of `n_estimators` to `8`.
 * Fixed a partial argument-matching bug in survival `glmnet` learners where `stype` could be matched to predict argument `s`, causing `s` to be overwritten by `stype = 1` or `2` and predictions to be over-regularized.
 

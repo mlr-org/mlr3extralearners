@@ -62,6 +62,8 @@ you then need to call \verb{$unmarshal()} to transform it into a useable state.
 but only supports the options \code{"mean"}, \code{"median"} and \code{"mode"}.
 The point predictions are stored as \verb{$response} of the prediction object.
 \item \code{categorical_feature_indices} uses R indexing instead of zero-based Python indexing.
+It is only needed to mark numeric or logical features as categorical,
+because \code{factor}, \code{ordered}, and \code{character} features are passed to \code{tabpfn} as categorical columns anyway.
 \item \code{device} must be a string.
 If set to \code{"auto"}, the behavior is the same as original.
 Otherwise, the string is passed as argument to \code{torch.device()} to create a device.
@@ -90,7 +92,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \itemize{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}, \dQuote{quantiles}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{reticulate}
 }
 }
