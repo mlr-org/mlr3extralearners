@@ -152,7 +152,7 @@ Remotes:
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba
 Config/Needs/website: rmarkdown
-Config/roxygen2/version: 8.0.0.9000
+Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Encoding: UTF-8
