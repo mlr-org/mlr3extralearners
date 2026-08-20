@@ -241,67 +241,67 @@ print(learner$model)
 #> 
 #> Class = 
 #> 
-#>         -0.9386 (normalized) V1
-#>  +      -2.1358 (normalized) V10
-#>  +      -2.9285 (normalized) V11
-#>  +      -2.599  (normalized) V12
-#>  +       1.6528 (normalized) V13
-#>  +       0.4696 (normalized) V14
-#>  +       0.0937 (normalized) V15
-#>  +      -0.0202 (normalized) V16
-#>  +       1.0633 (normalized) V17
-#>  +       2.5519 (normalized) V18
-#>  +      -1.0421 (normalized) V19
-#>  +       0.0871 (normalized) V2
-#>  +      -0.7338 (normalized) V20
-#>  +      -0.0498 (normalized) V21
-#>  +      -0.6923 (normalized) V22
-#>  +      -1.5657 (normalized) V23
-#>  +      -2.1421 (normalized) V24
-#>  +       1.7728 (normalized) V25
-#>  +       0.2234 (normalized) V26
-#>  +       0.2183 (normalized) V27
-#>  +      -0.6307 (normalized) V28
-#>  +      -0.1387 (normalized) V29
-#>  +       1.9799 (normalized) V3
-#>  +      -0.7675 (normalized) V30
-#>  +       3.0073 (normalized) V31
-#>  +       1.0407 (normalized) V32
-#>  +      -0.4555 (normalized) V33
-#>  +      -0.2981 (normalized) V34
-#>  +       1.352  (normalized) V35
-#>  +       1.9079 (normalized) V36
-#>  +       2.575  (normalized) V37
-#>  +      -0.7785 (normalized) V38
-#>  +      -0.7776 (normalized) V39
-#>  +      -1.306  (normalized) V4
-#>  +       1.0577 (normalized) V40
-#>  +       0.2184 (normalized) V41
-#>  +      -0.4305 (normalized) V42
-#>  +       0.2696 (normalized) V43
-#>  +      -3.8705 (normalized) V44
-#>  +      -3.3098 (normalized) V45
-#>  +      -1.9405 (normalized) V46
-#>  +       0.8357 (normalized) V47
-#>  +      -2.0982 (normalized) V48
-#>  +      -2.93   (normalized) V49
-#>  +      -1.2119 (normalized) V5
-#>  +       3.6823 (normalized) V50
-#>  +      -0.3201 (normalized) V51
-#>  +      -3.7536 (normalized) V52
-#>  +      -1.113  (normalized) V53
-#>  +      -0.3579 (normalized) V54
-#>  +       1.6179 (normalized) V55
-#>  +      -0.7894 (normalized) V56
-#>  +       1.3157 (normalized) V57
-#>  +      -0.8845 (normalized) V58
-#>  +      -2.0339 (normalized) V59
-#>  +       0.4641 (normalized) V6
-#>  +      -1.2953 (normalized) V60
-#>  +       2.6048 (normalized) V7
-#>  +       1.3785 (normalized) V8
-#>  +      -2.0049 (normalized) V9
-#>  +       2.71  
+#>         -0.9572 (normalized) V1
+#>  +      -2.481  (normalized) V10
+#>  +      -2.4301 (normalized) V11
+#>  +      -2.1728 (normalized) V12
+#>  +      -0.2264 (normalized) V13
+#>  +       0.4691 (normalized) V14
+#>  +       0.275  (normalized) V15
+#>  +       0.5441 (normalized) V16
+#>  +       1.0111 (normalized) V17
+#>  +       1.7569 (normalized) V18
+#>  +      -0.2998 (normalized) V19
+#>  +      -0.1917 (normalized) V2
+#>  +      -0.4801 (normalized) V20
+#>  +      -1.3433 (normalized) V21
+#>  +      -1.2631 (normalized) V22
+#>  +      -0.9774 (normalized) V23
+#>  +      -0.3352 (normalized) V24
+#>  +       1.3667 (normalized) V25
+#>  +       0.2203 (normalized) V26
+#>  +      -0.6006 (normalized) V27
+#>  +      -0.2026 (normalized) V28
+#>  +      -1.0437 (normalized) V29
+#>  +       1.5621 (normalized) V3
+#>  +      -0.0852 (normalized) V30
+#>  +       3.4429 (normalized) V31
+#>  +      -0.1944 (normalized) V32
+#>  +       1.2335 (normalized) V33
+#>  +       0.3405 (normalized) V34
+#>  +       0.8072 (normalized) V35
+#>  +       1.9078 (normalized) V36
+#>  +       0.6861 (normalized) V37
+#>  +       1.2135 (normalized) V38
+#>  +      -0.9832 (normalized) V39
+#>  +      -0.8766 (normalized) V4
+#>  +       0.3031 (normalized) V40
+#>  +      -0.9155 (normalized) V41
+#>  +       0.4552 (normalized) V42
+#>  +      -1.2296 (normalized) V43
+#>  +      -4.7623 (normalized) V44
+#>  +      -2.0459 (normalized) V45
+#>  +       0.5172 (normalized) V46
+#>  +       0.1547 (normalized) V47
+#>  +      -0.6736 (normalized) V48
+#>  +      -1.905  (normalized) V49
+#>  +      -1.1763 (normalized) V5
+#>  +       1.7311 (normalized) V50
+#>  +      -0.6954 (normalized) V51
+#>  +      -2.8916 (normalized) V52
+#>  +      -0.3283 (normalized) V53
+#>  +      -0.7355 (normalized) V54
+#>  +       1.6297 (normalized) V55
+#>  +      -1.0985 (normalized) V56
+#>  +      -1.1951 (normalized) V57
+#>  +      -0.8826 (normalized) V58
+#>  +      -1.9186 (normalized) V59
+#>  +      -0.2877 (normalized) V6
+#>  +       1.8667 (normalized) V60
+#>  +       3.0185 (normalized) V7
+#>  +       1.7622 (normalized) V8
+#>  +      -1.4478 (normalized) V9
+#>  +       2.75  
 
 
 # Make predictions for the test rows
@@ -310,5 +310,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.3623188 
 ```

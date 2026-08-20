@@ -237,21 +237,17 @@ print(learner$model)
 #> 
 #> Rule: 1
 #> IF
-#>  drat <= 4
+#>  wt > 2.26
 #> THEN
 #> 
 #> mpg = 
-#>  1.4213 * am 
-#>  - 0.011 * hp 
-#>  + 0.5155 * qsec 
-#>  - 3.7284 * wt 
-#>  + 23.4569 [16/24.446%]
+#>  -4.4606 * wt 
+#>  + 34.4326 [16/28.604%]
 #> 
 #> Rule: 2
 #> 
 #> mpg = 
-#>  -0.1237 * disp 
-#>  + 40.5068 [5/66.979%]
+#>  + 30.62 [5/100%]
 #> 
 #> 
 
@@ -262,5 +258,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 38.49934 
+#> 9.632234 
 ```

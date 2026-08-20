@@ -249,21 +249,17 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	drat &lt;= 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	wt &gt; 2.26</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	1.4213 * am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.011 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.5155 * qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.7284 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 23.4569 [16/24.446%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-4.4606 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 34.4326 [16/28.604%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.1237 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 40.5068 [5/66.979%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 30.62 [5/100%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -274,7 +270,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38.49934 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.632234 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
