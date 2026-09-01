@@ -161,7 +161,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # default estimator is nelson, hence nelson selected if NULL
       estimator = pv$estimator %??% "nelson"
       pv$estimator = NULL
-      cores = pv$cores %??% 1L # additionaly implemented by author
+      cores = pv$cores %??% 1L # additionally implemented by author
       pv$cores = NULL
 
       p = invoke(predict, object = self$model, newdata = newdata, .args = pv,

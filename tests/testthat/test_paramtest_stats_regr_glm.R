@@ -10,7 +10,7 @@ test_that("paramtest regr.glm train", {
     "subset", # handled by mlr3
     "method", # we always use glm()
     "control", # handled by glm.control
-    "contrasts", # causes lots of troubles just when setting the defaul
+    "contrasts", # causes lots of troubles just when setting the default
     "link", # parameter passed to the family
     "offset" # handled by mlr3
   )
