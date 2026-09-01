@@ -18,6 +18,10 @@
 
 - New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm`
   Python package, the tabular foundation model from Google Research.
+- New learner `regr.polynomial` fitting a polynomial regression with
+  [`stats::lm()`](https://rdrr.io/r/stats/lm.html) and
+  [`stats::poly()`](https://rdrr.io/r/stats/poly.html)
+  ([\#420](https://github.com/mlr-org/mlr3extralearners/issues/420)).
 - `classif.tabpfn` and `regr.tabpfn`: updated the parameter sets to
   match `tabpfn` 8.1.0, adding `auto_scale_n_estimators`,
   `keep_cache_on_device`, `n_preprocessing_jobs`,

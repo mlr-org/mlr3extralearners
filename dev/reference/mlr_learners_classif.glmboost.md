@@ -189,23 +189,21 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  0.02158609 
+#> Offset:  -0.07930252 
 #> 
 #> Coefficients: 
 #> 
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#> (Intercept)          V1         V11         V12         V13         V16 
-#>   1.3366400  -2.9027032  -0.2681436  -1.1161811  -0.2997112   0.5280508 
-#>         V20         V21         V23         V31         V36         V37 
-#>  -0.1813659  -0.5668616  -0.1399378   0.1734339   0.8636230   0.4235297 
-#>         V43         V44         V45         V48         V49          V5 
-#>  -0.4013705  -0.7569104  -0.9996491  -0.7816417  -2.8035605  -0.1993164 
-#>         V51         V52         V54         V57         V59 
-#>  -2.8963327 -14.0858434  -2.9514100   1.7392905 -18.6489687 
+#> (Intercept)         V11         V12         V16         V17         V20 
+#>   1.0262774  -1.1958095  -0.9235798   0.3459030   0.5100603  -0.1887224 
+#>         V21         V23         V31         V36          V4         V44 
+#>  -0.3207685  -0.3025697   0.5936906   0.9773102  -2.1724844  -1.1896514 
+#>         V45         V49         V52 
+#>  -0.5363869  -6.5332765 -20.9846410 
 #> attr(,"offset")
-#> [1] 0.02158609
+#> [1] -0.07930252
 #> 
 
 
@@ -215,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.2318841 
 ```

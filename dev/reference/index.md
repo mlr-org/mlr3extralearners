@@ -436,6 +436,9 @@
 - [`mlr_learners_regr.polyFit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polyFit.md)
   [`LearnerRegrPoly`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polyFit.md)
   : Polynomial Regression Learner
+- [`mlr_learners_regr.polynomial`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polynomial.md)
+  [`LearnerRegrPolynomial`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polynomial.md)
+  : Polynomial Regression Learner
 - [`mlr_learners_regr.priority_lasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.priority_lasso.md)
   [`LearnerRegrPriorityLasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.priority_lasso.md)
   : Regression Priority Lasso Learner

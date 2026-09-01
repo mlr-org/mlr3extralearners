@@ -66,6 +66,7 @@
 <div class="section level3">
 <h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
 <ul><li>New learners <code>classif.tabfm</code> and <code>regr.tabfm</code> interfacing the <code>tabfm</code> Python package, the tabular foundation model from Google Research.</li>
+<li>New learner <code>regr.polynomial</code> fitting a polynomial regression with <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">stats::lm()</a></code> and <code><a href="https://rdrr.io/r/stats/poly.html" class="external-link">stats::poly()</a></code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/420" class="external-link">#420</a>).</li>
 <li>
 <code>classif.tabpfn</code> and <code>regr.tabpfn</code>: updated the parameter sets to match <code>tabpfn</code> 8.1.0, adding <code>auto_scale_n_estimators</code>, <code>keep_cache_on_device</code>, <code>n_preprocessing_jobs</code>, <code>differentiable_input</code>, and <code>show_progress_bar</code> (plus <code>eval_metric</code> and <code>tuning_config</code> for classification), adding the <code>"batched"</code> option to <code>fit_mode</code>, and correcting the informational default of <code>n_estimators</code> to <code>8</code>.</li>
 <li>Fixed a partial argument-matching bug in survival <code>glmnet</code> learners where <code>stype</code> could be matched to predict argument <code>s</code>, causing <code>s</code> to be overwritten by <code>stype = 1</code> or <code>2</code> and predictions to be over-regularized.</li>

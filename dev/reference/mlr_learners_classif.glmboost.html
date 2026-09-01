@@ -206,23 +206,21 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  0.02158609 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.07930252 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          V1         V11         V12         V13         V16 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.3366400  -2.9027032  -0.2681436  -1.1161811  -0.2997112   0.5280508 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V20         V21         V23         V31         V36         V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.1813659  -0.5668616  -0.1399378   0.1734339   0.8636230   0.4235297 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V43         V44         V45         V48         V49          V5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.4013705  -0.7569104  -0.9996491  -0.7816417  -2.8035605  -0.1993164 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V51         V52         V54         V57         V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -2.8963327 -14.0858434  -2.9514100   1.7392905 -18.6489687 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)         V11         V12         V16         V17         V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.0262774  -1.1958095  -0.9235798   0.3459030   0.5100603  -0.1887224 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V21         V23         V31         V36          V4         V44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.3207685  -0.3025697   0.5936906   0.9773102  -2.1724844  -1.1896514 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V45         V49         V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.5363869  -6.5332765 -20.9846410 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.02158609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.07930252</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -232,7 +230,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

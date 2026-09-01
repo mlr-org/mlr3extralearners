@@ -304,13 +304,13 @@ print(learner$model)
 #>                               Family: surv
 #>                       Splitting rule: logrank *random*
 #>        Number of random split points: 10
-#>                           (OOB) CRPS: 14.90762815
-#>              (OOB) standardized CRPS: 0.08422389
-#>    (OOB) Requested performance error: 0.14961853
+#>                           (OOB) CRPS: 14.87906606
+#>              (OOB) standardized CRPS: 0.08406252
+#>    (OOB) Requested performance error: 0.14797255
 #> 
 print(learner$importance())
 #>   revascdays       revasc          age        sysbp          los     stchange 
-#> 0.4464947545 0.3347880156 0.1017551724 0.0949489713 0.0396289841 0.0009562275 
+#> 0.4472417289 0.3348699774 0.1089983659 0.0974955001 0.0413040261 0.0007961185 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)

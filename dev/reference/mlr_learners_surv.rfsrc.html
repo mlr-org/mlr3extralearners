@@ -277,13 +277,13 @@ for feature selection purposes and not when prediction is required.</p><div clas
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Family: surv</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       Splitting rule: logrank *random*</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Number of random split points: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                           (OOB) CRPS: 14.90762815</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              (OOB) standardized CRPS: 0.08422389</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.14961853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                           (OOB) CRPS: 14.87906606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              (OOB) standardized CRPS: 0.08406252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.14797255</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   revascdays       revasc          age        sysbp          los     stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4464947545 0.3347880156 0.1017551724 0.0949489713 0.0396289841 0.0009562275 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4472417289 0.3348699774 0.1089983659 0.0974955001 0.0413040261 0.0007961185 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
