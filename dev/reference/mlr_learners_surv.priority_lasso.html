@@ -265,14 +265,14 @@ It defaults to <code>FALSE</code> for backward compatibility.</p>
 <span class="r-in"><span><span class="va">predictions</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank        lp     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1 180.0  FALSE 0.4873027 0.4873027 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        6   5.0  FALSE 1.4541773 1.4541773 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        8   2.0  FALSE 1.1603463 1.1603463 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---       ---       ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE 3.9088136 3.9088136 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      996  69.0   TRUE 3.9357878 3.9357878 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1000  15.0  FALSE 3.7133697 3.7133697 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank        lp        distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1 180.0  FALSE 0.4873027 0.4873027 0.998684....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        6   5.0  FALSE 1.4541773 1.4541773 0.996544....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8   2.0  FALSE 1.1603463 1.1603463 0.997423....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---       ---       ---          ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE 3.9088136 3.9088136 0.960502....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      996  69.0   TRUE 3.9357878 3.9357878 0.959444....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     1000  15.0  FALSE 3.7133697 3.7133697 0.967398....</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>

@@ -18,6 +18,11 @@
 
 - New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm`
   Python package, the tabular foundation model from Google Research.
+- New learner `classif.opls` fitting orthogonal partial least squares
+  discriminant analysis with
+  [`ropls::opls()`](https://rdrr.io/pkg/ropls/man/opls.html) from the
+  Bioconductor package `ropls`
+  ([\#268](https://github.com/mlr-org/mlr3extralearners/issues/268)).
 - New learner `regr.polynomial` fitting a polynomial regression with
   [`stats::lm()`](https://rdrr.io/r/stats/lm.html) and
   [`stats::poly()`](https://rdrr.io/r/stats/poly.html)

@@ -220,14 +220,14 @@ Calculated using <code>predict.flexsurvreg(type = "survival", ...)</code>.</p></
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">55</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status     crank        lp response     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        7  166   TRUE -5.887394 -5.887394 331.9114 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        8  170   TRUE -5.946115 -5.946115 351.9852 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       11  707   TRUE -5.805575 -5.805575 305.8360 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---       ---       ---      ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      158  185  FALSE -5.909842 -5.909842 339.4465 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      160  183   TRUE -5.833310 -5.833310 314.4371 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      161  211  FALSE -6.173711 -6.173711 428.0021 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status     crank        lp response        distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        7  166   TRUE -5.887394 -5.887394 331.9114 0.996479....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8  170   TRUE -5.946115 -5.946115 351.9852 0.996742....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11  707   TRUE -5.805575 -5.805575 305.8360 0.996079....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---       ---       ---      ---          ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      158  185  FALSE -5.909842 -5.909842 339.4465 0.996582....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      160  183   TRUE -5.833310 -5.833310 314.4371 0.996219....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      161  211  FALSE -6.173711 -6.173711 428.0021 0.999600....</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>

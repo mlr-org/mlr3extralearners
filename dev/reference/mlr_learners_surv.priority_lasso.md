@@ -266,14 +266,14 @@ predictions = learner$predict(task, row_ids = ids$test)
 predictions
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids  time status     crank        lp     distr
-#>        1 180.0  FALSE 0.4873027 0.4873027 <list[1]>
-#>        6   5.0  FALSE 1.4541773 1.4541773 <list[1]>
-#>        8   2.0  FALSE 1.1603463 1.1603463 <list[1]>
-#>      ---   ---    ---       ---       ---       ---
-#>      995   0.5   TRUE 3.9088136 3.9088136 <list[1]>
-#>      996  69.0   TRUE 3.9357878 3.9357878 <list[1]>
-#>     1000  15.0  FALSE 3.7133697 3.7133697 <list[1]>
+#>  row_ids  time status     crank        lp        distr
+#>        1 180.0  FALSE 0.4873027 0.4873027 0.998684....
+#>        6   5.0  FALSE 1.4541773 1.4541773 0.996544....
+#>        8   2.0  FALSE 1.1603463 1.1603463 0.997423....
+#>      ---   ---    ---       ---       ---          ---
+#>      995   0.5   TRUE 3.9088136 3.9088136 0.960502....
+#>      996  69.0   TRUE 3.9357878 3.9357878 0.959444....
+#>     1000  15.0  FALSE 3.7133697 3.7133697 0.967398....
 
 # Score the predictions
 predictions$score()

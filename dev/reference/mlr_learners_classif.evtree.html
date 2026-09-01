@@ -172,15 +172,21 @@ are scaled internally to sum to 100.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V12 &lt; 0.2325</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V21 &lt; 0.7974: R (n = 45, err = 4.4%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V21 &gt;= 0.7974: M (n = 16, err = 18.8%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V12 &gt;= 0.2325</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V52 &lt; 0.0069: R (n = 15, err = 26.7%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [7] V52 &gt;= 0.0069: M (n = 63, err = 12.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V52 &lt; 0.021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V6 &lt; 0.1342</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] V11 &lt; 0.1786: R (n = 43, err = 7.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] V11 &gt;= 0.1786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] V17 &lt; 0.6988: M (n = 33, err = 6.1%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [7] V17 &gt;= 0.6988: R (n = 10, err = 30.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] V6 &gt;= 0.1342</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] V36 &lt; 0.4181: M (n = 19, err = 15.8%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [10] V36 &gt;= 0.4181: R (n = 10, err = 10.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [11] V52 &gt;= 0.021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [12] V49 &lt; 0.0342: R (n = 7, err = 14.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [13] V49 &gt;= 0.0342: M (n = 17, err = 0.0%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -189,7 +195,7 @@ are scaled internally to sum to 100.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3623188 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

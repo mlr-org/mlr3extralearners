@@ -183,6 +183,9 @@
 - [`mlr_learners_classif.nnTrain`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.nnTrain.md)
   [`LearnerClassifNNTrain`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.nnTrain.md)
   : Classification Neural Network Learner
+- [`mlr_learners_classif.opls`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.opls.md)
+  [`LearnerClassifOPLS`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.opls.md)
+  : OPLS-DA Classification Learner
 - [`mlr_learners_classif.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
   [`LearnerClassifPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
   : Classification L1 and L2 Penalized Learner
