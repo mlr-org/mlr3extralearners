@@ -1065,5 +1065,15 @@ bibentries = c(
     pages = "3322--3335",
     year = "2015",
     doi = "10.1021/acs.jproteome.5b00354"
+  ),
+  hastie2009elements = bibentry("book",
+    title = "The Elements of Statistical Learning",
+    author = "Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome",
+    year = "2009",
+    edition = "2",
+    publisher = "Springer",
+    address = "New York",
+    series = "Springer Series in Statistics",
+    doi = "10.1007/978-0-387-84858-7"
   )
 ) # nolint end
