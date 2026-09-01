@@ -23,7 +23,7 @@ test_that("#353", {
 test_that("early stopping works", {
   learner = lrn("classif.catboost", iterations = 1000, eval_metric = "Logloss", early_stopping_rounds = 10)
   learner$validate = 0.2
-  task = tsk("pima")
+  task = tsk("sonar")
 
   learner$train(task)
 

@@ -157,7 +157,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       # thus we have to use getFromNamespace() to avoid `fastai::`
 
       pars = self$param_set$get_values(tags = "train")
-      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "pydicom", "kornia"))
+      # fastai (<= 2.8.7) is incompatible with fastcore 2.0 but does not declare an upper bound
+      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "fastcore<2.0.0", "pydicom", "kornia"))
       torch = reticulate::import("torch")
       torch$set_num_threads(as.integer(pars$num_workers))
 
@@ -338,7 +339,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "pydicom", "kornia"))
+      # fastai (<= 2.8.7) is incompatible with fastcore 2.0 but does not declare an upper bound
+      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "fastcore<2.0.0", "pydicom", "kornia"))
       torch = reticulate::import("torch")
       torch$set_num_threads(as.integer(pars$num_workers))
 

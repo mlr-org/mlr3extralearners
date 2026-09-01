@@ -26,6 +26,8 @@
 #'
 #' - `inference_config` is currently not supported.
 #'
+#' - `n_jobs` is deprecated upstream in favor of `n_preprocessing_jobs` and is only kept for backward compatibility.
+#'
 #' - `random_state` accepts either an integer or the special value `"None"`
 #'   which corresponds to `None` in Python.
 #'   Following the original Python implementation, the default `random_state` is `0`.
@@ -49,7 +51,8 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
           default = "mean",
           tags = "predict"
         ),
-        n_estimators = p_int(lower = 1L, default = 4L, tags = "train"),
+        n_estimators = p_int(lower = 1L, default = 8L, tags = "train"),
+        auto_scale_n_estimators = p_lgl(default = TRUE, tags = "train"),
         categorical_features_indices = p_uty(tags = "train", custom_check = function(x) {
           # R indexing is used
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
@@ -73,7 +76,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
           tags = "train"
         ),
         fit_mode = p_fct(
-          c("low_memory", "fit_preprocessors", "fit_with_cache"),
+          c("low_memory", "fit_preprocessors", "fit_with_cache", "batched"),
           default = "fit_preprocessors",
           tags = "train"
         ),
@@ -84,8 +87,12 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
             "Invalid value for memory_saving_mode. Must be 'auto', a TRUE/FALSE value, or a number > 0."
           }
         }),
+        keep_cache_on_device = p_lgl(default = TRUE, tags = "train"),
         random_state = p_int(default = 0L, special_vals = list("None"), tags = "train"),
-        n_jobs = p_int(lower = 1L, init = 1L, special_vals = list(-1L), tags = "train")
+        n_jobs = p_int(lower = 1L, special_vals = list(-1L), tags = "train"),
+        n_preprocessing_jobs = p_int(lower = 1L, default = 1L, special_vals = list(-1L), tags = "train"),
+        differentiable_input = p_lgl(default = FALSE, tags = "train"),
+        show_progress_bar = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(

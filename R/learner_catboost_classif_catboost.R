@@ -87,7 +87,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         leaf_estimation_iterations = p_int(lower = 1L, upper = Inf, tags = "train"),
         leaf_estimation_backtracking = p_fct(levels = c("No", "AnyImprovement", "Armijo"),
           default = "AnyImprovement", tags = "train"),
-        # name missin
+        # name missing
         fold_len_multiplier = p_dbl(lower = 1.001, upper = Inf, default = 2, tags = "train"),
         approx_on_full_history = p_lgl(default = TRUE, tags = "train"),
         class_weights = p_uty(tags = "train"),

@@ -156,7 +156,7 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
       pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
 
-      cores = pv$cores # additionaly implemented by author
+      cores = pv$cores # additionally implemented by author
       pv$cores = NULL
       pv$case.wt = private$.get_weights(task)
 
@@ -177,7 +177,7 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
         stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
       }
 
-      cores = pv$cores # additionaly implemented by author
+      cores = pv$cores # additionally implemented by author
       pv$cores = NULL
 
       prediction = invoke(

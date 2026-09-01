@@ -3,7 +3,7 @@
 #' It is not necessary to install any Python package manually in advance or specify a Python environment
 #' via `reticulate::use_python()`, `reticulate::use_virtualenv()`, `reticulate::use_condaenv()`,
 #' or `reticulate::use_miniconda()`.
-#' By calling `$train()` or `$predict()`, the required Python packages (`tapfn`, `torch`, etc.) will be installed
+#' By calling `$train()` or `$predict()`, the required Python packages (`tabpfn`, `torch`, etc.) will be installed
 #' automatically, if not already.
 #' Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
 #' unless an existing environment (e.g., `"r-reticulate"`) in reticulate's
@@ -15,6 +15,15 @@
 #' and specify the environment via `reticulate::use_*()` before calling `$train()` or `$predict()`.
 #' Note that the GPU version of PyTorch cannot be loaded by `reticulate::use_condaenv()` from a conda environment.
 #' To use a conda environment, please install the CPU version of PyTorch.
+#'
+#' @section License acceptance:
+#' Since `tabpfn` version 8, the default model version (v3) requires a one-time acceptance of the Prior Labs
+#' license before the model weights can be downloaded.
+#' On the first call to `$train()` or `$predict()`, `tabpfn` opens a browser window to log in and accept the
+#' license, and caches the resulting token for subsequent calls.
+#' In non-interactive environments (e.g., on a server or in continuous integration), this browser flow fails.
+#' Instead, log in at <https://ux.priorlabs.ai>, accept the license on the licenses tab, copy your API key from
+#' <https://ux.priorlabs.ai/account>, and set it as the environment variable `TABPFN_TOKEN` before training.
 #'
 #' @section Saving a Learner:
 #' In order to save a `<%= class %>` for later usage,

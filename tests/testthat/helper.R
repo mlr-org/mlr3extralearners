@@ -46,22 +46,70 @@ s4_helper = function(x) {
   return(f())
 }
 
-skip_if_not_installed_py = function(...) {
-  pkgs = c(...)
-  # We skip the tests if the python packages are not installed and we are not in GHA
-  # Because if we are in GHA, we want to ensure that the installation of the python packages
-  # is working
-  available = map_lgl(pkgs, reticulate::py_module_available)
+# Python-based (reticulate) learners are tested in pinned virtualenvs, one per
+# requirement group, see R/install_python_test_envs.R.
+# The environments are activated via RETICULATE_PYTHON in fresh callr sessions.
+# The callr isolation is mandatory for two reasons:
+# * reticulate binds one python interpreter per R process, so groups with
+#   conflicting requirements cannot share a process.
+# * python torch cannot share a process with the libtorch bundled by the R torch
+#   package (e.g. loaded by surv.survdnn tests in the main test process).
+skip_if_no_python_env = function(group) {
+  envname = paste0("mlr3extralearners-", group)
   in_gha = Sys.getenv("GITHUB_ACTIONS") == "true"
   only_suggests = Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "FALSE") == "TRUE"
 
   # We:
-  # * Don't want to run the tests locally if they are not available, as this will mean
-  #   other contributors always have to download the python packages
-  # * Want to run the tests in GHA. If installation fails there, we want to notice, except
-  # * We test only suggested packages in GHA
-  if (!all(available) && (!in_gha || only_suggests)) {
-    skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
+  # * Skip locally if the environment is missing, so that contributors are not
+  #   forced to download the python environments.
+  # * Never skip in GHA (except in depends-only checks), so that a broken
+  #   environment installation is noticed.
+  if (!reticulate::virtualenv_exists(envname) && (!in_gha || only_suggests)) {
+    skip(sprintf(
+      "Python environment '%s' not available. Create it with mlr3extralearners:::install_python_test_envs(\"%s\").",
+      envname, group))
   }
   invisible()
+}
+
+# Runs fn in a fresh callr session with the pinned virtualenv of the group
+# activated, the usual test packages attached, the mlr3 test helpers sourced,
+# and a mirai daemon set up for encapsulation.
+# Returns TRUE, so tests wrap calls as expect_true(run_py_test(group, fn)).
+run_py_test = function(group, fn) {
+  envname = paste0("mlr3extralearners-", group)
+  if (!reticulate::virtualenv_exists(envname)) {
+    stop(sprintf(
+      "Python environment '%s' not found. Create it with mlr3extralearners:::install_python_test_envs(\"%s\").",
+      envname, group))
+  }
+  python = reticulate::virtualenv_python(envname)
+
+  callr::r(function(python, fn) {
+    # keep the parent's python configuration out of the child session
+    Sys.unsetenv(c("VIRTUAL_ENV", "VIRTUAL_ENV_PROMPT", "PYTHONPATH", "R_SESSION_INITIALIZED"))
+    Sys.setenv(RETICULATE_PYTHON = python)
+
+    library(mlr3)
+    library(mlr3extralearners)
+    library(testthat)
+    library(checkmate)
+    library(paradox)
+    if (requireNamespace("mlr3proba", quietly = TRUE)) {
+      library(mlr3proba)
+    }
+
+    helper_files = list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE)
+    lapply(helper_files, source)
+
+    mirai::daemons(1, .compute = "mlr3_encapsulation")
+    on.exit(mirai::daemons(0, .compute = "mlr3_encapsulation"), add = TRUE)
+
+    mirai::everywhere({
+      Sys.setenv(RETICULATE_PYTHON = python)
+    }, python = python, .compute = "mlr3_encapsulation")
+
+    fn()
+    TRUE
+  }, args = list(python = python, fn = fn))
 }

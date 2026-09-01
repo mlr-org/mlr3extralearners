@@ -3,20 +3,41 @@ skip_if_not_installed("prioritylasso")
 
 test_that("surv.priority_lasso train", {
   learner = lrn("surv.priority_lasso")
-  fun = list(prioritylasso::prioritylasso, glmnet::cv.glmnet, glmnet::glmnet.control, glmnet::glmnet)
+  fun = list(prioritylasso::prioritylasso, glmnet::cv.glmnet, glmnet::glmnet)
   exclude = c(
-    "x", # handled internally
-    "y", # handled internally,
     "X", # handled internally
-    "Y", # handled internally,
-    "weights", # handled internally,
-    "family", # is "cox" for survival data
-    "type.measure", # is "deviance" for continuous data
-    "itrace", # supported via param trace.it
-    "factory", # only used in scripts, no effect within mlr3
+    "Y", # handled internally
+    "type.measure", # set to "deviance" internally
+    "weights", # handled internally
+    "family", # set to "cox" internally
+    "mcontrol", # this is tricky with the "missings" property as the learner still fails
     "scale.y", # only applies to regression
-    "mcontrol" # this is tricky with the "missings" property as the learner still fails
-    # unless parameters are set correctly
+    "x", # handled internally
+    "y", # handled internally
+    "offset", # not supported
+    "alignment", # not supported
+    "keep", # not supported
+    "parallel", # not supported
+    "gamma", # not supported
+    "relax", # not supported
+    "control", # not supported
+    "alpha", # only lasso by default
+    "nlambda", # not supported
+    "lambda.min.ratio", # not supported
+    "intercept", # not supported
+    "thresh", # not supported
+    "dfmax", # not supporter
+    "pmax", # not supported
+    "exclude", # not supported
+    "penalty.factor", # not supported
+    "lower.limits", # not supported
+    "upper.limits", # not supported
+    "maxit", # not supported
+    "type.logistic", # not applicable to survival
+    "standardize.response", # not supported
+    "type.multinomial", # not applicable to survival
+    "type.gaussian", # not applicable to survival
+    "adaptive.order" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -30,11 +51,7 @@ test_that("surv.priority_lasso predict", {
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled internally
-    "lambda.type", # predict.glmnet
-    "predict.gamma", # is passed as gamma to predict.glmnet
-    "s", # predict.glmnet
-    "handle.missingtestdata" # we don't support missing data both in train
-    # (`mcontrol` parameter) therefore also not during prediction
+    "handle.missingtestdata" # not supported
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
