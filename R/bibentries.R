@@ -1054,6 +1054,18 @@ bibentries = c(
     year = "2021",
     doi = "10.1093/BIB/BBAA167"
   ),
+  thevenot2015analysis = bibentry("article",
+    title = paste("Analysis of the Human Adult Urinary Metabolome Variations with Age, Body Mass Index,",
+      "and Gender by Implementing a Comprehensive Workflow for Univariate and OPLS Statistical Analyses"),
+    author = paste("Th\u00e9venot, Etienne A. and Roux, Aur\u00e9lie and Xu, Ying and Ezan, Eric and",
+      "Junot, Christophe"),
+    journal = "Journal of Proteome Research",
+    volume = "14",
+    number = "8",
+    pages = "3322--3335",
+    year = "2015",
+    doi = "10.1021/acs.jproteome.5b00354"
+  ),
   hastie2009elements = bibentry("book",
     title = "The Elements of Statistical Learning",
     author = "Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome",
