@@ -1,4 +1,6 @@
-bibentries = c( # nolint start
+# fmt: skip
+# nolint start
+bibentries = c(
   breiman_2001 = bibentry("article",
     title       = "Random Forests",
     author      = "Breiman, Leo",
@@ -832,6 +834,13 @@ bibentries = c( # nolint start
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
   ),
+
+  google2026tabfm = bibentry("misc",
+    title = "TabFM: Tabular Foundation Models",
+    author = person("Google Research"),
+    year = "2026",
+    URL = "https://github.com/google-research/tabfm"
+  ),
   adabag2013 = bibentry("article",
     title = "adabag: An R Package for Classification with Boosting and Bagging",
     volume = "54",
@@ -1034,5 +1043,15 @@ bibentries = c( # nolint start
     series = "Springer Series in Information Sciences",
     volume = "30",
     isbn = "978-3540967120"
+  ),
+  herrmann_2021 = bibentry("article",
+    title = "Large-scale benchmark study of survival prediction methods using multi-omics data",
+    author = "Herrmann, M. and Probst, P. and Hornung, R. and Jurinovic, V. and Boulesteix, A. L.",
+    journal = "Briefings in Bioinformatics",
+    volume = "22",
+    number = "3",
+    pages = "1--15",
+    year = "2021",
+    doi = "10.1093/BIB/BBAA167"
   )
 ) # nolint end
