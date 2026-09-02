@@ -84,6 +84,7 @@ Suggests:
     future,
     gbm (>= 2.2.3),
     glmnet (>= 5.0),
+    grf (>= 2.0.0),
     GPfit (>= 1.0-9),
     h2o (>= 3.44.0.3),
     jsonlite,
