@@ -47,6 +47,9 @@
 - [`mlr_learners_classif.aorsf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.aorsf.md)
   [`LearnerClassifObliqueRandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.aorsf.md)
   : Oblique Random Forest Classifier
+- [`mlr_learners_classif.bam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bam.md)
+  [`LearnerClassifBam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bam.md)
+  : Classification Fast Generalized Additive Model Learner
 - [`mlr_learners_classif.bart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bart.md)
   [`LearnerClassifBart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bart.md)
   : Classification BART (Bayesian Additive Regression Trees) Learner
@@ -273,6 +276,9 @@
 - [`mlr_learners_regr.aorsf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.aorsf.md)
   [`LearnerRegrObliqueRandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.aorsf.md)
   : Oblique Random Forest Regressor
+- [`mlr_learners_regr.bam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bam.md)
+  [`LearnerRegrBam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bam.md)
+  : Regression Fast Generalized Additive Model Learner
 - [`mlr_learners_regr.bart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
   [`LearnerRegrBart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
   : Regression BART (Bayesian Additive Regression Trees) Learner

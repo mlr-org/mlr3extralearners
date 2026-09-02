@@ -18,15 +18,19 @@
 
 - New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm`
   Python package, the tabular foundation model from Google Research.
-- New learner `regr.grf` fitting a generalized random forest with
-  [`grf::regression_forest()`](https://rdrr.io/pkg/grf/man/regression_forest.html),
-  supporting `se` predictions, observation weights, and missing feature
-  values.
+- New learners `classif.bam` and `regr.bam` fitting fast generalized
+  additive models for large datasets with
+  [`mgcv::bam()`](https://rdrr.io/pkg/mgcv/man/bam.html)
+  ([\#355](https://github.com/mlr-org/mlr3extralearners/issues/355)).
 - New learner `classif.opls` fitting orthogonal partial least squares
   discriminant analysis with
   [`ropls::opls()`](https://rdrr.io/pkg/ropls/man/opls.html) from the
   Bioconductor package `ropls`
   ([\#268](https://github.com/mlr-org/mlr3extralearners/issues/268)).
+- New learner `regr.grf` fitting a generalized random forest with
+  [`grf::regression_forest()`](https://rdrr.io/pkg/grf/man/regression_forest.html),
+  supporting `se` predictions, observation weights, and missing feature
+  values.
 - New learner `regr.polynomial` fitting a polynomial regression with
   [`stats::lm()`](https://rdrr.io/r/stats/lm.html) and
   [`stats::poly()`](https://rdrr.io/r/stats/poly.html)
