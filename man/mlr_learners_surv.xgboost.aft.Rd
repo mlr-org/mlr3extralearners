@@ -195,6 +195,11 @@ bblodfon
     \item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
 Extracted from \code{model$evaluation_log}}
 
+    \item{\code{best_valid_scores}}{The validation scores of the best boosting round, extracted from \code{model$evaluation_log}.
+Because XGBoost also predicts with the best \code{nrounds}, these are identical to
+\verb{$internal_valid_scores} whenever early stopping is activated.
+If early stopping is not activated, no best round is tracked and this is an empty list.}
+
     \item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
 
     \item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL},
