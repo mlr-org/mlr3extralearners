@@ -1,8 +1,17 @@
-# Regression Fast Nearest Neighbor Search Learner
+# Generalized Random Forest Regression Learner
 
-Fast Nearest Neighbor Regression. Calls
-[`FNN::knn.reg()`](https://rdrr.io/pkg/FNN/man/knn.reg.html) from
-[FNN](https://CRAN.R-project.org/package=FNN).
+Generalized random forest for regression. Calls
+[`grf::regression_forest()`](https://rdrr.io/pkg/grf/man/regression_forest.html)
+from [grf](https://CRAN.R-project.org/package=grf).
+
+## Custom mlr3 parameters
+
+- `sample.weights` is not exposed as a hyperparameter. Observation
+  weights are taken from the task instead, see the `weights` property.
+
+- `estimate.variance` is not exposed as a hyperparameter. It is enabled
+  automatically when the `predict_type` is `"se"`, which requires
+  `ci.group.size` to be at least `2`.
 
 ## Dictionary
 
@@ -10,34 +19,53 @@ This [Learner](https://mlr3.mlr-org.com/reference/Learner.html) can be
 instantiated via
 [lrn()](https://mlr3.mlr-org.com/reference/mlr_sugar.html):
 
-    lrn("regr.fnn")
+    lrn("regr.grf")
 
 ## Meta Information
 
 - Task type: “regr”
 
-- Predict Types: “response”
+- Predict Types: “response”, “se”
 
 - Feature Types: “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
   [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
-  [FNN](https://CRAN.R-project.org/package=FNN)
+  [grf](https://CRAN.R-project.org/package=grf)
 
 ## Parameters
 
-|           |           |         |                            |                  |
-|-----------|-----------|---------|----------------------------|------------------|
-| Id        | Type      | Default | Levels                     | Range            |
-| k         | integer   | 1       |                            | \\\[1, \infty)\\ |
-| algorithm | character | kd_tree | kd_tree, cover_tree, brute | \-               |
+|  |  |  |  |  |
+|----|----|----|----|----|
+| Id | Type | Default | Levels | Range |
+| num.trees | integer | 2000 |  | \\\[1, \infty)\\ |
+| clusters | untyped | NULL |  | \- |
+| equalize.cluster.weights | logical | FALSE | TRUE, FALSE | \- |
+| sample.fraction | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| mtry | integer | \- |  | \\\[1, \infty)\\ |
+| min.node.size | integer | 5 |  | \\\[1, \infty)\\ |
+| honesty | logical | TRUE | TRUE, FALSE | \- |
+| honesty.fraction | numeric | 0.5 |  | \\\[0, 1\]\\ |
+| honesty.prune.leaves | logical | TRUE | TRUE, FALSE | \- |
+| alpha | numeric | 0.05 |  | \\\[0, 0.25\]\\ |
+| imbalance.penalty | numeric | 0 |  | \\\[0, \infty)\\ |
+| ci.group.size | integer | 2 |  | \\\[1, \infty)\\ |
+| tune.parameters | untyped | "none" |  | \- |
+| tune.num.trees | integer | 50 |  | \\\[1, \infty)\\ |
+| tune.num.reps | integer | 100 |  | \\\[1, \infty)\\ |
+| tune.num.draws | integer | 1000 |  | \\\[1, \infty)\\ |
+| compute.oob.predictions | logical | TRUE | TRUE, FALSE | \- |
+| seed | integer | \- |  | \\(-\infty, \infty)\\ |
+| linear.correction.variables | untyped | NULL |  | \- |
+| ll.lambda | numeric | NULL |  | \\\[0, \infty)\\ |
+| ll.weight.penalty | logical | FALSE | TRUE, FALSE | \- |
+| num.threads | integer | \- |  | \\\[1, \infty)\\ |
 
 ## References
 
-Boltz, Sylvain, Debreuve, Eric, Barlaud, Michel (2007). “kNN-based
-high-dimensional Kullback-Leibler distance for tracking.” In *Eighth
-International Workshop on Image Analysis for Multimedia Interactive
-Services (WIAMIS'07)*, 16–16. IEEE.
+Athey, Susan, Tibshirani, Julie, Wager, Stefan (2019). “Generalized
+random forests.” *The Annals of Statistics*, **47**(2), 1148–1178.
+[doi:10.1214/18-AOS1709](https://doi.org/10.1214/18-AOS1709) .
 
 ## See also
 
@@ -68,21 +96,21 @@ Services (WIAMIS'07)*, 16–16. IEEE.
 
 ## Author
 
-be-marc
+jesuisantoine
 
 ## Super classes
 
 [`mlr3::Learner`](https://mlr3.mlr-org.com/reference/Learner.html) -\>
 [`mlr3::LearnerRegr`](https://mlr3.mlr-org.com/reference/LearnerRegr.html)
--\> `LearnerRegrFNN`
+-\> `LearnerRegrGRF`
 
 ## Methods
 
 ### Public methods
 
-- [`LearnerRegrFNN$new()`](#method-LearnerRegrFNN-initialize)
+- [`LearnerRegrGRF$new()`](#method-LearnerRegrGRF-initialize)
 
-- [`LearnerRegrFNN$clone()`](#method-LearnerRegrFNN-clone)
+- [`LearnerRegrGRF$clone()`](#method-LearnerRegrGRF-clone)
 
 Inherited methods
 
@@ -101,24 +129,24 @@ Inherited methods
 
 ------------------------------------------------------------------------
 
-### `LearnerRegrFNN$new()`
+### `LearnerRegrGRF$new()`
 
 Creates a new instance of this
 [R6](https://r6.r-lib.org/reference/R6Class.html) class.
 
 #### Usage
 
-    LearnerRegrFNN$new()
+    LearnerRegrGRF$new()
 
 ------------------------------------------------------------------------
 
-### `LearnerRegrFNN$clone()`
+### `LearnerRegrGRF$clone()`
 
 The objects of this class are cloneable with this method.
 
 #### Usage
 
-    LearnerRegrFNN$clone(deep = FALSE)
+    LearnerRegrGRF$clone(deep = FALSE)
 
 #### Arguments
 
@@ -130,18 +158,18 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("regr.fnn")
+learner = lrn("regr.grf")
 print(learner)
 #> 
-#> ── <LearnerRegrFNN> (regr.fnn): Fast Nearest Neighbor ──────────────────────────
+#> ── <LearnerRegrGRF> (regr.grf): Generalized Random Forest ──────────────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3, mlr3extralearners, and FNN
-#> • Predict Types: [response]
+#> • Packages: mlr3, mlr3extralearners, and grf
+#> • Predict Types: [response] and se
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
-#> • Properties:
-#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
+#> • Properties: missings and weights
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -153,37 +181,12 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> $train
-#>        am  carb   cyl  disp  drat  gear    hp  qsec    vs    wt
-#>     <num> <num> <num> <num> <num> <num> <num> <num> <num> <num>
-#>  1:     0     1     6 258.0  3.08     3   110 19.44     1 3.215
-#>  2:     0     2     8 360.0  3.15     3   175 17.02     0 3.440
-#>  3:     0     1     6 225.0  2.76     3   105 20.22     1 3.460
-#>  4:     0     4     8 360.0  3.21     3   245 15.84     0 3.570
-#>  5:     0     4     6 167.6  3.92     4   123 18.30     1 3.440
-#>  6:     0     4     6 167.6  3.92     4   123 18.90     1 3.440
-#>  7:     0     3     8 275.8  3.07     3   180 17.60     0 3.730
-#>  8:     0     4     8 472.0  2.93     3   205 17.98     0 5.250
-#>  9:     0     4     8 440.0  3.23     3   230 17.42     0 5.345
-#> 10:     1     1     4  78.7  4.08     4    66 19.47     1 2.200
-#> 11:     1     2     4  75.7  4.93     4    52 18.52     1 1.615
-#> 12:     1     1     4  71.1  4.22     4    65 19.90     1 1.835
-#> 13:     0     1     4 120.1  3.70     3    97 20.01     1 2.465
-#> 14:     0     2     8 318.0  2.76     3   150 16.87     0 3.520
-#> 15:     0     4     8 350.0  3.73     3   245 15.41     0 3.840
-#> 16:     0     2     8 400.0  3.08     3   175 17.05     0 3.845
-#> 17:     1     2     4 120.3  4.43     5    91 16.70     0 2.140
-#> 18:     1     2     4  95.1  3.77     5   113 16.90     1 1.513
-#> 19:     1     4     8 351.0  4.22     5   264 14.50     0 3.170
-#> 20:     1     6     6 145.0  3.62     5   175 15.50     0 2.770
-#> 21:     1     2     4 121.0  4.11     4   109 18.60     1 2.780
-#>        am  carb   cyl  disp  drat  gear    hp  qsec    vs    wt
-#>     <num> <num> <num> <num> <num> <num> <num> <num> <num> <num>
-#> 
-#> $y
-#>  [1] 21.4 18.7 18.1 14.3 19.2 17.8 17.3 10.4 14.7 32.4 30.4 33.9 21.5 15.5 13.3
-#> [16] 19.2 26.0 30.4 15.8 19.7 21.4
-#> 
+#> GRF forest object of type regression_forest 
+#> Number of trees: 2000 
+#> Number of training samples: 21 
+#> Variable importance: 
+#>  1  2  3  4  5  6  7  8  9 10 
+#>  0  0  0  0  0  0  0  0  0  0 
 
 
 # Make predictions for the test rows
@@ -192,5 +195,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.337778 
+#> 29.60231 
 ```

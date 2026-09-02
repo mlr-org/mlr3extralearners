@@ -378,6 +378,9 @@
 - [`mlr_learners_regr.gpfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   [`LearnerRegrGPfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   : Regression Gaussian Process Learner (GPfit)
+- [`mlr_learners_regr.grf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.grf.md)
+  [`LearnerRegrGRF`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.grf.md)
+  : Generalized Random Forest Regression Learner
 - [`mlr_learners_regr.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.deeplearning.md)
   [`LearnerRegrH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.deeplearning.md)
   : Regression H2O Deep Learning Learner

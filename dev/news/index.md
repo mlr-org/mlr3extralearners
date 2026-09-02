@@ -18,6 +18,10 @@
 
 - New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm`
   Python package, the tabular foundation model from Google Research.
+- New learner `regr.grf` fitting a generalized random forest with
+  [`grf::regression_forest()`](https://rdrr.io/pkg/grf/man/regression_forest.html),
+  supporting `se` predictions, observation weights, and missing feature
+  values.
 - New learner `classif.opls` fitting orthogonal partial least squares
   discriminant analysis with
   [`ropls::opls()`](https://rdrr.io/pkg/ropls/man/opls.html) from the
