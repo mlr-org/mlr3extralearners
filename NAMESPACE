@@ -4,17 +4,18 @@ S3method(marshal_model,Weka_classifier)
 S3method(marshal_model,botorch_gp_model)
 S3method(marshal_model,fastai_model)
 S3method(marshal_model,survdnn)
+S3method(marshal_model,tabfm_model)
 S3method(marshal_model,tabpfn_model)
 S3method(unmarshal_model,Weka_classifier_marshaled)
 S3method(unmarshal_model,botorch_gp_model_marshaled)
 S3method(unmarshal_model,fastai_model_marshaled)
 S3method(unmarshal_model,survdnn_marshaled)
+S3method(unmarshal_model,tabfm_model_marshaled)
 S3method(unmarshal_model,tabpfn_model_marshaled)
 export(LearnerClassifAbess)
 export(LearnerClassifAdaBoostM1)
 export(LearnerClassifAdaBoosting)
 export(LearnerClassifAdabag)
-export(LearnerClassifBam)
 export(LearnerClassifBart)
 export(LearnerClassifBayesNet)
 export(LearnerClassifBlockForest)
@@ -55,7 +56,7 @@ export(LearnerClassifLiblineaR)
 export(LearnerClassifLightGBM)
 export(LearnerClassifLogistic)
 export(LearnerClassifLvq1)
-export(LearnerClassifMLP)
+export(LearnerClassifMLPRsnns)
 export(LearnerClassifMda)
 export(LearnerClassifMdeb)
 export(LearnerClassifMob)
@@ -88,12 +89,12 @@ export(LearnerClassifSdlda)
 export(LearnerClassifSimpleLogistic)
 export(LearnerClassifSparseLDA)
 export(LearnerClassifStepPlr)
+export(LearnerClassifTabFM)
 export(LearnerClassifTabPFN)
 export(LearnerClassifVotedPerceptron)
 export(LearnerCompRisksCoxboost)
 export(LearnerCompRisksRandomForestSRC)
 export(LearnerRegrAbess)
-export(LearnerRegrBam)
 export(LearnerRegrBart)
 export(LearnerRegrBcart)
 export(LearnerRegrBgp)
@@ -165,6 +166,7 @@ export(LearnerRegrRandomTree)
 export(LearnerRegrSGD)
 export(LearnerRegrSMOreg)
 export(LearnerRegrSimpleLinearRegression)
+export(LearnerRegrTabFM)
 export(LearnerRegrTabPFN)
 export(LearnerSurvAorsf)
 export(LearnerSurvBlackBoost)
@@ -196,36 +198,43 @@ export(LearnerSurvXgboostCox)
 export(install_learners)
 export(learner_is_runnable)
 export(list_mlr3learners)
-import(R6)
 import(checkmate)
-import(mlr3)
 import(mlr3misc)
 import(paradox)
 importFrom(R6,R6Class)
-importFrom(data.table,":=")
-importFrom(data.table,fifelse)
-importFrom(methods,formalArgs)
-importFrom(methods,getMethod)
-importFrom(mlr3,LearnerClassif)
-importFrom(mlr3,LearnerRegr)
-importFrom(mlr3,assert_validate)
-importFrom(mlr3,learner_marshal)
-importFrom(mlr3,learner_marshaled)
-importFrom(mlr3,learner_unmarshal)
-importFrom(mlr3,lrn)
-importFrom(mlr3,lrns)
-importFrom(mlr3,marshal_model)
-importFrom(mlr3,mlr_learners)
-importFrom(mlr3,unmarshal_model)
+importFrom(data.table,
+  ":=",
+  fifelse
+)
+importFrom(methods,
+  formalArgs,
+  getMethod
+)
+importFrom(mlr3,
+  LearnerClassif,
+  LearnerRegr,
+  assert_validate,
+  learner_marshal,
+  learner_marshaled,
+  learner_unmarshal,
+  lrn,
+  lrns,
+  marshal_model,
+  mlr_learners,
+  unmarshal_model
+)
 importFrom(mlr3cmprsk,LearnerCompRisks)
-importFrom(mlr3misc,invoke)
-importFrom(stats,as.formula)
-importFrom(stats,formula)
-importFrom(stats,na.omit)
-importFrom(stats,predict)
-importFrom(stats,qnorm)
-importFrom(stats,setNames)
-importFrom(utils,capture.output)
-importFrom(utils,getFromNamespace)
-importFrom(utils,packageVersion)
+importFrom(stats,
+  as.formula,
+  formula,
+  na.omit,
+  predict,
+  qnorm,
+  setNames
+)
+importFrom(utils,
+  capture.output,
+  getFromNamespace,
+  packageVersion
+)
 importFrom(withr,local_seed)

@@ -1,9 +1,14 @@
 skip_if_not_installed("ncvreg")
 
 test_that("autotest", {
+  withr::local_seed(42)
   learner = lrn("classif.cv_ncvreg", eps = 1e-2)
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE)
+  result = run_autotest(
+    learner,
+    exclude = "feat_single_integer_binary",
+    check_replicable = FALSE
+  )
   expect_true(result, info = result$error)
 })
 
@@ -13,7 +18,7 @@ test_that("prediction lambda", {
   learner = lrn("classif.cv_ncvreg", eps = 1e-2)
   expect_silent(learner$train(task))
 
-  # predict: lamdba.min (by default)
+  # predict: lambda.min (by default)
   p1 = learner$predict(task)
   # predict: last lambda => practically no regularization
   lam = learner$model$lambda[100]

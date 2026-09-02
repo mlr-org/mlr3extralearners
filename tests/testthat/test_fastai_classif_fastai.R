@@ -1,67 +1,30 @@
 skip_if_not_installed("fastai")
 skip_if_not_installed("reticulate")
+skip_if_not_installed("callr")
 skip_on_os(c("windows", "mac"))
+skip_if_no_python_env("fastai")
 
 test_that("autotest", {
-  expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed")
-    library(mlr3)
-    library(mlr3proba)
-    library(mlr3extralearners)
-    library(testthat)
-    library(checkmate)
-
-    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-
-    mirai::daemons(1, .compute = "mlr3_encapsulation")
-
-    mirai::everywhere({
-      Sys.setenv(RETICULATE_PYTHON = "managed")
-    }, .compute = "mlr3_encapsulation")
-
+  expect_true(run_py_test("fastai", function() {
     learner = lrn("classif.fastai", layers = c(200, 100))
     expect_learner(learner)
 
     result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
-    testthat::expect_true(result, info = result$error)
-
-    TRUE
+    expect_true(result, info = result$error)
   }))
 })
 
 test_that("eval protocol", {
-  expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed")
-    library(mlr3)
-    library(mlr3proba)
-    library(mlr3extralearners)
-    library(testthat)
-    library(checkmate)
-
-    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-
+  expect_true(run_py_test("fastai", function() {
     learner = lrn("classif.fastai")
     task = tsk("sonar")
     learner$train(task)
-    testthat::expect_true(is.list(learner$model$eval_protocol))
-
-    TRUE
+    expect_true(is.list(learner$model$eval_protocol))
   }))
 })
 
-
 test_that("validation and inner tuning works", {
-  expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed")
-    library(mlr3)
-    library(mlr3proba)
-    library(mlr3extralearners)
-    library(testthat)
-    library(checkmate)
-    library(paradox)
-
-    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-
+  expect_true(run_py_test("fastai", function() {
     task = tsk("spam")
 
     # with n_epoch and patience parameter
@@ -115,7 +78,8 @@ test_that("validation and inner tuning works", {
       layers = c(200, 100)
     )
     learner$train(task)
-    expect_equal(learner$internal_valid_scores$accuracy, learner$model$eval_protocol$accuracy[learner$internal_tuned_values$n_epoch])
+    expect_equal(learner$internal_valid_scores$accuracy,
+      learner$model$eval_protocol$accuracy[learner$internal_tuned_values$n_epoch])
 
     # no validation and no internal tuning
     learner = lrn("classif.fastai")
@@ -128,22 +92,11 @@ test_that("validation and inner tuning works", {
     learner$train(task)
     expect_equal(learner$internal_valid_scores$accuracy, learner$model$eval_protocol$accuracy[10L])
     expect_null(learner$internal_tuned_values)
-
-    TRUE
-    }))
-  })
+  }))
+})
 
 test_that("custom inner validation measure", {
-  expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed")
-    library(mlr3)
-    library(mlr3proba)
-    library(mlr3extralearners)
-    library(testthat)
-    library(checkmate)
-
-    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-
+  expect_true(run_py_test("fastai", function() {
     # internal measure
     task = tsk("sonar")
 
@@ -248,25 +201,13 @@ test_that("custom inner validation measure", {
     expect_numeric(learner$model$eval_protocol$classif.logloss, len = 10)
     expect_list(learner$internal_valid_scores, types = "numeric")
     expect_equal(names(learner$internal_valid_scores), "classif.logloss")
-
-    TRUE
   }))
 })
 
 test_that("marshaling works for classif.fastai", {
-  expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed")
-    library(mlr3)
-    library(mlr3proba)
-    library(mlr3extralearners)
-    library(testthat)
-    library(checkmate)
-
-    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-
+  expect_true(run_py_test("fastai", function() {
     learner = lrn("classif.fastai")
     task = tsk("iris")
-    # expect_marshalable_learner(learner, task)
 
     learner$train(task)
     pred = learner$predict(task)
@@ -277,7 +218,7 @@ test_that("marshaling works for classif.fastai", {
     expect_false(learner$marshaled)
     expect_equal(is_marshaled_model(learner$model), learner$marshaled)
     expect_invisible(learner$marshal())
-    expect_equal(mlr3::is_marshaled_model(learner$model), learner$marshaled)
+    expect_equal(is_marshaled_model(learner$model), learner$marshaled)
 
     # checks for unmarshaling differs -- instead of checking equality of model,
     # we check equality of predictions, because expect_equal() on python objects
@@ -287,29 +228,16 @@ test_that("marshaling works for classif.fastai", {
     expect_equal(learner$predict(task), pred)
     expect_false(learner$marshaled)
     expect_equal(class(learner$model), class_prev)
-
-    TRUE
   }))
 })
 
 test_that("n_threads parameter works", {
-  expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed")
-    library(mlr3)
-    library(mlr3proba)
-    library(mlr3extralearners)
-    library(testthat)
-    library(checkmate)
-
-    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-
+  expect_true(run_py_test("fastai", function() {
     learner = lrn("classif.fastai")
-    set_threads(learner,2)
+    set_threads(learner, 2)
     expect_equal(learner$param_set$values$num_workers, 2)
     task = tsk("sonar")
     learner$train(task)
     expect_prediction(learner$predict(task))
-
-    TRUE
   }))
 })

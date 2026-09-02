@@ -14,7 +14,7 @@ This learner relies on \CRANpkg{reticulate} to handle Python dependencies.
 It is not necessary to install any Python package manually in advance or specify a Python environment
 via \code{reticulate::use_python()}, \code{reticulate::use_virtualenv()}, \code{reticulate::use_condaenv()},
 or \code{reticulate::use_miniconda()}.
-By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{tapfn}, \code{torch}, etc.) will be installed
+By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{tabpfn}, \code{torch}, etc.) will be installed
 automatically, if not already.
 Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
 unless an existing environment (e.g., \code{"r-reticulate"}) in reticulate's
@@ -26,6 +26,17 @@ You may also manually install \code{tabpfn} into a Python environment following 
 and specify the environment via \verb{reticulate::use_*()} before calling \verb{$train()} or \verb{$predict()}.
 Note that the GPU version of PyTorch cannot be loaded by \code{reticulate::use_condaenv()} from a conda environment.
 To use a conda environment, please install the CPU version of PyTorch.
+}
+
+\section{License acceptance}{
+
+Since \code{tabpfn} version 8, the default model version (v3) requires a one-time acceptance of the Prior Labs
+license before the model weights can be downloaded.
+On the first call to \verb{$train()} or \verb{$predict()}, \code{tabpfn} opens a browser window to log in and accept the
+license, and caches the resulting token for subsequent calls.
+In non-interactive environments (e.g., on a server or in continuous integration), this browser flow fails.
+Instead, log in at \url{https://ux.priorlabs.ai}, accept the license on the licenses tab, copy your API key from
+\url{https://ux.priorlabs.ai/account}, and set it as the environment variable \code{TABPFN_TOKEN} before training.
 }
 
 \section{Saving a Learner}{
@@ -59,6 +70,7 @@ or a \href{https://docs.pytorch.org/docs/stable/tensor_attributes.html}{\code{to
 e.g., \code{"torch.float32"}, \code{"torch.float64"}, etc.
 Non-float dtypes are not supported.
 \item \code{inference_config} is currently not supported.
+\item \code{n_jobs} is deprecated upstream in favor of \code{n_preprocessing_jobs} and is only kept for backward compatibility.
 \item \code{random_state} accepts either an integer or the special value \code{"None"}
 which corresponds to \code{None} in Python.
 Following the original Python implementation, the default \code{random_state} is \code{0}.
@@ -67,7 +79,7 @@ Following the original Python implementation, the default \code{random_state} is
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("regr.tabpfn")
 }\if{html}{\out{</div>}}
@@ -87,7 +99,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    output_type \tab character \tab mean \tab mean, median, mode \tab - \cr
-   n_estimators \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_estimators \tab integer \tab 8 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   auto_scale_n_estimators \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    categorical_features_indices \tab untyped \tab - \tab  \tab - \cr
    softmax_temperature \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    average_before_softmax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -95,10 +108,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    device \tab untyped \tab "auto" \tab  \tab - \cr
    ignore_pretraining_limits \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    inference_precision \tab character \tab auto \tab auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 \tab - \cr
-   fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache \tab - \cr
+   fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache, batched \tab - \cr
    memory_saving_mode \tab untyped \tab "auto" \tab  \tab - \cr
+   keep_cache_on_device \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    random_state \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    n_jobs \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_preprocessing_jobs \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   differentiable_input \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   show_progress_bar \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -106,7 +123,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 Hollmann, Noah, Müller, Samuel, Purucker, Lennart, Krishnakumar, Arjun, Körfer, Max, Hoo, Bin S, Schirrmeister, Tibor R, Hutter, Frank (2025).
 \dQuote{Accurate predictions on small data with a tabular foundation model.}
 \emph{Nature}.
-\doi{10.1038/s41586-024-08328-6}, \url{https://www.nature.com/articles/s41586-024-08328-6}.
+\doi{10.1038/s41586-024-08328-6}.
+\url{https://www.nature.com/articles/s41586-024-08328-6}.
 
 Hollmann, Noah, Müller, Samuel, Eggensperger, Katharina, Hutter, Frank (2023).
 \dQuote{TabPFN: A transformer that solves small tabular classification problems in a second.}
@@ -130,101 +148,107 @@ b-zhou
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrTabPFN}
 }
 \section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{marshaled}}{(\code{logical(1)})\cr
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{marshaled}}{(\code{logical(1)})\cr
 Whether the learner has been marshaled.}
-}
-\if{html}{\out{</div>}}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerRegrTabPFN-new}{\code{LearnerRegrTabPFN$new()}}
-\item \href{#method-LearnerRegrTabPFN-marshal}{\code{LearnerRegrTabPFN$marshal()}}
-\item \href{#method-LearnerRegrTabPFN-unmarshal}{\code{LearnerRegrTabPFN$unmarshal()}}
-\item \href{#method-LearnerRegrTabPFN-clone}{\code{LearnerRegrTabPFN$clone()}}
+  \itemize{
+    \item \href{#method-LearnerRegrTabPFN-initialize}{\code{LearnerRegrTabPFN$new()}}
+    \item \href{#method-LearnerRegrTabPFN-marshal}{\code{LearnerRegrTabPFN$marshal()}}
+    \item \href{#method-LearnerRegrTabPFN-unmarshal}{\code{LearnerRegrTabPFN$unmarshal()}}
+    \item \href{#method-LearnerRegrTabPFN-clone}{\code{LearnerRegrTabPFN$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerRegrTabPFN-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerRegrTabPFN-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrTabPFN$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerRegrTabPFN-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrTabPFN-initialize}{}}}
+\subsection{\code{LearnerRegrTabPFN$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrTabPFN$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerRegrTabPFN-marshal"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrTabPFN-marshal}{}}}
-\subsection{Method \code{marshal()}}{
-Marshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrTabPFN$marshal(...)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerRegrTabPFN$marshal()}}{
+  Marshal the learner's model.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrTabPFN$marshal(...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerRegrTabPFN-unmarshal"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrTabPFN-unmarshal}{}}}
-\subsection{Method \code{unmarshal()}}{
-Unmarshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrTabPFN$unmarshal(...)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerRegrTabPFN$unmarshal()}}{
+  Unmarshal the learner's model.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrTabPFN$unmarshal(...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerRegrTabPFN-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrTabPFN-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrTabPFN$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerRegrTabPFN$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrTabPFN$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

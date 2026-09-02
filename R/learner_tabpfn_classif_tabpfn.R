@@ -24,6 +24,15 @@
 #'
 #' - `inference_config` is currently not supported.
 #'
+#' - `tuning_config` must be passed as a named list, which is converted to a Python dictionary.
+#'   It enables post-hoc tuning towards `eval_metric` and accepts the keys `calibrate_temperature`,
+#'   `tune_decision_thresholds`, `tuning_holdout_frac`, and `tuning_n_folds`.
+#'
+#' - `eval_metric` only affects predictions when `tuning_config` is also set, in which case the softmax
+#'   temperature and decision thresholds are tuned towards the chosen metric during training.
+#'
+#' - `n_jobs` is deprecated upstream in favor of `n_preprocessing_jobs` and is only kept for backward compatibility.
+#'
 #' - `random_state` accepts either an integer or the special value `"None"`
 #'   which corresponds to `None` in Python.
 #'   Following the original Python implementation, the default `random_state` is `0`.
@@ -43,7 +52,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        n_estimators = p_int(lower = 1L, default = 4L, tags = "train"),
+        n_estimators = p_int(lower = 1L, default = 8L, tags = "train"),
+        auto_scale_n_estimators = p_lgl(default = TRUE, tags = "train"),
         categorical_features_indices = p_uty(tags = "train", custom_check = function(x) {
           # R indexing is used
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
@@ -68,7 +78,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
           tags = "train"
         ),
         fit_mode = p_fct(
-          c("low_memory", "fit_preprocessors", "fit_with_cache"),
+          c("low_memory", "fit_preprocessors", "fit_with_cache", "batched"),
           default = "fit_preprocessors",
           tags = "train"
         ),
@@ -79,8 +89,24 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
             "Invalid value for memory_saving_mode. Must be 'auto', a TRUE/FALSE value, or a number > 0."
           }
         }),
+        keep_cache_on_device = p_lgl(default = TRUE, tags = "train"),
         random_state = p_int(default = 0L, special_vals = list("None"), tags = "train"),
-        n_jobs = p_int(lower = 1L, init = 1L, special_vals = list(-1L), tags = "train")
+        n_jobs = p_int(lower = 1L, special_vals = list(-1L), tags = "train"),
+        n_preprocessing_jobs = p_int(lower = 1L, default = 1L, special_vals = list(-1L), tags = "train"),
+        differentiable_input = p_lgl(default = FALSE, tags = "train"),
+        eval_metric = p_fct(
+          c("accuracy", "balanced_accuracy", "roc_auc", "f1", "log_loss"),
+          tags = "train"
+        ),
+        tuning_config = p_uty(tags = "train", custom_check = function(x) {
+          allowed = c("calibrate_temperature", "tune_decision_thresholds", "tuning_holdout_frac", "tuning_n_folds")
+          if (test_list(x, names = "unique", min.len = 1) && test_subset(names(x), allowed)) {
+            TRUE
+          } else {
+            sprintf("tuning_config must be a non-empty named list with keys from: %s", str_collapse(allowed))
+          }
+        }),
+        show_progress_bar = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
