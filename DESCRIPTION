@@ -57,6 +57,7 @@ Suggests:
     aorsf (>= 0.1.6),
     apcluster,
     BART (>= 2.9.10),
+    BiocManager,
     blockForest (>= 0.2.7),
     brnn (>= 0.9.4),
     bst,
@@ -123,6 +124,7 @@ Suggests:
     rFerns,
     rJava,
     rmarkdown,
+    ropls,
     rotationForest,
     rpart,
     RRF (>= 1.9.4.1),
@@ -149,6 +151,7 @@ VignetteBuilder:
     knitr,
     rmarkdown
 Remotes:
+    bioc::ropls,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba
