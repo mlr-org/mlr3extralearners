@@ -1,13 +1,33 @@
-
 #' @title Classification Fast Generalized Additive Model Learner
 #' @author Tino-Rg
 #' @name mlr_learners_classif.bam
 #'
 #' @description
-#' Fast generalized additive models for large datasets (BAM).
-#' Calls `mgcv::bam()` from package \CRANpkg{mgcv} with `family` set to `binomial`.
+#' Fast generalized additive models for large datasets.
+#' Calls `mgcv::bam()` from package \CRANpkg{mgcv} with a `binomial` family.
+#' For smaller datasets, use [`classif.gam`][mlr_learners_classif.gam] instead.
 #'
-#' @inheritSection mlr_learners_regr.bam Formula
+#' @section Formula:
+#' A gam formula specific to the task at hand is required for the `formula`
+#' parameter (see example and `?mgcv::formula.gam`). Beware, if no formula is provided, a fallback formula is
+#' used that will make the model behave like a glm (this behavior is required
+#' for the unit tests). Only features specified in the formula will be used,
+#' superseding columns with col_roles "feature" in the task.
+#'
+#' @section Offset:
+#' If a `Task` contains a column with the `offset` role, it is automatically
+#' incorporated during training via the `offset` argument in `mgcv::bam()`.
+#' No offset is applied during prediction for this learner.
+#'
+#' @section Custom mlr3 parameters:
+#' - `family` is always `binomial`, so it is not exposed as a hyperparameter.
+#' - `control` is passed to `mgcv::gam.control()` as a list.
+#'   Unlike [`classif.gam`][mlr_learners_classif.gam], the individual control options are not exposed as
+#'   hyperparameters, because `nthreads` is both a control option and an argument of `mgcv::bam()`.
+#' - `discrete` is a parameter of both `mgcv::bam()` and `mgcv::predict.bam()`, with different defaults.
+#'   Only the training parameter is exposed, and prediction uses the default of `mgcv::predict.bam()`.
+#' - Only the training parameter `nthreads` is tagged with `"threads"`, so [mlr3::set_threads()] does not
+#'   change the prediction parameter `n.threads`.
 #'
 #' @template learner
 #' @templateVar id classif.bam
@@ -15,73 +35,62 @@
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
+#' @template seealso_learner
+#' @template example_gam
 #' @export
-#'
-#' @import R6
-#' @import mlr3
-#' @import paradox
-#' @import mlr3extralearners
-#' @importFrom mlr3misc invoke
-#'
-#' @examples
-#' if (requireNamespace("mgcv", quietly = TRUE)) {
-#'   task = mlr3::tsk("sonar")
-#'
-#'   learner = LearnerClassifBam$new()
-#'
-#'   learner$param_set$set_values(
-#'     formula = Class ~ s(V1, k = 5) + s(V2, k = 4) + V3,
-#'     method = "fREML"
-#'   )
-#'
-#'   learner$train(task)
-#'   print(learner$model)
-#'
-#'   pred = learner$predict(task)
-#'   print(pred)
-#' }
-LearnerClassifBam <- R6::R6Class(
-  "LearnerClassifBam",
-  inherit = mlr3::LearnerClassif,
+LearnerClassifBam = R6Class("LearnerClassifBam",
+  inherit = LearnerClassif,
 
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = paradox::ps(
-        formula = paradox::p_uty(tags = "train"),
-        method = paradox::p_fct(
-          levels = c("fREML", "REML", "GCV.Cp"), default = "fREML",
+      param_set = ps(
+        formula = p_uty(tags = "train"),
+        method = p_fct(
+          levels = c("fREML", "GCV.Cp", "GACV.Cp", "REML", "P-REML", "ML", "P-ML"),
+          default = "fREML",
           tags = "train"
         ),
-        discrete = paradox::p_lgl(default = TRUE, tags = "train"),
-        nthreads = paradox::p_int(lower = 1L, default = 1L, tags = c("train", "threads")),
-        chunk.size = paradox::p_int(lower = 1L, default = 10000L, tags = "train"),
-        sparse = paradox::p_lgl(default = FALSE, tags = "train"),
-        samfrac = paradox::p_dbl(lower = 0, upper = 1, default = 1, tags = "train"),
-        select = paradox::p_lgl(default = FALSE, tags = "train"),
-        gamma = paradox::p_dbl(lower = 1, default = 1, tags = "train"),
-        knots = paradox::p_uty(default = NULL, tags = "train"),
-        sp = paradox::p_uty(default = NULL, tags = "train"),
-        min.sp = paradox::p_uty(default = NULL, tags = "train"),
-        scale = paradox::p_dbl(default = 0, tags = "train"),
-        paraPen = paradox::p_uty(default = NULL, tags = "train"),
-        G = paradox::p_uty(default = NULL, tags = "train"),
-        in.out = paradox::p_uty(default = NULL, tags = "train"),
-        drop.unused.levels = paradox::p_lgl(default = TRUE, tags = "train"),
-        drop.intercept = paradox::p_lgl(default = FALSE, tags = "train"),
-        block.size = paradox::p_int(default = 50000L, tags = "predict")
+        control = p_uty(default = list(), tags = "train"),
+        select = p_lgl(default = FALSE, tags = "train"),
+        scale = p_dbl(default = 0, tags = "train"),
+        gamma = p_dbl(lower = 1, default = 1, tags = "train"),
+        knots = p_uty(default = NULL, tags = "train"),
+        sp = p_uty(default = NULL, tags = "train"),
+        min.sp = p_uty(default = NULL, tags = "train"),
+        paraPen = p_uty(default = NULL, tags = "train"),
+        chunk.size = p_int(lower = 1L, default = 10000L, tags = "train"),
+        rho = p_dbl(default = 0, tags = "train"),
+        AR.start = p_uty(default = NULL, tags = "train"),
+        discrete = p_lgl(default = FALSE, tags = "train"),
+        nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "threads")),
+        use.chol = p_lgl(default = FALSE, tags = "train"),
+        samfrac = p_dbl(lower = 0, upper = 1, default = 1, tags = "train"),
+        coef = p_uty(default = NULL, tags = "train"),
+        drop.unused.levels = p_lgl(default = TRUE, tags = "train"),
+        G = p_uty(default = NULL, tags = "train"),
+        drop.intercept = p_lgl(default = NULL, special_vals = list(NULL), tags = "train"),
+        in.out = p_uty(default = NULL, tags = "train"),
+        nei = p_uty(default = NULL, tags = "train"),
+        cluster = p_uty(default = NULL, tags = c("train", "predict")),
+        gc.level = p_int(lower = 0L, default = 0L, tags = c("train", "predict")),
+        # from mgcv::predict.bam()
+        terms = p_uty(default = NULL, tags = "predict"),
+        exclude = p_uty(default = NULL, tags = "predict"),
+        block.size = p_int(default = 50000L, tags = "predict"),
+        n.threads = p_int(lower = 1L, default = 1L, tags = "predict")
       )
 
       super$initialize(
         id = "classif.bam",
-        packages = c("mgcv"),
+        packages = c("mlr3extralearners", "mgcv"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
-        param_set = ps,
+        param_set = param_set,
         properties = c("twoclass", "weights", "offset"),
-        label = "Fast Generalized Additive Model (BAM) Classification",
-        man = "mlr3extralearners::mlr_learners_classif.bam"
+        man = "mlr3extralearners::mlr_learners_classif.bam",
+        label = "Fast Generalized Additive Classification Model"
       )
     }
   ),
@@ -89,8 +98,8 @@ LearnerClassifBam <- R6::R6Class(
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      data = task$data(cols = c(task$feature_names, task$target_names))
 
+      data = task$data(cols = c(task$feature_names, task$target_names))
       pars$weights = private$.get_weights(task)
 
       if ("offset" %in% task$properties) {
@@ -100,36 +109,38 @@ LearnerClassifBam <- R6::R6Class(
       pars$family = "binomial"
 
       if (is.null(pars$formula)) {
-        formula_str = paste(
+        # GLM-like formula, no smooth terms
+        pars$formula = stats::as.formula(paste(
           task$target_names,
           "~",
           paste(task$feature_names, collapse = " + ")
-        )
-        pars$formula = stats::as.formula(formula_str)
+        ))
       }
 
-      mlr3misc::invoke(mgcv::bam, data = data, .args = pars)
+      invoke(mgcv::bam, data = data, .args = pars)
     },
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
+      lvls = task$class_names
+      newdata = ordered_features(task, self)
 
-      newdata = mlr3extralearners:::ordered_features(task, self)
-
-      model_pred = mlr3misc::invoke(
-        predict, self$model, newdata = newdata, type = "response", .args = pars
+      prob = invoke(
+        predict,
+        self$model,
+        newdata = newdata,
+        type = "response",
+        newdata.guaranteed = TRUE,
+        .args = pars
       )
-
-      model_pred = as.numeric(model_pred)
-      model_pred = matrix(c(1 - model_pred, model_pred), ncol = 2)
-      colnames(model_pred) = task$class_names
+      prob = cbind(as.matrix(1 - prob), as.matrix(prob))
+      colnames(prob) = lvls
 
       if (self$predict_type == "response") {
-        class_indices = max.col(model_pred, ties.method = "first")
-        response = colnames(model_pred)[class_indices]
-        list(response = unname(response))
+        i = max.col(prob, ties.method = "random")
+        list(response = factor(colnames(prob)[i], levels = lvls))
       } else {
-        list(prob = model_pred)
+        list(prob = prob)
       }
     }
   )
