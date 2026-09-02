@@ -1054,6 +1054,17 @@ bibentries = c(
     year = "2021",
     doi = "10.1093/BIB/BBAA167"
   ),
+  athey2019generalized = bibentry("article",
+    title = "Generalized random forests",
+    author = "Athey, Susan and Tibshirani, Julie and Wager, Stefan",
+    journal = "The Annals of Statistics",
+    volume = "47",
+    number = "2",
+    pages = "1148--1178",
+    year = "2019",
+    publisher = "Institute of Mathematical Statistics",
+    doi = "10.1214/18-AOS1709"
+  ),
   thevenot2015analysis = bibentry("article",
     title = paste("Analysis of the Human Adult Urinary Metabolome Variations with Age, Body Mass Index,",
       "and Gender by Implementing a Comprehensive Workflow for Univariate and OPLS Statistical Analyses"),
