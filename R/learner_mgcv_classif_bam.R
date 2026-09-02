@@ -137,7 +137,8 @@ LearnerClassifBam = R6Class("LearnerClassifBam",
       colnames(prob) = lvls
 
       if (self$predict_type == "response") {
-        i = max.col(prob, ties.method = "random")
+        # `first` rather than the `max.col()` default `random`, so that predictions are reproducible
+        i = max.col(prob, ties.method = "first")
         list(response = factor(colnames(prob)[i], levels = lvls))
       } else {
         list(prob = prob)
