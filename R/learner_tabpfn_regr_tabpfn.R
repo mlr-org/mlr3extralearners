@@ -13,9 +13,10 @@
 #'   but only supports the options `"mean"`, `"median"` and `"mode"`.
 #'   The point predictions are stored as `$response` of the prediction object.
 #'
-#' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
+#' - `categorical_features_indices` uses R indexing instead of zero-based Python indexing.
 #'   It is only needed to mark numeric or logical features as categorical,
-#'   because `factor`, `ordered`, and `character` features are passed to `tabpfn` as categorical columns anyway.
+#'   because `factor`, `ordered`, and `character` features are always encoded as categorical by `tabpfn`.
+#'   The level order of `ordered` features is not preserved, they are treated like unordered `factor` features.
 #'
 #' - `device` must be a string.
 #'   If set to `"auto"`, the behavior is the same as original.

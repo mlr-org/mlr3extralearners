@@ -58,9 +58,10 @@ you then need to call \verb{$unmarshal()} to transform it into a useable state.
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{categorical_feature_indices} uses R indexing instead of zero-based Python indexing.
+\item \code{categorical_features_indices} uses R indexing instead of zero-based Python indexing.
 It is only needed to mark numeric or logical features as categorical,
-because \code{factor}, \code{ordered}, and \code{character} features are passed to \code{tabpfn} as categorical columns anyway.
+because \code{factor}, \code{ordered}, and \code{character} features are always encoded as categorical by \code{tabpfn}.
+The level order of \code{ordered} features is not preserved, they are treated like unordered \code{factor} features.
 \item \code{device} must be a string.
 If set to \code{"auto"}, the behavior is the same as original.
 Otherwise, the string is passed as argument to \code{torch.device()} to create a device.

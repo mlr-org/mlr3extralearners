@@ -71,11 +71,11 @@ test_that("other tests", {
     task = as_task_regr(
       data.frame(
         num = c(NA, rnorm(n - 1)),
-        int = sample(1:5, n, replace = TRUE),
+        int = c(NA, sample(1:5, n - 1, replace = TRUE)),
         lgl = c(NA, sample(c(TRUE, FALSE), n - 1, replace = TRUE)),
-        chr = sample(c("a", "b"), n, replace = TRUE),
-        fct = factor(sample(c("x", "y", "z"), n, replace = TRUE)),
-        ord = ordered(sample(c("lo", "hi"), n, replace = TRUE), levels = c("lo", "hi")),
+        chr = c(NA, sample(c("a", "b"), n - 1, replace = TRUE)),
+        fct = factor(c(NA, sample(c("x", "y", "z"), n - 1, replace = TRUE))),
+        ord = ordered(c(NA, sample(c("lo", "hi"), n - 1, replace = TRUE)), levels = c("lo", "hi")),
         y = rnorm(n)
       ),
       target = "y"
@@ -85,7 +85,7 @@ test_that("other tests", {
     counts = unlist(reticulate::py_to_r(x_py$isna()$sum()$to_dict()))
     expect_equal(
       counts[c("num", "int", "lgl", "chr", "fct", "ord")],
-      c(num = 1, int = 0, lgl = 1, chr = 0, fct = 0, ord = 0)
+      c(num = 1, int = 1, lgl = 1, chr = 1, fct = 1, ord = 1)
     )
 
     learner = lrn("regr.tabpfn")
