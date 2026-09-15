@@ -383,22 +383,46 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(self$model$record_evals$test)) {
+      # lightgbm also predicts with the best iteration,
+      # so these are the scores of the model that is used for prediction
+      private$.valid_scores_at(self$model$best_iter)
+    },
+
+    .extract_best_valid_scores = function() {
+      # the best iteration is only tracked when early stopping is enabled
+      if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(named_list())
       }
+      private$.valid_scores_at(self$model$best_iter)
+    },
 
-      map(self$model$record_evals$test, function(metric) {
-        metric$eval[[length(metric$eval)]]
-      })
+    .valid_scores_at = function(iter) {
+      # `best_iter` is -1 when no validation data was used, but then nothing was recorded either
+      record_evals = self$model$record_evals$test
+      if (is.null(record_evals)) {
+        return(named_list())
+      }
+      map(record_evals, function(metric) metric$eval[[iter]])
     }
   ),
 
   active = list(
     #' @field internal_valid_scores
-    #' The last observation of the validation scores for all metrics.
-    #' Extracted from `model$evaluation_log`
+    #' The validation scores for all metrics at the best iteration (`model$best_iter`), which is also the
+    #' iteration that LightGBM predicts with.
+    #' Extracted from `model$record_evals`.
     internal_valid_scores = function() {
       self$state$internal_valid_scores
+    },
+
+    #' @field best_valid_scores
+    #' The validation scores for all metrics at the best iteration (`model$best_iter`), i.e. the iteration
+    #' that is also reported via `$internal_tuned_values`.
+    #' Because LightGBM also predicts with the best iteration, these are identical to
+    #' `$internal_valid_scores` whenever early stopping is activated.
+    #' If early stopping is not activated, no best iteration is tracked and this is an empty list.
+    best_valid_scores = function() {
+      self$state$best_valid_scores
     },
 
     #' @field internal_tuned_values

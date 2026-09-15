@@ -217,8 +217,15 @@ kapsner
 \section{Active bindings}{
   \if{html}{\out{<div class="r6-active-bindings">}}
   \describe{
-    \item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
-Extracted from \code{model$evaluation_log}}
+    \item{\code{internal_valid_scores}}{The validation scores for all metrics at the best iteration (\code{model$best_iter}), which is also the
+iteration that LightGBM predicts with.
+Extracted from \code{model$record_evals}.}
+
+    \item{\code{best_valid_scores}}{The validation scores for all metrics at the best iteration (\code{model$best_iter}), i.e. the iteration
+that is also reported via \verb{$internal_tuned_values}.
+Because LightGBM also predicts with the best iteration, these are identical to
+\verb{$internal_valid_scores} whenever early stopping is activated.
+If early stopping is not activated, no best iteration is tracked and this is an empty list.}
 
     \item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
 
