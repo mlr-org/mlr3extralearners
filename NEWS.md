@@ -6,8 +6,8 @@
 
 ## Other
 
-* feat: `classif.lightgbm`, `regr.lightgbm`, `surv.xgboost.aft` and `surv.xgboost.cox` now implement `$.extract_best_valid_scores()` and gained a `$best_valid_scores` field, so `msr("best_valid_score")` can be used with them.
-  For LightGBM this reports the scores at `model$best_iter`, which is the iteration also reported via `$internal_tuned_values`, while `$internal_valid_scores` refers to the last iteration.
+* `classif.lightgbm`, `regr.lightgbm`, `surv.xgboost.aft` and `surv.xgboost.cox` gained a `$best_valid_scores` field, so `msr("best_valid_score")` can be used with them.
+* fix: `classif.lightgbm` and `regr.lightgbm` reported `$internal_valid_scores` for the last boosting iteration, although LightGBM predicts with `model$best_iter`. The scores are now taken from `model$best_iter` and therefore describe the model that is used for prediction.
 
 * New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm` Python package, the tabular foundation model from Google Research.
 * `classif.tabpfn` and `regr.tabpfn`: updated the parameter sets to match `tabpfn` 8.1.0, adding `auto_scale_n_estimators`, `keep_cache_on_device`, `n_preprocessing_jobs`, `differentiable_input`, and `show_progress_bar` (plus `eval_metric` and `tuning_config` for classification), adding the `"batched"` option to `fit_mode`, and correcting the informational default of `n_estimators` to `8`.
