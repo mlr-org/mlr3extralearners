@@ -192,6 +192,14 @@ bblodfon
   The last observation of the validation scores for all metrics.
   Extracted from `model$evaluation_log`
 
+- `best_valid_scores`:
+
+  The validation scores of the best boosting round, extracted from
+  `model$evaluation_log`. Because XGBoost also predicts with the best
+  `nrounds`, these are identical to `$internal_valid_scores` whenever
+  early stopping is activated. If early stopping is not activated, no
+  best round is tracked and this is an empty list.
+
 - `internal_tuned_values`:
 
   Returns the early stopped iterations if `early_stopping_rounds` was

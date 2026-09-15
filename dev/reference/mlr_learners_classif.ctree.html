@@ -199,18 +199,16 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V11 &lt;= 0.168</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V1 &lt;= 0.0373</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] V4 &lt;= 0.0539: R (n = 36, err = 2.8%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] V4 &gt; 0.0539: M (n = 9, err = 33.3%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V1 &gt; 0.0373: M (n = 7, err = 14.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V5 &lt;= 0.0681</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] V47 &lt;= 0.1077: R (n = 30, err = 0.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] V47 &gt; 0.1077: R (n = 7, err = 28.6%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V5 &gt; 0.0681: M (n = 13, err = 23.1%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] V11 &gt; 0.168</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] V17 &lt;= 0.6613</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] V6 &lt;= 0.1579: M (n = 50, err = 6.0%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [10] V6 &gt; 0.1579: M (n = 14, err = 50.0%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [11] V17 &gt; 0.6613: R (n = 23, err = 34.8%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] V17 &lt;= 0.685: M (n = 66, err = 16.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [9] V17 &gt; 0.685: R (n = 23, err = 43.5%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -219,7 +217,7 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

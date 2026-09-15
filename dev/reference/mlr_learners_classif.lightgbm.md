@@ -235,8 +235,18 @@ kapsner
 
 - `internal_valid_scores`:
 
-  The last observation of the validation scores for all metrics.
-  Extracted from `model$evaluation_log`
+  The validation scores for all metrics at the best iteration
+  (`model$best_iter`), which is also the iteration that LightGBM
+  predicts with. Extracted from `model$record_evals`.
+
+- `best_valid_scores`:
+
+  The validation scores for all metrics at the best iteration
+  (`model$best_iter`), i.e. the iteration that is also reported via
+  `$internal_tuned_values`. Because LightGBM also predicts with the best
+  iteration, these are identical to `$internal_valid_scores` whenever
+  early stopping is activated. If early stopping is not activated, no
+  best iteration is tracked and this is an empty list.
 
 - `internal_tuned_values`:
 
@@ -347,26 +357,24 @@ print(learner$model)
 #> Objective: binary
 #> Fitted to dataset with 60 columns
 print(learner$importance())
-#>          V11          V23          V36          V52          V12          V43 
-#> 1.710209e-01 7.230699e-02 6.932540e-02 6.765845e-02 5.533154e-02 4.583144e-02 
-#>           V9          V45          V49          V51          V16          V37 
-#> 4.268483e-02 4.197557e-02 4.082835e-02 4.000168e-02 3.395008e-02 3.021565e-02 
-#>          V27           V2          V20           V4          V15          V10 
-#> 3.003417e-02 2.707364e-02 2.146846e-02 2.024405e-02 1.847047e-02 1.679712e-02 
-#>          V48          V18          V46          V39          V44          V21 
-#> 1.599847e-02 1.283964e-02 1.035023e-02 1.010689e-02 9.735883e-03 8.272242e-03 
-#>          V59          V25          V17          V55           V6          V32 
-#> 8.042462e-03 7.382849e-03 7.307850e-03 7.186338e-03 6.415557e-03 5.972355e-03 
-#>          V26          V31          V47          V22          V24          V34 
-#> 5.702408e-03 5.646064e-03 4.155587e-03 4.041230e-03 3.429383e-03 2.469552e-03 
-#>          V38          V28           V7          V42          V29          V50 
-#> 2.184241e-03 1.987900e-03 1.835661e-03 1.748671e-03 1.734988e-03 1.529621e-03 
-#>           V8          V57           V3          V33          V13          V54 
-#> 1.397275e-03 1.388874e-03 1.042123e-03 9.627546e-04 7.456607e-04 6.955654e-04 
-#>           V1          V14          V60          V53          V40          V56 
-#> 4.998393e-04 4.970483e-04 3.858536e-04 3.352472e-04 2.458691e-04 1.966874e-04 
-#>          V30          V19          V35 
-#> 1.921786e-04 7.434887e-05 4.583052e-05 
+#>          V11           V9          V12          V51          V49          V17 
+#> 0.1504326148 0.1187341762 0.0943320969 0.0658025808 0.0510560185 0.0421864816 
+#>          V36          V37          V45          V21          V43          V10 
+#> 0.0356091785 0.0354997692 0.0353907293 0.0276967552 0.0217434623 0.0214737403 
+#>          V16          V33           V8           V4           V5          V58 
+#> 0.0196310017 0.0183718796 0.0180759695 0.0173873845 0.0169715157 0.0161759075 
+#>          V44          V55          V48          V15          V42          V40 
+#> 0.0158242302 0.0149114303 0.0144798001 0.0113161522 0.0111261361 0.0106344150 
+#>          V23          V35          V28          V27          V38          V41 
+#> 0.0105761677 0.0099899702 0.0098222248 0.0089232924 0.0082578042 0.0081546152 
+#>          V46          V26          V52          V50          V34          V54 
+#> 0.0081291503 0.0068023365 0.0063557805 0.0034135407 0.0033939093 0.0032660207 
+#>          V19          V30          V20          V24          V39          V18 
+#> 0.0032487192 0.0030095508 0.0025652752 0.0024790251 0.0023315885 0.0020994296 
+#>          V53          V56          V31          V32          V13          V29 
+#> 0.0019166890 0.0018880110 0.0017816261 0.0016936802 0.0012923368 0.0011662072 
+#>          V57          V22          V60           V7           V3           V1 
+#> 0.0008920568 0.0008127702 0.0003362380 0.0002609723 0.0001680687 0.0001095167 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)

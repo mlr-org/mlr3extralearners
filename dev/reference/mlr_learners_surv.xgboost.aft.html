@@ -171,6 +171,13 @@ ISSN 15372715.
 Extracted from <code>model$evaluation_log</code></p></dd>
 
 
+    <dt><code>best_valid_scores</code></dt>
+<dd><p>The validation scores of the best boosting round, extracted from <code>model$evaluation_log</code>.
+Because XGBoost also predicts with the best <code>nrounds</code>, these are identical to
+<code>$internal_valid_scores</code> whenever early stopping is activated.
+If early stopping is not activated, no best round is tracked and this is an empty list.</p></dd>
+
+
     <dt><code>internal_tuned_values</code></dt>
 <dd><p>Returns the early stopped iterations if <code>early_stopping_rounds</code> was set during training.</p></dd>
 

@@ -16,31 +16,52 @@
 
 ### Other
 
+- `classif.catboost` and `regr.catboost` now report
+  `$internal_valid_scores`, which were previously always empty, for the
+  `eval_metric` and the `loss_function`.
+
+- `classif.catboost`, `regr.catboost`, `classif.lightgbm`,
+  `regr.lightgbm`, `surv.xgboost.aft` and `surv.xgboost.cox` gained a
+  `$best_valid_scores` field, so `msr("best_valid_score")` can be used
+  with them.
+
+- fix: `classif.lightgbm` and `regr.lightgbm` reported
+  `$internal_valid_scores` for the last boosting iteration, although
+  LightGBM predicts with `model$best_iter`. The scores are now taken
+  from `model$best_iter` and therefore describe the model that is used
+  for prediction.
+
 - New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm`
   Python package, the tabular foundation model from Google Research.
+
 - `classif.tabpfn` and `regr.tabpfn`: added support for the feature
   types `character`, `factor`, and `ordered`, which are encoded as
   categorical features by `tabpfn`. The level order of `ordered`
   features is not preserved. Previously the features were converted to a
   numeric matrix, which ruled out categorical features even though
   `tabpfn` supports them.
+
 - New learners `classif.bam` and `regr.bam` fitting fast generalized
   additive models for large datasets with
   [`mgcv::bam()`](https://rdrr.io/pkg/mgcv/man/bam.html)
   ([\#355](https://github.com/mlr-org/mlr3extralearners/issues/355)).
+
 - New learner `classif.opls` fitting orthogonal partial least squares
   discriminant analysis with
   [`ropls::opls()`](https://rdrr.io/pkg/ropls/man/opls.html) from the
   Bioconductor package `ropls`
   ([\#268](https://github.com/mlr-org/mlr3extralearners/issues/268)).
+
 - New learner `regr.grf` fitting a generalized random forest with
   [`grf::regression_forest()`](https://rdrr.io/pkg/grf/man/regression_forest.html),
   supporting `se` predictions, observation weights, and missing feature
   values.
+
 - New learner `regr.polynomial` fitting a polynomial regression with
   [`stats::lm()`](https://rdrr.io/r/stats/lm.html) and
   [`stats::poly()`](https://rdrr.io/r/stats/poly.html)
   ([\#420](https://github.com/mlr-org/mlr3extralearners/issues/420)).
+
 - `classif.tabpfn` and `regr.tabpfn`: updated the parameter sets to
   match `tabpfn` 8.1.0, adding `auto_scale_n_estimators`,
   `keep_cache_on_device`, `n_preprocessing_jobs`,
@@ -48,6 +69,7 @@
   and `tuning_config` for classification), adding the `"batched"` option
   to `fit_mode`, and correcting the informational default of
   `n_estimators` to `8`.
+
 - Fixed a partial argument-matching bug in survival `glmnet` learners
   where `stype` could be matched to predict argument `s`, causing `s` to
   be overwritten by `stype = 1` or `2` and predictions to be

@@ -169,6 +169,15 @@ If early stopping is enabled, the scores correspond to the
 taken from the final boosting round (<code>nrounds</code>).</p></dd>
 
 
+    <dt><code>best_valid_scores</code></dt>
+<dd><p>(named <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> or <code>NULL</code>)
+Validation metrics of the best boosting round, extracted from the xgboost model's
+<code>evaluation_log</code>.
+Because XGBoost also predicts with the <code>best_iteration</code>, these are identical to
+<code>$internal_valid_scores</code> whenever early stopping is enabled.
+If early stopping is not enabled, no best round is tracked and this is an empty list.</p></dd>
+
+
     <dt><code>internal_tuned_values</code></dt>
 <dd><p>(named <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> or <code>NULL</code>)
 If early stopping is activated, this returns a list with the early stopped

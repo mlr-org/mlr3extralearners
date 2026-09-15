@@ -144,8 +144,16 @@ For information on how to configure the validation set, see the <em>Validation</
     <div class="section level2">
     <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
     <p></p><div class="r6-active-bindings"><dl><dt><code>internal_valid_scores</code></dt>
-<dd><p>The last observation of the validation scores for all metrics.
-Extracted from <code>model$evaluation_log</code></p></dd>
+<dd><p>The validation scores for the <code>eval_metric</code> and the <code>loss_function</code>, evaluated on the internal
+validation data with all <code>tree_count</code> trees, i.e. the trees that are also used for prediction.</p></dd>
+
+
+    <dt><code>best_valid_scores</code></dt>
+<dd><p>The validation scores of the best iteration.
+Because <code>use_best_model</code> truncates the model to the best iteration, these are identical to
+<code>$internal_valid_scores</code> whenever early stopping is activated.
+If early stopping is not activated or <code>use_best_model</code> is <code>FALSE</code>, no best iteration is tracked
+and this is an empty list.</p></dd>
 
 
     <dt><code>internal_tuned_values</code></dt>
@@ -252,10 +260,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp        hp       cyl      qsec      carb      drat        vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18.953183 17.135413 12.980371 11.802839  8.263679  8.010469  7.274656  6.629909 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      gear        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.662564  4.286919 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       cyl      carb      gear      disp        am        wt      drat      qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20.498723 17.320128 12.234183  9.331572  8.312252  8.159973  6.656083  6.586522 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        hp        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6.369972  4.530592 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -263,7 +271,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.253981 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.89052 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -222,8 +222,18 @@ kapsner
 
 - `internal_valid_scores`:
 
-  The last observation of the validation scores for all metrics.
-  Extracted from `model$evaluation_log`
+  The validation scores for all metrics at the best iteration
+  (`model$best_iter`), which is also the iteration that LightGBM
+  predicts with. Extracted from `model$record_evals`.
+
+- `best_valid_scores`:
+
+  The validation scores for all metrics at the best iteration
+  (`model$best_iter`), i.e. the iteration that is also reported via
+  `$internal_tuned_values`. Because LightGBM also predicts with the best
+  iteration, these are identical to `$internal_valid_scores` whenever
+  early stopping is activated. If early stopping is not activated, no
+  best iteration is tracked and this is an empty list.
 
 - `internal_tuned_values`:
 
@@ -343,5 +353,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  45.3077 
+#> 26.42878 
 ```

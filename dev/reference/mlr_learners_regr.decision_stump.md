@@ -222,9 +222,9 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> hp <= 94.0 : 28.4
-#> hp > 94.0 : 16.187500000000004
-#> hp is missing : 19.095238095238095
+#> disp <= 101.55 : 30.879999999999995
+#> disp > 101.55 : 18.44375
+#> disp is missing : 21.4047619047619
 #> 
 
 
@@ -234,5 +234,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  34.5649 
+#> 11.54623 
 ```
