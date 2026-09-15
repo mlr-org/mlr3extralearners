@@ -61,8 +61,12 @@ need to call `$unmarshal()` to transform it into a useable state.
 
 ## Custom mlr3 parameters
 
-- `categorical_feature_indices` uses R indexing instead of zero-based
-  Python indexing.
+- `categorical_features_indices` uses R indexing instead of zero-based
+  Python indexing. It is only needed to mark numeric or logical features
+  as categorical, because `factor`, `ordered`, and `character` features
+  are always encoded as categorical by `tabpfn`. The level order of
+  `ordered` features is not preserved, they are treated like unordered
+  `factor` features.
 
 - `device` must be a string. If set to `"auto"`, the behavior is the
   same as original. Otherwise, the string is passed as argument to
@@ -106,7 +110,8 @@ instantiated via
 
 - Predict Types: “response”, “prob”
 
-- Feature Types: “logical”, “integer”, “numeric”
+- Feature Types: “logical”, “integer”, “numeric”, “character”, “factor”,
+  “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
   [reticulate](https://CRAN.R-project.org/package=reticulate)

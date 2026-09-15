@@ -18,6 +18,12 @@
 
 - New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm`
   Python package, the tabular foundation model from Google Research.
+- `classif.tabpfn` and `regr.tabpfn`: added support for the feature
+  types `character`, `factor`, and `ordered`, which are encoded as
+  categorical features by `tabpfn`. The level order of `ordered`
+  features is not preserved. Previously the features were converted to a
+  numeric matrix, which ruled out categorical features even though
+  `tabpfn` supports them.
 - New learners `classif.bam` and `regr.bam` fitting fast generalized
   additive models for large datasets with
   [`mgcv::bam()`](https://rdrr.io/pkg/mgcv/man/bam.html)

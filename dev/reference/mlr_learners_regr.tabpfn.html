@@ -115,7 +115,10 @@ you then need to call <code>$unmarshal()</code> to transform it into a useable s
 <ul><li><p><code>output_type</code> corresponds to the same argument of the <code>.predict()</code> method of the <code>TabPFNRegressor</code> class,
 but only supports the options <code>"mean"</code>, <code>"median"</code> and <code>"mode"</code>.
 The point predictions are stored as <code>$response</code> of the prediction object.</p></li>
-<li><p><code>categorical_feature_indices</code> uses R indexing instead of zero-based Python indexing.</p></li>
+<li><p><code>categorical_features_indices</code> uses R indexing instead of zero-based Python indexing.
+It is only needed to mark numeric or logical features as categorical,
+because <code>factor</code>, <code>ordered</code>, and <code>character</code> features are always encoded as categorical by <code>tabpfn</code>.
+The level order of <code>ordered</code> features is not preserved, they are treated like unordered <code>factor</code> features.</p></li>
 <li><p><code>device</code> must be a string.
 If set to <code>"auto"</code>, the behavior is the same as original.
 Otherwise, the string is passed as argument to <code>torch.device()</code> to create a device.</p></li>
@@ -142,7 +145,7 @@ Following the original Python implementation, the default <code>random_state</co
 
 <ul><li><p>Task type: “regr”</p></li>
 <li><p>Predict Types: “response”, “quantiles”</p></li>
-<li><p>Feature Types: “logical”, “integer”, “numeric”</p></li>
+<li><p>Feature Types: “logical”, “integer”, “numeric”, “character”, “factor”, “ordered”</p></li>
 <li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=reticulate" class="external-link"><span class="pkg">reticulate</span></a></p></li>
 </ul></div>
     <div class="section level2">

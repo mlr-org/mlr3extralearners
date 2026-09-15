@@ -112,7 +112,10 @@ you then need to call <code>$unmarshal()</code> to transform it into a useable s
     <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
 
 
-<ul><li><p><code>categorical_feature_indices</code> uses R indexing instead of zero-based Python indexing.</p></li>
+<ul><li><p><code>categorical_features_indices</code> uses R indexing instead of zero-based Python indexing.
+It is only needed to mark numeric or logical features as categorical,
+because <code>factor</code>, <code>ordered</code>, and <code>character</code> features are always encoded as categorical by <code>tabpfn</code>.
+The level order of <code>ordered</code> features is not preserved, they are treated like unordered <code>factor</code> features.</p></li>
 <li><p><code>device</code> must be a string.
 If set to <code>"auto"</code>, the behavior is the same as original.
 Otherwise, the string is passed as argument to <code>torch.device()</code> to create a device.</p></li>
@@ -144,7 +147,7 @@ Following the original Python implementation, the default <code>random_state</co
 
 <ul><li><p>Task type: “classif”</p></li>
 <li><p>Predict Types: “response”, “prob”</p></li>
-<li><p>Feature Types: “logical”, “integer”, “numeric”</p></li>
+<li><p>Feature Types: “logical”, “integer”, “numeric”, “character”, “factor”, “ordered”</p></li>
 <li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=reticulate" class="external-link"><span class="pkg">reticulate</span></a></p></li>
 </ul></div>
     <div class="section level2">

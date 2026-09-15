@@ -237,10 +237,18 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt; 0.22 : R (34/6) [26/6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt;= 0.22 : M (58/17) [21/3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28 &lt; 0.92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V49 &lt; 0.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V20 &lt; 0.5 : R (18/0) [12/3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V20 &gt;= 0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V59 &lt; 0.01 : R (19/4) [5/3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V59 &gt;= 0.01 : M (13/3) [9/2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V49 &gt;= 0.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V39 &lt; 0.17 : R (3/0) [1/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V39 &gt;= 0.17 : M (20/1) [9/3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28 &gt;= 0.92 : M (19/0) [11/3]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 11</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -249,7 +257,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
