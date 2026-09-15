@@ -6,7 +6,8 @@
 
 ## Other
 
-* `classif.lightgbm`, `regr.lightgbm`, `surv.xgboost.aft` and `surv.xgboost.cox` gained a `$best_valid_scores` field, so `msr("best_valid_score")` can be used with them.
+* `classif.catboost` and `regr.catboost` now report `$internal_valid_scores`, which were previously always empty, for the `eval_metric` and the `loss_function`.
+* `classif.catboost`, `regr.catboost`, `classif.lightgbm`, `regr.lightgbm`, `surv.xgboost.aft` and `surv.xgboost.cox` gained a `$best_valid_scores` field, so `msr("best_valid_score")` can be used with them.
 * fix: `classif.lightgbm` and `regr.lightgbm` reported `$internal_valid_scores` for the last boosting iteration, although LightGBM predicts with `model$best_iter`. The scores are now taken from `model$best_iter` and therefore describe the model that is used for prediction.
 
 * New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm` Python package, the tabular foundation model from Google Research.

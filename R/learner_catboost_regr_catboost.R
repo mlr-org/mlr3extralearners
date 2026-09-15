@@ -245,7 +245,8 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
           thread_count = 1)
       }
 
-      catboost::catboost.train(learn_pool, test_pool, pars)
+      model = catboost::catboost.train(learn_pool, test_pool, pars)
+      private$.add_evaluation_log(model, test_pool, pars)
     },
 
     .predict = function(task) {
@@ -265,6 +266,21 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
     .validate = NULL,
 
+    .add_evaluation_log = function(model, test_pool, pars) {
+      if (is.null(test_pool)) {
+        return(model)
+      }
+      # catboost does not keep an evaluation log on the model, so it is recomputed on the
+      # validation pool for the eval metric and the loss function
+      metrics = as.list(unique(c(pars$eval_metric, pars$loss_function)))
+      attr(model, "evaluation_log") = invoke(catboost::catboost.eval_metrics,
+        model = model,
+        pool = test_pool,
+        metrics = metrics,
+        thread_count = pars$thread_count %??% 1L)
+      model
+    },
+
     .extract_internal_tuned_values = function() {
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(named_list())
@@ -273,16 +289,46 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
     },
 
     .extract_internal_valid_scores = function() {
-      return(named_list())
+      # catboost predicts with all `tree_count` trees, and `use_best_model` truncates the model
+      # to the best iteration, so this is the score of the model that is used for prediction
+      private$.valid_scores_at(self$model$tree_count)
+    },
+
+    .extract_best_valid_scores = function() {
+      pv = self$state$param_vals
+      # a best iteration is only tracked when early stopping is enabled, and only
+      # `use_best_model` truncates the model to it
+      if (is.null(pv$early_stopping_rounds) || isFALSE(pv$use_best_model)) {
+        return(named_list())
+      }
+      private$.valid_scores_at(self$model$tree_count)
+    },
+
+    .valid_scores_at = function(iter) {
+      log = attr(self$model, "evaluation_log")
+      if (is.null(log)) {
+        return(named_list())
+      }
+      map(log, function(metric) metric[[iter]])
     }
   ),
 
   active = list(
     #' @field internal_valid_scores
-    #' The last observation of the validation scores for all metrics.
-    #' Extracted from `model$evaluation_log`
+    #' The validation scores for the `eval_metric` and the `loss_function`, evaluated on the internal
+    #' validation data with all `tree_count` trees, i.e. the trees that are also used for prediction.
     internal_valid_scores = function() {
       self$state$internal_valid_scores
+    },
+
+    #' @field best_valid_scores
+    #' The validation scores of the best iteration.
+    #' Because `use_best_model` truncates the model to the best iteration, these are identical to
+    #' `$internal_valid_scores` whenever early stopping is activated.
+    #' If early stopping is not activated or `use_best_model` is `FALSE`, no best iteration is tracked
+    #' and this is an empty list.
+    best_valid_scores = function() {
+      self$state$best_valid_scores
     },
 
     #' @field internal_tuned_values

@@ -196,8 +196,14 @@ sumny
 \section{Active bindings}{
   \if{html}{\out{<div class="r6-active-bindings">}}
   \describe{
-    \item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
-Extracted from \code{model$evaluation_log}}
+    \item{\code{internal_valid_scores}}{The validation scores for the \code{eval_metric} and the \code{loss_function}, evaluated on the internal
+validation data with all \code{tree_count} trees, i.e. the trees that are also used for prediction.}
+
+    \item{\code{best_valid_scores}}{The validation scores of the best iteration.
+Because \code{use_best_model} truncates the model to the best iteration, these are identical to
+\verb{$internal_valid_scores} whenever early stopping is activated.
+If early stopping is not activated or \code{use_best_model} is \code{FALSE}, no best iteration is tracked
+and this is an empty list.}
 
     \item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
 
