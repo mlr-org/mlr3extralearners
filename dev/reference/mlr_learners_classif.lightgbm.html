@@ -19,7 +19,7 @@ and in the documentation of lightgbm::lgb.train()."><meta name="robots" content=
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.6.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.7.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -263,24 +263,24 @@ If early stopping is not activated, no best iteration is tracked and this is an 
 <span class="r-out co"><span class="r-pr">#&gt;</span> Objective: binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted to dataset with 60 columns</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V11           V9          V12          V51          V49          V17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1504326148 0.1187341762 0.0943320969 0.0658025808 0.0510560185 0.0421864816 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V36          V37          V45          V21          V43          V10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0356091785 0.0354997692 0.0353907293 0.0276967552 0.0217434623 0.0214737403 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V16          V33           V8           V4           V5          V58 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0196310017 0.0183718796 0.0180759695 0.0173873845 0.0169715157 0.0161759075 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V44          V55          V48          V15          V42          V40 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0158242302 0.0149114303 0.0144798001 0.0113161522 0.0111261361 0.0106344150 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V23          V35          V28          V27          V38          V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0105761677 0.0099899702 0.0098222248 0.0089232924 0.0082578042 0.0081546152 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V46          V26          V52          V50          V34          V54 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0081291503 0.0068023365 0.0063557805 0.0034135407 0.0033939093 0.0032660207 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V19          V30          V20          V24          V39          V18 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0032487192 0.0030095508 0.0025652752 0.0024790251 0.0023315885 0.0020994296 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V53          V56          V31          V32          V13          V29 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0019166890 0.0018880110 0.0017816261 0.0016936802 0.0012923368 0.0011662072 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V57          V22          V60           V7           V3           V1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0008920568 0.0008127702 0.0003362380 0.0002609723 0.0001680687 0.0001095167 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V36          V51          V27          V42          V16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.148862e-01 1.019919e-01 9.116088e-02 6.960378e-02 6.737485e-02 6.070249e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V45          V23           V9          V37          V28          V48 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.908048e-02 4.634212e-02 4.527292e-02 3.570385e-02 3.238688e-02 2.483193e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V54          V31          V39          V49           V4          V17 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.394672e-02 2.355417e-02 1.827748e-02 1.733693e-02 1.619239e-02 1.463425e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V15          V52          V55          V41          V46          V44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.405602e-02 1.335044e-02 1.224600e-02 1.196178e-02 1.061103e-02 1.024232e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V13          V21          V26          V33           V3          V59 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.621712e-03 8.217232e-03 8.076758e-03 6.229920e-03 6.119864e-03 4.798340e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V8          V29          V47          V58          V40          V32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.745375e-03 3.778852e-03 3.255422e-03 3.115014e-03 2.821230e-03 2.256579e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V19          V14           V6          V35          V57          V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.062405e-03 1.673037e-03 1.664063e-03 1.586636e-03 7.256724e-04 6.967942e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V10          V38          V22           V5           V1          V18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.853028e-04 5.934192e-04 5.238964e-04 2.634363e-04 2.088783e-04 1.976513e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V25          V12           V2          V53          V24 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.485991e-04 8.624929e-05 6.242332e-05 2.329093e-05 1.411585e-05 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -288,7 +288,7 @@ If early stopping is not activated, no best iteration is tracked and this is an 
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

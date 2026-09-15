@@ -2,6 +2,8 @@
 
 ## mlr3extralearners (development version)
 
+## mlr3extralearners 1.7.0
+
 ### New Features
 
 - `surv.cv_glmnet` and `surv.glmnet`: added the `strata` parameter for
