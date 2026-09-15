@@ -16,6 +16,7 @@ export(LearnerClassifAbess)
 export(LearnerClassifAdaBoostM1)
 export(LearnerClassifAdaBoosting)
 export(LearnerClassifAdabag)
+export(LearnerClassifBam)
 export(LearnerClassifBart)
 export(LearnerClassifBayesNet)
 export(LearnerClassifBlockForest)
@@ -66,6 +67,7 @@ export(LearnerClassifNNTrain)
 export(LearnerClassifNaiveBayesMultinomial)
 export(LearnerClassifNaiveBayesWeka)
 export(LearnerClassifNeuralnet)
+export(LearnerClassifOPLS)
 export(LearnerClassifObliqueRandomForest)
 export(LearnerClassifOneR)
 export(LearnerClassifPART)
@@ -95,6 +97,7 @@ export(LearnerClassifVotedPerceptron)
 export(LearnerCompRisksCoxboost)
 export(LearnerCompRisksRandomForestSRC)
 export(LearnerRegrAbess)
+export(LearnerRegrBam)
 export(LearnerRegrBart)
 export(LearnerRegrBcart)
 export(LearnerRegrBgp)
@@ -125,6 +128,7 @@ export(LearnerRegrGAMBoost)
 export(LearnerRegrGBM)
 export(LearnerRegrGLMBoost)
 export(LearnerRegrGPfit)
+export(LearnerRegrGRF)
 export(LearnerRegrGam)
 export(LearnerRegrGaussianProcesses)
 export(LearnerRegrGausspr)
@@ -153,6 +157,7 @@ export(LearnerRegrPcr)
 export(LearnerRegrPenalized)
 export(LearnerRegrPlsr)
 export(LearnerRegrPoly)
+export(LearnerRegrPolynomial)
 export(LearnerRegrPriorityLasso)
 export(LearnerRegrQGam)
 export(LearnerRegrREPTree)
@@ -202,29 +207,39 @@ import(checkmate)
 import(mlr3misc)
 import(paradox)
 importFrom(R6,R6Class)
-importFrom(data.table,":=")
-importFrom(data.table,fifelse)
-importFrom(methods,formalArgs)
-importFrom(methods,getMethod)
-importFrom(mlr3,LearnerClassif)
-importFrom(mlr3,LearnerRegr)
-importFrom(mlr3,assert_validate)
-importFrom(mlr3,learner_marshal)
-importFrom(mlr3,learner_marshaled)
-importFrom(mlr3,learner_unmarshal)
-importFrom(mlr3,lrn)
-importFrom(mlr3,lrns)
-importFrom(mlr3,marshal_model)
-importFrom(mlr3,mlr_learners)
-importFrom(mlr3,unmarshal_model)
+importFrom(data.table,
+  ":=",
+  fifelse
+)
+importFrom(methods,
+  formalArgs,
+  getMethod
+)
+importFrom(mlr3,
+  LearnerClassif,
+  LearnerRegr,
+  assert_validate,
+  learner_marshal,
+  learner_marshaled,
+  learner_unmarshal,
+  lrn,
+  lrns,
+  marshal_model,
+  mlr_learners,
+  unmarshal_model
+)
 importFrom(mlr3cmprsk,LearnerCompRisks)
-importFrom(stats,as.formula)
-importFrom(stats,formula)
-importFrom(stats,na.omit)
-importFrom(stats,predict)
-importFrom(stats,qnorm)
-importFrom(stats,setNames)
-importFrom(utils,capture.output)
-importFrom(utils,getFromNamespace)
-importFrom(utils,packageVersion)
+importFrom(stats,
+  as.formula,
+  formula,
+  na.omit,
+  predict,
+  qnorm,
+  setNames
+)
+importFrom(utils,
+  capture.output,
+  getFromNamespace,
+  packageVersion
+)
 importFrom(withr,local_seed)
