@@ -11,6 +11,7 @@
 ## Other
 
 * New learners `classif.tabfm` and `regr.tabfm` interfacing the `tabfm` Python package, the tabular foundation model from Google Research.
+* `classif.tabpfn` and `regr.tabpfn`: added support for the feature types `character`, `factor`, and `ordered`, which are encoded as categorical features by `tabpfn`. The level order of `ordered` features is not preserved. Previously the features were converted to a numeric matrix, which ruled out categorical features even though `tabpfn` supports them.
 * New learners `classif.bam` and `regr.bam` fitting fast generalized additive models for large datasets with `mgcv::bam()` (#355).
 * New learner `classif.opls` fitting orthogonal partial least squares discriminant analysis with `ropls::opls()` from the Bioconductor package `ropls` (#268).
 * New learner `regr.grf` fitting a generalized random forest with `grf::regression_forest()`, supporting `se` predictions, observation weights, and missing feature values.
