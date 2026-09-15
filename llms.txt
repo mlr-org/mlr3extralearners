@@ -180,6 +180,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_classif.aorsf`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.aorsf.md)
   [`LearnerClassifObliqueRandomForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.aorsf.md)
   : Oblique Random Forest Classifier
+- [`mlr_learners_classif.bam`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.bam.md)
+  [`LearnerClassifBam`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.bam.md)
+  : Classification Fast Generalized Additive Model Learner
 - [`mlr_learners_classif.bart`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.bart.md)
   [`LearnerClassifBart`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.bart.md)
   : Classification BART (Bayesian Additive Regression Trees) Learner
@@ -295,8 +298,8 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_classif.mdeb`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mdeb.md)
   [`LearnerClassifMdeb`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mdeb.md)
   : Classification Linear Discriminant Analysis Learner
-- [`mlr_learners_classif.mlp`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mlp.md)
-  [`LearnerClassifMLP`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mlp.md)
+- [`mlr_learners_classif.mlp_rsnns`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mlp_rsnns.md)
+  [`LearnerClassifMLPRsnns`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mlp_rsnns.md)
   : Classification Multilayer Perceptron Learner
 - [`mlr_learners_classif.mob`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mob.md)
   [`LearnerClassifMob`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mob.md)
@@ -316,6 +319,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_classif.nnTrain`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.nnTrain.md)
   [`LearnerClassifNNTrain`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.nnTrain.md)
   : Classification Neural Network Learner
+- [`mlr_learners_classif.opls`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.opls.md)
+  [`LearnerClassifOPLS`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.opls.md)
+  : OPLS-DA Classification Learner
 - [`mlr_learners_classif.penalized`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.penalized.md)
   [`LearnerClassifPenalized`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.penalized.md)
   : Classification L1 and L2 Penalized Learner
@@ -376,6 +382,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_classif.stepPlr`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.stepPlr.md)
   [`LearnerClassifStepPlr`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.stepPlr.md)
   : Classification Logistic Regression Learner
+- [`mlr_learners_classif.tabfm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.tabfm.md)
+  [`LearnerClassifTabFM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.tabfm.md)
+  : TabFM Classification Learner
 - [`mlr_learners_classif.tabpfn`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.tabpfn.md)
   [`LearnerClassifTabPFN`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.tabpfn.md)
   : TabPFN Classification Learner
@@ -400,6 +409,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_regr.aorsf`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.aorsf.md)
   [`LearnerRegrObliqueRandomForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.aorsf.md)
   : Oblique Random Forest Regressor
+- [`mlr_learners_regr.bam`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.bam.md)
+  [`LearnerRegrBam`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.bam.md)
+  : Regression Fast Generalized Additive Model Learner
 - [`mlr_learners_regr.bart`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.bart.md)
   [`LearnerRegrBart`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.bart.md)
   : Regression BART (Bayesian Additive Regression Trees) Learner
@@ -505,6 +517,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_regr.gpfit`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gpfit.md)
   [`LearnerRegrGPfit`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gpfit.md)
   : Regression Gaussian Process Learner (GPfit)
+- [`mlr_learners_regr.grf`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.grf.md)
+  [`LearnerRegrGRF`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.grf.md)
+  : Generalized Random Forest Regression Learner
 - [`mlr_learners_regr.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.deeplearning.md)
   [`LearnerRegrH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.deeplearning.md)
   : Regression H2O Deep Learning Learner
@@ -566,6 +581,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_regr.polyFit`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.polyFit.md)
   [`LearnerRegrPoly`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.polyFit.md)
   : Polynomial Regression Learner
+- [`mlr_learners_regr.polynomial`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.polynomial.md)
+  [`LearnerRegrPolynomial`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.polynomial.md)
+  : Polynomial Regression Learner
 - [`mlr_learners_regr.priority_lasso`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.priority_lasso.md)
   [`LearnerRegrPriorityLasso`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.priority_lasso.md)
   : Regression Priority Lasso Learner
@@ -602,6 +620,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_regr.smo_reg`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.smo_reg.md)
   [`LearnerRegrSMOreg`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.smo_reg.md)
   : Regression Support Vector Machine Learner
+- [`mlr_learners_regr.tabfm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.tabfm.md)
+  [`LearnerRegrTabFM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.tabfm.md)
+  : TabFM Regression Learner
 - [`mlr_learners_regr.tabpfn`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.tabpfn.md)
   [`LearnerRegrTabPFN`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.tabpfn.md)
   : TabPFN Regression Learner

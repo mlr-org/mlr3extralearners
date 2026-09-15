@@ -15,7 +15,7 @@ Calls klaR::rda() from: klaR."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +85,8 @@ Calls <code><a href="https://rdrr.io/pkg/klaR/man/rda.html" class="external-link
     <p>Friedman JH (1989).
 “Regularized Discriminant Analysis.”
 <em>Journal of the American Statistical Association</em>, <b>84</b>(405), 165–175.
-ISSN 01621459, 1537274X, <a href="http://www.jstor.org/stable/2289860" class="external-link">http://www.jstor.org/stable/2289860</a>.</p>
+ISSN 01621459, 1537274X.
+<a href="http://www.jstor.org/stable/2289860" class="external-link">http://www.jstor.org/stable/2289860</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -185,15 +186,15 @@ ISSN 01621459, 1537274X, <a href="http://www.jstor.org/stable/2289860" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Regularization parameters: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     gamma    lambda </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.2663273 0.3407742 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4013720 0.5323512 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Prior probabilities of groups: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M         R </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5395683 0.4604317 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4964029 0.5035971 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Misclassification rate: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        apparent: 2.878 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cross-validated: 18.711 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        apparent: 4.317 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cross-validated: 13.815 %</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -202,7 +203,7 @@ ISSN 01621459, 1537274X, <a href="http://www.jstor.org/stable/2289860" class="ex
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

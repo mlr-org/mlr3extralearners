@@ -81,7 +81,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -209,12 +209,12 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V11 <= 0.2139
-#> |   |   [3] V1 <= 0.0373: R (n = 54, err = 14.8%)
-#> |   |   [4] V1 > 0.0373: M (n = 7, err = 14.3%)
-#> |   [5] V11 > 0.2139
-#> |   |   [6] V17 <= 0.4423: M (n = 45, err = 13.3%)
-#> |   |   [7] V17 > 0.4423: R (n = 33, err = 48.5%)
+#> |   [2] V11 <= 0.1786
+#> |   |   [3] V4 <= 0.0505: R (n = 41, err = 4.9%)
+#> |   |   [4] V4 > 0.0505: M (n = 12, err = 25.0%)
+#> |   [5] V11 > 0.1786
+#> |   |   [6] V17 <= 0.5486: M (n = 59, err = 11.9%)
+#> |   |   [7] V17 > 0.5486: R (n = 27, err = 37.0%)
 #> 
 #> Number of inner nodes:    3
 #> Number of terminal nodes: 4
@@ -226,5 +226,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.3768116 
 ```

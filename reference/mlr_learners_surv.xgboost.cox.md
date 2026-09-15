@@ -188,6 +188,15 @@ bblodfon
   to the `best_iteration` selected by early stopping. Otherwise, the
   scores are taken from the final boosting round (`nrounds`).
 
+- `best_valid_scores`:
+
+  (named [`list()`](https://rdrr.io/r/base/list.html) or `NULL`)
+  Validation metrics of the best boosting round, extracted from the
+  xgboost model's `evaluation_log`. Because XGBoost also predicts with
+  the `best_iteration`, these are identical to `$internal_valid_scores`
+  whenever early stopping is enabled. If early stopping is not enabled,
+  no best round is tracked and this is an empty list.
+
 - `internal_tuned_values`:
 
   (named [`list()`](https://rdrr.io/r/base/list.html) or `NULL`) If

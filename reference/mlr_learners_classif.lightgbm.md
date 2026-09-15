@@ -235,8 +235,18 @@ kapsner
 
 - `internal_valid_scores`:
 
-  The last observation of the validation scores for all metrics.
-  Extracted from `model$evaluation_log`
+  The validation scores for all metrics at the best iteration
+  (`model$best_iter`), which is also the iteration that LightGBM
+  predicts with. Extracted from `model$record_evals`.
+
+- `best_valid_scores`:
+
+  The validation scores for all metrics at the best iteration
+  (`model$best_iter`), i.e. the iteration that is also reported via
+  `$internal_tuned_values`. Because LightGBM also predicts with the best
+  iteration, these are identical to `$internal_valid_scores` whenever
+  early stopping is activated. If early stopping is not activated, no
+  best iteration is tracked and this is an empty list.
 
 - `internal_tuned_values`:
 
@@ -347,26 +357,24 @@ print(learner$model)
 #> Objective: binary
 #> Fitted to dataset with 60 columns
 print(learner$importance())
-#>          V11          V12          V51          V35          V45          V23 
-#> 0.1851467725 0.0822086992 0.0727803757 0.0709034986 0.0473397433 0.0450924860 
-#>          V47          V36          V31          V43          V16           V4 
-#> 0.0398157000 0.0384266358 0.0325763217 0.0310694557 0.0309998723 0.0291192469 
-#>          V37          V10          V48           V9          V49          V27 
-#> 0.0290784121 0.0282602388 0.0234498448 0.0234132966 0.0172334747 0.0172239736 
-#>          V28          V46          V54           V2          V20          V50 
-#> 0.0146044472 0.0139611665 0.0118593161 0.0105964539 0.0101965534 0.0093778210 
-#>          V34           V1          V58          V18          V33          V52 
-#> 0.0082252643 0.0080123827 0.0062475241 0.0052733004 0.0051579373 0.0050243868 
-#>           V6          V17          V44          V57          V32          V21 
-#> 0.0047148231 0.0044348948 0.0040669435 0.0040519202 0.0029092708 0.0026997592 
-#>          V14          V59          V55          V42          V22          V39 
-#> 0.0024481602 0.0024425704 0.0023121268 0.0022591074 0.0021121889 0.0021072809 
-#>           V3          V19          V56          V13          V29          V41 
-#> 0.0019572354 0.0017153884 0.0013856355 0.0009868976 0.0009146074 0.0007684864 
-#>          V15          V26          V53          V40          V30           V5 
-#> 0.0007383351 0.0006046744 0.0005749842 0.0004606766 0.0003339729 0.0002808086 
-#>          V60 
-#> 0.0000446491 
+#>          V11          V12          V20           V1          V36          V27 
+#> 1.597416e-01 6.220373e-02 5.387648e-02 5.324806e-02 5.152704e-02 4.608114e-02 
+#>          V45          V47          V49          V37          V43          V48 
+#> 4.389285e-02 4.355484e-02 3.614121e-02 3.103091e-02 3.096447e-02 2.854371e-02 
+#>          V21          V31           V4           V5          V28          V16 
+#> 2.670852e-02 2.543275e-02 2.294021e-02 1.968101e-02 1.954525e-02 1.892431e-02 
+#>          V51          V29          V39          V54          V46          V60 
+#> 1.794270e-02 1.723847e-02 1.677088e-02 1.613613e-02 1.579231e-02 1.437862e-02 
+#>          V52          V18           V9          V23          V58          V40 
+#> 1.429881e-02 1.333639e-02 1.184254e-02 1.143568e-02 9.813536e-03 9.415549e-03 
+#>          V55          V59          V10          V34          V22          V42 
+#> 8.763068e-03 6.637325e-03 6.507306e-03 4.957727e-03 4.670226e-03 4.075838e-03 
+#>           V8          V25          V30          V44          V32          V38 
+#> 3.752850e-03 3.706970e-03 3.549155e-03 2.201324e-03 2.086790e-03 1.318736e-03 
+#>          V24          V26          V53          V15          V19          V35 
+#> 1.287205e-03 1.082947e-03 7.872261e-04 5.527740e-04 5.244992e-04 4.436889e-04 
+#>           V7          V50          V57          V33          V17 
+#> 2.290154e-04 1.827998e-04 1.328248e-04 7.070691e-05 3.925987e-05 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -374,5 +382,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#>  0.1449275 
 ```

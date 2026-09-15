@@ -84,7 +84,7 @@ instantiated via
 ## References
 
 Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
-5–32. ISSN 1573-0565,
+5–32. ISSN 1573-0565.
 [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A%3A1010933404324)
 .
 
@@ -256,10 +256,10 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #>                          Sample size: 139
-#>            Frequency of class labels: M=74, R=65
+#>            Frequency of class labels: M=73, R=66
 #>                      Number of trees: 500
 #>            Forest terminal node size: 1
-#>        Average no. of terminal nodes: 16.204
+#>        Average no. of terminal nodes: 17.522
 #> No. of variables tried at each split: 8
 #>               Total no. of variables: 60
 #>        Resampling used to grow trees: swor
@@ -268,51 +268,51 @@ print(learner$model)
 #>                               Family: class
 #>                       Splitting rule: gini *random*
 #>        Number of random split points: 10
-#>                     Imbalanced ratio: 1.1385
-#>                    (OOB) Brier score: 0.12306363
-#>         (OOB) Normalized Brier score: 0.49225453
-#>                            (OOB) AUC: 0.93336798
-#>                       (OOB) Log-loss: 0.39878949
-#>                         (OOB) PR-AUC: 0.93545916
-#>                         (OOB) G-mean: 0.82401582
-#>    (OOB) Requested performance error: 0.15827338, 0.04054054, 0.29230769
+#>                     Imbalanced ratio: 1.1061
+#>                    (OOB) Brier score: 0.14918668
+#>         (OOB) Normalized Brier score: 0.59674673
+#>                            (OOB) AUC: 0.90182648
+#>                       (OOB) Log-loss: 0.46606578
+#>                         (OOB) PR-AUC: 0.89806727
+#>                         (OOB) G-mean: 0.77314837
+#>    (OOB) Requested performance error: 0.21582734, 0.12328767, 0.31818182
 #> 
 #> Confusion matrix:
 #> 
 #>           predicted
 #>   observed  M  R class.error
-#>          M 71  3      0.0405
-#>          R 19 46      0.2923
+#>          M 64  9      0.1233
+#>          R 21 45      0.3182
 #> 
-#>       (OOB) Misclassification rate: 0.1582734
+#>       (OOB) Misclassification rate: 0.2158273
 #> 
 #> Random-classifier baselines (uniform):
 #>    Brier: 0.25   Normalized Brier: 1   Log-loss: 0.69314718
 print(learner$importance())
-#>           V11            V9           V52           V13           V10 
-#>  0.0861789373  0.0675267950  0.0605468874  0.0419194222  0.0387361030 
-#>           V12            V4           V49           V48           V17 
-#>  0.0356452218  0.0345799337  0.0317228447  0.0275157790  0.0162138891 
-#>           V47           V51           V31           V16           V46 
-#>  0.0160823791  0.0158945626  0.0156625207  0.0136249667  0.0136022498 
-#>           V15           V20           V19            V5           V18 
-#>  0.0120038524  0.0115676658  0.0114690449  0.0111420333  0.0107568364 
-#>           V23           V44           V27           V50           V33 
-#>  0.0104207231  0.0092542571  0.0088315639  0.0086854865  0.0085363109 
-#>           V36           V59           V39           V30           V32 
-#>  0.0084092122  0.0083883810  0.0079729373  0.0074143297  0.0072733694 
-#>           V21           V38           V53            V6           V28 
-#>  0.0072289621  0.0070907566  0.0070702163  0.0068062503  0.0068025936 
-#>            V3           V40           V54            V1           V34 
-#>  0.0067941169  0.0066797760  0.0058050014  0.0056197011  0.0053529783 
-#>           V37           V42           V45           V41            V7 
-#>  0.0050866158  0.0048153842  0.0046411010  0.0046273927  0.0046207177 
-#>            V8           V26           V29           V43           V35 
-#>  0.0043810718  0.0043522243  0.0042031133  0.0038782022  0.0036257371 
-#>           V57           V22           V14           V55           V25 
-#>  0.0035982316  0.0035956595  0.0034625752  0.0024754672  0.0020088948 
-#>            V2           V60           V24           V56           V58 
-#>  0.0017156337  0.0011434393  0.0007087376 -0.0005596699 -0.0007151003 
+#>           V12           V11           V45           V10           V36 
+#>  0.0665314863  0.0661425968  0.0309533479  0.0291046131  0.0252665819 
+#>           V46            V9           V49           V51           V13 
+#>  0.0208554356  0.0191303566  0.0189899070  0.0167126114  0.0155813376 
+#>           V37           V47           V16           V15           V21 
+#>  0.0154949602  0.0152291597  0.0146812629  0.0144465656  0.0127956525 
+#>           V52           V27            V4            V5           V48 
+#>  0.0123931724  0.0120582125  0.0112140706  0.0109505908  0.0101868814 
+#>           V17           V20           V39           V58           V23 
+#>  0.0100495965  0.0100250896  0.0079803262  0.0068298629  0.0065455893 
+#>           V14            V3            V7           V31           V44 
+#>  0.0065317987  0.0064430409  0.0061237334  0.0057962746  0.0056713338 
+#>           V40           V26           V57           V19           V35 
+#>  0.0056345099  0.0055533631  0.0055147694  0.0054936609  0.0051174400 
+#>           V56           V18            V8           V32           V24 
+#>  0.0050378616  0.0046321816  0.0046315177  0.0042438463  0.0042396965 
+#>           V30           V38            V6           V41           V53 
+#>  0.0042285038  0.0041893279  0.0038384556  0.0037970541  0.0030339188 
+#>           V60           V33           V54           V25           V22 
+#>  0.0029539534  0.0028926185  0.0026119772  0.0024713305  0.0023747955 
+#>           V28           V43            V2           V42           V34 
+#>  0.0018715940  0.0017234631  0.0016918556  0.0016008765  0.0014974743 
+#>            V1           V29           V59           V55           V50 
+#>  0.0014510737  0.0013020738  0.0002896040 -0.0004349047 -0.0004384282 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -320,5 +320,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>   0.173913 
 ```

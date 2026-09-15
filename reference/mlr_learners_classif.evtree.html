@@ -15,7 +15,7 @@ Calls evtree::evtree() fromevtree."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -172,15 +172,21 @@ are scaled internally to sum to 100.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V9 &lt; 0.1136</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V4 &lt; 0.0793: R (n = 37, err = 5.4%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V4 &gt;= 0.0793: M (n = 7, err = 14.3%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V9 &gt;= 0.1136</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V47 &lt; 0.0624: R (n = 20, err = 15.0%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [7] V47 &gt;= 0.0624: M (n = 75, err = 14.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V49 &lt; 0.0777</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V22 &lt; 0.7333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] V37 &lt; 0.2413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] V49 &lt; 0.0364: R (n = 15, err = 13.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] V49 &gt;= 0.0364: M (n = 11, err = 0.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] V37 &gt;= 0.2413: R (n = 36, err = 0.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] V22 &gt;= 0.7333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] V43 &lt; 0.1788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [10] V8 &lt; 0.14: R (n = 14, err = 7.1%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [11] V8 &gt;= 0.14: M (n = 8, err = 12.5%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [12] V43 &gt;= 0.1788: M (n = 31, err = 9.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [13] V49 &gt;= 0.0777: M (n = 24, err = 12.5%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -189,7 +195,7 @@ are scaled internally to sum to 100.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

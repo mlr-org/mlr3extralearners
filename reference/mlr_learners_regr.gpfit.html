@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,8 @@ If this is not wanted, <code>scale = FALSE`` has to be set. We replace the GPfit
     <p>MacDonald, B., Ranjan, P., Chipman, H. (2015).
 “GPfit: An R package for fitting a Gaussian process model to deterministic simulator outputs.”
 <em>Journal of Statistical Software</em>, <b>64</b>, 1–23.
-ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-link">doi:10.18637/jss.v064.i12</a>
+ISSN 1548-7660.
+<a href="https://doi.org/10.18637/jss.v064.i12" class="external-link">doi:10.18637/jss.v064.i12</a>
 .</p>
     </div>
     <div class="section level2">
@@ -193,11 +194,11 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation: Exponential (power = 1.95)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation Parameters: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.3213022   -2.58025   1.199483   1.907403 -0.1241201 -0.4514068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.3321298  -1.826888  -2.721863  -1.610074  0.1138376 -0.3256343</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -2.524947    -2.9585  0.0948605   0.6308339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.4446769   1.651308  0.8332376   -1.116717</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 24.47756</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 28.52048</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> delta_lb(beta_hat): [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -213,11 +214,11 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$high</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 460.000   4.930   5.000 335.000  20.220   1.000   5.424 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   6.000   8.000 440.000   4.930   5.000 264.000  22.900   1.000   5.345 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$low</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.513 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.615 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -227,7 +228,7 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9.33181 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33.03779 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

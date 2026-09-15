@@ -77,7 +77,7 @@ Hothorn T, Hornik K, Zeileis A (2006). “Unbiased Recursive Partitioning:
 A Conditional Inference Framework.” *Journal of Computational and
 Graphical Statistics*, **15**(3), 651–674.
 [doi:10.1198/106186006x133933](https://doi.org/10.1198/106186006x133933)
-, <https://doi.org/10.1198/106186006x133933>.
+. <https://doi.org/10.1198/106186006x133933>.
 
 ## See also
 
@@ -190,11 +190,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        9  22.8 19.67143
-#>       10  19.2 19.67143
-#>       11  17.8 19.67143
+#>        4  21.4 16.11818
+#>        5  18.7 16.11818
+#>       12  16.4 16.11818
 #>      ---   ---      ---
-#>       23  15.2 19.67143
-#>       25  19.2 19.67143
-#>       31  15.0 19.67143
+#>       24  13.3 16.11818
+#>       27  26.0 25.22000
+#>       32  21.4 25.22000
 ```

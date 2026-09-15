@@ -190,8 +190,17 @@ sumny
 
 - `internal_valid_scores`:
 
-  The last observation of the validation scores for all metrics.
-  Extracted from `model$evaluation_log`
+  The validation scores for the `eval_metric` and the `loss_function`,
+  evaluated on the internal validation data with all `tree_count` trees,
+  i.e. the trees that are also used for prediction.
+
+- `best_valid_scores`:
+
+  The validation scores of the best iteration. Because `use_best_model`
+  truncates the model to the best iteration, these are identical to
+  `$internal_valid_scores` whenever early stopping is activated. If
+  early stopping is not activated or `use_best_model` is `FALSE`, no
+  best iteration is tracked and this is an empty list.
 
 - `internal_tuned_values`:
 
@@ -303,10 +312,10 @@ print(learner$model)
 #> Loss function: RMSE
 #> Fit to 10 feature(s)
 print(learner$importance())
-#>        wt      disp       cyl        hp      carb      qsec        vs      drat 
-#> 25.365143 20.620591 11.165805  9.743637  8.657733  8.635245  6.004257  4.919717 
-#>      gear        am 
-#>  2.808035  2.079837 
+#>      disp       cyl      carb        wt      gear        hp      drat        vs 
+#> 21.482056 16.318995 13.563840 11.832111  8.504872  7.318245  6.636365  6.453034 
+#>      qsec        am 
+#>  4.708733  3.181748 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -314,5 +323,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.429966 
+#> 12.10254 
 ```

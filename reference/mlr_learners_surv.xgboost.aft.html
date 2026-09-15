@@ -19,7 +19,7 @@ set to survival:aft and eval_metric to aft-nloglik."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.6.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,7 +140,8 @@ ACM.
 <p>Avinash B, Hyunsu C, Toby H (2022).
 “Survival Regression with Accelerated Failure Time Model in XGBoost.”
 <em>Journal of Computational and Graphical Statistics</em>.
-ISSN 15372715, <a href="https://doi.org/10.1080/10618600.2022.2067548" class="external-link">doi:10.1080/10618600.2022.2067548</a>
+ISSN 15372715.
+<a href="https://doi.org/10.1080/10618600.2022.2067548" class="external-link">doi:10.1080/10618600.2022.2067548</a>
 .</p>
     </div>
     <div class="section level2">
@@ -168,6 +169,13 @@ ISSN 15372715, <a href="https://doi.org/10.1080/10618600.2022.2067548" class="ex
     <p></p><div class="r6-active-bindings"><dl><dt><code>internal_valid_scores</code></dt>
 <dd><p>The last observation of the validation scores for all metrics.
 Extracted from <code>model$evaluation_log</code></p></dd>
+
+
+    <dt><code>best_valid_scores</code></dt>
+<dd><p>The validation scores of the best boosting round, extracted from <code>model$evaluation_log</code>.
+Because XGBoost also predicts with the best <code>nrounds</code>, these are identical to
+<code>$internal_valid_scores</code> whenever early stopping is activated.
+If early stopping is not activated, no best round is tracked and this is an empty list.</p></dd>
 
 
     <dt><code>internal_tuned_values</code></dt>

@@ -16,7 +16,7 @@ manually in advance or specify a Python environment via
 or
 [`reticulate::use_miniconda()`](https://rstudio.github.io/reticulate/reference/use_python.html).
 By calling `$train()` or `$predict()`, the required Python packages
-(`tapfn`, `torch`, etc.) will be installed automatically, if not
+(`tabpfn`, `torch`, etc.) will be installed automatically, if not
 already. Reticulate will then configure and initialize an ephemeral
 environment satisfying those requirements, unless an existing
 environment (e.g., `"r-reticulate"`) in reticulate's [Order of
@@ -33,6 +33,19 @@ be loaded by
 from a conda environment. To use a conda environment, please install the
 CPU version of PyTorch.
 
+## License acceptance
+
+Since `tabpfn` version 8, the default model version (v3) requires a
+one-time acceptance of the Prior Labs license before the model weights
+can be downloaded. On the first call to `$train()` or `$predict()`,
+`tabpfn` opens a browser window to log in and accept the license, and
+caches the resulting token for subsequent calls. In non-interactive
+environments (e.g., on a server or in continuous integration), this
+browser flow fails. Instead, log in at <https://platform.priorlabs.ai>,
+accept the license on the licenses tab, copy your API key from
+<https://platform.priorlabs.ai/account>, and set it as the environment
+variable `TABPFN_TOKEN` before training.
+
 ## Saving a Learner
 
 In order to save a `LearnerClassifTabPFN` for later usage, it is
@@ -48,8 +61,12 @@ need to call `$unmarshal()` to transform it into a useable state.
 
 ## Custom mlr3 parameters
 
-- `categorical_feature_indices` uses R indexing instead of zero-based
-  Python indexing.
+- `categorical_features_indices` uses R indexing instead of zero-based
+  Python indexing. It is only needed to mark numeric or logical features
+  as categorical, because `factor`, `ordered`, and `character` features
+  are always encoded as categorical by `tabpfn`. The level order of
+  `ordered` features is not preserved, they are treated like unordered
+  `factor` features.
 
 - `device` must be a string. If set to `"auto"`, the behavior is the
   same as original. Otherwise, the string is passed as argument to
@@ -61,6 +78,19 @@ need to call `$unmarshal()` to transform it into a useable state.
   dtypes are not supported.
 
 - `inference_config` is currently not supported.
+
+- `tuning_config` must be passed as a named list, which is converted to
+  a Python dictionary. It enables post-hoc tuning towards `eval_metric`
+  and accepts the keys `calibrate_temperature`,
+  `tune_decision_thresholds`, `tuning_holdout_frac`, and
+  `tuning_n_folds`.
+
+- `eval_metric` only affects predictions when `tuning_config` is also
+  set, in which case the softmax temperature and decision thresholds are
+  tuned towards the chosen metric during training.
+
+- `n_jobs` is deprecated upstream in favor of `n_preprocessing_jobs` and
+  is only kept for backward compatibility.
 
 - `random_state` accepts either an integer or the special value `"None"`
   which corresponds to `None` in Python. Following the original Python
@@ -80,7 +110,8 @@ instantiated via
 
 - Predict Types: “response”, “prob”
 
-- Feature Types: “logical”, “integer”, “numeric”
+- Feature Types: “logical”, “integer”, “numeric”, “character”, “factor”,
+  “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
   [reticulate](https://CRAN.R-project.org/package=reticulate)
@@ -90,7 +121,8 @@ instantiated via
 |  |  |  |  |  |
 |----|----|----|----|----|
 | Id | Type | Default | Levels | Range |
-| n_estimators | integer | 4 |  | \\\[1, \infty)\\ |
+| n_estimators | integer | 8 |  | \\\[1, \infty)\\ |
+| auto_scale_n_estimators | logical | TRUE | TRUE, FALSE | \- |
 | categorical_features_indices | untyped | \- |  | \- |
 | softmax_temperature | numeric | 0.9 |  | \\\[0, \infty)\\ |
 | balance_probabilities | logical | FALSE | TRUE, FALSE | \- |
@@ -99,10 +131,16 @@ instantiated via
 | device | untyped | "auto" |  | \- |
 | ignore_pretraining_limits | logical | FALSE | TRUE, FALSE | \- |
 | inference_precision | character | auto | auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 | \- |
-| fit_mode | character | fit_preprocessors | low_memory, fit_preprocessors, fit_with_cache | \- |
+| fit_mode | character | fit_preprocessors | low_memory, fit_preprocessors, fit_with_cache, batched | \- |
 | memory_saving_mode | untyped | "auto" |  | \- |
+| keep_cache_on_device | logical | TRUE | TRUE, FALSE | \- |
 | random_state | integer | 0 |  | \\(-\infty, \infty)\\ |
 | n_jobs | integer | \- |  | \\\[1, \infty)\\ |
+| n_preprocessing_jobs | integer | 1 |  | \\\[1, \infty)\\ |
+| differentiable_input | logical | FALSE | TRUE, FALSE | \- |
+| eval_metric | character | \- | accuracy, balanced_accuracy, roc_auc, f1, log_loss | \- |
+| tuning_config | untyped | \- |  | \- |
+| show_progress_bar | logical | FALSE | TRUE, FALSE | \- |
 
 ## References
 
@@ -111,7 +149,7 @@ Körfer, Max, Hoo, Bin S, Schirrmeister, Tibor R, Hutter, Frank (2025).
 “Accurate predictions on small data with a tabular foundation model.”
 *Nature*.
 [doi:10.1038/s41586-024-08328-6](https://doi.org/10.1038/s41586-024-08328-6)
-, <https://www.nature.com/articles/s41586-024-08328-6>.
+. <https://www.nature.com/articles/s41586-024-08328-6>.
 
 Hollmann, Noah, Müller, Samuel, Eggensperger, Katharina, Hutter, Frank
 (2023). “TabPFN: A transformer that solves small tabular classification

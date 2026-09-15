@@ -196,8 +196,17 @@ sumny
 
 - `internal_valid_scores`:
 
-  The last observation of the validation scores for all metrics.
-  Extracted from `model$evaluation_log`
+  The validation scores for the `eval_metric` and the `loss_function`,
+  evaluated on the internal validation data with all `tree_count` trees,
+  i.e. the trees that are also used for prediction.
+
+- `best_valid_scores`:
+
+  The validation scores of the best iteration. Because `use_best_model`
+  truncates the model to the best iteration, these are identical to
+  `$internal_valid_scores` whenever early stopping is activated. If
+  early stopping is not activated or `use_best_model` is `FALSE`, no
+  best iteration is tracked and this is an empty list.
 
 - `internal_tuned_values`:
 
@@ -311,26 +320,24 @@ print(learner$model)
 #> Loss function: Logloss
 #> Fit to 60 feature(s)
 print(learner$importance())
-#>         V11         V51         V27         V49         V21         V28 
-#> 19.55222106  9.56339662  8.04622967  7.80333261  3.73318420  3.61296855 
-#>         V36         V40         V48         V17          V1         V31 
-#>  3.47623401  3.41435506  3.31207720  3.03594627  2.57184867  2.31413038 
-#>         V59         V16         V53          V3         V50         V23 
-#>  2.29938661  2.28849567  2.16766687  1.69338342  1.68182010  1.66837436 
-#>          V9         V26         V20         V45         V54          V7 
-#>  1.65543687  1.64956493  1.49779726  1.49173498  1.43537519  1.42209018 
-#>         V19         V56         V10          V6         V35         V25 
-#>  1.34379912  1.19996405  0.90979401  0.83596322  0.76719140  0.59632573 
-#>         V12         V39         V47         V43         V55         V15 
-#>  0.58030938  0.55524891  0.52139873  0.52067480  0.38793861  0.34145656 
-#>         V30         V13         V14         V18          V2         V22 
-#>  0.05288472  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
-#>         V24         V29         V32         V33         V34         V37 
-#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
-#>         V38          V4         V41         V42         V44         V46 
-#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
-#>          V5         V52         V57         V58         V60          V8 
-#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
+#>        V11        V48        V21        V31        V49        V54        V27 
+#> 20.3791260  7.3611871  6.4985692  5.3360795  5.1659476  4.4019855  4.2660232 
+#>        V10        V16        V51        V36         V3        V59        V42 
+#>  4.1706078  3.8260547  2.4581812  2.2271850  2.2096556  2.0326364  1.9352683 
+#>        V45         V7        V19        V34        V43        V14        V28 
+#>  1.7911352  1.7204289  1.7094686  1.5998064  1.5808669  1.5702105  1.5001327 
+#>        V53        V37        V46        V47        V56        V24        V40 
+#>  1.3928837  1.3370632  1.2937789  1.1758831  1.1626579  1.1043201  0.9995162 
+#>        V39        V35        V38        V57        V13        V17        V15 
+#>  0.9990366  0.9287971  0.9113591  0.7827876  0.7619997  0.7610649  0.5918910 
+#>        V25        V50        V30        V23        V26         V1        V12 
+#>  0.5745882  0.4956168  0.4127566  0.3352785  0.2381645  0.0000000  0.0000000 
+#>        V18         V2        V20        V22        V29        V32        V33 
+#>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>         V4        V41        V44         V5        V52        V55        V58 
+#>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>         V6        V60         V8         V9 
+#>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
