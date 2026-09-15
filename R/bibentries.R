@@ -684,9 +684,7 @@ bibentries = c(
     publisher = "MIT Press",
     title = "Fast Training of Support Vector Machines using Sequential Minimal Optimization",
     year = "1998",
-    URL = "http://research.microsoft.com/jplatt/smo.html",
-    PS = "http://research.microsoft.com/jplatt/smo-book.ps.gz",
-    PDF = "http://research.microsoft.com/jplatt/smo-book.pdf"
+    URL = "https://www.microsoft.com/en-us/research/publication/sequential-minimal-optimization-a-fast-algorithm-for-training-support-vector-machines/"
   ),
   Keerthi2001 = bibentry("article",
     author = "S.S. Keerthi and S.K. Shevade and C. Bhattacharyya and K.R.K. Murthy",
@@ -991,7 +989,7 @@ bibentries = c(
     volume = "65",
     number = "6",
     pages = "1--30",
-    url = "http://www.jstatsoft.org/v65/i06/"
+    url = "https://www.jstatsoft.org/v65/i06/"
   ),
   gramacy2016lagp = bibentry("article",
     title = "laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R",

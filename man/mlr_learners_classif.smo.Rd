@@ -133,7 +133,7 @@ Platt J (1998).
 \dQuote{Fast Training of Support Vector Machines using Sequential Minimal Optimization.}
 In Schoelkopf B, Burges C, Smola A (eds.), \emph{Advances in Kernel Methods - Support Vector Learning}.
 MIT Press.
-\url{http://research.microsoft.com/jplatt/smo.html}.
+\url{https://www.microsoft.com/en-us/research/publication/sequential-minimal-optimization-a-fast-algorithm-for-training-support-vector-machines/}.
 
 Keerthi S, Shevade S, Bhattacharyya C, Murthy K (2001).
 \dQuote{Improvements to Platt's SMO Algorithm for SVM Classifier Design.}
