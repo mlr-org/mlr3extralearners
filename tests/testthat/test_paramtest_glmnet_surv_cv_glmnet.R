@@ -10,6 +10,7 @@ test_that("surv.cv_glmnet", {
     "family", # only "cox" is applicable for this learner
     "weights", # handled by mlr3
     "offset", # handled by mlr3
+    "strata", # handled by mlr3
     "fit", # fit object is passed on to relax.glmnet()
     "check.args", # default TRUE is good for mlr3, no need to expose
     "type.gaussian", # not applicable for cox family
@@ -40,6 +41,7 @@ test_that("predict surv.cv_glmnet", {
     "type", # handled via mlr3
     "newoffset", # handled by mlr3
     "formula", # handled via mlr3
+    "strata", # handled by mlr3
     "predict.gamma", # renamed from gamma
     "gamma", # renamed to predict.gamma in mlr3 to avoid confusion with train gamma parameter
     "stype", # for distr prediction

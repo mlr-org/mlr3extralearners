@@ -95,3 +95,38 @@ test_that("relax = TRUE works", {
   p4 = learner$predict(task, test_rows)
   expect_false(all(p2$lp == p4$lp))
 })
+
+test_that("stratified Cox model works", {
+  task = tsk("gbcs")
+  train_rows = 1:600
+  test_rows = 601:task$nrow
+  unique_times = task$unique_times(rows = train_rows)
+
+  expect_error(lrn("surv.glmnet", lambda = 0.03, strata = 42L))
+  expect_error(lrn("surv.glmnet", lambda = 0.03, strata = "non_existing_column")$train(task))
+  learner = lrn("surv.glmnet", lambda = 0.03, strata = "hormone")
+  learner$train(task, train_rows)
+  expect_class(learner$model$y, "stratifySurv")
+  expect_equal(colnames(learner$model$x), setdiff(task$feature_names, "hormone"))
+
+  p = learner$predict(task, test_rows)
+  expect_numeric(p$lp)
+  expect_matrix(p$data$distr, nrows = length(test_rows), ncols = length(unique_times))
+
+  # add one more test row with a stratum not present in the training set, prediction should fail
+  task$rbind(
+    data = data.table(
+      time = 1000,
+      status = 0L,
+      age = 55,
+      estrg_recp = 20,
+      grade = 2L,
+      hormone = 3L, # hormone is only 1 or 2 in training set
+      menopause = 1L,
+      nodes = 2L,
+      prog_recp = 30,
+      size = 25
+    )
+  )
+  expect_error(learner$predict(task, task$nrow))
+})
