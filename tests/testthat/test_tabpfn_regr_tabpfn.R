@@ -66,6 +66,32 @@ test_that("other tests", {
     learner$train(task)
     expect_identical(learner$model$fitted$categorical_features_indices, 0:2)
 
+    # categorical features are passed to python without losing missing values ----
+    n = 20
+    task = as_task_regr(
+      data.frame(
+        num = c(NA, rnorm(n - 1)),
+        int = c(NA, sample(1:5, n - 1, replace = TRUE)),
+        lgl = c(NA, sample(c(TRUE, FALSE), n - 1, replace = TRUE)),
+        chr = c(NA, sample(c("a", "b"), n - 1, replace = TRUE)),
+        fct = factor(c(NA, sample(c("x", "y", "z"), n - 1, replace = TRUE))),
+        ord = ordered(c(NA, sample(c("lo", "hi"), n - 1, replace = TRUE)), levels = c("lo", "hi")),
+        y = rnorm(n)
+      ),
+      target = "y"
+    )
+
+    x_py = mlr3extralearners:::tabpfn_data(task)
+    counts = unlist(reticulate::py_to_r(x_py$isna()$sum()$to_dict()))
+    expect_equal(
+      counts[c("num", "int", "lgl", "chr", "fct", "ord")],
+      c(num = 1, int = 1, lgl = 1, chr = 1, fct = 1, ord = 1)
+    )
+
+    learner = lrn("regr.tabpfn")
+    learner$train(task)
+    expect_prediction(learner$predict(task))
+
     # device selection works ----
     torch = reticulate::import("torch")
     task = tsk("mtcars")
