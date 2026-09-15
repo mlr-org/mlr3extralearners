@@ -22,8 +22,8 @@
 #' On the first call to `$train()` or `$predict()`, `tabpfn` opens a browser window to log in and accept the
 #' license, and caches the resulting token for subsequent calls.
 #' In non-interactive environments (e.g., on a server or in continuous integration), this browser flow fails.
-#' Instead, log in at <https://ux.priorlabs.ai>, accept the license on the licenses tab, copy your API key from
-#' <https://ux.priorlabs.ai/account>, and set it as the environment variable `TABPFN_TOKEN` before training.
+#' Instead, log in at <https://platform.priorlabs.ai>, accept the license on the licenses tab, copy your API key from
+#' <https://platform.priorlabs.ai/account>, and set it as the environment variable `TABPFN_TOKEN` before training.
 #'
 #' @section Saving a Learner:
 #' In order to save a `<%= class %>` for later usage,

@@ -35,8 +35,8 @@ license before the model weights can be downloaded.
 On the first call to \verb{$train()} or \verb{$predict()}, \code{tabpfn} opens a browser window to log in and accept the
 license, and caches the resulting token for subsequent calls.
 In non-interactive environments (e.g., on a server or in continuous integration), this browser flow fails.
-Instead, log in at \url{https://ux.priorlabs.ai}, accept the license on the licenses tab, copy your API key from
-\url{https://ux.priorlabs.ai/account}, and set it as the environment variable \code{TABPFN_TOKEN} before training.
+Instead, log in at \url{https://platform.priorlabs.ai}, accept the license on the licenses tab, copy your API key from
+\url{https://platform.priorlabs.ai/account}, and set it as the environment variable \code{TABPFN_TOKEN} before training.
 }
 
 \section{Saving a Learner}{
