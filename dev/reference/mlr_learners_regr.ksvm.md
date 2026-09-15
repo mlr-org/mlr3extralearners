@@ -173,12 +173,12 @@ print(learner$model)
 #>  parameter : epsilon = 0.1  cost C = 1 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.253916143705324 
+#>  Hyperparameter : sigma =  0.0888819163457537 
 #> 
 #> Number of Support Vectors : 20 
 #> 
-#> Objective Function Value : -5.5161 
-#> Training error : 0.055712 
+#> Objective Function Value : -6.519 
+#> Training error : 0.166556 
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.20317 
+#> 24.07239 
 ```

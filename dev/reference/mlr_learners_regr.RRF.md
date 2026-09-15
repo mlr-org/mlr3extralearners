@@ -218,13 +218,13 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 3
 #> 
-#>           Mean of squared residuals: 6.765492
-#>                     % Var explained: 82.82
+#>           Mean of squared residuals: 7.69513
+#>                     % Var explained: 82.26
 print(learner$importance())
-#>        wt      disp      drat        hp       cyl        vs      gear      qsec 
-#> 179.07094 163.72781 122.12399  89.05819  84.48233  30.75216  24.79510  21.22524 
-#>        am      carb 
-#>  15.92682  13.93093 
+#>       disp         wt         hp        cyl         am       drat       qsec 
+#> 228.581682 195.368464 138.566178  80.963576  66.715675  58.238003  21.455438 
+#>       carb         vs       gear 
+#>  21.374491  20.246470   6.905234 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.602556 
+#> 2.585911 
 ```
