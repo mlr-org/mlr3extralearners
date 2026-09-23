@@ -178,7 +178,7 @@ print(learner$model)
 #> Penalized linear regression object
 #> 11 regression coefficients
 #> 
-#> Loglikelihood =   -46.86005 
+#> Loglikelihood =   -39.29696 
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.118193 
+#> 30.29534 
 ```

@@ -5979,8 +5979,8 @@ print(learner$model)
 #> $info$control$applyfun
 #> function (X, FUN, ...) 
 #> parallel::mclapply(X, FUN, ..., mc.set.seed = TRUE, mc.cores = cores)
-#> <bytecode: 0x556bd3a56578>
-#> <environment: 0x556bf333d898>
+#> <bytecode: 0x558a5e59c118>
+#> <environment: 0x558a9a0730b0>
 #> 
 #> $info$control$saveinfo
 #> [1] FALSE
@@ -5999,8 +5999,8 @@ print(learner$model)
 #>     .select(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x556bd3cf0aa8>
-#> <environment: 0x556bf3348fa0>
+#> <bytecode: 0x558a5e6a5ce8>
+#> <environment: 0x558a9a06ddd0>
 #> 
 #> $info$control$splitfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6010,8 +6010,8 @@ print(learner$model)
 #>     .split(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x556bd3ce55a8>
-#> <environment: 0x556bf3349080>
+#> <bytecode: 0x558a5e6a1070>
+#> <environment: 0x558a9a06dcf0>
 #> 
 #> $info$control$svselectfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6021,8 +6021,8 @@ print(learner$model)
 #>     .select(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x556bd3cf0aa8>
-#> <environment: 0x556bf3349160>
+#> <bytecode: 0x558a5e6a5ce8>
+#> <environment: 0x558a9a06dc10>
 #> 
 #> $info$control$svsplitfun
 #> function (model, trafo, data, subset, weights, whichvar, ctrl) 
@@ -6032,8 +6032,8 @@ print(learner$model)
 #>     .split(model, trafo, data, subset, weights, whichvar, ctrl, 
 #>         FUN = .ctree_test)
 #> }
-#> <bytecode: 0x556bd3ce55a8>
-#> <environment: 0x556bf33492b0>
+#> <bytecode: 0x558a5e6a1070>
+#> <environment: 0x558a9a06dac0>
 #> 
 #> $info$control$teststat
 #> [1] "quadratic"
@@ -6077,8 +6077,8 @@ print(learner$model)
 #> $trafo
 #> function (subset, weights, info, estfun, object, ...) 
 #> list(estfun = Y, unweighted = TRUE)
-#> <bytecode: 0x556bd39d9a68>
-#> <environment: 0x556bf3336a28>
+#> <bytecode: 0x558a5e51ae50>
+#> <environment: 0x558aa4726058>
 #> 
 #> $predictf
 #> ~age + los + revasc + revascdays + stchange + sysbp

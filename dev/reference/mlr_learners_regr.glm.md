@@ -44,6 +44,8 @@ instantiated via
 | epsilon | numeric | 1e-08 |  | \\(-\infty, \infty)\\ |
 | maxit | numeric | 25 |  | \\(-\infty, \infty)\\ |
 | trace | logical | FALSE | TRUE, FALSE | \- |
+| tol | numeric | \- |  | \\\[0, \infty)\\ |
+| wtol | numeric | 0 |  | \\\[0, \infty)\\ |
 | dispersion | untyped | NULL |  | \- |
 | type | character | link | response, link, terms | \- |
 | use_pred_offset | logical | TRUE | TRUE, FALSE | \- |
@@ -57,6 +59,12 @@ instantiated via
   - Adjusted default: `"response"`
 
   - Reason for change: Response scale more natural for predictions.
+
+## Custom mlr3 parameters
+
+- `tol` and `wtol` are passed to
+  [`stats::glm.control()`](https://rdrr.io/r/stats/glm.control.html) and
+  require R \>= 4.7.0.
 
 ## Offset
 
@@ -213,13 +221,13 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> (Intercept)           am         carb          cyl         disp         drat  
-#>    47.07703      6.42567     -1.79756     -1.58753     -0.02850     -0.94799  
+#>    -0.27341      6.07378     -0.62013      0.40900     -0.01977      2.30223  
 #>        gear           hp         qsec           vs           wt  
-#>    -2.18208      0.03688     -0.20430      2.61531      0.45370  
+#>    -0.73194     -0.01220      0.92935     -0.21310      0.37679  
 #> 
 #> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual
-#> Null Deviance:       692.3 
-#> Residual Deviance: 30.9  AIC: 91.71
+#> Null Deviance:       804.9 
+#> Residual Deviance: 80.68     AIC: 111.9
 
 
 # Make predictions for the test rows
@@ -228,5 +236,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 31.99058 
+#> 13.64538 
 ```

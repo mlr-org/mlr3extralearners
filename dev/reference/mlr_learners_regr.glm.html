@@ -82,7 +82,7 @@ For logistic regression please use <code><a href="https://mlr3learners.mlr-org.c
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>singular.ok</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>y</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>etastart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>mustart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>start</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>family</td><td>character</td><td>gaussian</td><td>gaussian, poisson, quasipoisson, Gamma, inverse.gaussian</td><td>-</td></tr><tr><td>na.action</td><td>character</td><td>-</td><td>na.omit, na.pass, na.fail, na.exclude</td><td>-</td></tr><tr><td>link</td><td>character</td><td>-</td><td>logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse</td><td>-</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-08</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxit</td><td>numeric</td><td>25</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>dispersion</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>type</td><td>character</td><td>link</td><td>response, link, terms</td><td>-</td></tr><tr><td>use_pred_offset</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>singular.ok</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>y</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>etastart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>mustart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>start</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>family</td><td>character</td><td>gaussian</td><td>gaussian, poisson, quasipoisson, Gamma, inverse.gaussian</td><td>-</td></tr><tr><td>na.action</td><td>character</td><td>-</td><td>na.omit, na.pass, na.fail, na.exclude</td><td>-</td></tr><tr><td>link</td><td>character</td><td>-</td><td>logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse</td><td>-</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-08</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxit</td><td>numeric</td><td>25</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>tol</td><td>numeric</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>wtol</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>dispersion</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>type</td><td>character</td><td>link</td><td>response, link, terms</td><td>-</td></tr><tr><td>use_pred_offset</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
@@ -91,6 +91,12 @@ For logistic regression please use <code><a href="https://mlr3learners.mlr-org.c
 <li><p>Adjusted default: <code>"response"</code></p></li>
 <li><p>Reason for change: Response scale more natural for predictions.</p></li>
 </ul></li>
+</ul></div>
+    <div class="section level2">
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
+
+
+<ul><li><p><code>tol</code> and <code>wtol</code> are passed to <code><a href="https://rdrr.io/r/stats/glm.control.html" class="external-link">stats::glm.control()</a></code> and require R &gt;= 4.7.0.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="offset">Offset<a class="anchor" aria-label="anchor" href="#offset"></a></h2>
@@ -227,13 +233,13 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    47.07703      6.42567     -1.79756     -1.58753     -0.02850     -0.94799  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    -0.27341      6.07378     -0.62013      0.40900     -0.01977      2.30223  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    -2.18208      0.03688     -0.20430      2.61531      0.45370  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    -0.73194     -0.01220      0.92935     -0.21310      0.37679  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    692.3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 30.9 	AIC: 91.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    804.9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 80.68 	AIC: 111.9</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -242,7 +248,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31.99058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.64538 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
