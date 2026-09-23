@@ -43,6 +43,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    epsilon \tab numeric \tab 1e-08 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxit \tab numeric \tab 25 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   tol \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   wtol \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    dispersion \tab untyped \tab NULL \tab  \tab - \cr
    type \tab character \tab link \tab response, link, terms \tab - \cr
    use_pred_offset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
@@ -58,6 +60,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \item Adjusted default: \code{"response"}
 \item Reason for change: Response scale more natural for predictions.
 }
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{tol} and \code{wtol} are passed to \code{stats::glm.control()} and require R >= 4.7.0.
 }
 }
 

@@ -3,6 +3,8 @@ skip_if_not_installed("stats")
 test_that("paramtest regr.glm train", {
   learner = lrn("regr.glm")
   fun_list = list(stats::glm, stats::glm.control)
+  # tol and wtol were added to glm.control() in R 4.7.0
+  if (getRversion() < "4.7.0") fun_list = c(fun_list, function(tol, wtol) NULL)
   exclude = c(
     "formula", # handled by mlr3
     "data", # handled by mlr3

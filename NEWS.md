@@ -1,5 +1,7 @@
 # mlr3extralearners (development version)
 
+* `regr.glm`: added the `tol` and `wtol` parameters of `stats::glm.control()`, which are available from R 4.7.0 on.
+
 # mlr3extralearners 1.7.0
 
 ## New Features
