@@ -204,7 +204,7 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: gbm
-#> Model ID:  GBM_model_R_1789487209789_110 
+#> Model ID:  GBM_model_R_1790169491492_110 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
 #> 1              50                       50                4185         1
@@ -215,11 +215,11 @@ print(learner$model)
 #> H2ORegressionMetrics: gbm
 #> ** Reported on training data. **
 #> 
-#> MSE:  9.050726
-#> RMSE:  3.008442
-#> MAE:  2.4642
-#> RMSLE:  0.1375938
-#> Mean Residual Deviance :  9.050726
+#> MSE:  6.077846
+#> RMSE:  2.465329
+#> MAE:  1.862795
+#> RMSLE:  0.1135544
+#> Mean Residual Deviance :  6.077846
 #> 
 #> 
 #> 
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.957792 
+#> 12.03941 
 ```

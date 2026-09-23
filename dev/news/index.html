@@ -59,7 +59,7 @@
 <div class="section level3">
 <h3 id="new-features-1-7-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-7-0"></a></h3>
 <ul><li>
-<code>surv.cv_glmnet</code> and <code>surv.glmnet</code>: added the <code>strata</code> parameter for fitting stratified Cox models via <code><a href="https://glmnet.stanford.edu/reference/stratifySurv.html" class="external-link">glmnet::stratifySurv()</a></code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/396" class="external-link">#396</a>).</li>
+<code>surv.cv_glmnet</code> and <code>surv.glmnet</code>: added the <code>strata</code> parameter for fitting stratified Cox models via <code><a href="https://rdrr.io/pkg/glmnet/man/stratifySurv.html" class="external-link">glmnet::stratifySurv()</a></code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/396" class="external-link">#396</a>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="breaking-changes-1-7-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-7-0"></a></h3>
@@ -86,7 +86,7 @@
 <div class="section level3">
 <h3 id="breaking-changes-1-6-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-6-0"></a></h3>
 <ul><li>
-<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
 <code>surv.cv_glmnet</code>: removed the parameters <code>standardize.response</code>, <code>type.gaussian</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are not applicable to the Cox family (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>

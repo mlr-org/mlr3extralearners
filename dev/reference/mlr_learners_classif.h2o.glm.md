@@ -212,72 +212,72 @@ print(learner$model)
 #> ==============
 #> 
 #> H2OBinomialModel: glm
-#> Model ID:  GLM_model_R_1789487209789_56 
+#> Model ID:  GLM_model_R_1790169491492_56 
 #> GLM Model: summary
 #>     family  link                               regularization
-#> 1 binomial logit Elastic Net (alpha = 0.5, lambda = 0.04711 )
+#> 1 binomial logit Elastic Net (alpha = 0.5, lambda = 0.04168 )
 #>   number_of_predictors_total number_of_active_predictors number_of_iterations
-#> 1                         60                          24                    6
+#> 1                         60                          34                    6
 #>     training_frame
-#> 1 data_sid_a69e_11
+#> 1 data_sid_ae9f_11
 #> 
 #> Coefficients: glm coefficients
 #>       names coefficients standardized_coefficients
-#> 1 Intercept     3.996893                 -0.050074
-#> 2        V1     0.000000                  0.000000
-#> 3       V10     0.000000                  0.000000
-#> 4       V11    -2.688855                 -0.343113
-#> 5       V12    -2.776044                 -0.406578
+#> 1 Intercept     3.708082                 -0.236611
+#> 2        V1   -14.193843                 -0.294122
+#> 3       V10    -0.520658                 -0.067568
+#> 4       V11    -3.310137                 -0.441314
+#> 5       V12    -3.376699                 -0.464907
 #> 
 #> ---
 #>    names coefficients standardized_coefficients
-#> 56   V59   -34.313222                 -0.202329
-#> 57    V6     0.000000                  0.000000
+#> 56   V59   -17.578443                 -0.111856
+#> 57    V6     2.440009                  0.137092
 #> 58   V60     0.000000                  0.000000
-#> 59    V7     0.000000                  0.000000
-#> 60    V8     0.000000                  0.000000
-#> 61    V9    -1.564426                 -0.177172
+#> 59    V7     1.117269                  0.064332
+#> 60    V8     1.379436                  0.106271
+#> 61    V9    -0.474207                 -0.051664
 #> 
 #> H2OBinomialMetrics: glm
 #> ** Reported on training data. **
 #> 
-#> MSE:  0.1099708
-#> RMSE:  0.3316185
-#> LogLoss:  0.3668024
-#> Mean Per-Class Error:  0.1447205
-#> AUC:  0.9484472
-#> AUCPR:  0.9567603
-#> Gini:  0.8968944
-#> R^2:  0.5600939
-#> Residual Deviance:  101.9711
-#> AIC:  151.9711
+#> MSE:  0.1060725
+#> RMSE:  0.3256877
+#> LogLoss:  0.353844
+#> Mean Per-Class Error:  0.08872976
+#> AUC:  0.9616023
+#> AUCPR:  0.961145
+#> Gini:  0.9232046
+#> R^2:  0.5746312
+#> Residual Deviance:  98.36862
+#> AIC:  168.3686
 #> 
 #> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
 #>         M  R    Error     Rate
-#> M      51 18 0.260870   =18/69
-#> R       2 68 0.028571    =2/70
-#> Totals 53 86 0.143885  =20/139
+#> M      70  3 0.041096    =3/73
+#> R       9 57 0.136364    =9/66
+#> Totals 79 60 0.086331  =12/139
 #> 
 #> Maximum Metrics: Maximum metrics at their respective thresholds
 #>                         metric threshold     value idx
-#> 1                       max f1  0.428620  0.871795  85
-#> 2                       max f2  0.428620  0.928962  85
-#> 3                 max f0point5  0.641996  0.917266  51
-#> 4                 max accuracy  0.603783  0.870504  57
-#> 5                max precision  0.966233  1.000000   0
-#> 6                   max recall  0.059510  1.000000 126
-#> 7              max specificity  0.966233  1.000000   0
-#> 8             max absolute_mcc  0.603783  0.752591  57
-#> 9   max min_per_class_accuracy  0.530420  0.857143  68
-#> 10 max mean_per_class_accuracy  0.603783  0.871118  57
-#> 11                     max tns  0.966233 69.000000   0
-#> 12                     max fns  0.966233 69.000000   0
-#> 13                     max fps  0.011854 69.000000 138
-#> 14                     max tps  0.059510 70.000000 126
-#> 15                     max tnr  0.966233  1.000000   0
-#> 16                     max fnr  0.966233  0.985714   0
-#> 17                     max fpr  0.011854  1.000000 138
-#> 18                     max tpr  0.059510  1.000000 126
+#> 1                       max f1  0.553823  0.904762  59
+#> 2                       max f2  0.409360  0.924855  81
+#> 3                 max f0point5  0.553823  0.931373  59
+#> 4                 max accuracy  0.553823  0.913669  59
+#> 5                max precision  0.980742  1.000000   0
+#> 6                   max recall  0.313597  1.000000  92
+#> 7              max specificity  0.980742  1.000000   0
+#> 8             max absolute_mcc  0.553823  0.829281  59
+#> 9   max min_per_class_accuracy  0.518643  0.878788  64
+#> 10 max mean_per_class_accuracy  0.553823  0.911270  59
+#> 11                     max tns  0.980742 73.000000   0
+#> 12                     max fns  0.980742 65.000000   0
+#> 13                     max fps  0.007380 73.000000 138
+#> 14                     max tps  0.313597 66.000000  92
+#> 15                     max tnr  0.980742  1.000000   0
+#> 16                     max fnr  0.980742  0.984848   0
+#> 17                     max fpr  0.007380  1.000000 138
+#> 18                     max tpr  0.313597  1.000000  92
 #> 
 #> Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 #> 
@@ -290,5 +290,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3623188 
+#>  0.2318841 
 ```
