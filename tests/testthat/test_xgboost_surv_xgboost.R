@@ -190,3 +190,39 @@ test_that("surv.xgboost.cox distr via breslow works", {
 
   expect_equal(surv, p_test$data$distr)
 })
+
+test_that("best valid scores: aft and cox", {
+  for (info in list(
+    list(id = "surv.xgboost.aft", metric = "aft_nloglik"),
+    list(id = "surv.xgboost.cox", metric = "cox_nloglik")
+  )) {
+    # with early stopping, xgboost also predicts with the best `nrounds`,
+    # so the final model is the best model and both extractors agree
+    learner = lrn(info$id, nrounds = 100L, early_stopping_rounds = 5, validate = 0.2)
+    learner$train(task)
+
+    expect_list(learner$best_valid_scores, types = "numeric", info = info$id)
+    expect_equal(names(learner$best_valid_scores), info$metric, info = info$id)
+    expect_equal(learner$best_valid_scores, learner$internal_valid_scores, info = info$id)
+
+    best_iter = attributes(learner$model)$early_stop$best_iteration
+    expect_equal(
+      learner$best_valid_scores[[info$metric]],
+      attributes(learner$model)$evaluation_log[
+        get("iter") == best_iter, paste0("test_", info$metric), with = FALSE][[1L]],
+      info = info$id
+    )
+
+    # without early stopping no best round is tracked
+    learner = lrn(info$id, nrounds = 10L, validate = 0.2)
+    learner$train(task)
+    expect_equal(learner$best_valid_scores, named_list(), info = info$id)
+    expect_list(learner$internal_valid_scores, types = "numeric", info = info$id)
+
+    # without validation nothing is reported at all
+    learner = lrn(info$id, nrounds = 10L)
+    learner$train(task)
+    expect_null(learner$best_valid_scores, info = info$id)
+    expect_null(learner$internal_valid_scores, info = info$id)
+  }
+})
