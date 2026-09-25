@@ -35,7 +35,8 @@
 #' @template seealso_learner
 #' @template example_cmprsk_coxboost
 #' @export
-LearnerCompRisksCoxboost = R6Class("LearnerCompRisksCoxboost",
+LearnerCompRisksCoxboost = R6Class(
+  "LearnerCompRisksCoxboost",
   inherit = mlr3cmprsk::LearnerCompRisks,
 
   public = list(
@@ -44,34 +45,34 @@ LearnerCompRisksCoxboost = R6Class("LearnerCompRisksCoxboost",
     initialize = function() {
       param_set = ps(
         # mlr3-specific parameter
-        cv               = p_lgl(init = FALSE, tags = "train"),
+        cv = p_lgl(init = FALSE, tags = "train"),
         # cv.CoxBoost parameters
-        maxstepno        = p_int(default = 100L, lower = 0L, tags = "train"),
-        K                = p_int(default = 10L, lower = 2L, tags = "train"),
-        type             = p_fct(default = "verweij", levels = c("verweij", "naive"), tags = "train"),
-        folds            = p_uty(default = NULL, tags = "train"),
+        maxstepno = p_int(default = 100L, lower = 0L, tags = "train"),
+        K = p_int(default = 10L, lower = 2L, tags = "train"),
+        type = p_fct(default = "verweij", levels = c("verweij", "naive"), tags = "train"),
+        folds = p_uty(default = NULL, tags = "train"),
         # optimCoxBoostPenalty parameters
-        minstepno        = p_int(default = 50L, lower = 0L, tags = "train"),
-        start.penalty    = p_dbl(tags = "train"),
-        iter.max         = p_int(default = 10L, lower = 1L, tags = "train"),
-        upper.margin     = p_dbl(default = 0.05, lower = 0, upper = 1, tags = "train"),
+        minstepno = p_int(default = 50L, lower = 0L, tags = "train"),
+        start.penalty = p_dbl(tags = "train"),
+        iter.max = p_int(default = 10L, lower = 1L, tags = "train"),
+        upper.margin = p_dbl(default = 0.05, lower = 0, upper = 1, tags = "train"),
         # CoxBoost parameters
-        unpen.index      = p_uty(tags = "train"),
-        standardize      = p_lgl(default = TRUE, tags = "train"),
-        stepno           = p_int(default = 100L, lower = 0L, tags = "train"),
-        penalty          = p_dbl(special_vals = list("optimCoxBoostPenalty"), tags = "train"),
-        criterion        = p_fct(default = "pscore", levels = c("pscore", "score", "hpscore", "hscore"), tags = "train"),
-        stepsize.factor  = p_dbl(default = 1, tags = "train"),
-        sf.scheme        = p_fct(default = "sigmoid", levels = c("sigmoid", "linear"), tags = "train"),
-        pendistmat       = p_uty(tags = "train"),
-        connected.index  = p_uty(tags = "train"),
-        x.is.01          = p_lgl(default = FALSE, tags = "train"),
-        return.score     = p_lgl(default = TRUE, tags = "train"),
-        trace            = p_lgl(default = FALSE, tags = "train"),
-        cmprsk           = p_fct(init = "csh", levels = c("csh", "ccsh"), tags = "train"),
-        coupled.strata   = p_lgl(default = TRUE, tags = "train"),
-        at.step          = p_uty(tags = "predict"),
-        times            = p_uty(tags = "predict")
+        unpen.index = p_uty(tags = "train"),
+        standardize = p_lgl(default = TRUE, tags = "train"),
+        stepno = p_int(default = 100L, lower = 0L, tags = "train"),
+        penalty = p_dbl(special_vals = list("optimCoxBoostPenalty"), tags = "train"),
+        criterion = p_fct(default = "pscore", levels = c("pscore", "score", "hpscore", "hscore"), tags = "train"),
+        stepsize.factor = p_dbl(default = 1, tags = "train"),
+        sf.scheme = p_fct(default = "sigmoid", levels = c("sigmoid", "linear"), tags = "train"),
+        pendistmat = p_uty(tags = "train"),
+        connected.index = p_uty(tags = "train"),
+        x.is.01 = p_lgl(default = FALSE, tags = "train"),
+        return.score = p_lgl(default = TRUE, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
+        cmprsk = p_fct(init = "csh", levels = c("csh", "ccsh"), tags = "train"),
+        coupled.strata = p_lgl(default = TRUE, tags = "train"),
+        at.step = p_uty(tags = "predict"),
+        times = p_uty(tags = "predict")
       )
 
       super$initialize(
@@ -216,7 +217,7 @@ LearnerCompRisksCoxboost = R6Class("LearnerCompRisksCoxboost",
         .args = pv
       )
 
-      # set column names for each matrix in the list to be the time points
+      # set column names for each CIF matrix to be the time points
       cif_list = lapply(cif_list, function(mat) {
         colnames(mat) = pv$times
         mat
