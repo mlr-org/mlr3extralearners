@@ -1,6 +1,7 @@
 # mlr3extralearners (development version)
 
 * `regr.glm`: added the `tol` and `wtol` parameters of `stats::glm.control()`, which are available from R 4.7.0 on.
+* Update `CoxBoost` version to 1.5.2 which fixes a prediction CIF bug and enabling prediction with one observation or time point from the upstream package (and so no need to handle this on the `mlr3` side).
 
 # mlr3extralearners 1.7.0
 

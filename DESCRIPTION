@@ -68,7 +68,7 @@ Suggests:
     catboost,
     class,
     coin,
-    CoxBoost (>= 1.5.1),
+    CoxBoost (>= 1.5.2),
     crs,
     Cubist (>= 0.6.0),
     curl,
@@ -153,7 +153,7 @@ VignetteBuilder:
 Remotes:
     bioc::ropls,
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3cmprsk,
+    mlr-org/mlr3cmprsk@ibs,
     mlr-org/mlr3proba
 Config/Needs/website: rmarkdown
 Config/roxygen2/version: 8.1.0

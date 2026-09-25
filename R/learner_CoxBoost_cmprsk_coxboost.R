@@ -217,12 +217,8 @@ LearnerCompRisksCoxboost = R6Class(
         .args = pv
       )
 
-      # set column names for each CIF object to be the time points
+      # set column names for each CIF matrix to be the time points
       cif_list = lapply(cif_list, function(mat) {
-        # Ensure that the matrix has the correct dimensions even if there's only one observation
-        if (is.null(dim(mat))) {
-          mat = matrix(mat, ncol = length(pv$times))
-        }
         colnames(mat) = pv$times
         mat
       })
