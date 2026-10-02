@@ -6,7 +6,7 @@
 \title{Regression Random Planted Forest Learner}
 \description{
 Random planted forest: a directly interpretable tree ensemble.
-Calls \code{\link[randomPlantedForest:rpf]{randomPlantedForest::rpf()}} from package 'randomPlantedForest'.
+Calls \code{randomPlantedForest::rpf()} from package 'randomPlantedForest'.
 }
 \section{Dictionary}{
 
@@ -80,7 +80,7 @@ The parameter \code{max_interaction_limit} is initialized to \code{Inf}.
 \item \code{marshal_include_data}:
 \itemize{
 \item Whether to store the training data when marshaling the model, which is required to call
-\code{\link[randomPlantedForest:purify]{randomPlantedForest::purify()}} on a restored model.
+\code{randomPlantedForest::purify()} on a restored model.
 Defaults to \code{FALSE} to keep marshaled models small.
 Can be overridden for a single call via \verb{$marshal(include_data = TRUE)}.
 }

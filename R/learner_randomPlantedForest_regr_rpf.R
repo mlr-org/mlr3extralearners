@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random planted forest: a directly interpretable tree ensemble.
-#' Calls [randomPlantedForest::rpf()] from package 'randomPlantedForest'.
+#' Calls `randomPlantedForest::rpf()` from package 'randomPlantedForest'.
 #'
 #' @inheritSection mlr_learners_classif.rpf Installation
 #' @inheritSection mlr_learners_classif.rpf Saving a Learner

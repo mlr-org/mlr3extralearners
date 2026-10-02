@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random planted forest: a directly interpretable tree ensemble.
-#' Calls [randomPlantedForest::rpf()] from package 'randomPlantedForest'.
+#' Calls `randomPlantedForest::rpf()` from package 'randomPlantedForest'.
 #'
 #' @section Installation:
 #' Package 'randomPlantedForest' is not on CRAN and has to be installed from GitHub via
@@ -35,7 +35,7 @@
 #'     The parameter `max_interaction_limit` is initialized to `Inf`.
 #' - `marshal_include_data`:
 #'   - Whether to store the training data when marshaling the model, which is required to call
-#'     [randomPlantedForest::purify()] on a restored model.
+#'     `randomPlantedForest::purify()` on a restored model.
 #'     Defaults to `FALSE` to keep marshaled models small.
 #'     Can be overridden for a single call via `$marshal(include_data = TRUE)`.
 #'
