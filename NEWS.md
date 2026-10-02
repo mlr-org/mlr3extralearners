@@ -1,5 +1,6 @@
 # mlr3extralearners (development version)
 
+* `classif.rpf` and `regr.rpf`: re-added the random planted forest learners from `randomPlantedForest`, which now supports marshaling and can therefore be used with encapsulation, parallelization, and saved to disk.
 * `regr.glm`: added the `tol` and `wtol` parameters of `stats::glm.control()`, which are available from R 4.7.0 on.
 * Update `CoxBoost` version to 1.5.2 which fixes a prediction CIF bug and enabling prediction with one observation or time point from the upstream package (and so no need to handle this on the `mlr3` side).
 * Use `mlr3cmprsk` version `0.0.6`.
