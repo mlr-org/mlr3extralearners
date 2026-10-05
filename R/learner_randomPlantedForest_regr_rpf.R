@@ -43,7 +43,7 @@ LearnerRegrRandomPlantedForest = R6Class(
           tags = "train"
         ),
         deterministic = p_lgl(default = FALSE, tags = "train"),
-        nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "threads")),
+        nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "predict", "threads")),
         cv = p_lgl(default = FALSE, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train"),
         export_forest = p_lgl(default = FALSE, tags = "train"),
@@ -93,8 +93,9 @@ LearnerRegrRandomPlantedForest = R6Class(
     },
 
     .predict = function(task) {
+      pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      pred = predict(self$model, new_data = newdata, type = "numeric")
+      pred = invoke(predict, self$model, new_data = newdata, type = "numeric", .args = pv)
       list(response = pred[[".pred"]])
     }
   )

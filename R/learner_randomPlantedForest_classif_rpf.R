@@ -75,7 +75,7 @@ LearnerClassifRandomPlantedForest = R6Class(
         delta = p_dbl(lower = 0, upper = 1, default = 0.001, tags = "train"),
         epsilon = p_dbl(lower = 0, upper = 1, default = 0.1, tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
-        nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "threads")),
+        nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "predict", "threads")),
         cv = p_lgl(default = FALSE, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train"),
         export_forest = p_lgl(default = FALSE, tags = "train"),
@@ -125,13 +125,14 @@ LearnerClassifRandomPlantedForest = R6Class(
     },
 
     .predict = function(task) {
+      pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
       if (self$predict_type == "response") {
-        pred = predict(self$model, new_data = newdata, type = "class")
+        pred = invoke(predict, self$model, new_data = newdata, type = "class", .args = pv)
         list(response = pred[[".pred_class"]])
       } else {
-        pred = as.matrix(predict(self$model, new_data = newdata, type = "prob"))
+        pred = as.matrix(invoke(predict, self$model, new_data = newdata, type = "prob", .args = pv))
         # columns are named ".pred_<level>"
         colnames(pred) = sub("^\\.pred_", "", colnames(pred))
         list(prob = pred[, task$class_names, drop = FALSE])
