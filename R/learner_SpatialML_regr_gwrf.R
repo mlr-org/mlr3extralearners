@@ -1,6 +1,6 @@
 #' @title Geographically Weighted Random Forest Learner
 #' @author Manh Hung LE
-#' @name LearnerRegrGRF
+#' @name mlr_learners_regr.gwrf
 #'
 #' @description
 #' Geographically Weighted Random Forest for regression.
@@ -16,7 +16,7 @@
 #' @importFrom stats as.formula setNames
 #' @importFrom mlr3misc invoke stopf
 #' @export
-LearnerRegrGRF = R6Class("LearnerRegrGRF",
+LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
   inherit = LearnerRegr,
 
   public = list(
@@ -34,12 +34,13 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
       )
 
       super$initialize(
-        id = "regr.grf",
+        id = "regr.gwrf",
         packages = "SpatialML",
         feature_types = c("integer", "numeric", "factor"),
         predict_types = "response",
         param_set = ps,
         properties = c("importance", "oob_error"),
+        man = "mlr3extralearners::mlr_learners_regr.gwrf",
         label = "Geographically Weighted Random Forest"
       )
     },
@@ -113,4 +114,4 @@ LearnerRegrGRF = R6Class("LearnerRegrGRF",
   )
 )
 
-.extralrns_dict$add("regr.grf", LearnerRegrGRF)
+.extralrns_dict$add("regr.gwrf", LearnerRegrGWRF)

@@ -4,13 +4,13 @@ library(mlr3spatiotempcv)
 library(mlr3learners.spatialML)
 
 test_that("autotest", {
-  learner = lrn("regr.grf", bw = 20)
+  learner = lrn("regr.gwrf", bw = 20)
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
 
-test_that("regr.grf importance and prediction", {
+test_that("regr.gwrf importance and prediction", {
   set.seed(1)
 
   # California Housing dataset
@@ -22,7 +22,7 @@ test_that("regr.grf importance and prediction", {
   task <- as_task_regr_st(task_data, target = "median_house_value", coordinate_names = c("longitude", "latitude"))
 
   # init grf learner
-  learner <- lrn("regr.grf", bw = 20, ntree = 10)
+  learner <- lrn("regr.gwrf", bw = 20, ntree = 10)
   learner$train(task)
   pred <- learner$predict(task)
 
