@@ -61,24 +61,23 @@ LearnerClassifRandomPlantedForest = R6Class(
         max_interaction_limit = p_int(lower = 1L, special_vals = list(Inf), init = Inf, tags = "train"),
         ntrees = p_int(lower = 1L, default = 50L, tags = "train"),
         splits = p_int(lower = 1L, default = 30L, tags = "train"),
-        split_try = p_int(lower = 1L, default = 10L, tags = "train"),
-        t_try = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
-        split_decay_rate = p_dbl(lower = 0, default = 0.1, tags = "train"),
-        max_candidates = p_int(lower = 1L, default = 50L, tags = "train"),
-        delete_leaves = p_lgl(default = TRUE, tags = "train"),
         split_structure = p_fct(
           c("leaves", "hist", "cur_trees_1", "cur_trees_2", "res_trees"),
           default = "leaves",
           tags = "train"
         ),
+        split_try = p_int(lower = 1L, default = 10L, tags = "train"),
+        t_try = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
+        max_candidates = p_int(lower = 1L, default = 50L, tags = "train"),
+        split_decay_rate = p_dbl(lower = 0, default = 0.1, tags = "train"),
+        delete_leaves = p_lgl(default = TRUE, tags = "train"),
         loss = p_fct(c("L1", "L2", "logit", "exponential"), default = "L2", init = "exponential", tags = "train"),
         delta = p_dbl(lower = 0, upper = 1, default = 0.001, tags = "train"),
         epsilon = p_dbl(lower = 0, upper = 1, default = 0.1, tags = "train"),
-        deterministic = p_lgl(default = FALSE, tags = "train"),
-        nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "predict", "threads")),
-        cv = p_lgl(default = FALSE, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train"),
+        nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "predict", "threads")),
         export_forest = p_lgl(default = FALSE, tags = "train"),
+        deterministic = p_lgl(default = FALSE, tags = "train"),
         # read in .train() and stored on the model, since marshal_model() never sees the learner
         marshal_include_data = p_lgl(default = FALSE, tags = "train")
       )

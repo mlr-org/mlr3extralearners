@@ -34,17 +34,16 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    max_interaction_limit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    splits \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   split_structure \tab character \tab leaves \tab leaves, hist, cur_trees_1, cur_trees_2, res_trees \tab - \cr
    split_try \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    t_try \tab numeric \tab 0.4 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   split_decay_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_candidates \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   split_decay_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    delete_leaves \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   split_structure \tab character \tab leaves \tab leaves, hist, cur_trees_1, cur_trees_2, res_trees \tab - \cr
-   deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   cv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    purify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    export_forest \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    marshal_include_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
