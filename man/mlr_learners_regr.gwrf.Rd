@@ -3,12 +3,84 @@
 \name{mlr_learners_regr.gwrf}
 \alias{mlr_learners_regr.gwrf}
 \alias{LearnerRegrGWRF}
-\title{Geographically Weighted Random Forest Learner}
+\title{Regression Geographically Weighted Random Forest Learner}
 \description{
-Geographically Weighted Random Forest for regression.
-Calls \code{SpatialML::grf()} from the SpatialML package.
-Note that SpatialML is not on CRAN. To install it, use:
-\code{remotes::install_version("SpatialML", version = "0.1.6")}
+Geographically weighted random forest for regression.
+Calls \code{SpatialML::grf()} from package SpatialML.
+
+The learner requires a spatial task with coordinates, e.g., a \code{TaskRegrST} from package \CRANpkg{mlr3spatiotempcv}.
+SpatialML has been archived on CRAN.
+It can be installed with \code{remotes::install_version("SpatialML", version = "0.1.6")}.
+
+Predictions are computed with \code{SpatialML::predict.grf()} using only the local models,
+i.e., \code{local.w = 1} and \code{global.w = 0}.
+}
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{kernel} is initialized to \code{"adaptive"} because \code{SpatialML::grf()} has no default.
+\item \code{print.results} is set to \code{FALSE} and not exposed as a hyperparameter.
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{min.node.size}, \code{max.depth}, \code{replace}, and \code{sample.fraction} are passed to \code{ranger::ranger()}.
+}
+}
+
+\section{Dictionary}{
+
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("regr.gwrf")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task type: \dQuote{regr}
+\item Predict Types: \dQuote{response}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{SpatialML}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   bw \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   kernel \tab character \tab - \tab adaptive, fixed \tab - \cr
+   ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   importance \tab character \tab impurity \tab impurity, permutation \tab - \cr
+   nthreads \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   geo.weighted \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   min.node.size \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max.depth \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   replace \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   sample.fraction \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+}
+}
+
+\references{
+Georganos, Stefanos, Grippa, Tais, Gadiaga N, Assane, Linard, Catherine, Lennert, Moritz, Vanhuysse, Sabine, Mboga, Nicholus, Wolff, Eleonore, Kalogirou, Stamatis (2021).
+\dQuote{Geographical random forests: a spatial extension of the random forest algorithm to address spatial heterogeneity in remote sensing and population modelling.}
+\emph{Geocarto International}, \bold{36}(2), 121--136.
+\doi{10.1080/10106049.2019.1595177}.
+}
+\seealso{
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 Manh Hung LE
@@ -57,7 +129,7 @@ Manh Hung LE
 \if{html}{\out{<a id="method-LearnerRegrGWRF-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrGWRF-importance}{}}}
 \subsection{\code{LearnerRegrGWRF$importance()}}{
-  The importance scores are extracted from the slot \code{Local.Variable.Importance}.
+  The importance scores are the column means of the slot \code{Local.Variable.Importance}.
   \subsection{Usage}{
     \if{html}{\out{<div class="r">}}
     \preformatted{LearnerRegrGWRF$importance()}
@@ -72,7 +144,7 @@ Manh Hung LE
 \if{html}{\out{<a id="method-LearnerRegrGWRF-oob_error"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrGWRF-oob_error}{}}}
 \subsection{\code{LearnerRegrGWRF$oob_error()}}{
-  OOB errors are extracted from the model slot \code{Global.Model$prediction.error}.
+  The OOB error is extracted from the global model slot \code{Global.Model$prediction.error}.
   \subsection{Usage}{
     \if{html}{\out{<div class="r">}}
     \preformatted{LearnerRegrGWRF$oob_error()}

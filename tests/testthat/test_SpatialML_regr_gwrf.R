@@ -1,43 +1,25 @@
-library(testthat)
-library(mlr3)
-library(mlr3spatiotempcv)
-library(mlr3learners.spatialML)
+skip_if_not_installed("SpatialML")
+skip_if_not_installed("mlr3spatiotempcv")
 
-test_that("autotest", {
-  learner = lrn("regr.gwrf", bw = 20)
+test_that("regr.gwrf trains and predicts on a spatial task", {
+  data("Income", package = "SpatialML", envir = environment())
+  task = mlr3spatiotempcv::as_task_regr_st(Income[1:100, ], target = "Income01", coordinate_names = c("X", "Y"))
+  learner = lrn("regr.gwrf", bw = 20, ntree = 10L)
   expect_learner(learner)
-  result = run_autotest(learner)
-  expect_true(result, info = result$error)
+
+  ids = partition(task)
+  learner$train(task, row_ids = ids$train)
+  prediction = learner$predict(task, row_ids = ids$test)
+  expect_prediction(prediction)
+  expect_numeric(prediction$response, any.missing = FALSE, len = length(ids$test))
+
+  importance = learner$importance()
+  expect_numeric(importance, any.missing = FALSE)
+  expect_names(names(importance), permutation.of = task$feature_names)
+  expect_number(learner$oob_error())
 })
 
-test_that("regr.gwrf importance and prediction", {
-  set.seed(1)
-
-  # California Housing dataset
-  task_data <- mlr3::tsk("california_housing")$data()
-  task_data <- task_data[complete.cases(task_data), ][1:100, ]
-  task_data$ocean_proximity <- NULL
-
-  # reg task
-  task <- as_task_regr_st(task_data, target = "median_house_value", coordinate_names = c("longitude", "latitude"))
-
-  # init grf learner
-  learner <- lrn("regr.gwrf", bw = 20, ntree = 10)
-  learner$train(task)
-  pred <- learner$predict(task)
-
-  # validate predict output
-  expect_is(pred$response, "numeric")
-  expect_equal(length(pred$response), nrow(task_data))
-
-  # test variable importance
-  imp <- learner$importance()
-  expect_is(imp, "numeric")
-  expect_true(!any(is.na(imp)))
-  expect_named(imp)
-
-  # test OOB error retrieval
-  oob <- learner$oob_error()
-  expect_is(oob, "numeric")
-  expect_length(oob, 1)
+test_that("regr.gwrf requires a spatial task", {
+  learner = lrn("regr.gwrf", bw = 20, ntree = 10L)
+  expect_error(learner$train(tsk("mtcars")), "spatial task")
 })

@@ -1,20 +1,32 @@
-#' @title Geographically Weighted Random Forest Learner
+#' @title Regression Geographically Weighted Random Forest Learner
 #' @author Manh Hung LE
 #' @name mlr_learners_regr.gwrf
 #'
 #' @description
-#' Geographically Weighted Random Forest for regression.
-#' Calls `SpatialML::grf()` from the SpatialML package.
-#' Note that SpatialML is not on CRAN. To install it, use:
-#' `remotes::install_version("SpatialML", version = "0.1.6")`
+#' Geographically weighted random forest for regression.
+#' Calls `SpatialML::grf()` from package SpatialML.
 #'
-#' @importFrom R6 R6Class
-#' @importFrom SpatialML grf predict.grf
-#' @importFrom stats predict
-#' @importFrom mlr3 LearnerRegr
-#' @importFrom paradox ps p_dbl p_fct p_int
-#' @importFrom stats as.formula setNames
-#' @importFrom mlr3misc invoke stopf
+#' The learner requires a spatial task with coordinates, e.g., a `TaskRegrST` from package \CRANpkg{mlr3spatiotempcv}.
+#' SpatialML has been archived on CRAN.
+#' It can be installed with `remotes::install_version("SpatialML", version = "0.1.6")`.
+#'
+#' Predictions are computed with `SpatialML::predict.grf()` using only the local models,
+#' i.e., `local.w = 1` and `global.w = 0`.
+#'
+#' @section Initial parameter values:
+#' - `kernel` is initialized to `"adaptive"` because `SpatialML::grf()` has no default.
+#' - `print.results` is set to `FALSE` and not exposed as a hyperparameter.
+#'
+#' @section Custom mlr3 parameters:
+#' - `min.node.size`, `max.depth`, `replace`, and `sample.fraction` are passed to `ranger::ranger()`.
+#'
+#' @references
+#' `r format_bib("georganos2021geographical")`
+#'
+#' @templateVar id regr.gwrf
+#' @template learner
+#'
+#' @template seealso_learner
 #' @export
 LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
   inherit = LearnerRegr,
@@ -24,21 +36,26 @@ LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(
-        bw = p_dbl(lower = 0, tags = "train"),
-        kernel = p_fct(default = "adaptive", levels = c("adaptive", "fixed"), tags = "train"),
-        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
-        mtry = p_int(lower = 1L, tags = "train"),
-        nodesize = p_int(default = 5L, lower = 1L, tags = "train"),
-        maxnodes = p_int(lower = 1L, tags = "train")
+      param_set = ps(
+        bw              = p_dbl(lower = 0, tags = c("train", "required")),
+        kernel          = p_fct(levels = c("adaptive", "fixed"), init = "adaptive", tags = c("train", "required")),
+        ntree           = p_int(default = 500L, lower = 1L, tags = "train"),
+        mtry            = p_int(lower = 1L, tags = "train"),
+        importance      = p_fct(default = "impurity", levels = c("impurity", "permutation"), tags = "train"),
+        nthreads        = p_int(lower = 1L, tags = c("train", "threads")),
+        geo.weighted    = p_lgl(default = TRUE, tags = "train"),
+        min.node.size   = p_int(default = 5L, lower = 1L, tags = "train"),
+        max.depth       = p_int(lower = 0L, tags = "train"),
+        replace         = p_lgl(default = TRUE, tags = "train"),
+        sample.fraction = p_dbl(lower = 0, upper = 1, tags = "train")
       )
 
       super$initialize(
         id = "regr.gwrf",
-        packages = "SpatialML",
+        packages = c("mlr3extralearners", "SpatialML"),
         feature_types = c("integer", "numeric", "factor"),
         predict_types = "response",
-        param_set = ps,
+        param_set = param_set,
         properties = c("importance", "oob_error"),
         man = "mlr3extralearners::mlr_learners_regr.gwrf",
         label = "Geographically Weighted Random Forest"
@@ -46,19 +63,17 @@ LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
     },
 
     #' @description
-    #' The importance scores are extracted from the slot `Local.Variable.Importance`.
+    #' The importance scores are the column means of the slot `Local.Variable.Importance`.
     #' @return Named `numeric()`.
     importance = function() {
       if (is.null(self$model)) {
         stopf("No model stored")
       }
-      imp = self$model$Local.Variable.Importance
-      scores = colMeans(imp)
-      sort(stats::setNames(scores, names(scores)), decreasing = TRUE)
+      sort(colMeans(self$model$Local.Variable.Importance), decreasing = TRUE)
     },
 
     #' @description
-    #' OOB errors are extracted from the model slot `Global.Model$prediction.error`.
+    #' The OOB error is extracted from the global model slot `Global.Model$prediction.error`.
     #' @return `numeric(1)`.
     oob_error = function() {
       if (is.null(self$model)) {
@@ -70,21 +85,15 @@ LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
 
   private = list(
     .train = function(task) {
+      assert_spatial_task(task)
       pars = self$param_set$get_values(tags = "train")
 
-      target = task$target_names
-      features = task$feature_names
-
-      dframe = as.data.frame(task$data(cols = c(features, target)))
-
-      coords = as.matrix(task$coordinates())
-      coords = unname(coords)
+      coords = unname(as.matrix(task$coordinates()))
       storage.mode(coords) = "numeric"
-
-      formula = stats::as.formula(paste(target, "~", paste(features, collapse = " + ")))
-
-      if (is.null(pars$kernel)) pars$kernel = "adaptive"
-      if (is.null(pars$ntree)) pars$ntree = 500L
+      # SpatialML::grf() substitutes its arguments and evaluates them in its own frame,
+      # so they must be passed as plain variables
+      formula = formulate(task$target_names, task$feature_names, quote = character())
+      dframe = as.data.frame(task$data())
 
       invoke(SpatialML::grf,
         formula = formula,
@@ -96,22 +105,28 @@ LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
     },
 
     .predict = function(task) {
-      newdata = as.data.frame(task$data(cols = self$feature_names))
-      coords_new = as.data.frame(task$coordinates())
-      new_data = cbind(coords_new, newdata)
+      assert_spatial_task(task)
       coord_names = task$col_roles$coordinate
+      newdata = cbind(task$coordinates(), task$data(cols = task$feature_names))
 
-      pred = SpatialML::predict.grf(
-        self$model,
-        new.data = new_data,
-        x.var.name = coord_names[1],
-        y.var.name = coord_names[2],
+      response = invoke(SpatialML::predict.grf,
+        object = self$model,
+        new.data = as.data.frame(newdata),
+        x.var.name = coord_names[1L],
+        y.var.name = coord_names[2L],
         local.w = 1,
         global.w = 0
       )
-      list(response = pred)
+      list(response = response)
     }
   )
 )
+
+assert_spatial_task = function(task) {
+  if (length(task$col_roles$coordinate) != 2L) {
+    error_input("Learner 'regr.gwrf' requires a spatial task with coordinates, e.g., a 'TaskRegrST'.")
+  }
+  invisible(task)
+}
 
 .extralrns_dict$add("regr.gwrf", LearnerRegrGWRF)

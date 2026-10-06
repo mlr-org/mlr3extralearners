@@ -107,6 +107,7 @@ Suggests:
     mlr3cluster,
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
+    mlr3spatiotempcv,
     mvtnorm,
     ncvreg (>= 3.16.0),
     neuralnet,
