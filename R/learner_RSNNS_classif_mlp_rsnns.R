@@ -1,11 +1,11 @@
 #' @title Classification Multilayer Perceptron Learner
 #' @author awinterstetter
-#' @name mlr_learners_classif.mlp
+#' @name mlr_learners_classif.mlp_rsnns
 #'
 #' @description
 #' Calls [RSNNS::mlp()] from \CRANpkg{RSNNS}.
 #'
-#' @templateVar id classif.mlp
+#' @templateVar id classif.mlp_rsnns
 #' @template learner
 #'
 #' @references
@@ -14,7 +14,7 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerClassifMLP = R6Class("LearnerClassifMLP",
+LearnerClassifMLPRsnns = R6Class("LearnerClassifMLPRsnns",
   inherit = LearnerClassif,
   public = list(
     #' @description
@@ -39,13 +39,13 @@ LearnerClassifMLP = R6Class("LearnerClassifMLP",
       )
 
       super$initialize(
-        id = "classif.mlp",
+        id = "classif.mlp_rsnns",
         packages = "RSNNS",
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.mlp",
+        man = "mlr3extralearners::mlr_learners_classif.mlp_rsnns",
         label = "Multi-Layer Perceptron"
       )
     }
@@ -84,4 +84,4 @@ LearnerClassifMLP = R6Class("LearnerClassifMLP",
   )
 )
 
-.extralrns_dict$add("classif.mlp", LearnerClassifMLP)
+.extralrns_dict$add("classif.mlp_rsnns", LearnerClassifMLPRsnns)

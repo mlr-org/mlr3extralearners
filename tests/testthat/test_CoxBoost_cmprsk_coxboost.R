@@ -50,4 +50,3 @@ test_that("cmprsk.coxboost rejects optimCoxBoostPenalty without cv", {
   learner = lrn("cmprsk.coxboost", stepno = 10, penalty = "optimCoxBoostPenalty")
   expect_error(learner$train(task, row_ids = task$row_ids[1:250]), "requires `cv = TRUE`")
 })
-

@@ -11,7 +11,10 @@
 #'
 #' @section Custom mlr3 parameters:
 #'
-#' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
+#' - `categorical_features_indices` uses R indexing instead of zero-based Python indexing.
+#'   It is only needed to mark numeric or logical features as categorical,
+#'   because `factor`, `ordered`, and `character` features are always encoded as categorical by `tabpfn`.
+#'   The level order of `ordered` features is not preserved, they are treated like unordered `factor` features.
 #'
 #' - `device` must be a string.
 #'   If set to `"auto"`, the behavior is the same as original.
@@ -23,6 +26,15 @@
 #'   Non-float dtypes are not supported.
 #'
 #' - `inference_config` is currently not supported.
+#'
+#' - `tuning_config` must be passed as a named list, which is converted to a Python dictionary.
+#'   It enables post-hoc tuning towards `eval_metric` and accepts the keys `calibrate_temperature`,
+#'   `tune_decision_thresholds`, `tuning_holdout_frac`, and `tuning_n_folds`.
+#'
+#' - `eval_metric` only affects predictions when `tuning_config` is also set, in which case the softmax
+#'   temperature and decision thresholds are tuned towards the chosen metric during training.
+#'
+#' - `n_jobs` is deprecated upstream in favor of `n_preprocessing_jobs` and is only kept for backward compatibility.
 #'
 #' - `random_state` accepts either an integer or the special value `"None"`
 #'   which corresponds to `None` in Python.
@@ -43,7 +55,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        n_estimators = p_int(lower = 1L, default = 4L, tags = "train"),
+        n_estimators = p_int(lower = 1L, default = 8L, tags = "train"),
+        auto_scale_n_estimators = p_lgl(default = TRUE, tags = "train"),
         categorical_features_indices = p_uty(tags = "train", custom_check = function(x) {
           # R indexing is used
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
@@ -68,7 +81,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
           tags = "train"
         ),
         fit_mode = p_fct(
-          c("low_memory", "fit_preprocessors", "fit_with_cache"),
+          c("low_memory", "fit_preprocessors", "fit_with_cache", "batched"),
           default = "fit_preprocessors",
           tags = "train"
         ),
@@ -79,13 +92,29 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
             "Invalid value for memory_saving_mode. Must be 'auto', a TRUE/FALSE value, or a number > 0."
           }
         }),
+        keep_cache_on_device = p_lgl(default = TRUE, tags = "train"),
         random_state = p_int(default = 0L, special_vals = list("None"), tags = "train"),
-        n_jobs = p_int(lower = 1L, init = 1L, special_vals = list(-1L), tags = "train")
+        n_jobs = p_int(lower = 1L, special_vals = list(-1L), tags = "train"),
+        n_preprocessing_jobs = p_int(lower = 1L, default = 1L, special_vals = list(-1L), tags = "train"),
+        differentiable_input = p_lgl(default = FALSE, tags = "train"),
+        eval_metric = p_fct(
+          c("accuracy", "balanced_accuracy", "roc_auc", "f1", "log_loss"),
+          tags = "train"
+        ),
+        tuning_config = p_uty(tags = "train", custom_check = function(x) {
+          allowed = c("calibrate_temperature", "tune_decision_thresholds", "tuning_holdout_frac", "tuning_n_folds")
+          if (test_list(x, names = "unique", min.len = 1) && test_subset(names(x), allowed)) {
+            TRUE
+          } else {
+            sprintf("tuning_config must be a non-empty named list with keys from: %s", str_collapse(allowed))
+          }
+        }),
+        show_progress_bar = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
         id = "classif.tabpfn",
-        feature_types = c("integer", "numeric", "logical"),
+        feature_types = c("integer", "numeric", "logical", "character", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
         packages = "reticulate",
@@ -141,27 +170,20 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         pars$random_state = reticulate::py_none()
       }
 
-      # x is an (n_samples, n_features) array
-      x = as.matrix(task$data(cols = task$feature_names))
-      # force NaN to make conversion work,
-      # otherwise reticulate will not convert NAs in logical and integer columns to
-      # np.nan properly
-      x[is.na(x)] = NaN
-      # y is an (n_samples,) array
-      y = task$truth()
-
       # convert categorical_features_indices to python indexing
       categ_indices = pars$categorical_features_indices
       if (!is.null(categ_indices)) {
-        if (max(categ_indices) > ncol(x)) {
+        if (max(categ_indices) > length(task$feature_names)) {
           stop("categorical_features_indices must not exceed number of features")
         }
         pars$categorical_features_indices = as.integer(categ_indices - 1)
       }
 
       classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
-      x_py = reticulate::r_to_py(x)
-      y_py = reticulate::r_to_py(y)
+      # X is an (n_samples, n_features) pandas data frame
+      x_py = tabpfn_data(task)
+      # y is an (n_samples,) array
+      y_py = reticulate::r_to_py(task$truth())
       fitted = mlr3misc::invoke(classifier$fit, X = x_py, y = y_py)
 
       structure(list(fitted = fitted), class = "tabpfn_model")
@@ -172,10 +194,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       reticulate::import("tabpfn")
       model = self$model$fitted
 
-      x = as.matrix(task$data(cols = task$feature_names))
-      # NA -> NaN, same reason as in $.train
-      x[is.na(x)] = NaN
-      x_py = reticulate::r_to_py(x)
+      x_py = tabpfn_data(task)
 
       if (self$predict_type == "response") {
         response = mlr3misc::invoke(model$predict, X = x_py)

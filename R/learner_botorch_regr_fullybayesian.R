@@ -71,7 +71,7 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
   ),
   private = list(
     .train = function(task) {
-      assert_python_packages(c("torch", "botorch", "gpytorch"))
+      assert_python_packages(c("torch", "botorch", "gpytorch", "numpyro", "jax", "jaxlib"))
       torch = reticulate::import("torch")
       botorch = reticulate::import("botorch")
 
@@ -121,7 +121,7 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
     },
 
     .predict = function(task) {
-      assert_python_packages(c("torch", "botorch", "gpytorch"))
+      assert_python_packages(c("torch", "botorch", "gpytorch", "numpyro", "jax", "jaxlib"))
       torch = reticulate::import("torch")
       pars = self$param_set$get_values(tags = "predict")
 

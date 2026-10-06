@@ -1,7 +1,7 @@
 skip_if_not_installed("RSNNS")
 
-test_that("paramtest classif.mlp train", {
-  learner = lrn("classif.mlp")
+test_that("paramtest classif.mlp_rsnns train", {
+  learner = lrn("classif.mlp_rsnns")
   fun = RSNNS:::mlp.default # nolint
   exclude = c(
     "x", # handled internally
@@ -13,8 +13,8 @@ test_that("paramtest classif.mlp train", {
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest classif.mlp predict", {
-  learner = lrn("classif.mlp")
+test_that("paramtest classif.mlp_rsnns predict", {
+  learner = lrn("classif.mlp_rsnns")
   fun = RSNNS:::predict.rsnns # nolint
   exclude = c(
     "object", # handled internally

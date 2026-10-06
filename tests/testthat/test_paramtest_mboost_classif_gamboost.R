@@ -8,7 +8,7 @@ test_that("paramtest classif.gamboost train", {
     "data", # handled via mlr3
     "weights", # handled via mlr3
     "control", # handled to mboost::boost_control
-    "center", # (mboost_control) depreacated
+    "center", # (mboost_control) deprecated
     "custom.family", # Provide a custom family
     "type", # mboost::Binomial
     "link", # mboost::Binomial

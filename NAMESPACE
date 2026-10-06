@@ -4,16 +4,19 @@ S3method(marshal_model,Weka_classifier)
 S3method(marshal_model,botorch_gp_model)
 S3method(marshal_model,fastai_model)
 S3method(marshal_model,survdnn)
+S3method(marshal_model,tabfm_model)
 S3method(marshal_model,tabpfn_model)
 S3method(unmarshal_model,Weka_classifier_marshaled)
 S3method(unmarshal_model,botorch_gp_model_marshaled)
 S3method(unmarshal_model,fastai_model_marshaled)
 S3method(unmarshal_model,survdnn_marshaled)
+S3method(unmarshal_model,tabfm_model_marshaled)
 S3method(unmarshal_model,tabpfn_model_marshaled)
 export(LearnerClassifAbess)
 export(LearnerClassifAdaBoostM1)
 export(LearnerClassifAdaBoosting)
 export(LearnerClassifAdabag)
+export(LearnerClassifBam)
 export(LearnerClassifBart)
 export(LearnerClassifBayesNet)
 export(LearnerClassifBlockForest)
@@ -54,7 +57,7 @@ export(LearnerClassifLiblineaR)
 export(LearnerClassifLightGBM)
 export(LearnerClassifLogistic)
 export(LearnerClassifLvq1)
-export(LearnerClassifMLP)
+export(LearnerClassifMLPRsnns)
 export(LearnerClassifMda)
 export(LearnerClassifMdeb)
 export(LearnerClassifMob)
@@ -64,6 +67,7 @@ export(LearnerClassifNNTrain)
 export(LearnerClassifNaiveBayesMultinomial)
 export(LearnerClassifNaiveBayesWeka)
 export(LearnerClassifNeuralnet)
+export(LearnerClassifOPLS)
 export(LearnerClassifObliqueRandomForest)
 export(LearnerClassifOneR)
 export(LearnerClassifPART)
@@ -87,11 +91,13 @@ export(LearnerClassifSdlda)
 export(LearnerClassifSimpleLogistic)
 export(LearnerClassifSparseLDA)
 export(LearnerClassifStepPlr)
+export(LearnerClassifTabFM)
 export(LearnerClassifTabPFN)
 export(LearnerClassifVotedPerceptron)
 export(LearnerCompRisksCoxboost)
 export(LearnerCompRisksRandomForestSRC)
 export(LearnerRegrAbess)
+export(LearnerRegrBam)
 export(LearnerRegrBart)
 export(LearnerRegrBcart)
 export(LearnerRegrBgp)
@@ -122,6 +128,7 @@ export(LearnerRegrGAMBoost)
 export(LearnerRegrGBM)
 export(LearnerRegrGLMBoost)
 export(LearnerRegrGPfit)
+export(LearnerRegrGRF)
 export(LearnerRegrGWRF)
 export(LearnerRegrGam)
 export(LearnerRegrGaussianProcesses)
@@ -151,6 +158,7 @@ export(LearnerRegrPcr)
 export(LearnerRegrPenalized)
 export(LearnerRegrPlsr)
 export(LearnerRegrPoly)
+export(LearnerRegrPolynomial)
 export(LearnerRegrPriorityLasso)
 export(LearnerRegrQGam)
 export(LearnerRegrREPTree)
@@ -164,6 +172,7 @@ export(LearnerRegrRandomTree)
 export(LearnerRegrSGD)
 export(LearnerRegrSMOreg)
 export(LearnerRegrSimpleLinearRegression)
+export(LearnerRegrTabFM)
 export(LearnerRegrTabPFN)
 export(LearnerSurvAorsf)
 export(LearnerSurvBlackBoost)
@@ -199,37 +208,39 @@ import(checkmate)
 import(mlr3misc)
 import(paradox)
 importFrom(R6,R6Class)
-importFrom(SpatialML,grf)
-importFrom(SpatialML,predict.grf)
-importFrom(data.table,":=")
-importFrom(data.table,fifelse)
-importFrom(methods,formalArgs)
-importFrom(methods,getMethod)
-importFrom(mlr3,LearnerClassif)
-importFrom(mlr3,LearnerRegr)
-importFrom(mlr3,assert_validate)
-importFrom(mlr3,learner_marshal)
-importFrom(mlr3,learner_marshaled)
-importFrom(mlr3,learner_unmarshal)
-importFrom(mlr3,lrn)
-importFrom(mlr3,lrns)
-importFrom(mlr3,marshal_model)
-importFrom(mlr3,mlr_learners)
-importFrom(mlr3,unmarshal_model)
+importFrom(data.table,
+  ":=",
+  fifelse
+)
+importFrom(methods,
+  formalArgs,
+  getMethod
+)
+importFrom(mlr3,
+  LearnerClassif,
+  LearnerRegr,
+  assert_validate,
+  learner_marshal,
+  learner_marshaled,
+  learner_unmarshal,
+  lrn,
+  lrns,
+  marshal_model,
+  mlr_learners,
+  unmarshal_model
+)
 importFrom(mlr3cmprsk,LearnerCompRisks)
-importFrom(mlr3misc,invoke)
-importFrom(mlr3misc,stopf)
-importFrom(paradox,p_dbl)
-importFrom(paradox,p_fct)
-importFrom(paradox,p_int)
-importFrom(paradox,ps)
-importFrom(stats,as.formula)
-importFrom(stats,formula)
-importFrom(stats,na.omit)
-importFrom(stats,predict)
-importFrom(stats,qnorm)
-importFrom(stats,setNames)
-importFrom(utils,capture.output)
-importFrom(utils,getFromNamespace)
-importFrom(utils,packageVersion)
+importFrom(stats,
+  as.formula,
+  formula,
+  na.omit,
+  predict,
+  qnorm,
+  setNames
+)
+importFrom(utils,
+  capture.output,
+  getFromNamespace,
+  packageVersion
+)
 importFrom(withr,local_seed)

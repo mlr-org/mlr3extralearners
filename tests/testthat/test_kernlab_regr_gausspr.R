@@ -1,6 +1,7 @@
 skip_if_not_installed("kernlab")
 
 test_that("autotest", {
+  withr::local_seed(42)
   learner = lrn("regr.gausspr")
   expect_learner(learner)
   capture.output({

@@ -10,8 +10,12 @@
     "*.rda",  // R binary data
     "*.Rds",  // R binary data
     "*.lock", // lockfiles
+    "attic/", // scrap code, not part of the package
     "man/",   // generated man pages
-    "renv/"   // renv library
+    "renv/",  // renv library
+    "*.bib",       // BibTeX files (the {X} casing braces split words)
+    "inst/CITATION", // BibTeX-style citation (same {X} casing braces)
+    "README.md"    // generated from README.Rmd
   ],
   // use cspell R-dictionary + project-specific word list
   "dictionaries": ["r", "project-words"],

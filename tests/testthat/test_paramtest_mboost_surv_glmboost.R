@@ -10,7 +10,7 @@ test_that("paramtest surv.glmboost train", {
     "weights", # handled via mlr3
     "control", # handled to mboost::boost_control
     "custom.family", # Pass custom families as other families are parametrized as characters
-    "nuirange", # e.g. mboost::Weibbull
+    "nuirange", # e.g. mboost::Weibull
     "sigma", # e.g. mboost::Cindex
     "ipcw", # e.g. mboost::Cindex
     "offset" # handled by mlr3

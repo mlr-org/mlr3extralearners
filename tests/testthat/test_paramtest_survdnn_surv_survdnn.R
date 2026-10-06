@@ -3,12 +3,11 @@ skip_if_not_installed("survdnn")
 skip_if_not_installed("torch")
 
 test_that("train surv.survdnn", {
-  learner = LearnerSurvDNN$new()
+  learner = lrn("surv.survdnn")
   fun = survdnn::survdnn
-
   exclude = c(
-    "formula",   
-    "data"       
+    "formula",
+    "data"
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -16,15 +15,14 @@ test_that("train surv.survdnn", {
 })
 
 test_that("predict surv.survdnn", {
-  learner = LearnerSurvDNN$new()
-  fun = survdnn:::predict.survdnn 
-
+  learner = lrn("surv.survdnn")
+  fun = survdnn:::predict.survdnn
   exclude = c(
-    "object",  
-    "newdata", 
-    "times",   
-    "type",   
-    "..."     
+    "object",
+    "newdata",
+    "times",
+    "type",
+    "..."
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

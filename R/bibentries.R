@@ -1,4 +1,6 @@
-bibentries = c( # nolint start
+# fmt: skip
+# nolint start
+bibentries = c(
   breiman_2001 = bibentry("article",
     title       = "Random Forests",
     author      = "Breiman, Leo",
@@ -682,9 +684,7 @@ bibentries = c( # nolint start
     publisher = "MIT Press",
     title = "Fast Training of Support Vector Machines using Sequential Minimal Optimization",
     year = "1998",
-    URL = "http://research.microsoft.com/jplatt/smo.html",
-    PS = "http://research.microsoft.com/jplatt/smo-book.ps.gz",
-    PDF = "http://research.microsoft.com/jplatt/smo-book.pdf"
+    URL = "https://www.microsoft.com/en-us/research/publication/sequential-minimal-optimization-a-fast-algorithm-for-training-support-vector-machines/"
   ),
   Keerthi2001 = bibentry("article",
     author = "S.S. Keerthi and S.K. Shevade and C. Bhattacharyya and K.R.K. Murthy",
@@ -831,6 +831,13 @@ bibentries = c( # nolint start
     author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Eggensperger, Katharina and Hutter, Frank",
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
+  ),
+
+  google2026tabfm = bibentry("misc",
+    title = "TabFM: Tabular Foundation Models",
+    author = person("Google Research"),
+    year = "2026",
+    URL = "https://github.com/google-research/tabfm"
   ),
   adabag2013 = bibentry("article",
     title = "adabag: An R Package for Classification with Boosting and Bagging",
@@ -982,7 +989,7 @@ bibentries = c( # nolint start
     volume = "65",
     number = "6",
     pages = "1--30",
-    url = "http://www.jstatsoft.org/v65/i06/"
+    url = "https://www.jstatsoft.org/v65/i06/"
   ),
   gramacy2016lagp = bibentry("article",
     title = "laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R",
@@ -1034,5 +1041,48 @@ bibentries = c( # nolint start
     series = "Springer Series in Information Sciences",
     volume = "30",
     isbn = "978-3540967120"
+  ),
+  herrmann_2021 = bibentry("article",
+    title = "Large-scale benchmark study of survival prediction methods using multi-omics data",
+    author = "Herrmann, M. and Probst, P. and Hornung, R. and Jurinovic, V. and Boulesteix, A. L.",
+    journal = "Briefings in Bioinformatics",
+    volume = "22",
+    number = "3",
+    pages = "1--15",
+    year = "2021",
+    doi = "10.1093/BIB/BBAA167"
+  ),
+  athey2019generalized = bibentry("article",
+    title = "Generalized random forests",
+    author = "Athey, Susan and Tibshirani, Julie and Wager, Stefan",
+    journal = "The Annals of Statistics",
+    volume = "47",
+    number = "2",
+    pages = "1148--1178",
+    year = "2019",
+    publisher = "Institute of Mathematical Statistics",
+    doi = "10.1214/18-AOS1709"
+  ),
+  thevenot2015analysis = bibentry("article",
+    title = paste("Analysis of the Human Adult Urinary Metabolome Variations with Age, Body Mass Index,",
+      "and Gender by Implementing a Comprehensive Workflow for Univariate and OPLS Statistical Analyses"),
+    author = paste("Th\u00e9venot, Etienne A. and Roux, Aur\u00e9lie and Xu, Ying and Ezan, Eric and",
+      "Junot, Christophe"),
+    journal = "Journal of Proteome Research",
+    volume = "14",
+    number = "8",
+    pages = "3322--3335",
+    year = "2015",
+    doi = "10.1021/acs.jproteome.5b00354"
+  ),
+  hastie2009elements = bibentry("book",
+    title = "The Elements of Statistical Learning",
+    author = "Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome",
+    year = "2009",
+    edition = "2",
+    publisher = "Springer",
+    address = "New York",
+    series = "Springer Series in Statistics",
+    doi = "10.1007/978-0-387-84858-7"
   )
 ) # nolint end

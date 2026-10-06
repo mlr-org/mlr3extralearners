@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 1.5.2
+Version: 1.7.0.9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -16,7 +16,7 @@ Authors@R: c(
     person("Javier", "García", , "geshter@hotmail.com", role = "ctb"),
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
-    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
+    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = "aut"),
     person("Zezhi", "Wang", , "homura@mail.ustc.edu.cn", role = "ctb"),
     person("John", "Zobolas", , "bblodfon@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-3609-8674")),
@@ -25,7 +25,7 @@ Authors@R: c(
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
     person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Marc", "Becker", , "marcbecker@posteo.de", role = "ctb",
+    person("Marc", "Becker", , "marcbecker@posteo.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-8115-0400")),
     person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
     person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb"),
@@ -37,28 +37,30 @@ URL: https://mlr3extralearners.mlr-org.com,
     https://github.com/mlr-org/mlr3extralearners
 BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
-    mlr3 (>= 1.2.0),
+    mlr3 (>= 1.8.0),
     R (>= 3.3.0)
 Imports:
     checkmate,
     data.table,
     methods,
-    mlr3cmprsk (>= 0.0.5),
+    mlr3cmprsk (>= 0.0.6),
     mlr3misc (>= 0.19.0),
     mlr3proba (>= 0.8.8),
     paradox (>= 1.0.1),
     R6,
+    stats,
     withr
 Suggests:
     abess,
     actuar,
     ada,
     adabag,
-    aorsf (>= 0.1.5),
+    aorsf (>= 0.1.6),
     apcluster,
-    BART (>= 2.9.9),
-    blockForest (>= 0.2.6),
-    brnn,
+    BART (>= 2.9.10),
+    BiocManager,
+    blockForest (>= 0.2.7),
+    brnn (>= 0.9.4),
     bst,
     C50,
     callr,
@@ -66,7 +68,7 @@ Suggests:
     catboost,
     class,
     coin,
-    CoxBoost (>= 1.5.1),
+    CoxBoost (>= 1.5.2),
     crs,
     Cubist (>= 0.6.0),
     curl,
@@ -82,8 +84,9 @@ Suggests:
     formattable,
     frbs (>= 3.2-0),
     future,
-    gbm (>= 2.2.2),
-    glmnet (>= 4.1-6),
+    gbm (>= 2.2.3),
+    glmnet (>= 5.0),
+    grf (>= 2.0.0),
     GPfit (>= 1.0-9),
     h2o (>= 3.44.0.3),
     jsonlite,
@@ -97,7 +100,7 @@ Suggests:
     lightgbm (>= 4.5.0),
     lme4 (>= 1.1-38),
     MASS,
-    mboost (>= 2.9-10),
+    mboost (>= 2.9-11),
     mda,
     mgcv (>= 1.9-4),
     mirai,
@@ -109,20 +112,20 @@ Suggests:
     neuralnet,
     nnet,
     partykit (>= 1.2-21),
-    penalized (>= 0.9-52),
+    penalized (>= 0.9-53),
     pls (>= 2.9-0),
     polyreg,
-    prioritylasso (>= 0.3.1),
-    pseudo,
+    prioritylasso (>= 0.4.0),
     qgam,
     randomForest,
-    randomForestSRC (>= 3.5.0),
-    ranger (>= 0.17.0),
+    randomForestSRC (>= 3.6.2),
+    ranger (>= 0.18.0),
     remotes,
     reticulate,
     rFerns,
     rJava,
     rmarkdown,
+    ropls,
     rotationForest,
     rpart,
     RRF (>= 1.9.4.1),
@@ -135,28 +138,28 @@ Suggests:
     sda (>= 1.3.9),
     sparsediscrim,
     sparseLDA (>= 0.1-9),
-    stats,
     stepPlr,
     survdistr (>= 0.0.3),
-    survdnn (>= 0.7.5),
+    survdnn (>= 0.7.6),
     survival,
-    survivalsvm (>= 0.0.5),
+    survivalsvm (>= 0.0.6),
     tensorflow (>= 2.0.0),
     testthat,
     tgp (>= 2.4-23),
     torch (>= 0.16.3),
-    xgboost (>= 3.2.0.1)
+    xgboost (>= 3.2.1.1)
 VignetteBuilder:
     knitr,
     rmarkdown
 Remotes:
+    bioc::ropls,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba
 Config/Needs/website: rmarkdown
+Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.3

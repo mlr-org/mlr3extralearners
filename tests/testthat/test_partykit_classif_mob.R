@@ -3,6 +3,7 @@ skip_if_not_installed("sandwich")
 skip_if_not_installed("coin")
 
 test_that("autotest", {
+  withr::local_seed(42)
   # use a senseless logit model and partition with respect to all features
   logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
     glm(y ~ 1, family = binomial, start = start, ...)
@@ -11,7 +12,13 @@ test_that("autotest", {
   learner$param_set$values$rhs = "."
   learner$param_set$values$fit = logit_
   learner$param_set$values$additional = list(maxit = 100)
-  learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
+  learner$feature_types = c(
+    "logical",
+    "integer",
+    "numeric",
+    "factor",
+    "ordered"
+  )
   learner$properties = c("twoclass", "weights")
 
   predict_fun = function(object, newdata, task, .type) {
