@@ -118,7 +118,7 @@ Suggests:
     prioritylasso (>= 0.4.0),
     qgam,
     randomForest,
-    randomPlantedForest (>= 0.4.0),
+    randomPlantedForest (>= 0.5.0),
     randomForestSRC (>= 3.6.2),
     ranger (>= 0.18.0),
     remotes,
