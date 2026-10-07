@@ -56,7 +56,7 @@ LearnerClassifRandomPlantedForest = R6Class(
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        max_interaction = p_int(lower = 0L, default = 1L, tags = "train"),
+        max_interaction = p_int(lower = 0L, default = 2L, tags = "train"),
         max_interaction_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         max_interaction_limit = p_int(lower = 1L, special_vals = list(Inf), init = Inf, tags = "train"),
         ntrees = p_int(lower = 1L, default = 50L, tags = "train"),
