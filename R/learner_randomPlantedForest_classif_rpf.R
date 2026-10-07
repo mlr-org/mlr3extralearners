@@ -17,13 +17,6 @@
 #' Set `purify = TRUE` at training time if purification is needed, or include the training data in the marshaled
 #' model via the `marshal_include_data` parameter or `$marshal(include_data = TRUE)`.
 #'
-#' @section Initial parameter values:
-#' - `loss`:
-#'   - Actual default: `"L2"`.
-#'   - Initial value: `"exponential"`.
-#'   - Reason for change: Using `"L2"` (or `"L1"`) loss does not guarantee predictions are valid
-#'     probabilities and more akin to the linear predictor of a GLM.
-#'
 #' @section Custom mlr3 parameters:
 #' - `max_interaction`:
 #'   - This hyperparameter can alternatively be set via `max_interaction_ratio` as
@@ -71,7 +64,7 @@ LearnerClassifRandomPlantedForest = R6Class(
         max_candidates = p_int(lower = 1L, default = 50L, tags = "train"),
         split_decay_rate = p_dbl(lower = 0, default = 0.1, tags = "train"),
         delete_leaves = p_lgl(default = TRUE, tags = "train"),
-        loss = p_fct(c("L1", "L2", "logit", "exponential"), default = "L2", init = "exponential", tags = "train"),
+        loss = p_fct(c("L1", "L2", "logit", "exponential"), default = "exponential", tags = "train"),
         delta = p_dbl(lower = 0, upper = 1, default = 0.001, tags = "train"),
         epsilon = p_dbl(lower = 0, upper = 1, default = 0.1, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train"),

@@ -23,19 +23,6 @@ Set \code{purify = TRUE} at training time if purification is needed, or include 
 model via the \code{marshal_include_data} parameter or \verb{$marshal(include_data = TRUE)}.
 }
 
-\section{Initial parameter values}{
-
-\itemize{
-\item \code{loss}:
-\itemize{
-\item Actual default: \code{"L2"}.
-\item Initial value: \code{"exponential"}.
-\item Reason for change: Using \code{"L2"} (or \code{"L1"}) loss does not guarantee predictions are valid
-probabilities and more akin to the linear predictor of a GLM.
-}
-}
-}
-
 \section{Custom mlr3 parameters}{
 
 \itemize{
@@ -80,7 +67,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   max_interaction \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_interaction \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_interaction_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    max_interaction_limit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -91,7 +78,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    max_candidates \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_decay_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    delete_leaves \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   loss \tab character \tab L2 \tab L1, L2, logit, exponential \tab - \cr
+   loss \tab character \tab exponential \tab L1, L2, logit, exponential \tab - \cr
    delta \tab numeric \tab 0.001 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    epsilon \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    purify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

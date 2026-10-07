@@ -29,7 +29,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   max_interaction \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_interaction \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_interaction_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    max_interaction_limit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
