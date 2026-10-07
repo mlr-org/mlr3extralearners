@@ -118,6 +118,7 @@ Suggests:
     prioritylasso (>= 0.4.0),
     qgam,
     randomForest,
+    randomPlantedForest (>= 0.5.0),
     randomForestSRC (>= 3.6.2),
     ranger (>= 0.18.0),
     remotes,
@@ -154,7 +155,8 @@ Remotes:
     bioc::ropls,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
-    mlr-org/mlr3proba
+    mlr-org/mlr3proba,
+    PlantedML/randomPlantedForest
 Config/Needs/website: rmarkdown
 Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
