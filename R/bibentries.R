@@ -1063,6 +1063,17 @@ bibentries = c(
     publisher = "Institute of Mathematical Statistics",
     doi = "10.1214/18-AOS1709"
   ),
+  georganos2021geographical = bibentry("article",
+    title = "Geographical random forests: a spatial extension of the random forest algorithm to address spatial heterogeneity in remote sensing and population modelling",
+    author = "Georganos, Stefanos and Grippa, Tais and Niang Gadiaga, Assane and Linard, Catherine and Lennert, Moritz and Vanhuysse, Sabine and Mboga, Nicholus and Wolff, Eleonore and Kalogirou, Stamatis",
+    journal = "Geocarto International",
+    volume = "36",
+    number = "2",
+    pages = "121--136",
+    year = "2021",
+    publisher = "Taylor & Francis",
+    doi = "10.1080/10106049.2019.1595177"
+  ),
   thevenot2015analysis = bibentry("article",
     title = paste("Analysis of the Human Adult Urinary Metabolome Variations with Age, Body Mass Index,",
       "and Gender by Implementing a Comprehensive Workflow for Univariate and OPLS Statistical Analyses"),
