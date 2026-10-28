@@ -1,3 +1,0 @@
-handle SIGPIPE nostop noprint
-run
-bt 30
