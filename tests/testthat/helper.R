@@ -89,6 +89,8 @@ run_py_test = function(group, fn) {
     # keep the parent's python configuration out of the child session
     Sys.unsetenv(c("VIRTUAL_ENV", "VIRTUAL_ENV_PROMPT", "PYTHONPATH", "R_SESSION_INITIALIZED"))
     Sys.setenv(RETICULATE_PYTHON = python)
+    # dump the python traceback if the session segfaults
+    Sys.setenv(PYTHONFAULTHANDLER = "1")
 
     library(mlr3)
     library(mlr3extralearners)

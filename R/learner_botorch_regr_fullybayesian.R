@@ -82,8 +82,8 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
 
       x = as_numeric_matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
-      y_py = torch$as_tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
+      x_py = torch$tensor(x, dtype = torch$float64, device = device)
+      y_py = torch$tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
 
       input_trafo = pars$input_transform
       outcome_trafo = pars$outcome_transform
@@ -141,7 +141,7 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
       gp$eval()
 
       x = as_numeric_matrix(task$data(cols = task$feature_names))
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = pars$device)
+      x_py = torch$tensor(x, dtype = torch$float64, device = pars$device)
 
       posterior = reticulate::py$predict_fully_bayesian_gp(gp, x_py)
       mean = as.numeric(posterior[[1]])
