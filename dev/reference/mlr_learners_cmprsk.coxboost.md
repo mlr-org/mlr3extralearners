@@ -125,7 +125,7 @@ bblodfon
 ## Super classes
 
 [`mlr3::Learner`](https://mlr3.mlr-org.com/reference/Learner.html) -\>
-[`mlr3cmprsk::LearnerCompRisks`](https://rdrr.io/pkg/mlr3cmprsk/man/LearnerCompRisks.html)
+[`mlr3cmprsk::LearnerCompRisks`](https://mlr3cmprsk.mlr-org.com/reference/LearnerCompRisks.html)
 -\> `LearnerCompRisksCoxboost`
 
 ## Methods
@@ -240,14 +240,14 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #> cause '1':
-#> 10 boosting steps resulting in 1 non-zero coefficients  
-#> partial log-likelihood: -51.22253 
+#> 10 boosting steps resulting in 2 non-zero coefficients  
+#> partial log-likelihood: -51.60533 
 #> 
 #> cause '2':
 #> 10 boosting steps resulting in 6 non-zero coefficients  
-#> partial log-likelihood: -297.5361 
+#> partial log-likelihood: -289.6377 
 print(learner$selected_features(cause = 1)) # for cause = 1
-#> [1] "age"
+#> [1] "age"    "copper"
 print(learner$selected_features(cause = 2)) # for cause = 2
 #> [1] "age"     "copper"  "albumin" "ast"     "bili"    "protime"
 
@@ -257,5 +257,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.ibs 
-#>  0.1122267 
+#>  0.1108584 
 ```

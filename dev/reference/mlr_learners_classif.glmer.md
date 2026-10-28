@@ -208,29 +208,29 @@ print(learner$model)
 #> Number of obs: 1000, groups:  credit_history, 5
 #> Fixed Effects:
 #>                                         (Intercept)  
-#>                                            -0.49718  
+#>                                            -0.49721  
 #>                             jobunskilled - resident  
-#>                                            -0.19139  
+#>                                            -0.19142  
 #>                        jobskilled employee/official  
-#>                                            -0.13544  
+#>                                            -0.13547  
 #>        jobmanager/self-empl/highly qualif. employee  
-#>                                            -0.02365  
+#>                                            -0.02371  
 #>                                propertycar or other  
 #>                                             0.56577  
 #> propertybuilding soc. savings agr. / life insurance  
 #>                                             0.50720  
 #>                                 propertyreal estate  
-#>                                             1.11104  
+#>                                             1.11107  
 #>                  telephoneyes (under customer name)  
-#>                                            -0.26805  
+#>                                            -0.26804  
 #>                                 savings... < 100 DM  
-#>                                            -0.33521  
+#>                                            -0.33516  
 #>                          savings100 <= ... < 500 DM  
-#>                                            -1.08991  
+#>                                            -1.08990  
 #>                         savings500 <= ... < 1000 DM  
-#>                                            -1.24679  
+#>                                            -1.24682  
 #>                               savings... >= 1000 DM  
-#>                                            -1.04639  
+#>                                            -1.04636  
 #> 
 #> $target_levels
 #> [1] "good" "bad" 

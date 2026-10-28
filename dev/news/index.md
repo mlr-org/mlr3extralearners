@@ -2,6 +2,9 @@
 
 ## mlr3extralearners (development version)
 
+- Registering a learner whose id or class name is already in use now
+  throws an error instead of silently overwriting the existing learner
+  ([\#614](https://github.com/mlr-org/mlr3extralearners/issues/614)).
 - `regr.glm`: added the `tol` and `wtol` parameters of
   [`stats::glm.control()`](https://rdrr.io/r/stats/glm.control.html),
   which are available from R 4.7.0 on.
@@ -16,7 +19,7 @@
 
 - `surv.cv_glmnet` and `surv.glmnet`: added the `strata` parameter for
   fitting stratified Cox models via
-  [`glmnet::stratifySurv()`](https://rdrr.io/pkg/glmnet/man/stratifySurv.html)
+  [`glmnet::stratifySurv()`](https://glmnet.stanford.edu/reference/stratifySurv.html)
   ([\#396](https://github.com/mlr-org/mlr3extralearners/issues/396)).
 
 ### Breaking Changes
@@ -94,7 +97,7 @@
   subset of
   [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
   arguments. The
-  [`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
   pass-through hyperparameters were removed because they were not
   consistently forwarded
   ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).
