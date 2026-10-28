@@ -1,4 +1,3 @@
 handle SIGPIPE nostop noprint
 run
-bt
-info sharedlibrary
+bt 30

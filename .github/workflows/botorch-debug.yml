@@ -42,14 +42,22 @@ jobs:
           ldd --version | head -1
           sudo apt-get install -y gdb > /dev/null
 
-      - name: Plain python
+      - name: R plain
         continue-on-error: true
-        run: ~/.virtualenvs/mlr3extralearners-botorch/bin/python .github/debug/botorch_repro.py
+        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args plain
 
-      - name: R with reticulate only
+      - name: R proba
         continue-on-error: true
-        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args reticulate
+        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args proba
 
-      - name: R with mlr3
+      - name: R helpers
         continue-on-error: true
-        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args mlr3
+        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args helpers
+
+      - name: R mirai
+        continue-on-error: true
+        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args mirai
+
+      - name: Test file via testthat
+        continue-on-error: true
+        run: Rscript -e 'testthat::test_dir("tests/testthat", filter = "botorch_regr_singletaskgp", package = "mlr3extralearners", load_package = "installed")'
