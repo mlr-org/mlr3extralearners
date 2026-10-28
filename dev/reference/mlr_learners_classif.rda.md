@@ -169,16 +169,16 @@ print(learner$model)
 #> rda(formula = formula, data = data)
 #> 
 #> Regularization parameters: 
-#>        gamma       lambda 
-#> 1.028737e-01 4.856814e-06 
+#>     gamma    lambda 
+#> 0.5711131 0.3934923 
 #> 
 #> Prior probabilities of groups: 
 #>         M         R 
 #> 0.5323741 0.4676259 
 #> 
 #> Misclassification rate: 
-#>        apparent: 2.878 %
-#> cross-validated: 23.191 %
+#>        apparent: 5.755 %
+#> cross-validated: 16.371 %
 
 
 # Make predictions for the test rows

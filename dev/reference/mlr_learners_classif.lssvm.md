@@ -180,10 +180,10 @@ print(learner$model)
 #>  parameter : tau = 0.01 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0125403862296727 
+#>  Hyperparameter : sigma =  0.0105033125668042 
 #> 
 #> Number of data points used for training : 46 
-#> Training error : 0.043165 
+#> Training error : 0.021583 
 
 
 # Make predictions for the test rows
@@ -192,5 +192,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#>  0.1594203 
 ```

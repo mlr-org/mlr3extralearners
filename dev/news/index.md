@@ -5,6 +5,10 @@
 - Registering a learner whose id or class name is already in use now
   throws an error instead of silently overwriting the existing learner
   ([\#614](https://github.com/mlr-org/mlr3extralearners/issues/614)).
+- `classif.glmer`: added the `disp_method`, `maxPhiIter`, and
+  `disp_dof_correction` parameters of
+  [`lme4::glmerControl()`](https://rdrr.io/pkg/lme4/man/lmerControl.html),
+  which are available from lme4 2.1.0 on.
 - `regr.glm`: added the `tol` and `wtol` parameters of
   [`stats::glm.control()`](https://rdrr.io/r/stats/glm.control.html),
   which are available from R 4.7.0 on.

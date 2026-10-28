@@ -204,31 +204,31 @@ print(learner$model)
 #> 1143.8155 1207.6163 -558.9077 1117.8155       987 
 #> Random effects:
 #>  Groups         Name        Std.Dev.
-#>  credit_history (Intercept) 0.687   
+#>  credit_history (Intercept) 0.6869  
 #> Number of obs: 1000, groups:  credit_history, 5
 #> Fixed Effects:
 #>                                         (Intercept)  
-#>                                            -0.49721  
+#>                                            -0.49718  
 #>                             jobunskilled - resident  
-#>                                            -0.19142  
+#>                                            -0.19145  
 #>                        jobskilled employee/official  
-#>                                            -0.13547  
+#>                                            -0.13550  
 #>        jobmanager/self-empl/highly qualif. employee  
-#>                                            -0.02371  
+#>                                            -0.02374  
 #>                                propertycar or other  
-#>                                             0.56577  
+#>                                             0.56578  
 #> propertybuilding soc. savings agr. / life insurance  
 #>                                             0.50720  
 #>                                 propertyreal estate  
-#>                                             1.11107  
+#>                                             1.11108  
 #>                  telephoneyes (under customer name)  
-#>                                            -0.26804  
+#>                                            -0.26803  
 #>                                 savings... < 100 DM  
-#>                                            -0.33516  
+#>                                            -0.33515  
 #>                          savings100 <= ... < 500 DM  
-#>                                            -1.08990  
+#>                                            -1.08991  
 #>                         savings500 <= ... < 1000 DM  
-#>                                            -1.24682  
+#>                                            -1.24679  
 #>                               savings... >= 1000 DM  
 #>                                            -1.04636  
 #> 

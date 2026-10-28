@@ -216,36 +216,35 @@ Springer, New York.
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          (Intercept)     poly(am, degree = 1, raw = FALSE)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                               20.390                                -6.132  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               19.795                               -71.798  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> poly(carb, degree = 2, raw = FALSE)1  poly(carb, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              -39.833                                19.205  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              -22.837                                10.495  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  poly(cyl, degree = 2, raw = FALSE)1   poly(cyl, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                               50.779                                 0.924  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              -59.498                                 2.057  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> poly(disp, degree = 2, raw = FALSE)1  poly(disp, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              -46.685                                20.397  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              -15.351                                 9.042  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> poly(drat, degree = 2, raw = FALSE)1  poly(drat, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                               27.055                                13.502  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               -1.636                                 9.876  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> poly(gear, degree = 2, raw = FALSE)1  poly(gear, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                               31.931                                10.508  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               50.664                               -45.029  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   poly(hp, degree = 2, raw = FALSE)1    poly(hp, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                               25.448                                18.288  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               81.112                               -10.713  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> poly(qsec, degree = 2, raw = FALSE)1  poly(qsec, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                               22.767                               -13.511  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                9.758                               -25.518  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    poly(vs, degree = 1, raw = FALSE)    poly(wt, degree = 2, raw = FALSE)1  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   NA                                32.002  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                              -73.625                               -52.951  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   poly(wt, degree = 2, raw = FALSE)2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              -29.790  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                9.529  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 748.6849 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199.5002 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
