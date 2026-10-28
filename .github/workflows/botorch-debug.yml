@@ -9,12 +9,6 @@ name: botorch debug
 jobs:
   botorch:
     runs-on: ubuntu-latest
-    name: botorch (${{ matrix.variant }})
-
-    strategy:
-      fail-fast: false
-      matrix:
-        variant: [baseline, omp1, preload]
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -42,13 +36,20 @@ jobs:
       - name: Install package
         run: R CMD INSTALL --no-docs .
 
-      - name: Run botorch tests
+      - name: System info
         run: |
-          site=$HOME/.virtualenvs/mlr3extralearners-botorch/lib/python3.12/site-packages
-          ls $site/torch/lib | grep -i omp || true
-          ldd $(Rscript -e 'cat(system.file("libs/data_table.so", package = "data.table"))') | grep -i omp
-          case "${{ matrix.variant }}" in
-            omp1) export OMP_NUM_THREADS=1 ;;
-            preload) export LD_PRELOAD=$site/torch/lib/libgomp.so.1 ;;
-          esac
-          Rscript -e 'res = testthat::test_dir("tests/testthat", filter = "botorch", package = "mlr3extralearners", load_package = "installed", stop_on_failure = TRUE)'
+          lscpu | head -20
+          ldd --version | head -1
+          sudo apt-get install -y gdb > /dev/null
+
+      - name: Plain python
+        continue-on-error: true
+        run: ~/.virtualenvs/mlr3extralearners-botorch/bin/python .github/debug/botorch_repro.py
+
+      - name: R with reticulate only
+        continue-on-error: true
+        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args reticulate
+
+      - name: R with mlr3
+        continue-on-error: true
+        run: R -d gdb --debugger-args='-q -batch -x .github/debug/gdbcmds' --vanilla -f .github/debug/botorch_repro.R --args mlr3

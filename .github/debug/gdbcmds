@@ -1,0 +1,4 @@
+handle SIGPIPE nostop noprint
+run
+bt
+info sharedlibrary
