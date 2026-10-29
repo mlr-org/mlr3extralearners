@@ -74,6 +74,9 @@ instantiated via
 | compDev | logical | TRUE | TRUE, FALSE | \- |
 | nAGQ0initStep | logical | TRUE | TRUE, FALSE | \- |
 | check.response.not.const | untyped | "stop" |  | \- |
+| disp_method | character | moment | moment, old/buggy | \- |
+| maxPhiIter | integer | 100 |  | \\\[1, \infty)\\ |
+| disp_dof_correction | logical | TRUE | TRUE, FALSE | \- |
 | newparams | untyped | NULL |  | \- |
 | re.form | untyped | NULL |  | \- |
 | random.only | logical | FALSE | TRUE, FALSE | \- |
@@ -204,31 +207,31 @@ print(learner$model)
 #> 1143.8155 1207.6163 -558.9077 1117.8155       987 
 #> Random effects:
 #>  Groups         Name        Std.Dev.
-#>  credit_history (Intercept) 0.6869  
+#>  credit_history (Intercept) 0.687   
 #> Number of obs: 1000, groups:  credit_history, 5
 #> Fixed Effects:
 #>                                         (Intercept)  
-#>                                            -0.49718  
+#>                                            -0.49721  
 #>                             jobunskilled - resident  
-#>                                            -0.19145  
+#>                                            -0.19142  
 #>                        jobskilled employee/official  
-#>                                            -0.13550  
+#>                                            -0.13547  
 #>        jobmanager/self-empl/highly qualif. employee  
-#>                                            -0.02374  
+#>                                            -0.02371  
 #>                                propertycar or other  
-#>                                             0.56578  
+#>                                             0.56577  
 #> propertybuilding soc. savings agr. / life insurance  
 #>                                             0.50720  
 #>                                 propertyreal estate  
-#>                                             1.11108  
+#>                                             1.11107  
 #>                  telephoneyes (under customer name)  
-#>                                            -0.26803  
+#>                                            -0.26804  
 #>                                 savings... < 100 DM  
-#>                                            -0.33515  
+#>                                            -0.33516  
 #>                          savings100 <= ... < 500 DM  
-#>                                            -1.08991  
+#>                                            -1.08990  
 #>                         savings500 <= ... < 1000 DM  
-#>                                            -1.24679  
+#>                                            -1.24682  
 #>                               savings... >= 1000 DM  
 #>                                            -1.04636  
 #> 

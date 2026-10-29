@@ -9,6 +9,13 @@
   `disp_dof_correction` parameters of
   [`lme4::glmerControl()`](https://rdrr.io/pkg/lme4/man/lmerControl.html),
   which are available from lme4 2.1.0 on.
+- `regr.botorch_fullybayesian`, `regr.botorch_mixedsingletaskgp`, and
+  `regr.botorch_singletaskgp`: fixed segfaults during training and
+  prediction when R uses a recent OpenBLAS (e.g. on Ubuntu 26.04), whose
+  `cblas_dgemm_batch()` was called by torch instead of its own MKL
+  version. torch is now imported with `RTLD_DEEPBIND` if it was not
+  imported before. The data is also copied into torch tensors instead of
+  sharing the read-only memory of the R matrix.
 - `regr.glm`: added the `tol` and `wtol` parameters of
   [`stats::glm.control()`](https://rdrr.io/r/stats/glm.control.html),
   which are available from R 4.7.0 on.

@@ -286,69 +286,69 @@ print(learner$model)
 #> 
 #> Machine linear: showing attribute weights, not support vectors.
 #> 
-#>         -1.1861 * (normalized) V1
-#>  +      -0.9134 * (normalized) V10
-#>  +      -1.5838 * (normalized) V11
-#>  +      -1.4977 * (normalized) V12
-#>  +       0.0973 * (normalized) V13
-#>  +       0.3796 * (normalized) V14
-#>  +       0.1509 * (normalized) V15
-#>  +       0.6556 * (normalized) V16
-#>  +       0.7578 * (normalized) V17
-#>  +       0.0803 * (normalized) V18
-#>  +      -0.4361 * (normalized) V19
-#>  +      -0.0379 * (normalized) V2
-#>  +      -0.2119 * (normalized) V20
-#>  +      -0.508  * (normalized) V21
-#>  +       0.1281 * (normalized) V22
-#>  +       0.2631 * (normalized) V23
-#>  +      -0.7073 * (normalized) V24
-#>  +      -0.0459 * (normalized) V25
-#>  +      -0.2124 * (normalized) V26
-#>  +      -0.7338 * (normalized) V27
-#>  +       0.0413 * (normalized) V28
-#>  +       0.2827 * (normalized) V29
-#>  +       0.7024 * (normalized) V3
-#>  +      -0.591  * (normalized) V30
-#>  +       0.7732 * (normalized) V31
-#>  +      -0.0631 * (normalized) V32
-#>  +      -0.3064 * (normalized) V33
-#>  +       0.015  * (normalized) V34
-#>  +      -0.0183 * (normalized) V35
-#>  +       1.501  * (normalized) V36
-#>  +       1.1958 * (normalized) V37
-#>  +      -0.0664 * (normalized) V38
-#>  +      -0.374  * (normalized) V39
-#>  +      -0.8472 * (normalized) V4
-#>  +       0.1619 * (normalized) V40
-#>  +      -0.4666 * (normalized) V41
-#>  +      -0.0361 * (normalized) V42
-#>  +      -0.6193 * (normalized) V43
-#>  +      -1.1819 * (normalized) V44
-#>  +      -0.9297 * (normalized) V45
-#>  +       0.0742 * (normalized) V46
-#>  +      -0.1986 * (normalized) V47
-#>  +      -0.7704 * (normalized) V48
-#>  +      -0.6541 * (normalized) V49
-#>  +      -0.1507 * (normalized) V5
-#>  +       0.8826 * (normalized) V50
-#>  +      -0.7073 * (normalized) V51
-#>  +      -1.3813 * (normalized) V52
-#>  +      -0.2035 * (normalized) V53
-#>  +      -0.6969 * (normalized) V54
-#>  +       0.252  * (normalized) V55
-#>  +      -0.4881 * (normalized) V56
-#>  +       0.1438 * (normalized) V57
-#>  +      -0.2459 * (normalized) V58
-#>  +      -0.722  * (normalized) V59
-#>  +      -0.1331 * (normalized) V6
-#>  +      -0.3312 * (normalized) V60
-#>  +       0.2485 * (normalized) V7
-#>  +       0.2691 * (normalized) V8
-#>  +      -0.7564 * (normalized) V9
-#>  +       3.5606
+#>         -0.3569 * (normalized) V1
+#>  +      -0.3945 * (normalized) V10
+#>  +      -1.6111 * (normalized) V11
+#>  +      -1.6351 * (normalized) V12
+#>  +      -0.2693 * (normalized) V13
+#>  +       0.5565 * (normalized) V14
+#>  +       0.1788 * (normalized) V15
+#>  +       0.4639 * (normalized) V16
+#>  +       0.2566 * (normalized) V17
+#>  +      -0.1    * (normalized) V18
+#>  +      -0.4788 * (normalized) V19
+#>  +      -0.3526 * (normalized) V2
+#>  +      -0.517  * (normalized) V20
+#>  +      -0.6315 * (normalized) V21
+#>  +      -0.0259 * (normalized) V22
+#>  +       0.1082 * (normalized) V23
+#>  +      -0.317  * (normalized) V24
+#>  +      -0.3343 * (normalized) V25
+#>  +      -0.9605 * (normalized) V26
+#>  +       0.036  * (normalized) V27
+#>  +       0.2225 * (normalized) V28
+#>  +      -0.2612 * (normalized) V29
+#>  +       0.1154 * (normalized) V3
+#>  +      -1.2099 * (normalized) V30
+#>  +       0.3396 * (normalized) V31
+#>  +      -0.009  * (normalized) V32
+#>  +       0.4023 * (normalized) V33
+#>  +       0.639  * (normalized) V34
+#>  +       0.1198 * (normalized) V35
+#>  +       0.7528 * (normalized) V36
+#>  +       0.821  * (normalized) V37
+#>  +      -0.9062 * (normalized) V38
+#>  +      -1.0463 * (normalized) V39
+#>  +      -0.796  * (normalized) V4
+#>  +       0.4805 * (normalized) V40
+#>  +       0.1209 * (normalized) V41
+#>  +       0.0626 * (normalized) V42
+#>  +      -0.5805 * (normalized) V43
+#>  +      -0.9013 * (normalized) V44
+#>  +      -0.906  * (normalized) V45
+#>  +      -0.8524 * (normalized) V46
+#>  +      -0.8132 * (normalized) V47
+#>  +      -0.6444 * (normalized) V48
+#>  +      -0.7752 * (normalized) V49
+#>  +      -0.9152 * (normalized) V5
+#>  +       0.7364 * (normalized) V50
+#>  +      -0.2346 * (normalized) V51
+#>  +      -0.4293 * (normalized) V52
+#>  +      -0.2228 * (normalized) V53
+#>  +      -0.5544 * (normalized) V54
+#>  +      -0.2297 * (normalized) V55
+#>  +       0.115  * (normalized) V56
+#>  +       0.6178 * (normalized) V57
+#>  +      -0.4362 * (normalized) V58
+#>  +      -1.0811 * (normalized) V59
+#>  +       0.6116 * (normalized) V6
+#>  +      -0.2973 * (normalized) V60
+#>  +       0.5163 * (normalized) V7
+#>  +       0.4222 * (normalized) V8
+#>  +      -0.1178 * (normalized) V9
+#>  +       3.9876
 #> 
-#> Number of kernel evaluations: 5833 (84.473% cached)
+#> Number of kernel evaluations: 5231 (91.612% cached)
 #> 
 #> 
 
@@ -359,5 +359,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.2173913 
 ```

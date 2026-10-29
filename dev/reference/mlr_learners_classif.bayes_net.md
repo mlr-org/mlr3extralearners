@@ -259,8 +259,8 @@ print(learner$model)
 #> V10(2): Class 
 #> V11(2): Class 
 #> V12(2): Class 
-#> V13(2): Class 
-#> V14(2): Class 
+#> V13(1): Class 
+#> V14(1): Class 
 #> V15(1): Class 
 #> V16(1): Class 
 #> V17(1): Class 
@@ -292,14 +292,14 @@ print(learner$model)
 #> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
-#> V43(1): Class 
+#> V43(2): Class 
 #> V44(2): Class 
 #> V45(2): Class 
 #> V46(2): Class 
 #> V47(2): Class 
 #> V48(2): Class 
 #> V49(2): Class 
-#> V5(2): Class 
+#> V5(1): Class 
 #> V50(1): Class 
 #> V51(1): Class 
 #> V52(2): Class 
@@ -315,11 +315,11 @@ print(learner$model)
 #> V7(1): Class 
 #> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1358.348137775237
-#> LogScore BDeu: -1385.8345448351429
-#> LogScore MDL: -1391.6204659484786
-#> LogScore ENTROPY: -1310.2016460518223
-#> LogScore AIC: -1343.2016460518225
+#> LogScore Bayes: -1175.0935797376949
+#> LogScore BDeu: -1199.1441859151125
+#> LogScore MDL: -1206.268896130033
+#> LogScore ENTROPY: -1134.7190240996383
+#> LogScore AIC: -1163.719024099638
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.2898551 
 ```

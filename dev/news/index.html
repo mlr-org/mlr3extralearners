@@ -57,6 +57,8 @@
 <li>
 <code>classif.glmer</code>: added the <code>disp_method</code>, <code>maxPhiIter</code>, and <code>disp_dof_correction</code> parameters of <code><a href="https://rdrr.io/pkg/lme4/man/lmerControl.html" class="external-link">lme4::glmerControl()</a></code>, which are available from lme4 2.1.0 on.</li>
 <li>
+<code>regr.botorch_fullybayesian</code>, <code>regr.botorch_mixedsingletaskgp</code>, and <code>regr.botorch_singletaskgp</code>: fixed segfaults during training and prediction when R uses a recent OpenBLAS (e.g. on Ubuntu 26.04), whose <code>cblas_dgemm_batch()</code> was called by torch instead of its own MKL version. torch is now imported with <code>RTLD_DEEPBIND</code> if it was not imported before. The data is also copied into torch tensors instead of sharing the read-only memory of the R matrix.</li>
+<li>
 <code>regr.glm</code>: added the <code>tol</code> and <code>wtol</code> parameters of <code><a href="https://rdrr.io/r/stats/glm.control.html" class="external-link">stats::glm.control()</a></code>, which are available from R 4.7.0 on.</li>
 <li>Update <code>CoxBoost</code> version to 1.5.2 which fixes a prediction CIF bug and enabling prediction with one observation or time point from the upstream package (and so no need to handle this on the <code>mlr3</code> side).</li>
 <li>Use <code>mlr3cmprsk</code> version <code>0.0.6</code>.</li>
