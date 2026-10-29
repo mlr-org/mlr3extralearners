@@ -1,5 +1,6 @@
 # mlr3extralearners (development version)
 
+* `classif.rpf` and `regr.rpf`: re-added the random planted forest learners from `randomPlantedForest` (>= 0.5.0), which now supports marshaling and can therefore be used with encapsulation, parallelization, and saved to disk (#615).
 * Registering a learner whose id or class name is already in use now throws an error instead of silently overwriting the existing learner (#614).
 * `classif.glmer`: added the `disp_method`, `maxPhiIter`, and `disp_dof_correction` parameters of `lme4::glmerControl()`, which are available from lme4 2.1.0 on.
 * `regr.botorch_fullybayesian`, `regr.botorch_mixedsingletaskgp`, and `regr.botorch_singletaskgp`: fixed segfaults during training and prediction when R uses a recent OpenBLAS (e.g. on Ubuntu 26.04), whose `cblas_dgemm_batch()` was called by torch instead of its own MKL version. torch is now imported with `RTLD_DEEPBIND` if it was not imported before. The data is also copied into torch tensors instead of sharing the read-only memory of the R matrix.
