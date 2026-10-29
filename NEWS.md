@@ -2,6 +2,7 @@
 
 * Registering a learner whose id or class name is already in use now throws an error instead of silently overwriting the existing learner (#614).
 * `classif.glmer`: added the `disp_method`, `maxPhiIter`, and `disp_dof_correction` parameters of `lme4::glmerControl()`, which are available from lme4 2.1.0 on.
+* `regr.botorch_fullybayesian`, `regr.botorch_mixedsingletaskgp`, and `regr.botorch_singletaskgp`: fixed segfaults during training and prediction when R uses a recent OpenBLAS (e.g. on Ubuntu 26.04), whose `cblas_dgemm_batch()` was called by torch instead of its own MKL version. torch is now imported with `RTLD_DEEPBIND` if it was not imported before. The data is also copied into torch tensors instead of sharing the read-only memory of the R matrix.
 * `regr.glm`: added the `tol` and `wtol` parameters of `stats::glm.control()`, which are available from R 4.7.0 on.
 * Update `CoxBoost` version to 1.5.2 which fixes a prediction CIF bug and enabling prediction with one observation or time point from the upstream package (and so no need to handle this on the `mlr3` side).
 * Use `mlr3cmprsk` version `0.0.6`.

@@ -84,8 +84,8 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
 
       x[, (cols) := lapply(.SD, as.integer), .SDcols = cols]
       x = as_numeric_matrix(x)
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
-      y_py = torch$as_tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
+      x_py = torch$tensor(x, dtype = torch$float64, device = device)
+      y_py = torch$tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
 
       # 0-based categorical dimensions
       cat_dims = reticulate::r_to_py(unname(as.list(cols - 1L)))
@@ -141,7 +141,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       cols = which(sapply(x, function(x) is.factor(x) || is.logical(x)))
       x[, (cols) := lapply(.SD, as.integer), .SDcols = cols]
       x = as_numeric_matrix(x)
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = pars$device)
+      x_py = torch$tensor(x, dtype = torch$float64, device = pars$device)
 
       posterior = reticulate::py$predict_gp(gp, x_py)
       mean = as.numeric(posterior[[1]])
