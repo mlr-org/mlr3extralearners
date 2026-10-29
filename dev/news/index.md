@@ -2,6 +2,11 @@
 
 ## mlr3extralearners (development version)
 
+- `classif.rpf` and `regr.rpf`: re-added the random planted forest
+  learners from `randomPlantedForest` (\>= 0.5.0), which now supports
+  marshaling and can therefore be used with encapsulation,
+  parallelization, and saved to disk
+  ([\#615](https://github.com/mlr-org/mlr3extralearners/issues/615)).
 - Registering a learner whose id or class name is already in use now
   throws an error instead of silently overwriting the existing learner
   ([\#614](https://github.com/mlr-org/mlr3extralearners/issues/614)).

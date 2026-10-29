@@ -225,6 +225,9 @@
 - [`mlr_learners_classif.rotationForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rotationForest.md)
   [`LearnerClassifRotationForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rotationForest.md)
   : Classification Rotation Forest Learner
+- [`mlr_learners_classif.rpf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rpf.md)
+  [`LearnerClassifRandomPlantedForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rpf.md)
+  : Classification Random Planted Forest Learner
 - [`mlr_learners_classif.saeDNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.saeDNN.md)
   [`LearnerClassifSaeDNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.saeDNN.md)
   : Classification Stacked Autoencoder Deep Neural Network Learner
@@ -472,6 +475,9 @@
 - [`mlr_learners_regr.rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rfsrc.md)
   [`LearnerRegrRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rfsrc.md)
   : Regression Random Forest SRC Learner
+- [`mlr_learners_regr.rpf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rpf.md)
+  [`LearnerRegrRandomPlantedForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rpf.md)
+  : Regression Random Planted Forest Learner
 - [`mlr_learners_regr.rsm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rsm.md)
   [`LearnerRegrRSM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rsm.md)
   : Regression Response Surface Model Learner

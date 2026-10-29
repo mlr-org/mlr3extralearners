@@ -218,7 +218,7 @@ print(learner$model)
 #> 139 samples x 60 variables and 1 response
 #> standard scaling of predictors and response(s)
 #>       R2X(cum) R2Y(cum) Q2(cum) RMSEE pre ort
-#> Total    0.281    0.444   0.353 0.377   1   1
+#> Total    0.282    0.422   0.321 0.384   1   1
 
 
 # Make predictions for the test rows

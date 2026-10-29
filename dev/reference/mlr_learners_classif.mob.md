@@ -197,5 +197,14 @@ learner$param_set$values$predict_fun = predict_fun
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
-#> Error in model.frame.default(delete.response(object$terms), newdata, xlev = xlev): factor cell_size has new levels 9
+#> 
+#> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
+#>  row_ids     truth  response
+#>        1    benign malignant
+#>        4    benign malignant
+#>        5    benign malignant
+#>      ---       ---       ---
+#>      679    benign malignant
+#>      681 malignant malignant
+#>      682 malignant malignant
 ```
