@@ -1084,5 +1084,15 @@ bibentries = c(
     address = "New York",
     series = "Springer Series in Statistics",
     doi = "10.1007/978-0-387-84858-7"
+  ),
+  sigrist2022gaussian = bibentry("article",
+    title = "Gaussian Process Boosting",
+    author = "Sigrist, Fabio",
+    journal = "Journal of Machine Learning Research",
+    year = "2022",
+    volume = "23",
+    number = "232",
+    pages = "1--46",
+    url = "http://jmlr.org/papers/v23/20-322.html"
   )
 ) # nolint end
