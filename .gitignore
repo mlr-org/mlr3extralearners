@@ -188,4 +188,8 @@ TODO.md
 
 # AI
 .claude/settings.local.json
-CLAUDE.md
+.claude/worktrees
+
+# yolobox
+.yolobox.toml
+AGENTS.d/yolobox.md

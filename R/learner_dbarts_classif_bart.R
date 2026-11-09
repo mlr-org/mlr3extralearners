@@ -26,7 +26,7 @@
 #' * Parameter: nchain, combineChains, combinechains
 #'  * The parameters are removed as parallelization of multiple models is handled by future.
 #'
-#' * Parameter: sigest, sigdf, sigquant, keeptres
+#' * Parameter: sigest, sigdf, sigquant, keeptrees
 #'  * Regression only.
 #'
 #' @references
@@ -87,7 +87,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       pars = self$param_set$get_values(tags = "train")
 
-      # Extact just the features from the task data.
+      # Extract just the features from the task data.
       x_train = task$data(cols = task$feature_names)
       y_train = task$data(cols = task$target_names)
       y_train = as.integer(y_train == task$positive)

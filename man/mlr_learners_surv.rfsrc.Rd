@@ -21,7 +21,7 @@ Calculated using the internal \code{randomForestSRC::predict.rfsrc()} function.
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.rfsrc")
 }\if{html}{\out{</div>}}
@@ -143,12 +143,14 @@ predictions$score()
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008).
 \dQuote{Random survival forests.}
 \emph{The Annals of Applied Statistics}, \bold{2}(3).
-\doi{10.1214/08-aoas169}, \url{https://doi.org/10.1214/08-aoas169}.
+\doi{10.1214/08-aoas169}.
+\url{https://doi.org/10.1214/08-aoas169}.
 
 Breiman, Leo (2001).
 \dQuote{Random Forests.}
 \emph{Machine Learning}, \bold{45}(1), 5--32.
-ISSN 1573-0565, \doi{10.1023/A:1010933404324}.
+ISSN 1573-0565.
+\doi{10.1023/A:1010933404324}.
 }
 \seealso{
 \itemize{
@@ -169,98 +171,106 @@ RaphaelS1
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerSurvRandomForestSRC-new}{\code{LearnerSurvRandomForestSRC$new()}}
-\item \href{#method-LearnerSurvRandomForestSRC-importance}{\code{LearnerSurvRandomForestSRC$importance()}}
-\item \href{#method-LearnerSurvRandomForestSRC-selected_features}{\code{LearnerSurvRandomForestSRC$selected_features()}}
-\item \href{#method-LearnerSurvRandomForestSRC-oob_error}{\code{LearnerSurvRandomForestSRC$oob_error()}}
-\item \href{#method-LearnerSurvRandomForestSRC-clone}{\code{LearnerSurvRandomForestSRC$clone()}}
+  \itemize{
+    \item \href{#method-LearnerSurvRandomForestSRC-initialize}{\code{LearnerSurvRandomForestSRC$new()}}
+    \item \href{#method-LearnerSurvRandomForestSRC-importance}{\code{LearnerSurvRandomForestSRC$importance()}}
+    \item \href{#method-LearnerSurvRandomForestSRC-selected_features}{\code{LearnerSurvRandomForestSRC$selected_features()}}
+    \item \href{#method-LearnerSurvRandomForestSRC-oob_error}{\code{LearnerSurvRandomForestSRC$oob_error()}}
+    \item \href{#method-LearnerSurvRandomForestSRC-clone}{\code{LearnerSurvRandomForestSRC$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvRandomForestSRC-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvRandomForestSRC-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvRandomForestSRC$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerSurvRandomForestSRC-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvRandomForestSRC-initialize}{}}}
+\subsection{\code{LearnerSurvRandomForestSRC$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvRandomForestSRC$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvRandomForestSRC-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvRandomForestSRC-importance}{}}}
-\subsection{Method \code{importance()}}{
-The importance scores are extracted from the model slot \code{importance}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvRandomForestSRC$importance()}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvRandomForestSRC$importance()}}{
+  The importance scores are extracted from the model slot \code{importance}.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvRandomForestSRC$importance()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    Named \code{numeric()}.
+  }
 }
 
-\subsection{Returns}{
-Named \code{numeric()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvRandomForestSRC-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvRandomForestSRC-selected_features}{}}}
-\subsection{Method \code{selected_features()}}{
-Selected features are extracted from the model slot \code{var.used}.
+\subsection{\code{LearnerSurvRandomForestSRC$selected_features()}}{
+  Selected features are extracted from the model slot \code{var.used}.
 
 \strong{Note}: Due to a known issue in \code{randomForestSRC}, enabling \code{var.used = "all.trees"}
 causes prediction to fail. Therefore, this setting should be used exclusively
 for feature selection purposes and not when prediction is required.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvRandomForestSRC$selected_features()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvRandomForestSRC$selected_features()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{character()}.
+  }
 }
 
-\subsection{Returns}{
-\code{character()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvRandomForestSRC-oob_error"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvRandomForestSRC-oob_error}{}}}
-\subsection{Method \code{oob_error()}}{
-OOB error extracted from the model slot \code{err.rate}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvRandomForestSRC$oob_error()}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvRandomForestSRC$oob_error()}}{
+  OOB error extracted from the model slot \code{err.rate}.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvRandomForestSRC$oob_error()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{numeric()}.
+  }
 }
 
-\subsection{Returns}{
-\code{numeric()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvRandomForestSRC-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvRandomForestSRC-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvRandomForestSRC$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvRandomForestSRC$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvRandomForestSRC$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }
