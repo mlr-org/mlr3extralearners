@@ -1,6 +1,7 @@
 skip_if_not_installed("ncvreg")
 
 test_that("autotest", {
+  withr::local_seed(42)
   learner = lrn("surv.cv_ncvsurv")
   expect_learner(learner)
   result = run_autotest(learner, check_replicable = FALSE)
@@ -8,11 +9,18 @@ test_that("autotest", {
 })
 
 test_that("prediction lambda", {
-  task = tsk("lung")$select(c("age", "meal.cal", "pat.karno", "ph.ecog", "ph.karno", "wt.loss"))
+  task = tsk("lung")$select(c(
+    "age",
+    "meal.cal",
+    "pat.karno",
+    "ph.ecog",
+    "ph.karno",
+    "wt.loss"
+  ))
   learner = lrn("surv.cv_ncvsurv")
   expect_silent(learner$train(task))
 
-  # predict: lamdba.min (by default)
+  # predict: lambda.min (by default)
   p1 = learner$predict(task)
   # predict: last lambda => practically no regularization
   lam = learner$model$lambda[100]

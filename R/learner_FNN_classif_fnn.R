@@ -1,9 +1,9 @@
-#' @title Fast Nearest Neighbour Classification
+#' @title Fast Nearest Neighbor Classification
 #' @author be-marc
 #' @name mlr_learners_classif.fnn
 #'
 #' @description
-#' Fast Nearest Neighbour Classification.
+#' Fast Nearest Neighbor Classification.
 #' Calls `FNN::knn()` from \CRANpkg{FNN}.
 #'
 #'
@@ -37,7 +37,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
         param_set = ps,
         properties = c("twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.fnn",
-        label = "Fast Nearest Neighbour"
+        label = "Fast Nearest Neighbor"
       )
     }
   ),

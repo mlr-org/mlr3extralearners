@@ -53,6 +53,7 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
         callbacks   = p_uty(default = NULL, tags = "train"),
         .seed       = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
         .device     = p_fct(levels = c("auto", "cpu", "cuda"), default = "auto", tags = "train"),
+        .threads    = p_int(lower = 1L, default = NULL, special_vals = list(NULL), tags = "train"),
         na_action   = p_fct(levels = c("omit", "fail"), default = "omit", tags = "train")
       )
 

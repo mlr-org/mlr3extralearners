@@ -71,7 +71,7 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
   ),
   private = list(
     .train = function(task) {
-      assert_python_packages(c("torch", "botorch", "gpytorch"))
+      assert_python_packages(c("torch", "botorch", "gpytorch", "numpyro", "jax", "jaxlib"))
       torch = reticulate::import("torch")
       botorch = reticulate::import("botorch")
 
@@ -82,8 +82,8 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
 
       x = as_numeric_matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
-      y_py = torch$as_tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
+      x_py = torch$tensor(x, dtype = torch$float64, device = device)
+      y_py = torch$tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
 
       input_trafo = pars$input_transform
       outcome_trafo = pars$outcome_transform
@@ -121,7 +121,7 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
     },
 
     .predict = function(task) {
-      assert_python_packages(c("torch", "botorch", "gpytorch"))
+      assert_python_packages(c("torch", "botorch", "gpytorch", "numpyro", "jax", "jaxlib"))
       torch = reticulate::import("torch")
       pars = self$param_set$get_values(tags = "predict")
 
@@ -141,7 +141,7 @@ LearnerRegrBotorchFullyBayesian = R6Class("LearnerRegrBotorchFullyBayesian",
       gp$eval()
 
       x = as_numeric_matrix(task$data(cols = task$feature_names))
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = pars$device)
+      x_py = torch$tensor(x, dtype = torch$float64, device = pars$device)
 
       posterior = reticulate::py$predict_fully_bayesian_gp(gp, x_py)
       mean = as.numeric(posterior[[1]])
