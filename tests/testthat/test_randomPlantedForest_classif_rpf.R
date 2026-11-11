@@ -11,7 +11,7 @@ test_that("autotest", {
 
 test_that("marshaling preserves predictions", {
   task = tsk("sonar")
-  learner = lrn("classif.rpf", ntrees = 5L, splits = 5L, predict_type = "prob")
+  learner = lrn("classif.rpf", n_families = 10L, n_splits = 5L, keep_forest = TRUE, predict_type = "prob")
   learner$train(task)
   expected = learner$predict(task)
   learner$marshal()

@@ -9,6 +9,10 @@ marshal_model.rpf = function(model, inplace = FALSE, include_data = attr(model, 
   )
 }
 
+# the default rpf() result is a pruned model; with keep_forest = TRUE it still holds the C++ forest
+#' @export
+marshal_model.rpf_pruned = marshal_model.rpf
+
 #' @export
 unmarshal_model.rpf_model_marshaled = function(model, inplace = FALSE, ...) {
   # rpf_unmarshal() builds a fresh object, so re-attach the flag for later marshal rounds

@@ -7,6 +7,7 @@
 #' Calls `randomPlantedForest::rpf()` from package 'randomPlantedForest'.
 #'
 #' @inheritSection mlr_learners_classif.rpf Installation
+#' @inheritSection mlr_learners_classif.rpf Usage and tuning
 #' @inheritSection mlr_learners_classif.rpf Saving a Learner
 #' @inheritSection mlr_learners_classif.rpf Custom mlr3 parameters
 #'
@@ -27,21 +28,29 @@ LearnerRegrRandomPlantedForest = R6Class(
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        max_interaction = p_int(lower = 0L, default = 2L, tags = "train"),
+        max_interaction = p_int(lower = 0L, default = 3L, tags = "train"),
         max_interaction_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         max_interaction_limit = p_int(lower = 1L, special_vals = list(Inf), init = Inf, tags = "train"),
-        ntrees = p_int(lower = 1L, default = 50L, tags = "train"),
-        splits = p_int(lower = 1L, default = 30L, tags = "train"),
+        n_families = p_int(lower = 1L, default = 200L, tags = "train"),
+        n_splits = p_int(lower = 1L, special_vals = list(NULL), default = NULL, tags = "train"),
         split_structure = p_fct(
-          c("leaves", "hist", "cur_trees_1", "cur_trees_2", "res_trees"),
-          default = "leaves",
+          c("leaf", "leaf_binned", "tree_then_leaf", "tree_then_all_leaves", "target_tree_then_leaf"),
+          default = "leaf",
           tags = "train"
         ),
-        split_try = p_int(lower = 1L, default = 10L, tags = "train"),
-        t_try = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
+        n_try_split_points = p_int(lower = 1L, special_vals = list(NULL), default = NULL, tags = "train"),
+        share_candidates = p_dbl(lower = 0, upper = 1, special_vals = list(NULL), default = NULL, tags = "train"),
         max_candidates = p_int(lower = 1L, default = 50L, tags = "train"),
         split_decay_rate = p_dbl(lower = 0, default = 0.1, tags = "train"),
         delete_leaves = p_lgl(default = TRUE, tags = "train"),
+        min_leaf_rows = p_int(lower = 1L, default = 1L, tags = "train"),
+        interaction_constraints = p_uty(default = NULL, tags = "train"),
+        prune = p_lgl(special_vals = list(NULL), default = NULL, tags = "train"),
+        max_panels = p_int(lower = 1L, special_vals = list(Inf), default = 10L, tags = "train"),
+        keep_forest = p_lgl(default = FALSE, tags = "train"),
+        tune = p_uty(default = FALSE, tags = "train"),
+        keep_level_order = p_uty(default = FALSE, tags = "train"),
+        oob_path = p_uty(default = FALSE, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train"),
         nthreads = p_int(lower = 1L, default = 1L, tags = c("train", "predict", "threads")),
         export_forest = p_lgl(default = FALSE, tags = "train"),
