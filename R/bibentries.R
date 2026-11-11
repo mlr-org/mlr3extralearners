@@ -1084,5 +1084,25 @@ bibentries = c(
     address = "New York",
     series = "Springer Series in Statistics",
     doi = "10.1007/978-0-387-84858-7"
+  ),
+  he2019xbart = bibentry("inproceedings",
+    title = "XBART: Accelerated Bayesian Additive Regression Trees",
+    author = "He, Jingyu and Yalov, Saar and Hahn, P. Richard",
+    booktitle = "Proceedings of the 22nd International Conference on Artificial Intelligence and Statistics",
+    series = "Proceedings of Machine Learning Research",
+    volume = "89",
+    pages = "1130--1138",
+    year = "2019",
+    publisher = "PMLR"
+  ),
+  he2023stochastic = bibentry("article",
+    title = "Stochastic Tree Ensembles for Regularized Nonlinear Regression",
+    author = "He, Jingyu and Hahn, P. Richard",
+    journal = "Journal of the American Statistical Association",
+    volume = "118",
+    number = "541",
+    pages = "551--570",
+    year = "2023",
+    doi = "10.1080/01621459.2021.1942012"
   )
 ) # nolint end
