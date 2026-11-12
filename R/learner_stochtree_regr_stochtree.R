@@ -174,7 +174,7 @@ LearnerRegrStochtree = R6Class("LearnerRegrStochtree",
         list(response = as.numeric(response))
       } else {
         draws = invoke(predict, self$model, X = newdata, type = "posterior", terms = "y_hat")
-        list(response = rowMeans(draws), se = apply(draws, 1L, sd))
+        list(response = rowMeans(draws), se = apply(draws, 1L, stats::sd))
       }
     }
   )

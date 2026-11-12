@@ -160,7 +160,7 @@ LearnerRegrStochtreeBCF = R6Class("LearnerRegrStochtreeBCF",
     #'   If `NULL` (default), the rows with role `"use"` are used.
     #' @return `numeric()` with the posterior mean of the treatment effect of each row.
     treatment_effect = function(task, row_ids = NULL) {
-      task = assert_task(as_task(task))
+      task = mlr3::assert_task(mlr3::as_task(task))
       if (is.null(self$model)) {
         stopf("No model stored")
       }
@@ -243,7 +243,7 @@ LearnerRegrStochtreeBCF = R6Class("LearnerRegrStochtreeBCF",
         list(response = as.numeric(response))
       } else {
         draws = invoke(predict, self$model, X = data$x, Z = data$z, type = "posterior", terms = "y_hat")
-        list(response = rowMeans(draws), se = apply(draws, 1L, sd))
+        list(response = rowMeans(draws), se = apply(draws, 1L, stats::sd))
       }
     }
   )
