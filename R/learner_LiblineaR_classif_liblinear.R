@@ -49,7 +49,8 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
         verbose = p_lgl(default = FALSE, tags = "train"),
         wi = p_uty(default = NULL, tags = "train"),
         findC = p_lgl(default = FALSE, tags = "train"),
-        useInitC = p_lgl(default = TRUE, tags = "train")
+        useInitC = p_lgl(default = TRUE, tags = "train"),
+        regularizeBias = p_lgl(default = TRUE, tags = "train")
       )
 
       # 50 is an arbitrary choice here
