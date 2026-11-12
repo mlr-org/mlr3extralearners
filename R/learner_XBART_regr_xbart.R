@@ -14,8 +14,8 @@
 #' @section Installation:
 #' Package 'XBART' is not on CRAN and has to be installed from GitHub via
 #' `remotes::install_github("JingyuHe/XBART")`.
-#' It links against the GNU Scientific Library (GSL),
-#' which has to be installed on the system first, e.g. via `apt install libgsl-dev` or `brew install gsl`.
+#' Compiling it requires the GNU Scientific Library (GSL) and the Boost headers,
+#' e.g. via `apt install libgsl-dev libboost-dev` or `brew install gsl boost`.
 #'
 #' @section Initial parameter values:
 #' - `num_trees` is initialized to 100 and `num_sweeps` to 40, because `XBART::XBART()` has no defaults for them.

@@ -17,8 +17,8 @@ Messages printed by XBART during training are suppressed unless \code{verbose} i
 
 Package 'XBART' is not on CRAN and has to be installed from GitHub via
 \code{remotes::install_github("JingyuHe/XBART")}.
-It links against the GNU Scientific Library (GSL),
-which has to be installed on the system first, e.g. via \verb{apt install libgsl-dev} or \verb{brew install gsl}.
+Compiling it requires the GNU Scientific Library (GSL) and the Boost headers,
+e.g. via \verb{apt install libgsl-dev libboost-dev} or \verb{brew install gsl boost}.
 }
 
 \section{Initial parameter values}{

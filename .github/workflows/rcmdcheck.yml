@@ -46,8 +46,8 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
-      - name: Install GSL for XBART
-        run: sudo apt-get install -y libgsl-dev
+      - name: Install GSL and Boost for XBART
+        run: sudo apt-get install -y libgsl-dev libboost-dev
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
