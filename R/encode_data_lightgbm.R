@@ -1,5 +1,5 @@
 # For lightgbm, we internally convert the factors and logicals to integers, so that the learner
-# can be more easily used. Th
+# can be more easily used.
 
 encode_lightgbm_train = function(task) {
   dat = task$data(cols = task$feature_names)

@@ -4,16 +4,15 @@ test_that("paramtest regr.gam train", {
   learner = lrn("regr.gam")
   fun_list = list(mgcv::gam, mgcv::gam.control)
   exclude = c(
-    "outerPIsteps", # weird errors in rcmdcheck (different result on devel and release)
     "data", # handled internally
     "weights", # handled internally
     "subset", # handled internally
     "na.action", # handled internally
+    "offset", # handled by mlr3
     "control", # handled via "train" parameters
     "fit", # A model should be fitted
     "discrete", # experimental, should not be modified
-    "keepData", # handled internally
-    "offset" # handled by mlr3
+    "keepData" # no need to keep the data, as the model frame is kept either way
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -24,16 +23,15 @@ test_that("paramtest regr.gam predict", {
   learner = lrn("regr.gam")
   fun = mgcv::predict.gam
   exclude = c(
-    "na.action", # handled internally
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled internally
-    "newdata.guaranteed", # handled internally
     "se.fit", # handled internally
     "terms", # not relevant for predict type "se" or "response"
     "exclude", # not relevant for predict type "se" or "response"
-    "iterms.type", # not relevant for predict type "se" or "response"
-    "keepData" # handled internally
+    "newdata.guaranteed", # handled internally
+    "na.action", # handled internally
+    "iterms.type" # not relevant for predict type "se" or "response"
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

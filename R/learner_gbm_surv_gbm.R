@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gradient Boosting for Survival Analysis.
-#' Calls [gbm::gbm()] from \CRANpkg{gbm}.
+#' Calls `gbm::gbm()` from \CRANpkg{gbm}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types, using the internal `predict.gbm()` function:

@@ -4,14 +4,14 @@
 #'
 #' @description
 #' Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
-#' survival data. Calls [BART::mc.surv.bart()] from \CRANpkg{BART}.
+#' survival data. Calls `BART::mc.surv.bart()` from \CRANpkg{BART}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a 3d survival array with observations as 1st dimension, time
 #' points as 2nd and the posterior draws as 3rd dimension.
 #' Calculated using the internal `predict.survbart()` function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()]. The parameter
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`. The parameter
 #' `which.curve` decides which posterior draw (3rd dimension) will be used for the
 #' calculation of the expected mortality. Note that the median posterior is
 #' by default used for the calculation of survival measures that require a `distr`
@@ -38,7 +38,7 @@
 #' `r format_bib("sparapani2021nonparametric", "chipman2010bart")`
 #'
 #' @template seealso_learner
-#' @template simple_example
+#' @template example_simple
 #' @export
 LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
   inherit = mlr3proba::LearnerSurv,
@@ -82,7 +82,7 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       )
 
       # custom defaults
-      param_set$values = list(mc.cores = 1, quiet = TRUE, importance = "count",
+      param_set$values = list(mc.cores = 1L, quiet = TRUE, importance = "count",
                               which.curve = 0.5) # 0.5 quantile => median posterior
 
       super$initialize(
@@ -120,9 +120,9 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       pars = self$param_set$get_values(tags = "train")
 
       if (pars$importance == "prob") {
-        sort(self$model$model$varprob.mean[-1], decreasing = TRUE)
+        sort(self$model$model$varprob.mean[-1L], decreasing = TRUE)
       } else {
-        sort(self$model$model$varcount.mean[-1], decreasing = TRUE)
+        sort(self$model$model$varcount.mean[-1L], decreasing = TRUE)
       }
     }
   ),
@@ -134,10 +134,10 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       x.train = as.data.frame(task$data(cols = task$feature_names)) # nolint
       truth = task$truth()
-      times = truth[, 1]
-      delta = truth[, 2] # delta => status
+      times = truth[, 1L]
+      delta = truth[, 2L] # delta => status
 
-      .fun = ifelse(.Platform$OS.type == "windows", BART::surv.bart, BART::mc.surv.bart)
+      .fun = if (.Platform$OS.type == "windows") BART::surv.bart else BART::mc.surv.bart
 
       model = invoke(
         .fun,
@@ -214,8 +214,8 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       # distr => 3d survival array
       # crank => expected mortality
-      mlr3proba::.surv_return(times = times, surv = surv_array,
-                              which.curve = pars$which.curve)
+      mlr3proba::surv_return(times = times, surv = surv_array,
+                             which.curve = pars$which.curve)
     }
   )
 )

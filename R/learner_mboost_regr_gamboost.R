@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fit a generalized additive regression model using a boosting algorithm.
-#' Calls [mboost::gamboost()]  from \CRANpkg{mboost}.
+#' Calls `mboost::gamboost()`  from \CRANpkg{mboost}.
 #'
 #' @template learner
 #' @templateVar id regr.gamboost
@@ -16,10 +16,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
-#' # Define the Learner
-#' learner = lrn("regr.gamboost", baselearner = "bols")
-#' print(learner)
+#' @template example_simple
 LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
   inherit = LearnerRegr,
   public = list(
@@ -31,7 +28,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
         baselearner = p_fct(default = "bbs",
           levels = c("bbs", "bols", "btree"), tags = "train"),
         dfbase = p_int(default = 4L, tags = "train"),
-        family = p_fct(default = c("Gaussian"),
+        family = p_fct(default = "Gaussian",
           levels = c(
             "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
             "NBinomial", "Hurdle", "custom"), tags = "train"),
@@ -125,7 +122,9 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
-      p = invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+      p = as.numeric(
+        invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+      )
       list(response = p)
     }
   )

@@ -5,13 +5,11 @@
 #' @description
 #' Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 #' number of steps.
-#' Calls [CoxBoost::CoxBoost()] or [CoxBoost::cv.CoxBoost()] from package 'CoxBoost'.
+#' Calls `CoxBoost::CoxBoost()` or `CoxBoost::cv.CoxBoost()` from package \CRANpkg{CoxBoost}.
 #'
 #' @inheritSection mlr_learners_surv.coxboost Prediction types
 #' @template learner
 #' @templateVar id surv.cv_coxboost
-#'
-#' @template install_coxboost
 #'
 #' @details
 #' Use [LearnerSurvCoxboost] and [LearnerSurvCVCoxboost] for Cox boosting without and with internal
@@ -20,21 +18,15 @@
 #' multiple hyperparameters, \CRANpkg{mlr3tuning} and [LearnerSurvCoxboost] will likely give better
 #' results.
 #'
-#' If `penalty == "optimCoxBoostPenalty"` then [CoxBoost::optimCoxBoostPenalty] is used to determine
-#' the penalty value to be used in [CoxBoost::cv.CoxBoost].
+#' If `penalty == "optimCoxBoostPenalty"` then `CoxBoost::optimCoxBoostPenalty()` is used to determine
+#' the penalty value and optimal step to be used in `CoxBoost::CoxBoost()`.
 #'
 #' @references
-#' `r format_bib("binder2009boosting")`
+#' `r format_bib("binder2008")`
 #'
 #' @template seealso_learner
+#' @template example_cv_coxboost
 #' @export
-#' @examplesIf learner_is_runnable("surv.cv_coxboost")
-#' task = tsk("rats")
-#' task$col_roles$feature = c("litter", "rx")
-#' learner = lrn("surv.cv_coxboost", maxstepno = 20)
-#' splits = partition(task)
-#' learner$train(task, splits$train)
-#' pred = learner$predict(task, splits$test)
 LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
   inherit = mlr3proba::LearnerSurv,
 
@@ -43,14 +35,17 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
+        # cv.CoxBoost parameters
         maxstepno = p_int(default = 100, lower = 0, tags = "train"),
         K = p_int(default = 10, lower = 2, tags = "train"),
         type = p_fct(default = "verweij", levels = c("verweij", "naive"), tags = "train"),
         folds = p_uty(default = NULL, tags = "train"),
+        # optimCoxBoostPenalty parameters
         minstepno = p_int(default = 50, lower = 0, tags = "train"),
         start.penalty = p_dbl(tags = "train"),
         iter.max = p_int(default = 10, lower = 1, tags = "train"),
         upper.margin = p_dbl(default = 0.05, lower = 0, upper = 1, tags = "train"),
+        # CoxBoost parameters
         unpen.index = p_uty(tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
         penalty = p_dbl(special_vals = list("optimCoxBoostPenalty"), tags = "train"),
@@ -67,7 +62,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
 
       super$initialize(
         id = "surv.cv_coxboost",
-        packages = c("mlr3extralearners", "CoxBoost", "pracma"),
+        packages = c("mlr3extralearners", "CoxBoost"),
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         param_set = ps,
@@ -188,7 +183,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         type = "risk",
         times = times)
 
-      mlr3proba::.surv_return(times = times, surv = surv, lp = lp)
+      mlr3proba::surv_return(times = times, surv = surv, lp = lp)
     }
   )
 )

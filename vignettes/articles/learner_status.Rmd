@@ -48,6 +48,7 @@ tbl$author = apply(tbl, 1, function(row) {
       x[which(grepl("author", x)) + 1]
     },
     mlr3proba = "bblodfon",
+    mlr3cmprsk = "bblodfon",
     mlr3cluster = "damirpolat",
     "mllg"
   )

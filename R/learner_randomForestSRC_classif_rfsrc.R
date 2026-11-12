@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random forest for classification.
-#' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
+#' Calls `randomForestSRC::rfsrc()` from \CRANpkg{randomForestSRC}.
 #'
 #' @template learner
 #' @templateVar id classif.rfsrc
@@ -23,27 +23,7 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.rfsrc")
-#' # Define the Learner
-#' learner = lrn("classif.rfsrc", importance = "TRUE")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("sonar")
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_rfsrc
 #' @export
 LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
   inherit = LearnerClassif,
@@ -104,7 +84,6 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
           levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
         seed = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree = p_uty(tags = "predict"),
         outcome = p_fct(
           default = "train", levels = c("train", "test"),
@@ -136,7 +115,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
     #' 'all'.
     #' @return Named `numeric()`.
     importance = function() {
-      if (is.null(self$model$importance) & !is.null(self$model)) {
+      if (is.null(self$model$importance) && !is.null(self$model)) {
         stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 

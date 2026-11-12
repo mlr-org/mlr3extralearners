@@ -1,10 +1,10 @@
-#' @title Classification K-nearest Neighbour Learner
+#' @title Classification K-nearest Neighbor Learner
 #' @author annanzrv
 #' @name mlr_learners_classif.knn
 #'
 #' @description
 #' K-nearest neighbor classification.
-#' Calls [class::knn()] from \CRANpkg{class}.
+#' Calls `class::knn()` from \CRANpkg{class}.
 #'
 #' @templateVar id classif.knn
 #' @template learner
@@ -36,7 +36,7 @@ LearnerClassifKnn = R6Class("LearnerClassifKnn",
         param_set = param_set,
         properties = c("twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.knn",
-        label = "k-Nearest Neighbour Classifier"
+        label = "k-Nearest Neighbor Classifier"
       )
     }
   ),

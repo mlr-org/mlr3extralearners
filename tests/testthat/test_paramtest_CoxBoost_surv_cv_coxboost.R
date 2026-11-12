@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("CoxBoost")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.cv_coxboost train", {
   learner = lrn("surv.cv_coxboost")
@@ -23,7 +22,7 @@ test_that("paramtest surv.cv_coxboost train", {
     # handled by future
     "multicore", # handled by future
     "parallel", # coerced internally
-    "stepno" # optimised in cv.CoxBoost
+    "stepno" # optimized in cv.CoxBoost
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

@@ -5,18 +5,18 @@ toproper = function(str, split = " ", fixed = TRUE) {
       paste0(toupper(substr(x, 1, 1)), tolower(substr(x, 2, 1000)), collapse = split)
     }
   )
-  return(unlist(str))
+  unlist(str)
 }
 
 # a less robust but faster version of devtools::as.package
 pkg_root = function(path = ".") {
   path = normalizePath(path)
 
-  if (!grepl("mlr3extralearners", path)) {
+  if (!grepl("mlr3extralearners", path, fixed = TRUE)) {
     stopf("Path (%s) is not in mlr3extralearners directory.", path)
   }
 
-  while (TRUE) {
+  repeat {
     if (file.exists(file.path(path, "DESCRIPTION"))) {
       return(path)
     } else {
@@ -78,15 +78,15 @@ format_rweka_once = function(x) {
   }
   last_char = substr(x, nchar(x), nchar(x))
   if (last_char == "-") x = substr(x, 1, nchar(x) - 1)
-  x = gsub("-", "_", x)
-  return(x)
+  x = gsub("-", "_", x, fixed = TRUE)
+  x
 }
 
 # Vectorized formatting
 format_rweka = function(x) {
   x = x[(nchar(x) > 0)]
   x = map_chr(x, format_rweka_once)
-  return(x)
+  x
 }
 
 # Get the RWeka control arguments for function f and translate them into mlr3 style
@@ -95,7 +95,7 @@ weka_control_args = function(f) {
   arg_names = arg_desc$Name
   exclude = format_rweka(arg_names)
   exclude = unique(exclude)
-  return(exclude)
+  exclude
 }
 
 ordered_features = function(task, learner) {
@@ -120,8 +120,22 @@ rename = function(x, old, new) {
   x
 }
 
-# coerce given times points to an `ntime` grid is `ntime` is not NULL,
-# otherwise just returns the sorted unique times points
+#' @description Coerce time points to a grid
+#'
+#' Sorts and deduplicates the input time points. If `ntime` is provided,
+#' the times are downsampled to approximately `ntime` equally spaced indices
+#' along the sorted sequence.
+#'
+#' @param times (`numeric()`)\cr
+#'   Vector of time points.
+#' @param ntime (`integer(1)`)\cr
+#'   Desired number of grid points. If `NULL`, all unique sorted time points
+#'   are returned.
+#'
+#' @return `numeric()` vector of sorted time points, optionally reduced to
+#'   a grid of length `ntime`.
+#'
+#' @noRd
 gridify_times = function(times, ntime) {
   times = sort(unique(times))
   if (!is.null(ntime)) {
@@ -145,5 +159,4 @@ gridify_times = function(times, ntime) {
 learner_is_runnable = function(id) {
   l = suppressWarnings(lrn(id))
   mlr3misc::require_namespaces(l$packages, quietly = TRUE)
-
 }

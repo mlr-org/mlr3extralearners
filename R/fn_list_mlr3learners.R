@@ -6,7 +6,7 @@
 #' names in table.
 #' @export
 list_mlr3learners = function(select = NULL, filter = NULL) {
-  require_namespaces(c("mlr3learners", "mlr3proba", "mlr3cluster"), quietly = TRUE)
+  require_namespaces(c("mlr3learners", "mlr3proba", "mlr3cmprsk", "mlr3cluster"), quietly = TRUE)
   messagef("This will take a few seconds.")
   keys = mlr3::mlr_learners$keys()
   all_lrns = suppressWarnings(lrns(keys))

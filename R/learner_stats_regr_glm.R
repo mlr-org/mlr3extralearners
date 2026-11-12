@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized linear model.
-#' Calls [stats::glm()] from base package 'stats'.
+#' Calls `stats::glm()` from base package 'stats'.
 #' For logistic regression please use \code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
 #'
 #' @templateVar id regr.glm
@@ -16,9 +16,12 @@
 #'   - Adjusted default: `"response"`
 #'   - Reason for change: Response scale more natural for predictions.
 #'
+#' @section Custom mlr3 parameters:
+#' - `tol` and `wtol` are passed to `stats::glm.control()` and require R >= 4.7.0.
+#'
 #' @section Offset:
 #' If a `Task` has a column with the role `offset`, it will automatically be used during training.
-#' The offset is incorporated through the formula interface to ensure compatibility with [stats::glm()].
+#' The offset is incorporated through the formula interface to ensure compatibility with `stats::glm()`.
 #' We add it to the model formula as `offset(<column_name>)` and also include it in the training data.
 #' During prediction, the default behavior is to use the offset column from the
 #' test set (enabled by `use_pred_offset = TRUE`).
@@ -61,6 +64,8 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         epsilon = p_dbl(default = 1e-8, tags = "train"),
         maxit = p_dbl(default = 25, tags = "train"),
         trace = p_lgl(default = FALSE, tags = "train"),
+        tol = p_dbl(lower = 0, tags = "train"),
+        wtol = p_dbl(lower = 0, default = 0, tags = "train"),
         dispersion = p_uty(default = NULL, tags = "predict"),
         type = p_fct(default = "link", levels = c("response", "link", "terms"),
                      tags = "predict"),

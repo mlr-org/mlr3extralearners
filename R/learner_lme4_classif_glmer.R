@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized linear model with random effects.
-#' Calls [lme4::glmer()] from \CRANpkg{lme4}.
+#' Calls `lme4::glmer()` from \CRANpkg{lme4}.
 #'
 #' @section Initial parameter values:
 #' * `family` - Is set to `stats::binomial(link = "logit")`.
@@ -20,20 +20,7 @@
 #' `r format_bib("bates2010lme4")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.glmer")
-#'
-#' # Define the Learner and set parameter values
-#' learner = lrn("classif.glmer",
-#'   formula = credit_risk ~ (1 | credit_history) + job + property + telephone + savings)
-#'
-#' # Define a Task
-#' task = tsk("german_credit")
-#' task$select(c("credit_history", "job", "property", "telephone", "savings"))
-#'
-#' # Train the learner
-#' learner$train(task)
-#'
-#' print(learner$model)
+#' @template example_lme4
 #' @export
 LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
   inherit = LearnerClassif,
@@ -51,6 +38,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         restart_edge = p_lgl(default = FALSE, tags = "train"),
         boundary.tol = p_dbl(default = 1e-5, lower = 0, tags = "train"),
         calc.derivs = p_lgl(default = TRUE, tags = "train"),
+        autoscale = p_uty(default = NULL, tags = "train"),
         check.nobs.vs.rankZ = p_fct(levels = action_levels, default = "ignore", tags = "train"),
         check.nobs.vs.nlev = p_fct(levels = action_levels, default = "stop", tags = "train"),
         check.nlev.gtreq.5 = p_fct(levels = action_levels, default = "ignore", tags = "train"),
@@ -68,6 +56,8 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         mustart = p_uty(tags = "train"),
         etastart = p_uty(tags = "train"),
         # Convergence checks
+        check.conv.nobsmax = p_dbl(default = 1e4, lower = 1, tags = "train"),
+        check.conv.nparmax = p_dbl(default = 20, lower = 1, tags = "train"),
         check.conv.grad = p_uty(default = 'lme4::.makeCC("warning", tol = 2e-3, relTol = NULL)', tags = "train"),
         check.conv.singular = p_uty(default = 'lme4::.makeCC( action = "message", tol = formals(lme4::isSingular)$tol)',
           tags = "train"),
@@ -78,6 +68,9 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         compDev = p_lgl(default = TRUE, tags = "train"),
         nAGQ0initStep = p_lgl(default = TRUE, tags = "train"),
         check.response.not.const = p_uty(default = "stop", tags = "train"),
+        disp_method = p_fct(levels = c("moment", "old/buggy"), default = "moment", tags = "train"),
+        maxPhiIter = p_int(default = 100L, lower = 1L, tags = "train"),
+        disp_dof_correction = p_lgl(default = TRUE, tags = "train"),
 
         # Prediction params
         newparams = p_uty(default = NULL, tags = "predict"),
@@ -149,7 +142,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       success = levels[[2L]]
       failure = levels[[1L]]
 
-      response = factor(ifelse(prob >= 0.5, 1, 0), levels = c(1, 0), labels = c(success, failure))
+      response = factor(fifelse(prob >= 0.5, 1, 0), levels = c(1, 0), labels = c(success, failure))
 
       if (self$predict_type == "prob") {
         prob = cbind(prob, 1 - prob)

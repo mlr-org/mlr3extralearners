@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Simple and fast neural nets for tabular data classification.
-#' Calls [fastai::tabular_learner()] from package \CRANpkg{fastai}.
+#' Calls `fastai::tabular_learner()` from package \CRANpkg{fastai}.
 #'
 #' @section Installation:
 #' The Python dependencies are automatically installed via `reticulate::py_require()`.
@@ -19,10 +19,10 @@
 #'
 #' @section Initial parameter values:
 #' - `n_epoch`:
-#'   Needs to be set for [fastai::fit()] to work.
+#'   Needs to be set for `fastai::fit()` to work.
 #'   If no value is given, it is set to 5.
 #' - `eval_metric`:
-#'   Needs to be set for [fastai::predict()] to work.
+#'   Needs to be set for `fastai::predict()` to work.
 #'   If no value is given, it is set to `fastai::accuracy()`.
 #'
 #' @templateVar id classif.fastai
@@ -43,7 +43,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
       p_n_epoch = p_int(1L,
         tags = c("train", "hotstart", "internal_tuning"),
-        init = 5L,
+        default = 5L,
         aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
         in_tune_fn = crate(function(domain, param_vals) {
           if (is.null(param_vals$patience)) {
@@ -51,7 +51,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
           }
           assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
         }, .parent = topenv()),
-        disable_in_tune = list(n_epoch = NULL)
+        disable_in_tune = list(patience = NULL)
       )
 
       param_set = ps(
@@ -63,14 +63,14 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         emb_szs     = p_uty(default = NULL, tags = "train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
         n_epoch     = p_n_epoch,
         eval_metric = p_uty(tags = "train", custom_check = crate({
-          function(x) check_true(is.function(x) || inherits(x, "Measure"))
+          function(x) check_true(is.null(x) || is.character(x) || inherits(x, "Measure"))
         })),
         layers      = p_uty(tags = "train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
         loss_func   = p_uty(tags = "train"),  # Defaults to fastai::CrossEntropyLossFlat()
         lr          = p_dbl(lower = 0, default = 0.001, tags = "train"),  # Learning rate
         metrics     = p_uty(tags = "train"),  # optional list of metrics, e.g, fastai::Precision() or fastai::accuracy()
         n_out       = p_int(tags = "train"),  # ?
-        num_workers = p_int(default = 0L, tags = "train"),  # how many subprocesses to use for data loading
+        num_workers = p_int(init = 1L, tags = c("train", "predict", "threads")),  # how many subprocesses to use for data loading and torch threads
         opt_func    = p_uty(tags = "train"),  # Optimizer created when Learner.fit is called. E.g., fastai::Adam()
         patience    = p_int(1L, default = 1, tags = "train"),  # number of epochs to wait when training has not improved model. add `depends = quote(early_stopping == TRUE`)`
         pin_memory  = p_lgl(default = TRUE, tags = "train"),  # If True, the data loader will copy Tensors into CUDA pinned memory before returning them.
@@ -85,13 +85,15 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         bs          = p_int(default = 50, tags = "train") # how many samples per batch to load
       )
 
+      param_set$set_values(n_epoch = 5L)
+
       super$initialize(
         id = "classif.fastai",
         packages = c("mlr3extralearners", "fastai", "reticulate"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("multiclass", "twoclass", "weights", "validation", "marshal"),
+        properties = c("multiclass", "twoclass", "weights", "validation", "marshal", "internal_tuning"),
         man = "mlr3extralearners::mlr_learners_classif.fastai",
         label = "FastAi Neural Network Tabular Classifier"
       )
@@ -149,26 +151,93 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .validate = NULL,
 
     .train = function(task) {
-      assert_python_packages("fastai")
+      # the fastai R package loads the fastai Python package in .onLoad()
+      # R CMD check will download and install the fastai Python package when `fastai::` is checked
+      # this is a note
+      # thus we have to use getFromNamespace() to avoid `fastai::`
+
+      pars = self$param_set$get_values(tags = "train")
+      # fastai (<= 2.8.7) is incompatible with fastcore 2.0 but does not declare an upper bound
+      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "fastcore<2.0.0", "pydicom", "kornia"))
+      torch = reticulate::import("torch")
+      torch$set_num_threads(as.integer(pars$num_workers))
 
       formula = task$formula()
       data = task$data()
       type = NULL
       cat_cols = task$feature_types[type != "numeric"]$id
       num_cols = task$feature_types[type == "numeric"]$id
-
-      pars = self$param_set$get_values(tags = "train")
-      measure = pars$eval_metric
+      eval_metric = pars$eval_metric
       patience = pars$patience
 
-      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify())
-      if (is.null(measure)) measure = fastai::accuracy()
+      metrics = if (is.character(eval_metric)) {
+        accuracy = getFromNamespace("accuracy", "fastai")
+        error_rate = getFromNamespace("error_rate", "fastai")
+        top_k_accuracy = getFromNamespace("top_k_accuracy", "fastai")
+        APScoreBinary = getFromNamespace("APScoreBinary", "fastai")
+        BalancedAccuracy = getFromNamespace("BalancedAccuracy", "fastai")
+        BrierScore = getFromNamespace("BrierScore", "fastai")
+        CohenKappa = getFromNamespace("CohenKappa", "fastai")
+        F1Score = getFromNamespace("F1Score", "fastai")
+        FBeta = getFromNamespace("FBeta", "fastai")
+        HammingLoss = getFromNamespace("HammingLoss", "fastai")
+        Jaccard = getFromNamespace("Jaccard", "fastai")
+        Precision = getFromNamespace("Precision", "fastai")
+        Recall = getFromNamespace("Recall", "fastai")
+        RocAuc = getFromNamespace("RocAuc", "fastai")
+        RocAucBinary = getFromNamespace("RocAucBinary", "fastai")
+        MatthewsCorrCoef = getFromNamespace("MatthewsCorrCoef", "fastai")
+
+        # match character to fastai metric
+        # these objects must be created here because they break when serialized
+        switch(eval_metric,
+          "accuracy" = accuracy(),
+          "error_rate" = error_rate(),
+          "top_k_accuracy" = top_k_accuracy(),
+          "APScoreBinary" = APScoreBinary(),
+          "BalancedAccuracy" = BalancedAccuracy(),
+          "BrierScore" = BrierScore(),
+          "CohenKappa" = CohenKappa(),
+          "F1Score" = F1Score(),
+          "FBeta" = FBeta(),
+          "HammingLoss" = HammingLoss(),
+          "Jaccard" = Jaccard(),
+          "Precision" = Precision(),
+          "Recall" = Recall(),
+          "RocAuc" = RocAuc(),
+          "RocAucBinary" = RocAucBinary(),
+          "MatthewsCorrCoef" = MatthewsCorrCoef(),
+          error_config("Unknown eval_metric")
+        )
+      } else if(inherits(eval_metric, "Measure")) {
+        # wrap mlr3 measure into fastai metric
+        AccumMetric = getFromNamespace("AccumMetric", "fastai")
+
+        invoke(
+          AccumMetric,
+          fastai_measure_wrapper,
+          flatten = FALSE,
+          msr = eval_metric,
+          lvl = levels(factor(as.integer(task$truth()) - 1)),
+          .args = if ("twoclass" %in% unlist(eval_metric$task_properties)) list(positive = "1")
+        )
+      } else {
+        # fastai fails without a metric
+        accuracy = getFromNamespace("accuracy", "fastai")
+        accuracy()
+      }
+
+      Categorify = getFromNamespace("Categorify", "fastai")
+      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(Categorify())
 
       # match parameters to fastai functions
       fastai2 = getFromNamespace("fastai2", ns = "fastai")
-      args_dt = formalArgs(fastai::TabularDataTable)
+      TabularDataTable = getFromNamespace("TabularDataTable", "fastai")
+      tabular_config = getFromNamespace("tabular_config", "fastai")
+
+      args_dt = formalArgs(TabularDataTable)
       args_dl = formalArgs(fastai2$data$load$DataLoader)
-      args_config = formalArgs(fastai::tabular_config)
+      args_config = formalArgs(tabular_config)
       args_fit = formalArgs(fastai2$learner$Learner$fit)
 
       pv_dt = pars[names(pars) %in% args_dt]
@@ -191,26 +260,10 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         splits = NULL
       }
 
-      metrics = if (inherits(measure, "Measure")) {
-        # wrap mlr3 measure into fastai metric
-        params_for_metric = if ("twoclass" %in% unlist(measure$task_properties)) list(positive = "1")
-
-        invoke(
-          fastai::AccumMetric,
-          metric,
-          flatten = FALSE,
-          msr = measure,
-          lvl = levels(factor(as.integer(task$truth()) - 1)),
-          .args = params_for_metric
-        )
-      } else {
-        # measure from fastai
-        measure
-      }
-
       # set data into a format suitable for fastai
+      TabularDataTable = getFromNamespace("TabularDataTable", "fastai")
       df_fai = invoke(
-        fastai::TabularDataTable,
+        TabularDataTable,
         df = full_data,
         cat_names = cat_cols,
         cont_names = num_cols,
@@ -219,14 +272,16 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         .args = pv_dt
       )
 
+      dataloaders = getFromNamespace("dataloaders", "fastai")
       dl = invoke(
-        fastai::dataloaders,
+        dataloaders,
         df_fai,
         .args = pv_dl
       )
 
+      tabular_config = getFromNamespace("tabular_config", "fastai")
       config = invoke(
-        fastai::tabular_config,
+        tabular_config,
         .args = pv_config
       )
 
@@ -235,7 +290,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         dl$train$wgts = weights / sum(weights)
       }
 
-      tab_learner = fastai::tabular_learner(
+      tabular_learner = getFromNamespace("tabular_learner", "fastai")
+      tab_learner = tabular_learner(
         dls = dl,
         layers = pv_layers,
         config = config,
@@ -248,13 +304,14 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
         # direction for internal tuning
         # if mlr3 measure and minimize use numpy less
-        comp = if (inherits(measure, "Measure") && measure$minimize) {
+        comp = if (inherits(eval_metric, "Measure") && eval_metric$minimize) {
           np = reticulate::import("numpy")
           np$less
         }
 
+        EarlyStoppingCallback = getFromNamespace("EarlyStoppingCallback", "fastai")
         tab_learner$add_cb(
-          fastai::EarlyStoppingCallback(monitor = monitor, comp = comp, patience = patience)
+          EarlyStoppingCallback(monitor = monitor, comp = comp, patience = patience)
         )
       }
 
@@ -262,9 +319,10 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       invisible(tab_learner$remove_cb(tab_learner$progress))
 
       # prevent python from printing evaluation protocol
+      fit = getFromNamespace("fit.fastai.tabular.learner.TabularLearner", "fastai")
       invisible(reticulate::py_capture_output({
         eval_protocol = invoke(
-          fastai::fit,
+          fit,
           object = tab_learner,
           .args = pv_fit
         )
@@ -273,19 +331,25 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       # Rename eval protocol in case custom metric was used
       names(eval_protocol)[
         names(eval_protocol) == "python_function"
-      ] = if (inherits(measure, "Measure")) measure$id
+      ] = if (inherits(eval_metric, "Measure")) eval_metric$id
 
+      torch$set_num_threads(1L)
       structure(list(tab_learner = tab_learner, eval_protocol = eval_protocol), class = "fastai_model")
     },
 
     .predict = function(task) {
-      assert_python_packages("fastai")
-
       pars = self$param_set$get_values(tags = "predict")
+      # fastai (<= 2.8.7) is incompatible with fastcore 2.0 but does not declare an upper bound
+      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "fastcore<2.0.0", "pydicom", "kornia"))
+      torch = reticulate::import("torch")
+      torch$set_num_threads(as.integer(pars$num_workers))
+
       newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model$tab_learner, newdata, .args = pars)
       class_labels = task$class_names
+
+      torch$set_num_threads(1L)
 
       if (self$predict_type == "response") {
         response = class_labels[pred$class + 1]
@@ -321,12 +385,13 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
 
 # Wrapper for eval measure to include in fastai
-metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
+fastai_measure_wrapper = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   reticulate::py_require("fastai")
 
   # label is a vector of labels (0, 1, ..., n_classes - 1)
-  pred = fastai::as_array(pred)
-  truth = factor(as.vector(fastai::as_array(dtrain)), levels = lvl)
+  as_array = getFromNamespace("as_array", "fastai")
+  pred = as_array(pred)
+  truth = factor(as.vector(as_array(dtrain)), levels = lvl)
   # transform log odds to probabilities
   pred_exp = exp(pred)
   pred_mat = pred_exp / rowSums(pred_exp)
@@ -343,7 +408,6 @@ metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   }
   msr$fun(truth, pred, ...)
 }
-# lg$debug
 
 #' @export
 marshal_model.fastai_model = function(model, inplace = FALSE, ...) {

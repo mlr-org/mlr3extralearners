@@ -1,5 +1,6 @@
 skip_if_not_installed("fastai")
 skip_if_not_installed("reticulate")
+skip_on_os(c("windows", "mac"))
 
 test_that("classif.fastai train", {
   learner = lrn("classif.fastai")
@@ -53,7 +54,8 @@ test_that("classif.fastai predict", {
   exclude = c(
     "object", # handled internally
     "data", # handled internally
-    "newdata" # handled internally
+    "newdata", # handled internally
+    "num_workers" # used by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

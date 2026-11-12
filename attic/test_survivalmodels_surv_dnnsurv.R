@@ -12,11 +12,9 @@ test_that("autotest", {
     library(mlr3proba)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     reticulate::py_require(c("numpy", "torch", "pycox"), python_version = "3.10")
     np = reticulate::import("numpy")

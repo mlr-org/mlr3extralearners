@@ -4,7 +4,7 @@
 #'
 #' @description
 #' L2 regularized support vector classification.
-#' Calls [LiblineaR::LiblineaR()] from \CRANpkg{LiblineaR}.
+#' Calls `LiblineaR::LiblineaR()` from \CRANpkg{LiblineaR}.
 #'
 #' @template learner
 #' @templateVar id classif.liblinear
@@ -24,7 +24,7 @@
 #' (Hsu et al. 2003).
 #'
 #' Note that probabilistic predictions are only available for types `0`, `6`, and `7`.
-#' The default `epsilon` value depends on the `type` parameter, see [LiblineaR::LiblineaR].
+#' The default `epsilon` value depends on the `type` parameter, see `LiblineaR::LiblineaR()`.
 #'
 #' @references
 #' `r format_bib("fan2008liblinear")`
@@ -75,7 +75,7 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
       train = task$data(cols = task$feature_names)
       target = task$truth()
 
-      type = ifelse(is.null(pars$type), 0, pars$type)
+      type = pars$type %??% 0
       pars = pars[names(pars) != "type"]
 
       invoke(LiblineaR::LiblineaR, data = train, target = target, type = type, .args = pars)
@@ -85,7 +85,7 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
-      type = ifelse(is.null(self$param_set$values$type), 0, self$param_set$values$type)
+      type = self$param_set$values$type %??% 0
 
       if (type %nin% c(0, 6, 7) && self$predict_type == "prob") {
         stop("'prob' predict_type only possible if `type` is `0`, `6`, or `7`.")

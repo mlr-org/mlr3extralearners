@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Shrinkage Discriminant Analysis for classification.
-#' Calls [sda::sda()] from \CRANpkg{sda}.
+#' Calls `sda::sda()` from \CRANpkg{sda}.
 #'
 #' @templateVar id classif.sda
 #' @template learner
@@ -67,7 +67,7 @@ LearnerClassifSda = R6Class("LearnerClassifSda",
       # Calculate predictions for the selected predict type.
       type = self$predict_type
 
-      p = invoke(predict, self$model, Xtest = as.matrix(newdata), .args = pars)
+      p = invoke(sda::predict.sda, self$model, Xtest = as.matrix(newdata), .args = pars)
 
       if (type == "response") {
         list(response = p$class)

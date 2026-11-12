@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Classification tree with logistic regression models at the leaves.
-#' Calls [RWeka::LMT()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::LMT()` from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id classif.LMT

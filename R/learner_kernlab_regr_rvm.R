@@ -8,7 +8,7 @@
 #' `lambda`, and `normalized` are added to make tuning `kpar` easier.
 #' If `kpar` is provided then these new parameters are ignored. If none are
 #' provided then the default "automatic" is used for `kpar`.
-#' Calls [kernlab::rvm()] from package \CRANpkg{kernlab}.
+#' Calls `kernlab::rvm()` from package \CRANpkg{kernlab}.
 #'
 #' @template learner
 #' @templateVar id regr.rvm
@@ -75,7 +75,7 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
       pars = self$param_set$get_values(tags = "train")
       kpar = pars$kpar
       pars$kpar = NULL
-      # kpars and pars are treated seperately
+      # kpars and pars are treated separately
       kpars = pars[names(pars) %in% kpars_names]
       pars = pars[names(pars) %nin% kpars_names]
       pars$type = "regression"

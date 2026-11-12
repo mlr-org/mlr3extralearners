@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Model-based recursive partitioning algorithm.
-#' Calls [partykit::mob()] from \CRANpkg{mob}.
+#' Calls `partykit::mob()` from \CRANpkg{mob}.
 #'
 #' @templateVar id classif.mob
 #' @template learner
@@ -14,35 +14,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.mob")
-#' library(mlr3)
-#' logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
-#'   glm(y ~ 1, family = binomial, start = start, ...)
-#' }
-#' learner = LearnerClassifMob$new()
-#' learner$param_set$values$rhs = "."
-#' learner$param_set$values$fit = logit_
-#' learner$param_set$values$additional = list(maxit = 100)
-#' learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
-#' learner$properties = c("twoclass", "weights")
-#'
-#' predict_fun = function(object, newdata, task, .type) {
-#'   p = unname(predict(object, newdata = newdata, type = "response"))
-#'   levs = task$levels(task$target_names)[[1L]]
-#'
-#'   if (.type == "response") {
-#'     ifelse(p < 0.5, levs[1L], levs[2L])
-#'   } else {
-#'     y = matrix(c(1 - p, p), ncol = 2L, nrow = length(p))
-#'     colnames(y) = levs
-#'     y
-#'   }
-#' }
-#' task = tsk("breast_cancer")
-#' learner$param_set$values$predict_fun = predict_fun
-#' ids = partition(task)
-#' learner$train(task, row_ids = ids$train)
-#' learner$predict(task, row_ids = ids$test)
+#' @template example_mob
 LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
   public = list(
 

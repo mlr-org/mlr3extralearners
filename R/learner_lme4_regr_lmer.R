@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Linear model with random effects.
-#' Calls [lme4::lmer()] from \CRANpkg{lme4}.
+#' Calls `lme4::lmer()` from \CRANpkg{lme4}.
 #'
 #' @template section_formula
 #'
@@ -13,22 +13,14 @@
 #'
 #' @section Offset:
 #' If a `Task` contains a column with the `offset` role, it is automatically
-#' incorporated during training via the `offset` argument in [lme4::lmer()].
+#' incorporated during training via the `offset` argument in `lme4::lmer()`.
 #' No offset is applied during prediction for this learner.
 #'
 #' @references
 #' `r format_bib("bates2010lme4")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("regr.lmer")
-#' # Define the Learner and set parameter values
-#' learner = lrn("regr.lmer", formula = cmedv ~ (1 | town))
-#'
-#' # Define a Task
-#' task = tsk("boston_housing")
-#'
-#' learner$train(task)
-#' print(learner$model)
+#' @template example_lme4
 #' @export
 LearnerRegrLmer = R6Class("LearnerRegrLmer",
   inherit = LearnerRegr,
@@ -67,6 +59,9 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         ),
         calc.derivs = p_lgl(
           default = TRUE,
+          tags = "train"),
+        autoscale = p_uty(
+          default = NULL,
           tags = "train"),
         # Input checks
         check.nobs.vs.rankZ = p_fct(
@@ -109,6 +104,16 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
           tags = "train"
         ),
         # Convergence checks
+        check.conv.nobsmax = p_dbl(
+          default = 1e4,
+          lower = 1,
+          tags = "train"
+        ),
+        check.conv.nparmax = p_dbl(
+          default = 10,
+          lower = 1,
+          tags = "train"
+        ),
         check.conv.grad = p_uty(
           default = 'lme4::.makeCC("warning", tol = 2e-3, relTol = NULL)',
           tags = "train"

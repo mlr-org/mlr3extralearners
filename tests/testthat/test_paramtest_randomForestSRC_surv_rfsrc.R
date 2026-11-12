@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("randomForestSRC")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.rfsrc train", {
   learner = lrn("surv.rfsrc")
@@ -29,7 +28,7 @@ test_that("paramtest surv.rfsrc predict", {
     "newdata", # handled internally
     "m.target", # for multivariate families only
     "cores", # set as option(rf.cores)
-    "estimator", # additionaly implemented by author
+    "estimator", # additionally implemented by author
     "perf.type" # scoring is done with measures
   )
 

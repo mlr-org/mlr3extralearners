@@ -1,11 +1,11 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("CoxBoost")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.coxboost train", {
   learner = lrn("surv.coxboost")
   fun_list = list(CoxBoost::CoxBoost)
-  exclude = c("time", # coerced internally
+  exclude = c(
+    "time", # coerced internally
     "status", # coerced internally
     "x", # coerced internally
     "subset", # handled by task

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gradient boosting algorithm that also supports categorical data.
-#' Calls [catboost::catboost.train()] from package 'catboost'.
+#' Calls `catboost::catboost.train()` from package 'catboost'.
 #'
 #' @template learner
 #' @templateVar id classif.catboost
@@ -40,30 +40,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.catboost")
-#' # Define the Learner
-#' learner = lrn("classif.catboost",
-#'   iterations = 100)
-#'
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("sonar")
-#'
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_catboost
 LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   inherit = LearnerClassif,
   public = list(
@@ -110,7 +87,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         leaf_estimation_iterations = p_int(lower = 1L, upper = Inf, tags = "train"),
         leaf_estimation_backtracking = p_fct(levels = c("No", "AnyImprovement", "Armijo"),
           default = "AnyImprovement", tags = "train"),
-        # name missin
+        # name missing
         fold_len_multiplier = p_dbl(lower = 1.001, upper = Inf, default = 2, tags = "train"),
         approx_on_full_history = p_lgl(default = TRUE, tags = "train"),
         class_weights = p_uty(tags = "train"),
@@ -193,7 +170,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
             }
             assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
           }, .parent = topenv()),
-          disable_in_tune = list(early_stopping_rounds = NULL)
+          disable_in_tune = list(early_stopping_rounds = NULL, use_best_model = FALSE)
         )
       )
       ps$add_dep(
@@ -234,7 +211,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
     #' @description
     #' The importance scores are calculated using
-    #' [`catboost.get_feature_importance`][catboost::catboost.get_feature_importance],
+    #' `catboost::catboost.get_feature_importance()`,
     #' setting `type = "FeatureImportance"`, returned for 'all'.
     #' @return Named `numeric()`.
     importance = function() {
@@ -263,7 +240,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       is_binary = length(task$class_names) == 2L
       truth = task$data(cols = task$target_names)[[1L]]
       label = if (is_binary) {
-        ifelse(truth == task$positive, 1L, 0L)
+        fifelse(truth == task$positive, 1L, 0L)
       } else {
         as.integer(truth) - 1L
       }
@@ -285,7 +262,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       test_pool = if (!is.null(internal_valid_task)) {
         # create test labels
         test_label = if (length(internal_valid_task$class_names) == 2L) {
-          ifelse(internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]] == internal_valid_task$positive, 1L, 0L)
+          fifelse(internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]] == internal_valid_task$positive, 1L, 0L)
         } else {
           as.integer(internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]]) - 1L
         }
@@ -306,7 +283,8 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       pars$loss_function_twoclass = NULL
       pars$loss_function_multiclass = NULL
 
-      catboost::catboost.train(learn_pool, test_pool, pars)
+      model = catboost::catboost.train(learn_pool, test_pool, pars)
+      private$.add_evaluation_log(model, test_pool, pars)
     },
 
     .predict = function(task) {
@@ -333,7 +311,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
       if (self$predict_type == "response") {
         response = if (is_binary) {
-          ifelse(preds == 1L, yes = task$positive, no = task$negative)
+          fifelse(preds == 1L, yes = task$positive, no = task$negative)
         } else {
           class_names[preds + 1L]
         }
@@ -351,6 +329,21 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       }
     },
 
+    .add_evaluation_log = function(model, test_pool, pars) {
+      if (is.null(test_pool)) {
+        return(model)
+      }
+      # catboost does not keep an evaluation log on the model, so it is recomputed on the
+      # validation pool for the eval metric and the loss function
+      metrics = as.list(unique(c(pars$eval_metric, pars$loss_function)))
+      attr(model, "evaluation_log") = invoke(catboost::catboost.eval_metrics,
+        model = model,
+        pool = test_pool,
+        metrics = metrics,
+        thread_count = pars$thread_count %??% 1L)
+      model
+    },
+
     .extract_internal_tuned_values = function() {
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(named_list())
@@ -359,16 +352,46 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     },
 
     .extract_internal_valid_scores = function() {
-      named_list()
+      # catboost predicts with all `tree_count` trees, and `use_best_model` truncates the model
+      # to the best iteration, so this is the score of the model that is used for prediction
+      private$.valid_scores_at(self$model$tree_count)
+    },
+
+    .extract_best_valid_scores = function() {
+      pv = self$state$param_vals
+      # a best iteration is only tracked when early stopping is enabled, and only
+      # `use_best_model` truncates the model to it
+      if (is.null(pv$early_stopping_rounds) || isFALSE(pv$use_best_model)) {
+        return(named_list())
+      }
+      private$.valid_scores_at(self$model$tree_count)
+    },
+
+    .valid_scores_at = function(iter) {
+      log = attr(self$model, "evaluation_log")
+      if (is.null(log)) {
+        return(named_list())
+      }
+      map(log, function(metric) metric[[iter]])
     }
   ),
 
   active = list(
     #' @field internal_valid_scores
-    #' The last observation of the validation scores for all metrics.
-    #' Extracted from `model$evaluation_log`
+    #' The validation scores for the `eval_metric` and the `loss_function`, evaluated on the internal
+    #' validation data with all `tree_count` trees, i.e. the trees that are also used for prediction.
     internal_valid_scores = function() {
       self$state$internal_valid_scores
+    },
+
+    #' @field best_valid_scores
+    #' The validation scores of the best iteration.
+    #' Because `use_best_model` truncates the model to the best iteration, these are identical to
+    #' `$internal_valid_scores` whenever early stopping is activated.
+    #' If early stopping is not activated or `use_best_model` is `FALSE`, no best iteration is tracked
+    #' and this is an empty list.
+    best_valid_scores = function() {
+      self$state$best_valid_scores
     },
 
     #' @field internal_tuned_values

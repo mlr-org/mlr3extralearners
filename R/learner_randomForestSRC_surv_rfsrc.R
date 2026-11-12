@@ -4,14 +4,14 @@
 #'
 #' @description
 #' Random survival forest.
-#' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
+#' Calls `randomForestSRC::rfsrc()` from \CRANpkg{randomForestSRC}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
-#' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' Calculated using the internal `randomForestSRC::predict.rfsrc()` function.
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @template learner
 #' @templateVar id surv.rfsrc
@@ -36,28 +36,7 @@
 #' `r format_bib("ishwaran_2008", "breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.rfsrc")
-#' # Define the Learner
-#' learner = lrn("surv.rfsrc", importance = "TRUE")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("grace")
-#'
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_rfsrc
 #' @export
 LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
   inherit = mlr3proba::LearnerSurv,
@@ -95,12 +74,12 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         split.depth    = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
         seed           = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace       = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics     = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree       = p_uty(tags = "predict"),
         outcome        = p_fct(default = "train", levels = c("train", "test"), tags = "predict"),
         ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),
         estimator      = p_fct(default = "nelson", levels = c("nelson", "kaplan"), tags = "predict"),
         cores          = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
+        use.uno        = p_lgl(default = TRUE, tags = "train"),
         save.memory    = p_lgl(default = FALSE, tags = "train"),
         perf.type      = p_fct(levels = "none", tags = "train"),
         case.depth     = p_lgl(default = FALSE, tags = c("train", "predict")),
@@ -109,7 +88,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
 
       super$initialize(
         id = "surv.rfsrc",
-        packages = c("mlr3extralearners", "randomForestSRC", "pracma"),
+        packages = c("mlr3extralearners", "randomForestSRC"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = param_set,
@@ -123,7 +102,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' The importance scores are extracted from the model slot `importance`.
     #' @return Named `numeric()`.
     importance = function() {
-      if (is.null(self$model$importance) & !is.null(self$model)) {
+      if (is.null(self$model$importance) && !is.null(self$model)) {
         stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 
@@ -182,7 +161,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # default estimator is nelson, hence nelson selected if NULL
       estimator = pv$estimator %??% "nelson"
       pv$estimator = NULL
-      cores = pv$cores %??% 1L # additionaly implemented by author
+      cores = pv$cores %??% 1L # additionally implemented by author
       pv$cores = NULL
 
       p = invoke(predict, object = self$model, newdata = newdata, .args = pv,
@@ -193,7 +172,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # as required.
       surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 
-      mlr3proba::.surv_return(times = self$model$time.interest, surv = surv)
+      mlr3proba::surv_return(times = self$model$time.interest, surv = surv)
     }
   )
 )
