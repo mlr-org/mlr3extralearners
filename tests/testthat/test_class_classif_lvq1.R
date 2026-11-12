@@ -1,6 +1,7 @@
 skip_if_not_installed("class")
 
 test_that("autotest", {
+  withr::local_seed(42)
   learner = lrn("classif.lvq1")
   expect_learner(learner)
   result = run_autotest(learner, exclude = "feat_single_integer_binary|feat_single_numeric_binary")

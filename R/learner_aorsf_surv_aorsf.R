@@ -6,7 +6,7 @@
 #' Accelerated oblique random survival forest.
 #' Calls `aorsf::orsf()` from \CRANpkg{aorsf}.
 #' Note that although the learner has the property `"missing"` and it can in
-#' principle deal with missing values, the behaviour has to be configured using
+#' principle deal with missing values, the behavior has to be configured using
 #' the parameter `na_action`.
 #'
 #' @section Initial parameter values:
@@ -210,4 +210,4 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
   )
 )
 
-.extralrns_dict$add("surv.aorsf", function() LearnerSurvAorsf$new())
+.extralrns_dict$add("surv.aorsf", LearnerSurvAorsf)

@@ -10,7 +10,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(c("kuhn2008caret", "mevik_2007"))`
+#' `r format_bib("kuhn2008caret", "mevik_2007")`
 #'
 #' @template seealso_learner
 #' @template example

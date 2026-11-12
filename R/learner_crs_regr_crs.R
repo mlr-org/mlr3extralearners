@@ -10,7 +10,7 @@
 #' @template learner
 #'
 #' @template seealso_learner
-#' @template example
+#' @template example_crs
 #' @export
 LearnerRegrCrs = R6Class("LearnerRegrCrs",
   inherit = LearnerRegr,
@@ -26,7 +26,7 @@ LearnerRegrCrs = R6Class("LearnerRegrCrs",
         lambda.discrete           = p_lgl(default = FALSE, tags = "train"),
         lambda.discrete.num       = p_int(default = 100, lower = 0, tags = "train"),
         cv                        = p_fct(default = "nomad", levels = c("nomad", "exhaustive", "none"), tags = "train"),
-        cv.threshold              = p_int(default = 10000, lower = 0, tags = "train"),
+        cv.threshold              = p_int(default = 1000, lower = 0, tags = "train"),
         cv.func                   = p_fct(default = "cv.ls", levels = c("cv.ls", "cv.gcv", "cv.aic"), tags = "train"),
         kernel                    = p_lgl(default = TRUE, tags = "train"),
         degree.max                = p_int(default = 10, lower = 0, tags = "train"),
@@ -49,10 +49,13 @@ LearnerRegrCrs = R6Class("LearnerRegrCrs",
         initial.mesh.size.real    = p_uty(tags = "train"),
         initial.mesh.size.integer = p_uty(tags = "train"),
         max.bb.eval               = p_uty(tags = "train"),
+        max.eval                  = p_uty(tags = "train"),
         min.mesh.size.real        = p_uty(tags = "train"),
         min.mesh.size.integer     = p_uty(tags = "train"),
-        min.poll.size.real        = p_uty(tags = "train"),
-        min.poll.size.integer     = p_uty(tags = "train"),
+        min.frame.size.real       = p_uty(tags = "train"),
+        min.frame.size.integer    = p_uty(tags = "train"),
+        display.nomad.progress    = p_lgl(default = TRUE, tags = "train"),
+        display.warnings          = p_lgl(default = TRUE, tags = "train"),
         opts                      = p_uty(tags = "train")
       )
 

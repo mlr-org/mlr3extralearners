@@ -27,7 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @template example_cforest
 LearnerSurvCForest = R6Class("LearnerSurvCForest",
   inherit = mlr3proba::LearnerSurv,
   public = list(
@@ -141,12 +141,12 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
 
       res = lapply(preds, function(p) {
         # p is a `survfit` object
-        survdistr::vec_interp(
+        survdistr::interp(
           x = p$surv,
           times = p$time,
           eval_times = common_times,
-          constant = TRUE,
-          type = "surv",
+          method = "const_surv",
+          output = "surv",
           add_times = FALSE,
           check = FALSE # no need to check, as Kaplan-Meier formula is used
         )
