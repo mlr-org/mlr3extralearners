@@ -125,8 +125,8 @@ Three properties in `mlr3` exist that deserve special consideration, which are:
 * `"marshal"` - the learner cannot be serialized without loss of information (e.g. learners from `mlr3torch` have this property)
 
 While these properties are rarely needed, it is still important to know how to implement them if they do apply.
-For the first two properties, see the [documentation of `Learner`](https://mlr3.mlr-org.com/reference/Learner.html) or for a concrete implementation the [`XGBoost` learners](https://github.com/mlr-org/mlr3learners/blob/main/R/LearnerClassifXgboost.R).
-The documentation on marshaling can be found by running `?marshaling`, and for an example on how to implement this see [`mlr3torch::LearnerTorch`](https://github.com/mlr-org/mlr3torch/blob/main/R/LearnerTorch.R).
+The first two properties are covered in the section [Internal validation and tuning](#internal-validation-and-tuning).
+The documentation on marshaling can be found by running `?marshaling`, and the section [Marshaling](#marshaling) shows how to implement it for learners that wrap a Python package.
 In any case, if you suspect your learner to have any of these properties it is best to first discuss the implementation with the `mlr-org` team.
 
 As a final note, we want to mention that a `Learner` should be constructable even when the packages that it uses are not loaded, so the `$initialize()` method should not use any objects from the package.
@@ -295,55 +295,76 @@ importance = function() {
 }
 ```
 
-## Internal Validation and Tuning
+## Internal validation and tuning
 
-Some learners, such as boosting algorithms (e.g., LightGBM), or deep learning models support validation data during the training to monitor the validation performance during training.
-This validation data can also be used to internally tune hyperparameters, e.g., the number of boosting iterations in LightGBM or the number of epochs in FastAi, enabling early stopping.
+Some learners, such as boosting algorithms or neural networks, can monitor their performance on validation data during training.
+The same data can be used to tune a hyperparameter internally, e.g., the number of boosting iterations or epochs via early stopping.
+The `classif.fastai` learner supports both and serves as the example in this section.
 
-**Internal Validation**
+### Internal validation
 
-Add the `"validation"` property to the learner. Then, implement the `$internal_valid_scores` active binding to retrieve the validation scores computed during training, and the `$validate` binding to serve as a getter/setter for the internal validation set.
+A learner that supports internal validation has the `"validation"` property and the two active bindings `$validate` and `$internal_valid_scores`.
+The `$validate` field lets the user configure how the validation data is constructed, and its value is stored in the private field `.validate`.
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 active = list(
-  #' @field internal_valid_scores
+  #' @field internal_valid_scores (named `list()` or `NULL`)\cr
+  #' The validation scores of the final model.
   internal_valid_scores = function() {
     self$state$internal_valid_scores
-  }
-  
-  #' @field validate
+  },
+
+  #' @field validate (`numeric(1)` or `character(1)` or `NULL`)\cr
+  #' How to construct the internal validation data.
+  #' This parameter can be either `NULL`, a ratio, `"test"`, or `"predefined"`.
   validate = function(rhs) {
     if (!missing(rhs)) {
-      private$.validate = mlr3::assert_validate(rhs)
+      private$.validate = assert_validate(rhs)
     }
     private$.validate
   }
+),
+
+private = list(
+  .validate = NULL
 )
 ```
 
-Additionally, implement the private method `$.extract_internal_valid_scores()` which returns the (final) internal validation scores from the model of the `Learner` as a named `list()` of `numeric(1)`.
-If the model is not trained yet, this method should return `NULL`. Also, add a private field `.validate = NULL` to store the internal validation set. This will later be accessed or modified via the active binding `$validate()`.
+`mlr3` constructs the validation data according to `$validate` and makes it available in `$.train()` as `task$internal_valid_task`, which is `NULL` if no validation is configured.
+The `$.train()` method passes this data to the upstream function and keeps the resulting scores in the model.
 
-**Internal Tuning**
+The private method `$.extract_internal_valid_scores()` then returns the final validation scores as a named `list()` of `numeric(1)`.
+`mlr3` calls it after training and stores the result in the state of the learner, from where `$internal_valid_scores` reads it.
+In `classif.fastai`, the model keeps the scores of all epochs in the `eval_protocol` table, and the extractor returns the last row (slightly simplified):
 
-Internal tuning _can_ rely on internal validation data, but it doesn't necessarily have to. To enable internal tuning and early stopping, annotate the learner with the `"internal_tuning"` property. Then, add the active binding `$internal_tuned_values` which accesses internal hyperparameters that were automatically tuned during training, e.g., last epoch that yielded improvement in `LearnerClassifFastai`. Similar to internal validation, implement the `$internal_tuned_values` active binding and the private method `$.extract_internal_tuned_values()` which should return the internally tuned values from the learner's model as a named `list()`. If the model is not trained yet or internal tuning is disabled, this method should return `NULL`.
-For example, `LearnerClassifFastai` supports early stopping by tuning the number of epochs and stopping when no further improvement is observed. This behavior is activated by setting the `"patience"` parameter in the learner’s `ParamSet` to a non-null value. The tuned value can then be accessed by the `eval_protocol` which itself is set in the `.train` function:
-
-```{r, eval=FALSE}
-.extract_internal_tuned_values = function() {
-  if (is.null(self$state$param_vals$patience) || is.null(self$state$eval_protocol)) {
+```{r, eval = FALSE}
+.extract_internal_valid_scores = function() {
+  if (is.null(self$model$eval_protocol)) {
     return(NULL)
   }
-  list(n_epoch = max(self$state$eval_protocol$epoch) + 1)
+  metric = self$model$tab_learner$metrics[[0]]$name
+  set_names(list(self$model$eval_protocol[nrow(self$model$eval_protocol), metric]), metric)
 }
 ```
 
-The parameter that is ought to be tuned by internal tuning must must be tagged with `"internal_tuning"`, which requires to also provide a `in_tune_fn` and `disable_tune_fn`, and should also include a default aggregation function.
+### Internal tuning
 
-```{r}
+A learner that can tune a hyperparameter during training has the `"internal_tuning"` property.
+Internal tuning often relies on the internal validation data, but it does not have to.
+
+The parameter that is tuned internally must be tagged with `"internal_tuning"`.
+Its definition also needs three additional arguments:
+
+* `in_tune_fn` converts the search space of the parameter into the values to set for internal tuning, and can check that internal tuning is configured correctly.
+* `disable_in_tune` lists the parameter values to set in order to turn internal tuning off.
+* `aggr` aggregates the internally tuned values of several resampling iterations into one value.
+
+In `classif.fastai`, the number of epochs is tuned by early stopping, which is activated by setting the `patience` parameter:
+
+```{r, eval = FALSE}
 p_n_epoch = p_int(1L,
   tags = c("train", "hotstart", "internal_tuning"),
-  init = 5L,
+  default = 5L,
   aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
   in_tune_fn = crate(function(domain, param_vals) {
     if (is.null(param_vals$patience)) {
@@ -351,86 +372,165 @@ p_n_epoch = p_int(1L,
     }
     assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
   }, .parent = topenv()),
-  disable_in_tune = list(n_epoch = NULL)
+  disable_in_tune = list(patience = NULL)
 )
 ```
 
+Analogous to internal validation, the learner needs the active binding `$internal_tuned_values` and the private method `$.extract_internal_tuned_values()`.
+The extractor returns the internally tuned values as a named `list()`, or `NULL` if internal tuning is not active.
 
-## Implement a python-powered learner with reticulate
+```{r, eval = FALSE}
+active = list(
+  #' @field internal_tuned_values (named `list()` or `NULL`)\cr
+  #' The internally tuned values.
+  internal_tuned_values = function() {
+    self$state$internal_tuned_values
+  }
+),
 
-Some learners rely on Python packages like `fastai`, `tabpfn`, or `pycox`. To implement such learners, you need to utilize the `reticulate` R package that provides seamless interoperability between R and Python. It allows you to call Python code, import Python modules, and work with Python modules directly from R. 
-Type conversion happens for most basic and structured types automatically when passing objects between R and Python. However, not all Python objects have a direct R equivalent. When such objects are returned to R, `reticulate` does not convert them but instead, it creates a reference to the original Python object that remains in memory. These objects can still be used and interacted with directly from R. To manage these references, `reticulate` assigns them the S3 class `python.builtin.object`.
-
-```{r, eval=FALSE}
-np = reticulate::import("numpy")
-class(np)
-#> [1] "python.builtin.module" "python.builtin.object"
-
-class(fastai::TabularDataTable(df = iris))
-#> [1] "fastai.tabular.core.TabularPandas" "fastai.tabular.core.Tabular"      
-#> [3] "fastcore.foundation.CollBase"      "fastcore.basics.GetAttr"          
-#> [5] "fastai.data.core.FilteredBase"     "python.builtin.object"   
+private = list(
+  .extract_internal_tuned_values = function() {
+    if (is.null(self$state$param_vals$patience) || is.null(self$model$eval_protocol)) {
+      return(NULL)
+    }
+    list(n_epoch = max(self$model$eval_protocol$epoch) + 1)
+  }
+)
 ```
 
-Generally, you need to explicitly convert an R object into a Python-compatible object using `reticulate::r_to_py()`, before passing it to a Python function or class method. Furthermore, you want to convert a Python object into an R-native format with `reticulate::py_to_r()`, to use it in downstream R functions or to extract values for inspection or postprocessing. Note, that you must force `NaN` in R objects to make the conversion work, otherwise `reticulate` will not properly convert `NA`s in logical and integer columns to `numpy.na`.
+## Learners that wrap a Python package
 
-By default, `reticulate` creates and uses a Conda environment called `"r-reticulate"` to manage Python dependencies for R projects. This environment is automatically created the first time you install a Python package via `reticulate::py_install()`.
-Unless you explicitly set another Python path (via `use_python()` or `use_condaenv()`), `reticulate` defaults to using `"r-reticulate"`.
+Some learners wrap a Python package, e.g., `tabpfn`, `botorch`, or `fastai`.
+These learners use the `reticulate` package, which embeds a Python session in the R session and lets you import Python modules and call their functions from R.
+The `classif.tabpfn` learner is a good template for a new Python learner.
 
-In the learner's `.train()` and `.predict()` methods, you will typically either call a Python module directly, e.g., `np = reticulate::import("numpy")`, or use an R wrapper package that internally handles the Python interaction, such as `fastai`. To ensure the required Python modules are available and working correctly, add `assert_python_packages("<python-package>")` at the very beginning of both the `.train()` *and* `.predict()` functions. This checks that the package is installed and ready to use.
+### Declaring the Python dependencies
 
-Here is a minimal working example showing the `.train()` function of `LearnerClassifTabPFN`:
+Python packages are not listed in the `DESCRIPTION` file.
+The learner only declares `packages = "reticulate"` in its constructor, and the `$initialize()` method must not call any `reticulate` function.
 
-```{r, eval=FALSE}
+Instead, call `assert_python_packages()` at the very beginning of both `$.train()` and `$.predict()`, before any module is imported.
+The function registers the Python requirements with `reticulate::py_require()` and then checks that the modules are available.
+If the user did not configure a Python installation, `reticulate` creates an ephemeral environment that satisfies the requirements of all learners used in the session.
+The user therefore does not need to install any Python package manually.
+Pip-style version constraints such as `"fastcore<2.0.0"` are allowed, but keep the requirements as loose as possible, because pins of different learners can conflict.
+
+### Converting between R and Python
+
+`reticulate` converts basic types such as scalars, vectors, and named lists automatically when a Python function is called.
+Python objects without an R equivalent, e.g., a fitted model, are not converted.
+They are returned as a reference with the S3 class `python.builtin.object`, whose methods and attributes are accessed with `$`.
+
+Use `reticulate::r_to_py()` to convert the data before passing it to Python and `reticulate::py_to_r()` to convert the predictions back.
+A few conversions need special care:
+
+* A `double` such as `5` arrives as the float `5.0` in Python.
+  Parameters defined with `p_int()` are already integers, cast other values with `as.integer()`.
+* Python's `None` has no R equivalent that can be stored in a parameter set.
+  Allow the string `"None"` as a special value and replace it with `reticulate::py_none()` in `$.train()`.
+* Indices are zero-based in Python.
+  Let the user pass R indices and subtract one before passing them on.
+* Missing values in integer and logical columns are not converted to `NaN`.
+  Cast these columns to `double` first.
+
+The following is a simplified version of the `$.train()` and `$.predict()` methods of `classif.tabpfn`:
+
+```{r, eval = FALSE}
 .train = function(task) {
   assert_python_packages(c("torch", "tabpfn"))
   tabpfn = reticulate::import("tabpfn")
-  pars = self$param_set$get_values(tags = "train")
 
-  if (!is.null(pars$device) && pars$device != "auto") {
-    torch = reticulate::import("torch")
-    pars$device = torch$device(pars$device)
+  pars = self$param_set$get_values(tags = "train")
+  if (identical(pars$random_state, "None")) {
+    pars$random_state = reticulate::py_none()
   }
-  x = as.matrix(task$data(cols = task$feature_names))
-  x[is.na(x)] = NaN
-  y = task$truth()
+
+  x_py = reticulate::r_to_py(as.data.frame(task$data(cols = task$feature_names)))
+  y_py = reticulate::r_to_py(task$truth())
 
   classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
-  x_py = reticulate::r_to_py(x)
-  y_py = reticulate::r_to_py(y)
   fitted = mlr3misc::invoke(classifier$fit, X = x_py, y = y_py)
 
   structure(list(fitted = fitted), class = "tabpfn_model")
+},
+
+.predict = function(task) {
+  assert_python_packages(c("torch", "tabpfn"))
+  model = self$model$fitted
+
+  x_py = reticulate::r_to_py(as.data.frame(task$data(cols = task$feature_names)))
+
+  if (self$predict_type == "response") {
+    response = reticulate::py_to_r(model$predict(X = x_py))
+    list(response = response)
+  } else {
+    prob = reticulate::py_to_r(model$predict_proba(X = x_py))
+    colnames(prob) = reticulate::py_to_r(model$classes_)
+    list(prob = prob)
+  }
 }
 ```
+
+Note that `$.train()` does not return the Python object itself but a list with its own S3 class, here `"tabpfn_model"`.
+This class is needed for marshaling.
 
 ### Marshaling
 
-For learners that wrap Python models, marshaling requires special handling, because the underlying model lives in the Python runtime and cannot be directly serialized with R. Instead, you need to use the `pickle` Python module. It should be available in any Python environment, so you do not need to assert it with `assert_python_packages`. You simply load it with `reticulate::import("pickle")`.
-Here's an example of how marshal_model() and unmarshal_model() are implemented for `LearnerClassifTabPFN`:
+A Python object only exists in the Python session of the current R process.
+It is lost when the learner is saved to disk or sent to another R process, which happens during parallelization and with the `"callr"` and `"mirai"` encapsulation methods.
+Every Python learner therefore has the `"marshal"` property.
+`mlr3` then marshals the model automatically whenever it crosses a process boundary, so no further code is needed to make encapsulation and parallelization work.
 
-```{r, eval=FALSE}
+The learner needs the public methods `$marshal()` and `$unmarshal()` and the active binding `$marshaled`, which only call helper functions from `mlr3`:
+
+```{r, eval = FALSE}
+public = list(
+  #' @description
+  #' Marshal the learner's model.
+  #' @param ... (any)\cr
+  #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
+  marshal = function(...) {
+    learner_marshal(.learner = self, ...)
+  },
+
+  #' @description
+  #' Unmarshal the learner's model.
+  #' @param ... (any)\cr
+  #'   Additional arguments passed to [`mlr3::unmarshal_model()`][mlr3::marshaling()].
+  unmarshal = function(...) {
+    learner_unmarshal(.learner = self, ...)
+  }
+),
+
+active = list(
+  #' @field marshaled (`logical(1)`)\cr
+  #' Whether the learner has been marshaled.
+  marshaled = function() {
+    learner_marshaled(self)
+  }
+)
+```
+
+The model itself is marshaled by the S3 methods `marshal_model()` and `unmarshal_model()` for the class of the model.
+Python objects are serialized with Python's `pickle` module.
+`mlr3extralearners` provides the internal helpers `marshal_python_model()` and `unmarshal_python_model()` for this.
+They pickle the element `slot` of the model to a raw vector and back, and keep all other elements of the model, which must be plain R objects.
+The `packages` argument takes the Python requirements that are needed to unpickle the object.
+
+```{r, eval = FALSE}
+#' @export
 marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
-  reticulate::py_require("tabpfn")
-  reticulate::import("tabpfn")
-  pickle = reticulate::import("pickle")
-  pickled = pickle$dumps(model$fitted)
-  pickled = as.raw(pickled)
-
-  structure(list(
-    marshaled = pickled,
-    packages = "mlr3extralearners"
-  ), class = c("tabpfn_model_marshaled", "marshaled"))
+  marshal_python_model(model, slot = "fitted", packages = c("torch", "tabpfn"))
 }
 
+#' @export
 unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
-  reticulate::py_require("tabpfn")
-  reticulate::import("tabpfn")
-  pickle = reticulate::import("pickle")
-  fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
-  structure(list(fitted = fitted), class = "tabpfn_model")
+  unmarshal_python_model(model, slot = "fitted", packages = c("torch", "tabpfn"))
 }
 ```
+
+The class of the marshaled model is the class of the model with the suffix `"_marshaled"`.
+Run `devtools::document()` afterwards to register the S3 methods in the `NAMESPACE`.
 
 ## Testing the learner
 
@@ -498,48 +598,72 @@ skip_if_not_installed("RpkgName")
 
 This ensures tests fail gracefully on GitHub Actions, where we have a specific workflow that doesn't install packages listed in `Suggests`.
 
-For `Python`-based learners, use the corresponding `reticulate` helper:
+For Python learners, skip the tests if the Python environment of the learner is not available:
 ```{r, eval = FALSE}
-skip_if_not_installed_py("PythonpkgName")
+skip_if_not_installed("reticulate")
+skip_if_not_installed("callr")
+skip_if_no_python_env("tabpfn")
 ```
 
 ### Special considerations for Python learners
 
-`Python`-based learners (via reticulate) **must be isolated from the main R session** during testing.
-This is required for both correctness and stability.
-
-In particular:
-
-- Python learners often depend on Python `torch`, while some R learners depend on the R `torch` package, which loads `libtorch`.
-- Loading multiple `libtorch` binaries (from R and Python, or from different builds) in the same R session can lead to crashes.
-- Different Python learners often require conflicting package dependencies.
-
-Therefore, all Python learner tests must be executed in a fresh R session using `callr`.
-
-A minimal pattern looks like this:
+The tests of a Python learner do not use the ephemeral environment that `reticulate` creates for users.
+They run in a virtual environment with pinned package versions, so that the tests are reproducible.
+Each group of learners that share their requirements has its own environment, which is defined in `R/install_python_test_envs.R`:
 
 ```{r, eval = FALSE}
-skip_if_not_installed_py("torch", "tabpfn")
-test_that("autotest: classif.tabpfn", {
-  expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed")
+tabpfn = list(
+  python = "3.12",
+  packages = c(
+    "torch==2.13.0",
+    "tabpfn==8.1.0"
+  )
+)
+```
 
-    library(mlr3)
-    library(mlr3extralearners)
+Create the environment locally with `mlr3extralearners:::install_python_test_envs("tabpfn")`.
+The pins only define the tested versions, the requirements of the learner itself stay unpinned.
 
-    lapply(
-      list.files(system.file("testthat", package = "mlr3"),
-                 pattern = "^helper.*\\.[rR]",
-                 full.names = TRUE),
-      source
-    )
+Python learners **must be isolated from the main R session** during testing:
 
+- `reticulate` binds one Python installation per R session, so learners with different environments cannot be tested in the same session.
+- Python learners often depend on Python `torch`, while some R learners depend on the R `torch` package.
+  Loading several `libtorch` binaries in the same R session can lead to crashes.
+
+Therefore, the body of every test is wrapped in `run_py_test()`.
+The function runs the code in a fresh R session with the environment of the group activated, the `mlr3` test helpers sourced, and a `mirai` daemon set up for the encapsulation stage of the autotest.
+
+```{r, eval = FALSE}
+test_that("autotest", {
+  expect_true(run_py_test("tabpfn", function() {
     learner = lrn("classif.tabpfn")
     expect_learner(learner)
 
+    # reproducibility is not guaranteed, hence check_replicable = FALSE
     result = run_autotest(learner, check_replicable = FALSE)
-    testthat::expect_true(result, info = result$error)
-    TRUE
+    expect_true(result, info = result$error)
+  }))
+})
+```
+
+The fresh R session loads the installed version of `mlr3extralearners`, so install the package with `devtools::install()` before running the tests.
+
+Also test that marshaling works.
+Python objects cannot be compared after unmarshaling, so compare the predictions instead:
+
+```{r, eval = FALSE}
+test_that("marshaling works", {
+  expect_true(run_py_test("tabpfn", function() {
+    learner = lrn("classif.tabpfn")
+    task = tsk("iris")
+    learner$train(task)
+    prediction = learner$predict(task)
+
+    expect_invisible(learner$marshal())
+    expect_true(learner$marshaled)
+    expect_invisible(learner$unmarshal())
+    expect_false(learner$marshaled)
+    expect_equal(learner$predict(task), prediction)
   }))
 })
 ```

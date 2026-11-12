@@ -7,6 +7,7 @@ actuar
 adabag
 adaboost
 adibender
+aggr
 ahdesmaki
 Akaike
 Akritas
@@ -153,6 +154,7 @@ holte
 hornung
 hosmer
 hothorn
+hotstart
 hotstarting
 HYFIS
 hyperpar
@@ -164,6 +166,7 @@ imbrf
 imbrfsrc
 inplace
 integ
+integerish
 interp
 interpretability
 ints
