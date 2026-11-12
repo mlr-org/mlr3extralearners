@@ -135,7 +135,8 @@ LearnerSurvCVGlmnet = R6Class(
   active = list(
     #' @field native_model (`cv.glmnet`)\cr
     #' The fitted model.
-    native_model = function() {
+    native_model = function(rhs) {
+      assert_ro_binding(rhs)
       self$model$model
     }
   ),

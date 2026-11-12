@@ -77,6 +77,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    compDev \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    nAGQ0initStep \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    check.response.not.const \tab untyped \tab "stop" \tab  \tab - \cr
+   disp_method \tab character \tab moment \tab moment, old/buggy \tab - \cr
+   maxPhiIter \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   disp_dof_correction \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    newparams \tab untyped \tab NULL \tab  \tab - \cr
    re.form \tab untyped \tab NULL \tab  \tab - \cr
    random.only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

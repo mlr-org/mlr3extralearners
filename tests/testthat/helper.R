@@ -85,10 +85,12 @@ run_py_test = function(group, fn) {
   }
   python = reticulate::virtualenv_python(envname)
 
-  callr::r(function(python, fn) {
+  tryCatch(callr::r(function(python, fn) {
     # keep the parent's python configuration out of the child session
     Sys.unsetenv(c("VIRTUAL_ENV", "VIRTUAL_ENV_PROMPT", "PYTHONPATH", "R_SESSION_INITIALIZED"))
     Sys.setenv(RETICULATE_PYTHON = python)
+    # dump the python traceback if the session segfaults
+    Sys.setenv(PYTHONFAULTHANDLER = "1")
 
     library(mlr3)
     library(mlr3extralearners)
@@ -111,5 +113,13 @@ run_py_test = function(group, fn) {
 
     fn()
     TRUE
-  }, args = list(python = python, fn = fn))
+  }, args = list(python = python, fn = fn)),
+  # a crashed child only reports "has crashed or was killed", so surface its exit status and stderr
+  callr_status_error = function(e) {
+    if (!is.null(e$parent)) stop(e)
+    stderr = tail(strsplit(e$stderr %??% "", "\n")[[1L]], 50L)
+    msg = sprintf("%s\nExit status: %s\nLast lines of stderr:\n%s",
+      conditionMessage(e), e$status, paste(stderr, collapse = "\n"))
+    stop(msg, call. = FALSE)
+  })
 }

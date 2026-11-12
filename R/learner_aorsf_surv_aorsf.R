@@ -210,4 +210,4 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
   )
 )
 
-.extralrns_dict$add("surv.aorsf", function() LearnerSurvAorsf$new())
+.extralrns_dict$add("surv.aorsf", LearnerSurvAorsf)
