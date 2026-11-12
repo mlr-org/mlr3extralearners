@@ -29,7 +29,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-8115-0400")),
     person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
     person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb"),
-    person("Imad", "El Badisy", , "elbadisyimad@gmail.com", role = "ctb")
+    person("Imad", "El Badisy", , "elbadisyimad@gmail.com", role = "ctb"),
+    person("Khalifa Ababacar", "Seck", , "seckhalifaa@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3

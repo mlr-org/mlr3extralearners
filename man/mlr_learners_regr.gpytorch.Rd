@@ -3,19 +3,64 @@
 \name{mlr_learners_regr.gpytorch}
 \alias{mlr_learners_regr.gpytorch}
 \alias{LearnerRegrGPyTorch}
-\title{Regression Gaussian Process Learner (GPyTorch)}
+\title{GPyTorch Gaussian Process Regression Learner}
 \description{
-Gaussian process regression via GPyTorch from Python.
-Supports GPU acceleration via PyTorch backend.
+Exact Gaussian process regression with a constant mean, a scaled kernel, and a Gaussian likelihood.
+The hyperparameters are fitted by maximizing the exact marginal log likelihood with the Adam optimizer.
+Uses \CRANpkg{reticulate} to interface with the \href{https://gpytorch.ai/}{\code{gpytorch}} Python package.
+
+The features and the target are standardized to zero mean and unit variance before the model is fitted,
+and the predictions are transformed back to the original scale.
+The standard error is the posterior standard deviation of the latent function,
+i.e. it does not include the observation noise.
 }
-\note{
-This learner requires Python with PyTorch and GPyTorch installed.
-Features are automatically normalized to zero mean and unit variance.
-The device parameter allows automatic GPU/CPU detection or manual selection.
+\section{Custom mlr3 parameters}{
+
+\code{gpytorch} has no ready-made training function, so all parameters are defined by this learner.
+\itemize{
+\item \code{kernel} is the base kernel that is wrapped in a \code{ScaleKernel}.
+\code{"rbf"} is the \code{RBFKernel}, and \code{"matern_0.5"}, \code{"matern_1.5"}, and \code{"matern_2.5"} are the \code{MaternKernel} with the
+respective smoothness parameter \code{nu}.
+\item \code{lr} is the learning rate of the Adam optimizer.
+\item \code{n_iter} is the number of optimizer steps.
+\item \code{device} is the torch device on which the model is fitted and predictions are computed.
+\code{"auto"} selects \code{"cuda"} if available and \code{"cpu"} otherwise.
 }
+}
+
+\section{Installation}{
+
+This learner relies on \CRANpkg{reticulate} to handle Python dependencies.
+It is not necessary to install any Python package manually in advance or specify a Python environment
+via \code{reticulate::use_python()}, \code{reticulate::use_virtualenv()}, \code{reticulate::use_condaenv()},
+or \code{reticulate::use_miniconda()}.
+By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{gpytorch} and \code{torch}) will be installed
+automatically, if not already.
+Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
+unless an existing environment (e.g., \code{"r-reticulate"}) in reticulate's
+\href{https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery}{Order of Discovery}
+contains all the necessary packages.
+
+You may also manually install \code{gpytorch} into a Python environment and specify the environment via
+\verb{reticulate::use_*()} before calling \verb{$train()} or \verb{$predict()}, for example:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{reticulate::virtualenv_create("gpytorch", packages = c("torch", "gpytorch"))
+reticulate::use_virtualenv("gpytorch", required = TRUE)
+}\if{html}{\out{</div>}}
+}
+
+\section{Saving a Learner}{
+
+In order to save a \code{LearnerRegrGPyTorch} for later usage,
+it is necessary to call the \verb{$marshal()} method on the \code{Learner}
+before writing it to disk, as the object will otherwise not be saved correctly.
+After loading a marshaled \code{LearnerRegrGPyTorch} into R again,
+you then need to call \verb{$unmarshal()} to transform it into a useable state.
+}
+
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("regr.gpytorch")
 }\if{html}{\out{</div>}}
@@ -34,50 +79,17 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   kernel \tab character \tab rbf \tab rbf, matern \tab - \cr
-   lr \tab numeric \tab 0.1 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
-   n_iter \tab integer \tab 50 \tab  \tab \eqn{[10, 500]}{[10, 500]} \cr
+   kernel \tab character \tab rbf \tab rbf, matern_0.5, matern_1.5, matern_2.5 \tab - \cr
+   lr \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   n_iter \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    device \tab character \tab auto \tab auto, cpu, cuda \tab - \cr
 }
 }
 
-\section{Installation}{
-
-Install Python dependencies:
-\preformatted{
-pip install torch gpytorch
-}
-}
-
-\examples{
-\dontshow{if (learner_is_runnable("regr.gpytorch")) withAutoprint(\{ # examplesIf}
-# Define the Learner
-learner = lrn("regr.gpytorch")
-print(learner)
-
-# Define a Task
-task = tsk("mtcars")
-
-# Create train and test set
-ids = partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-\dontshow{\}) # examplesIf}
-}
 \references{
-Gardner JR, Pleiss G, Weinberger KQ, Bindel D, Wilson AG (2018).
+Gardner, R J, Pleiss, Geoff, Weinberger, Q K, Bindel, David, Wilson, Gordon A (2018).
 \dQuote{GPyTorch: Blackbox Matrix-Matrix Gaussian Process Inference with GPU Acceleration.}
-In \emph{Advances in Neural Information Processing Systems}.
+In \emph{Advances in Neural Information Processing Systems}, volume 31.
 }
 \seealso{
 \itemize{
@@ -96,56 +108,108 @@ KhalifaSeck
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrGPyTorch}
 }
+\section{Active bindings}{
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{marshaled}}{(\code{logical(1)})\cr
+Whether the learner has been marshaled.}
+  }
+  \if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerRegrGPyTorch-new}{\code{LearnerRegrGPyTorch$new()}}
-\item \href{#method-LearnerRegrGPyTorch-clone}{\code{LearnerRegrGPyTorch$clone()}}
+  \itemize{
+    \item \href{#method-LearnerRegrGPyTorch-initialize}{\code{LearnerRegrGPyTorch$new()}}
+    \item \href{#method-LearnerRegrGPyTorch-marshal}{\code{LearnerRegrGPyTorch$marshal()}}
+    \item \href{#method-LearnerRegrGPyTorch-unmarshal}{\code{LearnerRegrGPyTorch$unmarshal()}}
+    \item \href{#method-LearnerRegrGPyTorch-clone}{\code{LearnerRegrGPyTorch$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerRegrGPyTorch-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerRegrGPyTorch-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrGPyTorch$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerRegrGPyTorch-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrGPyTorch-initialize}{}}}
+\subsection{\code{LearnerRegrGPyTorch$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrGPyTorch$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerRegrGPyTorch-marshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrGPyTorch-marshal}{}}}
+\subsection{\code{LearnerRegrGPyTorch$marshal()}}{
+  Marshal the learner's model.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrGPyTorch$marshal(...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
+
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerRegrGPyTorch-unmarshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrGPyTorch-unmarshal}{}}}
+\subsection{\code{LearnerRegrGPyTorch$unmarshal()}}{
+  Unmarshal the learner's model.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrGPyTorch$unmarshal(...)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
+    }
+    \if{html}{\out{</div>}}
+  }
+}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerRegrGPyTorch-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrGPyTorch-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrGPyTorch$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerRegrGPyTorch$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerRegrGPyTorch$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

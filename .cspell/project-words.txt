@@ -1,6 +1,7 @@
 # Add words here (or via "Add to project dictionary" in VS Code / Cursor).
 # Project-specific words — commit and share with the team.
 Aalen
+Ababacar
 abess
 abseps
 actuar
@@ -184,6 +185,7 @@ keras
 kerdiest
 kernlab
 kganz
+Khalifa
 klau
 knitr
 Koers
@@ -253,6 +255,7 @@ missings
 missingtestdata
 mixedsingletaskgp
 mllg
+mlls
 mlrorg
 mlrregr
 modelfun
@@ -386,6 +389,7 @@ Schapire
 Schratz
 Sdlda
 sebffischer
+Seck
 seealso
 sexm
 shapley
@@ -434,6 +438,7 @@ Universität
 unmarshal
 unpenalized
 unpickle
+unpickled
 usesurrogate
 vanbelle
 vanschoren
