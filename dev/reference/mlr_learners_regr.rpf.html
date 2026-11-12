@@ -261,24 +261,21 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ── Random Planted Forest model ─────────────────────────────────────────────────</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Regression. Prediction = intercept + the sum of 6 components.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept: 18.7332</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ── Regression Random Planted Forest ────────────────────────────────────────────</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">Predictors</span>: `am`, `carb`, `cyl`, …, `vs`, and `wt`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">50</span> tree families with <span style="color: #0000BB;">30</span> splits each on <span style="color: #0000BB;">10</span> predictors, <span style="font-style: italic;">interactions to degree</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-style: italic;">2</span>.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Forest is not purified.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Components (largest first), importance = share of the variance of the prediction on the training rows:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  component importance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  hp        5.9%      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  carb      4.6%      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  cyl       3.9%      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  disp      3.4%      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  wt        2.6%      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  vs        2.1%      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ── Tree growing </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    split_structure: leaves</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          split_try: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              t_try: 0.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     max_candidates: 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   split_decay_rate: 0.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      delete_leaves: TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> How it was chosen:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   The forest: 200 tree families of 12 splits (chosen out of bag; growing stopped at 12).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   From the forest's 172 nonzero components (purified): those with a share of at least 1% of the forest's Var(prediction), as they are (rule D).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Rule and threshold chosen by out-of-bag error (1-SE rule; 5 folds, seed 1514966940) among 16 candidates.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Left out: 166 components, shares together 2.4% (largest am, 0.98%).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Fit using <span style="color: #0000BB;">1</span> thread, also the default for `predict()` and `purify()`.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -287,7 +284,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14.09045 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7.91502 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

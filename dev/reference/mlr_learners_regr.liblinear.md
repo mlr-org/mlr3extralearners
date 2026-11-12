@@ -37,17 +37,18 @@ instantiated via
 
 ## Parameters
 
-|          |         |         |             |                       |
-|----------|---------|---------|-------------|-----------------------|
-| Id       | Type    | Default | Levels      | Range                 |
-| type     | integer | 11      |             | \\\[11, 13\]\\        |
-| cost     | numeric | 1       |             | \\\[0, \infty)\\      |
-| bias     | numeric | 1       |             | \\(-\infty, \infty)\\ |
-| svr_eps  | numeric | NULL    |             | \\\[0, \infty)\\      |
-| cross    | integer | 0       |             | \\\[0, \infty)\\      |
-| verbose  | logical | FALSE   | TRUE, FALSE | \-                    |
-| findC    | logical | FALSE   | TRUE, FALSE | \-                    |
-| useInitC | logical | TRUE    | TRUE, FALSE | \-                    |
+|                |         |         |             |                       |
+|----------------|---------|---------|-------------|-----------------------|
+| Id             | Type    | Default | Levels      | Range                 |
+| type           | integer | 11      |             | \\\[11, 13\]\\        |
+| cost           | numeric | 1       |             | \\\[0, \infty)\\      |
+| bias           | numeric | 1       |             | \\(-\infty, \infty)\\ |
+| svr_eps        | numeric | NULL    |             | \\\[0, \infty)\\      |
+| cross          | integer | 0       |             | \\\[0, \infty)\\      |
+| verbose        | logical | FALSE   | TRUE, FALSE | \-                    |
+| findC          | logical | FALSE   | TRUE, FALSE | \-                    |
+| useInitC       | logical | TRUE    | TRUE, FALSE | \-                    |
+| regularizeBias | logical | TRUE    | TRUE, FALSE | \-                    |
 
 ## Initial parameter values
 
@@ -188,10 +189,10 @@ print(learner$model)
 #> [1] 11
 #> 
 #> $W
-#>            am      carb       cyl         disp     drat     gear           hp
-#> [1,] 2.263003 -1.332348 0.5727493 -0.004417776 2.191535 2.321748 -0.002343684
-#>           qsec       vs        wt     Bias
-#> [1,] 0.4486017 1.115917 -1.713531 1.114348
+#>             am       carb      cyl        disp     drat    gear          hp
+#> [1,] 0.5365545 -0.8838889 1.280351 -0.01401096 1.444272 2.22065 -0.01563747
+#>           qsec       vs        wt    Bias
+#> [1,] 0.6493166 1.160007 -2.269677 1.52223
 #> 
 #> $Bias
 #> [1] 1
@@ -209,5 +210,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 10.57661 
+#> 9.801125 
 ```

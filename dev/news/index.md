@@ -2,6 +2,10 @@
 
 ## mlr3extralearners (development version)
 
+- `classif.liblinear` and `regr.liblinear`: added the `regularizeBias`
+  parameter of
+  [`LiblineaR::LiblineaR()`](https://rdrr.io/pkg/LiblineaR/man/LiblineaR.html),
+  which is available from LiblineaR 2.50-1 on.
 - `classif.rpf` and `regr.rpf`: re-added the random planted forest
   learners from `randomPlantedForest` (\>= 0.5.0), which now supports
   marshaling and can therefore be used with encapsulation,

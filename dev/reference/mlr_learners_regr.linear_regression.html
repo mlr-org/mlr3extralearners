@@ -245,9 +245,11 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg =</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       1.5253 * qsec +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      -4.7538 * wt +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       9.0066</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -1.1045 * cyl +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.0151 * disp +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -0.0239 * hp +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -4.0207 * wt +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      40.0946</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -256,7 +258,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  13.3438 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.992959 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

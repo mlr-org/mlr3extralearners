@@ -237,28 +237,33 @@ print(learner$model)
 #> 
 #> Rule: 1
 #> IF
-#>  hp > 118
+#>  hp > 92
+#>  wt > 3.327
 #> THEN
 #> 
 #> mpg = 
-#>  4.0414 * am 
-#>  - 0.0458 * hp 
-#>  + 24.6572 [11/24.698%]
+#>  -0.6758 * carb 
+#>  - 0.3741 * cyl 
+#>  - 0.0042 * disp 
+#>  + 2.1509 * drat 
+#>  - 1.8303 * wt 
+#>  + 22.8371 [9/17.375%]
 #> 
 #> Rule: 2
 #> IF
-#>  disp > 101.55
+#>  wt > 2.26
 #> THEN
 #> 
 #> mpg = 
-#>  -0.0381 * disp 
-#>  - 0.0242 * hp 
-#>  + 31.807 [7/29.12%]
+#>  -0.0619 * hp 
+#>  - 2.9465 * wt 
+#>  + 37.4518 [7/11.578%]
 #> 
 #> Rule: 3
 #> 
 #> mpg = 
-#>  + 31.0667 [3/100%]
+#>  -0.1237 * disp 
+#>  + 40.5068 [5/66.979%]
 #> 
 #> 
 
@@ -269,5 +274,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.552898 
+#> 5.520232 
 ```

@@ -258,39 +258,26 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> ── Random Planted Forest model ─────────────────────────────────────────────────
-#> Classification (logit loss), 2 classes: M, R. Scores = intercept + the sum of 36 components.
-#> Intercept: -0.467273
+#> ── Classification Random Planted Forest ────────────────────────────────────────
+#> Predictors: `V1`, `V10`, `V11`, …, `V8`, and `V9`
+#> 50 tree families with 30 splits each on 60 predictors, interactions to degree
+#> 2.
+#> ℹ Forest is not purified.
 #> 
-#> Components (largest first), importance = share of the variance of the prediction on the training rows:
-#>  component importance
-#>  V11       3.3%      
-#>  V12       3.2%      
-#>  V49       2.1%      
-#>  V51       1.9%      
-#>  V48       1.5%      
-#>  V37       1.1%      
-#>  V47       1.1%      
-#>  V36       0.9%      
-#>  V46       0.79%     
-#>  V52       0.62%     
-#>  V35       0.61%     
-#>  V10       0.54%     
-#>  V9        0.47%     
-#>  V45       0.42%     
-#>  V28       0.41%     
-#>  V21       0.36%     
-#>  V23       0.32%     
-#>  V39       0.31%     
-#>  V59       0.2%      
-#>  V27       0.17%     
-#> ... and 16 more
+#> ── Tree growing 
+#>    split_structure: leaves
+#>          split_try: 10
+#>              t_try: 0.4
+#>     max_candidates: 50
+#>   split_decay_rate: 0.1
+#>      delete_leaves: TRUE
 #> 
-#> How it was chosen:
-#>   The forest: 200 tree families of 50 splits (chosen out of bag; growing stopped at 50).
-#>   From the forest's 2625 nonzero components (purified): those with a share of at least 0.03% of the forest's Var(prediction), as they are (rule D).
-#>   Rule and threshold chosen by out-of-bag error (1-SE rule; 5 folds, seed 1116950216) among 16 candidates.
-#>   Left out: 2589 components, shares together 0.63% (largest V40, 0.028%).
+#> ── Loss 
+#>      loss: exponential
+#>     delta: 0.001
+#>   epsilon: 0.1
+#> 
+#> ℹ Fit using 1 thread, also the default for `predict()` and `purify()`.
 
 
 # Make predictions for the test rows
@@ -299,5 +286,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.2028986 
 ```
