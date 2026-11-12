@@ -73,6 +73,7 @@ Cindex
 classif
 Cleary
 clemmensen
+cloglog
 Clust
 cmprsk
 combinechains
@@ -192,6 +193,7 @@ kohonen
 Kopper
 kpar
 kpars
+krantsevich
 kstar
 KSVM
 kursa
@@ -345,6 +347,7 @@ Pretraining
 priolasso
 prioritylasso
 proba
+probit
 protime
 psplit
 Pulatov
@@ -404,6 +407,7 @@ splitrule
 Srivastava
 stackoverflow
 stepno
+stochtree
 stopf
 stype
 sumny
@@ -450,6 +454,8 @@ webscraping
 weibull
 Winterstetter
 withr
+XBART
+XBCF
 xgboost
 yolobox
 ytrafo
