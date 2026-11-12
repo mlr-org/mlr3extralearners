@@ -255,21 +255,24 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> ── Regression Random Planted Forest ────────────────────────────────────────────
-#> Predictors: `am`, `carb`, `cyl`, …, `vs`, and `wt`
-#> 50 tree families with 30 splits each on 10 predictors, interactions to degree
-#> 2.
-#> ℹ Forest is not purified.
+#> ── Random Planted Forest model ─────────────────────────────────────────────────
+#> Regression. Prediction = intercept + the sum of 6 components.
+#> Intercept: 18.7332
 #> 
-#> ── Tree growing 
-#>    split_structure: leaves
-#>          split_try: 10
-#>              t_try: 0.4
-#>     max_candidates: 50
-#>   split_decay_rate: 0.1
-#>      delete_leaves: TRUE
+#> Components (largest first), importance = share of the variance of the prediction on the training rows:
+#>  component importance
+#>  hp        5.9%      
+#>  carb      4.6%      
+#>  cyl       3.9%      
+#>  disp      3.4%      
+#>  wt        2.6%      
+#>  vs        2.1%      
 #> 
-#> ℹ Fit using 1 thread, also the default for `predict()` and `purify()`.
+#> How it was chosen:
+#>   The forest: 200 tree families of 12 splits (chosen out of bag; growing stopped at 12).
+#>   From the forest's 172 nonzero components (purified): those with a share of at least 1% of the forest's Var(prediction), as they are (rule D).
+#>   Rule and threshold chosen by out-of-bag error (1-SE rule; 5 folds, seed 1514966940) among 16 candidates.
+#>   Left out: 166 components, shares together 2.4% (largest am, 0.98%).
 
 
 # Make predictions for the test rows
@@ -278,5 +281,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  7.91502 
+#> 14.09045 
 ```

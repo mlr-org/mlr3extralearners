@@ -189,7 +189,7 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  0.007194369 
+#> Offset:  -0.07930252 
 #> Number of baselearners:  60 
 #> 
 
