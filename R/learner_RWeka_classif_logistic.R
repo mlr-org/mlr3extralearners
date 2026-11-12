@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Multinomial Logistic Regression model with a ridge estimator.
-#' Calls [RWeka::Logistic()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::Logistic()` from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

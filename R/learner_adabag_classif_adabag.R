@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Classification boosting algorithm.
-#' Calls [adabag::boosting()] from \CRANpkg{adabag}.
+#' Calls `adabag::boosting()` from \CRANpkg{adabag}.
 #'
 #' @section Initial parameter values:
 #' - `xval`:
@@ -20,7 +20,7 @@
 #'
 #'
 #' @template seealso_learner
-#' @template example
+#' @template example_adabag
 #' @export
 LearnerClassifAdabag = R6Class("LearnerClassifAdabag",
   inherit = LearnerClassif,

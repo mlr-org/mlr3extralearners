@@ -4,7 +4,16 @@
   public = list(
     lrns = list(),
     add = function(key, learn) {
-      assert_character(key, len = 1)
+      assert_string(key)
+      assert_class(learn, "R6ClassGenerator")
+      if (key %in% names(self$lrns)) {
+        stopf("Learner id '%s' is already registered.", key)
+      }
+      classnames = map_chr(self$lrns, "classname")
+      if (learn$classname %in% classnames) {
+        stopf("Learner class '%s' is already registered with id '%s'.",
+          learn$classname, names(classnames)[classnames == learn$classname])
+      }
       lst = list(key = learn)
       names(lst) = key
       self$lrns = insert_named(self$lrns, lst)

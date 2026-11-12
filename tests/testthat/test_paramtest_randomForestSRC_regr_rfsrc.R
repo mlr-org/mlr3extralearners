@@ -13,7 +13,8 @@ test_that("paramtest regr.rfsrc train", {
     "sampsize.ratio", # alternative to sampsize
     "mtry.ratio", # alternative to mtry
     "ntime", # for survival forests only
-    "cause" # for competing risk forests only
+    "cause", # for competing risk forests only
+    "use.uno" # for survival and competing risk learners
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

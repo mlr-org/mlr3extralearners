@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Penalized (L1 and L2) Logistic Regression.
-#' Calls [penalized::penalized()] from: \CRANpkg{penalized}.
+#' Calls `penalized::penalized()` from: \CRANpkg{penalized}.
 #'
 #' @section Initial parameter values:
 #' - `trace` is set to `"FALSE"` to disable printing output during model training.
@@ -14,7 +14,7 @@
 #'
 #' @details
 #' The `penalized` and `unpenalized` arguments in the learner are implemented slightly
-#' differently than in [penalized::penalized()]. Here, there is no parameter for `penalized` but
+#' differently than in `penalized::penalized()`. Here, there is no parameter for `penalized` but
 #' instead it is assumed that every variable is penalized unless stated in the `unpenalized`
 #' parameter.
 #'
@@ -94,7 +94,7 @@ LearnerClassifPenalized = R6Class("LearnerClassifPenalized",
       # Again the penalized and unpenalized covariates are automatically converted to the
       # correct formula
       pars = self$param_set$get_values(tags = "predict")
-      if (length(pars$unpenalized) == 0) {
+      if (length(pars$unpenalized) == 0L) {
         penalized = formulate(rhs = task$feature_names)
       } else {
         penalized = formulate(rhs = task$feature_names[task$feature_names %nin% pars$unpenalized])
@@ -103,7 +103,7 @@ LearnerClassifPenalized = R6Class("LearnerClassifPenalized",
 
       # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
-      type = ifelse(self$predict_type == "prob", "response", "class")
+      type = if (self$predict_type == "prob") "response" else "class"
       # The penalized package does not have a 'type' argument for predict, so we
       # always get the numeric prediction:
       with_package("penalized", {
@@ -119,7 +119,7 @@ LearnerClassifPenalized = R6Class("LearnerClassifPenalized",
         prob = pprob_to_matrix(pp, task)
         list(prob = prob)
       } else {
-        response = as.factor(ifelse(pred > 0.5, levs[2L], levs[1L]))
+        response = as.factor(fifelse(pred > 0.5, levs[2L], levs[1L]))
         list(response = response)
       }
     }

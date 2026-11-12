@@ -4,18 +4,11 @@
 #'
 #' @description
 #' Generalized additive models.
-#' Calls [mgcv::gam()] from package \CRANpkg{mgcv}.
+#' Calls `mgcv::gam()` from package \CRANpkg{mgcv} with `family` set to `binomial`.
 #'
-#' Multiclass classification is not implemented yet.
+#' Multilabel classification is not implemented yet.
 #'
-#' @section Formula:
-#' A gam formula specific to the task at hand is required for the `formula`
-#' parameter (see example and `?mgcv::formula.gam`). Beware, if no formula is
-#' provided, a fallback formula is used that will make the gam behave like a
-#' glm (this behavior is required for the unit tests). Only features specified
-#' in the formula will be used, superseding columns with col_roles "feature"
-#' in the task.
-#'
+#' @inheritSection mlr_learners_regr.gam Formula
 #' @inheritSection mlr_learners_regr.gam Offset
 #'
 #' @template learner
@@ -24,15 +17,7 @@
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
-#' @examplesIf learner_is_runnable("classif.gam")
-#' # simple example
-#' t = tsk("spam")$filter(1:1000)
-#' l = lrn("classif.gam")
-#' l$param_set$set_values(
-#'   formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
-#' )
-#' l$train(t)
-#' l$model
+#' @template example_gam
 #' @export
 LearnerClassifGam = R6Class("LearnerClassifGam",
   inherit = LearnerClassif,
@@ -41,7 +26,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(
+      param_set = ps(
         formula = p_uty(tags = "train"),
         method = p_fct(
           levels = c("GCV.Cp", "GACV.Cp", "REML", "P-REML", "ML", "P-ML"),
@@ -61,6 +46,8 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         in.out = p_uty(default = NULL, tags = "train"),
         drop.unused.levels = p_lgl(default = TRUE, tags = "train"),
         drop.intercept = p_lgl(default = FALSE, tags = "train"),
+        nei = p_uty(tags = "train"),
+        # from mgcv::gam.control()
         nthreads = p_int(default = 1L, lower = 1L, tags = c("train", "threads")),
         irls.reg = p_dbl(default = 0.0, lower = 0, tags = "train"),
         epsilon = p_dbl(default = 1e-07, lower = 0, tags = "train"),
@@ -72,17 +59,14 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         nlm = p_uty(default = list(), tags = "train"),
         optim = p_uty(default = list(), tags = "train"),
         newton = p_uty(default = list(), tags = "train"),
-        outerPIsteps = p_int(default = 0L, lower = 0L, tags = "train"),
         idLinksBases = p_lgl(default = TRUE, tags = "train"),
         scalePenalty = p_lgl(default = TRUE, tags = "train"),
         efs.lspmax = p_int(default = 15L, lower = 0L, tags = "train"),
         efs.tol = p_dbl(default = .1, lower = 0, tags = "train"),
-        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher",
-          tags = "train"),
+        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher", tags = "train"),
         edge.correct = p_lgl(default = FALSE, tags = "train"),
-        nei = p_uty(tags = "train"),
         ncv.threads = p_int(default = 1, lower = 1, tags = "train"),
-        # prediction
+        # from mgcv::predict.gam()
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )
@@ -92,7 +76,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         packages = c("mlr3extralearners", "mgcv"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("prob", "response"),
-        param_set = ps,
+        param_set = param_set,
         properties = c("twoclass", "weights", "offset"),
         man = "mlr3extralearners::mlr_learners_classif.gam",
         label = "Generalized Additive Model"
@@ -107,12 +91,15 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       pars = pars[names(pars) %nin% formalArgs(mgcv::gam.control)]
 
       data = task$data(cols = c(task$feature_names, task$target_names))
-
       pars$weights = private$.get_weights(task)
+      pars$family = "binomial"
+
       if ("offset" %in% task$properties) {
         pars$offset = task$offset$offset
       }
+
       if (is.null(pars$formula)) {
+        # GLM-like formula, no smooth terms
         formula = stats::as.formula(paste(
           task$target_names,
           "~",
@@ -120,13 +107,11 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ))
         pars$formula = formula
       }
-      pars$family = "binomial"
 
-      if (length(control_pars)) {
-        control_obj = invoke(mgcv::gam.control, .args = control_pars)
-        pars = pars[!(names(pars) %in% names(control_pars))]
+      control_obj = if (length(control_pars)) {
+        invoke(mgcv::gam.control, .args = control_pars)
       } else {
-        control_obj = mgcv::gam.control()
+        mgcv::gam.control()
       }
 
       invoke(
@@ -138,12 +123,8 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
     },
 
     .predict = function(task) {
-      # get parameters with tag "predict"
-
       pars = self$param_set$get_values(tags = "predict")
       lvls = task$class_names
-
-      # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
 
       prob = invoke(

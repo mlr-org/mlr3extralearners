@@ -31,13 +31,14 @@ jobs:
         config:
           - {os: ubuntu-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'devel'}
-          - {os: ubuntu-latest, r: 'release', depends_only: true}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      TABPFN_TOKEN: ${{ secrets.TABPFN_TOKEN }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -51,14 +52,35 @@ jobs:
           needs: check
           cache: "always"
 
+      - name: Install torch backend
+        if: ${{ !matrix.config.depends_only }}
+        run: |
+          R -q -e 'install.packages("torch")'
+          R -q -e 'torch::install_torch()'
+
+      - uses: actions/setup-python@v7
+        id: setup-python
+        if: ${{ !matrix.config.depends_only }}
+        with:
+          python-version: "3.12"
+
+      - name: Cache Python environments
+        id: cache-pyenvs
+        if: ${{ !matrix.config.depends_only }}
+        uses: actions/cache@v6
+        with:
+          path: ~/.virtualenvs
+          key: pyenvs-${{ runner.os }}-py${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('R/install_python_test_envs.R') }}
+
+      - name: Install Python environments
+        if: ${{ !matrix.config.depends_only && steps.cache-pyenvs.outputs.cache-hit != 'true' }}
+        run: R -q -e 'source("R/install_python_test_envs.R"); install_python_test_envs()'
+
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
         with:
           limit-access-to-actor: true
 
       - uses: r-lib/actions/check-r-package@v2
-        env:
-          _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.depends_only && 'TRUE' || 'FALSE' }}
-          NOT_CRAN: ${{ matrix.config.depends_only && 'FALSE' || 'TRUE' }}
         with:
-          error-on: '"error"'
+          error-on: '"note"'

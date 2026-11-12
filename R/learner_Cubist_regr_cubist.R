@@ -5,7 +5,7 @@
 #' @description
 #' Rule-based model that is an extension of Quinlan's M5 model tree. Each tree contains
 #' linear regression models at the terminal leaves.
-#' Calls [Cubist::cubist()] from \CRANpkg{Cubist}.
+#' Calls `Cubist::cubist()` from \CRANpkg{Cubist}.
 #'
 #' @template learner
 #' @templateVar id regr.cubist
@@ -32,7 +32,8 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
           sample = p_int(lower = 0L, default = 0L, tags = "train"),
           seed = p_int(default = NO_DEF, tags = "train"),
           label = p_uty(default = "outcome", tags = "train"),
-          neighbors = p_int(lower = 0L, upper = 9L, tags = c("predict", "required"))
+          neighbors = p_int(lower = 0L, upper = 9L, tags = c("predict", "required")),
+          strip_time_stamps = p_lgl(default = TRUE, tags = "train")
         )
       param_set$values$committees = 1L
       param_set$values$neighbors = 0L

@@ -1,9 +1,9 @@
 skip_if_not_installed("sda")
 
 test_that("autotest", {
+  withr::local_seed(1)
   learner = lrn("classif.sda")
   expect_learner(learner)
-  # note that you can skip tests using the exclude argument
   capture.output({
     result = run_autotest(learner)
   })

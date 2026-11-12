@@ -6,23 +6,13 @@
 \title{Classification Generalized Additive Model Learner}
 \description{
 Generalized additive models.
-Calls \code{\link[mgcv:gam]{mgcv::gam()}} from package \CRANpkg{mgcv}.
+Calls \code{mgcv::gam()} from package \CRANpkg{mgcv} with \code{family} set to \code{binomial}.
 
-Multiclass classification is not implemented yet.
+Multilabel classification is not implemented yet.
 }
-\section{Formula}{
-
-A gam formula specific to the task at hand is required for the \code{formula}
-parameter (see example and \code{?mgcv::formula.gam}). Beware, if no formula is
-provided, a fallback formula is used that will make the gam behave like a
-glm (this behavior is required for the unit tests). Only features specified
-in the formula will be used, superseding columns with col_roles "feature"
-in the task.
-}
-
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.gam")
 }\if{html}{\out{</div>}}
@@ -56,6 +46,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    in.out \tab untyped \tab NULL \tab  \tab - \cr
    drop.unused.levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    drop.intercept \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nei \tab untyped \tab - \tab  \tab - \cr
    nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    irls.reg \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    epsilon \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -67,24 +58,31 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    nlm \tab untyped \tab list() \tab  \tab - \cr
    optim \tab untyped \tab list() \tab  \tab - \cr
    newton \tab untyped \tab list() \tab  \tab - \cr
-   outerPIsteps \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    idLinksBases \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    scalePenalty \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    efs.lspmax \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    efs.tol \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    scale.est \tab character \tab fletcher \tab fletcher, pearson, deviance \tab - \cr
    edge.correct \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   nei \tab untyped \tab - \tab  \tab - \cr
    ncv.threads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
+\section{Formula}{
+
+A gam formula specific to the task at hand is required for the \code{formula}
+parameter (see example and \code{?mgcv::formula.gam}). Beware, if no formula is provided, a fallback formula is
+used that will make the gam behave like a glm (this behavior is required
+for the unit tests). Only features specified in the formula will be used,
+superseding columns with col_roles "feature" in the task.
+}
+
 \section{Offset}{
 
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
-incorporated during training via the \code{offset} argument in \code{\link[mgcv:gam]{mgcv::gam()}}.
+incorporated during training via the \code{offset} argument in \code{mgcv::gam()}.
 No offset is applied during prediction for this learner.
 }
 
@@ -116,54 +114,56 @@ pierrecamilleri
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerClassifGam-new}{\code{LearnerClassifGam$new()}}
-\item \href{#method-LearnerClassifGam-clone}{\code{LearnerClassifGam$clone()}}
+  \itemize{
+    \item \href{#method-LearnerClassifGam-initialize}{\code{LearnerClassifGam$new()}}
+    \item \href{#method-LearnerClassifGam-clone}{\code{LearnerClassifGam$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerClassifGam-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerClassifGam-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifGam$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerClassifGam-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifGam-initialize}{}}}
+\subsection{\code{LearnerClassifGam$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerClassifGam$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifGam-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifGam-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifGam$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerClassifGam$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerClassifGam$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

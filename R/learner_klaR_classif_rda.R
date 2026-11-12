@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Regularized Discriminant Analysis.
-#' Calls [klaR::rda()] from: \CRANpkg{klaR}.
+#' Calls `klaR::rda()` from: \CRANpkg{klaR}.
 #'
 #' @templateVar id classif.rda
 #' @template learner

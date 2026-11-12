@@ -6,7 +6,7 @@
 \title{BlockForest Survival Learner}
 \description{
 Random survival forests for blocks of clinical and omics covariate data.
-Calls \code{\link[blockForest:blockfor]{blockForest::blockfor()}} from package \CRANpkg{blockForest}.
+Calls \code{blockForest::blockfor()} from package \CRANpkg{blockForest}.
 
 In this learner, only the trained forest object (\verb{$forest}) is retained. The
 optimized block-specific tuning parameters (\code{paramvalues}) and the biased OOB
@@ -20,7 +20,7 @@ This learner returns two prediction types:
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and (unique event) time points in columns.
 Calculated using the internal \code{blockForest:::predict.blockForest()} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 
@@ -33,7 +33,7 @@ Calculated using the internal \code{blockForest:::predict.blockForest()} functio
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.blockforest")
 }\if{html}{\out{</div>}}
@@ -71,23 +71,31 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \dontshow{if (learner_is_runnable("surv.blockforest")) withAutoprint(\{ # examplesIf}
 # Define a Task
 task = tsk("grace")
+
 # Create train and test set
 ids = partition(task)
+
 # check task's features
 task$feature_names
+
 # partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:6)
+
 # define learner
 learner = lrn("surv.blockforest", blocks = blocks,
               importance = "permutation", nsets = 10,
               num.trees = 50, num.trees.pre = 10, splitrule = "logrank")
+
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 # feature importance
 learner$importance()
+
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
+
 # Score the predictions
 pred$score()
 \dontshow{\}) # examplesIf}
@@ -96,13 +104,14 @@ pred$score()
 Hornung, R., Wright, N. M (2019).
 \dQuote{Block Forests: Random forests for blocks of clinical and omics covariate data.}
 \emph{BMC Bioinformatics}, \bold{20}(1), 1--17.
-\doi{10.1186/s12859-019-2942-y}, \url{https://doi.org/10.1186/s12859-019-2942-y}.
+\doi{10.1186/s12859-019-2942-y}.
+\url{https://doi.org/10.1186/s12859-019-2942-y}.
 }
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
 \item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
-\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
 \item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
@@ -117,67 +126,71 @@ bblodfon
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerSurvBlockForest-new}{\code{LearnerSurvBlockForest$new()}}
-\item \href{#method-LearnerSurvBlockForest-importance}{\code{LearnerSurvBlockForest$importance()}}
-\item \href{#method-LearnerSurvBlockForest-clone}{\code{LearnerSurvBlockForest$clone()}}
+  \itemize{
+    \item \href{#method-LearnerSurvBlockForest-initialize}{\code{LearnerSurvBlockForest$new()}}
+    \item \href{#method-LearnerSurvBlockForest-importance}{\code{LearnerSurvBlockForest$importance()}}
+    \item \href{#method-LearnerSurvBlockForest-clone}{\code{LearnerSurvBlockForest$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvBlockForest-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvBlockForest-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvBlockForest$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerSurvBlockForest-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvBlockForest-initialize}{}}}
+\subsection{\code{LearnerSurvBlockForest$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvBlockForest$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvBlockForest-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvBlockForest-importance}{}}}
-\subsection{Method \code{importance()}}{
-The importance scores are extracted from the model slot \code{variable.importance}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvBlockForest$importance()}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvBlockForest$importance()}}{
+  The importance scores are extracted from the model slot \code{variable.importance}.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvBlockForest$importance()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    Named \code{numeric()}.
+  }
 }
 
-\subsection{Returns}{
-Named \code{numeric()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvBlockForest-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvBlockForest-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvBlockForest$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvBlockForest$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvBlockForest$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

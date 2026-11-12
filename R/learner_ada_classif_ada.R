@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Classification using ada.
-#' Calls [ada::ada()] from \CRANpkg{ada}.
+#' Calls `ada::ada()` from \CRANpkg{ada}.
 #'
 #' @section Initial parameter values:
 #' - `xval` is set to `0` by default for speed.
@@ -98,7 +98,7 @@ LearnerClassifAdaBoosting = R6Class("LearnerClassifAdaBoosting",
       newdata = ordered_features(task, self)
 
       # Calculate predictions for the selected predict type.
-      type = ifelse(self$predict_type == "response", "vector", "probs")
+      type = if (self$predict_type == "response") "vector" else "probs"
       pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
 
       if (type == "probs") {

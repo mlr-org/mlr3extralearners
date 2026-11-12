@@ -4,7 +4,7 @@
 #'
 #' @description
 #' L2 regularized support vector regression.
-#' Calls [LiblineaR::LiblineaR()] from \CRANpkg{LiblineaR}.
+#' Calls `LiblineaR::LiblineaR()` from \CRANpkg{LiblineaR}.
 #'
 #' @template learner
 #' @templateVar id regr.liblinear
@@ -20,7 +20,7 @@
 #'   - Actual default: `NULL`
 #'   - Initial value: 0.001
 #'   - Reason for change: `svr_eps` is type dependent and the "type" is handled
-#'   by the mlr3learner. The default value is set to th default of the respective
+#'   by the mlr3learner. The default value is set to the default of the respective
 #'   "type".
 #'
 #' @references
@@ -77,7 +77,7 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
       train = task$data(cols = task$feature_names)
       target = task$truth()
 
-      type = ifelse(is.null(pars$type), 11, pars$type)
+      type = pars$type %??% 11
       pars = pars[names(pars) != "type"]
 
       invoke(LiblineaR::LiblineaR, data = train, target = target, type = type, .args = pars)

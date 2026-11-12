@@ -3,8 +3,8 @@
 #' @name mlr_learners_regr.fnn
 #'
 #' @description
-#' Fast Nearest Neighbour Regression.
-#' Calls [FNN::knn.reg()] from \CRANpkg{FNN}.
+#' Fast Nearest Neighbor Regression.
+#' Calls `FNN::knn.reg()` from \CRANpkg{FNN}.
 #'
 #' @templateVar id regr.fnn
 #' @template learner
@@ -35,7 +35,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
         predict_types = "response",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.fnn",
-        label = "Fast Nearest Neighbour"
+        label = "Fast Nearest Neighbor"
       )
     }
   ),

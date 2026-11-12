@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Support Vector Regression.
-#' Calls [kernlab::ksvm()] from \CRANpkg{kernlab}.
+#' Calls `kernlab::ksvm()` from \CRANpkg{kernlab}.
 #'
 #' @template learner
 #' @templateVar id regr.ksvm

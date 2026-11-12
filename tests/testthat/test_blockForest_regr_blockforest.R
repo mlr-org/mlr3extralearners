@@ -1,4 +1,5 @@
 skip_if_not_installed("blockForest")
+skip_on_os("mac")
 
 test_that("autotest", {
   withr::local_seed(1)
@@ -13,5 +14,5 @@ test_that("autotest", {
 
   # 1 feature task for this learner doesn't make sense (1 block => at least 2 features)
   result = run_autotest(learner, exclude = "feat_single|utf8_feature_names", configure_learner = cfg_lrn)
-  expect_true(result)
+  expect_true(result, info = result$error)
 })

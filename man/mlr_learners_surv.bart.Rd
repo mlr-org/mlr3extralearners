@@ -6,7 +6,7 @@
 \title{Survival Bayesian Additive Regression Trees Learner}
 \description{
 Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
-survival data. Calls \code{\link[BART:mc.surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
+survival data. Calls \code{BART::mc.surv.bart()} from \CRANpkg{BART}.
 }
 \section{Prediction types}{
 
@@ -15,7 +15,7 @@ This learner returns two prediction types:
 \item \code{distr}: a 3d survival array with observations as 1st dimension, time
 points as 2nd and the posterior draws as 3rd dimension.
 Calculated using the internal \code{predict.survbart()} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}. The parameter
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}. The parameter
 \code{which.curve} decides which posterior draw (3rd dimension) will be used for the
 calculation of the expected mortality. Note that the median posterior is
 by default used for the calculation of survival measures that require a \code{distr}
@@ -47,7 +47,7 @@ i.e. \code{which.curve} is 0.5.
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.bart")
 }\if{html}{\out{</div>}}
@@ -117,7 +117,7 @@ Chipman, A H, George, I E, McCulloch, E R (2010).
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
 \item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
-\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
 \item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
@@ -132,44 +132,44 @@ bblodfon
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerSurvLearnerSurvBART-new}{\code{LearnerSurvLearnerSurvBART$new()}}
-\item \href{#method-LearnerSurvLearnerSurvBART-importance}{\code{LearnerSurvLearnerSurvBART$importance()}}
-\item \href{#method-LearnerSurvLearnerSurvBART-clone}{\code{LearnerSurvLearnerSurvBART$clone()}}
+  \itemize{
+    \item \href{#method-LearnerSurvLearnerSurvBART-initialize}{\code{LearnerSurvLearnerSurvBART$new()}}
+    \item \href{#method-LearnerSurvLearnerSurvBART-importance}{\code{LearnerSurvLearnerSurvBART$importance()}}
+    \item \href{#method-LearnerSurvLearnerSurvBART-clone}{\code{LearnerSurvLearnerSurvBART$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvLearnerSurvBART-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvLearnerSurvBART-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvLearnerSurvBART$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerSurvLearnerSurvBART-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvLearnerSurvBART-initialize}{}}}
+\subsection{\code{LearnerSurvLearnerSurvBART$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvLearnerSurvBART$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvLearnerSurvBART-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvLearnerSurvBART-importance}{}}}
-\subsection{Method \code{importance()}}{
-Two types of importance scores are supported based on the value
+\subsection{\code{LearnerSurvLearnerSurvBART$importance()}}{
+  Two types of importance scores are supported based on the value
 of the parameter \code{importance}:
 \enumerate{
 \item \code{prob}: The mean selection probability of each feature in the trees,
@@ -183,29 +183,33 @@ This is the default importance scores.
 }
 
 In both cases, higher values signify more important variables.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvLearnerSurvBART$importance()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvLearnerSurvBART$importance()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    Named \code{numeric()}.
+  }
 }
 
-\subsection{Returns}{
-Named \code{numeric()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvLearnerSurvBART-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvLearnerSurvBART-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvLearnerSurvBART$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvLearnerSurvBART$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvLearnerSurvBART$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

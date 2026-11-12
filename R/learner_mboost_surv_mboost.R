@@ -4,19 +4,19 @@
 #'
 #' @description
 #' Model-based boosting for survival analysis.
-#' Calls [mboost::mboost()] from \CRANpkg{mboost}.
+#' Calls `mboost::mboost()` from \CRANpkg{mboost}.
 #'
 #' @section Prediction types:
 #' This learner returns two to three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [mboost::predict.mboost()].
+#' Calculated using `mboost::predict.mboost()`.
 #' If the `family` parameter is not `"coxph"`, `-lp` is returned, since non-coxph
 #' families represent AFT-style distributions where lower `lp` values indicate higher risk.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [mboost::survFit()].
+#' Calculated using `mboost::survFit()`.
 #' This prediction type is present only when the `family` distribution parameter
 #' is equal to `"coxph"` (default).
 #' By default the Breslow estimator is used for computing the baseline hazard.
@@ -27,14 +27,14 @@
 #' @inheritSection mlr_learners_regr.glmboost Offset
 #'
 #' @details
-#' `distr` prediction made by [mboost::survFit()].
+#' `distr` prediction made by `mboost::survFit()`.
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
 #'
 #' @export
 #' @template seealso_learner
-#' @template simple_example
+#' @template example_simple
 #' @export
 LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
   inherit = mlr3proba::LearnerSurv,
@@ -82,7 +82,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
     },
 
     #' @description
-    #' The importance scores are extracted with the function [mboost::varimp()] with the
+    #' The importance scores are extracted with the function `mboost::varimp()` with the
     #' default arguments.
     #' @return Named `numeric()`.
     importance = function() {
@@ -97,7 +97,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
     },
 
     #' @description
-    #' Selected features are extracted with the function [mboost::variable.names.mboost()], with
+    #' Selected features are extracted with the function `mboost::variable.names.mboost()`, with
     #' `used.only = TRUE`.
     #' @return `character()`.
     selected_features = function() {

@@ -7,7 +7,7 @@
 \description{
 eXtreme Gradient Boosting regression using a \strong{Cox Proportional Hazards}
 objective.
-Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
+Calls \code{xgboost::xgb.train()} from package \CRANpkg{xgboost} with \code{objective}
 set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik}.
 }
 \note{
@@ -24,17 +24,8 @@ observation.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-By default, the Breslow estimator is used via \code{\link[mlr3proba:breslow]{mlr3proba::breslow()}}.
+By default, the Breslow estimator is used via \code{mlr3proba::breslow()}.
 }
-}
-
-\section{Saving this learner}{
-
-In order to save a \code{LearnerSurvXgboostCox} for later usage,
-it is necessary to call the \verb{$marshal()} method on the \code{Learner}
-before writing it to disk, as the object will otherwise not be saved correctly.
-After loading a marshaled \code{LearnerSurvXgboostCox} into R again,
-you then need to call \verb{$unmarshal()} to transform it into a useable state.
 }
 
 \section{Initial parameter values}{
@@ -42,13 +33,13 @@ you then need to call \verb{$unmarshal()} to transform it into a useable state.
 \itemize{
 \item \code{nrounds} is initialized to 1000.
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
-\item \code{verbose} is initialized to 0.
+\item \code{verbose} and \code{verbosity} are both initialized to 0.
 }
 }
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.xgboost.cox")
 }\if{html}{\out{</div>}}
@@ -71,35 +62,33 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    base_score \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    booster \tab character \tab gbtree \tab gbtree, gblinear, dart \tab - \cr
    callbacks \tab untyped \tab list() \tab  \tab - \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    colsample_bylevel \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bytree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    disable_default_eval_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    early_stopping_rounds \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   evals \tab untyped \tab NULL \tab  \tab - \cr
+   learning_rate \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
-   feval \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    grow_policy \tab character \tab depthwise \tab depthwise, lossguide \tab - \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
    iterationrange \tab untyped \tab - \tab  \tab - \cr
    lambda \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   lambda_bias \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_bin \tab integer \tab 256 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_delta_step \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_depth \tab integer \tab 6 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_leaves \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maximize \tab logical \tab NULL \tab TRUE, FALSE \tab - \cr
    min_child_weight \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   missing \tab numeric \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    monotone_constraints \tab integer \tab 0 \tab  \tab \eqn{[-1, 1]}{[-1, 1]} \cr
    normalize_type \tab character \tab tree \tab tree, forest \tab - \cr
    nrounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nthread \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nthread \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    num_parallel_tree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    one_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    print_every_n \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   process_type \tab character \tab default \tab default, update \tab - \cr
    rate_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    refresh_leaf \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sampling_method \tab character \tab uniform \tab uniform, gradient_based \tab - \cr
@@ -109,16 +98,20 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    scale_pos_weight \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    seed_per_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    skip_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   strict_shape \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   use_rmm \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   max_cached_hist_node \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_cat_to_onehot \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_cat_threshold \tab integer \tab 64 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    subsample \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    top_k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    tree_method \tab character \tab auto \tab auto, exact, approx, hist, gpu_hist \tab - \cr
-   tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    updater \tab untyped \tab - \tab  \tab - \cr
-   verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
-   watchlist \tab untyped \tab NULL \tab  \tab - \cr
+   verbose \tab integer \tab - \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
+   verbosity \tab integer \tab - \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
    device \tab untyped \tab - \tab  \tab - \cr
+   missing \tab numeric \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   validate_features \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -176,7 +169,7 @@ ACM.
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
 \item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
-\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
 \item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
@@ -190,122 +183,101 @@ bblodfon
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvXgboostCox}
 }
 \section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
-Extracted from \code{model$evaluation_log}}
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{internal_valid_scores}}{(named \code{list()} or \code{NULL})
+Validation metrics extracted from the xgboost model's \code{evaluation_log}.
+If early stopping is enabled, the scores correspond to the
+\code{best_iteration} selected by early stopping. Otherwise, the scores are
+taken from the final boosting round (\code{nrounds}).}
 
-\item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
+    \item{\code{best_valid_scores}}{(named \code{list()} or \code{NULL})
+Validation metrics of the best boosting round, extracted from the xgboost model's
+\code{evaluation_log}.
+Because XGBoost also predicts with the \code{best_iteration}, these are identical to
+\verb{$internal_valid_scores} whenever early stopping is enabled.
+If early stopping is not enabled, no best round is tracked and this is an empty list.}
 
-\item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL},
-a ratio, \code{"test"}, or \code{"predefined"}.}
+    \item{\code{internal_tuned_values}}{(named \code{list()} or \code{NULL})
+If early stopping is activated, this returns a list with the early stopped
+iterations (\code{nrounds}), which is extracted from the best iteration of the model.
+Otherwise \code{NULL}.}
 
-\item{\code{marshaled}}{(\code{logical(1)})\cr
-Whether the learner has been marshaled.}
-}
-\if{html}{\out{</div>}}
+    \item{\code{validate}}{How to construct the internal validation data.
+This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
+
+    \item{\code{model}}{(any)\cr
+The fitted model. Only available after \verb{$train()} has been called.}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerSurvXgboostCox-new}{\code{LearnerSurvXgboostCox$new()}}
-\item \href{#method-LearnerSurvXgboostCox-importance}{\code{LearnerSurvXgboostCox$importance()}}
-\item \href{#method-LearnerSurvXgboostCox-marshal}{\code{LearnerSurvXgboostCox$marshal()}}
-\item \href{#method-LearnerSurvXgboostCox-unmarshal}{\code{LearnerSurvXgboostCox$unmarshal()}}
-\item \href{#method-LearnerSurvXgboostCox-clone}{\code{LearnerSurvXgboostCox$clone()}}
+  \itemize{
+    \item \href{#method-LearnerSurvXgboostCox-initialize}{\code{LearnerSurvXgboostCox$new()}}
+    \item \href{#method-LearnerSurvXgboostCox-importance}{\code{LearnerSurvXgboostCox$importance()}}
+    \item \href{#method-LearnerSurvXgboostCox-clone}{\code{LearnerSurvXgboostCox$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvXgboostCox-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerSurvXgboostCox-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-initialize}{}}}
+\subsection{\code{LearnerSurvXgboostCox$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvXgboostCox$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvXgboostCox-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-importance}{}}}
-\subsection{Method \code{importance()}}{
-The importance scores are calculated with \code{\link[xgboost:xgb.importance]{xgboost::xgb.importance()}}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$importance()}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvXgboostCox$importance()}}{
+  The importance scores are calculated with \code{xgboost::xgb.importance()}.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvXgboostCox$importance()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    Named \code{numeric()}.
+  }
 }
 
-\subsection{Returns}{
-Named \code{numeric()}.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvXgboostCox-marshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-marshal}{}}}
-\subsection{Method \code{marshal()}}{
-Marshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$marshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvXgboostCox-unmarshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-unmarshal}{}}}
-\subsection{Method \code{unmarshal()}}{
-Unmarshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$unmarshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvXgboostCox-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvXgboostCox$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvXgboostCox$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

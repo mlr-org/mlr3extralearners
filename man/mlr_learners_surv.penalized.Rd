@@ -6,11 +6,11 @@
 \title{Survival L1 and L2 Penalized Cox Learner}
 \description{
 Penalized (L1 and L2) Cox Proportional Hazards model.
-Calls \code{\link[penalized:penalized]{penalized::penalized()}} from \CRANpkg{penalized}.
+Calls \code{penalized::penalized()} from \CRANpkg{penalized}.
 }
 \details{
 The \code{penalized} and \code{unpenalized} arguments in the learner are implemented slightly
-differently than in \code{\link[penalized:penalized]{penalized::penalized()}}. Here, there is no parameter for \code{penalized} but
+differently than in \code{penalized::penalized()}. Here, there is no parameter for \code{penalized} but
 instead it is assumed that every variable is penalized unless stated in the \code{unpenalized}
 parameter.
 }
@@ -20,10 +20,10 @@ This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using the internal \code{\link[penalized:predict]{penalized::predict()}} function.
-By default the Breslow estimator \code{\link[penalized:breslow]{penalized::breslow()}} is used for computing
+Calculated using the internal \code{penalized::predict()} function.
+By default the Breslow estimator \code{penalized::breslow()} is used for computing
 the baseline hazard.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 
@@ -36,7 +36,7 @@ the baseline hazard.
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.penalized")
 }\if{html}{\out{</div>}}
@@ -104,7 +104,7 @@ Goeman, J J (2010).
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
 \item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
-\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
 \item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
@@ -119,72 +119,76 @@ RaphaelS1
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerSurvPenalized-new}{\code{LearnerSurvPenalized$new()}}
-\item \href{#method-LearnerSurvPenalized-selected_features}{\code{LearnerSurvPenalized$selected_features()}}
-\item \href{#method-LearnerSurvPenalized-clone}{\code{LearnerSurvPenalized$clone()}}
+  \itemize{
+    \item \href{#method-LearnerSurvPenalized-initialize}{\code{LearnerSurvPenalized$new()}}
+    \item \href{#method-LearnerSurvPenalized-selected_features}{\code{LearnerSurvPenalized$selected_features()}}
+    \item \href{#method-LearnerSurvPenalized-clone}{\code{LearnerSurvPenalized$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvPenalized-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvPenalized-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvPenalized$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerSurvPenalized-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvPenalized-initialize}{}}}
+\subsection{\code{LearnerSurvPenalized$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvPenalized$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvPenalized-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvPenalized-selected_features}{}}}
-\subsection{Method \code{selected_features()}}{
-Selected features are extracted with the method \code{coef()} of the S4 model
-object, see \code{\link[penalized:penfit]{penalized::penfit()}}.
+\subsection{\code{LearnerSurvPenalized$selected_features()}}{
+  Selected features are extracted with the method \code{coef()} of the S4 model
+object, see \code{penalized::penfit()}.
 By default it returns features with non-zero coefficients.
 
 \strong{Note}: Selected features can be retrieved only for datasets with
 \code{numeric} features, as the presence of factors with multiple levels makes
 it difficult to get the original feature names.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvPenalized$selected_features()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvPenalized$selected_features()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{character()}.
+  }
 }
 
-\subsection{Returns}{
-\code{character()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvPenalized-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvPenalized-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvPenalized$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvPenalized$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvPenalized$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

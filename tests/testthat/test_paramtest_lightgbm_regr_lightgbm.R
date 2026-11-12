@@ -105,6 +105,7 @@ test_that("paramtest regr.lightgbm predict", {
     "predict_contrib", # shapely prediction
     "predict_disable_shape_check", # don't disable this
     "output_result", # cli
+    "num_threads", # ... in predict
 
     # from the R function
     "params", # handled internally

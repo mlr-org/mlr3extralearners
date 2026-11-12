@@ -6,7 +6,7 @@
 #' Classification using Rotation Forest algorithm.
 #' Training this learner works only for tasks with at least two features.
 #' The task must not have utf8 feature names.
-#' Calls [rotationForest::rotationForest()] from \CRANpkg{rotationForest}.
+#' Calls `rotationForest::rotationForest()` from \CRANpkg{rotationForest}.
 #'
 #'
 #'

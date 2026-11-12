@@ -4,16 +4,16 @@
 #'
 #' @description
 #' Penalized (L1 and L2) Cox Proportional Hazards model.
-#' Calls [penalized::penalized()] from \CRANpkg{penalized}.
+#' Calls `penalized::penalized()` from \CRANpkg{penalized}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using the internal [penalized::predict()] function.
-#' By default the Breslow estimator [penalized::breslow()] is used for computing
+#' Calculated using the internal `penalized::predict()` function.
+#' By default the Breslow estimator `penalized::breslow()` is used for computing
 #' the baseline hazard.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @section Initial parameter values:
 #' - `trace` is set to `"FALSE"` to disable printing output during model training.
@@ -23,7 +23,7 @@
 #'
 #' @details
 #' The `penalized` and `unpenalized` arguments in the learner are implemented slightly
-#' differently than in [penalized::penalized()]. Here, there is no parameter for `penalized` but
+#' differently than in `penalized::penalized()`. Here, there is no parameter for `penalized` but
 #' instead it is assumed that every variable is penalized unless stated in the `unpenalized`
 #' parameter.
 #'
@@ -70,7 +70,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
 
     #' @description
     #' Selected features are extracted with the method `coef()` of the S4 model
-    #' object, see [penalized::penfit()].
+    #' object, see `penalized::penfit()`.
     #' By default it returns features with non-zero coefficients.
     #'
     #' **Note**: Selected features can be retrieved only for datasets with

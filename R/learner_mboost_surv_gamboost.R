@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fits a generalized additive survival model using a boosting algorithm.
-#' Calls [mboost::gamboost()] from \CRANpkg{mboost}.
+#' Calls `mboost::gamboost()` from \CRANpkg{mboost}.
 #'
 #' @template learner
 #' @templateVar id surv.gamboost
@@ -13,13 +13,13 @@
 #' This learner returns two to three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [mboost::predict.gamboost()].
+#' Calculated using `mboost::predict.gamboost()`.
 #' If the `family` parameter is not `"coxph"`, `-lp` is returned, since non-coxph
 #' families represent AFT-style distributions where lower `lp` values indicate higher risk.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [mboost::survFit()].
+#' Calculated using `mboost::survFit()`.
 #' This prediction type is present only when the `family` distribution parameter
 #' is equal to `"coxph"` (default).
 #' By default the Breslow estimator is used for computing the baseline hazard.
@@ -31,7 +31,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template simple_example
+#' @template example_simple
 LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
   inherit = mlr3proba::LearnerSurv,
   public = list(
@@ -79,7 +79,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
     },
 
     #' @description
-    #' The importance scores are extracted with the function [mboost::varimp()]
+    #' The importance scores are extracted with the function `mboost::varimp()`
     #' with the default arguments.
     #' @return Named `numeric()`.
     importance = function() {
@@ -95,7 +95,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
 
     #' @description
     #' Selected features are extracted with the function
-    #' [mboost::variable.names.mboost()], with
+    #' `mboost::variable.names.mboost()`, with
     #' `used.only = TRUE`.
     #' @return `character()`.
     selected_features = function() {

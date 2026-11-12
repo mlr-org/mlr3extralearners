@@ -6,11 +6,11 @@
 \title{Boosted Generalized Linear Survival Learner}
 \description{
 Fits a generalized linear survival model using a boosting algorithm.
-Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
+Calls \code{mboost::glmboost()} from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.glmboost")
 }\if{html}{\out{</div>}}
@@ -52,13 +52,13 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:predict.glmboost]{mboost::predict.glmboost()}}.
+Calculated using \code{mboost::predict.glmboost()}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{\link[mboost:survFit]{mboost::survFit()}}.
+Calculated using \code{mboost::survFit()}.
 This prediction type is present only when the \code{family} distribution parameter
 is equal to \code{"coxph"} (default).
 By default the Breslow estimator is used for computing the baseline hazard.
@@ -106,7 +106,7 @@ Bühlmann, Peter, Yu, Bin (2003).
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
 \item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
-\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
 \item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
@@ -121,44 +121,44 @@ RaphaelS1
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerSurvGLMBoost-new}{\code{LearnerSurvGLMBoost$new()}}
-\item \href{#method-LearnerSurvGLMBoost-importance}{\code{LearnerSurvGLMBoost$importance()}}
-\item \href{#method-LearnerSurvGLMBoost-selected_features}{\code{LearnerSurvGLMBoost$selected_features()}}
-\item \href{#method-LearnerSurvGLMBoost-clone}{\code{LearnerSurvGLMBoost$clone()}}
+  \itemize{
+    \item \href{#method-LearnerSurvGLMBoost-initialize}{\code{LearnerSurvGLMBoost$new()}}
+    \item \href{#method-LearnerSurvGLMBoost-importance}{\code{LearnerSurvGLMBoost$importance()}}
+    \item \href{#method-LearnerSurvGLMBoost-selected_features}{\code{LearnerSurvGLMBoost$selected_features()}}
+    \item \href{#method-LearnerSurvGLMBoost-clone}{\code{LearnerSurvGLMBoost$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvGLMBoost-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerSurvGLMBoost-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-initialize}{}}}
+\subsection{\code{LearnerSurvGLMBoost$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvGLMBoost$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-importance}{}}}
-\subsection{Method \code{importance()}}{
-Importance scores are extracted with the function \code{\link[mboost:varimp]{mboost::varimp()}} and
+\subsection{\code{LearnerSurvGLMBoost$importance()}}{
+  Importance scores are extracted with the function \code{mboost::varimp()} and
 represent a feature's individual contribution to the risk reduction per
 boosting step of the fitted model.
 The higher the risk reduction, the larger the feature importance.
@@ -166,48 +166,54 @@ The higher the risk reduction, the larger the feature importance.
 \strong{Note}: Importance is supported only for datasets with \code{numeric}
 features, as the presence of factors with multiple levels makes it
 difficult to get the original feature names.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$importance()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvGLMBoost$importance()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    Named \code{numeric()}.
+  }
 }
 
-\subsection{Returns}{
-Named \code{numeric()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-selected_features}{}}}
-\subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:coef.glmboost]{mboost::coef.glmboost()}}
+\subsection{\code{LearnerSurvGLMBoost$selected_features()}}{
+  Selected features are extracted with the function \code{mboost::coef.glmboost()}
 which by default returns features with non-zero coefficients and for the
 final number of boosting iterations.
 
 \strong{Note}: Selected features can be retrieved only for datasets with
 \code{numeric} features, as the presence of factors with multiple levels makes
 it difficult to get the original feature names.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$selected_features()}\if{html}{\out{</div>}}
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvGLMBoost$selected_features()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{character()}.
+  }
 }
 
-\subsection{Returns}{
-\code{character()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerSurvGLMBoost$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerSurvGLMBoost$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

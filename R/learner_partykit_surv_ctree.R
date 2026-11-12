@@ -4,14 +4,14 @@
 #'
 #' @description
 #' Survival Partition Tree where a significance test is used to determine the univariate splits.
-#' Calls [partykit::ctree()] from \CRANpkg{partykit}.
+#' Calls `partykit::ctree()` from \CRANpkg{partykit}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using the internal [partykit::predict.party()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' Calculated using the internal `partykit::predict.party()` function.
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @template learner
 #' @templateVar id surv.ctree
@@ -85,7 +85,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
 
       super$initialize(
         id = "surv.ctree",
-        packages = c("mlr3extralearners", "partykit", "coin", "sandwich"),
+        packages = c("mlr3extralearners", "partykit", "coin", "sandwich", "survdistr"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "distr"),
         param_set = ps,
@@ -120,12 +120,12 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
 
       res = lapply(preds, function(p) {
         # p is a `survfit` object
-        survdistr::vec_interp(
+        survdistr::interp(
           x = p$surv,
           times = p$time,
           eval_times = common_times,
-          constant = TRUE,
-          type = "surv",
+          method = "const_surv",
+          output = "surv",
           add_times = FALSE,
           check = FALSE # no need to check, as Kaplan-Meier formula is used
         )

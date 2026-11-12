@@ -4,9 +4,9 @@
 #'
 #' @description
 #' Accelerated oblique random survival forest.
-#' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
+#' Calls `aorsf::orsf()` from \CRANpkg{aorsf}.
 #' Note that although the learner has the property `"missing"` and it can in
-#' principle deal with missing values, the behaviour has to be configured using
+#' principle deal with missing values, the behavior has to be configured using
 #' the parameter `na_action`.
 #'
 #' @section Initial parameter values:
@@ -19,7 +19,7 @@
 #' Calculated using the internal `predict.ObliqueForest()` function.
 #' 2. `response`: the restricted mean survival time of each test observation,
 #' derived from the survival matrix prediction (`distr`).
-#' 3. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' 3. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @template learner
 #' @templateVar id surv.aorsf
@@ -210,4 +210,4 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
   )
 )
 
-.extralrns_dict$add("surv.aorsf", function() LearnerSurvAorsf$new())
+.extralrns_dict$add("surv.aorsf", LearnerSurvAorsf)

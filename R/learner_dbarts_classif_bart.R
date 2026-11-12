@@ -6,7 +6,7 @@
 #' Bayesian Additive Regression Trees are similar to gradient boosting algorithms.
 #' The classification problem is solved by 0-1 encoding of the two-class targets and setting the
 #' decision threshold to p = 0.5 during the prediction phase.
-#' Calls [dbarts::bart()] from \CRANpkg{dbarts}.
+#' Calls `dbarts::bart()` from \CRANpkg{dbarts}.
 #'
 #' @template learner
 #' @templateVar id classif.bart
@@ -26,7 +26,7 @@
 #' * Parameter: nchain, combineChains, combinechains
 #'  * The parameters are removed as parallelization of multiple models is handled by future.
 #'
-#' * Parameter: sigest, sigdf, sigquant, keeptres
+#' * Parameter: sigest, sigdf, sigquant, keeptrees
 #'  * Regression only.
 #'
 #' @references
@@ -87,7 +87,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       pars = self$param_set$get_values(tags = "train")
 
-      # Extact just the features from the task data.
+      # Extract just the features from the task data.
       x_train = task$data(cols = task$feature_names)
       y_train = task$data(cols = task$target_names)
       y_train = as.integer(y_train == task$positive)
@@ -119,7 +119,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
       ))
 
       if (self$predict_type == "response") {
-        list(response = ifelse(p >= 0.5, task$positive, task$negative))
+        list(response = fifelse(p >= 0.5, task$positive, task$negative))
       } else {
         list(prob = pprob_to_matrix(p, task))
       }
