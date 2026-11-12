@@ -98,7 +98,7 @@ Suggests:
     knitr,
     laGP (>= 1.5-9),
     lgr,
-    LiblineaR,
+    LiblineaR (>= 2.50-1),
     lightgbm (>= 4.5.0),
     lme4 (>= 1.1-38),
     MASS,
@@ -158,7 +158,7 @@ Remotes:
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
-    PlantedML/randomPlantedForest
+    PlantedML/randomPlantedForest@v0.5.0
 Config/Needs/website: rmarkdown
 Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
