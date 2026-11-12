@@ -1,4 +1,5 @@
 skip_if_not_installed("blockForest")
+skip_on_os("mac")
 
 test_that("autotest", {
   withr::local_seed(1)

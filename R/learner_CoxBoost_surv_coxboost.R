@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fit a Survival Cox model with a likelihood based boosting algorithm.
-#' Calls `CoxBoost::CoxBoost()` from package 'CoxBoost'.
+#' Calls `CoxBoost::CoxBoost()` from package \CRANpkg{CoxBoost}.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types, using the internal `predict.CoxBoost()` function:
@@ -18,8 +18,6 @@
 #' @template learner
 #' @templateVar id surv.coxboost
 #'
-#' @template install_coxboost
-#'
 #' @details
 #' Use [LearnerSurvCoxboost] and [LearnerSurvCVCoxboost] for Cox boosting without and with internal
 #' cross-validation of boosting step number, respectively. Tuning using the internal optimizer in
@@ -28,7 +26,7 @@
 #' results.
 #'
 #' @references
-#' `r format_bib("binder2009boosting")`
+#' `r format_bib("binder2008")`
 #'
 #' @template seealso_learner
 #' @template example

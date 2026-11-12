@@ -1,13 +1,19 @@
-# Custom template for catboost learner (classif.catboost)
-# Reason: Use a small boosting configuration for examples.
+<%
+l = lrn(id)
+task_id = if ("LearnerClassif" %in% class(l)) {
+"sonar"
+} else {
+"mtcars"
+}
+%>
 #'
 #' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
 #' # Define the Learner
-#' learner = lrn("<%= id %>", iterations = 50L, depth = 3L)
+#' learner = lrn("<%= id %>", iterations = 10)
 #' print(learner)
 #'
 #' # Define a Task
-#' task = tsk("sonar")
+#' task = tsk("<%= task_id %>")
 #'
 #' # Create train and test set
 #' ids = partition(task)
@@ -16,7 +22,7 @@
 #' learner$train(task, row_ids = ids$train)
 #'
 #' print(learner$model)
-#' print(learner$importance())
+#' <%= if("importance" %in% l$properties) "print(learner$importance())" %>
 #'
 #' # Make predictions for the test rows
 #' predictions = learner$predict(task, row_ids = ids$test)

@@ -1,13 +1,19 @@
-# Custom template for h2o.deeplearning learner (classif.h2o.deeplearning)
-# Reason: Use a light network and short training for examples.
+<%
+l = lrn(id)
+task_id = if ("LearnerClassif" %in% class(l)) {
+"sonar"
+} else {
+"mtcars"
+}
+%>
 #'
 #' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
 #' # Define the Learner
-#' learner = lrn("<%= id %>", epochs = 1, hidden = 5L)
+#' learner = lrn("<%= id %>", epochs = 1)
 #' print(learner)
 #'
 #' # Define a Task
-#' task = tsk("sonar")
+#' task = tsk("<%= task_id %>")
 #'
 #' # Create train and test set
 #' ids = partition(task)

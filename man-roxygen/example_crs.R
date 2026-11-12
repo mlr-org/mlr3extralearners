@@ -1,9 +1,7 @@
-# Custom template for crs learner (regr.crs)
-# Reason: Disable CV and simplify complexity for faster examples.
 #'
-#' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
+#' @examplesIf learner_is_runnable("regr.crs")
 #' # Define the Learner
-#' learner = lrn("<%= id %>", cv = "none", complexity = "knots")
+#' learner = lrn("regr.crs", cv = "none")
 #' print(learner)
 #'
 #' # Define a Task

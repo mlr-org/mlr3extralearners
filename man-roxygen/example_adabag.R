@@ -1,9 +1,7 @@
-# Custom template for adabag learner (classif.adabag)
-# Reason: Use smaller boosting settings for faster examples.
 #'
-#' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
+#' @examplesIf learner_is_runnable("classif.adabag")
 #' # Define the Learner
-#' learner = lrn("<%= id %>", mfinal = 20L, maxdepth = 10L)
+#' learner = lrn("classif.adabag", mfinal = 10L)
 #' print(learner)
 #'
 #' # Define a Task

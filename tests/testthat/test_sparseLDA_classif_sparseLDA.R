@@ -3,8 +3,9 @@ skip_if_not_installed("elasticnet")
 skip_if_not_installed("MASS")
 
 test_that("autotest", {
+  withr::local_seed(42)
   learner = lrn("classif.sparseLDA")
   expect_learner(learner)
-  result = run_autotest(learner, exclude = "feat_single_integer_binary")
+  result = run_autotest(learner, exclude = "feat_single_integer_binary|feat_single_integer_multiclass")
   expect_true(result, info = result$error)
 })

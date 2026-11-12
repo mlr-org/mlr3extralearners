@@ -27,7 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example_surv_cforest
+#' @template example_cforest
 LearnerSurvCForest = R6Class("LearnerSurvCForest",
   inherit = mlr3proba::LearnerSurv,
   public = list(
