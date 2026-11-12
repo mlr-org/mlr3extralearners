@@ -50,6 +50,7 @@ test_that("paramtest regr.gpboost train", {
     "gp_rand_coef_data", # random coefficients are not supported
     "cluster_ids", # independent realizations of random effects are not supported
     "weights", # handled by mlr3
+    "additional_likelihood_data", # joint Tweedie likelihoods are not supported
     "num_data", # only used for models without random effects
     "free_raw_data", # handled internally
     "vecchia_approx", # discontinued, use gp_approx

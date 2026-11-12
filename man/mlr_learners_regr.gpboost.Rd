@@ -71,6 +71,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    likelihood \tab untyped \tab "gaussian" \tab  \tab - \cr
    cov_function \tab untyped \tab "matern" \tab  \tab - \cr
    cov_fct_shape \tab numeric \tab 1.5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   cov_fct_order \tab integer \tab 1 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    gp_approx \tab character \tab none \tab none, vecchia, full_scale_vecchia, tapering, fitc, full_scale_tapering, vecchia_latent \tab - \cr
    num_parallel_threads \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    GPU_use \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

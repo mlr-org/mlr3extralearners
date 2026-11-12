@@ -66,6 +66,7 @@ LearnerRegrGPBoost = R6Class("LearnerRegrGPBoost",
         likelihood = p_uty(default = "gaussian", tags = "train", custom_check = crate(function(x) check_string(x))),
         cov_function = p_uty(default = "matern", tags = "train", custom_check = crate(function(x) check_string(x))),
         cov_fct_shape = p_dbl(lower = 0, default = 1.5, tags = "train"),
+        cov_fct_order = p_int(lower = 1L, upper = 2L, default = 1L, tags = "train"),
         gp_approx = p_fct(default = "none", levels = c("none", "vecchia", "full_scale_vecchia", "tapering", "fitc",
             "full_scale_tapering", "vecchia_latent"), tags = "train"),
         num_parallel_threads = p_int(lower = 1L, default = NULL, special_vals = list(NULL), tags = "train"),
@@ -358,10 +359,10 @@ gpboost_train_args = c("nrounds", "verbose", "record", "reset_data", "use_gp_mod
   "train_gp_model_cov_pars")
 
 # arguments of gpboost::GPModel()
-gpboost_gpmodel_args = c("likelihood", "cov_function", "cov_fct_shape", "gp_approx", "num_parallel_threads", "GPU_use",
-  "matrix_inversion_method", "likelihood_learning_rate", "cov_fct_taper_range", "cov_fct_taper_shape", "num_neighbors",
-  "vecchia_ordering", "ind_points_selection", "num_ind_points", "cover_tree_radius", "likelihood_additional_param",
-  "fidelity_specific_mean")
+gpboost_gpmodel_args = c("likelihood", "cov_function", "cov_fct_shape", "cov_fct_order", "gp_approx",
+  "num_parallel_threads", "GPU_use", "matrix_inversion_method", "likelihood_learning_rate", "cov_fct_taper_range",
+  "cov_fct_taper_shape", "num_neighbors", "vecchia_ordering", "ind_points_selection", "num_ind_points",
+  "cover_tree_radius", "likelihood_additional_param", "fidelity_specific_mean")
 
 gpboost_random_effect_cols = function(pars) {
   list(group = pars$group_data_cols, coords = pars$gp_coords_cols)
