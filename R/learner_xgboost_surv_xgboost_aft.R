@@ -92,7 +92,6 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         skip_drop                   = p_dbl(0, 1, default = 0, tags = "train", depends = quote(booster == "dart")),
         use_rmm                     = p_lgl(default = FALSE, tags = "train"),
         max_cached_hist_node        = p_int(default = NULL, special_vals = list(NULL), tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
-        extmem_single_page          = p_lgl(default = FALSE, tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
         max_cat_to_onehot           = p_int(default = 4L, tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
         max_cat_threshold           = p_int(default = 64L, tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
         subsample                   = p_dbl(0, 1, default = 1, tags = "train", depends = quote(booster == "gbtree")),
@@ -133,6 +132,15 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     #' Extracted from `model$evaluation_log`
     internal_valid_scores = function() {
       self$state$internal_valid_scores
+    },
+
+    #' @field best_valid_scores
+    #' The validation scores of the best boosting round, extracted from `model$evaluation_log`.
+    #' Because XGBoost also predicts with the best `nrounds`, these are identical to
+    #' `$internal_valid_scores` whenever early stopping is activated.
+    #' If early stopping is not activated, no best round is tracked and this is an empty list.
+    best_valid_scores = function() {
+      self$state$best_valid_scores
     },
 
     #' @field internal_tuned_values
@@ -176,14 +184,22 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(attributes(self$model)$evaluation_log)) {
+      # when early stopping was used, xgboost also predicts with the best iteration,
+      # so this is the score of the model that is used for prediction
+      best_iter = attributes(self$model)$early_stop$best_iteration
+      private$.valid_scores_at(best_iter %??% xgboost::xgb.get.num.boosted.rounds(self$model))
+    },
+
+    .extract_best_valid_scores = function() {
+      # the best iteration is only tracked when early stopping is enabled
+      private$.valid_scores_at(attributes(self$model)$early_stop$best_iteration)
+    },
+
+    .valid_scores_at = function(iter) {
+      log = attributes(self$model)$evaluation_log
+      if (is.null(log) || is.null(iter)) {
         return(named_list())
       }
-      iter = attributes(self$model)$early_stop$best_iteration
-      if (is.null(iter)) {
-        iter = xgboost::xgb.get.num.boosted.rounds(self$model)
-      }
-      log = attributes(self$model)$evaluation_log
       patterns = NULL # silence data.table note
       as.list(log[
         iter,

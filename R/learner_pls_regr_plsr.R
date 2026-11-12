@@ -32,7 +32,8 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
         validation = p_fct(default = "none", levels = c("none", "CV", "LOO"), tags = "train"),
         model      = p_lgl(default = TRUE, tags = "train"),
         x          = p_lgl(default = FALSE, tags = "train"),
-        y          = p_lgl(default = FALSE, tags = "train")
+        y          = p_lgl(default = FALSE, tags = "train"),
+        orthScores = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(

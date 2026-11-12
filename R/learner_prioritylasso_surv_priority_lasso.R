@@ -1,14 +1,12 @@
 #' @title Survival Priority Lasso Learner
 #' @author HarutyunyanLiana
+#' @author bblodfon
 #' @name mlr_learners_surv.priority_lasso
 #'
 #' @description
-#' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
+#' Patient outcome prediction based on multi-omics data taking practitioners’
+#' preferences into account.
 #' Calls `prioritylasso::prioritylasso()` from \CRANpkg{prioritylasso}.
-#' Many parameters for this survival learner are the same as [mlr_learners_surv.cv_glmnet]
-#' as `prioritylasso()` calls `glmnet::cv.glmnet()` during training phase.
-#' Note that `prioritylasso()` has ways to deal with block-wise missing data,
-#' but this feature is not supported currently.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -23,75 +21,59 @@
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"cox"` for the Cox survival objective and cannot be changed
-#' - `type.measure` set to `"deviance"` (cross-validation measure)
+#' - `type.measure` is set to `"deviance"` (cross-validation measure) and cannot be changed
+#' - `cox.ties` is initialized to `"breslow"` to keep the tie-handling behavior of earlier glmnet versions,
+#' and to silence the glmnet v5.0 warning about the upcoming default change to `"efron"`
+#'
+#' @inheritSection mlr_learners_classif.priority_lasso Scope and supported arguments
+#' @inheritSection mlr_learners_classif.priority_lasso Custom mlr3 parameters
 #'
 #' @templateVar id surv.priority_lasso
 #' @template learner
 #'
 #' @references
-#' `r format_bib("klau2018priolasso")`
+#' `r format_bib("klau2018priolasso", "herrmann_2021")`
 #'
 #' @template seealso_learner
 #' @template example_prioritylasso
 #' @export
-LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
+LearnerSurvPriorityLasso = R6Class(
+  "LearnerSurvPriorityLasso",
   inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      # fmt: skip
       param_set = ps(
-        blocks                 = p_uty(tags = c("train", "required")),
-        max.coef               = p_uty(default = NULL, tags = "train"),
-        block1.penalization    = p_lgl(default = TRUE, tags = "train"),
-        lambda.type            = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = "train"),
-        standardize            = p_lgl(default = TRUE, tags = "train"),
-        nfolds                 = p_int(default = 5L, lower = 1L, tags = "train"),
-        foldid                 = p_uty(default = NULL, tags = "train"),
-        cvoffset               = p_lgl(default = FALSE, tags = "train"),
-        cvoffsetnfolds         = p_int(default = 10, lower = 1L, tags = "train"),
-        return.x               = p_lgl(default = TRUE, tags = "train"),
-        include.allintercepts  = p_lgl(default = FALSE, tags = "predict"),
-        use.blocks             = p_uty(default = "all", tags = "predict"),
-
-        # params from cv.glmnet, passed to `prioritylasso()` during `.train()`
-        alignment            = p_fct(c("lambda", "fraction"), default = "lambda", tags = "train"),
-        alpha                = p_dbl(0, 1, default = 1, tags = "train"),
-        big                  = p_dbl(default = 9.9e35, tags = "train"),
-        devmax               = p_dbl(0, 1, default = 0.999, tags = "train"),
-        dfmax                = p_int(0L, tags = "train"),
-        eps                  = p_dbl(0, 1, default = 1.0e-6, tags = "train"),
-        epsnr                = p_dbl(0, 1, default = 1.0e-8, tags = "train"),
-        exclude              = p_uty(tags = "train"),
-        exmx                 = p_dbl(default = 250.0, tags = "train"),
-        fdev                 = p_dbl(0, 1, default = 1.0e-5, tags = "train"),
-        gamma                = p_uty(tags = "train"),
-        grouped              = p_lgl(default = TRUE, tags = "train"),
-        intercept            = p_lgl(default = TRUE, tags = "train"),
-        keep                 = p_lgl(default = FALSE, tags = "train"),
-        lambda               = p_uty(tags = "train"),
-        lambda.min.ratio     = p_dbl(0, 1, tags = "train"),
-        lower.limits         = p_uty(default = -Inf, tags = "train"),
-        maxit                = p_int(1L, default = 100000L, tags = "train"),
-        mnlam                = p_int(1L, default = 5L, tags = "train"),
-        mxit                 = p_int(1L, default = 100L, tags = "train"),
-        mxitnr               = p_int(1L, default = 25L, tags = "train"),
-        nlambda              = p_int(1L, default = 100L, tags = "train"),
-        offset               = p_uty(default = NULL, tags = "train"),
-        parallel             = p_lgl(default = FALSE, tags = "train"),
-        penalty.factor       = p_uty(tags = "train"),
-        pmax                 = p_int(0L, tags = "train"),
-        pmin                 = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
-        prec                 = p_dbl(default = 1e-10, tags = "train"),
-        standardize.response = p_lgl(default = FALSE, tags = "train"),
-        thresh               = p_dbl(0, default = 1e-07, tags = "train"),
-        trace.it             = p_int(0, 1, default = 0, tags = "train"),
-        type.gaussian        = p_fct(c("covariance", "naive"), tags = "train"),
-        type.logistic        = p_fct(c("Newton", "modified.Newton"), default = "Newton", tags = "train"),
-        type.multinomial     = p_fct(c("ungrouped", "grouped"), default = "ungrouped", tags = "train"),
-        upper.limits         = p_uty(default = Inf, tags = "train"),
-        relax                = p_lgl(default = FALSE, tags = "train")
+        # prioritylasso::prioritylasso() parameters
+        blocks                = p_uty(tags = c("train", "required")),
+        max.coef              = p_uty(default = NULL, tags = "train"),
+        block1.penalization   = p_lgl(default = TRUE, tags = "train"),
+        lambda.type           = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = "train"),
+        standardize           = p_lgl(default = TRUE, tags = "train"),
+        nfolds                = p_int(3L, default = 10L, tags = "train"),
+        foldid                = p_uty(default = NULL, tags = "train"),
+        cvoffset              = p_lgl(default = FALSE, tags = "train"),
+        cvoffsetnfolds        = p_int(1L, default = 10L, tags = "train"),
+        return.x              = p_lgl(default = TRUE, tags = "train"),
+        # glmnet::cv.glmnet() parameters
+        lambda                = p_uty(default = NULL, tags = "train"),
+        grouped               = p_lgl(default = TRUE, tags = "train"),
+        trace.it              = p_int(0, 1, default = 0, tags = "train"), # alias: itrace
+        # glmnet::glmnet() parameters
+        cox.ties              = p_fct(c("breslow", "efron"), default = "breslow", tags = "train"),
+        # prioritylasso:::predict.prioritylasso() parameters
+        include.allintercepts = p_lgl(default = FALSE, tags = "predict"),
+        use.blocks            = p_uty(default = "all", tags = "predict"),
+        # Custom mlr3 parameters
+        adaptive.order        = p_lgl(default = FALSE, tags = "train")
       )
+
+      # TODO: Remove `cox.ties` initialization once glmnet >= 5.1 defaults to
+      # cox.ties = "efron" without warnings.
+      # Setting now explicitly to avoid warnings.
+      param_set$set_values(cox.ties = "breslow")
 
       super$initialize(
         id = "surv.priority_lasso",
@@ -112,35 +94,53 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
       if (is.null(self$model)) {
         stopf("No model stored")
       }
-      coefs = self$model$coefficients
+
+      # uses prioritylasso:::coef.prioritylasso()
+      coefs = stats::coef(self$model)$coefficients
       coefs = coefs[coefs != 0]
       names(coefs)
     }
   ),
+
   private = list(
     .train = function(task) {
-      # get parameters for training
-      pars = self$param_set$get_values(tags = "train")
-      pars$family = "cox"
-      pars$type.measure = "deviance"
-      pars$weights = private$.get_weights(task)
+      pv = self$param_set$get_values(tags = "train")
+      pv$family = "cox"
+      pv$type.measure = "deviance"
+      pv$weights = private$.get_weights(task)
 
       data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
 
-      model = invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pars)
+      # If adaptive.order is TRUE, compute block order and penalty factors from the data
+      res = NULL
+      if (length(pv$blocks) >= 2L && isTRUE(pv$adaptive.order)) {
+        pv$adaptive.order = NULL
+        res = adaptive_block_order(data, target, pv)
+        pv = res$pv
+      }
+
+      model = invoke(
+        prioritylasso::prioritylasso,
+        X = data,
+        Y = target,
+        .args = pv
+      )
+
       # add (time, status) of training data for breslow distr prediction
       model$train_times = task$times()
       model$train_status = task$status()
+
+      # add block penalty factors to the model object
+      if (!is.null(res)) {
+        model$block.penalty.factors = res$penalty.factors
+      }
 
       model
     },
 
     .predict = function(task) {
-      # get newdata and ensure same ordering in train and predict
       newdata = as.matrix(ordered_features(task, self))
-
-      # get parameters with tag "predict"
       pv = self$param_set$get_values(tags = "predict")
 
       # get linear predictor for train data
@@ -150,7 +150,13 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
 
       # get linear predictor for test data
       lp_test = as.numeric(
-        invoke(predict, self$model, newdata = newdata, type = "link", .args = pv)
+        invoke(
+          predict,
+          self$model,
+          newdata = newdata,
+          type = "link",
+          .args = pv
+        )
       )
 
       # get survival probability matrix using the Breslow estimator for the baseline hazard

@@ -20,7 +20,7 @@
 #'
 #'
 #' @template seealso_learner
-#' @template example
+#' @template example_adabag
 #' @export
 LearnerClassifAdabag = R6Class("LearnerClassifAdabag",
   inherit = LearnerClassif,

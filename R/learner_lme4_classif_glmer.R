@@ -68,6 +68,9 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         compDev = p_lgl(default = TRUE, tags = "train"),
         nAGQ0initStep = p_lgl(default = TRUE, tags = "train"),
         check.response.not.const = p_uty(default = "stop", tags = "train"),
+        disp_method = p_fct(levels = c("moment", "old/buggy"), default = "moment", tags = "train"),
+        maxPhiIter = p_int(default = 100L, lower = 1L, tags = "train"),
+        disp_dof_correction = p_lgl(default = TRUE, tags = "train"),
 
         # Prediction params
         newparams = p_uty(default = NULL, tags = "predict"),

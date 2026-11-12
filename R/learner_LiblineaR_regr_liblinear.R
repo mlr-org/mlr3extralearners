@@ -20,7 +20,7 @@
 #'   - Actual default: `NULL`
 #'   - Initial value: 0.001
 #'   - Reason for change: `svr_eps` is type dependent and the "type" is handled
-#'   by the mlr3learner. The default value is set to th default of the respective
+#'   by the mlr3learner. The default value is set to the default of the respective
 #'   "type".
 #'
 #' @references

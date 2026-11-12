@@ -85,7 +85,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
 
       super$initialize(
         id = "surv.ctree",
-        packages = c("mlr3extralearners", "partykit", "coin", "sandwich"),
+        packages = c("mlr3extralearners", "partykit", "coin", "sandwich", "survdistr"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "distr"),
         param_set = ps,
@@ -120,12 +120,12 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
 
       res = lapply(preds, function(p) {
         # p is a `survfit` object
-        survdistr::vec_interp(
+        survdistr::interp(
           x = p$surv,
           times = p$time,
           eval_times = common_times,
-          constant = TRUE,
-          type = "surv",
+          method = "const_surv",
+          output = "surv",
           add_times = FALSE,
           check = FALSE # no need to check, as Kaplan-Meier formula is used
         )

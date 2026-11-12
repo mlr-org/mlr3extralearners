@@ -1,5 +1,6 @@
 skip_if_not_installed("survdnn")
 skip_if_not_installed("torch")
+skip_if(!torch::torch_is_installed())
 
 test_that("autotest", {
   withr::local_seed(1)

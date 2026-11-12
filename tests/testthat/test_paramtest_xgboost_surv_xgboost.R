@@ -5,7 +5,7 @@ test_that("surv.xgboost", {
   learner_cox = lrn("surv.xgboost.cox")
   learner_aft = lrn("surv.xgboost.aft")
   fun = list(xgboost::xgb.train, xgboost::xgb.params)
-  exclude = c(
+  exclude_cox = c(
     "params", # handled by mlr3
     "custom_metric", # not supported for survival
     "data", # handled by mlr3
@@ -29,12 +29,12 @@ test_that("surv.xgboost", {
     "quantile_alpha", # for quantile regression only
     "aft_loss_distribution", # only for AFT objective, not for Cox
     "aft_loss_distribution_scale" # only for AFT objective, not for Cox
-    # also was not in the doc in general: https://github.com/dmlc/xgboost/issues/11892
   )
+  exclude_aft = head(exclude_cox, -2)
 
-  paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "train")
+  paramtest_cox = run_paramtest(learner_cox, fun, exclude_cox, tag = "train")
   expect_paramtest(paramtest_cox)
-  paramtest_aft = run_paramtest(learner_aft, fun, exclude, tag = "train")
+  paramtest_aft = run_paramtest(learner_aft, fun, exclude_aft, tag = "train")
   expect_paramtest(paramtest_aft)
 })
 

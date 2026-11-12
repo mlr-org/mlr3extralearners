@@ -1,4 +1,3 @@
-skip_if_not_installed("mlr3cmprsk")
 skip_if_not_installed("randomForestSRC")
 
 test_that("autotest", {
@@ -8,13 +7,8 @@ test_that("autotest", {
   # remove property as prediction doesn't work due to rsfrc bug
   learner$properties = setdiff(learner$properties, "selected_features")
 
-    # suppress expected warnings during encapsulation autotest from fallback
-    # `cmprsk.aalen`, which lacks the 'missings' and 'importance' properties of
-    # `cmprsk.rfsrc`
-    result = suppress_fallback_warnings(
-      run_autotest(learner, N = 42, check_replicable = FALSE)
-    )
-    expect_true(result, info = result$error)
+  result = run_autotest(learner, N = 42, check_replicable = FALSE)
+  expect_true(result, info = result$error)
 })
 
 test_that("importance/selected/oob_error", {
