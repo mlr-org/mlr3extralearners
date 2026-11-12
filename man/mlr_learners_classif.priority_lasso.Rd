@@ -5,9 +5,22 @@
 \alias{LearnerClassifPriorityLasso}
 \title{Classification Priority Lasso Learner}
 \description{
-Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
+Patient outcome prediction based on multi-omics data, taking practitioners'
+preferences into account.
 Calls \code{prioritylasso::prioritylasso()} from \CRANpkg{prioritylasso}.
+Only binary classification is supported.
 }
+\section{Scope and supported arguments}{
+
+This learner intentionally exposes a focused subset of training and prediction arguments.
+It is designed to work well out of the box, without requiring extensive parameter tuning.
+Some arguments from \code{cv.glmnet()}, \code{glmnet()}, and \code{predict.prioritylasso()} are not included,
+because they are not consistently supported or forwarded through the full train/predict path
+(e.g. handling missing test data, or performing relaxed lasso fits).
+
+Please open an issue if there is a need for supporting more learner parameters.
+}
+
 \section{Initial parameter values}{
 
 \itemize{
@@ -15,9 +28,37 @@ Calls \code{prioritylasso::prioritylasso()} from \CRANpkg{prioritylasso}.
 }
 }
 
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{adaptive.order}: if \code{TRUE}, the priority order of blocks is estimated from the data
+following Herrmann et al. (2021), instead of using the user-supplied block order.
+For each block, a Ridge regression (\code{alpha = 0}) is fit using \code{cv.glmnet()} on that block alone.
+The importance of a block is measured by the mean absolute coefficient (MAC) score at the
+\code{lambda.min} value (the lambda giving minimum cross-validation error).
+A penalty factor of \code{1 / MAC} is then assigned to each block.
+Blocks are sorted by increasing penalty factor, i.e., blocks with larger MAC
+(stronger average signal) receive higher priority (come first).
+Also, the block‑wise penalty factors are attached to the fitted model object as
+\code{learner$model$block.penalty.factors}.
+}
+
+This method is useful when no domain knowledge is available to specify block priority.
+In this step, data are \strong{standardized by default} (\code{standardize = TRUE}), but this can
+be overridden by the learner's \code{standardize} parameter. \code{lambda.min} is always used
+to derive the block priority.
+Additional arguments such as \code{nfolds}, \code{type.measure}, \code{weights} and \code{cox.ties} (if provided) are
+forwarded to each block‑wise \code{cv.glmnet()} fit.
+The \code{max.coef} parameter, if supplied, it is re‑ordered accordingly to align
+with the new block order.
+
+This parameter is ignored when fewer than two blocks are provided.
+It defaults to \code{FALSE} for backward compatibility.
+}
+
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.priority_lasso")
 }\if{html}{\out{</div>}}
@@ -36,76 +77,52 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   blocks \tab untyped \tab - \tab  \tab - \cr
    type.measure \tab character \tab - \tab class, auc \tab - \cr
+   blocks \tab untyped \tab - \tab  \tab - \cr
    max.coef \tab untyped \tab NULL \tab  \tab - \cr
    block1.penalization \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    lambda.type \tab character \tab lambda.min \tab lambda.min, lambda.1se \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   nfolds \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nfolds \tab integer \tab 10 \tab  \tab \eqn{[3, \infty)}{[3, Inf)} \cr
    foldid \tab untyped \tab NULL \tab  \tab - \cr
    cvoffset \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cvoffsetnfolds \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    return.x \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   handle.missingtestdata \tab character \tab - \tab none, omit.prediction, set.zero, impute.block \tab - \cr
+   lambda \tab untyped \tab NULL \tab  \tab - \cr
+   grouped \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   type.logistic \tab character \tab Newton \tab Newton, modified.Newton \tab - \cr
    include.allintercepts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    use.blocks \tab untyped \tab "all" \tab  \tab - \cr
-   alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
-   alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   devmax \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   dfmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   eps \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   epsnr \tab numeric \tab 1e-08 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   exclude \tab untyped \tab - \tab  \tab - \cr
-   exmx \tab numeric \tab 250 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   gamma \tab untyped \tab - \tab  \tab - \cr
-   grouped \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   lambda \tab untyped \tab - \tab  \tab - \cr
-   lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
-   maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mnlam \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   offset \tab untyped \tab NULL \tab  \tab - \cr
-   parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   penalty.factor \tab untyped \tab - \tab  \tab - \cr
-   pmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   pmin \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   prec \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   standardize.response \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   type.gaussian \tab character \tab - \tab covariance, naive \tab - \cr
-   type.logistic \tab character \tab Newton \tab Newton, modified.Newton \tab - \cr
-   type.multinomial \tab character \tab ungrouped \tab ungrouped, grouped \tab - \cr
-   upper.limits \tab untyped \tab Inf \tab  \tab - \cr
+   adaptive.order \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
 \examples{
 \dontshow{if (learner_is_runnable("classif.priority_lasso")) withAutoprint(\{ # examplesIf}
-# Define the Learner and set parameter values
-learner = lrn("classif.priority_lasso", type.measure = "auc",
-  blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
-print(learner)
-
 # Define a Task
 task = mlr3::as_task_classif(prioritylasso::pl_data, target = "pl_out")
 
-# Train the learner
-learner$train(task)
+# Create train and test set
+ids = partition(task)
 
-# print the model
-print(learner$model)
+# Define the Learner and set parameter values
+learner = lrn("classif.priority_lasso", type.measure = "auc", standardize = FALSE,
+  blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028),
+  max.coef = c(Inf, Inf, 10, 10))
+print(learner)
+
+# Train the learner
+learner$train(task, row_ids = ids$train)
+
+# Selected features
+learner$selected_features()
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
@@ -113,6 +130,11 @@ Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 \dQuote{Priority-Lasso: a simple hierarchical approach to the prediction of clinical outcome using multi-omics data.}
 \emph{BMC Bioinformatics}, \bold{19}.
 \doi{10.1186/s12859-018-2344-6}.
+
+Herrmann, M., Probst, P., Hornung, R., Jurinovic, V., Boulesteix, L. A (2021).
+\dQuote{Large-scale benchmark study of survival prediction methods using multi-omics data.}
+\emph{Briefings in Bioinformatics}, \bold{22}(3), 1--15.
+\doi{10.1093/BIB/BBAA167}.
 }
 \seealso{
 \itemize{
@@ -127,73 +149,79 @@ Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
 }
 \author{
 HarutyunyanLiana
+
+bblodfon
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifPriorityLasso}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-LearnerClassifPriorityLasso-new}{\code{LearnerClassifPriorityLasso$new()}}
-\item \href{#method-LearnerClassifPriorityLasso-selected_features}{\code{LearnerClassifPriorityLasso$selected_features()}}
-\item \href{#method-LearnerClassifPriorityLasso-clone}{\code{LearnerClassifPriorityLasso$clone()}}
+  \itemize{
+    \item \href{#method-LearnerClassifPriorityLasso-initialize}{\code{LearnerClassifPriorityLasso$new()}}
+    \item \href{#method-LearnerClassifPriorityLasso-selected_features}{\code{LearnerClassifPriorityLasso$selected_features()}}
+    \item \href{#method-LearnerClassifPriorityLasso-clone}{\code{LearnerClassifPriorityLasso$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerClassifPriorityLasso-new"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerClassifPriorityLasso-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifPriorityLasso$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-LearnerClassifPriorityLasso-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifPriorityLasso-initialize}{}}}
+\subsection{\code{LearnerClassifPriorityLasso$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerClassifPriorityLasso$new()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifPriorityLasso-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifPriorityLasso-selected_features}{}}}
-\subsection{Method \code{selected_features()}}{
-Selected features, i.e. those where the coefficient is non-zero.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifPriorityLasso$selected_features()}\if{html}{\out{</div>}}
+\subsection{\code{LearnerClassifPriorityLasso$selected_features()}}{
+  Selected features, i.e. those where the coefficient is non-zero.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerClassifPriorityLasso$selected_features()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{character()}.
+  }
 }
 
-\subsection{Returns}{
-\code{character()}.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifPriorityLasso-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifPriorityLasso-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifPriorityLasso$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{LearnerClassifPriorityLasso$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{LearnerClassifPriorityLasso$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }
