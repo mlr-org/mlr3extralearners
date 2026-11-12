@@ -411,23 +411,10 @@ fastai_measure_wrapper = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
 
 #' @export
 marshal_model.fastai_model = function(model, inplace = FALSE, ...) {
-  # pickle should be available in any python environment
-  pickle = reticulate::import("pickle")
-  # save model as bytes
-  pickled = pickle$dumps(model$tab_learner)
-  # ensure object is converted to R
-  pickled = as.raw(pickled)
-
-  structure(list(
-    marshaled = list(pickled = pickled, eval_protocol = model$eval_protocol),
-    packages = "mlr3extralearners"
-  ), class = c("fastai_model_marshaled", "marshaled"))
+  marshal_python_model(model, slot = "tab_learner")
 }
 
 #' @export
 unmarshal_model.fastai_model_marshaled = function(model, inplace = FALSE, ...) {
-  pickle = reticulate::import("pickle")
-  # unpickle
-  tab_learner = pickle$loads(reticulate::r_to_py(model$marshaled$pickled))
-  structure(list(tab_learner = tab_learner, eval_protocol = model$marshaled$eval_protocol), class = "fastai_model")
+  unmarshal_python_model(model, slot = "tab_learner")
 }
