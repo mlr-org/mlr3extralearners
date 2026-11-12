@@ -62,6 +62,7 @@ jobs:
           R -q -e 'torch::install_torch()'
 
       - uses: actions/setup-python@v7
+        id: setup-python
         if: ${{ !matrix.config.depends_only }}
         with:
           python-version: "3.12"
@@ -72,7 +73,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ~/.virtualenvs
-          key: pyenvs-${{ runner.os }}-${{ hashFiles('R/install_python_test_envs.R') }}
+          key: pyenvs-${{ runner.os }}-py${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('R/install_python_test_envs.R') }}
 
       - name: Install Python environments
         if: ${{ !matrix.config.depends_only && steps.cache-pyenvs.outputs.cache-hit != 'true' }}
