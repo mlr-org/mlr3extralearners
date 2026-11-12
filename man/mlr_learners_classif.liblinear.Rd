@@ -57,6 +57,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
    wi \tab untyped \tab NULL \tab  \tab - \cr
    findC \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    useInitC \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   regularizeBias \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
