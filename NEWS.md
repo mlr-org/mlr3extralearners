@@ -1,5 +1,6 @@
 # mlr3extralearners (development version)
 
+* `classif.liblinear` and `regr.liblinear`: added the `regularizeBias` parameter of `LiblineaR::LiblineaR()`, which is available from LiblineaR 2.50-1 on.
 * `classif.rpf` and `regr.rpf`: re-added the random planted forest learners from `randomPlantedForest` (>= 0.5.0), which now supports marshaling and can therefore be used with encapsulation, parallelization, and saved to disk (#615).
 * Registering a learner whose id or class name is already in use now throws an error instead of silently overwriting the existing learner (#614).
 * `classif.glmer`: added the `disp_method`, `maxPhiIter`, and `disp_dof_correction` parameters of `lme4::glmerControl()`, which are available from lme4 2.1.0 on.

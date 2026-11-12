@@ -6,7 +6,8 @@ test_that("paramtest classif.liblinear train", {
   exclude = c(
     "data", # handled by mlr3
     "target", # handled by mlr3
-    "svr_eps" # only for regression
+    "svr_eps", # only for regression
+    "nu" # only for one-class svm (type 21)
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

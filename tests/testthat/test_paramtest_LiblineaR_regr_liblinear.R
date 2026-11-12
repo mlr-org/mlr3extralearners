@@ -7,7 +7,8 @@ test_that("paramtest regr.liblinear train", {
     "data", # handled by mlr3
     "target", # handled by mlr3
     "epsilon", # overwritten by svr_eps
-    "wi" # not used in regression
+    "wi", # not used in regression
+    "nu" # only for one-class svm (type 21)
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
