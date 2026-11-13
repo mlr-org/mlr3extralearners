@@ -9,6 +9,7 @@
 * `regr.botorch_fullybayesian`, `regr.botorch_mixedsingletaskgp`, and `regr.botorch_singletaskgp`: fixed segfaults during training and prediction when R uses a recent OpenBLAS (e.g. on Ubuntu 26.04), whose `cblas_dgemm_batch()` was called by torch instead of its own MKL version. torch is now imported with `RTLD_DEEPBIND` if it was not imported before. The data is also copied into torch tensors instead of sharing the read-only memory of the R matrix.
 * New learner `regr.gpytorch` fitting exact Gaussian process regression models with the `gpytorch` Python package (#487, #584).
 * `regr.glm`: added the `tol` and `wtol` parameters of `stats::glm.control()`, which are available from R 4.7.0 on.
+* New learner `regr.gwrf` fitting geographically weighted random forests with `SpatialML::grf()` (#582).
 * New learner `regr.gpboost` combining tree-boosting with Gaussian process and grouped random effects models with `gpboost::gpb.train()` (#357, #585).
 * New learner `regr.xbart` fitting accelerated Bayesian additive regression trees with `XBART::XBART()` from the GitHub package 'XBART' (#587).
 * Update `CoxBoost` version to 1.5.2 which fixes a prediction CIF bug and enabling prediction with one observation or time point from the upstream package (and so no need to handle this on the `mlr3` side).

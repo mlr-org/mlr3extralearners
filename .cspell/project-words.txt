@@ -137,6 +137,7 @@ Ganz
 García
 Gausspr
 Genz
+georganos
 gini
 glmboost
 glmer
@@ -148,6 +149,7 @@ gpytorch
 gramacy
 gridify
 grrf
+gwrf
 Harutyunyan
 hastie
 Hefei
@@ -232,6 +234,7 @@ lvqtest
 Mackay
 magrittr
 makediff
+Manh
 marshalable
 Matdist
 matern
@@ -414,6 +417,7 @@ softmax
 Sonabend
 sparapani
 sparsediscrim
+spatiotempcv
 splitrule
 Srivastava
 stackoverflow
