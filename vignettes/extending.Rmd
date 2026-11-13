@@ -414,6 +414,7 @@ The `$initialize()` method must not call any `reticulate` function.
 
 Instead, call `assert_python_packages()` at the very beginning of both `$.train()` and `$.predict()`, before any module is imported.
 The function registers the Python requirements with `reticulate::py_require()` and then checks that the modules are available.
+The module name is derived from the requirement by removing the version constraint, so the function only works for packages whose pip name equals the name of the imported module.
 If the user did not configure a Python installation, `reticulate` creates an ephemeral environment that satisfies the requirements of all learners used in the session.
 The user therefore does not need to install any Python package manually.
 Pip-style version constraints such as `"fastcore<2.0.0"` are allowed, but keep the requirements as loose as possible, because pins of different learners can conflict.
