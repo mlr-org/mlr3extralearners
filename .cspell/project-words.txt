@@ -103,6 +103,7 @@ DENFIS
 dfns
 distrs
 dlda
+Dondelinger
 donotuse
 dont
 dorogush
@@ -132,6 +133,7 @@ frbs
 freund
 fryda
 fullybayesian
+fuser
 gamboost
 Ganz
 García

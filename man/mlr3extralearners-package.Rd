@@ -49,6 +49,7 @@ Other contributors:
   \item Florian Delage [contributor]
   \item Antoine Debin \email{antoine.debin@gmail.com} [contributor]
   \item Khalifa Ababacar Seck \email{seckhalifaa@gmail.com} [contributor]
+  \item Daniel Agyapong \email{agyapongdaniel7777@gmail.com} [contributor]
 }
 
 }
