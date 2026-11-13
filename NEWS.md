@@ -2,10 +2,17 @@
 
 * `classif.liblinear` and `regr.liblinear`: added the `regularizeBias` parameter of `LiblineaR::LiblineaR()`, which is available from LiblineaR 2.50-1 on.
 * `classif.rpf` and `regr.rpf`: re-added the random planted forest learners from `randomPlantedForest` (>= 0.5.0), which now supports marshaling and can therefore be used with encapsulation, parallelization, and saved to disk (#615).
+* New learner `regr.stochtree` fitting Bayesian additive regression trees (BART), optionally warm-started with the grow-from-root algorithm of XBART, with `stochtree::bart()` (#568).
+* New learner `regr.stochtree_bcf` fitting Bayesian causal forests (BCF), optionally warm-started with the grow-from-root algorithm of XBCF, with `stochtree::bcf()`. The treatment is a feature of the task selected with the `treatment` parameter, and the estimated treatment effect is returned by `$treatment_effect()` (#568).
 * Registering a learner whose id or class name is already in use now throws an error instead of silently overwriting the existing learner (#614).
 * `classif.glmer`: added the `disp_method`, `maxPhiIter`, and `disp_dof_correction` parameters of `lme4::glmerControl()`, which are available from lme4 2.1.0 on.
 * `regr.botorch_fullybayesian`, `regr.botorch_mixedsingletaskgp`, and `regr.botorch_singletaskgp`: fixed segfaults during training and prediction when R uses a recent OpenBLAS (e.g. on Ubuntu 26.04), whose `cblas_dgemm_batch()` was called by torch instead of its own MKL version. torch is now imported with `RTLD_DEEPBIND` if it was not imported before. The data is also copied into torch tensors instead of sharing the read-only memory of the R matrix.
+* New learner `regr.fuser` fitting fused lasso regression over subsets of the data with `fuser::fusedL2DescentGLMNet()`. The subsets are defined by the column with the `subset` role of `mlr3resampling` (#426, #555).
+* New learner `regr.gpytorch` fitting exact Gaussian process regression models with the `gpytorch` Python package (#487, #584).
 * `regr.glm`: added the `tol` and `wtol` parameters of `stats::glm.control()`, which are available from R 4.7.0 on.
+* New learner `regr.gwrf` fitting geographically weighted random forests with `SpatialML::grf()` (#582).
+* New learner `regr.gpboost` combining tree-boosting with Gaussian process and grouped random effects models with `gpboost::gpb.train()` (#357, #585).
+* New learner `regr.xbart` fitting accelerated Bayesian additive regression trees with `XBART::XBART()` from the GitHub package 'XBART' (#587).
 * Update `CoxBoost` version to 1.5.2 which fixes a prediction CIF bug and enabling prediction with one observation or time point from the upstream package (and so no need to handle this on the `mlr3` side).
 * Use `mlr3cmprsk` version `0.0.6`.
 

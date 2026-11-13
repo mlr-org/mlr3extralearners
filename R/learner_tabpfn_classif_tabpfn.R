@@ -215,27 +215,10 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 
 #' @export
 marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
-  reticulate::py_require("tabpfn")
-  reticulate::import("tabpfn")
-  # pickle should be available in any python environment
-  pickle = reticulate::import("pickle")
-  # save model as bytes
-  pickled = pickle$dumps(model$fitted)
-  # ensure object is converted to R
-  pickled = as.raw(pickled)
-
-  structure(list(
-    marshaled = pickled,
-    packages = "mlr3extralearners"
-  ), class = c("tabpfn_model_marshaled", "marshaled"))
+  marshal_python_model(model, slot = "fitted", packages = c("torch", "tabpfn"))
 }
 
 #' @export
 unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
-  reticulate::py_require("tabpfn")
-  reticulate::import("tabpfn")
-  pickle = reticulate::import("pickle")
-  # unpickle
-  fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
-  structure(list(fitted = fitted), class = "tabpfn_model")
+  unmarshal_python_model(model, slot = "fitted", packages = c("torch", "tabpfn"))
 }
