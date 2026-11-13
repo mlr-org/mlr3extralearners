@@ -30,6 +30,7 @@ Authors@R: c(
     person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
     person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb"),
     person("Imad", "El Badisy", , "elbadisyimad@gmail.com", role = "ctb"),
+    person("Florian", "Delage", role = "ctb"),
     person("Antoine", "Debin", , "antoine.debin@gmail.com", role = "ctb"),
     person("Khalifa Ababacar", "Seck", , "seckhalifaa@gmail.com", role = "ctb")
   )
@@ -88,6 +89,7 @@ Suggests:
     future,
     gbm (>= 2.2.3),
     glmnet (>= 5.0),
+    gpboost (>= 1.8.0),
     grf (>= 2.0.0),
     GPfit (>= 1.0-9),
     h2o (>= 3.44.0.3),
