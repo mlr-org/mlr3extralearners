@@ -105,6 +105,9 @@ You can learn more about using learners by [reading our book](https://mlr3book.m
 
 An in-depth tutorial on how to add learners can be found in the [package website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
 
+If you work with an AI coding agent, the repository ships the agent skill [`mlr3-add-learner`](https://github.com/mlr-org/mlr3extralearners/tree/main/.claude/skills/mlr3-add-learner).
+Claude Code picks it up automatically in a clone of the repository when you ask it to add a learner.
+
 ## Acknowledgements
 
 This R package is developed as part of the [Mathematical Research Data Initiative](https://www.mardi4nfdi.de/about/mission).

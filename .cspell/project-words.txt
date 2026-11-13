@@ -8,6 +8,7 @@ actuar
 adabag
 adaboost
 adibender
+aggr
 ahdesmaki
 Akaike
 Akritas
@@ -162,6 +163,7 @@ holte
 hornung
 hosmer
 hothorn
+hotstart
 hotstarting
 HYFIS
 hyperpar
@@ -173,6 +175,7 @@ imbrf
 imbrfsrc
 inplace
 integ
+integerish
 interp
 interpretability
 ints
@@ -401,6 +404,7 @@ salauer
 sampsize
 Schapire
 Schratz
+scikit
 Sdlda
 sebffischer
 Seck
@@ -415,6 +419,7 @@ sigest
 sigquant
 Sigrist
 singletaskgp
+sklearn
 softmax
 Sonabend
 sparapani
