@@ -249,20 +249,20 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &gt; 120.65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 80.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.4942 * carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.0694 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.2759 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 38.0873 [16/21.415%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.8727 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.013 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.3706 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 39.3823 [16/27.039%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.1998 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 48.0073 [5/47.611%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0979 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 38.5131 [5/59.102%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -273,7 +273,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6.55372 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.82897 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

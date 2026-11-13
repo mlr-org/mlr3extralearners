@@ -230,12 +230,10 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> V45 < 0.27
-#> |   V36 < 0.48 : M (47/22) [24/8]
-#> |   V36 >= 0.48 : R (21/0) [12/2]
-#> V45 >= 0.27 : M (24/1) [11/4]
+#> V11 < 0.18 : R (31/7) [16/2]
+#> V11 >= 0.18 : M (61/16) [31/6]
 #> 
-#> Size of the tree : 5
+#> Size of the tree : 3
 
 
 # Make predictions for the test rows

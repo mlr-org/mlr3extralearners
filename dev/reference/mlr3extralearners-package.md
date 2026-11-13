@@ -69,3 +69,5 @@ Other contributors:
   \[contributor\]
 
 - Imad El Badisy <elbadisyimad@gmail.com> \[contributor\]
+
+- Khalifa Ababacar Seck <seckhalifaa@gmail.com> \[contributor\]

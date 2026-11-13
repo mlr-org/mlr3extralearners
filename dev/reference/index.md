@@ -387,6 +387,9 @@
 - [`mlr_learners_regr.gpfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   [`LearnerRegrGPfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   : Regression Gaussian Process Learner (GPfit)
+- [`mlr_learners_regr.gpytorch`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpytorch.md)
+  [`LearnerRegrGPyTorch`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpytorch.md)
+  : GPyTorch Gaussian Process Regression Learner
 - [`mlr_learners_regr.grf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.grf.md)
   [`LearnerRegrGRF`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.grf.md)
   : Generalized Random Forest Regression Learner

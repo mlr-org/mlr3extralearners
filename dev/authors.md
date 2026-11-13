@@ -48,6 +48,8 @@
 
 - **Imad El Badisy**. Contributor.
 
+- **Khalifa Ababacar Seck**. Contributor.
+
 ## Citation
 
 Source:

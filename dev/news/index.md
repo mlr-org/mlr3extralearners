@@ -25,6 +25,10 @@
   version. torch is now imported with `RTLD_DEEPBIND` if it was not
   imported before. The data is also copied into torch tensors instead of
   sharing the read-only memory of the R matrix.
+- New learner `regr.gpytorch` fitting exact Gaussian process regression
+  models with the `gpytorch` Python package
+  ([\#487](https://github.com/mlr-org/mlr3extralearners/issues/487),
+  [\#584](https://github.com/mlr-org/mlr3extralearners/issues/584)).
 - `regr.glm`: added the `tol` and `wtol` parameters of
   [`stats::glm.control()`](https://rdrr.io/r/stats/glm.control.html),
   which are available from R 4.7.0 on.
