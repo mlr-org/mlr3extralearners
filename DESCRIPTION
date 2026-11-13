@@ -29,7 +29,9 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-8115-0400")),
     person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
     person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb"),
-    person("Imad", "El Badisy", , "elbadisyimad@gmail.com", role = "ctb")
+    person("Imad", "El Badisy", , "elbadisyimad@gmail.com", role = "ctb"),
+    person("Antoine", "Debin", , "antoine.debin@gmail.com", role = "ctb"),
+    person("Khalifa Ababacar", "Seck", , "seckhalifaa@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -140,6 +142,7 @@ Suggests:
     sparsediscrim,
     sparseLDA (>= 0.1-9),
     stepPlr,
+    stochtree (>= 0.4.5),
     survdistr (>= 0.0.3),
     survdnn (>= 0.7.6),
     survival,
@@ -148,6 +151,7 @@ Suggests:
     testthat,
     tgp (>= 2.4-23),
     torch (>= 0.16.3),
+    XBART,
     xgboost (>= 3.2.1.1)
 VignetteBuilder:
     knitr,
@@ -155,6 +159,7 @@ VignetteBuilder:
 Remotes:
     bioc::ropls,
     catboost/catboost/catboost/R-package,
+    JingyuHe/XBART,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
     PlantedML/randomPlantedForest@v0.5.0
