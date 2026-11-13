@@ -7,6 +7,7 @@
 * Registering a learner whose id or class name is already in use now throws an error instead of silently overwriting the existing learner (#614).
 * `classif.glmer`: added the `disp_method`, `maxPhiIter`, and `disp_dof_correction` parameters of `lme4::glmerControl()`, which are available from lme4 2.1.0 on.
 * `regr.botorch_fullybayesian`, `regr.botorch_mixedsingletaskgp`, and `regr.botorch_singletaskgp`: fixed segfaults during training and prediction when R uses a recent OpenBLAS (e.g. on Ubuntu 26.04), whose `cblas_dgemm_batch()` was called by torch instead of its own MKL version. torch is now imported with `RTLD_DEEPBIND` if it was not imported before. The data is also copied into torch tensors instead of sharing the read-only memory of the R matrix.
+* New learner `regr.fuser` fitting fused lasso regression over subsets of the data with `fuser::fusedL2DescentGLMNet()`. The subsets are defined by the column with the `subset` role of `mlr3resampling` (#426, #555).
 * New learner `regr.gpytorch` fitting exact Gaussian process regression models with the `gpytorch` Python package (#487, #584).
 * `regr.glm`: added the `tol` and `wtol` parameters of `stats::glm.control()`, which are available from R 4.7.0 on.
 * New learner `regr.xbart` fitting accelerated Bayesian additive regression trees with `XBART::XBART()` from the GitHub package 'XBART' (#587).

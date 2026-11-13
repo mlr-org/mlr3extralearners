@@ -1,40 +1,48 @@
-#' @title Regression Fuser Learner
+#' @title Fused Lasso Regression Learner
+#' @author EngineerDanny
 #' @name mlr_learners_regr.fuser
 #'
 #' @description
-#' Calls `fuser::fusedL2DescentGLMNet()` from the GitHub package `EngineerDanny/fuser`
-#' (install with `remotes::install_github("EngineerDanny/fuser")`).
-#' Requires exactly one grouping column assigned to the `group` role.
+#' Fused lasso regression over subsets of the data.
+#' One linear model is fitted per subset, and an L2 fusion penalty shares information between the coefficients
+#' of the subsets.
+#' Calls `fuser::generateBlockDiagonalMatrices()` and `fuser::fusedL2DescentGLMNet()` from \CRANpkg{fuser}.
+#'
+#' @section Subsets:
+#' The learner requires a task with exactly one column with the column role `"subset"`, which assigns each row to
+#' a subset.
+#' The `"subset"` role is registered by \CRANpkg{mlr3resampling}, so that package has to be loaded before the role
+#' can be set, e.g. with `task$set_col_roles("column", roles = "subset")`.
+#' There must be at least two subsets in the training data, and predictions are only possible for subsets that
+#' were present during training.
+#' The `"group"` role is not used because mlr3 keeps the rows of a group together when resampling,
+#' so that the test set would only contain subsets that the model has not seen.
 #'
 #' @section Initial parameter values:
-#' * `lambda` is set to `NULL`.
-#' * `gamma` is set to `1`.
-#' * `scaling` is set to `FALSE`.
+#' - `lambda` is initialized to 0.01, because the upstream function has no default for it.
+#'   The value should be tuned.
+#' - `scaling` is initialized to `FALSE`, the upstream default is `TRUE`.
+#'   With scaling, the features and the target of each subset are divided by the number of rows of the subset,
+#'   so that a suitable `lambda` depends strongly on the number of rows and the initial value would shrink
+#'   all coefficients to zero on all but very small data sets.
+#'
+#' @section Custom mlr3 parameters:
+#' - `G` is the matrix of pairwise fusion strengths between the subsets.
+#'   Rows and columns are aligned with the subset names, which are converted to character and sorted.
+#'   If `G` is not set, all pairs of subsets are fused with strength 1.
+#' - `intercept` fits one unpenalized intercept per subset if `TRUE`.
+#'   The intercept that `glmnet::glmnet()` would fit across all subsets is always disabled,
+#'   because the upstream function discards it.
+#' - `lambda` must be a single value, the upstream function accepts a vector.
 #'
 #' @templateVar id regr.fuser
 #' @template learner
 #'
+#' @references
+#' `r format_bib("dondelinger2020joint")`
+#'
 #' @template seealso_learner
-#'
-#' @examplesIf learner_is_runnable("regr.fuser")
-#' # Define the Learner
-#' learner = lrn("regr.fuser", lambda = 0.01, gamma = 0.01, scaling = FALSE)
-#'
-#' # Create a simple task with a grouping column
-#' set.seed(1)
-#' groups = rep(c("A", "B"), each = 10)
-#' x1 = rnorm(20)
-#' x2 = rnorm(20)
-#' y = x1 + x2 + rnorm(20, sd = 0.1)
-#' data = data.frame(y = y, x1 = x1, x2 = x2, group = groups)
-#'
-#' task = TaskRegr$new(id = "fuser_example", backend = data, target = "y")
-#' task$set_col_roles("group", roles = "group")
-#'
-#' # Train and predict
-#' learner$train(task)
-#' pred = learner$predict(task)
-#' head(pred$response)
+#' @template example_fuser
 #' @export
 LearnerRegrFuser = R6Class("LearnerRegrFuser",
   inherit = LearnerRegr,
@@ -43,139 +51,93 @@ LearnerRegrFuser = R6Class("LearnerRegrFuser",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        lambda  = p_uty(default = NULL, tags = "train"),
-        gamma   = p_dbl(lower = 0, default = 1, tags = "train"),
-        scaling = p_lgl(default = FALSE, tags = "train"),
-        G       = p_uty(default = NULL, tags = "train")
+        G = p_uty(default = NULL, tags = "train",
+          custom_check = crate(function(x) check_matrix(x, mode = "numeric", any.missing = FALSE, null.ok = TRUE))),
+        gamma = p_dbl(lower = 0, default = 1, tags = "train"),
+        intercept = p_lgl(default = FALSE, tags = "train"),
+        lambda = p_dbl(lower = 0, init = 0.01, tags = c("train", "required")),
+        penalty.factors = p_uty(tags = "train",
+          custom_check = crate(function(x) check_numeric(x, lower = 0, any.missing = FALSE))),
+        scaling = p_lgl(default = TRUE, init = FALSE, tags = "train")
       )
 
       super$initialize(
         id = "regr.fuser",
-        packages = c("mlr3extralearners", "fuser"),
+        packages = c("mlr3extralearners", "fuser", "mlr3resampling"),
         feature_types = c("logical", "integer", "numeric"),
         predict_types = "response",
         param_set = param_set,
         man = "mlr3extralearners::mlr_learners_regr.fuser",
-        label = "Fuser"
+        label = "Fused Lasso"
       )
     }
   ),
   private = list(
     .train = function(task) {
-      group_id = task$col_roles$group
-      if (length(group_id) != 1L) {
-        stopf("Learner 'regr.fuser' requires exactly one grouping column with role 'group'.")
-      }
-
-      feature_names = setdiff(task$feature_names, group_id)
-      x = as_numeric_matrix(task$data(cols = feature_names))
-      y = as.numeric(task$truth())
-
-      if (length(y) != nrow(x)) {
-        stopf("Target length (%i) must match the number of rows (%i).",
-          length(y), nrow(x))
-      }
-      if (anyNA(x) || anyNA(y)) {
-        stopf("Features and target must not contain missing values.")
-      }
-
-      groups = task$data(cols = group_id)[[1L]]
-      if (is.factor(groups)) {
-        groups = as.character(groups)
-      }
-      groups = as.vector(groups)
-      if (length(groups) != nrow(x)) {
-        stopf("Grouping column length (%i) must match the number of rows (%i).",
-          length(groups), nrow(x))
-      }
-      if (anyNA(groups)) {
-        stopf("Grouping column contains missing values.")
-      }
-
       pv = self$param_set$get_values(tags = "train")
-      if (!is.null(pv$lambda) && (!is.numeric(pv$lambda) || length(pv$lambda) != 1L)) {
-        stopf("Parameter 'lambda' must be a numeric scalar or NULL.")
-      }
-      if (!is.numeric(pv$gamma) || length(pv$gamma) != 1L) {
-        stopf("Parameter 'gamma' must be a numeric scalar.")
-      }
-      k = length(unique(groups))
-
-      G = pv$G
-      pv = remove_named(pv, "G")
-      if (is.null(G)) {
-        G = matrix(1, k, k)
-      } else {
-        if (!is.matrix(G) || nrow(G) != k || ncol(G) != k) {
-          stopf("Parameter 'G' must be a %ix%i matrix aligned with sorted group levels.", k, k)
-        }
+      subsets = fuser_subsets(task)
+      subset_names = sort(unique(subsets))
+      k = length(subset_names)
+      if (k < 2L) {
+        stopf("Learner 'regr.fuser' requires at least two subsets in the training data.")
       }
 
-      beta = invoke(fuser::fusedL2DescentGLMNet,
+      G = pv$G %??% matrix(1, k, k)
+      if (nrow(G) != k || ncol(G) != k) {
+        stopf("Parameter 'G' must be a %ix%i matrix aligned with the sorted subset names.", k, k)
+      }
+
+      x = as_numeric_matrix(task$data(cols = task$feature_names))
+      # the upstream default is evaluated after the intercept column is added and then has the wrong length
+      pv$penalty.factors = pv$penalty.factors %??% rep(1, ncol(x))
+      transformed = invoke(fuser::generateBlockDiagonalMatrices,
         X = x,
-        y = y,
-        groups = groups,
+        Y = task$truth(),
+        groups = subsets,
         G = G,
-        .args = pv
+        .args = pv[intersect(names(pv), c("intercept", "penalty.factors", "scaling"))]
       )
 
-      if (is.null(colnames(beta))) {
-        colnames(beta) = sort(unique(groups))
-      }
-
-      list(
-        beta = beta,
-        group_names = colnames(beta),
-        feature_names = feature_names
+      # the intercept of glmnet is discarded by fuser, so it must not be fitted
+      beta = invoke(fuser::fusedL2DescentGLMNet,
+        transformed.x = transformed$X,
+        transformed.x.f = transformed$X.fused,
+        transformed.y = transformed$Y,
+        groups = subsets,
+        lambda = pv$lambda,
+        gamma = pv$gamma %??% 1,
+        intercept = FALSE,
+        penalty.factor = transformed$penalty
       )
+
+      coef_names = c(task$feature_names, if (isTRUE(pv$intercept)) "(Intercept)")
+      matrix(beta, ncol = k, dimnames = list(coef_names, subset_names))
     },
 
     .predict = function(task) {
-      group_id = task$col_roles$group
-      if (length(group_id) != 1L) {
-        stopf("Learner 'regr.fuser' requires exactly one grouping column with role 'group'.")
+      beta = self$model
+      subsets = fuser_subsets(task)
+      unknown = setdiff(subsets, colnames(beta))
+      if (length(unknown)) {
+        stopf("Subsets not present during training: %s", str_collapse(unknown, quote = "'"))
       }
 
-      groups = task$data(cols = group_id)[[1L]]
-      if (is.factor(groups)) {
-        groups = as.character(groups)
-      }
-      groups = as.vector(groups)
-      if (anyNA(groups)) {
-        stopf("Grouping column contains missing values.")
+      x = as_numeric_matrix(ordered_features(task, self))
+      if ("(Intercept)" %in% rownames(beta)) {
+        x = cbind(x, 1)
       }
 
-      unknown = setdiff(unique(groups), self$model$group_names)
-      if (length(unknown) > 0L) {
-        stopf("Unknown groups found at prediction time: %s", paste(unknown, collapse = ", "))
-      }
-
-      x = as_numeric_matrix(task$data(cols = self$model$feature_names))
-      if (length(groups) != nrow(x)) {
-        stopf("Grouping column length (%i) must match the number of rows (%i).",
-          length(groups), nrow(x))
-      }
-      if (anyNA(x)) {
-        stopf("Features must not contain missing values.")
-      }
-      beta = self$model$beta
-      if (ncol(x) != nrow(beta)) {
-        stopf("Feature count mismatch: expected %i, got %i.", nrow(beta), ncol(x))
-      }
-      group_names = self$model$group_names
-
-      y_pred = numeric(nrow(x))
-      for (g in group_names) {
-        rows = which(groups == g)
-        if (!length(rows)) {
-          next
-        }
-        y_pred[rows] = as.numeric(x[rows, , drop = FALSE] %*% beta[, g, drop = FALSE])
-      }
-
-      list(response = y_pred)
+      list(response = rowSums(x * t(beta[, subsets, drop = FALSE])))
     }
   )
 )
+
+fuser_subsets = function(task) {
+  subset_id = task$col_roles$subset
+  if (length(subset_id) != 1L) {
+    stopf("Learner 'regr.fuser' requires exactly one column with role 'subset'.")
+  }
+  as.character(task$data(cols = subset_id)[[1L]])
+}
 
 .extralrns_dict$add("regr.fuser", LearnerRegrFuser)

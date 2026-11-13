@@ -1140,5 +1140,15 @@ bibentries = c(
     year = "2026",
     note = "R package version 0.4.5",
     doi = "10.32614/CRAN.package.stochtree"
+  ),
+  dondelinger2020joint = bibentry("article",
+    title = "The joint lasso: high-dimensional regression for group structured data",
+    author = "Dondelinger, Frank and Mukherjee, Sach and The Alzheimer's Disease Neuroimaging Initiative",
+    journal = "Biostatistics",
+    volume = "21",
+    number = "2",
+    pages = "219--235",
+    year = "2020",
+    doi = "10.1093/biostatistics/kxy035"
   )
 ) # nolint end
