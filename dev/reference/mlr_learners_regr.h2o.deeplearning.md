@@ -221,29 +221,29 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: deeplearning
-#> Model ID:  DeepLearning_model_R_1794568504716_110 
+#> Model ID:  DeepLearning_model_R_1794574025165_109 
 #> Status of Neuron Layers: predicting mpg, regression, gaussian distribution, Quadratic loss, 42,601 weights/biases, 508.1 KB, 210 training samples, mini-batch size 1
 #>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum
 #> 1     1    10     Input  0.00 %       NA       NA        NA       NA       NA
-#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005342 0.004119 0.000000
-#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.011928 0.023699 0.000000
-#> 4     4     1    Linear      NA 0.000000 0.000000  0.000297 0.000374 0.000000
+#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005695 0.005136 0.000000
+#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.023496 0.077662 0.000000
+#> 4     4     1    Linear      NA 0.000000 0.000000  0.000546 0.003038 0.000000
 #>   mean_weight weight_rms mean_bias bias_rms
 #> 1          NA         NA        NA       NA
-#> 2   -0.002040   0.098580  0.497880 0.003733
-#> 3   -0.000037   0.069835  0.999078 0.003009
-#> 4    0.012420   0.099172 -0.001200 0.000000
+#> 2   -0.002227   0.097695  0.498699 0.002457
+#> 3   -0.000192   0.069449  0.999697 0.001936
+#> 4    0.000325   0.102894 -0.000608 0.000000
 #> 
 #> 
 #> H2ORegressionMetrics: deeplearning
 #> ** Reported on training data. **
 #> ** Metrics reported on full training frame **
 #> 
-#> MSE:  4.891438
-#> RMSE:  2.21166
-#> MAE:  1.765156
-#> RMSLE:  0.1063148
-#> Mean Residual Deviance :  4.891438
+#> MSE:  23.37334
+#> RMSE:  4.834598
+#> MAE:  4.244075
+#> RMSLE:  0.2614833
+#> Mean Residual Deviance :  23.37334
 #> 
 #> 
 #> 
@@ -252,9 +252,13 @@ print(learner$model)
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
+#> Found more than one class "textConnection" in cache; using the first, from namespace 'BiocGenerics'
+#> Also defined by ‘RJSONIO’
+#> Found more than one class "textConnection" in cache; using the first, from namespace 'BiocGenerics'
+#> Also defined by ‘RJSONIO’
 
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.626685 
+#> 22.53716 
 ```

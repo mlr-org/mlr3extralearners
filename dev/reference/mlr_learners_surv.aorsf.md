@@ -265,7 +265,7 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 6
 #>    N predictors per node: 3
-#>  Average leaves per tree: 39.382
+#>  Average leaves per tree: 39.294
 #> Min observations in leaf: 5
 #>       Min events in leaf: 1
 #>           OOB stat value: 0.85
@@ -275,7 +275,7 @@ print(learner$model)
 #> -----------------------------------------
 print(learner$importance())
 #> revascdays     revasc        los        age      sysbp   stchange 
-#>  0.5842500  0.5384615  0.2171045  0.2076622  0.1332728  0.1124462 
+#>  0.5859703  0.5412864  0.2179147  0.2083741  0.1302673  0.1129489 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -283,5 +283,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8265969 
+#>   0.8269939 
 ```

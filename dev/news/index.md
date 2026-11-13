@@ -45,6 +45,11 @@
 - `regr.glm`: added the `tol` and `wtol` parameters of
   [`stats::glm.control()`](https://rdrr.io/r/stats/glm.control.html),
   which are available from R 4.7.0 on.
+- New learner `regr.gpboost` combining tree-boosting with Gaussian
+  process and grouped random effects models with
+  [`gpboost::gpb.train()`](https://rdrr.io/pkg/gpboost/man/gpb.train.html)
+  ([\#357](https://github.com/mlr-org/mlr3extralearners/issues/357),
+  [\#585](https://github.com/mlr-org/mlr3extralearners/issues/585)).
 - New learner `regr.xbart` fitting accelerated Bayesian additive
   regression trees with
   [`XBART::XBART()`](https://rdrr.io/pkg/XBART/man/XBART.html) from the
@@ -61,7 +66,7 @@
 
 - `surv.cv_glmnet` and `surv.glmnet`: added the `strata` parameter for
   fitting stratified Cox models via
-  [`glmnet::stratifySurv()`](https://rdrr.io/pkg/glmnet/man/stratifySurv.html)
+  [`glmnet::stratifySurv()`](https://glmnet.stanford.edu/reference/stratifySurv.html)
   ([\#396](https://github.com/mlr-org/mlr3extralearners/issues/396)).
 
 ### Breaking Changes
@@ -139,7 +144,7 @@
   subset of
   [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
   arguments. The
-  [`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
   pass-through hyperparameters were removed because they were not
   consistently forwarded
   ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).

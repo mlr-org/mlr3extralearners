@@ -384,6 +384,9 @@
 - [`mlr_learners_regr.glmboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.glmboost.md)
   [`LearnerRegrGLMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.glmboost.md)
   : Boosted Generalized Linear Regression Learner
+- [`mlr_learners_regr.gpboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpboost.md)
+  [`LearnerRegrGPBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpboost.md)
+  : Regression GPBoost Learner
 - [`mlr_learners_regr.gpfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   [`LearnerRegrGPfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   : Regression Gaussian Process Learner (GPfit)

@@ -67,6 +67,7 @@
 <li>New learner <code>regr.gpytorch</code> fitting exact Gaussian process regression models with the <code>gpytorch</code> Python package (<a href="https://github.com/mlr-org/mlr3extralearners/issues/487" class="external-link">#487</a>, <a href="https://github.com/mlr-org/mlr3extralearners/issues/584" class="external-link">#584</a>).</li>
 <li>
 <code>regr.glm</code>: added the <code>tol</code> and <code>wtol</code> parameters of <code><a href="https://rdrr.io/r/stats/glm.control.html" class="external-link">stats::glm.control()</a></code>, which are available from R 4.7.0 on.</li>
+<li>New learner <code>regr.gpboost</code> combining tree-boosting with Gaussian process and grouped random effects models with <code><a href="https://rdrr.io/pkg/gpboost/man/gpb.train.html" class="external-link">gpboost::gpb.train()</a></code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/357" class="external-link">#357</a>, <a href="https://github.com/mlr-org/mlr3extralearners/issues/585" class="external-link">#585</a>).</li>
 <li>New learner <code>regr.xbart</code> fitting accelerated Bayesian additive regression trees with <code><a href="https://rdrr.io/pkg/XBART/man/XBART.html" class="external-link">XBART::XBART()</a></code> from the GitHub package ‘XBART’ (<a href="https://github.com/mlr-org/mlr3extralearners/issues/587" class="external-link">#587</a>).</li>
 <li>Update <code>CoxBoost</code> version to 1.5.2 which fixes a prediction CIF bug and enabling prediction with one observation or time point from the upstream package (and so no need to handle this on the <code>mlr3</code> side).</li>
 <li>Use <code>mlr3cmprsk</code> version <code>0.0.6</code>.</li>
@@ -76,7 +77,7 @@
 <div class="section level3">
 <h3 id="new-features-1-7-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-7-0"></a></h3>
 <ul><li>
-<code>surv.cv_glmnet</code> and <code>surv.glmnet</code>: added the <code>strata</code> parameter for fitting stratified Cox models via <code><a href="https://rdrr.io/pkg/glmnet/man/stratifySurv.html" class="external-link">glmnet::stratifySurv()</a></code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/396" class="external-link">#396</a>).</li>
+<code>surv.cv_glmnet</code> and <code>surv.glmnet</code>: added the <code>strata</code> parameter for fitting stratified Cox models via <code><a href="https://glmnet.stanford.edu/reference/stratifySurv.html" class="external-link">glmnet::stratifySurv()</a></code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/396" class="external-link">#396</a>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="breaking-changes-1-7-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-7-0"></a></h3>
@@ -103,7 +104,7 @@
 <div class="section level3">
 <h3 id="breaking-changes-1-6-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-6-0"></a></h3>
 <ul><li>
-<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
+<code>classif.priority_lasso</code>, <code>regr.priority_lasso</code>, and <code>surv.priority_lasso</code>: the parameter sets were reduced to a focused subset of <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> arguments. The <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> pass-through hyperparameters were removed because they were not consistently forwarded (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>
 <code>surv.cv_glmnet</code>: removed the parameters <code>standardize.response</code>, <code>type.gaussian</code>, <code>type.logistic</code>, and <code>type.multinomial</code>, which are not applicable to the Cox family (<a href="https://github.com/mlr-org/mlr3extralearners/issues/594" class="external-link">#594</a>).</li>
 <li>

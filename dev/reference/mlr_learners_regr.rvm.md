@@ -182,8 +182,8 @@ print(learner$model)
 #>  Hyperparameter : sigma =  5.09019415081797e-05 
 #> 
 #> Number of Relevance Vectors : 4 
-#> Variance :  7.523391
-#> Training error : 6.148115771 
+#> Variance :  7.523523
+#> Training error : 6.148119035 
 
 
 # Make predictions for the test rows
@@ -192,5 +192,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.54904 
+#> 13.54896 
 ```

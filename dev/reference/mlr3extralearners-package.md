@@ -70,6 +70,8 @@ Other contributors:
 
 - Imad El Badisy <elbadisyimad@gmail.com> \[contributor\]
 
+- Florian Delage \[contributor\]
+
 - Antoine Debin <antoine.debin@gmail.com> \[contributor\]
 
 - Khalifa Ababacar Seck <seckhalifaa@gmail.com> \[contributor\]
