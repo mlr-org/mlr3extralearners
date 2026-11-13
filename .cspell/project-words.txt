@@ -387,6 +387,7 @@ salauer
 sampsize
 Schapire
 Schratz
+scikit
 Sdlda
 sebffischer
 seealso
@@ -399,6 +400,7 @@ sigdf
 sigest
 sigquant
 singletaskgp
+sklearn
 softmax
 Sonabend
 sparapani
