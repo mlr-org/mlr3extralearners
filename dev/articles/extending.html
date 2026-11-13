@@ -366,12 +366,25 @@ and the hyperparameters. To get the hyperparameters, we call
 all parameters that are using during <code>"train"</code>. Then, the
 dataset is extracted from the <code>Task</code>. Because the learner has
 the property <code>"weights"</code>, we insert the weights of the task
-if there are any, by calling <code>$.get_weights()</code> to retrieve
-them. Then we obtain the formula from the task using
-<code>task$formula()</code> and access the training data using
-<code>task$data()</code>. Last, we call the upstream function
-<code><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart::rpart()</a></code> with the data and pass all hyperparameters
-via argument <code>.args</code> using the
+by calling <code>private$.get_weights(task)</code>. The method returns
+the values of the task column with the role
+<code>weights_learner</code>, or <code>NULL</code> if the task has no
+such column or the user set <code>learner$use_weights</code> to
+<code>"ignore"</code>. Always retrieve the weights through this method
+instead of accessing <code>task$weights_learner</code> directly, because
+otherwise the <code>use_weights</code> field has no effect. If the
+upstream function cannot handle <code>NULL</code> as weights, pass a
+replacement via the argument <code>no_weights_val</code>,
+e.g. <code>private$.get_weights(task, no_weights_val = rep(1, task$nrow))</code>.
+A learner without the <code>"weights"</code> property must not call
+<code>$.get_weights()</code>, and by default it throws an error when it
+is trained on a task with a <code>weights_learner</code> column. Weights
+with the column role <code>weights_measure</code> are only used for
+scoring, so a learner never has to deal with them. Then we obtain the
+formula from the task using <code>task$formula()</code> and access the
+training data using <code>task$data()</code>. Last, we call the upstream
+function <code><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart::rpart()</a></code> with the data and pass all
+hyperparameters via argument <code>.args</code> using the
 <code><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">mlr3misc::invoke()</a></code> function. The latter is simply an
 optimized version of <code><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call()</a></code> that we use within the
 <code>mlr3</code> ecosystem. The return value of this method will be
@@ -802,6 +815,46 @@ function. The manual page for these functions can be accessed via
 <span><span class="co">## 724.18935 721.08062 702.29023 573.72817 442.05737 395.01237  31.36333  15.68167</span></span></code></pre>
 <p>If it runs without erroring, that’s a very good start!</p>
 <div class="section level3">
+<h3 id="weights">Weights<a class="anchor" aria-label="anchor" href="#weights"></a>
+</h3>
+<p>If the learner has the <code>"weights"</code> property, check that
+the weights actually reach the upstream function. The autotest below
+only verifies that <code>$.get_weights()</code> is called during
+training, not that its result is passed on. To check this, assign the
+column role <code>weights_learner</code> to a weight column and compare
+the result with the unweighted learner from above. Here we give the cars
+with a manual transmission (<code>am == 1</code>) 30 times the weight of
+the other cars.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">manual</span> <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">data</span><span class="op">(</span>cols <span class="op">=</span> <span class="st">"am"</span><span class="op">)</span><span class="op">$</span><span class="va">am</span> <span class="op">==</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="va">task_weighted</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span>
+<span><span class="va">task_weighted</span><span class="op">$</span><span class="fu">cbind</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">manual</span>, <span class="fl">30</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">task_weighted</span><span class="op">$</span><span class="fu">set_col_roles</span><span class="op">(</span><span class="st">"w"</span>, roles <span class="op">=</span> <span class="st">"weights_learner"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">learner_weighted</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">learner_weighted</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task_weighted</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rows</span> <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="va">row_ids</span><span class="op">[</span><span class="va">manual</span><span class="op">]</span></span>
+<span><span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">rows</span><span class="op">)</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"regr.mse"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## regr.mse </span></span>
+<span><span class="co">## 13.99279</span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">learner_weighted</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task_weighted</span>, row_ids <span class="op">=</span> <span class="va">rows</span><span class="op">)</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"regr.mse"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## regr.mse </span></span>
+<span><span class="co">## 7.060662</span></span></code></pre>
+<p>The weighted learner fits the cars with a manual transmission much
+better than the unweighted learner, so the weights are used. When
+<code>use_weights</code> is set to <code>"ignore"</code>, the result has
+to be the same as without weights.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">learner_weighted</span><span class="op">$</span><span class="va">use_weights</span> <span class="op">=</span> <span class="st">"ignore"</span></span>
+<span><span class="va">learner_weighted</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task_weighted</span><span class="op">)</span></span>
+<span><span class="va">learner_weighted</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task_weighted</span>, row_ids <span class="op">=</span> <span class="va">rows</span><span class="op">)</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">msr</a></span><span class="op">(</span><span class="st">"regr.mse"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## regr.mse </span></span>
+<span><span class="co">## 13.99279</span></span></code></pre>
+</div>
+<div class="section level3">
 <h3 id="autotest">Autotest<a class="anchor" aria-label="anchor" href="#autotest"></a>
 </h3>
 <p>To ensure that a learner correctly handles different task properties,
@@ -816,7 +869,7 @@ namespace, we have to source them from the <code>./testthat</code>
 subfolder of the installed <code>mlr3</code> package Note that when
 implementing survival learners, you must also source these help files
 from the <code>mlr3proba</code> package.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testthat"</span>, package <span class="op">=</span> <span class="st">"mlr3"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"^helper.*\\.[rR]"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">source</span><span class="op">)</span></span>
 <span><span class="co"># mlr3proba</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testthat"</span>, package <span class="op">=</span> <span class="st">"mlr3proba"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"^helper.*\\.[rR]"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">source</span><span class="op">)</span></span></code></pre></div>
@@ -824,7 +877,7 @@ from the <code>mlr3proba</code> package.</p>
 <code>expect_learner(..., check_man = FALSE)</code>, we disable a test
 that verifies that the correct manual page exists, which is only
 relevant when adding the learner to <code>mlr3extralearners</code>.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org" class="external-link">testthat</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"autotest"</span>, <span class="op">{</span></span>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
@@ -843,14 +896,14 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 </h3>
 <p>Always add an explicit skip at the top of test files for all
 learners, for example:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html" class="external-link">skip_if_not_installed</a></span><span class="op">(</span><span class="st">"RpkgName"</span><span class="op">)</span></span></code></pre></div>
 <p>This ensures tests fail gracefully on GitHub Actions, where we have a
 specific workflow that doesn’t install packages listed in
 <code>Suggests</code>.</p>
 <p>For Python learners, skip the tests if the Python environment of the
 learner is not available:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html" class="external-link">skip_if_not_installed</a></span><span class="op">(</span><span class="st">"reticulate"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html" class="external-link">skip_if_not_installed</a></span><span class="op">(</span><span class="st">"callr"</span><span class="op">)</span></span>
 <span><span class="fu">skip_if_no_python_env</span><span class="op">(</span><span class="st">"tabpfn"</span><span class="op">)</span></span></code></pre></div>
@@ -864,7 +917,7 @@ environment with pinned package versions, so that the tests are
 reproducible. Each group of learners that share their requirements has
 its own environment, which is defined in
 <code>R/install_python_test_envs.R</code>:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tabpfn</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  python <span class="op">=</span> <span class="st">"3.12"</span>,</span>
 <span>  packages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -893,7 +946,7 @@ crashes.</li>
 session with the environment of the group activated, the
 <code>mlr3</code> test helpers sourced, and a <code>mirai</code> daemon
 set up for the encapsulation stage of the autotest.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"autotest"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="fu">run_py_test</span><span class="op">(</span><span class="st">"tabpfn"</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.tabpfn"</span><span class="op">)</span></span>
@@ -909,7 +962,7 @@ set up for the encapsulation stage of the autotest.</p>
 <code>devtools::install()</code> before running the tests.</p>
 <p>Also test that marshaling works. Python objects cannot be compared
 after unmarshaling, so compare the predictions instead:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"marshaling works"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="fu">run_py_test</span><span class="op">(</span><span class="st">"tabpfn"</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.tabpfn"</span><span class="op">)</span></span>
@@ -959,7 +1012,7 @@ ParamSet.</li>
 <p>All excluded parameters should have a comment justifying their
 exclusion.</p>
 <p>In our example, the final paramtest script looks like:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org" class="external-link">testthat</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"paramtest"</span>, <span class="op">{</span></span>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
@@ -1054,23 +1107,23 @@ should:</p>
 file)</li>
 </ol>
 <p>Here’s an example structure:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Custom template for &lt;package&gt; learners (&lt;learner-ids&gt;)</span></span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="co"># Reason: &lt;explanation of why standard template cannot be used&gt;</span></span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="sc">&lt;</span>%</span>
-<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">lrn</span>(id)</span>
-<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>is_classif <span class="ot">=</span> <span class="st">"LearnerClassif"</span> <span class="sc">%in%</span> <span class="fu">class</span>(l)</span>
-<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="co"># ... conditional logic based on learner type</span></span>
-<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a>%<span class="sc">&gt;</span></span>
-<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a><span class="co">#' &lt;%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %&gt;</span></span>
-<span id="cb28-10"><a href="#cb28-10" tabindex="-1"></a><span class="co">#' # Example code here using &lt;%= id %&gt; for the learner ID</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># Custom template for &lt;package&gt; learners (&lt;learner-ids&gt;)</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="co"># Reason: &lt;explanation of why standard template cannot be used&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="sc">&lt;</span>%</span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">lrn</span>(id)</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>is_classif <span class="ot">=</span> <span class="st">"LearnerClassif"</span> <span class="sc">%in%</span> <span class="fu">class</span>(l)</span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="co"># ... conditional logic based on learner type</span></span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>%<span class="sc">&gt;</span></span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a><span class="co">#' &lt;%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %&gt;</span></span>
+<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a><span class="co">#' # Example code here using &lt;%= id %&gt; for the learner ID</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="using-templates-in-learner-files">Using Templates in Learner Files<a class="anchor" aria-label="anchor" href="#using-templates-in-learner-files"></a>
 </h3>
 <p>In your learner’s R file, add the template reference in the roxygen
 documentation:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @templateVar id regr.mylearner</span></span>
 <span><span class="co">#' @template learner</span></span>
 <span><span class="co">#'</span></span>

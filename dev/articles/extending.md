@@ -280,10 +280,22 @@ hyperparameters. To get the hyperparameters, we call
 `self$param_set$get_values(tag = "train")` and thereby query all
 parameters that are using during `"train"`. Then, the dataset is
 extracted from the `Task`. Because the learner has the property
-`"weights"`, we insert the weights of the task if there are any, by
-calling `$.get_weights()` to retrieve them. Then we obtain the formula
-from the task using `task$formula()` and access the training data using
-`task$data()`. Last, we call the upstream function
+`"weights"`, we insert the weights of the task by calling
+`private$.get_weights(task)`. The method returns the values of the task
+column with the role `weights_learner`, or `NULL` if the task has no
+such column or the user set `learner$use_weights` to `"ignore"`. Always
+retrieve the weights through this method instead of accessing
+`task$weights_learner` directly, because otherwise the `use_weights`
+field has no effect. If the upstream function cannot handle `NULL` as
+weights, pass a replacement via the argument `no_weights_val`,
+e.g. `private$.get_weights(task, no_weights_val = rep(1, task$nrow))`. A
+learner without the `"weights"` property must not call
+`$.get_weights()`, and by default it throws an error when it is trained
+on a task with a `weights_learner` column. Weights with the column role
+`weights_measure` are only used for scoring, so a learner never has to
+deal with them. Then we obtain the formula from the task using
+`task$formula()` and access the training data using `task$data()`. Last,
+we call the upstream function
 [`rpart::rpart()`](https://rdrr.io/pkg/rpart/man/rpart.html) with the
 data and pass all hyperparameters via argument `.args` using the
 [`mlr3misc::invoke()`](https://mlr3misc.mlr-org.com/reference/invoke.html)
@@ -750,6 +762,57 @@ learner$importance()
     ## 724.18935 721.08062 702.29023 573.72817 442.05737 395.01237  31.36333  15.68167
 
 If it runs without erroring, that’s a very good start!
+
+### Weights
+
+If the learner has the `"weights"` property, check that the weights
+actually reach the upstream function. The autotest below only verifies
+that `$.get_weights()` is called during training, not that its result is
+passed on. To check this, assign the column role `weights_learner` to a
+weight column and compare the result with the unweighted learner from
+above. Here we give the cars with a manual transmission (`am == 1`) 30
+times the weight of the other cars.
+
+``` r
+
+manual = task$data(cols = "am")$am == 1
+
+task_weighted = tsk("mtcars")
+task_weighted$cbind(data.frame(w = ifelse(manual, 30, 1)))
+task_weighted$set_col_roles("w", roles = "weights_learner")
+
+learner_weighted = LearnerRegrRpartSimple$new()
+learner_weighted$train(task_weighted)
+
+rows = task$row_ids[manual]
+learner$predict(task, row_ids = rows)$score(msr("regr.mse"))
+```
+
+    ## regr.mse 
+    ## 13.99279
+
+``` r
+
+learner_weighted$predict(task_weighted, row_ids = rows)$score(msr("regr.mse"))
+```
+
+    ## regr.mse 
+    ## 7.060662
+
+The weighted learner fits the cars with a manual transmission much
+better than the unweighted learner, so the weights are used. When
+`use_weights` is set to `"ignore"`, the result has to be the same as
+without weights.
+
+``` r
+
+learner_weighted$use_weights = "ignore"
+learner_weighted$train(task_weighted)
+learner_weighted$predict(task_weighted, row_ids = rows)$score(msr("regr.mse"))
+```
+
+    ## regr.mse 
+    ## 13.99279
 
 ### Autotest
 

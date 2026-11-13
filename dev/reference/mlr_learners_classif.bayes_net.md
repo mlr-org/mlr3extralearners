@@ -255,20 +255,20 @@ print(learner$model)
 #> #attributes=61 #classindex=0
 #> Network structure (nodes followed by parents)
 #> Class(2): 
-#> V1(2): Class 
+#> V1(1): Class 
 #> V10(2): Class 
 #> V11(2): Class 
 #> V12(2): Class 
 #> V13(2): Class 
-#> V14(2): Class 
+#> V14(1): Class 
 #> V15(1): Class 
 #> V16(1): Class 
 #> V17(1): Class 
 #> V18(1): Class 
 #> V19(1): Class 
-#> V2(2): Class 
-#> V20(1): Class 
-#> V21(2): Class 
+#> V2(1): Class 
+#> V20(2): Class 
+#> V21(1): Class 
 #> V22(1): Class 
 #> V23(1): Class 
 #> V24(1): Class 
@@ -279,16 +279,16 @@ print(learner$model)
 #> V29(1): Class 
 #> V3(1): Class 
 #> V30(1): Class 
-#> V31(2): Class 
+#> V31(1): Class 
 #> V32(1): Class 
 #> V33(1): Class 
 #> V34(1): Class 
 #> V35(1): Class 
-#> V36(1): Class 
+#> V36(2): Class 
 #> V37(1): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(2): Class 
+#> V4(1): Class 
 #> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
@@ -297,29 +297,29 @@ print(learner$model)
 #> V45(1): Class 
 #> V46(1): Class 
 #> V47(1): Class 
-#> V48(2): Class 
-#> V49(2): Class 
+#> V48(1): Class 
+#> V49(1): Class 
 #> V5(2): Class 
 #> V50(1): Class 
 #> V51(2): Class 
 #> V52(2): Class 
 #> V53(1): Class 
-#> V54(2): Class 
+#> V54(1): Class 
 #> V55(1): Class 
 #> V56(1): Class 
 #> V57(1): Class 
 #> V58(1): Class 
 #> V59(1): Class 
-#> V6(2): Class 
+#> V6(1): Class 
 #> V60(1): Class 
 #> V7(1): Class 
-#> V8(2): Class 
+#> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1624.5130475084022
-#> LogScore BDeu: -1657.1531558920408
-#> LogScore MDL: -1664.1427948640287
-#> LogScore ENTROPY: -1567.9205531679804
-#> LogScore AIC: -1606.9205531679804
+#> LogScore Bayes: -939.9248496653008
+#> LogScore BDeu: -957.103854077742
+#> LogScore MDL: -959.309361044723
+#> LogScore ENTROPY: -907.4973847468509
+#> LogScore AIC: -928.4973847468508
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3188406 
+#>  0.2173913 
 ```

@@ -280,10 +280,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> [GPBoost] [Info] GPBoost is using 1 OpenMP thread by default for parallel computations. Run gpb.tune.num.threads() to benchmark different numbers of threads and to select a tuned default for this session. For the best performance, try different values of 'num_parallel_threads' on the 'GPModel' you are using.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      carb      disp        wt      qsec        am       cyl      drat      gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4229555 0.2241606 0.2182460 0.1346379 0.0000000 0.0000000 0.0000000 0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        hp        vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0000000 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       qsec         am       disp       carb       drat        cyl       gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.32248478 0.27737308 0.19200672 0.16217568 0.04595974 0.00000000 0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         hp         vs         wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.00000000 0.00000000 0.00000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -291,7 +291,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.07824 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.29927 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

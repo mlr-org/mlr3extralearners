@@ -241,77 +241,77 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> Linear Node 0
 #>     Inputs    Weights
-#>     Threshold    -0.5447934987077665
-#>     Node 1    0.8797818672042682
-#>     Node 2    -2.5671638850755487
-#>     Node 3    1.5118899155732317
-#>     Node 4    0.978075534210158
-#>     Node 5    0.2842071656417263
+#>     Threshold    2.3489584162200376
+#>     Node 1    -0.9941128163703772
+#>     Node 2    -2.22999947129158
+#>     Node 3    0.1551549724496784
+#>     Node 4    0.06674542926196889
+#>     Node 5    -1.9667138281563272
 #> Sigmoid Node 1
 #>     Inputs    Weights
-#>     Threshold    -1.38487146272721
-#>     Attrib am    0.2189035822365179
-#>     Attrib carb    -0.8101287480133292
-#>     Attrib cyl    -0.07737396491046339
-#>     Attrib disp    0.9005729816240802
-#>     Attrib drat    0.15600611504335216
-#>     Attrib gear    0.222267609347707
-#>     Attrib hp    0.030188925292479858
-#>     Attrib qsec    0.5570098497130335
-#>     Attrib vs    0.4144049544971253
-#>     Attrib wt    0.5530606532972628
+#>     Threshold    -0.8351568592486521
+#>     Attrib am    -0.02299359748244357
+#>     Attrib carb    0.8632281032547092
+#>     Attrib cyl    -0.5337635716058128
+#>     Attrib disp    -1.1021402802916103
+#>     Attrib drat    -1.318055661859607
+#>     Attrib gear    -0.38048454871372744
+#>     Attrib hp    -0.110217661969905
+#>     Attrib qsec    -1.0773930150212683
+#>     Attrib vs    -0.26165474694942503
+#>     Attrib wt    -0.5713049297601782
 #> Sigmoid Node 2
 #>     Inputs    Weights
-#>     Threshold    -1.7131618773815216
-#>     Attrib am    1.2347280502764457
-#>     Attrib carb    -0.08283071069902043
-#>     Attrib cyl    -1.4435069817367387
-#>     Attrib disp    1.9310987856895672
-#>     Attrib drat    -3.6192140936431585
-#>     Attrib gear    1.4044996525505042
-#>     Attrib hp    1.8603273902113178
-#>     Attrib qsec    1.6380769246160285
-#>     Attrib vs    2.1871599473327916
-#>     Attrib wt    1.4979392786690353
+#>     Threshold    1.8122737395614377
+#>     Attrib am    -0.9197204497080502
+#>     Attrib carb    -0.6205268554043697
+#>     Attrib cyl    0.7862407659231879
+#>     Attrib disp    0.2154325419991584
+#>     Attrib drat    0.9343682645073546
+#>     Attrib gear    -2.575340655178297
+#>     Attrib hp    0.9009091801345972
+#>     Attrib qsec    -1.2442607678959754
+#>     Attrib vs    1.5025895829362679
+#>     Attrib wt    0.5940664484320755
 #> Sigmoid Node 3
 #>     Inputs    Weights
-#>     Threshold    -1.604660160380063
-#>     Attrib am    0.025349407058009536
-#>     Attrib carb    -1.72103692626436
-#>     Attrib cyl    -0.3407793981345603
-#>     Attrib disp    1.403947191784837
-#>     Attrib drat    0.14465753832307537
-#>     Attrib gear    0.15564861069625002
-#>     Attrib hp    -0.44147667880235814
-#>     Attrib qsec    0.954264746522108
-#>     Attrib vs    0.8511515419581568
-#>     Attrib wt    0.7216631534943978
+#>     Threshold    -0.9918205120012548
+#>     Attrib am    0.1726516583312413
+#>     Attrib carb    0.43155051305610626
+#>     Attrib cyl    -0.4187676727231653
+#>     Attrib disp    -0.08010435018532219
+#>     Attrib drat    0.19526005928171655
+#>     Attrib gear    0.16034837180778191
+#>     Attrib hp    0.19114638802003267
+#>     Attrib qsec    -0.6183607205003618
+#>     Attrib vs    0.06531241602093583
+#>     Attrib wt    0.26057759212491677
 #> Sigmoid Node 4
 #>     Inputs    Weights
-#>     Threshold    -1.5824121473637076
-#>     Attrib am    0.7472250068593662
-#>     Attrib carb    0.44559155591982835
-#>     Attrib cyl    -0.5867771749487162
-#>     Attrib disp    -0.2053254094591852
-#>     Attrib drat    1.2148295491654435
-#>     Attrib gear    0.42223652914767135
-#>     Attrib hp    -1.6406120967119309
-#>     Attrib qsec    0.3029483144350267
-#>     Attrib vs    0.32540902070766864
-#>     Attrib wt    -0.2817302600926295
+#>     Threshold    -0.7745550165372851
+#>     Attrib am    0.27469020402637506
+#>     Attrib carb    0.49478168107124615
+#>     Attrib cyl    -0.49685522542343397
+#>     Attrib disp    -0.13730172183051786
+#>     Attrib drat    0.24002347953012418
+#>     Attrib gear    0.23130009185055617
+#>     Attrib hp    0.21140236842959054
+#>     Attrib qsec    -0.689689012169
+#>     Attrib vs    0.05681105264954452
+#>     Attrib wt    0.17445059213607736
 #> Sigmoid Node 5
 #>     Inputs    Weights
-#>     Threshold    -1.5060324152844096
-#>     Attrib am    0.44809485085838746
-#>     Attrib carb    -0.42725623823650954
-#>     Attrib cyl    0.04147409757314206
-#>     Attrib disp    0.43183893494323916
-#>     Attrib drat    0.31263190251441736
-#>     Attrib gear    0.31227416156839044
-#>     Attrib hp    -0.18239834436474317
-#>     Attrib qsec    0.5171799345404487
-#>     Attrib vs    0.3836377638350739
-#>     Attrib wt    0.13205288923919717
+#>     Threshold    1.2262057153635553
+#>     Attrib am    1.5450894450529
+#>     Attrib carb    3.1211036205210645
+#>     Attrib cyl    -0.05050046214959694
+#>     Attrib disp    0.7733259516992288
+#>     Attrib drat    -2.1794468122854576
+#>     Attrib gear    0.5091391665432184
+#>     Attrib hp    0.7082869119802979
+#>     Attrib qsec    -1.141074546355555
+#>     Attrib vs    0.6446002850400208
+#>     Attrib wt    -0.19888454130559352
 #> Class 
 #>     Input
 #>     Node 0
@@ -324,5 +324,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 49.71539 
+#> 44.40605 
 ```
