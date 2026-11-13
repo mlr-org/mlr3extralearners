@@ -1093,5 +1093,42 @@ bibentries = c(
     address = "New York",
     series = "Springer Series in Statistics",
     doi = "10.1007/978-0-387-84858-7"
+  ),
+  he2023stochastic = bibentry("article",
+    title = "Stochastic Tree Ensembles for Regularized Nonlinear Regression",
+    author = "He, Jingyu and Hahn, P. Richard",
+    journal = "Journal of the American Statistical Association",
+    volume = "118",
+    number = "541",
+    pages = "551--570",
+    year = "2023",
+    doi = "10.1080/01621459.2021.1942012"
+  ),
+  hahn2020bayesian = bibentry("article",
+    title = "Bayesian Regression Tree Models for Causal Inference: Regularization, Confounding, and Heterogeneous Effects (with Discussion)",
+    author = "Hahn, P. Richard and Murray, Jared S. and Carvalho, Carlos M.",
+    journal = "Bayesian Analysis",
+    volume = "15",
+    number = "3",
+    pages = "965--1056",
+    year = "2020",
+    doi = "10.1214/19-BA1195"
+  ),
+  krantsevich2023stochastic = bibentry("inproceedings",
+    title = "Stochastic Tree Ensembles for Estimating Heterogeneous Effects",
+    author = "Krantsevich, Nikolay and He, Jingyu and Hahn, P. Richard",
+    booktitle = "Proceedings of The 26th International Conference on Artificial Intelligence and Statistics",
+    series = "Proceedings of Machine Learning Research",
+    volume = "206",
+    pages = "6120--6131",
+    year = "2023",
+    publisher = "PMLR"
+  ),
+  herren2026stochtree = bibentry("manual",
+    title = "stochtree: Stochastic Tree Ensembles (XBART and BART) for Supervised Learning and Causal Inference",
+    author = "Herren, Drew and Hahn, Richard and Murray, Jared and Carvalho, Carlos and He, Jingyu",
+    year = "2026",
+    note = "R package version 0.4.5",
+    doi = "10.32614/CRAN.package.stochtree"
   )
 ) # nolint end

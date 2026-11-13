@@ -140,6 +140,7 @@ Suggests:
     sparsediscrim,
     sparseLDA (>= 0.1-9),
     stepPlr,
+    stochtree (>= 0.4.5),
     survdistr (>= 0.0.3),
     survdnn (>= 0.7.6),
     survival,
