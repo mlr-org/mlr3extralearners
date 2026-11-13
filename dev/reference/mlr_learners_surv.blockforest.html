@@ -221,27 +221,27 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age      sysbp        los   stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.13718769 0.08075472 0.02565564 0.01970399 0.01361896 0.01280726 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         age         los       sysbp    stchange </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.135756032 0.082478252 0.026929181 0.019810290 0.007583513 0.005365008 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank        distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        7 180.0  FALSE  4.693955 0.999615....</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        9 180.0  FALSE  6.367905 0.999015....</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       11 115.0   TRUE 39.557596 0.999615....</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---       ---          ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      992  26.0   TRUE 90.038669 0.999092....</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE 86.991393 0.779577....</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1000  15.0  FALSE 69.645426 0.999268....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status    crank        distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1  180  FALSE 16.92676 0.997391....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        5  180  FALSE 19.39453 0.996485....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        6    5  FALSE 65.28411 0.996387....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---      ---          ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      997    2   TRUE 97.83439 0.994258....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      999    3   TRUE 52.43424 0.969579....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     1000   15  FALSE 48.18319 0.984444....</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8413337 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8406399 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

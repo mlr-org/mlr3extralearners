@@ -45,6 +45,11 @@
 - `regr.glm`: added the `tol` and `wtol` parameters of
   [`stats::glm.control()`](https://rdrr.io/r/stats/glm.control.html),
   which are available from R 4.7.0 on.
+- New learner `regr.xbart` fitting accelerated Bayesian additive
+  regression trees with
+  [`XBART::XBART()`](https://rdrr.io/pkg/XBART/man/XBART.html) from the
+  GitHub package ‘XBART’
+  ([\#587](https://github.com/mlr-org/mlr3extralearners/issues/587)).
 - Update `CoxBoost` version to 1.5.2 which fixes a prediction CIF bug
   and enabling prediction with one observation or time point from the
   upstream package (and so no need to handle this on the `mlr3` side).
@@ -56,7 +61,7 @@
 
 - `surv.cv_glmnet` and `surv.glmnet`: added the `strata` parameter for
   fitting stratified Cox models via
-  [`glmnet::stratifySurv()`](https://glmnet.stanford.edu/reference/stratifySurv.html)
+  [`glmnet::stratifySurv()`](https://rdrr.io/pkg/glmnet/man/stratifySurv.html)
   ([\#396](https://github.com/mlr-org/mlr3extralearners/issues/396)).
 
 ### Breaking Changes
@@ -134,7 +139,7 @@
   subset of
   [`prioritylasso::prioritylasso()`](https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html)
   arguments. The
-  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
+  [`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
   pass-through hyperparameters were removed because they were not
   consistently forwarded
   ([\#594](https://github.com/mlr-org/mlr3extralearners/issues/594)).

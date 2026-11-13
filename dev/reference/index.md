@@ -508,6 +508,9 @@
 - [`mlr_learners_regr.tabpfn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabpfn.md)
   [`LearnerRegrTabPFN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabpfn.md)
   : TabPFN Regression Learner
+- [`mlr_learners_regr.xbart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.xbart.md)
+  [`LearnerRegrXBART`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.xbart.md)
+  : Regression Accelerated Bayesian Additive Regression Trees Learner
 
 ## Survival Learners
 

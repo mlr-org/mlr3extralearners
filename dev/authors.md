@@ -48,6 +48,8 @@
 
 - **Imad El Badisy**. Contributor.
 
+- **Antoine Debin**. Contributor.
+
 - **Khalifa Ababacar Seck**. Contributor.
 
 ## Citation
