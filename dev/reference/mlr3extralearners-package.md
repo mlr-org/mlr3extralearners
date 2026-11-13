@@ -75,3 +75,5 @@ Other contributors:
 - Antoine Debin <antoine.debin@gmail.com> \[contributor\]
 
 - Khalifa Ababacar Seck <seckhalifaa@gmail.com> \[contributor\]
+
+- Daniel Agyapong <agyapongdaniel7777@gmail.com> \[contributor\]

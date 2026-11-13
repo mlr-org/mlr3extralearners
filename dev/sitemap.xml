@@ -136,6 +136,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.exhaustive_search.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.fnn.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.frbs.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.fuser.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gam.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gamboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gaussian_processes.html</loc></url>
@@ -147,6 +148,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpytorch.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.grf.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gwrf.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.deeplearning.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.gbm.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.glm.html</loc></url>

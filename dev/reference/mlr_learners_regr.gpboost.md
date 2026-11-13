@@ -388,10 +388,10 @@ learner$train(task, row_ids = ids$train)
 #> [GPBoost] [Info] GPBoost is using 1 OpenMP thread by default for parallel computations. Run gpb.tune.num.threads() to benchmark different numbers of threads and to select a tuned default for this session. For the best performance, try different values of 'num_parallel_threads' on the 'GPModel' you are using.
 
 print(learner$importance())
-#>       qsec         hp       drat         wt         am       carb        cyl 
-#> 0.55484480 0.19761030 0.12885137 0.08448976 0.03420377 0.00000000 0.00000000 
-#>       disp       gear         vs 
-#> 0.00000000 0.00000000 0.00000000 
+#>      qsec        am      carb        hp       cyl      disp      drat      gear 
+#> 0.3175844 0.2535882 0.2291974 0.1996300 0.0000000 0.0000000 0.0000000 0.0000000 
+#>        vs        wt 
+#> 0.0000000 0.0000000 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -399,5 +399,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.50198 
+#> 8.188357 
 ```

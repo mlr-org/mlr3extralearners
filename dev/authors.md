@@ -54,6 +54,8 @@
 
 - **Khalifa Ababacar Seck**. Contributor.
 
+- **Daniel Agyapong**. Contributor.
+
 ## Citation
 
 Source:
