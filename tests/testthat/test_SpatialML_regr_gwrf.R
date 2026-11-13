@@ -1,6 +1,7 @@
 skip_if_not_installed("SpatialML")
 skip_if_not_installed("mlr3spatiotempcv")
 
+# run_autotest() is not used because its tasks have no coordinates
 test_that("regr.gwrf trains and predicts on a spatial task", {
   data("Income", package = "SpatialML", envir = environment())
   task = mlr3spatiotempcv::as_task_regr_st(Income[1:100, ], target = "Income01", coordinate_names = c("X", "Y"))

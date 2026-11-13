@@ -9,6 +9,7 @@ test_that("paramtest regr.gwrf train", {
     "coords", # handled by mlr3
     "forests", # local forests are required for prediction
     "print.results", # set to FALSE
+    "progress", # follows print.results
     "min.node.size", # passed to ranger::ranger()
     "max.depth", # passed to ranger::ranger()
     "replace", # passed to ranger::ranger()
@@ -21,7 +22,7 @@ test_that("paramtest regr.gwrf train", {
 
 test_that("paramtest regr.gwrf predict", {
   learner = lrn("regr.gwrf")
-  fun_list = list(SpatialML::predict.grf)
+  fun_list = list(getS3method("predict", "grf"))
   exclude = c(
     "object", # handled by mlr3
     "new.data", # handled by mlr3

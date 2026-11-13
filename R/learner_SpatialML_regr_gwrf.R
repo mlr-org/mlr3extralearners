@@ -7,15 +7,13 @@
 #' Calls `SpatialML::grf()` from package SpatialML.
 #'
 #' The learner requires a spatial task with coordinates, e.g., a `TaskRegrST` from package \CRANpkg{mlr3spatiotempcv}.
-#' SpatialML has been archived on CRAN.
-#' It can be installed with `remotes::install_version("SpatialML", version = "0.1.6")`.
 #'
-#' Predictions are computed with `SpatialML::predict.grf()` using only the local models,
+#' Predictions are computed with the `predict()` method of SpatialML using only the local models,
 #' i.e., `local.w = 1` and `global.w = 0`.
 #'
 #' @section Initial parameter values:
-#' - `kernel` is initialized to `"adaptive"` because `SpatialML::grf()` has no default.
 #' - `print.results` is set to `FALSE` and not exposed as a hyperparameter.
+#'   This also disables the progress bar controlled by `progress`.
 #'
 #' @section Custom mlr3 parameters:
 #' - `min.node.size`, `max.depth`, `replace`, and `sample.fraction` are passed to `ranger::ranger()`.
@@ -38,12 +36,13 @@ LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
     initialize = function() {
       param_set = ps(
         bw              = p_dbl(lower = 0, tags = c("train", "required")),
-        kernel          = p_fct(levels = c("adaptive", "fixed"), init = "adaptive", tags = c("train", "required")),
+        kernel          = p_fct(default = "adaptive", levels = c("adaptive", "fixed"), tags = "train"),
         ntree           = p_int(default = 500L, lower = 1L, tags = "train"),
         mtry            = p_int(lower = 1L, tags = "train"),
         importance      = p_fct(default = "impurity", levels = c("impurity", "permutation"), tags = "train"),
         nthreads        = p_int(lower = 1L, tags = c("train", "threads")),
         geo.weighted    = p_lgl(default = TRUE, tags = "train"),
+        oob.fallback    = p_fct(default = "loo", levels = c("loo", "inbag"), tags = "train"),
         min.node.size   = p_int(default = 5L, lower = 1L, tags = "train"),
         max.depth       = p_int(lower = 0L, tags = "train"),
         replace         = p_lgl(default = TRUE, tags = "train"),
@@ -109,7 +108,7 @@ LearnerRegrGWRF = R6Class("LearnerRegrGWRF",
       coord_names = task$col_roles$coordinate
       newdata = cbind(task$coordinates(), task$data(cols = task$feature_names))
 
-      response = invoke(SpatialML::predict.grf,
+      response = invoke(predict,
         object = self$model,
         new.data = as.data.frame(newdata),
         x.var.name = coord_names[1L],

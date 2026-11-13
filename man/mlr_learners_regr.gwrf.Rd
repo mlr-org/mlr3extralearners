@@ -9,17 +9,15 @@ Geographically weighted random forest for regression.
 Calls \code{SpatialML::grf()} from package SpatialML.
 
 The learner requires a spatial task with coordinates, e.g., a \code{TaskRegrST} from package \CRANpkg{mlr3spatiotempcv}.
-SpatialML has been archived on CRAN.
-It can be installed with \code{remotes::install_version("SpatialML", version = "0.1.6")}.
 
-Predictions are computed with \code{SpatialML::predict.grf()} using only the local models,
+Predictions are computed with the \code{predict()} method of SpatialML using only the local models,
 i.e., \code{local.w = 1} and \code{global.w = 0}.
 }
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{kernel} is initialized to \code{"adaptive"} because \code{SpatialML::grf()} has no default.
 \item \code{print.results} is set to \code{FALSE} and not exposed as a hyperparameter.
+This also disables the progress bar controlled by \code{progress}.
 }
 }
 
@@ -52,12 +50,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    bw \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   kernel \tab character \tab - \tab adaptive, fixed \tab - \cr
+   kernel \tab character \tab adaptive \tab adaptive, fixed \tab - \cr
    ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    importance \tab character \tab impurity \tab impurity, permutation \tab - \cr
    nthreads \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    geo.weighted \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   oob.fallback \tab character \tab loo \tab loo, inbag \tab - \cr
    min.node.size \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max.depth \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    replace \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
