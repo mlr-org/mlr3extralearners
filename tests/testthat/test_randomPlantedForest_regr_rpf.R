@@ -9,7 +9,7 @@ test_that("autotest", {
 
 test_that("marshaling preserves predictions", {
   task = tsk("mtcars")
-  learner = lrn("regr.rpf", ntrees = 5L, splits = 5L)
+  learner = lrn("regr.rpf", n_families = 10L, n_splits = 5L, keep_forest = TRUE)
   learner$train(task)
   expected = learner$predict(task)
   learner$marshal()
@@ -21,7 +21,7 @@ test_that("marshaling preserves predictions", {
 
 test_that("marshal_include_data allows purifying a restored model", {
   task = tsk("mtcars")
-  learner = lrn("regr.rpf", ntrees = 5L, splits = 5L)
+  learner = lrn("regr.rpf", n_families = 10L, n_splits = 5L, prune = FALSE)
   learner$train(task)
   learner$marshal()$unmarshal()
   expect_error(randomPlantedForest::purify(learner$model), "data")

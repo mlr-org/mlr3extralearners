@@ -14,11 +14,19 @@ Package 'randomPlantedForest' is not on CRAN and has to be installed from GitHub
 \code{remotes::install_github("PlantedML/randomPlantedForest")}.
 }
 
+\section{Usage and tuning}{
+
+The defaults are those of \code{rpf()}, which chooses \code{n_splits} out of bag and returns the pruned model.
+This is considerably slower than fitting the forest alone (\code{prune = FALSE}).
+}
+
 \section{Saving a Learner}{
 
-The fitted forest lives in C++ memory and does not survive R serialization.
+By default (\code{prune = NULL}), \code{rpf()} returns a pruned model without its forest, which is plain R data.
+With \code{prune = FALSE} or \code{keep_forest = TRUE}, the model holds a forest in C++ memory that does not survive R
+serialization.
 Call \verb{$marshal()} before writing a trained learner to disk, and \verb{$unmarshal()} after loading it again.
-By default, marshaling does not store the training data, so a restored model cannot be purified afterwards.
+By default, marshaling does not store the training data, so a restored forest cannot be purified afterwards.
 Set \code{purify = TRUE} at training time if purification is needed, or include the training data in the marshaled
 model via the \code{marshal_include_data} parameter or \verb{$marshal(include_data = TRUE)}.
 }
@@ -67,20 +75,27 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   max_interaction \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_interaction \tab integer \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_interaction_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    max_interaction_limit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   splits \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   split_structure \tab character \tab leaves \tab leaves, hist, cur_trees_1, cur_trees_2, res_trees \tab - \cr
-   split_try \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   t_try \tab numeric \tab 0.4 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   n_families \tab integer \tab 200 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_splits \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   split_structure \tab character \tab leaf \tab leaf, leaf_binned, tree_then_leaf, tree_then_all_leaves, target_tree_then_leaf \tab - \cr
+   n_try_split_points \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   share_candidates \tab numeric \tab NULL \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    max_candidates \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_decay_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    delete_leaves \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   loss \tab character \tab exponential \tab L1, L2, logit, exponential \tab - \cr
-   delta \tab numeric \tab 0.001 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   epsilon \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   min_leaf_rows \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   interaction_constraints \tab untyped \tab NULL \tab  \tab - \cr
+   prune \tab logical \tab NULL \tab TRUE, FALSE \tab - \cr
+   max_panels \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   keep_forest \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   tune \tab untyped \tab FALSE \tab  \tab - \cr
+   keep_level_order \tab untyped \tab FALSE \tab  \tab - \cr
+   oob_path \tab untyped \tab FALSE \tab  \tab - \cr
+   loss \tab character \tab logit \tab L1, L2, logit, exponential \tab - \cr
+   exact_step \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    purify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    export_forest \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

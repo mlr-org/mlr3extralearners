@@ -7,8 +7,7 @@ test_that("paramtest regr.rpf train", {
     "x", # handled internally
     "y", # handled internally
     "loss", # only "L2" is supported for regression
-    "delta", # classification only
-    "epsilon", # classification only
+    "exact_step", # classification only
     "max_interaction_ratio", # manually added as an alternative to "max_interaction"
     "max_interaction_limit", # manually added as an upper bound for "max_interaction_ratio"
     "marshal_include_data" # custom mlr3 parameter controlling marshaling
