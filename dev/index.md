@@ -91,13 +91,13 @@ learner$predict(task, split$test)
 #> 
 #> ── <PredictionRegr> for 6811 observations: ─────────────────────────────────────
 #>  row_ids  truth  response
-#>        6 269700 267521.73
-#>       15 159200 206521.92
-#>       19 158700 186987.58
+#>        1 452600 418376.01
+#>        2 358500 425594.06
+#>        4 341300 324722.12
 #>      ---    ---       ---
-#>    20635 116800 138468.71
-#>    20638  92300  81523.13
-#>    20640  89400  93127.56
+#>    20623  67000  90627.18
+#>    20637  77100 103475.79
+#>    20639  84700  79637.14
 ```
 
 You can learn more about using learners by [reading our
@@ -107,6 +107,12 @@ book](https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.h
 
 An in-depth tutorial on how to add learners can be found in the [package
 website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
+
+If you work with an AI coding agent, the repository ships the agent
+skill
+[`mlr3-add-learner`](https://github.com/mlr-org/mlr3extralearners/tree/main/.claude/skills/mlr3-add-learner).
+Claude Code picks it up automatically in a clone of the repository when
+you ask it to add a learner.
 
 ## Acknowledgements
 
