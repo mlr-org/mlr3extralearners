@@ -1,6 +1,7 @@
 # Add words here (or via "Add to project dictionary" in VS Code / Cursor).
 # Project-specific words — commit and share with the team.
 Aalen
+Ababacar
 abess
 abseps
 actuar
@@ -73,6 +74,7 @@ Cindex
 classif
 Cleary
 clemmensen
+cloglog
 Clust
 cmprsk
 combinechains
@@ -94,12 +96,14 @@ damirpolat
 dataframe
 dbart
 dbarts
+Debin
 Deeplearning
 deepnet
 DENFIS
 dfns
 distrs
 dlda
+Dondelinger
 donotuse
 dont
 dorogush
@@ -123,26 +127,31 @@ flexspline
 flexsurv
 flexsurvreg
 flexsurvspline
+floriandl
 Forschungsgemeinschaft
 frbs
 freund
 fryda
 fullybayesian
+fuser
 gamboost
 Ganz
 García
 Gausspr
 Genz
+georganos
 gini
 glmboost
 glmer
 glmnet
 goeman
+gpboost
 gpfit
 gpytorch
 gramacy
 gridify
 grrf
+gwrf
 Harutyunyan
 hastie
 Hefei
@@ -171,6 +180,7 @@ ishwaran
 itrace
 jaxlib
 jemus
+Jingyu
 jolliffe
 jsonlite
 Kalbfleisch
@@ -184,6 +194,7 @@ keras
 kerdiest
 kernlab
 kganz
+Khalifa
 klau
 knitr
 Koers
@@ -192,6 +203,7 @@ kohonen
 Kopper
 kpar
 kpars
+krantsevich
 kstar
 KSVM
 kursa
@@ -201,6 +213,8 @@ Lauer
 Lennart
 lenth
 levs
+libboost
+libgsl
 Liblinea
 liblinear
 libtorch
@@ -222,6 +236,7 @@ lvqtest
 Mackay
 magrittr
 makediff
+Manh
 marshalable
 Matdist
 matern
@@ -253,6 +268,7 @@ missings
 missingtestdata
 mixedsingletaskgp
 mllg
+mlls
 mlrorg
 mlrregr
 modelfun
@@ -345,6 +361,7 @@ Pretraining
 priolasso
 prioritylasso
 proba
+probit
 protime
 psplit
 Pulatov
@@ -386,6 +403,7 @@ Schapire
 Schratz
 Sdlda
 sebffischer
+Seck
 seealso
 sexm
 shapley
@@ -395,15 +413,18 @@ shivaswamy
 sigdf
 sigest
 sigquant
+Sigrist
 singletaskgp
 softmax
 Sonabend
 sparapani
 sparsediscrim
+spatiotempcv
 splitrule
 Srivastava
 stackoverflow
 stepno
+stochtree
 stopf
 stype
 sumny
@@ -434,6 +455,7 @@ Universität
 unmarshal
 unpenalized
 unpickle
+unpickled
 usesurrogate
 vanbelle
 vanschoren
@@ -450,6 +472,8 @@ webscraping
 weibull
 Winterstetter
 withr
+XBART
+XBCF
 xgboost
 yolobox
 ytrafo
