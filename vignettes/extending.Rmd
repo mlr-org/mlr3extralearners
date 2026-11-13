@@ -407,7 +407,10 @@ The `classif.tabpfn` learner is a good template for a new Python learner.
 ### Declaring the Python dependencies
 
 Python packages are not listed in the `DESCRIPTION` file.
-The learner only declares `packages = "reticulate"` in its constructor, and the `$initialize()` method must not call any `reticulate` function.
+The `packages` argument of the constructor only lists R packages.
+This is `"reticulate"` for most learners, e.g., `classif.tabpfn`.
+A learner that also goes through an R wrapper package lists it as well, e.g., `classif.fastai` declares the `fastai` R package.
+The `$initialize()` method must not call any `reticulate` function.
 
 Instead, call `assert_python_packages()` at the very beginning of both `$.train()` and `$.predict()`, before any module is imported.
 The function registers the Python requirements with `reticulate::py_require()` and then checks that the modules are available.
@@ -430,8 +433,9 @@ A few conversions need special care:
   Allow the string `"None"` as a special value and replace it with `reticulate::py_none()` in `$.train()`.
 * Indices are zero-based in Python.
   Let the user pass R indices and subtract one before passing them on.
-* Missing values in integer and logical columns are not converted to `NaN`.
-  Cast these columns to `double` first.
+* Missing values in integer and logical columns of a data frame are silently corrupted.
+  An integer `NA` arrives as `-2147483648` and a logical `NA` as `False`, and pandas does not report either as missing.
+  Cast these columns to `double` first, so that `NA` is converted to `NaN`.
 
 The following is a simplified version of the `$.train()` and `$.predict()` methods of `classif.tabpfn`:
 
@@ -470,6 +474,8 @@ The following is a simplified version of the `$.train()` and `$.predict()` metho
   }
 }
 ```
+
+The cast of integer and logical features to `double` is left out here, the actual learner does it in the internal helper `tabpfn_data()`.
 
 Note that `$.train()` does not return the Python object itself but a list with its own S3 class, here `"tabpfn_model"`.
 This class is needed for marshaling.
