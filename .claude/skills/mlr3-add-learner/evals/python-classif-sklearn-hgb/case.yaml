@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: python-classif-sklearn-hgb
+expected_outcome: |
+  A new file R/learner_sklearn_classif_sklearn_hgb.R (or similar) defines a LearnerClassif that calls
+  assert_python_packages() before importing sklearn in .train() and .predict(), builds the estimator with the parameters,
+  converts the task data for Python, returns response and prob (colnames = class labels), has the "marshal" property with
+  marshal()/unmarshal()/marshaled and exported pickle-based marshal_model/unmarshal_model S3 methods, declares
+  packages = c("mlr3extralearners", "reticulate"), does not add scikit-learn to DESCRIPTION, adds a pinned group to
+  R/install_python_test_envs.R, writes tests wrapped in run_py_test() with skip_if_no_python_env(), adds Installation and
+  Saving sections to the docs without an @template example, and adds a NEWS bullet and bibentry.

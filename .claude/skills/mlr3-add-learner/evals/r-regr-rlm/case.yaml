@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: r-regr-rlm
+expected_outcome: |
+  A new file R/learner_MASS_regr_rlm.R defines LearnerRegrRlm inheriting from LearnerRegr with a paradox parameter set
+  derived from MASS::rlm's formals (psi, scale.est, k2, method, wt.method, maxit, acc, ...), weights passed from the task,
+  response and se predictions via predict(..., se.fit = TRUE), registration via .extralrns_dict$add("regr.rlm", ...),
+  roxygen docs with @template learner and @template example, a citation, a NEWS bullet, MASS in Suggests,
+  an autotest file and a paramtest file with justified exclusions, and the tests pass.

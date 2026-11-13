@@ -15,6 +15,10 @@ testthat_available = requireNamespace("testthat", quietly = TRUE)
 lgr::get_logger("mlr3")$set_threshold("warn")
 ```
 
+If you work with an AI coding agent, the repository ships the agent skill [`mlr3-add-learner`](https://github.com/mlr-org/mlr3extralearners/tree/main/.claude/skills/mlr3-add-learner) in `.claude/skills/`.
+Claude Code picks it up automatically in a clone of the repository when you ask it to add a learner, e.g., "add a learner for `MASS::rlm`".
+The skill covers learners that wrap an R package and learners that wrap a Python package, including the tests and the documentation.
+You remain responsible for the contribution, so use this vignette to review what the agent produced.
 
 Many learners are already included in the `mlr3` ecosystem, but there are still many more that have not been implemented and so in this vignette we will look at how to add a new `Learner` to `mlr3`.
 Here we will already assume a lot of knowledge, so it is best to read the [mlr3book](https://mlr3book.mlr-org.com/) first!
