@@ -96,6 +96,7 @@ damirpolat
 dataframe
 dbart
 dbarts
+Debin
 Deeplearning
 deepnet
 DENFIS
@@ -173,6 +174,7 @@ ishwaran
 itrace
 jaxlib
 jemus
+Jingyu
 jolliffe
 jsonlite
 Kalbfleisch
@@ -205,6 +207,8 @@ Lauer
 Lennart
 lenth
 levs
+libboost
+libgsl
 Liblinea
 liblinear
 libtorch
