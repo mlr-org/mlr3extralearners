@@ -126,6 +126,7 @@ flexspline
 flexsurv
 flexsurvreg
 flexsurvspline
+floriandl
 Forschungsgemeinschaft
 frbs
 freund
@@ -141,6 +142,7 @@ glmboost
 glmer
 glmnet
 goeman
+gpboost
 gpfit
 gpytorch
 gramacy
@@ -406,6 +408,7 @@ shivaswamy
 sigdf
 sigest
 sigquant
+Sigrist
 singletaskgp
 softmax
 Sonabend

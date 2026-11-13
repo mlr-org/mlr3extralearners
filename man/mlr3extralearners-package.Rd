@@ -46,6 +46,7 @@ Other contributors:
   \item Nikolai German \email{niko.german@gmail.com} [contributor]
   \item Alexander Winterstetter \email{alexanderwinterstetter@gmail.com} [contributor]
   \item Imad El Badisy \email{elbadisyimad@gmail.com} [contributor]
+  \item Florian Delage [contributor]
   \item Antoine Debin \email{antoine.debin@gmail.com} [contributor]
   \item Khalifa Ababacar Seck \email{seckhalifaa@gmail.com} [contributor]
 }
