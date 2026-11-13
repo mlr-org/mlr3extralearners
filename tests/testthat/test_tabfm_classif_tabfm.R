@@ -35,8 +35,9 @@ test_that("classif.tabfm smoke test", {
     expect_true(is_marshaled_model(learner$model))
     expect_invisible(learner$unmarshal())
     expect_prediction(learner$predict(task))
-    # equality of predictions rather than of python objects, whose pointers change
-    expect_equal(learner$predict(task), pred)
+    # equality of predictions rather than of python objects, whose pointers change;
+    # compare probabilities because mlr3 breaks ties randomly when deriving the response
+    expect_equal(learner$predict(task)$prob, pred$prob)
     expect_false(learner$marshaled)
     expect_equal(class(learner$model), class_prev)
   }))
