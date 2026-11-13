@@ -23,7 +23,6 @@ You remain responsible for the contribution, so use this vignette to review what
 Many learners are already included in the `mlr3` ecosystem, but there are still many more that have not been implemented and so in this vignette we will look at how to add a new `Learner` to `mlr3`.
 Here we will already assume a lot of knowledge, so it is best to read the [mlr3book](https://mlr3book.mlr-org.com/) first!
 If you want to contribute a new `Learner` to `mlr3extralearners` it is recommended to first open an issue to discuss the learner.
-We will not use it in this vignette for the sake of clarity, but recommend using it in practice to avoid writing a lot of boilerplate code.
 
 We will first demonstrate what the final class looks like and then we will explain it line by line (and method by method).
 As a working example, we will implement a slightly stripped-down version of `regr.rpart`.
@@ -419,6 +418,8 @@ The `$initialize()` method must not call any `reticulate` function.
 Instead, call `assert_python_packages()` at the very beginning of both `$.train()` and `$.predict()`, before any module is imported.
 The function registers the Python requirements with `reticulate::py_require()` and then checks that the modules are available.
 The module name is derived from the requirement by removing the version constraint, so the function only works for packages whose pip name equals the name of the imported module.
+If the names differ, e.g., `scikit-learn` is imported as `sklearn`, extend `assert_python_packages()` in `R/assertions.R` with a `modules` argument that takes the module names explicitly, instead of working around the check inside the learner.
+The `mlr3-add-learner` skill describes this change in `references/python-learner.md`.
 If the user did not configure a Python installation, `reticulate` creates an ephemeral environment that satisfies the requirements of all learners used in the session.
 The user therefore does not need to install any Python package manually.
 Pip-style version constraints such as `"fastcore<2.0.0"` are allowed, but keep the requirements as loose as possible, because pins of different learners can conflict.
