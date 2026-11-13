@@ -30,7 +30,8 @@ Authors@R: c(
     person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
     person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb"),
     person("Imad", "El Badisy", , "elbadisyimad@gmail.com", role = "ctb"),
-    person("Antoine", "Debin", , "antoine.debin@gmail.com", role = "ctb")
+    person("Antoine", "Debin", , "antoine.debin@gmail.com", role = "ctb"),
+    person("Khalifa Ababacar", "Seck", , "seckhalifaa@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -140,6 +141,7 @@ Suggests:
     sparsediscrim,
     sparseLDA (>= 0.1-9),
     stepPlr,
+    stochtree (>= 0.4.5),
     survdistr (>= 0.0.3),
     survdnn (>= 0.7.6),
     survival,

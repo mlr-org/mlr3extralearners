@@ -207,38 +207,23 @@ tabfm_convert_pars = function(pars) {
 #' @export
 marshal_model.tabfm_model = function(model, inplace = FALSE, ...) {
   reticulate::import("tabfm")
-  # pickle should be available in any python environment
-  pickle = reticulate::import("pickle")
 
   # The pre-trained backbone is several GB and always re-loadable from the Hugging Face cache,
   # so we detach it before pickling and reload it on unmarshal instead of serializing it.
   fitted = model$fitted
   backbone = fitted$model
   fitted$model = reticulate::py_none()
-  pickled = tryCatch(as.raw(pickle$dumps(fitted)), finally = {
+  tryCatch(marshal_python_model(model, slot = "fitted"), finally = {
     # restore the backbone so the in-memory learner keeps working
     fitted$model = backbone
   })
-
-  structure(list(
-    marshaled = pickled,
-    backend = model$backend,
-    device = model$device,
-    model_type = model$model_type,
-    packages = "mlr3extralearners"
-  ), class = c("tabfm_model_marshaled", "marshaled"))
 }
 
 #' @export
 unmarshal_model.tabfm_model_marshaled = function(model, inplace = FALSE, ...) {
   reticulate::import("tabfm")
-  pickle = reticulate::import("pickle")
   # unpickle the fitted state and reattach a freshly loaded backbone
-  fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
-  backbone = tabfm_load_model(list(backend = model$backend, device = model$device), model$model_type)
-  fitted$model = backbone
-  structure(
-    list(fitted = fitted, backend = model$backend, device = model$device, model_type = model$model_type),
-    class = "tabfm_model"
-  )
+  model = unmarshal_python_model(model, slot = "fitted")
+  model$fitted$model = tabfm_load_model(list(backend = model$backend, device = model$device), model$model_type)
+  model
 }

@@ -160,19 +160,10 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
 
 #' @export
 marshal_model.botorch_gp_model = function(model, inplace = FALSE, ...) {
-  reticulate::py_require(c("torch", "botorch", "gpytorch"))
-  pickle = reticulate::import("pickle")
-  pickled_model = pickle$dumps(model$model)
-  structure(list(
-    marshaled = as.raw(pickled_model),
-    packages = "mlr3extralearners"
-  ), class = c("botorch_gp_model_marshaled", "marshaled"))
+  marshal_python_model(model, slot = "model", packages = c("torch", "botorch", "gpytorch"))
 }
 
 #' @export
 unmarshal_model.botorch_gp_model_marshaled = function(model, inplace = FALSE, ...) {
-  reticulate::py_require(c("torch", "botorch", "gpytorch"))
-  pickle = reticulate::import("pickle")
-  model_obj = pickle$loads(reticulate::r_to_py(model$marshaled))
-  structure(list(model = model_obj), class = "botorch_gp_model")
+  unmarshal_python_model(model, slot = "model", packages = c("torch", "botorch", "gpytorch"))
 }
