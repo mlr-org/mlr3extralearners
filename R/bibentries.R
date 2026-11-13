@@ -1032,6 +1032,15 @@ bibentries = c(
     pages = "1464--1480",
     doi = "10.1109/5.58325"
   ),
+
+  gardner2018gpytorch = bibentry("inproceedings",
+    title = "GPyTorch: Blackbox Matrix-Matrix Gaussian Process Inference with GPU Acceleration",
+    author = "Gardner, Jacob R and Pleiss, Geoff and Weinberger, Kilian Q and Bindel, David and Wilson, Andrew Gordon",
+    booktitle = "Advances in Neural Information Processing Systems",
+    volume = "31",
+    year = "2018"
+  ),
+
   kohonen_1995 = bibentry("book",
     title = "Self-Organizing Maps",
     author = "Kohonen, Teuvo",
