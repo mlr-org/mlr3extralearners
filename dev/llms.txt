@@ -629,6 +629,12 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_regr.smo_reg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.smo_reg.md)
   [`LearnerRegrSMOreg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.smo_reg.md)
   : Regression Support Vector Machine Learner
+- [`mlr_learners_regr.stochtree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.stochtree.md)
+  [`LearnerRegrStochtree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.stochtree.md)
+  : Stochastic Tree Ensemble BART Regression Learner
+- [`mlr_learners_regr.stochtree_bcf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.stochtree_bcf.md)
+  [`LearnerRegrStochtreeBCF`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.stochtree_bcf.md)
+  : Stochastic Tree Ensemble Bayesian Causal Forest Regression Learner
 - [`mlr_learners_regr.tabfm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabfm.md)
   [`LearnerRegrTabFM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabfm.md)
   : TabFM Regression Learner

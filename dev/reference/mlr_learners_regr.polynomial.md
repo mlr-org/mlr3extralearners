@@ -186,25 +186,25 @@ print(learner$model)
 #> 
 #> Coefficients:
 #>                          (Intercept)     poly(am, degree = 1, raw = FALSE)  
-#>                               20.233                               -36.108  
+#>                               20.490                               -43.958  
 #> poly(carb, degree = 2, raw = FALSE)1  poly(carb, degree = 2, raw = FALSE)2  
-#>                             -114.029                               -11.980  
+#>                             -170.227                                15.177  
 #>  poly(cyl, degree = 2, raw = FALSE)1   poly(cyl, degree = 2, raw = FALSE)2  
-#>                                5.102                               -63.844  
+#>                               45.458                               -27.366  
 #> poly(disp, degree = 2, raw = FALSE)1  poly(disp, degree = 2, raw = FALSE)2  
-#>                             -157.192                                65.812  
+#>                             -164.078                                50.242  
 #> poly(drat, degree = 2, raw = FALSE)1  poly(drat, degree = 2, raw = FALSE)2  
-#>                               43.097                                14.158  
+#>                               30.908                                39.711  
 #> poly(gear, degree = 2, raw = FALSE)1  poly(gear, degree = 2, raw = FALSE)2  
-#>                                4.933                                22.052  
+#>                               78.867                               -13.751  
 #>   poly(hp, degree = 2, raw = FALSE)1    poly(hp, degree = 2, raw = FALSE)2  
-#>                              100.589                               -18.721  
+#>                              245.126                               -13.206  
 #> poly(qsec, degree = 2, raw = FALSE)1  poly(qsec, degree = 2, raw = FALSE)2  
-#>                               -4.152                                 7.707  
+#>                               14.624                               -10.604  
 #>    poly(vs, degree = 1, raw = FALSE)    poly(wt, degree = 2, raw = FALSE)1  
-#>                              -60.911                                48.500  
+#>                                4.691                                40.485  
 #>   poly(wt, degree = 2, raw = FALSE)2  
-#>                               -7.514  
+#>                              -13.718  
 #> 
 
 
@@ -214,5 +214,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 1236.255 
+#> 660.5481 
 ```

@@ -218,7 +218,7 @@ print(learner$model)
 #> 139 samples x 60 variables and 1 response
 #> standard scaling of predictors and response(s)
 #>       R2X(cum) R2Y(cum) Q2(cum) RMSEE pre ort
-#> Total    0.269    0.439   0.342 0.376   1   1
+#> Total    0.278    0.437   0.349 0.377   1   1
 
 
 # Make predictions for the test rows
@@ -227,5 +227,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.2608696 
 ```
