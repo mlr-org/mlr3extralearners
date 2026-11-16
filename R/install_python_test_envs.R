@@ -36,6 +36,18 @@ python_requirements = list(
       "safetensors"
     )
   ),
+  limix = list(
+    python = "3.12",
+    packages = c(
+      "torch==2.13.0",
+      # LimiX is not released on PyPI, so the pin is a commit of the GitHub repository
+      "LimiX @ git+https://github.com/limix-ldm-ai/LimiX@db592af4a2f6f97ae20d9bf5fe56facdc00d7441",
+      # huggingface_hub is used to download the weights but is not declared by LimiX
+      "huggingface_hub==2.4.0",
+      # triton is imported by LimiX but is only installed with the cuda wheels of torch
+      "triton==3.9.0"
+    )
+  ),
   botorch = list(
     python = "3.12",
     packages = c(

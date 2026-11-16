@@ -4,6 +4,7 @@
 * Added minimum versions for all learner packages in `Suggests` that had none (#478).
 * `classif.liblinear` and `regr.liblinear`: added the `regularizeBias` parameter of `LiblineaR::LiblineaR()`, which is available from LiblineaR 2.50-1 on.
 * `classif.rpf` and `regr.rpf`: re-added the random planted forest learners from `randomPlantedForest` (>= 0.5.0), which now supports marshaling and can therefore be used with encapsulation, parallelization, and saved to disk (#615).
+* New learners `classif.limix` and `regr.limix` wrapping the LimiX tabular foundation models (`LimiX-2`, `LimiX-2M`, and `LimiX-16M`) of the [`LimiX`](https://github.com/limix-ldm-ai/LimiX) Python package via `reticulate`.
 * New learner `regr.stochtree` fitting Bayesian additive regression trees (BART), optionally warm-started with the grow-from-root algorithm of XBART, with `stochtree::bart()` (#568).
 * New learner `regr.stochtree_bcf` fitting Bayesian causal forests (BCF), optionally warm-started with the grow-from-root algorithm of XBCF, with `stochtree::bcf()`. The treatment is a feature of the task selected with the `treatment` parameter, and the estimated treatment effect is returned by `$treatment_effect()` (#568).
 * Registering a learner whose id or class name is already in use now throws an error instead of silently overwriting the existing learner (#614).

@@ -839,6 +839,22 @@ bibentries = c(
     year = "2026",
     URL = "https://github.com/google-research/tabfm"
   ),
+  zhang2025limix = bibentry("misc",
+    title = "LimiX: Unleashing Structured-Data Modeling Capability for Generalist Intelligence",
+    author = "Zhang, Xingxuan and Ren, Gang and Yu, Han and Yuan, Hao and Wang, Hui and Li, Jiansheng and Wu, Jiayun and Mo, Lang and Mao, Li and Hao, Mingchao and others",
+    year = "2025",
+    eprint = "2509.03505",
+    archivePrefix = "arXiv",
+    url = "https://arxiv.org/abs/2509.03505"
+  ),
+  zhang2026limix2 = bibentry("misc",
+    title = "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
+    author = "Zhang, Xingxuan and Ren, Gang and Yuan, Hao and Zou, Hao and Tan, Hongze and Wang, Hui and Song, Jianhao and Li, Jiansheng and Zhang, Jiayao and Zhang, Jinghan and others",
+    year = "2026",
+    eprint = "2609.17488",
+    archivePrefix = "arXiv",
+    url = "https://arxiv.org/abs/2609.17488"
+  ),
   adabag2013 = bibentry("article",
     title = "adabag: An R Package for Classification with Boosting and Bagging",
     volume = "54",

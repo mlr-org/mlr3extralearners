@@ -4,7 +4,7 @@
 \alias{assert_python_packages}
 \title{Assert Python Packages}
 \usage{
-assert_python_packages(packages, python_version = NULL)
+assert_python_packages(packages, python_version = NULL, modules = NULL)
 }
 \arguments{
 \item{packages}{(\code{character()})\cr
@@ -12,6 +12,12 @@ Python packages to check.}
 
 \item{python_version}{(\code{character(1)})\cr
 Python version to use. If \code{NULL}, the default Python version is used.}
+
+\item{modules}{(\code{character()})\cr
+Names of the Python modules to check, one per element of \code{packages}.
+Only needed if a module name differs from the name of its package, e.g. \code{"sklearn"} for \code{"scikit-learn"},
+or if the package is given as a direct reference, e.g. \code{"pkg @ git+https://..."}.
+If \code{NULL}, the module names are derived from \code{packages}.}
 }
 \value{
 (\code{character()})\cr

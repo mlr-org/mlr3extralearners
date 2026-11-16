@@ -165,6 +165,7 @@ hosmer
 hothorn
 hotstart
 hotstarting
+huggingface
 HYFIS
 hyperpar
 hyperparameters
@@ -224,6 +225,9 @@ libtorch
 lightgbm
 lightgbm's
 lightswitch
+Limi
+LimiX
+limix
 lmer
 lockfiles
 logicals
@@ -483,5 +487,7 @@ xgboost
 yolobox
 ytrafo
 Zezhi
+Zhang
+zhang
 Zhou
 Zobolas
