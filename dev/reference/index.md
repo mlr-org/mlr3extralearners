@@ -150,6 +150,9 @@
 - [`mlr_learners_classif.lightgbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lightgbm.md)
   [`LearnerClassifLightGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lightgbm.md)
   : Classification LightGBM Learner
+- [`mlr_learners_classif.limix`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.limix.md)
+  [`LearnerClassifLimiX`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.limix.md)
+  : LimiX Classification Learner
 - [`mlr_learners_classif.logistic`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.logistic.md)
   [`LearnerClassifLogistic`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.logistic.md)
   : Classification Logistic Regression Learner
@@ -429,6 +432,9 @@
 - [`mlr_learners_regr.lightgbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.lightgbm.md)
   [`LearnerRegrLightGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.lightgbm.md)
   : Regression LightGBM Learner
+- [`mlr_learners_regr.limix`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.limix.md)
+  [`LearnerRegrLimiX`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.limix.md)
+  : LimiX Regression Learner
 - [`mlr_learners_regr.linear_regression`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.linear_regression.md)
   [`LearnerRegrLinearRegression`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.linear_regression.md)
   : Regression Linear Regression Learner From Weka

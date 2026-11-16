@@ -19,6 +19,10 @@
   marshaling and can therefore be used with encapsulation,
   parallelization, and saved to disk
   ([\#615](https://github.com/mlr-org/mlr3extralearners/issues/615)).
+- New learners `classif.limix` and `regr.limix` wrapping the LimiX
+  tabular foundation models (`LimiX-2`, `LimiX-2M`, and `LimiX-16M`) of
+  the [`LimiX`](https://github.com/limix-ldm-ai/LimiX) Python package
+  via `reticulate`.
 - New learner `regr.stochtree` fitting Bayesian additive regression
   trees (BART), optionally warm-started with the grow-from-root
   algorithm of XBART, with

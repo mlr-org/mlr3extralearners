@@ -58,7 +58,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assert_python_packages</span><span class="op">(</span><span class="va">packages</span>, python_version <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assert_python_packages</span><span class="op">(</span><span class="va">packages</span>, python_version <span class="op">=</span> <span class="cn">NULL</span>, modules <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -73,6 +73,14 @@ Python packages to check.</p></dd>
 <dt id="arg-python-version">python_version<a class="anchor" aria-label="anchor" href="#arg-python-version"></a></dt>
 <dd><p>(<code>character(1)</code>)<br>
 Python version to use. If <code>NULL</code>, the default Python version is used.</p></dd>
+
+
+<dt id="arg-modules">modules<a class="anchor" aria-label="anchor" href="#arg-modules"></a></dt>
+<dd><p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>)<br>
+Names of the Python modules to check, one per element of <code>packages</code>.
+Only needed if a module name differs from the name of its package, e.g. <code>"sklearn"</code> for <code>"scikit-learn"</code>,
+or if the package is given as a direct reference, e.g. <code>"pkg @ git+https://..."</code>.
+If <code>NULL</code>, the module names are derived from <code>packages</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

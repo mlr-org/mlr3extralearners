@@ -229,16 +229,16 @@ because the upstream function discards it.</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Coefficients per subset</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                4          6           8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> am    0.00000000 0.00000000 0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> carb  0.00000000 0.00000000 0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> disp -0.13639250 0.04030189 0.014931601</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> drat  0.22388554 0.00000000 0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gear  0.77867309 0.00000000 0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp   -0.07675882 0.05757187 0.003612123</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> qsec  2.16561924 0.28705086 0.621964958</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> vs    0.00000000 0.00000000 0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt    0.00000000 0.00000000 0.000000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                4            6            8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> am    0.00000000 0.0000000000  0.000000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> carb  0.00000000 0.0001510647  0.000000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp -0.11387939 0.0275634833  0.025189929</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> drat  1.03866713 0.0000000000  0.000000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gear  2.26869321 0.0000000000  0.007098440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp    0.04200876 0.0476166980 -0.003498424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> qsec  1.16357465 0.5234958624  0.504856718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> vs    0.00000000 0.0000000000  0.000000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt    0.00000000 0.0000000000  0.000000000</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -246,7 +246,7 @@ because the upstream function discards it.</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33.00182 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24.68943 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
