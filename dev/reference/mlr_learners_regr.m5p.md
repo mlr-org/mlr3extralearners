@@ -42,6 +42,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -215,7 +216,7 @@ print(learner)
 #> ── <LearnerRegrM5P> (regr.m5p): M5P ────────────────────────────────────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response]
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -234,13 +235,14 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> M5 pruned model tree:
 #> (using smoothed linear models)
-#> LM1 (21/45.183%)
+#> LM1 (21/35.597%)
 #> 
 #> LM num: 1
 #> mpg = 
-#>  -0.0305 * hp 
-#>  - 3.645 * wt 
-#>  + 36.4003
+#>  -0.8773 * cyl 
+#>  - 0.0162 * hp 
+#>  - 2.3663 * wt 
+#>  + 34.6195
 #> 
 #> Number of Rules : 1
 
@@ -251,5 +253,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.135288 
+#> 17.42278 
 ```

@@ -25,6 +25,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”, “factor”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [pls](https://CRAN.R-project.org/package=pls)
 
 ## Parameters
@@ -146,7 +147,7 @@ print(learner)
 #> ── <LearnerRegrPlsr> (regr.plsr): Partial Least Squares Regression ─────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and pls
+#> • Packages: mlr3, mlr3extralearners, and pls
 #> • Predict Types: [response]
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
@@ -174,5 +175,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.637877 
+#> 12.32817 
 ```

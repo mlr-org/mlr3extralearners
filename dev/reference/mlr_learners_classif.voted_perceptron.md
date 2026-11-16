@@ -42,6 +42,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -211,7 +212,7 @@ print(learner)
 #> ── <LearnerClassifVotedPerceptron> (classif.voted_perceptron): Voted Perceptron 
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -228,7 +229,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> VotedPerceptron: Number of perceptrons=60
+#> VotedPerceptron: Number of perceptrons=58
 
 
 # Make predictions for the test rows
@@ -237,5 +238,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3478261 
+#>  0.3188406 
 ```

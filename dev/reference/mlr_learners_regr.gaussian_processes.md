@@ -61,6 +61,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -231,7 +232,7 @@ print(learner)
 #> ── <LearnerRegrGaussianProcesses> (regr.gaussian_processes): Gaussian Processes 
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response]
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -255,13 +256,13 @@ print(learner$model)
 #> 
 #> All values shown based on: Normalize training data
 #> 
-#> Average Target Value : 0.4795238095238095
+#> Average Target Value : 0.3750759878419453
 #> Inverted Covariance Matrix:
-#>     Lowest Value = -0.25635039061909964
-#>     Highest Value = 0.8592461867541622
+#>     Lowest Value = -0.25488668817671584
+#>     Highest Value = 0.8838862663624014
 #> Inverted Covariance Matrix * Target-value Vector:
-#>     Lowest Value = -0.17770888773928267
-#>     Highest Value = 0.2110590882479836
+#>     Lowest Value = -0.12932154842658378
+#>     Highest Value = 0.3200172399612104
 #>  
 #> 
 
@@ -272,5 +273,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.38867 
+#> 10.81454 
 ```

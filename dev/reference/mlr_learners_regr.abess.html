@@ -74,7 +74,7 @@ Calls <code><a href="https://abess-team.github.io/abess/reference/abess.html" cl
 <ul><li><p>Task type: “regr”</p></li>
 <li><p>Predict Types: “response”</p></li>
 <li><p>Feature Types: “integer”, “numeric”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=abess" class="external-link"><span class="pkg">abess</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=abess" class="external-link"><span class="pkg">abess</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -176,7 +176,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrAbess&gt;</span><span style="font-weight: bold;"> (regr.abess): Fast Best Subset Selection for Regression</span> <span style="color: #00BBBB;">──</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: num.threads=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">abess</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">abess</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer and numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -198,15 +198,15 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num.threads = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   support.size       dev      GIC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 19.679342 62.57096</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  4.723123 35.16544</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  3.759543 32.93739</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  2.928864 30.25762</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.735305 31.38538</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.354946 30.80472</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.217488 32.10529</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  2.147459 33.99497</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  2.039430 35.47463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 19.623878 62.51169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  4.541180 34.34049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  3.517429 31.53947</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  3.109433 31.51396</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.744300 31.45432</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.279874 30.12437</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.023134 30.17902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  1.959267 32.06897</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  1.940157 34.42670</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +215,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.940044 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22.10788 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

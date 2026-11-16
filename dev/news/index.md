@@ -2,6 +2,14 @@
 
 ## mlr3extralearners (development version)
 
+- All learners now list `mlr3extralearners` in their `$packages`, so
+  that the package is loaded in the worker process when a learner is
+  encapsulated or runs in parallel. This was missing for 65 learners,
+  e.g. the `RWeka` learners
+  ([\#478](https://github.com/mlr-org/mlr3extralearners/issues/478)).
+- Added minimum versions for all learner packages in `Suggests` that had
+  none
+  ([\#478](https://github.com/mlr-org/mlr3extralearners/issues/478)).
 - `classif.liblinear` and `regr.liblinear`: added the `regularizeBias`
   parameter of
   [`LiblineaR::LiblineaR()`](https://rdrr.io/pkg/LiblineaR/man/LiblineaR.html),

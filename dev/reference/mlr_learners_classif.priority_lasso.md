@@ -67,6 +67,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [prioritylasso](https://CRAN.R-project.org/package=prioritylasso)
 
 ## Parameters
@@ -229,7 +230,7 @@ print(learner)
 #> • Model: -
 #> • Parameters: type.measure=auc, blocks=<list>, max.coef=Inf,Inf,10,10,
 #> standardize=FALSE
-#> • Packages: mlr3 and prioritylasso
+#> • Packages: mlr3, mlr3extralearners, and prioritylasso
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, and numeric
 #> • Encapsulation: none (fallback: -)
@@ -241,8 +242,9 @@ learner$train(task, row_ids = ids$train)
 
 # Selected features
 learner$selected_features()
-#>  [1] "b1.1"   "b1.2"   "b2.3"   "b3.19"  "b3.4"   "b4.10"  "b4.117" "b4.123"
-#>  [9] "b4.164" "b4.309" "b4.549" "b4.612" "b4.641" "b4.650" "b4.891"
+#>  [1] "b1.1"   "b1.2"   "b1.4"   "b2.3"   "b3.2"   "b3.4"   "b3.7"   "b3.8"  
+#>  [9] "b4.10"  "b4.140" "b4.143" "b4.269" "b4.4"   "b4.433" "b4.6"   "b4.623"
+#> [17] "b4.641" "b4.823"
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -250,5 +252,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.4090909 
+#>  0.3181818 
 ```

@@ -42,6 +42,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -209,7 +210,7 @@ print(learner)
 #> ── <LearnerClassifRandomTree> (classif.random_tree): Random Tree ───────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -230,56 +231,38 @@ print(learner$model)
 #> RandomTree
 #> ==========
 #> 
-#> V2 < 0.08
-#> |   V11 < 0.17
-#> |   |   V20 < 0.86
-#> |   |   |   V44 < 0.27 : R (33/0)
-#> |   |   |   V44 >= 0.27
-#> |   |   |   |   V26 < 0.5
-#> |   |   |   |   |   V13 < 0.29 : M (3/0)
-#> |   |   |   |   |   V13 >= 0.29 : R (1/0)
-#> |   |   |   |   V26 >= 0.5 : R (5/0)
-#> |   |   V20 >= 0.86
-#> |   |   |   V30 < 0.4
-#> |   |   |   |   V10 < 0.09 : M (2/0)
-#> |   |   |   |   V10 >= 0.09 : R (2/0)
-#> |   |   |   V30 >= 0.4 : M (4/0)
-#> |   V11 >= 0.17
-#> |   |   V7 < 0.21
-#> |   |   |   V45 < 0.24
-#> |   |   |   |   V52 < 0.01
-#> |   |   |   |   |   V16 < 0.19 : M (1/0)
-#> |   |   |   |   |   V16 >= 0.19 : R (7/0)
-#> |   |   |   |   V52 >= 0.01
-#> |   |   |   |   |   V18 < 0.16 : R (2/0)
-#> |   |   |   |   |   V18 >= 0.16
-#> |   |   |   |   |   |   V39 < 0.43
-#> |   |   |   |   |   |   |   V50 < 0.02
-#> |   |   |   |   |   |   |   |   V31 < 0.27 : R (1/0)
-#> |   |   |   |   |   |   |   |   V31 >= 0.27 : M (20/0)
-#> |   |   |   |   |   |   |   V50 >= 0.02
-#> |   |   |   |   |   |   |   |   V38 < 0.14 : R (2/0)
-#> |   |   |   |   |   |   |   |   V38 >= 0.14
-#> |   |   |   |   |   |   |   |   |   V35 < 0.73
-#> |   |   |   |   |   |   |   |   |   |   V1 < 0.02
-#> |   |   |   |   |   |   |   |   |   |   |   V1 < 0.02 : M (2/0)
-#> |   |   |   |   |   |   |   |   |   |   |   V1 >= 0.02 : R (1/0)
-#> |   |   |   |   |   |   |   |   |   |   V1 >= 0.02 : M (8/0)
-#> |   |   |   |   |   |   |   |   |   V35 >= 0.73 : R (1/0)
-#> |   |   |   |   |   |   V39 >= 0.43 : R (2/0)
-#> |   |   |   V45 >= 0.24 : M (18/0)
-#> |   |   V7 >= 0.21
-#> |   |   |   V10 < 0.51 : R (6/0)
-#> |   |   |   V10 >= 0.51
-#> |   |   |   |   V11 < 0.63 : R (1/0)
-#> |   |   |   |   V11 >= 0.63 : M (1/0)
-#> V2 >= 0.08
-#> |   V53 < 0.01
-#> |   |   V14 < 0.36 : M (1/0)
-#> |   |   V14 >= 0.36 : R (1/0)
-#> |   V53 >= 0.01 : M (14/0)
+#> V9 < 0.1
+#> |   V22 < 0.66 : R (23/0)
+#> |   V22 >= 0.66
+#> |   |   V37 < 0.18 : R (5/0)
+#> |   |   V37 >= 0.18
+#> |   |   |   V39 < 0.29
+#> |   |   |   |   V4 < 0.1 : R (3/0)
+#> |   |   |   |   V4 >= 0.1 : M (1/0)
+#> |   |   |   V39 >= 0.29 : M (7/0)
+#> V9 >= 0.1
+#> |   V11 < 0.18
+#> |   |   V49 < 0.06
+#> |   |   |   V35 < 0.09 : M (1/0)
+#> |   |   |   V35 >= 0.09 : R (15/0)
+#> |   |   V49 >= 0.06 : M (3/0)
+#> |   V11 >= 0.18
+#> |   |   V17 < 0.55
+#> |   |   |   V48 < 0.05
+#> |   |   |   |   V8 < 0.17 : M (3/0)
+#> |   |   |   |   V8 >= 0.17 : R (2/0)
+#> |   |   |   V48 >= 0.05 : M (48/0)
+#> |   |   V17 >= 0.55
+#> |   |   |   V20 < 0.66 : R (9/0)
+#> |   |   |   V20 >= 0.66
+#> |   |   |   |   V51 < 0.01
+#> |   |   |   |   |   V1 < 0.03
+#> |   |   |   |   |   |   V35 < 0.39 : M (3/0)
+#> |   |   |   |   |   |   V35 >= 0.39 : R (1/0)
+#> |   |   |   |   |   V1 >= 0.03 : R (3/0)
+#> |   |   |   |   V51 >= 0.01 : M (12/0)
 #> 
-#> Size of the tree : 49
+#> Size of the tree : 31
 
 
 # Make predictions for the test rows
@@ -288,5 +271,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.2028986 
 ```

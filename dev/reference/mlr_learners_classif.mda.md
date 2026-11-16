@@ -25,6 +25,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [mda](https://CRAN.R-project.org/package=mda)
 
 ## Parameters
@@ -144,7 +145,7 @@ print(learner)
 #> ── <LearnerClassifMda> (classif.mda): Mixture Discriminant Analysis ────────────
 #> • Model: -
 #> • Parameters: keep.fitted=FALSE
-#> • Packages: mlr3 and mda
+#> • Packages: mlr3, mlr3extralearners, and mda
 #> • Predict Types: [response] and prob
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -168,13 +169,13 @@ print(learner$model)
 #> 
 #> Percent Between-Group Variance Explained:
 #>     v1     v2     v3     v4     v5 
-#>  40.59  74.28  91.30  95.90 100.00 
+#>  51.15  71.63  89.86  95.50 100.00 
 #> 
 #> Degrees of Freedom (per dimension): 61 
 #> 
 #> Training Misclassification Error: 0.01439 ( N = 139 )
 #> 
-#> Deviance: 10.945 
+#> Deviance: 7.796 
 
 
 # Make predictions for the test rows
@@ -183,5 +184,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3333333 
+#>  0.2608696 
 ```

@@ -21,6 +21,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [crs](https://CRAN.R-project.org/package=crs)
 
 ## Parameters
@@ -164,7 +165,7 @@ print(learner)
 #> ── <LearnerRegrCrs> (regr.crs): Regression Splines ─────────────────────────────
 #> • Model: -
 #> • Parameters: cv=none
-#> • Packages: mlr3 and crs
+#> • Packages: mlr3, mlr3extralearners, and crs
 #> • Predict Types: [response] and se
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -196,5 +197,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 3655.479 
+#> 160161.6 
 ```

@@ -25,6 +25,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [sparsediscrim](https://CRAN.R-project.org/package=sparsediscrim)
 
 ## Parameters
@@ -137,7 +138,7 @@ print(learner)
 #> ── <LearnerClassifMdeb> (classif.dlda): Minimum Distance Empirical Bayesian Clas
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and sparsediscrim
+#> • Packages: mlr3, mlr3extralearners, and sparsediscrim
 #> • Predict Types: [response] and prob
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
@@ -160,7 +161,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (57.55%), R (42.45%) 
+#>   M (56.12%), R (43.88%) 
 
 
 # Make predictions for the test rows

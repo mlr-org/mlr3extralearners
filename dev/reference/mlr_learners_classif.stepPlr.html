@@ -74,7 +74,7 @@ Calls <code><a href="https://rdrr.io/pkg/stepPlr/man/plr.html" class="external-l
 <ul><li><p>Task type: “classif”</p></li>
 <li><p>Predict Types: “response”, “prob”</p></li>
 <li><p>Feature Types: “logical”, “integer”, “numeric”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=stepPlr" class="external-link"><span class="pkg">stepPlr</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=stepPlr" class="external-link"><span class="pkg">stepPlr</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -166,7 +166,7 @@ ISSN 1465-4644.
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifStepPlr&gt;</span><span style="font-weight: bold;"> (classif.stepPlr): Logistic Regression with a L2 Pena</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">stepPlr</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">stepPlr</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, and numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -189,25 +189,25 @@ ISSN 1465-4644.
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intercept        V1       V10       V11       V12       V13       V14       V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  12.47086 -81.42186  11.83261 -30.57489 -29.76866  42.03685 -27.27309  -7.06416 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  20.56785 -30.33728  51.49639 -37.67474 -18.90427   4.34844  12.97810 -11.76673 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V16       V17       V18       V19        V2       V20       V21       V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  27.47055  10.72637 -41.15066  23.81168 -18.47811 -14.31984  26.52640 -35.21335 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -4.54085  17.58527 -19.59416  28.99383  32.40050   1.39667 -22.43111   8.61230 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V23       V24       V25       V26       V27       V28       V29        V3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  27.00308 -32.71089  28.52616  -9.75085   6.86005  -0.49682  -5.05171  63.14329 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -9.27438 -15.36234   9.73949  -0.69441  -5.35083   9.67440  -0.82022  51.88345 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V30       V31       V32       V33       V34       V35       V36       V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -20.44512  49.45144 -19.21928 -15.16755  21.78184 -14.72545  43.80769  -2.73596 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -25.85926  51.82847 -44.64656   2.60117  28.67179 -33.05784  18.54123  13.16882 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V38       V39        V4       V40       V41       V42       V43       V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -29.34479  -2.76918 -43.60976  28.12874  16.47238 -22.14278   2.51599 -37.28450 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   3.77408 -31.49507 -70.44682  53.64881 -23.76538  12.74844 -14.43730  -7.82973 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V45       V46       V47       V48       V49        V5       V50       V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -3.11004 -17.38077  -8.27585 -16.14602 -16.53861  -7.56792  33.88073 -68.98293 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -10.45682 -14.71013 -17.38307 -56.11958 -35.62979  -5.04145  47.70674 -43.06334 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V52       V53       V54       V55       V56       V57       V58       V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -36.06126 -30.12776 -49.38310  11.98277  -4.57254  16.88348 -26.24225 -58.42021 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -30.18029  -9.59805 -23.97904  -6.99746  16.07554 -16.40076 -10.43075 -22.47849 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        V6       V60        V7        V8        V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -6.71794 -43.61415   5.24443  24.09845 -11.60937 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -14.29359 -24.21302  23.84570  40.38390 -59.86631 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 190.61 on 138 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 12.72 on 94.45 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 232.56 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 192.34 on 138 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 9.28 on 95.3 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 224.89 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -216,7 +216,7 @@ ISSN 1465-4644.
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

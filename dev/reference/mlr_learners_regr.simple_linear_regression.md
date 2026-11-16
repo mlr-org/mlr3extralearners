@@ -47,6 +47,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -207,7 +208,7 @@ print(learner)
 #> ── <LearnerRegrSimpleLinearRegression> (regr.simple_linear_regression): Simple L
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response]
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)

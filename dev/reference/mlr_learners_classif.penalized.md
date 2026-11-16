@@ -35,6 +35,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [penalized](https://CRAN.R-project.org/package=penalized)
 
 ## Parameters
@@ -157,7 +158,7 @@ print(learner)
 #> ── <LearnerClassifPenalized> (classif.penalized): Penalized Logistic Regression 
 #> • Model: -
 #> • Parameters: trace=FALSE
-#> • Packages: mlr3 and penalized
+#> • Packages: mlr3, mlr3extralearners, and penalized
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -184,5 +185,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.2173913 
 ```

@@ -21,6 +21,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [abess](https://CRAN.R-project.org/package=abess)
 
 ## Parameters
@@ -177,7 +178,7 @@ print(learner)
 #> ── <LearnerRegrAbess> (regr.abess): Fast Best Subset Selection for Regression ──
 #> • Model: -
 #> • Parameters: num.threads=1
-#> • Packages: mlr3 and abess
+#> • Packages: mlr3, mlr3extralearners, and abess
 #> • Predict Types: [response]
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
@@ -199,15 +200,15 @@ print(learner$model)
 #>     num.threads = 1L)
 #> 
 #>   support.size       dev      GIC
-#> 1            0 19.679342 62.57096
-#> 2            1  4.723123 35.16544
-#> 3            2  3.759543 32.93739
-#> 4            3  2.928864 30.25762
-#> 5            4  2.735305 31.38538
-#> 6            5  2.354946 30.80472
-#> 7            6  2.217488 32.10529
-#> 8            7  2.147459 33.99497
-#> 9            8  2.039430 35.47463
+#> 1            0 19.623878 62.51169
+#> 2            1  4.541180 34.34049
+#> 3            2  3.517429 31.53947
+#> 4            3  3.109433 31.51396
+#> 5            4  2.744300 31.45432
+#> 6            5  2.279874 30.12437
+#> 7            6  2.023134 30.17902
+#> 8            7  1.959267 32.06897
+#> 9            8  1.940157 34.42670
 
 
 # Make predictions for the test rows
@@ -216,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.940044 
+#> 22.10788 
 ```

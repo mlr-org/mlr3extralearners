@@ -42,6 +42,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -217,7 +218,7 @@ print(learner)
 #> ── <LearnerClassifSimpleLogistic> (classif.simple_logistic): LogitBoost Based Lo
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -237,30 +238,50 @@ print(learner$model)
 #> SimpleLogistic:
 #> 
 #> Class M :
-#> -2.05 + 
-#> [V11] * 3.41 +
-#> [V15] * -1.43 +
-#> [V21] * 0.97 +
-#> [V22] * 0.95 +
-#> [V36] * -1.39 +
-#> [V4] * 8.36 +
-#> [V45] * 2.21 +
-#> [V49] * 6.71 +
-#> [V51] * 15.92 +
-#> [V57] * -29.03
+#> -2.26 + 
+#> [V11] * 4.45 +
+#> [V14] * -0.81 +
+#> [V16] * -0.94 +
+#> [V21] * 0.55 +
+#> [V22] * 1.2  +
+#> [V29] * 0.65 +
+#> [V3] * -4.62 +
+#> [V31] * -1.77 +
+#> [V33] * 1.02 +
+#> [V35] * -0.65 +
+#> [V36] * -1.47 +
+#> [V43] * 0.86 +
+#> [V44] * 0.94 +
+#> [V45] * 1.92 +
+#> [V49] * 15.12 +
+#> [V5] * 2.63 +
+#> [V50] * -12.76 +
+#> [V52] * 40.18 +
+#> [V54] * 19.29 +
+#> [V7] * -2.15
 #> 
 #> Class R :
-#> 2.05 + 
-#> [V11] * -3.41 +
-#> [V15] * 1.43 +
-#> [V21] * -0.97 +
-#> [V22] * -0.95 +
-#> [V36] * 1.39 +
-#> [V4] * -8.36 +
-#> [V45] * -2.21 +
-#> [V49] * -6.71 +
-#> [V51] * -15.92 +
-#> [V57] * 29.03
+#> 2.26 + 
+#> [V11] * -4.45 +
+#> [V14] * 0.81 +
+#> [V16] * 0.94 +
+#> [V21] * -0.55 +
+#> [V22] * -1.2 +
+#> [V29] * -0.65 +
+#> [V3] * 4.62 +
+#> [V31] * 1.77 +
+#> [V33] * -1.02 +
+#> [V35] * 0.65 +
+#> [V36] * 1.47 +
+#> [V43] * -0.86 +
+#> [V44] * -0.94 +
+#> [V45] * -1.92 +
+#> [V49] * -15.12 +
+#> [V5] * -2.63 +
+#> [V50] * 12.76 +
+#> [V52] * -40.18 +
+#> [V54] * -19.29 +
+#> [V7] * 2.15
 #> 
 
 
@@ -270,5 +291,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.2318841 
 ```

@@ -35,6 +35,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [penalized](https://CRAN.R-project.org/package=penalized)
 
 ## Parameters
@@ -158,7 +159,7 @@ print(learner)
 #> ── <LearnerRegrPenalized> (regr.penalized): Penalized  Regression ──────────────
 #> • Model: -
 #> • Parameters: trace=FALSE
-#> • Packages: mlr3 and penalized
+#> • Packages: mlr3, mlr3extralearners, and penalized
 #> • Predict Types: [response]
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -178,7 +179,7 @@ print(learner$model)
 #> Penalized linear regression object
 #> 11 regression coefficients
 #> 
-#> Loglikelihood =   -39.38464 
+#> Loglikelihood =   -41.20233 
 
 
 # Make predictions for the test rows
@@ -187,5 +188,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.53781 
+#> 10.68651 
 ```

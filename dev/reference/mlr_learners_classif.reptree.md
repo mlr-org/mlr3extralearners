@@ -42,6 +42,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -209,7 +210,7 @@ print(learner)
 #> ── <LearnerClassifREPTree> (classif.reptree): Decision Tree Learner ────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -230,10 +231,12 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> V12 < 0.21 : R (39/6) [19/4]
-#> V12 >= 0.21 : M (53/12) [28/8]
+#> V11 < 0.17
+#> |   V5 < 0.08 : R (28/1) [12/1]
+#> |   V5 >= 0.08 : M (7/2) [5/1]
+#> V11 >= 0.17 : M (57/15) [30/10]
 #> 
-#> Size of the tree : 3
+#> Size of the tree : 5
 
 
 # Make predictions for the test rows
@@ -242,5 +245,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3478261 
+#>  0.2318841 
 ```

@@ -24,6 +24,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [sparsediscrim](https://CRAN.R-project.org/package=sparsediscrim)
 
 ## Parameters
@@ -138,7 +139,7 @@ print(learner)
 #> ── <LearnerClassifSdlda> (classif.sdlda): Shrinkage-based Diagonal Linear Discri
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and sparsediscrim
+#> • Packages: mlr3, mlr3extralearners, and sparsediscrim
 #> • Predict Types: [response] and prob
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
@@ -161,7 +162,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (54.68%), R (45.32%) 
+#>   M (53.96%), R (46.04%) 
 
 
 # Make predictions for the test rows
@@ -170,5 +171,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.5072464 
+#>  0.5217391 
 ```

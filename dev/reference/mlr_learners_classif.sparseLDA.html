@@ -81,7 +81,7 @@ Calls <code><a href="https://rdrr.io/pkg/sparseLDA/man/sda.html" class="external
 <ul><li><p>Task type: “classif”</p></li>
 <li><p>Predict Types: “response”, “prob”</p></li>
 <li><p>Feature Types: “integer”, “numeric”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=sparseLDA" class="external-link"><span class="pkg">sparseLDA</span></a>, <a href="https://CRAN.R-project.org/package=MASS" class="external-link"><span class="pkg">MASS</span></a>, <a href="https://CRAN.R-project.org/package=elasticnet" class="external-link"><span class="pkg">elasticnet</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=sparseLDA" class="external-link"><span class="pkg">sparseLDA</span></a>, <a href="https://CRAN.R-project.org/package=MASS" class="external-link"><span class="pkg">MASS</span></a>, <a href="https://CRAN.R-project.org/package=elasticnet" class="external-link"><span class="pkg">elasticnet</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -171,7 +171,7 @@ Calls <code><a href="https://rdrr.io/pkg/sparseLDA/man/sda.html" class="external
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifSparseLDA&gt;</span><span style="font-weight: bold;"> (classif.sparseLDA): Sparse Discriminant Analysis</span> <span style="color: #00BBBB;">─</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">sparseLDA</span>, <span style="color: #0000BB;">MASS</span>, and <span style="color: #0000BB;">elasticnet</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">sparseLDA</span>, <span style="color: #0000BB;">MASS</span>, and <span style="color: #0000BB;">elasticnet</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer and numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -197,7 +197,7 @@ Calls <code><a href="https://rdrr.io/pkg/sparseLDA/man/sda.html" class="external
 <span class="r-out co"><span class="r-pr">#&gt;</span> classes = M, R </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Top 5 predictors (out of 60):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	V28, V16, V14, V11, V25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	V21, V38, V46, V33, V5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -206,7 +206,7 @@ Calls <code><a href="https://rdrr.io/pkg/sparseLDA/man/sda.html" class="external
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3478261 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -87,7 +87,7 @@ Calls <code><a href="https://rdrr.io/pkg/RWeka/man/Weka_interfaces.html" class="
 <ul><li><p>Task type: “classif”</p></li>
 <li><p>Predict Types: “response”, “prob”</p></li>
 <li><p>Feature Types: “integer”, “numeric”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=RWeka" class="external-link"><span class="pkg">RWeka</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=RWeka" class="external-link"><span class="pkg">RWeka</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -220,7 +220,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifNaiveBayesMultinomial&gt;</span><span style="font-weight: bold;"> (classif.naive_bayes_multinomial): Mult</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">RWeka</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer and numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -239,8 +239,8 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The independent probability of a class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.45</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The probability of a word given the class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
@@ -259,7 +259,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2	0	0	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V20	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V21	0.04	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V22	0.04	0.03	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25	0.04	0.04	</span>
@@ -268,14 +268,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V28	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3	0	0	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V30	0.03	0.04	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V31	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V32	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V33	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V35	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36	0.02	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37	0.02	0.02	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V4	0	0	</span>
@@ -314,7 +314,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

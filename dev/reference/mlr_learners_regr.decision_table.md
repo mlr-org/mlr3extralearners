@@ -68,6 +68,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -241,7 +242,7 @@ print(learner)
 #> ── <LearnerRegrDecisionTable> (regr.decision_table): Decision Table ────────────
 #> • Model: -
 #> • Parameters: E=rmse
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response]
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -261,16 +262,16 @@ print(learner$model)
 #> Decision Table:
 #> 
 #> Number of training instances: 21
-#> Number of Rules : 10
+#> Number of Rules : 12
 #> Non matches covered by Majority class.
 #>  Best first.
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 51
-#>  Merit of best subset found:    3.054
+#>  Total number of subsets evaluated: 73
+#>  Merit of best subset found:    2.669
 #> Evaluation (for feature selection): CV (leave one out) 
-#> Feature set: 4,5,1
+#> Feature set: 4,11,1
 
 
 # Make predictions for the test rows
@@ -279,5 +280,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.924183 
+#> 5.589091 
 ```

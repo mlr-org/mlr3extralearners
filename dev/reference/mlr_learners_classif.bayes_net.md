@@ -70,6 +70,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -233,7 +234,7 @@ print(learner)
 #> ── <LearnerClassifBayesNet> (classif.bayes_net): Bayes Network ─────────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -255,12 +256,12 @@ print(learner$model)
 #> #attributes=61 #classindex=0
 #> Network structure (nodes followed by parents)
 #> Class(2): 
-#> V1(1): Class 
+#> V1(2): Class 
 #> V10(2): Class 
 #> V11(2): Class 
 #> V12(2): Class 
 #> V13(2): Class 
-#> V14(1): Class 
+#> V14(2): Class 
 #> V15(1): Class 
 #> V16(1): Class 
 #> V17(1): Class 
@@ -268,7 +269,7 @@ print(learner$model)
 #> V19(1): Class 
 #> V2(1): Class 
 #> V20(2): Class 
-#> V21(1): Class 
+#> V21(2): Class 
 #> V22(1): Class 
 #> V23(1): Class 
 #> V24(1): Class 
@@ -285,26 +286,26 @@ print(learner$model)
 #> V34(1): Class 
 #> V35(1): Class 
 #> V36(2): Class 
-#> V37(1): Class 
+#> V37(2): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(1): Class 
+#> V4(2): Class 
 #> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
 #> V43(1): Class 
-#> V44(1): Class 
-#> V45(1): Class 
+#> V44(2): Class 
+#> V45(2): Class 
 #> V46(1): Class 
-#> V47(1): Class 
-#> V48(1): Class 
-#> V49(1): Class 
+#> V47(2): Class 
+#> V48(2): Class 
+#> V49(2): Class 
 #> V5(2): Class 
 #> V50(1): Class 
 #> V51(2): Class 
 #> V52(2): Class 
 #> V53(1): Class 
-#> V54(1): Class 
+#> V54(2): Class 
 #> V55(1): Class 
 #> V56(1): Class 
 #> V57(1): Class 
@@ -315,11 +316,11 @@ print(learner$model)
 #> V7(1): Class 
 #> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -939.9248496653008
-#> LogScore BDeu: -957.103854077742
-#> LogScore MDL: -959.309361044723
-#> LogScore ENTROPY: -907.4973847468509
-#> LogScore AIC: -928.4973847468508
+#> LogScore Bayes: -1690.5568761357117
+#> LogScore BDeu: -1726.6327854018375
+#> LogScore MDL: -1737.5844184868827
+#> LogScore ENTROPY: -1631.4932289245728
+#> LogScore AIC: -1674.4932289245728
 #> 
 
 
@@ -329,5 +330,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.2898551 
 ```

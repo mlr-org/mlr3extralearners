@@ -42,6 +42,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -201,7 +202,7 @@ print(learner)
 #> ── <LearnerRegrDecisionStump> (regr.decision_stump): Decision Stump ────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response]
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -222,9 +223,9 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> disp <= 108.05 : 31.0
-#> disp > 108.05 : 17.623529411764707
-#> disp is missing : 20.17142857142857
+#> wt <= 2.41 : 30.879999999999995
+#> wt > 2.41 : 16.831250000000004
+#> wt is missing : 20.176190476190477
 #> 
 
 
@@ -234,5 +235,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  24.3466 
+#> 20.74633 
 ```

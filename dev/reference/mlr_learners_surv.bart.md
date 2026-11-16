@@ -59,6 +59,7 @@ instantiated via
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
   [mlr3proba](https://CRAN.R-project.org/package=mlr3proba),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [BART](https://CRAN.R-project.org/package=BART)
 
 ## Parameters
@@ -233,7 +234,7 @@ lrn("surv.bart")
 #> ── <LearnerSurvLearnerSurvBART> (surv.bart): Bayesian Additive Regression Trees 
 #> • Model: -
 #> • Parameters: mc.cores=1, quiet=TRUE, importance=count, which.curve=0.5
-#> • Packages: mlr3, mlr3proba, and BART
+#> • Packages: mlr3, mlr3proba, mlr3extralearners, and BART
 #> • Predict Types: [crank] and distr
 #> • Feature Types: logical, integer, and numeric
 #> • Encapsulation: none (fallback: -)

@@ -21,6 +21,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [abess](https://CRAN.R-project.org/package=abess)
 
 ## Parameters
@@ -177,7 +178,7 @@ print(learner)
 #> ── <LearnerClassifAbess> (classif.abess): Fast Best Subset Selection for Classif
 #> • Model: -
 #> • Parameters: num.threads=1
-#> • Packages: mlr3 and abess
+#> • Packages: mlr3, mlr3extralearners, and abess
 #> • Predict Types: [response] and prob
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)

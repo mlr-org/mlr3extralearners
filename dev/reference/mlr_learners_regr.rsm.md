@@ -33,6 +33,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [rsm](https://CRAN.R-project.org/package=rsm)
 
 ## Parameters
@@ -144,7 +145,7 @@ print(learner)
 #> ── <LearnerRegrRSM> (regr.rsm): Response Surface Model ─────────────────────────
 #> • Model: -
 #> • Parameters: modelfun=FO
-#> • Packages: mlr3 and rsm
+#> • Packages: mlr3, mlr3extralearners, and rsm
 #> • Predict Types: [response]
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)

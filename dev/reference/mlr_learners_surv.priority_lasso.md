@@ -52,6 +52,7 @@ instantiated via
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
   [mlr3proba](https://CRAN.R-project.org/package=mlr3proba),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [prioritylasso](https://CRAN.R-project.org/package=prioritylasso)
 
 ## Parameters

@@ -109,6 +109,7 @@ instantiated via
   “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [reticulate](https://CRAN.R-project.org/package=reticulate)
 
 ## Parameters

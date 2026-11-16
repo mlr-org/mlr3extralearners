@@ -105,7 +105,7 @@ since their ids contain irregular pattern</p></li>
 <ul><li><p>Task type: “regr”</p></li>
 <li><p>Predict Types: “response”</p></li>
 <li><p>Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=RWeka" class="external-link"><span class="pkg">RWeka</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=RWeka" class="external-link"><span class="pkg">RWeka</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -238,7 +238,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrDecisionTable&gt;</span><span style="font-weight: bold;"> (regr.decision_table): Decision Table</span> <span style="color: #00BBBB;">────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: E=rmse</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">RWeka</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -258,16 +258,16 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decision Table:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of training instances: 21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Non matches covered by Majority class.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Best first.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Start set: no attributes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Search direction: forward</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Stale search after 5 node expansions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	Total number of subsets evaluated: 51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	Merit of best subset found:    3.054</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Total number of subsets evaluated: 73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Merit of best subset found:    2.669</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Evaluation (for feature selection): CV (leave one out) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Feature set: 4,5,1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Feature set: 4,11,1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -276,7 +276,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.924183 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.589091 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

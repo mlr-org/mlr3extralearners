@@ -29,6 +29,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [prioritylasso](https://CRAN.R-project.org/package=prioritylasso)
 
 ## Parameters

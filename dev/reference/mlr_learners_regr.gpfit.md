@@ -181,11 +181,11 @@ print(learner$model)
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
 #>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]  0.2994034  -2.071601   1.286322  0.7004878  -1.813989 -0.1757305
+#> [1]  -1.795136  -2.533444  -1.957475  -1.452503  0.6363159  -1.198041
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]  0.2027988    1.39281   1.405533   -2.628344
+#> [1]  0.8502294   0.818688   1.199538  0.09823999
 #> 
-#> sigma^2_hat: [1] 28.68303
+#> sigma^2_hat: [1] 42.05401
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,11 +201,11 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   8.000   8.000 472.000   4.430   5.000 335.000  22.900   1.000   5.424 
+#>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  20.010   1.000   5.424 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
-#>  0.000  1.000  4.000 71.100  2.760  3.000 62.000 14.500  0.000  1.835 
+#>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.600  0.000  1.513 
 #> 
 #> 
 
@@ -215,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 27.48039 
+#> 15.11502 
 ```

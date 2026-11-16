@@ -106,7 +106,7 @@ print(learner)
 #> ── <LearnerClassifEvtree> (classif.evtree): Evolutionary learning of globally op
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and evtree
+#> • Packages: mlr3, mlr3extralearners, and evtree
 #> • Predict Types: [response] and prob
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
@@ -135,15 +135,21 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V1 < 0.0411
-#> |   |   [3] V11 < 0.2164: R (n = 60, err = 15.0%)
-#> |   |   [4] V11 >= 0.2164
-#> |   |   |   [5] V16 < 0.6804: M (n = 41, err = 7.3%)
-#> |   |   |   [6] V16 >= 0.6804: R (n = 14, err = 21.4%)
-#> |   [7] V1 >= 0.0411: M (n = 24, err = 4.2%)
+#> |   [2] V20 < 0.4233
+#> |   |   [3] V52 < 0.0094: R (n = 18, err = 0.0%)
+#> |   |   [4] V52 >= 0.0094
+#> |   |   |   [5] V48 < 0.0752: R (n = 11, err = 0.0%)
+#> |   |   |   [6] V48 >= 0.0752: M (n = 20, err = 15.0%)
+#> |   [7] V20 >= 0.4233
+#> |   |   [8] V45 < 0.1675
+#> |   |   |   [9] V11 < 0.2118: R (n = 22, err = 4.5%)
+#> |   |   |   [10] V11 >= 0.2118
+#> |   |   |   |   [11] V23 < 0.6634: R (n = 12, err = 25.0%)
+#> |   |   |   |   [12] V23 >= 0.6634: M (n = 22, err = 13.6%)
+#> |   |   [13] V45 >= 0.1675: M (n = 34, err = 8.8%)
 #> 
-#> Number of inner nodes:    3
-#> Number of terminal nodes: 4
+#> Number of inner nodes:    6
+#> Number of terminal nodes: 7
 
 
 # Make predictions for the test rows
@@ -152,5 +158,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.3478261 
 ```

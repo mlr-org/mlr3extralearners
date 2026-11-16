@@ -21,6 +21,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [klaR](https://CRAN.R-project.org/package=klaR)
 
 ## Parameters
@@ -148,7 +149,7 @@ print(learner)
 #> ── <LearnerClassifRda> (classif.rda): Regularized Discriminant Analysis ────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and klaR
+#> • Packages: mlr3, mlr3extralearners, and klaR
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -169,16 +170,16 @@ print(learner$model)
 #> rda(formula = formula, data = data)
 #> 
 #> Regularization parameters: 
-#>       gamma      lambda 
-#> 0.008562407 0.136308684 
+#>     gamma    lambda 
+#> 0.3621448 0.6688905 
 #> 
 #> Prior probabilities of groups: 
 #>         M         R 
-#> 0.5035971 0.4964029 
+#> 0.4964029 0.5035971 
 #> 
 #> Misclassification rate: 
-#>        apparent: 0 %
-#> cross-validated: 15.144 %
+#>        apparent: 5.036 %
+#> cross-validated: 19.734 %
 
 
 # Make predictions for the test rows

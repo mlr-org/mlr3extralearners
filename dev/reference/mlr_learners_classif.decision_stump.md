@@ -42,6 +42,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -201,7 +202,7 @@ print(learner)
 #> ── <LearnerClassifDecisionStump> (classif.decision_stump): Decision Stump ──────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response] and prob
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -222,21 +223,21 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> V11 <= 0.17070000000000002 : R
-#> V11 > 0.17070000000000002 : M
-#> V11 is missing : M
+#> V11 <= 0.19825 : R
+#> V11 > 0.19825 : M
+#> V11 is missing : R
 #> 
 #> Class distributions
 #> 
-#> V11 <= 0.17070000000000002
+#> V11 <= 0.19825
 #> M    R   
-#> 0.1836734693877551   0.8163265306122449  
-#> V11 > 0.17070000000000002
+#> 0.14754098360655737  0.8524590163934426  
+#> V11 > 0.19825
 #> M    R   
-#> 0.7555555555555555   0.24444444444444444 
+#> 0.7435897435897436   0.2564102564102564  
 #> V11 is missing
 #> M    R   
-#> 0.5539568345323741   0.4460431654676259  
+#> 0.48201438848920863  0.5179856115107914  
 #> 
 
 
@@ -246,5 +247,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.3043478 
 ```

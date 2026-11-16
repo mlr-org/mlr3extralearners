@@ -74,7 +74,7 @@ Calls <code><a href="https://rdrr.io/pkg/klaR/man/rda.html" class="external-link
 <ul><li><p>Task type: “classif”</p></li>
 <li><p>Predict Types: “response”, “prob”</p></li>
 <li><p>Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=klaR" class="external-link"><span class="pkg">klaR</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=klaR" class="external-link"><span class="pkg">klaR</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -164,7 +164,7 @@ ISSN 01621459, 1537274X.
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifRda&gt;</span><span style="font-weight: bold;"> (classif.rda): Regularized Discriminant Analysis</span> <span style="color: #00BBBB;">────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">klaR</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">klaR</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -185,16 +185,16 @@ ISSN 01621459, 1537274X.
 <span class="r-out co"><span class="r-pr">#&gt;</span> rda(formula = formula, data = data)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Regularization parameters: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       gamma      lambda </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.008562407 0.136308684 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     gamma    lambda </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3621448 0.6688905 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Prior probabilities of groups: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M         R </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5035971 0.4964029 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4964029 0.5035971 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Misclassification rate: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        apparent: 0 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cross-validated: 15.144 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        apparent: 5.036 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cross-validated: 19.734 %</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>

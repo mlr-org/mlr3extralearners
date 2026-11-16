@@ -28,6 +28,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [sparseLDA](https://CRAN.R-project.org/package=sparseLDA),
   [MASS](https://CRAN.R-project.org/package=MASS),
   [elasticnet](https://CRAN.R-project.org/package=elasticnet)
@@ -147,7 +148,7 @@ print(learner)
 #> ── <LearnerClassifSparseLDA> (classif.sparseLDA): Sparse Discriminant Analysis ─
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3, sparseLDA, MASS, and elasticnet
+#> • Packages: mlr3, mlr3extralearners, sparseLDA, MASS, and elasticnet
 #> • Predict Types: [response] and prob
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
@@ -173,7 +174,7 @@ print(learner$model)
 #> classes = M, R 
 #> 
 #> Top 5 predictors (out of 60):
-#>  V28, V16, V14, V11, V25
+#>  V21, V38, V46, V33, V5
 
 
 # Make predictions for the test rows
@@ -182,5 +183,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3478261 
+#>  0.3188406 
 ```

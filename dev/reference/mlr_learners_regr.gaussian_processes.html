@@ -98,7 +98,7 @@ since their ids contain irregular pattern</p></li>
 <ul><li><p>Task type: “regr”</p></li>
 <li><p>Predict Types: “response”</p></li>
 <li><p>Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=RWeka" class="external-link"><span class="pkg">RWeka</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=RWeka" class="external-link"><span class="pkg">RWeka</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -230,7 +230,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrGaussianProcesses&gt;</span><span style="font-weight: bold;"> (regr.gaussian_processes): Gaussian Processes</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">RWeka</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -254,13 +254,13 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> All values shown based on: Normalize training data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average Target Value : 0.4795238095238095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average Target Value : 0.3750759878419453</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Inverted Covariance Matrix:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Lowest Value = -0.25635039061909964</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Highest Value = 0.8592461867541622</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Lowest Value = -0.25488668817671584</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Highest Value = 0.8838862663624014</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Inverted Covariance Matrix * Target-value Vector:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Lowest Value = -0.17770888773928267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Highest Value = 0.2110590882479836</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Lowest Value = -0.12932154842658378</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Highest Value = 0.3200172399612104</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -271,7 +271,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.38867 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.81454 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

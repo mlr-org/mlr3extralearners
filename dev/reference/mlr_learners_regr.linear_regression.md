@@ -51,6 +51,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [RWeka](https://CRAN.R-project.org/package=RWeka)
 
 ## Parameters
@@ -216,7 +217,7 @@ print(learner)
 #> ── <LearnerRegrLinearRegression> (regr.linear_regression): Linear Regression ───
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3 and RWeka
+#> • Packages: mlr3, mlr3extralearners, and RWeka
 #> • Predict Types: [response]
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -238,9 +239,9 @@ print(learner$model)
 #> 
 #> mpg =
 #> 
-#>      -0.0297 * hp +
-#>      -3.6384 * wt +
-#>      36.6035
+#>      -0.0523 * hp +
+#>      -2.4062 * wt +
+#>      35.5668
 
 
 # Make predictions for the test rows
@@ -249,5 +250,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.059766 
+#> 14.15675 
 ```

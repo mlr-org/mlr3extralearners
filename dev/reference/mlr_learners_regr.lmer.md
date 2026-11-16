@@ -32,6 +32,7 @@ instantiated via
 - Feature Types: “logical”, “integer”, “numeric”, “factor”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [lme4](https://CRAN.R-project.org/package=lme4)
 
 ## Parameters
