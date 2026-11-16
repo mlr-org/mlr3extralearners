@@ -107,6 +107,8 @@ These include:
 
 * `id`: The ID of the new learner.
 * `packages`: The upstream package name(s) of the implemented learner.
+  `mlr3` loads these packages before training and predicting, also in the worker process when the learner is encapsulated or runs in parallel.
+  A learner that is part of `mlr3extralearners` lists `"mlr3extralearners"` first, e.g. `packages = c("mlr3extralearners", "rpart")`, so that the helper functions and S3 methods of the package are available in the worker.
 * `param_set`: A set of hyperparameters and their descriptions provided as a `paradox::ParamSet`.
 * `predict_types`: Set of predict types the learner supports.
 * `feature_types`: Set of feature types the learner is able to handle.
@@ -637,6 +639,29 @@ test_that("autotest", {
 # Test passed with 20 successes 🥇.
 ```
 
+### Running the tests in mlr3extralearners
+
+Install the package before you test a learner that you add to `mlr3extralearners`.
+`devtools::test()` loads the source code with `load_all()`, but two checks use the installed package:
+
+* The encapsulation stage of the autotest trains the learner in a `mirai` daemon.
+  The daemon is a separate R process that loads the installed `mlr3extralearners`.
+  Without a fresh install, the stage fails because the daemon cannot find the new learner.
+* `expect_learner()` with `check_man = TRUE` searches the help index of the installed package for the manual page of the learner.
+  Run `devtools::document()` first, so that the manual page exists when you install.
+
+```{r, eval = FALSE}
+devtools::document()
+devtools::install(quick = TRUE, upgrade = FALSE)
+devtools::test(filter = "^C50_classif_C50")
+```
+
+Install again after every change to the learner file, otherwise the daemon runs the old code.
+
+`devtools::test()` runs `tests/testthat/setup.R`, which starts one persistent daemon for the encapsulation stage.
+If you run a test file line by line in an interactive session, source `tests/testthat/helper.R` and `tests/testthat/setup.R` first.
+Without the persistent daemon, `mirai` starts a new R process for every encapsulated call, which makes the autotest much slower.
+
 ### Skipping tests for optional dependencies
 
 Always add an explicit skip at the top of test files for all learners, for example:
@@ -833,7 +858,11 @@ For custom templates, replace `@template example` with `@template example_<name>
 When adding a `Learner` to `mlr3extralearners` there are some additional requirements that have to be satisfied:
 
 * Adding the line `.extralrns_dict$add("<learner-id>", <LearnerClassName>)` to the bottom of the learner file to add the learner to the learners `Dictionary`.
+* List `"mlr3extralearners"` as the first entry of the `packages` argument of the learner.
 * Add the learner dependencies to *Suggests* (and not e.g. to *Imports*) in the DESCRIPTION file.
+  State the minimum working version, e.g. `aorsf (>= 0.1.6)`.
+  This is the latest CRAN or GitHub release at the time you add the learner.
+  Raise the version whenever an upstream change breaks the learner and the fix depends on the new release.
 * The learner must be properly documented. Check the other learners for how to do this.
 * Conforming to the `mlr3` [style guide](https://github.com/mlr-org/mlr3/wiki/Style-Guide).
 * The tests must pass in the CI (also check the CodeFactor results).
