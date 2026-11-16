@@ -159,7 +159,7 @@ learner$train(task, row_ids = ids$train)
 #> Number of parameters (weights and biases) to estimate: 24 
 #> Nguyen-Widrow method
 #> Scaling factor= 0.7234904 
-#> gamma= 9.1933     alpha= 2.3218   beta= 11.006 
+#> gamma= 12.0137    alpha= 1.7666   beta= 17.8433 
 
 print(learner$model)
 #> A Bayesian regularized neural network 
@@ -174,5 +174,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.68302 
+#> 12.29336 
 ```

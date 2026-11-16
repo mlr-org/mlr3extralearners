@@ -37,7 +37,22 @@ options(repos = c(
 ))
 ```
 
-## Quick Start
+## Contributing your learner
+
+Contributions are welcome, and a new learner is the most common one. If
+you maintain a modeling package or miss a learner in mlr3, open a pull
+request and the maintainers will review it within a reasonable time. The
+[tutorial](https://mlr3extralearners.mlr-org.com/articles/extending.html)
+on the package website explains step by step how to write, test, and
+document a learner.
+
+If you work with an AI coding agent, the repository ships the agent
+skill
+[`mlr3-add-learner`](https://github.com/mlr-org/mlr3extralearners/tree/main/.claude/skills/mlr3-add-learner).
+Claude Code picks it up automatically in a clone of the repository when
+you ask it to add a learner.
+
+## Quick start
 
 The package includes functionality for detecting if you have the
 required packages installed to use a learner, and ships with the
@@ -91,28 +106,17 @@ learner$predict(task, split$test)
 #> 
 #> ── <PredictionRegr> for 6811 observations: ─────────────────────────────────────
 #>  row_ids  truth  response
-#>        1 452600 418376.01
-#>        2 358500 425594.06
-#>        4 341300 324722.12
+#>        2 358500 436713.44
+#>        6 269700 271536.92
+#>        9 226700 171525.41
 #>      ---    ---       ---
-#>    20623  67000  90627.18
-#>    20637  77100 103475.79
-#>    20639  84700  79637.14
+#>    20620  99100 101974.69
+#>    20630 108300  90976.71
+#>    20632 107200 132260.55
 ```
 
 You can learn more about using learners by [reading our
 book](https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.html#mlr3-by-example).
-
-## Extending mlr3extralearners
-
-An in-depth tutorial on how to add learners can be found in the [package
-website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
-
-If you work with an AI coding agent, the repository ships the agent
-skill
-[`mlr3-add-learner`](https://github.com/mlr-org/mlr3extralearners/tree/main/.claude/skills/mlr3-add-learner).
-Claude Code picks it up automatically in a clone of the repository when
-you ask it to add a learner.
 
 ## Acknowledgements
 

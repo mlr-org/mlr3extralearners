@@ -256,7 +256,7 @@ print(learner$model)
 #> #attributes=61 #classindex=0
 #> Network structure (nodes followed by parents)
 #> Class(2): 
-#> V1(1): Class 
+#> V1(2): Class 
 #> V10(2): Class 
 #> V11(2): Class 
 #> V12(2): Class 
@@ -266,11 +266,11 @@ print(learner$model)
 #> V16(1): Class 
 #> V17(1): Class 
 #> V18(1): Class 
-#> V19(2): Class 
-#> V2(1): Class 
+#> V19(1): Class 
+#> V2(2): Class 
 #> V20(1): Class 
-#> V21(2): Class 
-#> V22(1): Class 
+#> V21(1): Class 
+#> V22(2): Class 
 #> V23(1): Class 
 #> V24(1): Class 
 #> V25(1): Class 
@@ -278,7 +278,7 @@ print(learner$model)
 #> V27(1): Class 
 #> V28(2): Class 
 #> V29(1): Class 
-#> V3(1): Class 
+#> V3(2): Class 
 #> V30(1): Class 
 #> V31(1): Class 
 #> V32(1): Class 
@@ -289,21 +289,21 @@ print(learner$model)
 #> V37(1): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(2): Class 
+#> V4(1): Class 
 #> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
-#> V43(1): Class 
-#> V44(2): Class 
+#> V43(2): Class 
+#> V44(1): Class 
 #> V45(2): Class 
-#> V46(2): Class 
+#> V46(1): Class 
 #> V47(2): Class 
 #> V48(2): Class 
 #> V49(2): Class 
-#> V5(3): Class 
+#> V5(2): Class 
 #> V50(1): Class 
 #> V51(2): Class 
-#> V52(1): Class 
+#> V52(2): Class 
 #> V53(1): Class 
 #> V54(1): Class 
 #> V55(1): Class 
@@ -311,16 +311,16 @@ print(learner$model)
 #> V57(1): Class 
 #> V58(1): Class 
 #> V59(1): Class 
-#> V6(2): Class 
+#> V6(1): Class 
 #> V60(1): Class 
 #> V7(1): Class 
-#> V8(1): Class 
+#> V8(3): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1469.1377425342232
-#> LogScore BDeu: -1503.8219666271746
-#> LogScore MDL: -1514.7133832710554
-#> LogScore ENTROPY: -1418.491141575007
-#> LogScore AIC: -1457.491141575007
+#> LogScore Bayes: -1436.356300585233
+#> LogScore BDeu: -1472.7584251194287
+#> LogScore MDL: -1487.6964989733647
+#> LogScore ENTROPY: -1386.5397833441855
+#> LogScore AIC: -1427.5397833441857
 #> 
 
 
@@ -330,5 +330,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.3043478 
 ```

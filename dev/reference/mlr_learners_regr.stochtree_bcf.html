@@ -335,12 +335,12 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.153392 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.552897 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Estimate the conditional average treatment effect for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">treatment_effect</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3.138064 2.842569 3.657884 3.579402 2.853360 2.843354 2.851186 2.820331</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 3.765963 2.900402 3.654399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 4.262207 3.940292 4.804976 4.437303 4.095391 4.090121 3.927018 3.956581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.935492 4.087362 4.742578</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

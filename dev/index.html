@@ -103,7 +103,13 @@
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+<h2 id="contributing-your-learner">Contributing your learner<a class="anchor" aria-label="anchor" href="#contributing-your-learner"></a>
+</h2>
+<p>Contributions are welcome, and a new learner is the most common one. If you maintain a modeling package or miss a learner in mlr3, open a pull request and the maintainers will review it within a reasonable time. The <a href="https://mlr3extralearners.mlr-org.com/articles/extending.html">tutorial</a> on the package website explains step by step how to write, test, and document a learner.</p>
+<p>If you work with an AI coding agent, the repository ships the agent skill <a href="https://github.com/mlr-org/mlr3extralearners/tree/main/.claude/skills/mlr3-add-learner" class="external-link"><code>mlr3-add-learner</code></a>. Claude Code picks it up automatically in a clone of the repository when you ask it to add a learner.</p>
+</div>
+<div class="section level2">
+<h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -148,20 +154,14 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── &lt;PredictionRegr&gt; for 6811 observations: ─────────────────────────────────────</span></span>
 <span><span class="co">#&gt;  row_ids  truth  response</span></span>
-<span><span class="co">#&gt;        1 452600 418376.01</span></span>
-<span><span class="co">#&gt;        2 358500 425594.06</span></span>
-<span><span class="co">#&gt;        4 341300 324722.12</span></span>
+<span><span class="co">#&gt;        2 358500 436713.44</span></span>
+<span><span class="co">#&gt;        6 269700 271536.92</span></span>
+<span><span class="co">#&gt;        9 226700 171525.41</span></span>
 <span><span class="co">#&gt;      ---    ---       ---</span></span>
-<span><span class="co">#&gt;    20623  67000  90627.18</span></span>
-<span><span class="co">#&gt;    20637  77100 103475.79</span></span>
-<span><span class="co">#&gt;    20639  84700  79637.14</span></span></code></pre></div>
+<span><span class="co">#&gt;    20620  99100 101974.69</span></span>
+<span><span class="co">#&gt;    20630 108300  90976.71</span></span>
+<span><span class="co">#&gt;    20632 107200 132260.55</span></span></code></pre></div>
 <p>You can learn more about using learners by <a href="https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.html#mlr3-by-example" class="external-link">reading our book</a>.</p>
-</div>
-<div class="section level2">
-<h2 id="extending-mlr3extralearners">Extending mlr3extralearners<a class="anchor" aria-label="anchor" href="#extending-mlr3extralearners"></a>
-</h2>
-<p>An in-depth tutorial on how to add learners can be found in the <a href="https://mlr3extralearners.mlr-org.com/articles/extending.html">package website</a>.</p>
-<p>If you work with an AI coding agent, the repository ships the agent skill <a href="https://github.com/mlr-org/mlr3extralearners/tree/main/.claude/skills/mlr3-add-learner" class="external-link"><code>mlr3-add-learner</code></a>. Claude Code picks it up automatically in a clone of the repository when you ask it to add a learner.</p>
 </div>
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>

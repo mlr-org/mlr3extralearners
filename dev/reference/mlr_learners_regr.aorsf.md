@@ -225,18 +225,18 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.252
+#>  Average leaves per tree: 3.244
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.64
+#>           OOB stat value: 0.68
 #>            OOB stat type: RSQ
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>        disp          wt          hp         cyl        drat          am 
-#> 0.098092643 0.076502732 0.076502732 0.043887147 0.040201005 0.021739130 
-#>        carb          vs        qsec        gear 
-#> 0.019718310 0.018348624 0.010638298 0.009009009 
+#>          wt          hp        carb         cyl        drat        gear 
+#> 0.136612022 0.094117647 0.041782730 0.039473684 0.030555556 0.019662921 
+#>        disp          am          vs        qsec 
+#> 0.017045455 0.010238908 0.003401361 0.002785515 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -244,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.816456 
+#> 12.38208 
 ```

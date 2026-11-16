@@ -223,19 +223,19 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> V10 <= 0.16315000000000002 : R
-#> V10 > 0.16315000000000002 : M
-#> V10 is missing : M
+#> V11 <= 0.19685 : R
+#> V11 > 0.19685 : M
+#> V11 is missing : M
 #> 
 #> Class distributions
 #> 
-#> V10 <= 0.16315000000000002
+#> V11 <= 0.19685
 #> M    R   
-#> 0.2033898305084746   0.7966101694915254  
-#> V10 > 0.16315000000000002
+#> 0.2807017543859649   0.7192982456140351  
+#> V11 > 0.19685
 #> M    R   
-#> 0.7875   0.2125  
-#> V10 is missing
+#> 0.7195121951219512   0.2804878048780488  
+#> V11 is missing
 #> M    R   
 #> 0.539568345323741    0.460431654676259   
 #> 
@@ -247,5 +247,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.4202899 
+#>   0.173913 
 ```
