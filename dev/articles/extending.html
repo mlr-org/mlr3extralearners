@@ -194,7 +194,13 @@ documentation</a>). These include:</p>
 <code>id</code>: The ID of the new learner.</li>
 <li>
 <code>packages</code>: The upstream package name(s) of the
-implemented learner.</li>
+implemented learner. <code>mlr3</code> loads these packages before
+training and predicting, also in the worker process when the learner is
+encapsulated or runs in parallel. A learner that is part of
+<code>mlr3extralearners</code> lists <code>"mlr3extralearners"</code>
+first, e.g. <code>packages = c("mlr3extralearners", "rpart")</code>, so
+that the helper functions and S3 methods of the package are available in
+the worker.</li>
 <li>
 <code>param_set</code>: A set of hyperparameters and their
 descriptions provided as a <code><a href="https://paradox.mlr-org.com/reference/ParamSet.html" class="external-link">paradox::ParamSet</a></code>.</li>
@@ -892,18 +898,50 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 <pre><code><span><span class="co"># Test passed with 20 successes 🥇.</span></span></code></pre>
 </div>
 <div class="section level3">
+<h3 id="running-the-tests-in-mlr3extralearners">Running the tests in mlr3extralearners<a class="anchor" aria-label="anchor" href="#running-the-tests-in-mlr3extralearners"></a>
+</h3>
+<p>Install the package before you test a learner that you add to
+<code>mlr3extralearners</code>. <code>devtools::test()</code> loads the
+source code with <code>load_all()</code>, but two checks use the
+installed package:</p>
+<ul>
+<li>The encapsulation stage of the autotest trains the learner in a
+<code>mirai</code> daemon. The daemon is a separate R process that loads
+the installed <code>mlr3extralearners</code>. Without a fresh install,
+the stage fails because the daemon cannot find the new learner.</li>
+<li>
+<code>expect_learner()</code> with <code>check_man = TRUE</code>
+searches the help index of the installed package for the manual page of
+the learner. Run <code>devtools::document()</code> first, so that the
+manual page exists when you install.</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span>quick <span class="op">=</span> <span class="cn">TRUE</span>, upgrade <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">test</span><span class="op">(</span>filter <span class="op">=</span> <span class="st">"^C50_classif_C50"</span><span class="op">)</span></span></code></pre></div>
+<p>Install again after every change to the learner file, otherwise the
+daemon runs the old code.</p>
+<p><code>devtools::test()</code> runs
+<code>tests/testthat/setup.R</code>, which starts one persistent daemon
+for the encapsulation stage. If you run a test file line by line in an
+interactive session, source <code>tests/testthat/helper.R</code> and
+<code>tests/testthat/setup.R</code> first. Without the persistent
+daemon, <code>mirai</code> starts a new R process for every encapsulated
+call, which makes the autotest much slower.</p>
+</div>
+<div class="section level3">
 <h3 id="skipping-tests-for-optional-dependencies">Skipping tests for optional dependencies<a class="anchor" aria-label="anchor" href="#skipping-tests-for-optional-dependencies"></a>
 </h3>
 <p>Always add an explicit skip at the top of test files for all
 learners, for example:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html" class="external-link">skip_if_not_installed</a></span><span class="op">(</span><span class="st">"RpkgName"</span><span class="op">)</span></span></code></pre></div>
 <p>This ensures tests fail gracefully on GitHub Actions, where we have a
 specific workflow that doesn’t install packages listed in
 <code>Suggests</code>.</p>
 <p>For Python learners, skip the tests if the Python environment of the
 learner is not available:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html" class="external-link">skip_if_not_installed</a></span><span class="op">(</span><span class="st">"reticulate"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html" class="external-link">skip_if_not_installed</a></span><span class="op">(</span><span class="st">"callr"</span><span class="op">)</span></span>
 <span><span class="fu">skip_if_no_python_env</span><span class="op">(</span><span class="st">"tabpfn"</span><span class="op">)</span></span></code></pre></div>
@@ -917,7 +955,7 @@ environment with pinned package versions, so that the tests are
 reproducible. Each group of learners that share their requirements has
 its own environment, which is defined in
 <code>R/install_python_test_envs.R</code>:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tabpfn</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>  python <span class="op">=</span> <span class="st">"3.12"</span>,</span>
 <span>  packages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -946,7 +984,7 @@ crashes.</li>
 session with the environment of the group activated, the
 <code>mlr3</code> test helpers sourced, and a <code>mirai</code> daemon
 set up for the encapsulation stage of the autotest.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"autotest"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="fu">run_py_test</span><span class="op">(</span><span class="st">"tabpfn"</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.tabpfn"</span><span class="op">)</span></span>
@@ -962,7 +1000,7 @@ set up for the encapsulation stage of the autotest.</p>
 <code>devtools::install()</code> before running the tests.</p>
 <p>Also test that marshaling works. Python objects cannot be compared
 after unmarshaling, so compare the predictions instead:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"marshaling works"</span>, <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="fu">run_py_test</span><span class="op">(</span><span class="st">"tabpfn"</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.tabpfn"</span><span class="op">)</span></span>
@@ -1012,7 +1050,7 @@ ParamSet.</li>
 <p>All excluded parameters should have a comment justifying their
 exclusion.</p>
 <p>In our example, the final paramtest script looks like:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org" class="external-link">testthat</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"paramtest"</span>, <span class="op">{</span></span>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
@@ -1107,23 +1145,23 @@ should:</p>
 file)</li>
 </ol>
 <p>Here’s an example structure:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># Custom template for &lt;package&gt; learners (&lt;learner-ids&gt;)</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="co"># Reason: &lt;explanation of why standard template cannot be used&gt;</span></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="sc">&lt;</span>%</span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">lrn</span>(id)</span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>is_classif <span class="ot">=</span> <span class="st">"LearnerClassif"</span> <span class="sc">%in%</span> <span class="fu">class</span>(l)</span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="co"># ... conditional logic based on learner type</span></span>
-<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>%<span class="sc">&gt;</span></span>
-<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a><span class="co">#' &lt;%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %&gt;</span></span>
-<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a><span class="co">#' # Example code here using &lt;%= id %&gt; for the learner ID</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co"># Custom template for &lt;package&gt; learners (&lt;learner-ids&gt;)</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="co"># Reason: &lt;explanation of why standard template cannot be used&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="sc">&lt;</span>%</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">lrn</span>(id)</span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a>is_classif <span class="ot">=</span> <span class="st">"LearnerClassif"</span> <span class="sc">%in%</span> <span class="fu">class</span>(l)</span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="co"># ... conditional logic based on learner type</span></span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a>%<span class="sc">&gt;</span></span>
+<span id="cb35-8"><a href="#cb35-8" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb35-9"><a href="#cb35-9" tabindex="-1"></a><span class="co">#' &lt;%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %&gt;</span></span>
+<span id="cb35-10"><a href="#cb35-10" tabindex="-1"></a><span class="co">#' # Example code here using &lt;%= id %&gt; for the learner ID</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="using-templates-in-learner-files">Using Templates in Learner Files<a class="anchor" aria-label="anchor" href="#using-templates-in-learner-files"></a>
 </h3>
 <p>In your learner’s R file, add the template reference in the roxygen
 documentation:</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @templateVar id regr.mylearner</span></span>
 <span><span class="co">#' @template learner</span></span>
 <span><span class="co">#'</span></span>
@@ -1144,8 +1182,14 @@ there are some additional requirements that have to be satisfied:</p>
 <code>.extralrns_dict$add("&lt;learner-id&gt;", &lt;LearnerClassName&gt;)</code>
 to the bottom of the learner file to add the learner to the learners
 <code>Dictionary</code>.</li>
+<li>List <code>"mlr3extralearners"</code> as the first entry of the
+<code>packages</code> argument of the learner.</li>
 <li>Add the learner dependencies to <em>Suggests</em> (and not e.g. to
-<em>Imports</em>) in the DESCRIPTION file.</li>
+<em>Imports</em>) in the DESCRIPTION file. State the minimum working
+version, e.g. <code>aorsf (&gt;= 0.1.6)</code>. This is the latest CRAN
+or GitHub release at the time you add the learner. Raise the version
+whenever an upstream change breaks the learner and the fix depends on
+the new release.</li>
 <li>The learner must be properly documented. Check the other learners
 for how to do this.</li>
 <li>Conforming to the <code>mlr3</code> <a href="https://github.com/mlr-org/mlr3/wiki/Style-Guide" class="external-link">style

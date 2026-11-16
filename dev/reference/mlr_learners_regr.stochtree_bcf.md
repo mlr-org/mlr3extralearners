@@ -367,10 +367,10 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.990908 
+#> 7.153392 
 
 # Estimate the conditional average treatment effect for the test rows
 learner$treatment_effect(task, row_ids = ids$test)
-#>  [1] 2.546429 2.505701 3.227963 2.948301 2.720676 2.728734 2.666739 2.562888
-#>  [9] 3.350151 2.684768 3.266968
+#>  [1] 3.138064 2.842569 3.657884 3.579402 2.853360 2.843354 2.851186 2.820331
+#>  [9] 3.765963 2.900402 3.654399
 ```
