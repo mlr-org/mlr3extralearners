@@ -47,7 +47,7 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
 
       super$initialize(
         id = "regr.qgam",
-        packages = "qgam",
+        packages = c("mlr3extralearners", "qgam"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "se", "quantiles"),
         param_set = param_set,

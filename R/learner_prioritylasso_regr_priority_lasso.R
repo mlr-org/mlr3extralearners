@@ -60,7 +60,7 @@ LearnerRegrPriorityLasso = R6Class(
 
       super$initialize(
         id = "regr.priority_lasso",
-        packages = "prioritylasso",
+        packages = c("mlr3extralearners", "prioritylasso"),
         feature_types = c("logical", "integer", "numeric"),
         predict_types = "response",
         param_set = param_set,

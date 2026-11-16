@@ -30,7 +30,7 @@ LearnerClassifSda = R6Class("LearnerClassifSda",
       )
       super$initialize(
         id = "classif.sda",
-        packages = "sda",
+        packages = c("mlr3extralearners", "sda"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

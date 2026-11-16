@@ -47,7 +47,7 @@ LearnerClassifAdabag = R6Class("LearnerClassifAdabag",
 
       super$initialize(
         id = "classif.adabag",
-        packages = c("adabag", "rpart"),
+        packages = c("mlr3extralearners", "adabag", "rpart"),
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,

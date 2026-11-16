@@ -46,7 +46,7 @@ LearnerClassifRda = R6Class("LearnerClassifRda",
 
       super$initialize(
         id = "classif.rda",
-        packages = "klaR",
+        packages = c("mlr3extralearners", "klaR"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

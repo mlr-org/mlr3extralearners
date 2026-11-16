@@ -77,7 +77,7 @@ LearnerSurvPriorityLasso = R6Class(
 
       super$initialize(
         id = "surv.priority_lasso",
-        packages = "prioritylasso",
+        packages = c("mlr3extralearners", "prioritylasso"),
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         param_set = param_set,

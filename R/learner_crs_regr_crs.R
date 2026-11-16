@@ -61,7 +61,7 @@ LearnerRegrCrs = R6Class("LearnerRegrCrs",
 
       super$initialize(
         id = "regr.crs",
-        packages = "crs",
+        packages = c("mlr3extralearners", "crs"),
         feature_types = c("numeric", "integer", "factor", "ordered"),
         predict_types = c("response", "se"),
         param_set = param_set,

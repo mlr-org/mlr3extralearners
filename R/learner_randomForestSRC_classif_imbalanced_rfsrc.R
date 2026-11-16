@@ -98,7 +98,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
 
       super$initialize(
         id = "classif.imbalanced_rfsrc",
-        packages = "randomForestSRC",
+        packages = c("mlr3extralearners", "randomForestSRC"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

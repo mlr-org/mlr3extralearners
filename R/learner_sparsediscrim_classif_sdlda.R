@@ -30,7 +30,7 @@ LearnerClassifSdlda = R6Class("LearnerClassifSdlda",
 
       super$initialize(
         id = "classif.sdlda",
-        packages = "sparsediscrim",
+        packages = c("mlr3extralearners", "sparsediscrim"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

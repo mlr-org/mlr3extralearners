@@ -1,5 +1,7 @@
 # mlr3extralearners (development version)
 
+* All learners now list `mlr3extralearners` in their `$packages`, so that the package is loaded in the worker process when a learner is encapsulated or runs in parallel. This was missing for 65 learners, e.g. the `RWeka` learners (#478).
+* Added minimum versions for all learner packages in `Suggests` that had none (#478).
 * `classif.liblinear` and `regr.liblinear`: added the `regularizeBias` parameter of `LiblineaR::LiblineaR()`, which is available from LiblineaR 2.50-1 on.
 * `classif.rpf` and `regr.rpf`: re-added the random planted forest learners from `randomPlantedForest` (>= 0.5.0), which now supports marshaling and can therefore be used with encapsulation, parallelization, and saved to disk (#615).
 * New learner `regr.stochtree` fitting Bayesian additive regression trees (BART), optionally warm-started with the grow-from-root algorithm of XBART, with `stochtree::bart()` (#568).

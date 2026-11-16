@@ -57,7 +57,7 @@ LearnerRegrREPTree = R6Class("LearnerRegrREPTree",
 
       super$initialize(
         id = "regr.reptree",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,

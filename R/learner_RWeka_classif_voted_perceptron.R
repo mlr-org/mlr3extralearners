@@ -56,7 +56,7 @@ LearnerClassifVotedPerceptron = R6Class("LearnerClassifVotedPerceptron",
 
       super$initialize(
         id = "classif.voted_perceptron",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

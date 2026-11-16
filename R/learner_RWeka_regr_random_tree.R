@@ -57,7 +57,7 @@ LearnerRegrRandomTree = R6Class("LearnerRegrRandomTree",
 
       super$initialize(
         id = "regr.random_tree",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,

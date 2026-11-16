@@ -30,7 +30,7 @@ LearnerClassifKnn = R6Class("LearnerClassifKnn",
 
       super$initialize(
         id = "classif.knn",
-        packages = "class",
+        packages = c("mlr3extralearners", "class"),
         feature_types = c("numeric"),
         predict_types = c("response"),
         param_set = param_set,

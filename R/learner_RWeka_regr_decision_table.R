@@ -79,7 +79,7 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
 
       super$initialize(
         id = "regr.decision_table",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,

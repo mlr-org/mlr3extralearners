@@ -38,7 +38,7 @@ LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
 
       super$initialize(
         id = "classif.evtree",
-        packages = "evtree",
+        packages = c("mlr3extralearners", "evtree"),
         # feature type "ordered" supported in mlr2 but throws evtree errors in autotest?
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("response", "prob"),

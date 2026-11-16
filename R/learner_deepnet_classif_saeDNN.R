@@ -39,7 +39,7 @@ LearnerClassifSaeDNN = R6Class("LearnerClassifSaeDNN",
 
       super$initialize(
         id = "classif.saeDNN",
-        packages = "deepnet",
+        packages = c("mlr3extralearners", "deepnet"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

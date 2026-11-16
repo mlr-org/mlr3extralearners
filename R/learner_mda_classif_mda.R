@@ -42,7 +42,7 @@ LearnerClassifMda = R6Class("LearnerClassifMda",
 
       super$initialize(
         id = "classif.mda",
-        packages = "mda",
+        packages = c("mlr3extralearners", "mda"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

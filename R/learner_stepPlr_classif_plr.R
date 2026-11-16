@@ -30,7 +30,7 @@ LearnerClassifStepPlr = R6Class("LearnerClassifStepPlr",
 
       super$initialize(
         id = "classif.stepPlr",
-        packages = "stepPlr",
+        packages = c("mlr3extralearners", "stepPlr"),
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

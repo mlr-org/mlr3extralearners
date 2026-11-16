@@ -67,7 +67,7 @@ LearnerRegrMultilayerPerceptron = R6Class("LearnerRegrMultilayerPerceptron",
 
       super$initialize(
         id = "regr.multilayer_perceptron",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,

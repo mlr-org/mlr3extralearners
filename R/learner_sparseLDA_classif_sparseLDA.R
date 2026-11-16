@@ -34,7 +34,7 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
 
       super$initialize(
         id = "classif.sparseLDA",
-        packages = c("sparseLDA", "MASS", "elasticnet"),
+        packages = c("mlr3extralearners", "sparseLDA", "MASS", "elasticnet"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

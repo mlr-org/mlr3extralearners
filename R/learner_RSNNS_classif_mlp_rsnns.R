@@ -40,7 +40,7 @@ LearnerClassifMLPRsnns = R6Class("LearnerClassifMLPRsnns",
 
       super$initialize(
         id = "classif.mlp_rsnns",
-        packages = "RSNNS",
+        packages = c("mlr3extralearners", "RSNNS"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

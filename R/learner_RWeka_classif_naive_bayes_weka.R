@@ -55,7 +55,7 @@ LearnerClassifNaiveBayesWeka = R6Class("LearnerClassifNaiveBayesWeka",
 
       super$initialize(
         id = "classif.naive_bayes_weka",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

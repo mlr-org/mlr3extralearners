@@ -65,7 +65,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
 
       super$initialize(
         id = "regr.abess",
-        packages = "abess",
+        packages = c("mlr3extralearners", "abess"),
         feature_types = c("numeric", "integer"),
         predict_types = "response",
         param_set = param_set,
