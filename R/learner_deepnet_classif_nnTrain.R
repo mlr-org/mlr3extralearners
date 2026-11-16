@@ -40,7 +40,7 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
 
       super$initialize(
         id = "classif.nnTrain",
-        packages = "deepnet",
+        packages = c("mlr3extralearners", "deepnet"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

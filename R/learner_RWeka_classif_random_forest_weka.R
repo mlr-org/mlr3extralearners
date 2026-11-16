@@ -81,7 +81,7 @@ LearnerClassifRandomForestWeka = R6Class("LearnerClassifRandomForestWeka",
 
       super$initialize(
         id = "classif.random_forest_weka",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

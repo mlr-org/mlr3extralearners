@@ -142,7 +142,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
 
       super$initialize(
         id = "regr.lmer",
-        packages = "lme4",
+        packages = c("mlr3extralearners", "lme4"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         properties = c("weights", "offset"),
         predict_types = "response",

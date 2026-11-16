@@ -47,7 +47,7 @@ LearnerClassifNeuralnet = R6Class("LearnerClassifNeuralnet",
 
      super$initialize(
        id = "classif.neuralnet",
-       packages = "neuralnet",
+       packages = c("mlr3extralearners", "neuralnet"),
        feature_types = c("numeric", "integer"),
        predict_types = c("response", "prob"),
        param_set = param_set,

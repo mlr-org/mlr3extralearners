@@ -67,7 +67,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
 
       super$initialize(
         id = "classif.abess",
-        packages = "abess",
+        packages = c("mlr3extralearners", "abess"),
         feature_types = c("numeric", "integer"),
         predict_types = c("response", "prob"),
         param_set = param_set,

@@ -87,7 +87,7 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       super$initialize(
         id = "surv.bart",
-        packages = "BART",
+        packages = c("mlr3extralearners", "BART"),
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = param_set,

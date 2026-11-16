@@ -90,7 +90,7 @@ LearnerClassifPriorityLasso = R6Class(
 
       super$initialize(
         id = "classif.priority_lasso",
-        packages = "prioritylasso",
+        packages = c("mlr3extralearners", "prioritylasso"),
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

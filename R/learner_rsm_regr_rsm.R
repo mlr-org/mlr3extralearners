@@ -34,7 +34,7 @@ LearnerRegrRSM = R6Class("LearnerRegrRSM",
 
       super$initialize(
         id = "regr.rsm",
-        packages = "rsm",
+        packages = c("mlr3extralearners", "rsm"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,

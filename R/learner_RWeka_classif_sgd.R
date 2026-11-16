@@ -65,7 +65,7 @@ LearnerClassifSGD = R6Class("LearnerClassifSGD",
 
       super$initialize(
         id = "classif.sgd",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

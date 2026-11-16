@@ -49,7 +49,7 @@ LearnerClassifNaiveBayesMultinomial = R6Class("LearnerClassifNaiveBayesMultinomi
 
       super$initialize(
         id = "classif.naive_bayes_multinomial",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

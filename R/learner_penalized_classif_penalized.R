@@ -49,7 +49,7 @@ LearnerClassifPenalized = R6Class("LearnerClassifPenalized",
 
       super$initialize(
         id = "classif.penalized",
-        packages = "penalized",
+        packages = c("mlr3extralearners", "penalized"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

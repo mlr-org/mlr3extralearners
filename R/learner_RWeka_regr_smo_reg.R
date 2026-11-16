@@ -88,7 +88,7 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
 
       super$initialize(
         id = "regr.smo_reg",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,

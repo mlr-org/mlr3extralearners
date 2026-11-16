@@ -53,7 +53,7 @@ LearnerRegrSimpleLinearRegression = R6Class("LearnerRegrSimpleLinearRegression",
 
       super$initialize(
         id = "regr.simple_linear_regression",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = param_set,

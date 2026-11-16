@@ -84,7 +84,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
 
       super$initialize(
         id = "classif.glmer",
-        packages = "lme4",
+        packages = c("mlr3extralearners", "lme4"),
         feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,

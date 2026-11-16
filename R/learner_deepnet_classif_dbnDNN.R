@@ -44,7 +44,7 @@ LearnerClassifDbnDNN = R6Class("LearnerClassifDbnDNN",
 
       super$initialize(
         id = "classif.dbnDNN",
-        packages = "deepnet",
+        packages = c("mlr3extralearners", "deepnet"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,

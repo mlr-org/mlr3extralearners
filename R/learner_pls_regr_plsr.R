@@ -38,7 +38,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
 
       super$initialize(
         id = "regr.plsr",
-        packages = "pls",
+        packages = c("mlr3extralearners", "pls"),
         feature_types = c("numeric", "integer", "factor"),
         predict_types = "response",
         param_set = param_set,

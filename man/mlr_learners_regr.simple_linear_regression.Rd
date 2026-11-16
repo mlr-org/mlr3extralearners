@@ -50,7 +50,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:lrn]{lrn()}
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{RWeka}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{RWeka}
 }
 }
 
