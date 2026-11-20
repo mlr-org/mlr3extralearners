@@ -6,10 +6,10 @@
 #' Fits a competing risks Cox model using likelihood based boosting.
 #' Calls `CoxBoost::CoxBoost()` or `CoxBoost::cv.CoxBoost()` from package
 #' \CRANpkg{CoxBoost}.
-#' Predicts cumulative incidence functions (one CIF matrix per cause, rows = observations,
-#' columns = times).
-#' If `times` are not provided for prediction, the unique event times (across causes)
-#' from the training set are used by default.
+#' Predicts one cumulative incidence function (CIF) matrix per cause, with
+#' observations in rows and time points in columns.
+#' By default, each CIF is stored at that **cause's unique training event times**.
+#' Set the prediction parameter `times` to use the same grid for all causes.
 #'
 #' @template learner
 #' @templateVar id cmprsk.coxboost
@@ -205,7 +205,7 @@ LearnerCompRisksCoxboost = R6Class(
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      # default to unique training times if not provided
+      use_event_times = is.null(pv$times)
       pv$times = pv$times %||% self$model$event.times
       newdata = as.matrix(ordered_features(task, self))
 
@@ -214,16 +214,23 @@ LearnerCompRisksCoxboost = R6Class(
         self$model,
         newdata = newdata,
         type = "CIF",
-        .args = pv
+        .args = pv # here the `times` is passed on
       )
 
-      # set column names for each CIF matrix to be the time points
-      cif_list = lapply(cif_list, function(mat) {
-        colnames(mat) = pv$times
-        mat
-      })
+      causes = names(cif_list)
+      if (use_event_times) {
+        # cause-specific event times from train set
+        times = map(self$model$model[causes], function(model) as.numeric(model$event.times))
+        for (cause in causes) {
+          columns = match(times[[cause]], pv$times)
+          cif_list[[cause]] = cif_list[[cause]][, columns, drop = FALSE]
+        }
+      } else {
+        # user-specific times
+        times = set_names(rep(list(as.numeric(pv$times)), length(causes)), causes)
+      }
 
-      list(cif = cif_list)
+      structure(list(cif = cif_list), times = times)
     }
   )
 )

@@ -8,10 +8,10 @@
 Fits a competing risks Cox model using likelihood based boosting.
 Calls \code{CoxBoost::CoxBoost()} or \code{CoxBoost::cv.CoxBoost()} from package
 \CRANpkg{CoxBoost}.
-Predicts cumulative incidence functions (one CIF matrix per cause, rows = observations,
-columns = times).
-If \code{times} are not provided for prediction, the unique event times (across causes)
-from the training set are used by default.
+Predicts one cumulative incidence function (CIF) matrix per cause, with
+observations in rows and time points in columns.
+By default, each CIF is stored at that \strong{cause's unique training event times}.
+Set the prediction parameter \code{times} to use the same grid for all causes.
 }
 \section{Dictionary}{
 
