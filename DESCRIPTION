@@ -47,7 +47,7 @@ Imports:
     checkmate,
     data.table,
     methods,
-    mlr3cmprsk (>= 0.0.6),
+    mlr3cmprsk (>= 0.0.9),
     mlr3misc (>= 0.19.0),
     mlr3proba (>= 0.8.8),
     paradox (>= 1.0.1),
@@ -170,7 +170,7 @@ Remotes:
     mlr-org/mlr3proba,
     PlantedML/randomPlantedForest@v0.5.0
 Config/Needs/website: rmarkdown
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Encoding: UTF-8
